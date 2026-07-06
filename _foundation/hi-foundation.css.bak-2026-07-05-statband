@@ -1,0 +1,242 @@
+/* ============================================================================
+   HYPER INKERS — SHARED DESIGN FOUNDATION  (LOCKED · v1 · 2026-07-04)
+   Extracted verbatim from the approved hero (2026-07-04_hero-test-cinematic).
+   ----------------------------------------------------------------------------
+   BOTH work sessions MUST:
+     1. Link this file UNCHANGED at the top of every section mockup:
+          <link rel="stylesheet" href="_foundation/hi-foundation.css">
+          <link rel="stylesheet" href="fonts-hyperinkers-2026-07-04/hyperinkers-fonts.css">
+     2. Build sections using ONLY these tokens + component classes.
+     3. NEVER redefine a token or a component value inside a section file.
+        Need a value that isn't here? → add it HERE + ping B.Long. Do not fork.
+   This single shared file is what keeps the two parallel sessions identical.
+   ============================================================================ */
+
+/* ---------- 1) TOKENS (do not change per-section) ---------- */
+:root{
+  --bg:#0F0F0F; --black:#000; --surface:#161616; --border:#2A2A2A;
+  --orange:#CC6600; --orange-hi:#E67500; --cream:#DCDBBE;
+  --text:#FFFFFF; --muted:#B0B0B0;
+  --head:"fonttitle","Helvetica Neue",Arial,sans-serif;   /* display / H1-H2 (tribal) */
+  --sub:"tt-runs-trial-demibo","Helvetica Neue",Arial,sans-serif; /* H3 / labels / buttons */
+  --body:"Gilroy","Helvetica Neue",Arial,sans-serif;      /* body copy */
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --wrap:1240px;
+  --card:rgba(0,0,0,.5);          /* frosted card surface (matches Google badge) */
+  --card-brd:rgba(255,255,255,.16);
+  --hair:rgba(255,255,255,.08);   /* hairline divider inside cards */
+}
+
+/* ---------- 2) RESET + BASE ---------- */
+*{margin:0;padding:0;box-sizing:border-box}
+html{overflow-x:clip}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+
+/* ---------- 3) LAYOUT — wrap + section scaffolding ---------- */
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:32px}
+@media(max-width:560px){.wrap{padding-inline:20px}}
+
+/* every body section is a <section class="section">…</section> */
+.section{position:relative;padding:clamp(60px,7vw,100px) 0;overflow:clip}
+.section--flush{padding:0}                 /* full-bleed cinematic bands */
+.section--slim{padding:clamp(34px,4.4vw,56px) 0}  /* compact trust / press / mini bars (avoid the "void" lesson) */
+.section-head{max-width:760px;margin-bottom:clamp(34px,4vw,50px)}
+.section-head--editorial{max-width:none;text-align:left}
+.section-head--editorial h2{font-size:clamp(30px,3.9vw,50px)}
+.section-head.center{margin-inline:auto;text-align:center}
+.section-intro{font-size:16.5px;line-height:1.6;color:#C9C9C9;max-width:640px;margin-top:16px}
+
+/* HEADING SCALE (uppercase display, NEVER add an eyebrow line above a heading) */
+h1{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:0.94;letter-spacing:-0.005em;
+   font-size:clamp(34px,4.6vw,60px);color:#fff;text-shadow:0 2px 34px rgba(0,0,0,.55)}
+h1 .o{color:var(--orange);display:block}
+.section h2{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:0.98;letter-spacing:-0.005em;
+   font-size:clamp(28px,3.4vw,44px);color:#fff}
+.section h2 .o{color:var(--orange)}
+.section h3{font-family:var(--sub);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;line-height:1.15;
+   font-size:clamp(18px,1.6vw,23px);color:#fff}
+.section h4{font-family:var(--sub);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;font-size:14px;color:#fff}
+.section p{color:#C9C9C9;line-height:1.62}
+.section p b, .section li b{color:#fff;font-weight:600}
+
+/* ---------- 4) HEADER (page-level, include once at top) ---------- */
+.hdr{position:absolute;top:0;left:0;right:0;z-index:40}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:78px}
+.hdr .logo img{height:26px;width:auto;filter:brightness(0) invert(1)}
+.nav{display:flex;gap:30px;font-family:var(--sub);font-size:12.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--cream)}
+.nav a{opacity:.82;transition:opacity .2s var(--ease)}
+.nav a:hover{opacity:1;color:#fff}
+.hdr .book{font-family:var(--sub);font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.35);padding:11px 20px;border-radius:4px;transition:border-color .2s var(--ease),background .2s var(--ease)}
+.hdr .book:hover{border-color:var(--orange);background:var(--orange)}
+@media(max-width:900px){.nav{display:none}}
+
+/* ---------- 5) GOOGLE REVIEW BADGE ---------- */
+.badge{display:inline-flex;align-items:center;gap:10px;border:1px solid var(--card-brd);background:var(--card);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);
+  border-radius:4px;padding:8px 14px;font-family:var(--sub);font-size:12.5px;letter-spacing:0.03em;color:var(--cream)}
+.badge .gg{width:15px;height:15px;flex-shrink:0}
+.badge .stars{color:var(--orange);letter-spacing:2px;font-size:12.5px}
+.badge b{color:#fff;font-weight:600}
+
+/* ---------- 6) BUTTONS ---------- */
+.cta{display:flex;flex-wrap:wrap;gap:14px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:15px 22px;border-radius:4px;
+  font-family:var(--sub);font-weight:600;font-size:14.5px;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;
+  border:1px solid transparent;transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease)}
+.btn-primary{background:var(--orange);color:#fff}
+.btn-primary:hover{background:var(--orange-hi)}
+.btn-ghost{background:rgba(0,0,0,.3);color:#fff;border-color:rgba(255,255,255,.4)}
+.btn-ghost:hover{border-color:var(--cream)}
+.btn svg{width:17px;height:17px;flex-shrink:0}
+@media(max-width:640px){
+  .cta{flex-direction:column;gap:12px}
+  .cta .btn{width:100%;font-size:12.5px;padding:15px 16px;letter-spacing:.04em}
+}
+
+/* ---------- 7) INFO TOOLTIP  ⓘ  (upright i · frosted circle) ---------- */
+.info{position:relative;display:inline-flex;align-items:center;justify-content:center;
+  width:16px;height:16px;border-radius:50%;border:1px solid rgba(255,255,255,.5);background:rgba(255,255,255,.08);
+  color:rgba(255,255,255,.88);font-family:var(--body);font-size:10.5px;font-style:normal;font-weight:700;line-height:1;
+  cursor:help;flex-shrink:0;transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease)}
+.info:hover,.info:focus-visible{border-color:var(--orange);color:#fff;outline:none}
+.info .tip{position:absolute;z-index:30;bottom:calc(100% + 9px);left:50%;transform:translateX(-50%) translateY(4px);
+  width:max-content;max-width:230px;background:var(--black);border:1px solid var(--orange);border-radius:4px;
+  padding:9px 12px;font-family:var(--body);font-size:12px;line-height:1.5;color:#fff;letter-spacing:0;text-align:left;white-space:normal;
+  opacity:0;visibility:hidden;transition:opacity .15s var(--ease),transform .15s var(--ease),visibility 0s .2s;pointer-events:none}
+.info:hover .tip,.info:focus-visible .tip{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);transition-delay:.05s}
+/* variant: sits on a corner of an image */
+.info--corner{position:absolute;top:12px;right:12px;z-index:6;width:24px;height:24px;font-size:12px;
+  background:rgba(0,0,0,.5);backdrop-filter:blur(3px);border-color:rgba(255,255,255,.5);color:rgba(255,255,255,.9)}
+.info--corner .tip{bottom:auto;top:calc(100% + 9px);left:auto;right:0;transform:translateY(4px);width:min(240px,60vw)}
+.info--corner:hover .tip,.info--corner:focus-visible .tip{transform:translateY(0)}
+
+/* ---------- 8) READ-MORE COMPRESSION  (checkbox hack · NO JS · full text stays in DOM) ----------
+   Pattern (order matters, all siblings):
+     <input type="checkbox" id="UNIQUE" class="more-cb" aria-label="…">
+     <p class="lead">…full text…</p>
+     <div class="lead-extra"> …setup line + <ul class="benefit-list">… </div>   (optional)
+     <label for="UNIQUE" class="more-btn"><span class="more">Read more</span><span class="less">Show less</span><svg…chevron…></label>
+   Set clamp lines with --clamp on .lead if you need a value other than 4.        */
+.more-cb{position:absolute;width:1px;height:1px;opacity:0;margin:0}
+.lead{margin-top:22px;max-width:560px;font-size:16.5px;line-height:1.62;color:#E4E4E4;text-shadow:0 1px 10px rgba(0,0,0,.55);
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:var(--clamp,4);line-clamp:var(--clamp,4);overflow:hidden}
+.more-cb:checked ~ .lead{-webkit-line-clamp:unset;line-clamp:unset}
+.lead-extra{max-width:560px;max-height:0;overflow:hidden;opacity:0;transition:opacity .3s var(--ease),margin-top .3s var(--ease);text-shadow:0 1px 10px rgba(0,0,0,.5)}
+.more-cb:checked ~ .lead-extra{max-height:900px;opacity:1;margin-top:16px}
+.lx-setup{font-size:15px;line-height:1.55;color:#D6D6D6;margin-bottom:10px}
+.benefit-list{list-style:none;display:flex;flex-direction:column;gap:9px}
+.benefit-list li{position:relative;padding-left:18px;font-size:14.5px;line-height:1.5;color:#CFCFCF}
+.benefit-list li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--orange)}
+.benefit-list li b{color:#fff;font-weight:600}
+.more-btn{display:inline-flex;align-items:center;gap:8px;margin-top:12px;cursor:pointer;
+  font-family:var(--sub);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange);transition:color .2s var(--ease)}
+.more-btn:hover{color:var(--orange-hi)}
+.more-btn svg{width:14px;height:14px;transition:transform .25s var(--ease)}
+.more-btn .less{display:none}
+.more-cb:checked ~ .more-btn .more{display:none}
+.more-cb:checked ~ .more-btn .less{display:inline}
+.more-cb:checked ~ .more-btn svg{transform:rotate(180deg)}
+.more-cb:focus-visible ~ .more-btn{outline:2px solid var(--orange);outline-offset:3px;border-radius:2px}
+
+/* ---------- 9) FRAMED MEDIA CARD (proof / award / image) ---------- */
+.media-card{position:relative;aspect-ratio:var(--ar,4/3);width:100%;
+  border:1px solid rgba(255,255,255,.14);border-radius:5px;overflow:hidden;box-shadow:0 26px 74px rgba(0,0,0,.55)}
+.media-card>img{width:100%;height:100%;object-fit:cover;object-position:50% 42%}
+
+/* ---------- 10) CINEMATIC BAND (bg image + scrim + grain) ----------
+   Put inside a .section as the first children, content sits above (z-index:5).
+   Scrim direction is per-band; the hero uses a left-heavy 90deg gradient.       */
+.band-media{position:absolute;inset:0;z-index:0}
+.band-media img{width:100%;height:100%;object-fit:cover}
+.band-media img.kenburns{animation:kenburns 30s var(--ease) infinite alternate;transform-origin:46% 40%}
+.scrim{position:absolute;inset:0;z-index:1}
+.scrim--left{background:
+  linear-gradient(90deg, rgba(13,13,13,0.97) 0%, rgba(13,13,13,0.9) 34%, rgba(13,13,13,0.58) 56%, rgba(13,13,13,0.4) 100%),
+  linear-gradient(0deg, rgba(13,13,13,0.75) 0%, rgba(13,13,13,0) 42%)}
+.scrim--even{background:linear-gradient(0deg,rgba(13,13,13,.86),rgba(13,13,13,.5) 55%,rgba(13,13,13,.7))}
+.grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.04;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@keyframes kenburns{from{transform:scale(1.05)}to{transform:scale(1.12)}}
+
+/* ---------- 11) METRIC / STAT STRIP (floating frosted card · horizontal rows · mobile swipe line) ----------
+   Reusable for any "row of numbers/facts + ⓘ" strip. Desktop = N columns; mobile = 2/view + swipe.
+   Include the carousel-line JS snippet (see SECTION-BUILD-STANDARD §4) when you use .stat-track.  */
+.statband{position:relative;z-index:6;width:calc(100% - 48px);max-width:var(--wrap);margin:0 auto;
+  border-radius:14px;overflow:hidden;background:var(--card);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
+  border:1px solid var(--card-brd);box-shadow:0 26px 70px rgba(0,0,0,.5)}
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);list-style:none}
+.stat{display:flex;align-items:center;justify-content:center;gap:13px;padding:24px 16px;border-right:1px solid var(--hair)}
+.stat:last-child{border-right:none}
+.stat-ic{width:34px;height:34px;flex-shrink:0;color:var(--orange)}
+.stat-ic svg{width:100%;height:100%;display:block;fill:currentColor}
+.stat-text{display:flex;flex-direction:column;gap:3px;text-align:left}
+.stat-num{font-family:var(--head);font-size:clamp(23px,2vw,30px);font-weight:700;color:#fff;line-height:1;letter-spacing:.01em}
+.stat-lbl{display:inline-flex;align-items:center;gap:6px;font-family:var(--sub);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:#ECECEC}
+.stat-track{display:none}
+@media(max-width:640px){
+  .stat-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .stat-row::-webkit-scrollbar{display:none}
+  .stat{flex:0 0 50%;scroll-snap-align:start;gap:11px;padding:22px 8px}
+  .stat-ic{width:30px;height:30px}
+  .stat-num{font-size:clamp(21px,5.6vw,27px)}
+  .stat-lbl{font-size:10.5px;gap:5px}
+  .stat-lbl .info{width:14px;height:14px;font-size:9.5px}
+  .stat-track{display:block;position:relative;height:3px;margin:2px 16px 15px;background:rgba(255,255,255,.13);border-radius:2px}
+  .stat-thumb{position:absolute;top:0;left:0;height:100%;width:50%;background:var(--orange);border-radius:2px}
+}
+
+/* ---------- 12) SMALL UTILITIES ---------- */
+.chip{display:inline-flex;align-items:center;gap:7px;padding:7px 13px;border-radius:999px;border:1px solid rgba(255,255,255,.16);
+  background:rgba(255,255,255,.05);font-family:var(--sub);font-size:12px;letter-spacing:.03em;color:var(--cream)}
+.rule{height:1px;background:rgba(255,255,255,.1);border:none;margin:0}
+.tag{font-family:var(--sub);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--orange)}
+
+/* ---------- 13) MOTION / REDUCED MOTION ---------- */
+@media(prefers-reduced-motion:reduce){
+  .kenburns{animation:none !important;transform:scale(1.05) !important}
+  *{transition-duration:.01ms !important;animation-duration:.01ms !important}
+}
+
+/* ============================================================================
+   SESSION B — SHARED ADDITIONS (2026-07-04)  ·  reused across sections 10–17
+   Added here (not forked per-section) per Golden Rule #2. Verified in the
+   Section 10 gate. Session A may reuse these classes.
+   ============================================================================ */
+
+/* ---------- 14) EDITORIAL SPLIT (2-col media/content · stacks on mobile) ----------
+   <div class="split"> <figure class="split-media">…</figure> <div>…</div> </div>
+   Add .split--media-right to flip the media to the right on desktop.            */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,68px);align-items:center}
+.split--media-right>.split-media{order:2}
+@media(max-width:860px){
+  .split{grid-template-columns:1fr;gap:32px}
+  .split--media-right>.split-media{order:0}
+}
+
+/* ---------- 15) CHIP GROUP (wraps .chip; bold number reads white) ---------- */
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chips .chip b{color:#fff;font-weight:700}
+
+/* ---------- 16) ARROW LABEL LIST  ("=>" scannable rows · static, non-collapsing) ----------
+   <ul class="arrowlist"><li><span class="al-t">Label</span><span class="al-m">meta</span></li></ul> */
+.arrowlist{list-style:none;display:flex;flex-direction:column}
+.arrowlist>li{position:relative;padding:15px 0 15px 30px;border-bottom:1px solid var(--hair)}
+.arrowlist>li:first-child{border-top:1px solid var(--hair)}
+.arrowlist>li::before{content:"";position:absolute;left:0;top:19px;width:15px;height:10px;
+  background:var(--orange);clip-path:polygon(0 34%,62% 34%,62% 0,100% 50%,62% 100%,62% 66%,0 66%)}
+.arrowlist .al-t{font-family:var(--sub);font-weight:600;font-size:15px;letter-spacing:.01em;color:#fff;line-height:1.4}
+.arrowlist .al-m{display:block;margin-top:3px;font-size:13.5px;color:var(--muted);line-height:1.45}
+.arrowlist .al-m b{color:var(--cream);font-weight:600}
+
+/* ---------- 17) ATMOSPHERIC SPRAY WASH (Ganga color-blur.webp) — signature texture ----------
+   Low-opacity aerosol wash that ties dark bands together (like Ganga's wisps between cards).
+   Place as first child of a .section (content .wrap sits above with z-index:1). Vary placement
+   per section (do NOT repeat the same spot). Keep OFF reading-heavy sections (FAQ/Reviews/Visit). */
+.smoke{position:absolute;z-index:0;pointer-events:none;opacity:.56;mix-blend-mode:screen;filter:saturate(.92);max-width:none;user-select:none;
+  -webkit-mask-image:radial-gradient(ellipse 74% 68% at 50% 50%,#000 46%,transparent 86%);mask-image:radial-gradient(ellipse 74% 68% at 50% 50%,#000 46%,transparent 86%)}   /* opacity+core matched to Awards .aw-smoke density; mask still dissolves edges so section overflow:clip never cuts a hard line */
+.smoke--tr{top:4%;right:-10%;width:64%;transform:scaleX(-1) rotate(5deg)}
+.smoke--bl{bottom:-6%;left:-10%;width:58%;transform:rotate(6deg)}
+.smoke--mid{top:36%;left:4%;width:74%;opacity:.5;transform:rotate(-3deg)}   /* weaves through a card grid (shows in the gutters); a hair softer than base so it never washes the grid */
+@media(prefers-reduced-motion:no-preference){.smoke--drift{animation:smokeDrift 60s var(--ease) infinite alternate}}
+@keyframes smokeDrift{from{transform:translate3d(0,0,0) scaleX(-1)}to{transform:translate3d(-3%,2%,0) scaleX(-1)}}

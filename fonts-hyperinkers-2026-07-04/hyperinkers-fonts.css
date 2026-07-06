@@ -1,0 +1,191 @@
+@font-face {
+  font-family: "fonttitle";
+  src: url("./text-fonts/1122fonttitle.woff2") format("woff2"),
+    url("./text-fonts/1122fonttitle.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "fonth4";
+  src: url("./text-fonts/4797fonth4.woff2") format("woff2"),
+    url("./text-fonts/4797fonth4.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ladyrose";
+  src: url("./text-fonts/5891ladyrose.woff2") format("woff2"),
+    url("./text-fonts/5891ladyrose.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ltype";
+  src: url("./text-fonts/9520ltype.woff2") format("woff2"),
+    url("./text-fonts/9520ltype.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "coprgtb";
+  src: url("./text-fonts/9811COPRGTB.woff2") format("woff2"),
+    url("./text-fonts/9811COPRGTB.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "clesmont";
+  src: url("./text-fonts/4946clesmont.woff2") format("woff2"),
+    url("./text-fonts/4946clesmont.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "compagnon";
+  src: url("./text-fonts/7898Compagnon.woff2") format("woff2"),
+    url("./text-fonts/7898Compagnon.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "tt-runs-trial-bold";
+  src: url("./text-fonts/5985TT-Runs-Trial-Bold.woff2") format("woff2"),
+    url("./text-fonts/5985TT-Runs-Trial-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "tt-runs-trial-demibo";
+  src: url("./text-fonts/9376TT-Runs-Trial-DemiBo.woff2") format("woff2"),
+    url("./text-fonts/9376TT-Runs-Trial-DemiBo.woff") format("woff");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "tt-runs-trial-variab";
+  src: url("./text-fonts/1721TT-Runs-Trial-Variab.woff2") format("woff2"),
+    url("./text-fonts/1721TT-Runs-Trial-Variab.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ltypeb";
+  src: url("./text-fonts/8829LTYPEB.woff2") format("woff2"),
+    url("./text-fonts/8829LTYPEB.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ltypebo";
+  src: url("./text-fonts/4993LTYPEBO.woff2") format("woff2"),
+    url("./text-fonts/4993LTYPEBO.woff") format("woff");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ltypeo";
+  src: url("./text-fonts/9682LTYPEO.woff2") format("woff2"),
+    url("./text-fonts/9682LTYPEO.woff") format("woff");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "utm-bebas";
+  src: url("./text-fonts/635UTM-BEBAS.woff2") format("woff2"),
+    url("./text-fonts/635UTM-BEBAS.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "myriadpro";
+  src: url("./text-fonts/6812MyriadPro.woff2") format("woff2"),
+    url("./text-fonts/6812MyriadPro.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "vn_ntime";
+  src: url("./text-fonts/6921VN_NTIME.woff2") format("woff2"),
+    url("./text-fonts/6921VN_NTIME.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Compagnon Medium";
+  src: url("./text-fonts/Compagnon-Medium.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("./text-fonts/SVN-Gilroy-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("./text-fonts/SVN-Gilroy-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("./text-fonts/SVN-Gilroy-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("./text-fonts/SVN-Gilroy-Italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Montserrat Hyper Popup";
+  src: url("./text-fonts/Montserrat-100.ttf") format("truetype");
+  font-weight: 100;
+  font-style: normal;
+  font-display: swap;
+}
