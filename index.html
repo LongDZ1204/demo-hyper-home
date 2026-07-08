@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Hyper Inkers — Homepage (MERGED FULL) · Cinematic Dark Editorial</title>
+<meta name="description" content="Custom tattoos, piercing, and tattoo removal at Hyper Inkers in San Antonio, TX. 40+ convention awards, 3,000+ reviews, walk-ins until midnight daily.">
+<title>Tattoo &amp; Piercing Shop in San Antonio, TX | Hyper Inkers</title>
 <link rel="stylesheet" href="fonts-hyperinkers-2026-07-04/hyperinkers-fonts.css">
 <link rel="stylesheet" href="_foundation/hi-foundation.css">
 <!-- Session 1 inline CSS (hero + top sections) -->
@@ -89,11 +90,17 @@ a{color:inherit;text-decoration:none}
 }
 
 /* text column */
-.badge{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.5);backdrop-filter:blur(3px);
-  border-radius:4px;padding:8px 14px;font-family:var(--sub);font-size:12.5px;letter-spacing:0.03em;color:var(--cream);margin-bottom:24px}
-.badge .gg{width:15px;height:15px;flex-shrink:0}
-.badge .stars{color:var(--orange);letter-spacing:2px;font-size:12.5px}
-.badge b{color:#fff;font-weight:600}
+/* hero Google-review badge — bare (no pill), colored G on dark, gold stars, G medallion style.
+   Reset the foundation .badge pill explicitly (per-property) so no border/bg/pad leaks through. */
+.badge{display:inline-flex;align-items:center;gap:11px;color:var(--cream);margin-bottom:24px;
+  border:0;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding:0;border-radius:0}
+.badge .gg{width:clamp(26px,6vw,30px);height:clamp(26px,6vw,30px);flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
+.badge-col{display:flex;flex-direction:column;gap:2px}
+.badge-r1{display:flex;align-items:center;gap:9px}
+.badge-num{font-family:var(--head);font-weight:700;font-size:clamp(20px,4.4vw,25px);line-height:1;color:#fff;letter-spacing:.01em}
+.badge .stars{color:#F5B301;letter-spacing:2px;font-size:clamp(13px,3.1vw,15px);line-height:1}
+.badge-cnt{font-family:var(--sub);font-size:13px;letter-spacing:.01em;color:#D6D6D6}
+.badge-cnt b{color:#fff;font-weight:700}
 h1{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:0.94;letter-spacing:-0.005em;
   font-size:clamp(34px,4.6vw,60px);color:#fff;text-shadow:0 2px 34px rgba(0,0,0,.55)}
 h1 .o{color:var(--orange);display:block}
@@ -160,16 +167,14 @@ h1 .o{color:var(--orange);display:block}
 
 /* ---------- STAT BAND (Option A: charcoal card, orange top accent, horizontal stat rows) ---------- */
 .statband{position:relative;z-index:6;align-self:center;width:calc(100% - 48px);max-width:var(--wrap);margin:36px auto 0;
-  border-radius:14px;overflow:hidden;
+  border-radius:14px;overflow:hidden;border:0;
   background:rgba(10,10,10,.62);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);
-  border:1px solid rgba(255,255,255,.16);
   box-shadow:0 26px 70px rgba(0,0,0,.5)}
 /* refine: subtle fading orange top hairline → reads as an intentional HI "stat plate", not a default frosted card */
 .statband::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;z-index:2;opacity:.8;
   background:linear-gradient(90deg,transparent,var(--orange) 28%,var(--orange) 72%,transparent)}
 .stat-row{display:grid;grid-template-columns:repeat(4,1fr);list-style:none}
-.stat{display:flex;align-items:center;justify-content:center;gap:13px;padding:24px 16px;border-right:1px solid rgba(255,255,255,.08)}
-.stat:last-child{border-right:none}
+.stat{display:flex;align-items:center;justify-content:center;gap:13px;padding:24px 16px;border-right:0}
 .stat-ic{width:34px;height:34px;flex-shrink:0;color:var(--orange)}
 .stat-ic svg{width:100%;height:100%;display:block;fill:currentColor}
 .stat-text{display:flex;flex-direction:column;gap:3px;text-align:left}
@@ -260,6 +265,13 @@ h1 .o{color:var(--orange);display:block}
 .section h2{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:0.98;letter-spacing:-0.005em;
   font-size:clamp(28px,3.4vw,44px);color:#fff}
 .section h2 .o{color:var(--orange)}
+@media(max-width:560px){
+  .wrap{padding-inline:20px}
+  .hero-col{min-width:0}
+  .hero-body .lead{width:min(100%,34ch);max-width:34ch;overflow-wrap:normal;word-break:normal}
+  .section h2{max-width:12.5em;margin-inline:auto;font-size:clamp(26px,7.2vw,34px);line-height:1.04;text-wrap:balance}
+  .section-head--editorial h2{margin-left:0;margin-right:auto}
+}
 .section-head--editorial .arti-intro,.section-head--editorial .gali-intro{margin-left:0;margin-right:auto;text-align:left}
 .artists .sec-bridge,.gallery .sec-bridge{margin-left:0;text-align:left}   /* editorial: bridge left too */
 .rvi-more,.svc-imore,.arti-imore,.gali-imore{transform:translateY(-50%)}   /* center read-more arrow on the text line (was 11px low) */
@@ -312,6 +324,11 @@ h1 .o{color:var(--orange);display:block}
   font-family:var(--sub);font-weight:600;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;transition:background .2s var(--ease)}
 .rv-leave:hover{background:var(--orange-hi)}
 .rv-leave svg{width:18px;height:18px;background:#fff;border-radius:50%;padding:2px}
+.rv-leave-ic{display:inline-flex;align-items:center}
+.rv-leave-ic svg{position:relative}
+.rv-leave-ic svg:first-child{z-index:2;box-shadow:0 0 0 2.5px var(--orange)}
+.rv-leave-ic svg:last-child{margin-left:-7px;z-index:1}
+.rv-leave:hover .rv-leave-ic svg:first-child{box-shadow:0 0 0 2.5px var(--orange-hi)}
 
 /* full-width slider (reviews live inside cards now — no separate artwork column) */
 .rv-slider-wrap{position:relative;min-width:0}
@@ -478,14 +495,14 @@ h1 .o{color:var(--orange);display:block}
 /* TEXT */
 .near-text h2{font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:clamp(27px,3.3vw,42px);line-height:1.0;letter-spacing:-0.008em;color:#fff;margin:0}
 .near-text h2 .o{color:var(--orange)}
-.near-lead{font-size:16.5px;line-height:1.66;color:#C9C9C9;margin:20px 0 0;max-width:560px}
+.near-lead{font-size:16.5px;line-height:1.66;color:#C9C9C9;margin:20px 0 0;max-width:640px}
 .near-lead b{color:#fff;font-weight:600}
 .near-chip{display:inline-flex;align-items:center;gap:9px;margin-top:22px;font-family:var(--sub);font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--cream);border:1px solid var(--border);border-radius:999px;padding:9px 16px}
 .near-chip svg{width:15px;height:15px;fill:none;stroke:var(--orange);stroke-width:1.8;flex-shrink:0}
 /* desktop split — video LEFT, text RIGHT (DOM keeps text first: setup-before-visual on mobile) */
 @media(min-width:861px){
-  .near-grid{grid-template-columns:0.95fr 1.05fr;gap:clamp(34px,4vw,58px)}
-  .near-media{aspect-ratio:auto}
+  .near-grid{grid-template-columns:1.05fr 0.95fr;gap:clamp(34px,4vw,58px);align-items:start}
+  .near-media{aspect-ratio:16/9;align-self:start;margin-top:6px}
 }
 @media(max-width:600px){
   .near-media{border-radius:14px}
@@ -609,9 +626,10 @@ body.gal-lock{overflow:hidden}
 /* spray, ghost button) by a DEEP RUST spray + solid-orange button — same dark family, different hue, so the */
 /* two feeders vary without a light band. */
 .s-cta1{background:var(--bg);text-align:center;padding-block:clamp(80px,10vw,148px)}
-/* full-bleed rust spray: 132vw guarantees edge-to-edge; brightness/saturate deepen bright orange -> burnt rust */
+/* contained rust spray (Ganga-style): sized so the WHOLE splatter sits centred with a dark margin
+   left+right, NOT clipped at the section edges; brightness/saturate deepen bright orange -> burnt rust */
 .cta1-splat{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scaleX(-1);
-  width:min(132vw,2048px);max-width:none;height:auto;opacity:.72;mix-blend-mode:normal;
+  width:min(95vw,2200px);max-width:none;height:auto;opacity:.72;mix-blend-mode:normal;
   filter:brightness(.66) saturate(1.22);pointer-events:none;user-select:none;z-index:0}
 /* top+bottom linear fades dissolve the spray into the dark bg (kills the hard clip at the section edges) +
    a soft radial vignette over the centre so the cream headline stays crisp on the densest rust */
@@ -947,7 +965,7 @@ body.gal-lock{overflow:hidden}
 .s-cta2{position:relative;overflow:hidden;background:var(--bg);text-align:center;
   padding-block:clamp(74px,10vw,140px)}
 .cta2-splat{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:min(1180px,130%);max-width:none;height:auto;opacity:.5;pointer-events:none;user-select:none;z-index:0}
+  width:min(95vw,2200px);max-width:none;height:auto;opacity:.5;pointer-events:none;user-select:none;z-index:0}
 /* dark radial scrim over the splatter centre so the headline stays legible */
 .s-cta2::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:radial-gradient(58% 72% at 50% 50%, rgba(0,0,0,.6), rgba(0,0,0,0) 78%)}
@@ -966,7 +984,7 @@ body.gal-lock{overflow:hidden}
 .cta2-call svg{width:15px;height:15px}
 @media(max-width:560px){
   .s-cta2 .cta2-h{max-width:94vw;font-size:clamp(30px,7vw,46px)}
-  .cta2-splat{width:170%;opacity:.42}
+  .cta2-splat{width:250vw;opacity:.42}
 }
 
 /* ============================================================================
@@ -1003,41 +1021,55 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 .vs-hours span{display:block}
 .vs-map{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--card-brd);min-height:360px;background:#111}
 .vs-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.vs-directions{position:absolute;left:14px;bottom:14px;z-index:2;display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:10px 18px;border-radius:9px;background:var(--orange);color:#fff;font-family:var(--sub);font-size:12.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,.45)}
-.vs-directions:hover{background:var(--orange-hi)}
 
 /* Part B: local service area (Texas map + accordion) */
-.vs-local{margin-top:clamp(52px,6.5vw,84px)}
-.vs-local-lead{max-width:660px;margin:0 auto clamp(26px,3.2vw,40px);text-align:center;font-size:15.5px;line-height:1.6;color:var(--muted)}
+.vs-local{margin-top:clamp(48px,6vw,76px)}
+.vs-local-lead{max-width:620px;margin:0 auto clamp(22px,3vw,34px);text-align:center;font-size:15.5px;line-height:1.6;color:var(--muted)}
 .vs-radio{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
-.vs-local-grid{display:grid;grid-template-columns:1.02fr 0.98fr;gap:clamp(20px,3.4vw,54px);align-items:center}
-.vs-txmap{position:relative}
-.vs-txmap svg{width:100%;height:auto;display:block;overflow:visible;filter:drop-shadow(0 24px 44px rgba(0,0,0,.5))}
-.tx-outline{fill:url(#tx-fill);stroke:rgba(204,102,0,.34);stroke-width:1.2}
-.pin-glow{opacity:0;transition:opacity .45s var(--ease)}
-.pin-mark{opacity:0;transition:opacity .35s var(--ease)}
-.pin-mark path{fill:var(--orange)}
-.pin-hole{fill:var(--black)}
+.vs-local-grid{display:grid;grid-template-columns:minmax(280px,.85fr) minmax(360px,1.15fr);gap:clamp(24px,3.5vw,44px);align-items:start;max-width:1080px;margin-inline:auto}
+/* flat single-fill Texas map box (Sutliff & Stout style, dark-adapted) */
+.vs-txmap{position:relative;isolation:isolate;width:100%}
+.vs-mapbox{position:relative;background:#0C0C0C;border:1px solid rgba(255,255,255,.09);padding:30px 30px 34px;min-height:340px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.vs-maptag{position:absolute;top:16px;right:18px;font-family:var(--sub);font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+.vs-txmap svg{width:100%;height:auto;max-height:284px;display:block;overflow:visible}
+.tx-flat{fill:rgba(255,255,255,.05);stroke:rgba(255,255,255,.2);stroke-width:1.4;stroke-linejoin:round}
+.vs-dot{fill:rgba(220,219,190,.34);transition:opacity .28s var(--ease)}
+.vs-pin{opacity:0;transition:opacity .3s var(--ease)}
+.vs-pin path{fill:var(--orange)}
+.vs-pin circle{fill:#0C0C0C}
+/* home-studio caption bottom-left of map, swaps with the active city */
+.vs-cap{position:absolute;left:22px;bottom:18px;opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
+.vs-cap-k{display:block;font-family:var(--sub);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:5px}
+.vs-cap-city{display:block;font-family:var(--sub);font-weight:700;text-transform:uppercase;font-size:18px;letter-spacing:.06em;color:#fff;line-height:1.1}
+.vs-cap-sub{display:block;font-size:12.5px;color:var(--muted);margin-top:4px}
+/* master-detail list */
 .vs-cities{list-style:none}
-.vs-city + .vs-city{margin-top:2px}
-.vs-city-head{display:flex;align-items:center;gap:14px;cursor:pointer;padding:15px 16px;border-left:2px solid var(--border);transition:border-color .2s var(--ease),background .2s var(--ease)}
-.vs-city-head:hover{background:var(--surface)}
-.vs-city-head h3{margin:0;font-family:var(--sub);font-weight:600;font-size:16px;letter-spacing:.01em;color:#CFCFCF;transition:color .2s var(--ease)}
-.vs-city-panel{max-height:0;overflow:hidden;transition:max-height .38s var(--ease)}
-.vs-city-panel p{margin:0;padding:2px 16px 15px 18px;font-size:14.5px;line-height:1.6;color:var(--muted)}
-/* active city → show its pin (hide its dot) + highlight list row + open panel */
-#city-sa:checked ~ .vs-local-grid .pin[data-city="sa"] .pin-mark,
-#city-austin:checked ~ .vs-local-grid .pin[data-city="austin"] .pin-mark,
-#city-houston:checked ~ .vs-local-grid .pin[data-city="houston"] .pin-mark,
-#city-dallas:checked ~ .vs-local-grid .pin[data-city="dallas"] .pin-mark{opacity:1}
-#city-sa:checked ~ .vs-local-grid .pin[data-city="sa"] .pin-glow,
-#city-austin:checked ~ .vs-local-grid .pin[data-city="austin"] .pin-glow,
-#city-houston:checked ~ .vs-local-grid .pin[data-city="houston"] .pin-glow,
-#city-dallas:checked ~ .vs-local-grid .pin[data-city="dallas"] .pin-glow{opacity:1}
+.vs-city{position:relative;border-top:1px solid rgba(255,255,255,.1)}
+.vs-city:last-child{border-bottom:1px solid rgba(255,255,255,.1)}
+.vs-city-head{display:flex;align-items:baseline;justify-content:space-between;gap:16px;cursor:pointer;border-left:3px solid transparent;padding:15px 6px 15px 22px;transition:border-color .25s var(--ease)}
+.vs-city-head h3{margin:0;font-family:var(--sub);font-weight:700;text-transform:uppercase;font-size:clamp(17px,1.9vw,20px);letter-spacing:.05em;color:var(--muted);transition:color .2s var(--ease)}
+.vs-city-head:hover h3{color:#EDEDED}
+.vs-city-meta{flex-shrink:0;font-family:var(--sub);font-size:13.5px;font-weight:600;letter-spacing:.02em;color:#8a8a8a;white-space:nowrap}
+.vs-city-home{color:var(--orange);text-transform:uppercase;letter-spacing:.16em;font-size:11.5px}
+.vs-city-panel{max-height:0;overflow:hidden;transition:max-height .34s var(--ease)}
+.vs-city-panel p{margin:0;padding:2px 6px 16px 22px;font-size:14px;line-height:1.6;color:var(--muted);max-width:470px}
+/* active city → pin on map + hide its dot + swap caption + highlight row + open panel */
+#city-sa:checked ~ .vs-local-grid .vs-pin[data-city="sa"],
+#city-austin:checked ~ .vs-local-grid .vs-pin[data-city="austin"],
+#city-houston:checked ~ .vs-local-grid .vs-pin[data-city="houston"],
+#city-dallas:checked ~ .vs-local-grid .vs-pin[data-city="dallas"]{opacity:1}
+#city-sa:checked ~ .vs-local-grid .vs-dot[data-city="sa"],
+#city-austin:checked ~ .vs-local-grid .vs-dot[data-city="austin"],
+#city-houston:checked ~ .vs-local-grid .vs-dot[data-city="houston"],
+#city-dallas:checked ~ .vs-local-grid .vs-dot[data-city="dallas"]{opacity:0}
+#city-sa:checked ~ .vs-local-grid .vs-cap[data-city="sa"],
+#city-austin:checked ~ .vs-local-grid .vs-cap[data-city="austin"],
+#city-houston:checked ~ .vs-local-grid .vs-cap[data-city="houston"],
+#city-dallas:checked ~ .vs-local-grid .vs-cap[data-city="dallas"]{opacity:1}
 #city-sa:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(1) .vs-city-head,
 #city-austin:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(2) .vs-city-head,
 #city-houston:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(3) .vs-city-head,
-#city-dallas:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(4) .vs-city-head{border-left-color:var(--orange);background:var(--surface)}
+#city-dallas:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(4) .vs-city-head{border-left-color:var(--orange)}
 #city-sa:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(1) .vs-city-head h3,
 #city-austin:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(2) .vs-city-head h3,
 #city-houston:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(3) .vs-city-head h3,
@@ -1045,14 +1077,14 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 #city-sa:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(1) .vs-city-panel,
 #city-austin:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(2) .vs-city-panel,
 #city-houston:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(3) .vs-city-panel,
-#city-dallas:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(4) .vs-city-panel{max-height:220px}
+#city-dallas:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(4) .vs-city-panel{max-height:200px}
 .vs-radio:focus-visible ~ .vs-local-grid .vs-cities .vs-city .vs-city-head{outline:1px solid var(--orange);outline-offset:-1px}
 
 @media(max-width:860px){
   .vs-nap{grid-template-columns:1fr;gap:26px}
   .vs-map{min-height:300px}
-  .vs-local-grid{grid-template-columns:1fr;gap:22px}
-  .vs-txmap{max-width:400px;margin-inline:auto}
+  .vs-local-grid{grid-template-columns:1fr;gap:24px}
+  .vs-mapbox{min-height:280px;padding:24px 24px 28px}
 }
 
 /* ========== §15 FAQ ========== */
@@ -1129,7 +1161,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
 .gd-track::-webkit-scrollbar{display:none}
 .gd-card{scroll-snap-align:start;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--card-brd);border-radius:12px;overflow:hidden;text-decoration:none;transition:border-color .2s var(--ease),transform .2s var(--ease),box-shadow .2s var(--ease)}
 .gd-card:hover{border-color:var(--orange);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.42)}
-.gd-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#0d0d0d}
+.gd-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:linear-gradient(135deg,#1c1c1c,#0d0d0d);color:transparent;font-size:0}
 .gd-body{display:flex;flex-direction:column;flex:1;padding:18px 20px 18px}
 .gd-card h3{margin:0 0 9px;font-family:var(--sub);font-weight:600;font-size:16.5px;line-height:1.32;color:#fff;letter-spacing:.005em}
 .gd-card p{margin:0 0 16px;font-size:13.5px;line-height:1.55;color:var(--muted)}
@@ -1150,7 +1182,10 @@ textarea.bk-input{min-height:96px;resize:vertical}
 .gd-morebtn svg{width:16px;height:16px;transition:transform .2s var(--ease)}
 .gd-morebtn:hover svg{transform:translateX(3px)}
 @media(max-width:900px){.gd-track{grid-auto-columns:calc((100% - 16px)/2)}}
-@media(max-width:600px){.gd-track{grid-auto-columns:86%}.gd-morebtn{width:100%;justify-content:center}}
+@media(max-width:600px){.gd-track{grid-auto-columns:86%}.gd-morebtn{width:100%;justify-content:center}
+  /* tabs stay on ONE row on mobile */
+  .gd-tabnav{flex-wrap:nowrap;gap:6px}
+  .gd-tab{padding:10px 14px;font-size:12px;letter-spacing:.03em}}
 </style>
 </head>
 <body>
@@ -1164,8 +1199,8 @@ textarea.bk-input{min-height:96px;resize:vertical}
       <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers">
     </a>
     <nav class="nav" aria-label="Primary">
-      <a href="tattoo.html">Tattoo</a>
-      <a href="piercing.html">Piercing</a>
+      <a href="/tattoo">Tattoo</a>
+      <a href="/piercing">Piercing</a>
       <a href="#artists">Artists</a>
       <a href="#work">Our Work</a>
       <a href="#awards">Awards</a>
@@ -1183,7 +1218,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
 <section class="hero" id="main">
   <div class="hero-media">
     <img src="https://hyperinkers.com/wp-content/uploads/2026/02/tattoo-parlor-san-antonio.jpg"
-         alt="Black and grey realism tattoo by a Hyper Inkers artist in San Antonio.">
+         alt="Hyper Inkers tattoo artists at the San Antonio studio">
   </div>
   <div class="hero-scrim"></div>
   <div class="grain"></div>
@@ -1195,22 +1230,24 @@ textarea.bk-input{min-height:96px;resize:vertical}
         <div class="hero-col">
           <span class="badge">
             <svg class="gg" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>
-            <span class="stars">★★★★★</span>
-            <b>5.0</b> · 3,000+ reviews
+            <span class="badge-col">
+              <span class="badge-r1"><span class="badge-num">4.9</span><span class="stars" aria-label="4.9 out of 5">★★★★★</span></span>
+              <span class="badge-cnt"><b>3,500+</b> Google Reviews</span>
+            </span>
           </span>
 
           <h1>Best Tattoo Shop<span class="o">in San Antonio</span></h1>
 
           <input type="checkbox" id="hero-more" class="more-cb" aria-label="Expand full studio description and benefits">
-          <p class="lead">Choosing a tattoo shop in San Antonio comes down to the artist, the studio, the reviews, and work you still love years later. The best San Antonio tattoo shop designs a custom piece around your idea, tattoos it safely with single-use needles, and stands behind the work as it heals. Hyper Inkers is an award-winning San Antonio tattoo studio, with 40+ convention awards and 3,000+ reviews from clients on Google and Facebook. Our tattoo artists draw custom tattoos in realism, black and grey, color, Japanese, fine line, and other styles to fit your body and your idea. We also handle cover-ups, piercing, and removal, with clear pricing that starts at an $80 minimum. Walk-ins are welcome until midnight, seven days a week.</p>
+          <p class="lead">Choosing a tattoo shop in San Antonio comes down to the artist, the studio, the reviews, and work you still love years later. A good San Antonio tattoo artist designs a custom piece around your idea, tattoos it safely with single-use needles, and stands behind the work as it heals. Before you pick, look at past work, awards, and what clients say. Hyper Inkers is a San Antonio tattoo studio with 3,000+ client reviews on Google and Facebook, where artists believe every tattoo should be a masterpiece. The studio handles custom tattoos, cover-ups, piercing, and tattoo removal under one roof. Each design gets a tattoo artist in San Antonio who specializes in that one style, realism, black and grey, or fine line, and works in it daily. The artist who draws your design also tattoos it. That work has earned 40+ convention awards across 8 countries, including 10 Best of Show. The team backs each piece with free touch-ups for three months and quotes prices upfront, starting at an $80 minimum. You will find the shop on Callaghan Road, about 10 minutes from San Antonio International Airport, with doors open late for walk-ins every night.</p>
 
           <div class="lead-extra">
-            <p class="lx-setup">What you get at every Hyper Inkers session is listed below:</p>
+            <p class="lx-setup">The benefits of getting a tattoo at Hyper Inkers in San Antonio are listed below.</p>
             <ul class="benefit-list">
-              <li><b>Custom Work, Drawn for You</b>: Hyper Inkers artists design every tattoo from scratch around your idea, never flash picked off a wall.</li>
-              <li><b>Tattoo, Piercing &amp; Removal, One Roof</b>: One San Antonio studio handles custom tattoos, cover-ups, piercings, and tattoo removal, with no referring out.</li>
+              <li><b>Custom Work, Drawn for You</b>: Hyper Inkers artists design every tattoo from scratch, never flash picked off a wall.</li>
               <li><b>Single-Use Needles, Every Client</b>: The studio runs hospital-grade sterilization, with needles and tubes opened fresh for each session.</li>
-              <li><b>Walk-Ins Until Midnight, 7 Days</b>: Hyper Inkers stays open until midnight or 1am seven days a week, later than most tattoo shops in San Antonio.</li>
+              <li><b>Walk-Ins Until Midnight, 7 Days</b>: Hyper Inkers stays open until midnight or 1am, seven days a week, walk-in or booked.</li>
+              <li><b>Military &amp; Veterans 10% Off</b>: Portfolio projects run 30% to 50% off when your artist gets full creative freedom.</li>
             </ul>
           </div>
 
@@ -1221,7 +1258,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
         </div>
 
         <figure class="award-card">
-          <img src="_hero-assets/award-sanantonio-2025.jpg" alt="Hyper Inkers team with their Best of Show award at the 2025 San Antonio Tattoo Arts Festival.">
+          <img src="_hero-assets/award-sanantonio-2025.jpg" alt="Hyper Inkers tattoo artists with their San Antonio convention awards.">
           <span class="info info--award" tabindex="0" role="img" aria-label="Best of Show, 2025 San Antonio Tattoo Arts Festival, one of the studio's 40+ juried awards."><svg class="info-i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="6" r="2"/><rect x="10" y="9.6" width="4" height="8.4" rx="2"/></svg>
             <span class="tip">Best of Show, 2025 San Antonio Tattoo Arts Festival, one of the studio's 40+ juried awards.</span>
           </span>
@@ -1246,29 +1283,29 @@ textarea.bk-input{min-height:96px;resize:vertical}
   <div class="statband">
     <ul class="stat-row">
       <li class="stat">
-        <span class="stat-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12.75c1.63 0 3-1.37 3-3s-1.37-3-3-3-3 1.37-3 3 1.37 3 3 3zm-5.5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm11 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM6.5 15c-1.67 0-5 .84-5 2.5V19h5v-1.5c0-.61.2-1.72 1.02-2.55C7.17 15.03 6.84 15 6.5 15zm11 0c-.34 0-.67.03-1.02.05.82.83 1.02 1.94 1.02 2.55V19h5v-1.5c0-1.66-3.33-2.5-5-2.5zM12 13.5c-2.33 0-7 1.17-7 3.5V19h14v-2c0-2.33-4.67-3.5-7-3.5z"/></svg></span>
-        <span class="stat-text">
-          <span class="stat-num">5,000+</span>
-          <span class="stat-lbl">Clients
-            <span class="info" tabindex="0" role="img" aria-label="Clients served across San Antonio since 2023."><svg class="info-i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="6" r="2"/><rect x="10" y="9.6" width="4" height="8.4" rx="2"/></svg><span class="tip">Clients served across San Antonio since 2023.</span></span>
-          </span>
-        </span>
-      </li>
-      <li class="stat">
         <span class="stat-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 5h-2V3H7v2H5C3.9 5 3 5.9 3 7v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 15.9V18H8v2h8v-2h-3v-2.1a5.01 5.01 0 0 0 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg></span>
         <span class="stat-text">
           <span class="stat-num">40+</span>
-          <span class="stat-lbl">Trophies
-            <span class="info" tabindex="0" role="img" aria-label="Won at 20+ tattoo conventions across 8 countries."><svg class="info-i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="6" r="2"/><rect x="10" y="9.6" width="4" height="8.4" rx="2"/></svg><span class="tip">Won at 20+ tattoo conventions across 8 countries.</span></span>
+          <span class="stat-lbl">Convention Awards
+            <span class="info" tabindex="0" role="img" aria-label="Judges at 20+ tattoo conventions have handed Hyper Inkers artists more than 40 trophies."><svg class="info-i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="6" r="2"/><rect x="10" y="9.6" width="4" height="8.4" rx="2"/></svg><span class="tip">Judges at 20+ tattoo conventions have handed Hyper Inkers artists more than 40 trophies.</span></span>
           </span>
         </span>
       </li>
       <li class="stat">
         <span class="stat-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l7.1-1.01L12 2z"/></svg></span>
         <span class="stat-text">
-          <span class="stat-num">3,000+</span>
-          <span class="stat-lbl">Reviews
-            <span class="info" tabindex="0" role="img" aria-label="From tattoo clients on Google and Facebook."><svg class="info-i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="6" r="2"/><rect x="10" y="9.6" width="4" height="8.4" rx="2"/></svg><span class="tip">From tattoo clients on Google and Facebook.</span></span>
+          <span class="stat-num">4.9</span>
+          <span class="stat-lbl">Google Rating
+            <span class="info" tabindex="0" role="img" aria-label="Clients rate the San Antonio studio 4.9 on Google, across 3,500+ Google reviews."><svg class="info-i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="6" r="2"/><rect x="10" y="9.6" width="4" height="8.4" rx="2"/></svg><span class="tip">Clients rate the San Antonio studio 4.9 on Google, across 3,500+ Google reviews.</span></span>
+          </span>
+        </span>
+      </li>
+      <li class="stat">
+        <span class="stat-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12.75c1.63 0 3-1.37 3-3s-1.37-3-3-3-3 1.37-3 3 1.37 3 3 3zm-5.5.5c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm11 0c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zM6.5 15c-1.67 0-5 .84-5 2.5V19h5v-1.5c0-.61.2-1.72 1.02-2.55C7.17 15.03 6.84 15 6.5 15zm11 0c-.34 0-.67.03-1.02.05.82.83 1.02 1.94 1.02 2.55V19h5v-1.5c0-1.66-3.33-2.5-5-2.5zM12 13.5c-2.33 0-7 1.17-7 3.5V19h14v-2c0-2.33-4.67-3.5-7-3.5z"/></svg></span>
+        <span class="stat-text">
+          <span class="stat-num">5,000+</span>
+          <span class="stat-lbl">Clients
+            <span class="info" tabindex="0" role="img" aria-label="More than 5,000 people have chosen this San Antonio tattoo shop for tattoos, piercings, and removal."><svg class="info-i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="6" r="2"/><rect x="10" y="9.6" width="4" height="8.4" rx="2"/></svg><span class="tip">More than 5,000 people have chosen this San Antonio tattoo shop for tattoos, piercings, and removal.</span></span>
           </span>
         </span>
       </li>
@@ -1277,7 +1314,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
         <span class="stat-text">
           <span class="stat-num">15+</span>
           <span class="stat-lbl">Years
-            <span class="info" tabindex="0" role="img" aria-label="Combined experience across our San Antonio tattoo artists."><svg class="info-i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="6" r="2"/><rect x="10" y="9.6" width="4" height="8.4" rx="2"/></svg><span class="tip">Combined experience across our San Antonio tattoo artists.</span></span>
+            <span class="info" tabindex="0" role="img" aria-label="Combined experience across our San Antonio tattoo artists ensures precision and technical mastery."><svg class="info-i" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="6" r="2"/><rect x="10" y="9.6" width="4" height="8.4" rx="2"/></svg><span class="tip">Combined experience across our San Antonio tattoo artists ensures precision and technical mastery.</span></span>
           </span>
         </span>
       </li>
@@ -1321,7 +1358,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
     <div class="section-head center">
       <h2>Tattoo Shop San Antonio <span class="o">Reviews</span></h2>
       <input type="checkbox" id="rvIntro" class="rvi-cb" aria-label="Expand the reviews introduction">
-      <p class="rvi-intro" id="rvIntroBox"><span class="rvi-intro-txt" id="rvIntroTxt">Hyper Inkers is one of the top-rated tattoo shops in San Antonio, with 3,000+ reviews on Google and Facebook. Most of that praise centers on the award-winning custom tattoo work: detailed pieces, artists who match your vision, and a clean, unhurried studio. Piercing clients echo the same points, and the studio holds removal to the same standard.</span><label for="rvIntro" class="rvi-more" id="rvMore" aria-label="Expand or collapse the reviews introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
+      <p class="rvi-intro" id="rvIntroBox"><span class="rvi-intro-txt" id="rvIntroTxt">Hyper Inkers is one of the top-rated tattoo shops in San Antonio, and the same reasons repeat across 3,000+ reviews. Clients point to custom pieces that match the idea they walked in with, walk-ins that move quickly even on busy nights, and piercers who keep first-timers and kids calm. We aim to make every visit feel easy and unhurried, whether it is a first piercing or a full sleeve, so you leave with work you are proud to wear. The written reviews are below, and many clients tell their story on video.</span><label for="rvIntro" class="rvi-more" id="rvMore" aria-label="Expand or collapse the reviews introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
       <noscript><style>.rvi-intro-txt{-webkit-line-clamp:unset;line-clamp:unset}.rvi-more{display:none}</style></noscript>
     </div>
 
@@ -1340,7 +1377,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
             <span class="rv-stars" aria-label="5 out of 5">★★★★★</span><b>5.0</b>
             <span>3,000+ reviews on Google &amp; Facebook</span>
           </div>
-          <a class="rv-leave" href="https://www.google.com/maps/search/Hyper+Inkers+San+Antonio" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ic-google"></use></svg>Leave a Review</a>
+          <a class="rv-leave" href="/reviews"><span class="rv-leave-ic"><svg aria-hidden="true"><use href="#ic-google"></use></svg><svg aria-hidden="true"><use href="#ic-fb"></use></svg></span>Read all our reviews</a>
         </div>
 
         <div class="rv-split">
@@ -1484,48 +1521,12 @@ textarea.bk-input{min-height:96px;resize:vertical}
           <ul class="rv-slider rv-vslider">
 
             <li class="rv-vcard">
-              <a class="rv-vlink" href="#" aria-label="Play video review by Marcus R.">
-                <img src="https://hyperinkers.com/wp-content/uploads/2025/05/realism-tattoo-art-3.png" alt="Black and grey lion sleeve tattoo by a Hyper Inkers artist in San Antonio." loading="lazy">
-                <span class="rv-vbadge"><b>★</b> 5.0</span>
+              <div class="rv-vlink" aria-label="Video reviews are being produced">
+                <img src="https://hyperinkers.com/wp-content/uploads/2025/05/realism-tattoo-art-3.png" alt="Client video review placeholder for Hyper Inkers San Antonio" loading="lazy">
+                <span class="rv-vbadge"><b>★</b> Coming soon</span>
                 <span class="rv-vplay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
-                <span class="rv-vmeta"><b>Marcus R.</b><span>Black &amp; Grey</span></span>
-              </a>
-            </li>
-
-            <li class="rv-vcard">
-              <a class="rv-vlink" href="#" aria-label="Play video review by Priya S.">
-                <img src="https://hyperinkers.com/wp-content/uploads/2025/05/black-grey-tattoo-designs-2.png" alt="Japanese hannya and dragon sleeve tattoo by a Hyper Inkers artist in San Antonio." loading="lazy">
-                <span class="rv-vbadge"><b>★</b> 5.0</span>
-                <span class="rv-vplay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
-                <span class="rv-vmeta"><b>Priya S.</b><span>Japanese</span></span>
-              </a>
-            </li>
-
-            <li class="rv-vcard">
-              <a class="rv-vlink" href="#" aria-label="Play video review by Diego M.">
-                <img src="https://hyperinkers.com/wp-content/uploads/2025/05/best-color-tattoo-artist-3.png" alt="Color realism portrait tattoo by a Hyper Inkers artist in San Antonio." loading="lazy">
-                <span class="rv-vbadge"><b>★</b> 5.0</span>
-                <span class="rv-vplay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
-                <span class="rv-vmeta"><b>Diego M.</b><span>Color Realism</span></span>
-              </a>
-            </li>
-
-            <li class="rv-vcard">
-              <a class="rv-vlink" href="#" aria-label="Play video review by Hannah L.">
-                <img src="https://hyperinkers.com/wp-content/uploads/2025/05/best-anime-tattoo-artists_.jpg" alt="Anime color tattoo by a Hyper Inkers artist in San Antonio." loading="lazy">
-                <span class="rv-vbadge"><b>★</b> 5.0</span>
-                <span class="rv-vplay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
-                <span class="rv-vmeta"><b>Hannah L.</b><span>Anime</span></span>
-              </a>
-            </li>
-
-            <li class="rv-vcard">
-              <a class="rv-vlink" href="#" aria-label="Play video review by Andre W.">
-                <img src="https://hyperinkers.com/wp-content/uploads/2025/05/geometric-tattoo-designs_-scaled.jpg" alt="Geometric mandala sleeve tattoo by a Hyper Inkers artist in San Antonio." loading="lazy">
-                <span class="rv-vbadge"><b>★</b> 5.0</span>
-                <span class="rv-vplay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
-                <span class="rv-vmeta"><b>Andre W.</b><span>Fine Line</span></span>
-              </a>
+                <span class="rv-vmeta"><b>Video Reviews</b><span>Card video phỏng vấn KH đang sản xuất. Lazy-load, không autoplay. Alt: &quot;[Tên], [dịch vụ] client, video review of Hyper Inkers San Antonio.&quot;</span></span>
+              </div>
             </li>
 
           </ul>
@@ -1549,7 +1550,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
     <div class="section-head center">
       <h2>Tattoo Shop <span class="o">Services</span> in San Antonio</h2>
       <input type="checkbox" id="svcIntro" class="svc-icb" aria-label="Expand the services introduction">
-      <p class="svc-intro" id="svcIntroBox"><span class="svc-intro-txt" id="svcIntroTxt">Tattoo shop services in San Antonio at Hyper Inkers cover custom designs, cover-ups, piercing, and removal, all under one roof. As a tattoo and piercing shop in San Antonio, we hold every service to the same standard: original work, clean technique, and a setup that respects your comfort from start to finish. Whether it is your first tattoo or a full sleeve, our artists help shape the idea before any ink touches skin.</span><label for="svcIntro" class="svc-imore" id="svcMore" aria-label="Expand or collapse the services introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
+      <p class="svc-intro" id="svcIntroBox"><span class="svc-intro-txt" id="svcIntroTxt">Tattoo shop services in San Antonio at Hyper Inkers cover the full range of body art, from custom designs and cover-ups to piercing and removal. As a tattoo and piercing shop in San Antonio, we hold every service to the same standard: original work, clean technique, and a setup that respects your comfort from start to finish. From a first small tattoo to a full back piece, our artists work the idea out with you on paper first.</span><label for="svcIntro" class="svc-imore" id="svcMore" aria-label="Expand or collapse the services introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
       <noscript><style>.svc-intro-txt{-webkit-line-clamp:unset;line-clamp:unset}.svc-imore{display:none}</style></noscript>
       <p class="sec-bridge">Each service covers a different need.</p>
     </div>
@@ -1561,13 +1562,13 @@ textarea.bk-input{min-height:96px;resize:vertical}
         <span class="svc-scrim" aria-hidden="true"></span>
         <div class="svc-body">
           <h3 class="svc-name">Custom Tattoos</h3>
-          <p class="svc-def">Custom tattoos at Hyper Inkers turn your idea into an original design drawn from scratch for your body and placement.</p>
+          <p class="svc-def">Custom tattoos at Hyper Inkers turn your idea into an original design, drawn from scratch for your body and placement.</p>
           <div class="svc-more">
-            <p class="svc-more-txt">Styles include realism, black and grey, color, fine line, Japanese, anime, portrait, and cover-up work. Choose a custom piece when you want something one of a kind, designed with your artist before the session starts.</p>
-            <span class="svc-explore">Explore custom tattoos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <p class="svc-more-txt">Award-winning artists work in realism, black and grey, color, fine line, Japanese, anime, and portrait styles.</p>
+            <span class="svc-explore">Explore custom tattoos in San Antonio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </div>
-        <a class="svc-link" href="tattoo.html" aria-label="Explore custom tattoos in San Antonio"></a>
+        <a class="svc-link" href="/tattoo" aria-label="Explore custom tattoos in San Antonio"></a>
       </article>
 
       <article class="svc-card">
@@ -1577,8 +1578,8 @@ textarea.bk-input{min-height:96px;resize:vertical}
           <h3 class="svc-name">Cover-Up Tattoos</h3>
           <p class="svc-def">Cover-up tattoos at Hyper Inkers turn old or unwanted ink into new artwork you can feel good wearing.</p>
           <div class="svc-more">
-            <p class="svc-more-txt">Each cover-up starts with a free design consult and can work over many existing tattoos in black and grey or full color. Choose a cover-up when the old piece no longer fits you, or when it did not heal the way you hoped.</p>
-            <span class="svc-explore">Explore tattoo cover-ups <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <p class="svc-more-txt">Your artist starts with a free design consult and can work over many existing tattoos, in black and grey or full color.</p>
+            <span class="svc-explore">Explore tattoo cover-ups in San Antonio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </div>
         <a class="svc-link" href="/tattoo-cover-up-san-antonio" aria-label="Explore tattoo cover-ups in San Antonio"></a>
@@ -1589,13 +1590,13 @@ textarea.bk-input{min-height:96px;resize:vertical}
         <span class="svc-scrim" aria-hidden="true"></span>
         <div class="svc-body">
           <h3 class="svc-name">Piercing</h3>
-          <p class="svc-def">Piercings at Hyper Inkers give you a clean, precise piercing placed by a trained piercer with single-use needles.</p>
+          <p class="svc-def">Piercings at Hyper Inkers give you a clean, precise placement from a trained piercer, with a fresh needle and never a gun.</p>
           <div class="svc-more">
-            <p class="svc-more-txt">Piercings cover the ear, nose, navel, and more, with jewelry options and aftercare guidance. Piercings are walk-in only, so you can stop in when you are ready.</p>
-            <span class="svc-explore">Explore body piercing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <p class="svc-more-txt">Piercings run walk-in only, covering ear, nose, navel, and more, with jewelry options and aftercare guidance.</p>
+            <span class="svc-explore">Explore body piercing in San Antonio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </div>
-        <a class="svc-link" href="piercing.html" aria-label="Explore body piercing in San Antonio"></a>
+        <a class="svc-link" href="/piercing" aria-label="Explore body piercing in San Antonio"></a>
       </article>
 
       <article class="svc-card">
@@ -1603,13 +1604,13 @@ textarea.bk-input{min-height:96px;resize:vertical}
         <span class="svc-scrim" aria-hidden="true"></span>
         <div class="svc-body">
           <h3 class="svc-name">Tattoo Removal</h3>
-          <p class="svc-def">Tattoo removal at Hyper Inkers is for fading unwanted ink over a series of treatments.</p>
+          <p class="svc-def">Tattoo removal at Hyper Inkers fades unwanted ink over a series of treatments.</p>
           <div class="svc-more">
-            <p class="svc-more-txt">Removal starts with a free assessment, works on many ink colors, and spaces sessions for steady fading. Choose removal to lighten a tattoo for a cover-up or to work toward clearer skin.</p>
-            <span class="svc-explore">Explore tattoo removal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <p class="svc-more-txt">Certified laser specialists start with a free assessment and space sessions for steady fading across many ink colors.</p>
+            <span class="svc-explore">Explore tattoo removal in San Antonio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </div>
-        <a class="svc-link" href="tattoo-removal.html" aria-label="Explore tattoo removal in San Antonio"></a>
+        <a class="svc-link" href="/tattoo-removal" aria-label="Explore tattoo removal in San Antonio"></a>
       </article>
 
     </div>
@@ -1630,14 +1631,14 @@ textarea.bk-input{min-height:96px;resize:vertical}
 
       <div class="near-text">
         <h2>Best Tattoo Shop in <span class="o">San Antonio</span>, Near Me</h2>
-        <p class="near-lead"><b>The best tattoo shop in San Antonio near you is Hyper Inkers.</b> That starts with the artists. Founder Minh Pham has earned Best of Show at the San Antonio Tattoo Arts Festival, and his work often anchors the conversation when clients ask who the best tattoo artist in San Antonio is. The team brings more than 15 years of combined experience across realism, black and grey, color, and fine line. Our studio sits on Callaghan Road in northwest San Antonio, where walk-ins are welcome late into the night.</p>
+        <p class="near-lead">The best tattoo shop in San Antonio near you is Hyper Inkers. The artists here are recognized for custom work that wins convention judging, treating every client's idea, from a walk-in script piece to a full Japanese sleeve, as work they will put their name on. Founder Minh Pham has earned Best of Show at the San Antonio Tattoo Arts Festival, and his work often anchors the conversation when clients ask who the best tattoo artist in San Antonio is. The studio opened in 2023 with a deliberately small, handpicked team: five tattoo artists, three piercers, and two certified laser specialists, all working to one founder's standard. Whatever you walk in with, the team can draw it, ink it, cover it, or remove it in-house, and the work is designed to age well. Our studio sits on Callaghan Road just off Loop 410 in northwest San Antonio, easy to reach whether you book ahead or walk in.</p>
       </div>
 
       <figure class="near-media" data-yt="NwxyqZ4ZG80">
         <img class="near-poster" src="https://i.ytimg.com/vi/NwxyqZ4ZG80/maxresdefault.jpg" alt="Hyper Inkers artists at work inside the San Antonio tattoo studio." loading="lazy">
         <span class="near-scrim" aria-hidden="true"></span>
         <button class="near-play" type="button" aria-label="Play the Hyper Inkers studio tour video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
-        <figcaption class="near-vcap">Take a look inside the studio</figcaption>
+        <figcaption class="near-vcap">Hyper Inkers Tattoo Studio - San Antonio, Texas</figcaption>
       </figure>
 
     </div>
@@ -1652,7 +1653,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
     <div class="section-head section-head--editorial">
       <h2>Tattoo <span class="o">Artists</span> in San Antonio</h2>
       <input type="checkbox" id="artiIntro" class="arti-icb" aria-label="Expand the artists introduction">
-      <p class="arti-intro" id="artiIntroBox"><span class="arti-intro-txt" id="artiIntroTxt">The tattoo artists at Hyper Inkers in San Antonio bring more than 15 years of combined experience across realism, black and grey, color, fine line, semi-realism, and piercing. Each artist has a focus instead of trying to do everything. That matters because the artist who tattoos you works in that style every day, from the sketch to the final pass.</span><label for="artiIntro" class="arti-imore" id="artiMore" aria-label="Expand or collapse the artists introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
+      <p class="arti-intro" id="artiIntroBox"><span class="arti-intro-txt" id="artiIntroTxt">The top tattoo artists in San Antonio work at Hyper Inkers. They are award-winning specialists with more than 15 years of combined experience, and each one has a drawing style of their own. Every request lands with the right hands. A realism artist takes the lifelike portraits, a fine line tattoo artist handles intricate, subtle pieces, and bold blackwork and classic black and grey each have their own specialist. Your piece starts from your story and is drawn custom for your placement, so the finished tattoo is yours alone. Each bio below lists styles, training, and awards, so you can match your idea to the right artist before you book.</span><label for="artiIntro" class="arti-imore" id="artiMore" aria-label="Expand or collapse the artists introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
       <noscript><style>.arti-intro-txt{-webkit-line-clamp:unset;line-clamp:unset}.arti-imore{display:none}</style></noscript>
       <p class="sec-bridge">Meet the artists behind the work.</p>
     </div>
@@ -1665,7 +1666,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
           <img src="https://hyperinkers.com/wp-content/uploads/2026/02/minh-pham-san-antonio-tattoo-artist-768x1075.jpg" alt="Minh Pham, founder and lead tattoo artist at Hyper Inkers in San Antonio." loading="lazy">
           <span class="art-scrim" aria-hidden="true"></span>
           <div class="art-panel">
-            <p class="art-bio">Minh Pham is the founder and lead artist at Hyper Inkers, working in color, black and grey, and realism. Known for lifelike portraits refined over more than a decade, Minh sets the studio's artistic direction and mentors the team.</p>
+            <p class="art-bio">Minh Pham is the founder and lead artist at Hyper Inkers, working in color, black and grey, and realism. Known for lifelike portraits, Minh sets the studio's artistic direction and mentors every artist on the team. His portraits have brought home multiple Best of Show trophies.</p>
             <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </div>
@@ -1682,7 +1683,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
           <img src="https://hyperinkers.com/wp-content/uploads/2026/02/tai-hoa-best-tattoo-artist-in-san-antonio-texas-768x1075.jpg" alt="Tai Hoa, black and grey tattoo artist at Hyper Inkers in San Antonio." loading="lazy">
           <span class="art-scrim" aria-hidden="true"></span>
           <div class="art-panel">
-            <p class="art-bio">Tai Hoa is a black and grey tattoo artist at Hyper Inkers, trained in fine art in Saigon. With more than two years of focused experience, he is known for precise linework, patient detail, and clean shading.</p>
+            <p class="art-bio">Tai Hoa is a black and grey tattoo artist at Hyper Inkers, trained in fine art in Saigon. He is known for precise linework, patient detail, and clean shading. A 1st Place win at the 2025 San Antonio Tattoo Arts Festival backs that reputation.</p>
             <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </div>
@@ -1699,12 +1700,12 @@ textarea.bk-input{min-height:96px;resize:vertical}
           <img src="https://hyperinkers.com/wp-content/uploads/2026/02/mancha-hyper-inkers-tattoo-artist-768x1075.jpg" alt="Mancha, black and grey and realism tattoo artist at Hyper Inkers in San Antonio." loading="lazy">
           <span class="art-scrim" aria-hidden="true"></span>
           <div class="art-panel">
-            <p class="art-bio">Mancha is a black and grey, bio-organic, and realism tattoo artist at Hyper Inkers. With 7.5 years of experience from the Lower Valley of El Paso, he is known for dramatic work with deep contrast and fine detail.</p>
+            <p class="art-bio">Mancha is a black and grey, blackwork, and anime tattoo artist at Hyper Inkers. Coming from the Lower Valley of El Paso, he is known for dramatic, emotionally charged work with deep contrast and fine detail.</p>
             <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </div>
         <div class="art-cap">
-          <span class="art-style">Black &amp; Grey <span class="art-badge">+2<span class="art-tip"><span>Bio-Organic</span><span>Realism</span></span></span></span>
+          <span class="art-style">Black &amp; Grey <span class="art-badge">+2<span class="art-tip"><span>Blackwork</span><span>Anime</span></span></span></span>
           <span class="art-name">Mancha</span>
         </div>
         <a class="art-link" href="/tattoo-artist/mancha" aria-label="View Mancha's profile"></a>
@@ -1733,7 +1734,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
           <img src="https://hyperinkers.com/wp-content/uploads/2026/02/nicole-best-tattoo-artist-in-san-antonio-768x1075.jpg" alt="Nicole, tattoo artist and professional piercer at Hyper Inkers in San Antonio." loading="lazy">
           <span class="art-scrim" aria-hidden="true"></span>
           <div class="art-panel">
-            <p class="art-bio">Nicole is a tattoo artist and professional piercer at Hyper Inkers with three years across both crafts. She works in fine line and blackwork, and clients know her for gentle, precise piercings and tattoos alike.</p>
+            <p class="art-bio">Nicole is a tattoo artist and professional piercer at Hyper Inkers. She leads the studio's piercing team, works in fine line and blackwork, and clients know her for gentle, precise piercings and tattoos alike.</p>
             <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </div>
@@ -1750,15 +1751,15 @@ textarea.bk-input{min-height:96px;resize:vertical}
           <img src="_artist-photos/zoe.jpg" alt="Zoe Meints, body piercer at Hyper Inkers in San Antonio." loading="lazy">
           <span class="art-scrim" aria-hidden="true"></span>
           <div class="art-panel">
-            <p class="art-bio">Zoe Meints is a full-time body piercer at Hyper Inkers, working in ear, navel, eyebrow, and nostril piercings. She reads each client's anatomy to place jewelry that fits, turning a nerve-wracking first piercing into a calm, easy session.</p>
+            <p class="art-bio">Zoe Meints is a full-time body piercer at Hyper Inkers, working in ear, navel, eyebrow, and nostril piercings. She reads each client's anatomy to place jewelry that fits, turning a nerve-wracking first piercing into a calm, easy session. Zoe is also a Certified Laser Specialist on the studio's tattoo removal team.</p>
             <span class="art-view">See piercing <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </div>
         <div class="art-cap">
-          <span class="art-style">Body Piercing</span>
+          <span class="art-style">Piercing <span class="art-badge">+1<span class="art-tip"><span>Laser Removal</span></span></span></span>
           <span class="art-name">Zoe</span>
         </div>
-        <a class="art-link" href="piercing.html" aria-label="Body piercing at Hyper Inkers with Zoe"></a>
+        <a class="art-link" href="/piercing" aria-label="Body piercing at Hyper Inkers with Zoe"></a>
       </article>
 
       <!-- 7 · Yen -->
@@ -1767,15 +1768,15 @@ textarea.bk-input{min-height:96px;resize:vertical}
           <img src="_artist-photos/yen.jpg" alt="Yen Ngoc Bao Dinh, body piercer at Hyper Inkers in San Antonio." loading="lazy">
           <span class="art-scrim" aria-hidden="true"></span>
           <div class="art-panel">
-            <p class="art-bio">Yen Ngoc Bao Dinh is a body piercer at Hyper Inkers, working across a wide range of ear and facial piercings. Taught by her sister, a licensed piercer, she brings gentle hands and a calm manner from lobe and helix to rook, tragus, and conch.</p>
+            <p class="art-bio">Yen Ngoc Bao Dinh is a body piercer at Hyper Inkers, working across a wide range of ear and facial piercings. Certified in bloodborne pathogens, she brings gentle hands and a calm manner to everything from lobe and helix to rook, tragus, and conch.</p>
             <span class="art-view">See piercing <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </div>
         <div class="art-cap">
-          <span class="art-style">Body Piercing</span>
+          <span class="art-style">Piercing</span>
           <span class="art-name">Yen</span>
         </div>
-        <a class="art-link" href="piercing.html" aria-label="Body piercing at Hyper Inkers with Yen"></a>
+        <a class="art-link" href="/piercing" aria-label="Body piercing at Hyper Inkers with Yen"></a>
       </article>
 
       <!-- 8 · Cindy -->
@@ -1784,15 +1785,15 @@ textarea.bk-input{min-height:96px;resize:vertical}
           <img src="_artist-photos/cindy.jpg" alt="Cindy Lam, piercer at Hyper Inkers in San Antonio." loading="lazy">
           <span class="art-scrim" aria-hidden="true"></span>
           <div class="art-panel">
-            <p class="art-bio">Cindy Lam is a piercing apprentice at Hyper Inkers, training under Nicole with a focus on ear piercings. A UTSA architecture student with a builder's eye for precision, she is sharpening her technique on conch, rook, and daith placements.</p>
+            <p class="art-bio">Cindy Lam is a piercing apprentice at Hyper Inkers with a focus on ear piercings. Certified in CPR, First Aid, and bloodborne pathogens, she brings a builder's eye for precision from her architecture studies at UTSA. Cindy also works removal sessions as a Certified Laser Specialist.</p>
             <span class="art-view">See piercing <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </div>
         <div class="art-cap">
-          <span class="art-style">Body Piercing</span>
+          <span class="art-style">Piercing <span class="art-badge">+1<span class="art-tip"><span>Laser Removal</span></span></span></span>
           <span class="art-name">Cindy</span>
         </div>
-        <a class="art-link" href="piercing.html" aria-label="Body piercing at Hyper Inkers with Cindy"></a>
+        <a class="art-link" href="/piercing" aria-label="Body piercing at Hyper Inkers with Cindy"></a>
       </article>
 
     </div>
@@ -1812,9 +1813,9 @@ textarea.bk-input{min-height:96px;resize:vertical}
   <img class="smoke smoke--bl" src="_hero-assets/color-blur.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
   <div class="wrap">
     <div class="section-head section-head--editorial">
-      <h2>Our <span class="o">Work</span> at Hyper Inkers San Antonio</h2>
+      <h2>Tattoos of San Antonio: Recent Work from <span class="o">Our Artists</span></h2>
       <input type="checkbox" id="galiIntro" class="gali-icb" aria-label="Expand the gallery introduction">
-      <p class="gali-intro" id="galiIntroBox"><span class="gali-intro-txt" id="galiIntroTxt">Our work at Hyper Inkers, a San Antonio tattoo studio, centers on custom tattoos drawn from scratch in realism, black and grey, color, and fine line, with piercing and tattoo removal shown alongside. Every piece was made in-house, so you can see the linework, shading, and placement before you choose who to book. Pick a style to browse the gallery.</span><label for="galiIntro" class="gali-imore" id="galiMore" aria-label="Expand or collapse the gallery introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
+      <p class="gali-intro" id="galiIntroBox"><span class="gali-intro-txt" id="galiIntroTxt">The recent tattoo work below is all made in-house, from custom tattoos to piercing and removal results. Each photo is real client work by Hyper Inkers artists, so you can check linework, shading, and placement before you choose who to book.</span><label for="galiIntro" class="gali-imore" id="galiMore" aria-label="Expand or collapse the gallery introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
       <noscript><style>.gali-intro-txt{-webkit-line-clamp:unset;line-clamp:unset}.gali-imore{display:none}</style></noscript>
     </div>
 
@@ -1823,18 +1824,6 @@ textarea.bk-input{min-height:96px;resize:vertical}
         <img src="https://hyperinkers.com/wp-content/uploads/2024/10/2-3-2-819x1024.jpg" alt="Award-winning tattoo work at Hyper Inkers in San Antonio." loading="lazy">
         <span class="gal-scrim" aria-hidden="true"></span>
         <span class="gal-label">Award Pieces</span>
-      </article>
-
-      <article class="gal-card" data-modal="gm-color" tabindex="0" role="button" aria-label="Open Color gallery">
-        <img src="https://hyperinkers.com/wp-content/uploads/2024/05/new-9.jpg" alt="Color tattoo at Hyper Inkers in San Antonio." loading="lazy">
-        <span class="gal-scrim" aria-hidden="true"></span>
-        <span class="gal-label">Color</span>
-      </article>
-
-      <article class="gal-card" data-modal="gm-blackwork" tabindex="0" role="button" aria-label="Open Blackwork gallery">
-        <img src="https://hyperinkers.com/wp-content/uploads/2024/05/new-5.jpg" alt="Blackwork tattoo at Hyper Inkers in San Antonio." loading="lazy">
-        <span class="gal-scrim" aria-hidden="true"></span>
-        <span class="gal-label">Blackwork</span>
       </article>
 
       <article class="gal-card" data-modal="gm-realism" tabindex="0" role="button" aria-label="Open Realism gallery">
@@ -1846,7 +1835,19 @@ textarea.bk-input{min-height:96px;resize:vertical}
       <article class="gal-card" data-modal="gm-blackgrey" tabindex="0" role="button" aria-label="Open Black & Grey gallery">
         <img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-by-hyper-iners-in-san-antonio-9.jpg" alt="Black & Grey tattoo at Hyper Inkers in San Antonio." loading="lazy">
         <span class="gal-scrim" aria-hidden="true"></span>
-        <span class="gal-label">Black & Grey</span>
+        <span class="gal-label">Black &amp; Grey</span>
+      </article>
+
+      <article class="gal-card" data-modal="gm-color" tabindex="0" role="button" aria-label="Open Color gallery">
+        <img src="https://hyperinkers.com/wp-content/uploads/2024/05/new-9.jpg" alt="Color tattoo at Hyper Inkers in San Antonio." loading="lazy">
+        <span class="gal-scrim" aria-hidden="true"></span>
+        <span class="gal-label">Color</span>
+      </article>
+
+      <article class="gal-card" data-modal="gm-fineline" tabindex="0" role="button" aria-label="Open Fine Line gallery">
+        <img src="https://hyperinkers.com/wp-content/uploads/2026/01/line-work-tattoo-style-by-hyper-inkers-5.jpg" alt="Fine Line tattoo at Hyper Inkers in San Antonio." loading="lazy">
+        <span class="gal-scrim" aria-hidden="true"></span>
+        <span class="gal-label">Fine Line</span>
       </article>
 
       <article class="gal-card" data-modal="gm-japanese" tabindex="0" role="button" aria-label="Open Japanese gallery">
@@ -1855,16 +1856,10 @@ textarea.bk-input{min-height:96px;resize:vertical}
         <span class="gal-label">Japanese</span>
       </article>
 
-      <article class="gal-card" data-modal="gm-portrait" tabindex="0" role="button" aria-label="Open Portrait gallery">
-        <img src="https://hyperinkers.com/wp-content/uploads/2026/01/portrait-tattoo-by-hyper-iners-in-san-antonio.jpg" alt="Portrait tattoo at Hyper Inkers in San Antonio." loading="lazy">
+      <article class="gal-card" data-modal="gm-blackwork" tabindex="0" role="button" aria-label="Open Traditional gallery">
+        <img src="https://hyperinkers.com/wp-content/uploads/2024/05/new-5.jpg" alt="Traditional tattoo at Hyper Inkers in San Antonio." loading="lazy">
         <span class="gal-scrim" aria-hidden="true"></span>
-        <span class="gal-label">Portrait</span>
-      </article>
-
-      <article class="gal-card" data-modal="gm-fineline" tabindex="0" role="button" aria-label="Open Fine Line gallery">
-        <img src="https://hyperinkers.com/wp-content/uploads/2026/01/line-work-tattoo-style-by-hyper-inkers-5.jpg" alt="Fine Line tattoo at Hyper Inkers in San Antonio." loading="lazy">
-        <span class="gal-scrim" aria-hidden="true"></span>
-        <span class="gal-label">Fine Line</span>
+        <span class="gal-label">Traditional</span>
       </article>
 
       <article class="gal-card" data-modal="gm-piercing" tabindex="0" role="button" aria-label="Open Piercing gallery">
@@ -2046,7 +2041,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
     <header class="section-head center">
       <h2>Tattoo <span class="o">Awards</span> and Recognition</h2>
       <input type="checkbox" id="aw-intro" class="more-cb" aria-label="Expand the awards introduction">
-      <p class="aw-intro" id="awIntro"><span class="aw-intro-txt" id="awIntroTxt">Tattoo awards at Hyper Inkers total more than 40, including 10 Best of Show titles, earned across more than 20 conventions in 8 countries. That record includes Best of Show at the 2025 San Antonio Tattoo Arts Festival and puts the team in the conversation when clients look for the best tattoo artists in San Antonio. These are juried convention awards, judged by tattoo professionals rather than popularity votes.</span><label for="aw-intro" class="aw-more" id="awMore" aria-label="Expand or collapse the awards introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
+      <p class="aw-intro" id="awIntro"><span class="aw-intro-txt" id="awIntroTxt">Tattoo awards at Hyper Inkers total more than 40, with 10 Best of Show titles, earned across 20+ conventions in 8 countries. These are juried convention awards, judged by tattoo professionals rather than popularity votes. A Best of Show is the top prize of an entire convention. The judges grade what a client lives with: clean lines, smooth shading, and how the piece sits on the body. If you are looking for that level of work in San Antonio, the artists holding these trophies are the ones who will tattoo you.</span><label for="aw-intro" class="aw-more" id="awMore" aria-label="Expand or collapse the awards introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
       <noscript><style>.aw-intro-txt{-webkit-line-clamp:unset;line-clamp:unset}.aw-more{display:none}</style></noscript>
     </header>
 
@@ -2085,7 +2080,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
           </figure>
           <div class="aw-body">
             <h3 class="aw-place">Best of the Best</h3>
-            <p class="aw-conv">Sinners Tattoo Expo 2025</p>
+            <p class="aw-conv">Sinners Tattoo Expo</p>
             <p class="aw-loc">Dallas, TX · 2025</p>
           </div>
         </li>
@@ -2104,28 +2099,28 @@ textarea.bk-input{min-height:96px;resize:vertical}
         </li>
 
         <li class="awrail-card">
-          <label for="awm-4" class="aw-cardlink" aria-label="Open Best of Show, SaiGon Tattoo Expo 2024"></label>
+          <label for="awm-4" class="aw-cardlink" aria-label="Open Best of Show, New York Empire State Tattoo Expo 2026"></label>
           <figure class="media-card aw-vitrine" style="--ar:4/3">
-            <img loading="lazy" src="_hero-assets/award-saigon-bos-2024-cut.png" alt="Best of Show trophy, SaiGon Tattoo Expo 2024, won by Minh Pham.">
+            <img loading="lazy" src="_hero-assets/award-saigon-bos-2024-cut.png" alt="Best of Show trophy, New York Empire State Tattoo Expo 2026, won by Minh Pham.">
             <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
           </figure>
           <div class="aw-body">
             <h3 class="aw-place">Best of Show</h3>
-            <p class="aw-conv">SaiGon Tattoo Expo 2024</p>
-            <p class="aw-loc">Ho Chi Minh City, Vietnam · 2024</p>
+            <p class="aw-conv">New York Empire State Tattoo Expo</p>
+            <p class="aw-loc">New York · 2026</p>
           </div>
         </li>
 
         <li class="awrail-card">
-          <label for="awm-5" class="aw-cardlink" aria-label="Open 2nd Best of Show, Rouen Tattoo Festival 2025"></label>
+          <label for="awm-5" class="aw-cardlink" aria-label="Open Best of Show, Caserta Tattoo Convention 2025"></label>
           <figure class="media-card aw-vitrine" style="--ar:4/3">
-            <img loading="lazy" src="_hero-assets/award-rouen-2ndbos-2025-cut.png" alt="2nd Best of Show trophy, Rouen Tattoo Festival 2025, won by Minh Pham.">
+            <img loading="lazy" src="_hero-assets/award-rouen-2ndbos-2025-cut.png" alt="Best of Show trophy, Caserta Tattoo Convention 2025, won by Minh Pham.">
             <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
           </figure>
           <div class="aw-body">
-            <h3 class="aw-place">2nd Best of Show</h3>
-            <p class="aw-conv">Rouen Tattoo Festival 2025</p>
-            <p class="aw-loc">France · 2025</p>
+            <h3 class="aw-place">Best of Show</h3>
+            <p class="aw-conv">Caserta Tattoo Convention</p>
+            <p class="aw-loc">Italy · 2025</p>
           </div>
         </li>
 
@@ -2136,20 +2131,20 @@ textarea.bk-input{min-height:96px;resize:vertical}
             <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
           </figure>
           <div class="aw-body">
-            <h3 class="aw-place">1st · Medium Black &amp; Grey</h3>
+            <h3 class="aw-place">1st Place · Medium Black and Grey</h3>
             <p class="aw-conv">San Antonio Tattoo Arts Festival</p>
             <p class="aw-loc">San Antonio, TX · 2025</p>
           </div>
         </li>
 
         <li class="awrail-card">
-          <label for="awm-7" class="aw-cardlink" aria-label="Open 3rd Place Small Black and Grey, Houston 2025"></label>
+          <label for="awm-7" class="aw-cardlink" aria-label="Open 3rd Place Small Black and Grey, Houston Tattoo Arts Festival 2025"></label>
           <figure class="media-card aw-vitrine" style="--ar:4/3">
-            <img loading="lazy" src="_hero-assets/award-houston-nhi-2025-cut.png" alt="3rd place Small Black and Grey trophy, Houston 2025, won by Nhi.">
+            <img loading="lazy" src="_hero-assets/award-houston-nhi-2025-cut.png" alt="3rd place Small Black and Grey trophy, Houston 2025, won by Navei.">
             <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
           </figure>
           <div class="aw-body">
-            <h3 class="aw-place">3rd · Small Black &amp; Grey</h3>
+            <h3 class="aw-place">3rd Place · Small Black and Grey</h3>
             <p class="aw-conv">Houston Tattoo Arts Festival</p>
             <p class="aw-loc">Houston, TX · 2025</p>
           </div>
@@ -2183,7 +2178,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
             <figure class="aw-slot"><img src="_hero-assets/award-sanantonio-venue-cut.png" alt="Best in Show championship belt from the 2025 San Antonio Villain Arts Tattoo Festival."></figure>
             <figure class="aw-slot aw-slot--soon"><span>At-venue photo<br>coming soon</span></figure>
           </div>
-          <p class="aw-panel-story">Minh Pham won Best of Show at the San Antonio Tattoo Arts Festival 2025, the convention's top honor. The winning piece was a tribute for a client from Vietnam who named his daughter Panda. Minh turned that personal story into a detailed work of art that paired technical skill with real emotional weight. He also earned the Villain Arts Best in Show championship belt that weekend.</p>
+          <p class="aw-panel-story">Best of Show, 2025 San Antonio Tattoo Arts Festival, Minh Pham</p>
           <p class="aw-panel-by">Won by <b>Minh Pham</b> · Founder &amp; Lead Artist</p>
         </div>
 
@@ -2195,7 +2190,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
             <figure class="aw-slot aw-slot--soon"><span>Certificate scan<br>coming soon</span></figure>
             <figure class="aw-slot aw-slot--soon"><span>At-venue photo<br>coming soon</span></figure>
           </div>
-          <p class="aw-panel-story">Minh Pham won Best of the Best at the Sinners Tattoo Expo 2025 in Dallas, the event's highest honor, along with a $10,000 cash prize. Competing as a solo artist against pieces built by teams of two and three, his tattoo still stood above the rest. Earlier that weekend he also took 1st Best of Day and a $2,000 prize.</p>
+          <p class="aw-panel-story">Best of the Best, 2025 Sinners Tattoo Expo, Dallas, Minh Pham, $10,000 prize</p>
           <p class="aw-panel-by">Won by <b>Minh Pham</b> · Founder &amp; Lead Artist</p>
         </div>
 
@@ -2207,31 +2202,31 @@ textarea.bk-input{min-height:96px;resize:vertical}
             <figure class="aw-slot aw-slot--soon"><span>Certificate scan<br>coming soon</span></figure>
             <figure class="aw-slot aw-slot--soon"><span>At-venue photo<br>coming soon</span></figure>
           </div>
-          <p class="aw-panel-story">Minh Pham won Best of Show at the Golden State Tattoo Expo 2025 in California, known for drawing elite artists from across the country. His piece stood out for its creativity, precision, and impact among some of the best artists in the world.</p>
+          <p class="aw-panel-story">Best of Show, 2025 Golden State Tattoo Expo, California, Minh Pham</p>
           <p class="aw-panel-by">Won by <b>Minh Pham</b> · Founder &amp; Lead Artist</p>
         </div>
 
         <div class="aw-panel" data-i="4">
           <h3>Best of Show</h3>
-          <p class="aw-panel-meta">SaiGon Tattoo Expo 2024 · Ho Chi Minh City, Vietnam</p>
+          <p class="aw-panel-meta">New York Empire State Tattoo Expo 2026 · New York</p>
           <div class="aw-slots">
             <figure class="aw-slot"><img src="_hero-assets/award-saigon-bos-2024-cut.png" alt="Best of Show trophy from the 2024 Saigon International Tattoo Expo, a black and gold frame with a golden Hannya mask."></figure>
             <figure class="aw-slot aw-slot--soon"><span>Certificate scan<br>coming soon</span></figure>
             <figure class="aw-slot aw-slot--soon"><span>At-venue photo<br>coming soon</span></figure>
           </div>
-          <p class="aw-panel-story">Minh Pham won Best of Show at the SaiGon Tattoo Expo 2024, the highest award of Vietnam's premier convention. Completed over three days, the piece became a defining milestone in his career and his first Best of Show in his home country.</p>
+          <p class="aw-panel-story">Best of Show, 2026 New York Empire State Tattoo Expo, Minh Pham</p>
           <p class="aw-panel-by">Won by <b>Minh Pham</b> · Founder &amp; Lead Artist</p>
         </div>
 
         <div class="aw-panel" data-i="5">
-          <h3>2nd Best of Show</h3>
-          <p class="aw-panel-meta">Rouen Tattoo Festival 2025 · France</p>
+          <h3>Best of Show</h3>
+          <p class="aw-panel-meta">Caserta Tattoo Convention 2025 · Italy</p>
           <div class="aw-slots">
-            <figure class="aw-slot"><img src="_hero-assets/award-rouen-2ndbos-2025-cut.png" alt="2nd Best of Show trophy from the 2025 Rouen Tattoo Festival in France, an ornate cream frame with an art nouveau piece."></figure>
+            <figure class="aw-slot"><img src="_hero-assets/award-rouen-2ndbos-2025-cut.png" alt="Best of Show trophy from the 2025 Caserta Tattoo Convention in Italy."></figure>
             <figure class="aw-slot aw-slot--soon"><span>Certificate scan<br>coming soon</span></figure>
             <figure class="aw-slot aw-slot--soon"><span>At-venue photo<br>coming soon</span></figure>
           </div>
-          <p class="aw-panel-story">Minh Pham won 2nd Best of Show at the Rouen Tattoo Festival 2025 in France, one of the highest honors of the convention. It was Hyper Inkers' second time competing in France, against talent gathered from across Europe and beyond.</p>
+          <p class="aw-panel-story">Best of Show, 2025 Caserta Tattoo Convention, Italy, Minh Pham</p>
           <p class="aw-panel-by">Won by <b>Minh Pham</b> · Founder &amp; Lead Artist</p>
         </div>
 
@@ -2243,7 +2238,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
             <figure class="aw-slot aw-slot--soon"><span>Certificate scan<br>coming soon</span></figure>
             <figure class="aw-slot aw-slot--soon"><span>At-venue photo<br>coming soon</span></figure>
           </div>
-          <p class="aw-panel-story">Tai won 1st Place Medium Black and Grey at the San Antonio Tattoo Arts Festival 2025. Just one year into his tattoo career, Tai earned his first major convention trophy with a black and grey female portrait. His growth reflects the training and mentorship our artists pass on at Hyper Inkers.</p>
+          <p class="aw-panel-story">1st Place, Medium Black and Grey, 2025 San Antonio Tattoo Arts Festival, Tai</p>
           <p class="aw-panel-by">Won by <b>Tai</b> · Hyper Inkers Artist</p>
         </div>
 
@@ -2251,12 +2246,12 @@ textarea.bk-input{min-height:96px;resize:vertical}
           <h3>3rd Place · Small Black &amp; Grey</h3>
           <p class="aw-panel-meta">Houston Tattoo Arts Festival 2025 · Houston, TX</p>
           <div class="aw-slots">
-            <figure class="aw-slot"><img src="_hero-assets/award-houston-nhi-2025-cut.png" alt="3rd place Small Black and Grey trophy from the 2025 Houston Tattoo Arts Festival, a bronze skull, won by Nhi."></figure>
+            <figure class="aw-slot"><img src="_hero-assets/award-houston-nhi-2025-cut.png" alt="3rd place Small Black and Grey trophy from the 2025 Houston Tattoo Arts Festival, won by Navei."></figure>
             <figure class="aw-slot aw-slot--soon"><span>Certificate scan<br>coming soon</span></figure>
             <figure class="aw-slot aw-slot--soon"><span>At-venue photo<br>coming soon</span></figure>
           </div>
-          <p class="aw-panel-story">Nhi won 3rd Place Small Black and Grey Male at the Houston Tattoo Arts Festival 2025, her first convention award. The smaller piece stood out through clean detail and strong execution.</p>
-          <p class="aw-panel-by">Won by <b>Nhi</b> · Hyper Inkers Artist</p>
+          <p class="aw-panel-story">3rd Place, Small Black and Grey, 2025 Houston Tattoo Arts Festival, Navei</p>
+          <p class="aw-panel-by">Won by <b>Navei</b> · Hyper Inkers Artist</p>
         </div>
 
       </div>
@@ -2337,9 +2332,9 @@ textarea.bk-input{min-height:96px;resize:vertical}
   <div class="wrap">
 
     <header class="section-head center">
-      <h2>The <span class="o">Advantages</span> of Choosing Hyper Inkers as Your San Antonio Tattoo Shop</h2>
+      <h2>Why Choose <span class="o">Hyper Inkers</span></h2>
       <input type="checkbox" id="adv-intro" class="more-cb" aria-label="Expand the advantages introduction">
-      <p class="adv-intro"><span class="adv-intro-txt"><b>The advantages of choosing Hyper Inkers as your San Antonio tattoo shop are custom work built around your idea, a hospital-grade clean studio, free touch-ups for three months, and an artist-owned team.</b> Your tattoo stays with you, so the process should feel careful from the first conversation to the final wipe.</span><label for="adv-intro" class="adv-more" aria-label="Expand or collapse the advantages introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
+      <p class="adv-intro"><span class="adv-intro-txt">The advantages of choosing Hyper Inkers as your San Antonio tattoo shop are custom design work, a hospital-grade clean studio, free touch-ups for three months, and an artist-owned team. A tattoo stays with you for life, so choosing the shop matters as much as choosing the design. The process is set up to feel careful, from the first conversation to the final wipe.</span><label for="adv-intro" class="adv-more" aria-label="Expand or collapse the advantages introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
       <noscript><style>.adv-intro-txt{-webkit-line-clamp:unset;line-clamp:unset}.adv-more{display:none}</style></noscript>
     </header>
 
@@ -2360,19 +2355,19 @@ textarea.bk-input{min-height:96px;resize:vertical}
         <ol class="adv-list">
           <li class="adv-item">
             <label for="adv-t1" class="adv-head"><span class="adv-num">01</span><h3>Your Vision, Our Craft</h3></label>
-            <div class="adv-panel"><p><b>Every tattoo at Hyper Inkers starts with your idea and is designed custom before any ink touches skin.</b> We listen first and design second, building each piece around your story, placement, and style. The goal is simple: clean work that still feels like yours years later.</p></div>
+            <div class="adv-panel"><p>Every tattoo at Hyper Inkers starts with your idea and is designed custom before any ink touches skin. We listen first and design second, and nothing is inked until you approve the sketch. The finished piece ends up in the artist's portfolio and gets judged for years by everyone who asks where you got it. Nobody here settles for passable work.</p></div>
           </li>
           <li class="adv-item">
             <label for="adv-t2" class="adv-head"><span class="adv-num">02</span><h3>Hospital-Grade Hygiene and Safety</h3></label>
-            <div class="adv-panel"><p><b>Hyper Inkers keeps a hospital-grade clean studio, with single-use needles and sterilized equipment for every client.</b> Single-use needles and disposable tubes are opened for each client. Reusable tools are sterilized between sessions, and artists reset the station with fresh gloves and barriers.</p></div>
+            <div class="adv-panel"><p>Hyper Inkers keeps a hospital-grade clean and drug-free studio, and it shows in the routine. Needles and tubes come out of sealed packaging for each client, reusable tools run through an autoclave (a medical-grade steam sterilizer) between sessions, and every station is reset with fresh gloves and barriers. The studio also uses quality ink, chosen for how it heals and holds its color.</p></div>
           </li>
           <li class="adv-item">
             <label for="adv-t3" class="adv-head"><span class="adv-num">03</span><h3>Free Touch-Ups for Three Months</h3></label>
-            <div class="adv-panel"><p><b>Hyper Inkers backs every tattoo with free touch-ups within three months of the original session.</b> Skin heals differently on every body, and a line or a patch of shading can settle lighter than planned. If that happens, your artist fixes it at no cost, and after three months touch-ups are done at a reduced rate. That policy is how the studio stands behind the work as it heals.</p></div>
+            <div class="adv-panel"><p>Free touch-ups within three months come standard with every tattoo at Hyper Inkers. Skin heals differently on every body, and a line or a patch of shading can settle lighter than planned. If that happens, your artist fixes it at no cost, and after three months touch-ups are done at a reduced rate. That policy is what standing behind a tattoo actually means.</p></div>
           </li>
           <li class="adv-item">
             <label for="adv-t4" class="adv-head"><span class="adv-num">04</span><h3>Owned and Artist-Operated Studio</h3></label>
-            <div class="adv-panel"><p><b>Hyper Inkers is owned and operated by tattoo artists, not a corporate chain.</b> The artist who designs your tattoo is the one who tattoos it, and the owners answer for the quality of every piece. That accountability is why no two tattoos here come off an assembly line.</p></div>
+            <div class="adv-panel"><p>Hyper Inkers is owned and operated by tattoo artists, not a corporate chain. The owners answer for the quality of every piece, and that accountability is why no two tattoos here come off an assembly line.</p></div>
           </li>
         </ol>
       </div>
@@ -2432,7 +2427,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
 
     <div class="pr-tiers">
       <div class="pr-tier">
-        <span class="pr-tier-label">Small &amp; Flash</span>
+        <span class="pr-tier-label">Minimum</span>
         <div class="pr-price"><span class="amt">$80</span><span class="per">minimum</span></div>
         <ul class="pr-feats">
           <li class="pr-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Small designs</li>
@@ -2442,7 +2437,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
       </div>
 
       <div class="pr-tier pr-tier--feat">
-        <span class="pr-tier-label">Custom Work</span>
+        <span class="pr-tier-label">$150 per hour</span>
         <div class="pr-price"><span class="amt">$150</span><span class="per">/ hour</span></div>
         <ul class="pr-feats">
           <li class="pr-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Custom designs</li>
@@ -2452,12 +2447,12 @@ textarea.bk-input{min-height:96px;resize:vertical}
       </div>
 
       <div class="pr-tier">
-        <span class="pr-tier-label">Large &amp; Detailed</span>
+        <span class="pr-tier-label">$200 per hour</span>
         <div class="pr-price"><span class="amt">$200</span><span class="per">/ hour</span></div>
         <ul class="pr-feats">
           <li class="pr-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Large pieces</li>
           <li class="pr-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>High detail</li>
-          <li class="pr-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Realism &amp; portrait work</li>
+          <li class="pr-feat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Realism and portrait work</li>
         </ul>
         <p class="pr-tier-note">By senior artists.</p>
       </div>
@@ -2466,9 +2461,9 @@ textarea.bk-input{min-height:96px;resize:vertical}
     <div class="pr-save">
       <div class="pr-save-h">Ways to save</div>
       <div class="pr-save-grid">
-        <div class="pr-save-item"><span class="val">10% off</span><span class="lab">Military &amp; Veteran</span><span class="sub">All tattoo services with a valid ID.</span></div>
-        <div class="pr-save-item"><span class="val">30-50% off</span><span class="lab">Portfolio Project</span><span class="sub">Give your artist full creative freedom, usually larger pieces with limited monthly slots.</span></div>
-        <div class="pr-save-item"><span class="val">Free</span><span class="lab">Touch-Ups, 3 Months</span><span class="sub">Within three months of your original session.</span></div>
+        <div class="pr-save-item"><span class="val">10% off</span><span class="lab">Military and Veteran discount</span><span class="sub">10% off all tattoo services with a valid ID.</span></div>
+        <div class="pr-save-item"><span class="val">30-50% off</span><span class="lab">Portfolio Project discount</span><span class="sub">30% to 50% off when you give your artist full creative freedom, usually on larger pieces with limited monthly slots.</span></div>
+        <div class="pr-save-item"><span class="val">Free</span><span class="lab">Free touch-ups</span><span class="sub">Within three months of your original session.</span></div>
       </div>
     </div>
 
@@ -2533,16 +2528,16 @@ textarea.bk-input{min-height:96px;resize:vertical}
   <div class="wrap">
 
     <header class="section-head center">
-      <h2>Visit Our Tattoo <span class="o">Shop</span> in San Antonio</h2>
+      <h2>Visit Our Tattoo <span class="o">Parlor</span> in San Antonio</h2>
       <input type="checkbox" id="vs-intro" class="more-cb" aria-label="Expand the visit introduction">
-      <p class="vs-intro"><span class="vs-intro-txt"><b>Hyper Inkers tattoo parlor in San Antonio is located at 8045 Callaghan Road in the northwest of the city, open late seven days a week and welcoming both walk-ins and appointments.</b> You can stop in when an artist is free, and larger pieces can be booked ahead so your artist has time reserved for you. For clients searching tattoo places in San Antonio after work or late at night, the extended hours make the visit easier. Our San Antonio tattoo parlor stays open until midnight or 1am, far later than most shops in the city, making Hyper Inkers one of the few walk-in tattoo shops in San Antonio open past midnight.</span><label for="vs-intro" class="vs-more" aria-label="Expand or collapse the visit introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
+      <p class="vs-intro"><span class="vs-intro-txt">Hyper Inkers tattoo parlor in San Antonio sits at 8045 Callaghan Road in the northwest of the city. Walk-ins are welcome whenever an artist is free, and larger pieces can be booked ahead so your artist has time reserved for you. Hours run until midnight or 1am, far later than most tattoo places in San Antonio, making Hyper Inkers one of the few walk-in tattoo shops in the city open past midnight. If you get off work late, the visit still fits your evening.</span><label for="vs-intro" class="vs-more" aria-label="Expand or collapse the visit introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
       <noscript><style>.vs-intro-txt{-webkit-line-clamp:unset;line-clamp:unset}.vs-more{display:none}</style></noscript>
     </header>
 
     <!-- Part A — NAP + Google Map -->
     <div class="vs-nap">
       <ul class="vs-contact">
-        <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><div><span class="vs-ci-lab">Hotline</span><a class="vs-ci-val" href="tel:+12109979737">(210) 997-9737</a></div></li>
+        <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><div><span class="vs-ci-lab">Phone</span><a class="vs-ci-val" href="tel:+12109979737">(210) 997-9737</a></div></li>
         <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><div><span class="vs-ci-lab">Email</span><a class="vs-ci-val" href="mailto:hyperinkers1@gmail.com">hyperinkers1@gmail.com</a></div></li>
         <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><span class="vs-ci-lab">Address</span><span class="vs-ci-val">8045 Callaghan Rd, San Antonio, TX 78230</span></div></li>
         <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><span class="vs-ci-lab">Hours</span><span class="vs-ci-val vs-hours"><span>Mon to Thu, 10am to 12am</span><span>Fri to Sat, 10am to 1am</span><span>Sun, 11am to 1am</span></span></div></li>
@@ -2554,38 +2549,37 @@ textarea.bk-input{min-height:96px;resize:vertical}
 
     <!-- Part B — Local service area (Texas map, per-city pin) -->
     <div class="vs-local">
-      <p class="vs-local-lead">Clients travel to Hyper Inkers from across Texas. The studio sits within an easy drive of Austin, Houston, and Dallas.</p>
+      <p class="vs-local-lead">Clients travel to Hyper Inkers from across Texas. Select a city below for the distance and drive time to the studio.</p>
       <input type="radio" name="vscity" id="city-sa" class="vs-radio" checked aria-label="San Antonio, Texas">
       <input type="radio" name="vscity" id="city-austin" class="vs-radio" aria-label="Austin, Texas">
       <input type="radio" name="vscity" id="city-houston" class="vs-radio" aria-label="Houston, Texas">
       <input type="radio" name="vscity" id="city-dallas" class="vs-radio" aria-label="Dallas, Texas">
       <div class="vs-local-grid">
         <div class="vs-txmap">
-          <svg viewBox="283 326 253 244" role="img" aria-label="Map of Texas showing the Hyper Inkers service area">
-            <defs>
-              <radialGradient id="tx-fill" cx="50%" cy="40%" r="74%">
-                <stop offset="0%" stop-color="#3c2c1d"/>
-                <stop offset="55%" stop-color="#29201a"/>
-                <stop offset="100%" stop-color="#181310"/>
-              </radialGradient>
-              <radialGradient id="pin-glow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#E67500" stop-opacity="0.62"/>
-                <stop offset="52%" stop-color="#CC6600" stop-opacity="0.17"/>
-                <stop offset="100%" stop-color="#CC6600" stop-opacity="0"/>
-              </radialGradient>
-            </defs>
-            <path class="tx-outline" d="M 361.46423,330.57358 L 384.15502,331.65952 L 415.24771,332.80264 L 412.9131,356.25844 L 412.61634,374.41196 L 412.68448,376.49375 L 417.02831,380.31218 L 419.01496,381.75934 L 420.19917,381.19965 L 420.57254,379.38193 L 421.71286,381.18555 L 423.8245,381.22948 L 423.82183,379.78239 L 425.49177,380.74966 L 426.63047,381.15853 L 426.2712,385.12618 L 430.35939,385.21969 L 433.28471,386.41686 L 437.23945,386.94224 L 439.62083,389.02122 L 441.74493,386.94505 L 445.46987,387.55996 L 447.69078,390.7849 L 448.76574,391.10586 L 448.60527,393.07113 L 450.81888,393.86342 L 453.14903,391.80862 L 455.28205,392.42354 L 457.51143,392.45902 L 458.4445,394.89446 L 464.77259,397.00891 L 466.36564,396.24198 L 467.85511,392.06427 L 468.19583,392.06427 L 469.10232,392.14591 L 470.33137,394.21454 L 474.26125,394.87982 L 477.59825,396.0027 L 481.02388,397.19867 L 482.86446,396.22367 L 483.57822,393.70883 L 488.03144,393.75303 L 489.84018,394.68381 L 492.63943,392.5773 L 493.74307,392.6215 L 494.59411,394.22657 L 498.64883,394.22657 L 500.1677,392.19795 L 502.03507,392.60519 L 503.9811,395.00847 L 507.50167,397.05262 L 510.36043,397.86243 L 511.87405,398.66227 L 514.32075,400.65959 L 517.36379,399.3318 L 520.05488,400.47068 L 520.61869,406.57662 L 520.57893,416.27879 L 521.26479,425.8128 L 521.96697,429.41791 L 524.6423,433.83777 L 525.54048,438.7885 L 529.75643,444.32652 L 529.95245,447.47146 L 530.69882,448.2573 L 529.96875,456.63737 L 527.09665,461.64387 L 528.62962,463.79674 L 527.99954,466.13482 L 527.32997,473.53914 L 525.82565,476.87714 L 526.12053,480.37949 L 520.45565,481.96467 L 510.59436,486.49117 L 509.6244,488.43109 L 507.03783,490.37102 L 504.93625,491.82596 L 503.64296,492.63426 L 497.98485,497.96906 L 495.23662,500.07065 L 489.90182,503.30385 L 484.24371,505.72876 L 477.93895,509.12363 L 476.16069,510.57858 L 470.34091,514.13511 L 466.94604,514.78175 L 463.06619,520.2782 L 459.02468,520.60153 L 458.05471,522.54145 L 460.31796,524.48138 L 458.86301,529.97783 L 457.56973,534.50433 L 456.43811,538.38418 L 455.62981,542.91067 L 456.43811,545.33558 L 458.21637,552.28698 L 459.18634,558.43007 L 460.9646,561.1783 L 459.99464,562.63325 L 456.92309,564.57317 L 451.26497,560.69332 L 445.76852,559.5617 L 444.47523,560.04668 L 441.24202,559.40004 L 437.03885,556.32849 L 431.86572,555.19687 L 424.26767,551.802 L 422.16609,547.92214 L 420.8728,541.45573 L 417.6396,539.5158 L 416.99295,537.25255 L 417.6396,536.60591 L 417.96292,533.21104 L 416.66963,532.5644 L 416.02299,531.59444 L 417.31627,527.2296 L 415.69967,524.96636 L 412.46646,523.67307 L 409.07159,519.30824 L 405.51506,512.68016 L 401.31189,510.09359 L 401.47355,508.15367 L 396.13875,495.86747 L 395.33045,491.6643 L 393.55219,489.72438 L 393.39053,488.26943 L 387.40909,482.93464 L 384.82252,479.86309 L 384.82252,478.73146 L 382.23595,476.62988 L 375.44621,475.49825 L 368.00983,474.85161 L 364.93828,472.58837 L 360.41179,474.36663 L 356.85526,475.82158 L 354.59201,479.05478 L 353.62205,482.77298 L 349.25722,488.91607 L 346.83231,491.34098 L 344.24574,490.37102 L 342.46748,489.23939 L 340.52755,488.59275 L 336.6477,486.32951 L 336.6477,485.68286 L 334.86944,483.74294 L 329.6963,481.64135 L 322.25992,473.88165 L 319.99667,469.1935 L 319.99667,461.11047 L 316.76346,454.64405 L 316.27848,451.89583 L 314.66188,450.92586 L 313.53025,448.82428 L 308.51878,446.72269 L 307.2255,445.10609 L 300.11243,437.18472 L 298.81915,433.95151 L 294.13099,431.68826 L 292.67604,427.32339 L 290.08945,424.41352 L 288.14954,423.92856 L 287.50031,419.25092 L 295.50218,419.93681 L 324.53717,422.68026 L 353.57225,424.28062 L 355.80578,404.8188 L 359.69233,349.26378 L 361.29272,330.51646 L 362.66446,330.54504 M 461.69381,560.20778 L 461.128,553.0947 L 458.37976,545.90078 L 457.81394,538.86853 L 459.34972,530.62382 L 462.66378,523.75323 L 466.13948,518.33758 L 469.29188,514.78103 L 469.93852,515.02353 L 465.16952,521.65163 L 460.80468,528.19891 L 458.78391,534.827 L 458.46059,540.00016 L 459.34972,546.14328 L 461.9363,553.3372 L 462.42128,558.51034 L 462.58294,559.9653 L 461.69381,560.20778 z"/>
-            <g class="pin" data-city="sa"><circle class="pin-glow" cx="438.5" cy="485.9" r="40" fill="url(#pin-glow)"/><g class="pin-mark" transform="translate(438.5,485.9)"><path d="M0,0 C-6,-8 -9,-11 -9,-16 A9,9 0 1 1 9,-16 C9,-11 6,-8 0,0 Z"/><circle class="pin-hole" cx="0" cy="-16" r="3.3"/></g></g>
-            <g class="pin" data-city="austin"><circle class="pin-glow" cx="452.4" cy="467.4" r="40" fill="url(#pin-glow)"/><g class="pin-mark" transform="translate(452.4,467.4)"><path d="M0,0 C-6,-8 -9,-11 -9,-16 A9,9 0 1 1 9,-16 C9,-11 6,-8 0,0 Z"/><circle class="pin-hole" cx="0" cy="-16" r="3.3"/></g></g>
-            <g class="pin" data-city="houston"><circle class="pin-glow" cx="496.3" cy="478.5" r="40" fill="url(#pin-glow)"/><g class="pin-mark" transform="translate(496.3,478.5)"><path d="M0,0 C-6,-8 -9,-11 -9,-16 A9,9 0 1 1 9,-16 C9,-11 6,-8 0,0 Z"/><circle class="pin-hole" cx="0" cy="-16" r="3.3"/></g></g>
-            <g class="pin" data-city="dallas"><circle class="pin-glow" cx="469.9" cy="412.3" r="40" fill="url(#pin-glow)"/><g class="pin-mark" transform="translate(469.9,412.3)"><path d="M0,0 C-6,-8 -9,-11 -9,-16 A9,9 0 1 1 9,-16 C9,-11 6,-8 0,0 Z"/><circle class="pin-hole" cx="0" cy="-16" r="3.3"/></g></g>
-          </svg>
+          <div class="vs-mapbox">
+            <span class="vs-maptag">Texas</span>
+            <svg viewBox="283 326 253 244" role="img" aria-label="Map of Texas showing Hyper Inkers in San Antonio and nearby cities">
+              <path class="tx-flat" d="M 361.46423,330.57358 L 384.15502,331.65952 L 415.24771,332.80264 L 412.9131,356.25844 L 412.61634,374.41196 L 412.68448,376.49375 L 417.02831,380.31218 L 419.01496,381.75934 L 420.19917,381.19965 L 420.57254,379.38193 L 421.71286,381.18555 L 423.8245,381.22948 L 423.82183,379.78239 L 425.49177,380.74966 L 426.63047,381.15853 L 426.2712,385.12618 L 430.35939,385.21969 L 433.28471,386.41686 L 437.23945,386.94224 L 439.62083,389.02122 L 441.74493,386.94505 L 445.46987,387.55996 L 447.69078,390.7849 L 448.76574,391.10586 L 448.60527,393.07113 L 450.81888,393.86342 L 453.14903,391.80862 L 455.28205,392.42354 L 457.51143,392.45902 L 458.4445,394.89446 L 464.77259,397.00891 L 466.36564,396.24198 L 467.85511,392.06427 L 468.19583,392.06427 L 469.10232,392.14591 L 470.33137,394.21454 L 474.26125,394.87982 L 477.59825,396.0027 L 481.02388,397.19867 L 482.86446,396.22367 L 483.57822,393.70883 L 488.03144,393.75303 L 489.84018,394.68381 L 492.63943,392.5773 L 493.74307,392.6215 L 494.59411,394.22657 L 498.64883,394.22657 L 500.1677,392.19795 L 502.03507,392.60519 L 503.9811,395.00847 L 507.50167,397.05262 L 510.36043,397.86243 L 511.87405,398.66227 L 514.32075,400.65959 L 517.36379,399.3318 L 520.05488,400.47068 L 520.61869,406.57662 L 520.57893,416.27879 L 521.26479,425.8128 L 521.96697,429.41791 L 524.6423,433.83777 L 525.54048,438.7885 L 529.75643,444.32652 L 529.95245,447.47146 L 530.69882,448.2573 L 529.96875,456.63737 L 527.09665,461.64387 L 528.62962,463.79674 L 527.99954,466.13482 L 527.32997,473.53914 L 525.82565,476.87714 L 526.12053,480.37949 L 520.45565,481.96467 L 510.59436,486.49117 L 509.6244,488.43109 L 507.03783,490.37102 L 504.93625,491.82596 L 503.64296,492.63426 L 497.98485,497.96906 L 495.23662,500.07065 L 489.90182,503.30385 L 484.24371,505.72876 L 477.93895,509.12363 L 476.16069,510.57858 L 470.34091,514.13511 L 466.94604,514.78175 L 463.06619,520.2782 L 459.02468,520.60153 L 458.05471,522.54145 L 460.31796,524.48138 L 458.86301,529.97783 L 457.56973,534.50433 L 456.43811,538.38418 L 455.62981,542.91067 L 456.43811,545.33558 L 458.21637,552.28698 L 459.18634,558.43007 L 460.9646,561.1783 L 459.99464,562.63325 L 456.92309,564.57317 L 451.26497,560.69332 L 445.76852,559.5617 L 444.47523,560.04668 L 441.24202,559.40004 L 437.03885,556.32849 L 431.86572,555.19687 L 424.26767,551.802 L 422.16609,547.92214 L 420.8728,541.45573 L 417.6396,539.5158 L 416.99295,537.25255 L 417.6396,536.60591 L 417.96292,533.21104 L 416.66963,532.5644 L 416.02299,531.59444 L 417.31627,527.2296 L 415.69967,524.96636 L 412.46646,523.67307 L 409.07159,519.30824 L 405.51506,512.68016 L 401.31189,510.09359 L 401.47355,508.15367 L 396.13875,495.86747 L 395.33045,491.6643 L 393.55219,489.72438 L 393.39053,488.26943 L 387.40909,482.93464 L 384.82252,479.86309 L 384.82252,478.73146 L 382.23595,476.62988 L 375.44621,475.49825 L 368.00983,474.85161 L 364.93828,472.58837 L 360.41179,474.36663 L 356.85526,475.82158 L 354.59201,479.05478 L 353.62205,482.77298 L 349.25722,488.91607 L 346.83231,491.34098 L 344.24574,490.37102 L 342.46748,489.23939 L 340.52755,488.59275 L 336.6477,486.32951 L 336.6477,485.68286 L 334.86944,483.74294 L 329.6963,481.64135 L 322.25992,473.88165 L 319.99667,469.1935 L 319.99667,461.11047 L 316.76346,454.64405 L 316.27848,451.89583 L 314.66188,450.92586 L 313.53025,448.82428 L 308.51878,446.72269 L 307.2255,445.10609 L 300.11243,437.18472 L 298.81915,433.95151 L 294.13099,431.68826 L 292.67604,427.32339 L 290.08945,424.41352 L 288.14954,423.92856 L 287.50031,419.25092 L 295.50218,419.93681 L 324.53717,422.68026 L 353.57225,424.28062 L 355.80578,404.8188 L 359.69233,349.26378 L 361.29272,330.51646 L 362.66446,330.54504 M 461.69381,560.20778 L 461.128,553.0947 L 458.37976,545.90078 L 457.81394,538.86853 L 459.34972,530.62382 L 462.66378,523.75323 L 466.13948,518.33758 L 469.29188,514.78103 L 469.93852,515.02353 L 465.16952,521.65163 L 460.80468,528.19891 L 458.78391,534.827 L 458.46059,540.00016 L 459.34972,546.14328 L 461.9363,553.3372 L 462.42128,558.51034 L 462.58294,559.9653 L 461.69381,560.20778 z"/>
+              <circle class="vs-dot" data-city="sa" cx="438.5" cy="485.9" r="3.4"/>
+              <circle class="vs-dot" data-city="austin" cx="452.4" cy="467.4" r="3.4"/>
+              <circle class="vs-dot" data-city="houston" cx="496.3" cy="478.5" r="3.4"/>
+              <circle class="vs-dot" data-city="dallas" cx="469.9" cy="412.3" r="3.4"/>
+              <g class="vs-pin" data-city="sa" transform="translate(438.5,485.9)"><path d="M0,0 C-6,-8 -9,-11 -9,-16 A9,9 0 1 1 9,-16 C9,-11 6,-8 0,0 Z"/><circle cx="0" cy="-16" r="3.3"/></g>
+              <g class="vs-pin" data-city="austin" transform="translate(452.4,467.4)"><path d="M0,0 C-6,-8 -9,-11 -9,-16 A9,9 0 1 1 9,-16 C9,-11 6,-8 0,0 Z"/><circle cx="0" cy="-16" r="3.3"/></g>
+              <g class="vs-pin" data-city="houston" transform="translate(496.3,478.5)"><path d="M0,0 C-6,-8 -9,-11 -9,-16 A9,9 0 1 1 9,-16 C9,-11 6,-8 0,0 Z"/><circle cx="0" cy="-16" r="3.3"/></g>
+              <g class="vs-pin" data-city="dallas" transform="translate(469.9,412.3)"><path d="M0,0 C-6,-8 -9,-11 -9,-16 A9,9 0 1 1 9,-16 C9,-11 6,-8 0,0 Z"/><circle cx="0" cy="-16" r="3.3"/></g>
+            </svg>
+            <div class="vs-cap" data-city="sa"><span class="vs-cap-k">Home Studio</span><span class="vs-cap-city">San Antonio, TX</span><span class="vs-cap-sub">8045 Callaghan Rd · off Loop 410</span></div>
+            <div class="vs-cap" data-city="austin"><span class="vs-cap-k">Up I-35</span><span class="vs-cap-city">Austin, TX</span><span class="vs-cap-sub">About 80 miles · 1 hr 20 min</span></div>
+            <div class="vs-cap" data-city="houston"><span class="vs-cap-k">Via I-10</span><span class="vs-cap-city">Houston, TX</span><span class="vs-cap-sub">About 200 miles · 3 hr</span></div>
+            <div class="vs-cap" data-city="dallas"><span class="vs-cap-k">Down I-35</span><span class="vs-cap-city">Dallas, TX</span><span class="vs-cap-sub">About 275 miles · 4 hr</span></div>
+          </div>
         </div>
         <ol class="vs-cities">
-          <li class="vs-city"><label for="city-sa" class="vs-city-head"><h3>San Antonio, TX</h3></label><div class="vs-city-panel"><p>8045 Callaghan Rd, off Loop 410, about 10 minutes from San Antonio International Airport. Open late seven days a week, walk-ins welcome. Serving Downtown, the Riverwalk, and Stone Oak.</p></div></li>
-          <li class="vs-city"><label for="city-austin" class="vs-city-head"><h3>Austin, TX</h3></label><div class="vs-city-panel"><p>About 80 miles up I-35, roughly 1 hour 20 minutes.</p></div></li>
-          <li class="vs-city"><label for="city-houston" class="vs-city-head"><h3>Houston, TX</h3></label><div class="vs-city-panel"><p>About 200 miles via I-10, roughly 3 hours.</p></div></li>
-          <li class="vs-city"><label for="city-dallas" class="vs-city-head"><h3>Dallas, TX</h3></label><div class="vs-city-panel"><p>About 275 miles down I-35, roughly 4 hours. Open late, so you can drive in and still get tattooed the same evening.</p></div></li>
+          <li class="vs-city"><label for="city-sa" class="vs-city-head"><h3>San Antonio, TX</h3><span class="vs-city-meta vs-city-home">Home Studio</span></label><div class="vs-city-panel"><p>8045 Callaghan Rd, off Loop 410, about 10 minutes from San Antonio International Airport. Open late seven days a week, walk-ins welcome. Serving Downtown, the Riverwalk, and Stone Oak.</p></div></li>
+          <li class="vs-city"><label for="city-austin" class="vs-city-head"><h3>Austin, TX</h3><span class="vs-city-meta">1 hr 20 min</span></label><div class="vs-city-panel"><p>About 80 miles up I-35, roughly 1 hour 20 minutes.</p></div></li>
+          <li class="vs-city"><label for="city-houston" class="vs-city-head"><h3>Houston, TX</h3><span class="vs-city-meta">3 hr</span></label><div class="vs-city-panel"><p>About 200 miles via I-10, roughly 3 hours.</p></div></li>
+          <li class="vs-city"><label for="city-dallas" class="vs-city-head"><h3>Dallas, TX</h3><span class="vs-city-meta">4 hr</span></label><div class="vs-city-panel"><p>About 275 miles down I-35, roughly 4 hours. Open late, so you can drive in and still get tattooed the same evening.</p></div></li>
         </ol>
       </div>
     </div>
@@ -2706,7 +2700,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
     </header>
 
     <form class="bk-form-card" onsubmit="return false" novalidate aria-label="Book a free tattoo consultation">
-      <p class="bk-form-intro">Tell us about your ideas, style, size, color and placement, and let us know your budget.</p>
+      <p class="bk-form-intro">Ready to start your tattoo? Book a free consultation with a Hyper Inkers artist in San Antonio, or call and we will help you plan your piece. Bring a reference or just an idea, and your artist will design it custom before any ink. The consultation is free, and there is no pressure to decide before you are ready.</p>
       <div class="bk-row2">
         <div class="bk-field"><label class="field-label" for="bk-name">Your Name</label><input class="bk-input" id="bk-name" type="text" name="your-name" placeholder="Your Name"></div>
         <div class="bk-field"><label class="field-label" for="bk-phone">Phone Number</label><input class="bk-input" id="bk-phone" type="tel" name="your-phone" placeholder="Phone Number"></div>
@@ -2748,75 +2742,83 @@ textarea.bk-input{min-height:96px;resize:vertical}
   <div class="wrap">
 
     <header class="section-head center">
-      <h2>Guides and <span class="o">Resources</span></h2>
-      <p class="gd-lead">Guides on tattoos, piercings, and removal, from cost and aftercare to choosing your artist.</p>
+      <h2>Tattoo Guides and <span class="o">Resources</span></h2>
+      <p class="gd-lead">These Hyper Inkers guides cover the details clients usually ask about before booking: cost, aftercare, style choice, and the first tattoo experience.</p>
     </header>
 
     <input type="radio" name="gdtab" id="gd-tattoo" class="gd-radio" checked aria-label="Tattoo guides">
     <input type="radio" name="gdtab" id="gd-piercing" class="gd-radio" aria-label="Piercing guides">
     <input type="radio" name="gdtab" id="gd-removal" class="gd-radio" aria-label="Removal guides">
-
-    <div class="gd-tabnav">
-      <label for="gd-tattoo" class="gd-tab">Tattoo</label>
-      <label for="gd-piercing" class="gd-tab">Piercing</label>
-      <label for="gd-removal" class="gd-tab">Removal</label>
+    <div class="gd-tabnav" role="tablist">
+      <label class="gd-tab" for="gd-tattoo">Tattoo</label>
+      <label class="gd-tab" for="gd-piercing">Piercing</label>
+      <label class="gd-tab" for="gd-removal">Removal</label>
     </div>
 
     <div class="gd-panels">
+
+      <!-- TATTOO -->
       <div class="gd-panel gd-panel--tattoo">
         <div class="gd-slider">
           <div class="gd-track">
-          <a class="gd-card" href="/blog/how-to-choose-a-tattoo-artist"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/8-step-expert-guide-for-first-time-clients-768x576.jpg" alt="Guide cover: how to choose the best tattoo artist" loading="lazy"><div class="gd-body"><h3>How to Choose the Best Tattoo Artist</h3><p>Define your style, research portfolios, and check hygiene before you book.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4" stroke-linecap="round"/></svg>Updated Jun 30, 2026</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
-          <a class="gd-card" href="/blog/female-tattoo-artists-san-antonio"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/07/best-female-tattoo-artist-in-san-antonio-tx-768x576.jpg" alt="Guide cover: top female tattoo artists in San Antonio" loading="lazy"><div class="gd-body"><h3>Top Female Tattoo Artists in San Antonio</h3><p>A look at the women shaping the art at Hyper Inkers.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4" stroke-linecap="round"/></svg>Updated Dec 13, 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
-          <a class="gd-card" href="/blog/what-to-eat-before-your-first-tattoo"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/what-to-eat-before-your-first-tattoo-768x576.jpg" alt="Guide cover: what to eat before getting a tattoo" loading="lazy"><div class="gd-body"><h3>What to Eat Before Getting a Tattoo</h3><p>What to eat and avoid before your session to prep your skin.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4" stroke-linecap="round"/></svg>Updated Aug 26, 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
-          <a class="gd-card" href="/blog/things-to-know-before-your-first-tattoo"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/first-tattoo-tips-the-a-z-preparation-guide-everything-you-need-to-know-do-1-768x576.jpg" alt="Guide cover: everything to know before your first tattoo" loading="lazy"><div class="gd-body"><h3>Everything to Know Before Your First Tattoo</h3><p>What to expect before your first tattoo, from design to healing.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4" stroke-linecap="round"/></svg>Updated Jun 30, 2026</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
+            <a class="gd-card" href="/blog/san-antonio-tattoo-prices"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/how-much-does-a-tattoo-cost-in-san-antonio-768x576.jpg" alt="Guide cover: how much does a tattoo cost in San Antonio" loading="lazy"><div class="gd-body"><h3>How Much Does a Tattoo Cost in San Antonio</h3><p>What goes into pricing and what to budget.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>Updated May 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
+            <a class="gd-card" href="/tattoo-aftercare"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/tattoo-aftercare-instructions-768x576.jpg" alt="Guide cover: tattoo aftercare" loading="lazy"><div class="gd-body"><h3>Tattoo Aftercare</h3><p>How to clean and protect a new tattoo while it heals.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>Updated Apr 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
+            <a class="gd-card" href="/blog/tattoo-styles-guide"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/tattoo-styles-guide-768x576.jpg" alt="Guide cover: tattoo style guide" loading="lazy"><div class="gd-body"><h3>Tattoo Style Guide</h3><p>The main styles explained, so you can find your look.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>Updated Jun 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
+            <a class="gd-card" href="/blog/things-to-know-before-your-first-tattoo"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/first-tattoo-tips-the-a-z-preparation-guide-everything-you-need-to-know-do-1-768x576.jpg" alt="Guide cover: everything to know before your first tattoo" loading="lazy"><div class="gd-body"><h3>Everything to Know Before Your First Tattoo</h3><p>What to expect, from consultation to healing.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>Updated Mar 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
+            <a class="gd-card" href="/blog/how-to-choose-a-tattoo-artist"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/8-step-expert-guide-for-first-time-clients-768x576.jpg" alt="Guide cover: how to choose a tattoo artist" loading="lazy"><div class="gd-body"><h3>How to Choose a Tattoo Artist</h3><p>Six steps to find the right artist for your idea.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>Updated May 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
           </div>
           <div class="gd-foot">
             <div class="gd-navgroup">
-              <button class="gd-nav gd-prev" type="button" aria-label="Previous guides">&lsaquo;</button>
-              <button class="gd-nav gd-next" type="button" aria-label="Next guides">&rsaquo;</button>
+              <button class="gd-nav gd-prev" type="button" aria-label="Previous tattoo guides">&lsaquo;</button>
+              <button class="gd-nav gd-next" type="button" aria-label="Next tattoo guides">&rsaquo;</button>
             </div>
             <div class="gd-progress" aria-hidden="true"><span class="gd-thumb"></span></div>
-            <a class="btn btn-ghost gd-morebtn" href="/blog">See All Tattoo Guides <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="btn btn-ghost gd-morebtn" href="#">See All Tattoo Guides <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
         </div>
       </div>
+
+      <!-- PIERCING -->
       <div class="gd-panel gd-panel--piercing">
         <div class="gd-slider">
           <div class="gd-track">
-          <a class="gd-card" href="/blog/how-to-choose-a-tattoo-artist"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/8-step-expert-guide-for-first-time-clients-768x576.jpg" alt="Guide cover: how to choose the best tattoo artist" loading="lazy"><div class="gd-body"><h3>How to Choose the Best Tattoo Artist</h3><p>Define your style, research portfolios, and check hygiene before you book.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4" stroke-linecap="round"/></svg>Updated Jun 30, 2026</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
-          <a class="gd-card" href="/blog/female-tattoo-artists-san-antonio"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/07/best-female-tattoo-artist-in-san-antonio-tx-768x576.jpg" alt="Guide cover: top female tattoo artists in San Antonio" loading="lazy"><div class="gd-body"><h3>Top Female Tattoo Artists in San Antonio</h3><p>A look at the women shaping the art at Hyper Inkers.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4" stroke-linecap="round"/></svg>Updated Dec 13, 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
-          <a class="gd-card" href="/blog/what-to-eat-before-your-first-tattoo"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/what-to-eat-before-your-first-tattoo-768x576.jpg" alt="Guide cover: what to eat before getting a tattoo" loading="lazy"><div class="gd-body"><h3>What to Eat Before Getting a Tattoo</h3><p>What to eat and avoid before your session to prep your skin.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4" stroke-linecap="round"/></svg>Updated Aug 26, 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
-          <a class="gd-card" href="/blog/things-to-know-before-your-first-tattoo"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/first-tattoo-tips-the-a-z-preparation-guide-everything-you-need-to-know-do-1-768x576.jpg" alt="Guide cover: everything to know before your first tattoo" loading="lazy"><div class="gd-body"><h3>Everything to Know Before Your First Tattoo</h3><p>What to expect before your first tattoo, from design to healing.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4" stroke-linecap="round"/></svg>Updated Jun 30, 2026</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
+            <a class="gd-card" href="/blog/piercing-placements"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/tattoo-styles-guide-768x576.jpg" alt="Guide cover: piercing placements" loading="lazy"><div class="gd-body"><h3>Complete Guide to Piercing Placements</h3><p>Ear, facial, and body placements explained.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>Updated Jun 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
+            <a class="gd-card" href="/blog/best-piercing-for-beginners"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/8-step-expert-guide-for-first-time-clients-768x576.jpg" alt="Guide cover: best piercing for beginners" loading="lazy"><div class="gd-body"><h3>Best Piercing for Beginners</h3><p>Four beginner-friendly spots to start with.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>Updated May 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
+            <a class="gd-card" href="/blog/do-piercings-hurt"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/how-much-does-a-tattoo-cost-in-san-antonio-768x576.jpg" alt="Guide cover: do piercings hurt" loading="lazy"><div class="gd-body"><h3>Do Piercings Hurt?</h3><p>What piercing pain really feels like.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>Updated Apr 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
+            <a class="gd-card" href="/blog/oral-piercing-aftercare"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/tattoo-aftercare-instructions-768x576.jpg" alt="Guide cover: oral piercing aftercare" loading="lazy"><div class="gd-body"><h3>Oral Piercing Aftercare</h3><p>Healing and caring for a new oral piercing.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>Updated May 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
+            <a class="gd-card" href="/blog/what-to-avoid-after-getting-a-piercing"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/first-tattoo-tips-the-a-z-preparation-guide-everything-you-need-to-know-do-1-768x576.jpg" alt="Guide cover: what to avoid after a piercing" loading="lazy"><div class="gd-body"><h3>What to Avoid After a Piercing</h3><p>Seven things to skip while it heals.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>Updated Mar 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
           </div>
           <div class="gd-foot">
             <div class="gd-navgroup">
-              <button class="gd-nav gd-prev" type="button" aria-label="Previous guides">&lsaquo;</button>
-              <button class="gd-nav gd-next" type="button" aria-label="Next guides">&rsaquo;</button>
+              <button class="gd-nav gd-prev" type="button" aria-label="Previous piercing guides">&lsaquo;</button>
+              <button class="gd-nav gd-next" type="button" aria-label="Next piercing guides">&rsaquo;</button>
             </div>
             <div class="gd-progress" aria-hidden="true"><span class="gd-thumb"></span></div>
-            <a class="btn btn-ghost gd-morebtn" href="/blog">See All Piercing Guides <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="btn btn-ghost gd-morebtn" href="#">See All Piercing Guides <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
         </div>
       </div>
+
+      <!-- REMOVAL (placeholder content — links to be finalized) -->
       <div class="gd-panel gd-panel--removal">
         <div class="gd-slider">
           <div class="gd-track">
-          <a class="gd-card" href="/blog/how-to-choose-a-tattoo-artist"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/8-step-expert-guide-for-first-time-clients-768x576.jpg" alt="Guide cover: how to choose the best tattoo artist" loading="lazy"><div class="gd-body"><h3>How to Choose the Best Tattoo Artist</h3><p>Define your style, research portfolios, and check hygiene before you book.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4" stroke-linecap="round"/></svg>Updated Jun 30, 2026</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
-          <a class="gd-card" href="/blog/female-tattoo-artists-san-antonio"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/07/best-female-tattoo-artist-in-san-antonio-tx-768x576.jpg" alt="Guide cover: top female tattoo artists in San Antonio" loading="lazy"><div class="gd-body"><h3>Top Female Tattoo Artists in San Antonio</h3><p>A look at the women shaping the art at Hyper Inkers.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4" stroke-linecap="round"/></svg>Updated Dec 13, 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
-          <a class="gd-card" href="/blog/what-to-eat-before-your-first-tattoo"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/what-to-eat-before-your-first-tattoo-768x576.jpg" alt="Guide cover: what to eat before getting a tattoo" loading="lazy"><div class="gd-body"><h3>What to Eat Before Getting a Tattoo</h3><p>What to eat and avoid before your session to prep your skin.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4" stroke-linecap="round"/></svg>Updated Aug 26, 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
-          <a class="gd-card" href="/blog/things-to-know-before-your-first-tattoo"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/first-tattoo-tips-the-a-z-preparation-guide-everything-you-need-to-know-do-1-768x576.jpg" alt="Guide cover: everything to know before your first tattoo" loading="lazy"><div class="gd-body"><h3>Everything to Know Before Your First Tattoo</h3><p>What to expect before your first tattoo, from design to healing.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="4.5" width="18" height="17" rx="2"/><path d="M3 9h18M8 2.5v4M16 2.5v4" stroke-linecap="round"/></svg>Updated Jun 30, 2026</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
+            <a class="gd-card" href="#"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/how-much-does-a-tattoo-cost-in-san-antonio-768x576.jpg" alt="Guide cover: cover-up tattoo cost" loading="lazy"><div class="gd-body"><h3>Cover-Up Tattoo Cost</h3><p>Why cover-ups cost more, and what drives the price.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>Updated May 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
+            <a class="gd-card" href="#"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/8-step-expert-guide-for-first-time-clients-768x576.jpg" alt="Guide cover: laser tattoo removal basics" loading="lazy"><div class="gd-body"><h3>Laser Tattoo Removal Basics</h3><p>How laser removal works and what to expect.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>Updated Jun 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
+            <a class="gd-card" href="#"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/tattoo-styles-guide-768x576.jpg" alt="Guide cover: choosing a redo artist" loading="lazy"><div class="gd-body"><h3>Choosing a Redo or Cover-Up Artist</h3><p>How to pick the right artist to fix old ink.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>Updated Apr 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
+            <a class="gd-card" href="#"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/tattoo-aftercare-instructions-768x576.jpg" alt="Guide cover: fading vs full removal" loading="lazy"><div class="gd-body"><h3>Fading vs Full Removal</h3><p>When to fade for a cover-up vs remove completely.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>Updated Mar 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
           </div>
           <div class="gd-foot">
             <div class="gd-navgroup">
-              <button class="gd-nav gd-prev" type="button" aria-label="Previous guides">&lsaquo;</button>
-              <button class="gd-nav gd-next" type="button" aria-label="Next guides">&rsaquo;</button>
+              <button class="gd-nav gd-prev" type="button" aria-label="Previous removal guides">&lsaquo;</button>
+              <button class="gd-nav gd-next" type="button" aria-label="Next removal guides">&rsaquo;</button>
             </div>
             <div class="gd-progress" aria-hidden="true"><span class="gd-thumb"></span></div>
-            <a class="btn btn-ghost gd-morebtn" href="/blog">See All Removal Guides <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            <a class="btn btn-ghost gd-morebtn" href="#">See All Removal Guides <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
           </div>
         </div>
       </div>
+
     </div>
 
   </div>
@@ -2845,11 +2847,10 @@ textarea.bk-input{min-height:96px;resize:vertical}
       updaters.push(update); update();
     });
     function all(){updaters.forEach(function(u){u();});}
-    document.querySelectorAll('.gd-radio').forEach(function(r){
-      r.addEventListener('change',function(){requestAnimationFrame(all);});
-    });
     window.addEventListener('resize',function(){clearTimeout(all._t);all._t=setTimeout(all,120);});
     window.addEventListener('load',all);
+    /* re-measure the shown panel's slider when a tab is selected (hidden panels have 0 width) */
+    document.querySelectorAll('.gd-radio').forEach(function(r){r.addEventListener('change',function(){requestAnimationFrame(all);});});
   })();
   </script>
 </section>
