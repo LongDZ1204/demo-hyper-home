@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tattoo &amp; Piercing Deals | Hyper Inkers San Antonio TX</title>
+<meta name="description" content="Ongoing deals at Hyper Inkers, San Antonio TX: Happy Hour piercing prices from $15, Portfolio Project tattoos 30-50% off, and 10% off for military and veterans.">
+
+<link rel="stylesheet" href="fonts-hyperinkers-2026-07-04/hyperinkers-fonts.css">
+<link rel="stylesheet" href="_foundation/hi-foundation.css">
+
+<!-- ============ SCHEMA · LocalBusiness (NAP) + OfferCatalog ============ -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "TattooParlor",
+      "@id": "https://hyperinkers.com/#organization",
+      "name": "Hyper Inkers",
+      "url": "https://hyperinkers.com/",
+      "telephone": "+1-210-997-9737",
+      "email": "hyperinkers1@gmail.com",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "8045 Callaghan Rd",
+        "addressLocality": "San Antonio",
+        "addressRegion": "TX",
+        "postalCode": "78230",
+        "addressCountry": "US"
+      },
+      "openingHoursSpecification": [
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday"], "opens": "10:00", "closes": "00:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Friday","Saturday"], "opens": "10:00", "closes": "01:00" },
+        { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "11:00", "closes": "01:00" }
+      ]
+    },
+    {
+      "@type": "OfferCatalog",
+      "name": "Hyper Inkers Ongoing Deals",
+      "itemListElement": [
+        { "@type": "Offer", "name": "Portfolio Project Discount", "description": "30-50% off when you give the artist full creative freedom on a larger piece (typically 8 inches or bigger).", "category": "Tattoo", "availability": "https://schema.org/LimitedAvailability" },
+        { "@type": "Offer", "name": "US Military & Veteran Discount", "description": "10% off all tattoo services for active-duty military and veterans with valid ID.", "category": "Tattoo" },
+        { "@type": "Offer", "name": "Happy Hour Piercing", "description": "Discounted piercing prices from $15 during select Happy Hour windows each week.", "category": "Piercing", "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "USD", "minPrice": "15" } }
+      ]
+    }
+  ]
+}
+</script>
+
+<style>
+/* ==== DEALS PAGE · section components (foundation tokens only) ==== */
+
+/* footer (ported verbatim from live) */
+.pf{border-top:1px solid var(--border);padding:40px 0;background:var(--black)}
+.pf-in{display:flex;flex-direction:column;gap:8px;text-align:center}
+.pf-nap{font-size:13.5px;color:var(--muted);line-height:1.6}
+.pf-nap a{color:var(--cream)}
+.pf-copy{font-size:12px;color:#777;letter-spacing:.03em}
+
+/* ---- compact HERO (editorial split) ---- */
+.dl-hero{padding-top:clamp(112px,13vh,140px)}     /* clears the absolute header */
+.dl-hero .wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(24px,4vw,56px);flex-wrap:wrap}
+.dl-hero h1 .o{color:var(--orange);display:block}
+.dl-hero__brief{font-family:var(--body);font-size:15.5px;line-height:1.6;color:#C9C9C9;max-width:340px}
+.dl-hero__brief b{color:#fff;font-weight:600}
+
+/* ---- PORTFOLIO · editorial asymmetric feature ---- */
+.feat{display:grid;grid-template-columns:0.82fr 1.18fr;gap:clamp(28px,4vw,60px);align-items:center}
+@media(max-width:860px){.feat{grid-template-columns:1fr;gap:24px}}
+.feat__media{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--card-brd);aspect-ratio:4/5;background:#111}
+.feat__media img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.feat:hover .feat__media img{transform:scale(1.03)}
+.feat__num{font-family:var(--head);font-weight:700;color:var(--orange);line-height:.86;letter-spacing:-.01em;
+  font-size:clamp(52px,7vw,84px);display:flex;align-items:baseline;gap:12px;margin-bottom:18px}
+.feat__num span{font-family:var(--sub);font-size:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--cream)}
+.feat__body h3{margin-bottom:14px}
+.feat__body p{margin-bottom:14px;max-width:56ch}
+.feat__note{color:var(--muted);font-size:14px}
+.feat__body .cta{margin-top:22px}
+
+/* ---- MILITARY · horizontal band (different family) ---- */
+.mil{background:var(--card);border:1px solid var(--card-brd);border-radius:14px;padding:clamp(24px,3vw,40px);
+  display:grid;grid-template-columns:auto 1fr auto;gap:clamp(24px,3.4vw,48px);align-items:center}
+@media(max-width:820px){.mil{grid-template-columns:1fr;gap:20px}}
+.mil__num{font-family:var(--head);font-weight:700;color:var(--orange);line-height:.86;
+  font-size:clamp(48px,6vw,72px);display:flex;align-items:baseline;gap:8px;white-space:nowrap}
+.mil__num span{font-family:var(--sub);font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--cream)}
+.mil__body h3{margin-bottom:8px}
+.mil__body p{max-width:62ch}
+
+/* ---- HAPPY HOUR · framed pricing print ---- */
+.hh-figure{max-width:820px;margin:clamp(28px,3.4vw,44px) auto 0;padding:clamp(12px,1.6vw,20px);
+  background:var(--surface);border:1px solid var(--card-brd);border-radius:14px}
+.hh-figure img{width:100%;height:auto;display:block;border-radius:6px}
+.pm-hint{font-family:var(--body);font-size:13.5px;color:var(--muted);text-align:center;max-width:640px;margin:22px auto 0}
+.pm-hint b{color:var(--cream);font-weight:600}
+.pm-hint a{color:var(--cream)}
+
+/* ---- Visit / NAP + Map (ported verbatim from live piercing hub) ---- */
+.s-visit{background:var(--black)}
+.s-visit .wrap{position:relative;z-index:2}
+.s-visit h2 .o{color:var(--orange)}
+.vs-intro{position:relative;max-width:720px;margin:16px auto 0;text-align:center;font-size:16.5px;line-height:1.62;color:#C9C9C9}
+.vs-intro b{color:#E9E9E9;font-weight:600}
+.vs-nap{display:grid;grid-template-columns:0.86fr 1.14fr;gap:clamp(24px,3.4vw,48px);align-items:stretch;margin-top:clamp(34px,4vw,50px)}
+@media(max-width:900px){.vs-nap{grid-template-columns:1fr;gap:26px}}
+.vs-contact{list-style:none;align-self:center}
+.vs-ci{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--hair)}
+.vs-ci:first-child{border-top:0;padding-top:0}
+.vs-ci:last-child{padding-bottom:0}
+.vs-ci-ic{flex:0 0 auto;width:24px;height:24px;color:var(--orange);margin-top:2px}
+.vs-ci-ic svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.vs-ci-lab{display:block;font-family:var(--sub);font-size:16px;font-weight:600;letter-spacing:.02em;color:var(--orange);margin-bottom:5px}
+.vs-ci-val{display:block;font-size:15px;line-height:1.55;color:#DEDEDE;text-decoration:none}
+a.vs-ci-val:hover{color:var(--orange-hi)}
+.vs-hours span{display:block}
+.vs-map{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--card-brd);min-height:360px;background:#111}
+@media(max-width:900px){.vs-map{min-height:300px}}
+.vs-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* closing CTA */
+.s-close{background:var(--black);text-align:center}
+.sc-txt{font-family:var(--body);font-size:clamp(18px,2vw,22px);color:#E9E9E9;max-width:560px;margin:0 auto 22px}
+.sc-txt b{color:#fff}
+.s-close .cta{justify-content:center}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ==== SHARED HEADER (ported verbatim) ==== -->
+<header class="hdr">
+  <div class="wrap">
+    <input type="checkbox" id="navtog" class="nav-toggle" aria-label="Open navigation menu">
+    <a class="logo" href="/" aria-label="Hyper Inkers home">
+      <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers">
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/tattoo">Tattoo</a>
+      <a href="/piercing">Piercing</a>
+      <a href="/tattoo-removal">Removal</a>
+      <a href="/artists">Artists</a>
+      <a href="/deals" aria-current="page">Deals</a>
+      <a href="#visit">Visit</a>
+      <a href="tel:+12109979737" class="nav-book">Call Now</a>
+    </nav>
+    <a class="book hdr-book" href="tel:+12109979737">Call Now</a>
+    <label for="navtog" class="nav-burger" aria-label="Open menu">
+      <svg class="ico-bars" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="ico-x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </label>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ========== HERO (compact editorial split) ========== -->
+<section class="section section--slim dl-hero">
+  <div class="wrap">
+    <h1>Pick a deal.<span class="o">Keep the standards.</span></h1>
+    <p class="dl-hero__brief">Ongoing tattoo and piercing offers at <b>Hyper Inkers, San Antonio</b>. Same artists, same standards, better price.</p>
+  </div>
+</section>
+
+<!-- ========== TATTOO DEALS ========== -->
+<section class="section" id="deals">
+  <div class="wrap">
+    <div class="section-head section-head--editorial">
+      <h2>Tattoo <span class="o">Deals</span></h2>
+      <p class="section-intro">Two ongoing ways to save on world-class tattoo work, for bold collectors and for those who served.</p>
+    </div>
+
+    <!-- Portfolio · editorial feature -->
+    <article class="feat">
+      <div class="feat__media">
+        <img src="https://hyperinkers.com/wp-content/uploads/2024/05/DSC00995-768x1149.jpg" alt="Large-scale portfolio tattoo by a Hyper Inkers artist in San Antonio" loading="lazy">
+      </div>
+      <div class="feat__body">
+        <div class="feat__num">30-50%<span>off</span></div>
+        <h3>Portfolio Project Discount</h3>
+        <p>Hand an artist full creative freedom on a larger piece and walk away with a one-of-a-kind tattoo for a fraction of the price. The artist designs it end to end, usually 8 inches or bigger, building standout portfolio work while you get a bold original.</p>
+        <p class="feat__note">Each artist takes only 1 to 2 portfolio spots a month. In-person consultation required. Year-round, but spots fill fast.</p>
+        <div class="cta"><a class="btn btn-primary" href="tel:+12109979737">Book a Consultation</a></div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- ========== MILITARY · horizontal band ========== -->
+<section class="section" style="padding-top:0">
+  <div class="wrap">
+    <div class="mil">
+      <div class="mil__num">10%<span>off</span></div>
+      <div class="mil__body">
+        <h3>Military &amp; Veteran Discount</h3>
+        <p>A thank-you for your service: 10% off all tattoo services for active-duty military members and veterans. Just present a valid military or veteran ID at checkout.</p>
+      </div>
+      <div class="cta"><a class="btn btn-primary" href="tel:+12109979737">Book Your Session</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== HAPPY HOUR · pricing print ========== -->
+<section class="section" id="happy-hour" style="padding-top:0">
+  <div class="wrap">
+    <div class="section-head section-head--editorial">
+      <h2>Happy Hour <span class="o">Piercing Prices</span></h2>
+      <p class="section-intro">Walk in during a Happy Hour window for our deepest piercing prices, from $15. Struck prices are the regular rate. Windows run select hours each week based on piercer availability.</p>
+    </div>
+
+    <figure class="hh-figure">
+      <img src="assets/happy-hour-pricing.jpg" alt="Hyper Inkers Happy Hour piercing prices: lobe, helix, conch, flat and hidden helix $15 (flat back stud included); nose, tragus, forward helix, rook, daith, eyebrow, medusa, labret, ashley, smiley, tongue, bridge, septum, belly and nipples $20 (basic jewelry included); snake eyes, snakebites, angel fangs and dahlia $25; industrial and dimple $30; dermal piercing $45; anti eyebrow and surface tragus staple bar $55." loading="lazy">
+    </figure>
+
+    <p class="pm-hint"><b>Piercings are walk-in only.</b> Happy Hour times shift with piercer availability, so call <a href="tel:+12109979737">(210) 997-9737</a> to confirm today's window before you head in.</p>
+  </div>
+</section>
+
+<!-- ========== VISIT / NAP + MAP (ported verbatim) ========== -->
+<section class="section s-visit" id="visit">
+  <div class="wrap">
+    <header class="section-head center">
+      <h2>Visit Our <span class="o">Studio</span> in San Antonio</h2>
+      <p class="vs-intro"><b>Hyper Inkers is at 8045 Callaghan Road, open late seven days a week.</b> Piercings are walk-in only, so stop in during a Happy Hour window. For tattoo deals, call ahead to book your artist.</p>
+    </header>
+
+    <div class="vs-nap">
+      <ul class="vs-contact">
+        <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><div><span class="vs-ci-lab">Hotline</span><a class="vs-ci-val" href="tel:+12109979737">(210) 997-9737</a></div></li>
+        <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><div><span class="vs-ci-lab">Email</span><a class="vs-ci-val" href="mailto:hyperinkers1@gmail.com">hyperinkers1@gmail.com</a></div></li>
+        <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><span class="vs-ci-lab">Address</span><span class="vs-ci-val">8045 Callaghan Rd, San Antonio, TX 78230</span></div></li>
+        <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><span class="vs-ci-lab">Hours</span><span class="vs-ci-val vs-hours"><span>Mon to Thu, 10am to 12am</span><span>Fri to Sat, 10am to 1am</span><span>Sun, 11am to 1am</span></span></div></li>
+      </ul>
+      <div class="vs-map">
+        <iframe src="https://maps.google.com/maps?q=8045%20Callaghan%20Rd,%20San%20Antonio,%20TX%2078230&z=14&output=embed" loading="lazy" title="Map to Hyper Inkers, 8045 Callaghan Rd, San Antonio, TX"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== CLOSING CTA ========== -->
+<section class="section s-close" id="cta-close" aria-label="Claim a deal">
+  <div class="wrap">
+    <p class="sc-txt"><b>Ready to claim a deal?</b> Walk in for a Happy Hour piercing, or call to book a tattoo deal.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=8045+Callaghan+Rd%2C+San+Antonio%2C+TX+78230" target="_blank" rel="noopener">Get Directions</a>
+      <a class="btn btn-ghost" href="tel:+12109979737"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .7-.2 1l-2.3 2.2z"/></svg>Call (210) 997-9737</a>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==== FOOTER · NAP (ported verbatim) ==== -->
+<footer class="pf">
+  <div class="wrap pf-in">
+    <p class="pf-nap"><b>Hyper Inkers</b> &middot; 8045 Callaghan Rd, San Antonio, TX 78230 &middot; <a href="tel:+12109979737">(210) 997-9737</a> &middot; Mon to Thu 10am to 12am, Fri to Sat 10am to 1am, Sun 11am to 1am</p>
+    <p class="pf-copy">&copy; Hyper Inkers &middot; Tattoo &amp; Piercing Deals in San Antonio</p>
+  </div>
+</footer>
+
+</body>
+</html>
