@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Booking Form v7 — Embed Demo | Hyper Inkers</title>
+  <link rel="stylesheet" href="fonts-hyperinkers-2026-07-04/hyperinkers-fonts.css">
+  <link rel="stylesheet" href="_foundation/hi-foundation.css">
+  <link rel="stylesheet" href="_foundation/components/booking-form.css">
+  <style>
+    .demo-hero{max-width:1100px;margin:80px auto;padding:48px 32px;text-align:center;
+      background:linear-gradient(135deg,#1a1a1a,#0F0F0F);border:1px solid rgba(204,102,0,.25);border-radius:16px}
+    .demo-hero h1{font-family:var(--head);font-size:clamp(28px,4vw,44px);color:#fff;text-transform:uppercase;margin-bottom:14px}
+    .demo-hero p{color:var(--muted);max-width:540px;margin:0 auto 28px}
+    .btn{background:var(--orange);color:#fff;padding:14px 32px;border-radius:4px;
+      font-family:var(--sub);font-weight:700;text-transform:uppercase;letter-spacing:1.5px;cursor:pointer;border:none}
+    .btn:hover{background:var(--orange-hi)}
+  </style>
+</head>
+<body>
+  <section class="demo-hero">
+    <h1>Bring your tattoo idea to life</h1>
+    <p>v7 embed: dropdowns for Service/Artist, sticky footer, CTA glows when required fields are valid.</p>
+    <button class="btn" data-open-booking>Book your appointment</button>
+  </section>
+
+
+<!-- ============================================================================
+     HYPER INKERS — BOOKING FORM markup  (design-system component · v7)
+     Paste this block ONCE per page (near the end of <body>). Trigger from ANY
+     element with  data-open-booking . Requires booking-form.css + booking-form.js
+     v7: Service+Artist dropdowns · sticky footer · CTA glows when required valid.
+     ============================================================================ -->
+<div class="modal-overlay" id="hiBookingModal" data-booking-overlay role="dialog" aria-modal="true" aria-labelledby="hiBookingTitle">
+  <div class="modal">
+
+    <!-- fixed header -->
+    <div class="modal__header-band">
+      <h2 id="hiBookingTitle">Book Your<br>Appointment</h2>
+      <button class="modal__close" data-booking-close aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 6L6 18M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+
+    <!-- scroll body -->
+    <div class="modal__scroll" data-booking-body>
+      <p class="modal__intro">Tell us your idea. We'll match you with the right artist and reply within 24 hours.</p>
+
+      <form id="hiBookingForm" data-booking-form>
+        <div class="field-grid">
+          <div class="field-group">
+            <label class="field-label" for="hi-name">Your name<span class="req">*</span></label>
+            <input type="text" id="hi-name" class="field-input" placeholder="e.g. Maria Lopez" required>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="hi-phone">Phone<span class="req">*</span></label>
+            <input type="tel" id="hi-phone" class="field-input" placeholder="(210) 555-0000" inputmode="tel" required>
+          </div>
+        </div>
+
+        <div class="field-grid">
+          <div class="field-group">
+            <label class="field-label" for="hi-email">Email<span class="req">*</span></label>
+            <input type="email" id="hi-email" class="field-input" placeholder="you@email.com" required>
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="hi-date">Preferred date<span class="opt">Optional</span></label>
+            <input type="date" id="hi-date" class="field-input">
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="hi-service">Service<span class="req">*</span></label>
+          <select id="hi-service" class="field-select is-empty" required>
+            <option value="" disabled selected>Choose a service</option>
+            <option value="custom">Custom Tattoo</option>
+            <option value="coverup">Cover-up Tattoo</option>
+            <option value="removal">Laser Removal</option>
+          </select>
+          <div class="walk-in-note" role="note">
+            <span>Piercings are walk-ins only. Call <a href="tel:+12109979737">(210) 997-9737</a> for questions.</span>
+          </div>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="hi-artist">Choose your artist<span class="opt">Optional</span></label>
+          <select id="hi-artist" class="field-select">
+            <option value="open" selected>Open to recommendation</option>
+            <option value="genesis">Genesis (Removal · Cover-up)</option>
+            <option value="mancha">Mancha</option>
+            <option value="navei">Navei</option>
+            <option value="minh">Minh Pham (Cover-up)</option>
+            <option value="christian">Christian</option>
+            <option value="tai">Tai</option>
+          </select>
+        </div>
+
+        <div class="field-group">
+          <label class="field-label" for="hi-desc">Tell us your idea<span class="opt">Optional</span></label>
+          <textarea id="hi-desc" class="field-textarea" placeholder="e.g. Small fine-line rose on forearm, ~3 inches"></textarea>
+        </div>
+      </form>
+    </div>
+
+    <!-- sticky footer: status + CTA (button submits the form via form="") -->
+    <div class="modal__footer" data-booking-footer>
+      <p class="modal__status" data-booking-status>3 required fields remaining</p>
+      <button type="submit" form="hiBookingForm" class="modal__submit" data-booking-submit disabled>Book My Appointment</button>
+    </div>
+
+    <!-- success -->
+    <div class="modal-success" data-booking-success>
+      <div class="modal-success__icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </div>
+      <h3>Request sent!</h3>
+      <p>We'll reply within <strong>24 hours</strong> with available dates, your artist match, and a rough quote.</p>
+    </div>
+
+  </div>
+</div>
+
+  <script src="_foundation/components/booking-form.js" defer></script>
+</body>
+</html>
