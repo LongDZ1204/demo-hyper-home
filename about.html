@@ -1,0 +1,2552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Hyper Inkers is an artist-owned tattoo studio in San Antonio, TX, doing custom tattoos, piercings, and tattoo removal since 2023, backed by an award-winning team with 40+ trophies and thousands of five-star reviews.">
+<title>About Hyper Inkers | Tattoo Studio in San Antonio, TX</title>
+<link rel="stylesheet" href="fonts-hyperinkers-2026-07-04/hyperinkers-fonts.css">
+<link rel="stylesheet" href="_foundation/hi-foundation.css">
+<!-- Session 1 inline CSS ported verbatim from homepage 2026-07-05 (hero + shared scaffolding) -->
+<style>
+:root{
+  --bg:#0F0F0F; --black:#000; --surface:#161616; --border:#2A2A2A;
+  --card:rgba(0,0,0,.5); --card-brd:rgba(255,255,255,.16); /* were orphaned (used but undefined) -> borders on nav btns / tags / video badge silently dropped */
+  --orange:#CC6600; --orange-hi:#E67500; --cream:#DCDBBE;
+  --text:#FFFFFF; --muted:#B0B0B0;
+  --head:"fonttitle","Helvetica Neue",Arial,sans-serif;
+  --sub:"tt-runs-trial-demibo","Helvetica Neue",Arial,sans-serif;
+  --body:"Gilroy","Helvetica Neue",Arial,sans-serif;
+  --ease:cubic-bezier(0.16,1,0.3,1);
+  --wrap:1240px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{overflow-x:clip}
+body{background:var(--bg);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+.wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:32px}
+
+/* ---------- HEADER ---------- */
+.hdr{position:absolute;top:0;left:0;right:0;z-index:40}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:78px}
+.hdr .logo img{height:26px;width:auto;filter:brightness(0) invert(1)}
+.nav{display:flex;gap:30px;font-family:var(--sub);font-size:12.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--cream)}
+.nav a{opacity:.82;transition:opacity .2s var(--ease)}
+.nav a:hover{opacity:1;color:#fff}
+.hdr .book{font-family:var(--sub);font-size:12.5px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.35);padding:11px 20px;border-radius:4px;transition:border-color .2s var(--ease),background .2s var(--ease)}
+.hdr .book:hover{border-color:var(--orange);background:var(--orange)}
+/* ---- skip link + mobile nav: full-screen dark drawer (CSS-only checkbox-hack) ---- */
+.skip{position:absolute;left:12px;top:-70px;z-index:100;background:var(--orange);color:#fff;
+  font-family:var(--sub);font-size:13px;letter-spacing:.04em;text-transform:uppercase;padding:11px 18px;border-radius:4px;
+  transition:top .2s var(--ease)}
+.skip:focus{top:12px;outline:2px solid #fff;outline-offset:2px}
+.nav-toggle{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+.nav-burger{display:none}
+.nav-book{display:none}
+@media(max-width:900px){
+  .hdr .hdr-book{display:none}
+  .nav-burger{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;
+    color:var(--cream);cursor:pointer;z-index:60;background:none;border:0}
+  .nav-burger svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+  .nav-burger .ico-x{display:none}
+  .nav-toggle:checked ~ .nav-burger .ico-bars{display:none}
+  .nav-toggle:checked ~ .nav-burger .ico-x{display:block}
+  .nav-toggle:focus-visible ~ .nav-burger{outline:2px solid var(--orange);outline-offset:2px;border-radius:4px}
+  .nav{position:fixed;inset:0;z-index:55;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;
+    background:rgba(8,8,8,.985);font-size:clamp(24px,7.5vw,36px);letter-spacing:.01em;
+    opacity:0;visibility:hidden;transform:translateY(-6px);
+    transition:opacity .3s var(--ease),transform .35s var(--ease),visibility 0s .35s}
+  .nav a{opacity:.92}
+  .nav .nav-book{display:inline-flex;align-items:center;justify-content:center;margin-top:10px;min-height:52px;padding:14px 34px;
+    background:var(--orange);color:#fff;border-radius:4px;font-size:15px;letter-spacing:.06em}
+  .nav-toggle:checked ~ .nav{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+  body:has(#navtog:checked){overflow:hidden}
+}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:min(100svh,900px);display:flex;flex-direction:column;justify-content:center;overflow:clip;background:var(--black);padding:96px 0 44px}
+.hero-media{position:absolute;inset:0;z-index:0}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:46% 40%;
+  animation:kenburns 30s var(--ease) infinite alternate;transform-origin:46% 40%}
+@keyframes kenburns{from{transform:scale(1.05)}to{transform:scale(1.12)}}
+/* stronger scrim — lead must read over the busy skull image */
+.hero-scrim{position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(90deg, rgba(13,13,13,0.97) 0%, rgba(13,13,13,0.9) 34%, rgba(13,13,13,0.58) 56%, rgba(13,13,13,0.4) 100%),
+    linear-gradient(0deg, rgba(13,13,13,0.75) 0%, rgba(13,13,13,0) 42%);}
+.grain{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:.04;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+
+.hero-body{position:relative;z-index:5;padding:0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,0.9fr);gap:46px;align-items:center;width:100%}
+/* desktop: CTA sits under the text (col1 row2); award image spans right, centered */
+@media(min-width:821px){
+  .hero-grid{grid-template-rows:auto auto;align-items:start;column-gap:46px;row-gap:0}
+  .hero-col{grid-column:1;grid-row:1}
+  .cta{grid-column:1;grid-row:2}
+  .award-card{grid-column:2;grid-row:1 / span 2;align-self:center;margin-left:auto}
+}
+
+/* text column */
+/* hero Google-review badge — bare (no pill), colored G on dark, gold stars, G medallion style */
+.badge{display:inline-flex;align-items:center;gap:11px;color:var(--cream);margin-bottom:24px;
+  border:0;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding:0;border-radius:0}
+.badge .gg{width:clamp(26px,6vw,30px);height:clamp(26px,6vw,30px);flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
+.badge-col{display:flex;flex-direction:column;gap:2px}
+.badge-r1{display:flex;align-items:center;gap:9px}
+.badge-num{font-family:var(--head);font-weight:700;font-size:clamp(20px,4.4vw,25px);line-height:1;color:#fff;letter-spacing:.01em}
+.badge .stars{color:#F5B301;letter-spacing:2px;font-size:clamp(13px,3.1vw,15px);line-height:1}
+.badge-cnt{font-family:var(--sub);font-size:13px;letter-spacing:.01em;color:#D6D6D6}
+.badge-cnt b{color:#fff;font-weight:700}
+h1{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:0.94;letter-spacing:-0.005em;
+  font-size:clamp(34px,4.6vw,60px);color:#fff;text-shadow:0 2px 34px rgba(0,0,0,.55)}
+h1 .o{color:var(--orange);display:block}
+
+/* expandable lead — checkbox hack, full text + benefit bullets stay in DOM */
+.more-cb{position:absolute;width:1px;height:1px;opacity:0;margin:0}
+.lead{margin-top:22px;max-width:560px;font-size:16.5px;line-height:1.62;color:#E4E4E4;text-shadow:0 1px 10px rgba(0,0,0,.55);
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;line-clamp:4;overflow:hidden}
+.more-cb:checked ~ .lead{-webkit-line-clamp:unset;line-clamp:unset}
+.lead-extra{max-width:560px;max-height:0;overflow:hidden;opacity:0;transition:opacity .3s var(--ease),margin-top .3s var(--ease);text-shadow:0 1px 10px rgba(0,0,0,.5)}
+.more-cb:checked ~ .lead-extra{max-height:900px;opacity:1;margin-top:16px}
+.lx-setup{font-size:15px;line-height:1.55;color:#D6D6D6;margin-bottom:10px}
+.benefit-list{list-style:none;display:flex;flex-direction:column;gap:9px}
+.benefit-list li{position:relative;padding-left:18px;font-size:14.5px;line-height:1.5;color:#CFCFCF}
+.benefit-list li::before{content:"";position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--orange)}
+.benefit-list li b{color:#fff;font-weight:600}
+
+.more-btn{display:inline-flex;align-items:center;gap:8px;margin-top:12px;cursor:pointer;
+  font-family:var(--sub);font-size:12px;letter-spacing:0.08em;text-transform:uppercase;color:var(--orange);transition:color .2s var(--ease)}
+.more-btn:hover{color:var(--orange-hi)}
+.more-btn svg{width:14px;height:14px;transition:transform .25s var(--ease)}
+.more-btn .less{display:none}
+.more-cb:checked ~ .more-btn .more{display:none}
+.more-cb:checked ~ .more-btn .less{display:inline}
+.more-cb:checked ~ .more-btn svg{transform:rotate(180deg)}
+.more-cb:focus-visible ~ .more-btn{outline:2px solid var(--orange);outline-offset:3px;border-radius:2px}
+
+.cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:15px 22px;border-radius:4px;
+  font-family:var(--sub);font-weight:600;font-size:14.5px;letter-spacing:0.06em;text-transform:uppercase;cursor:pointer;
+  border:1px solid transparent;transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease)}
+.btn-primary{background:var(--orange);color:#fff}
+.btn-primary:hover{background:var(--orange-hi)}
+.btn-ghost{background:rgba(0,0,0,.3);color:#fff;border-color:rgba(255,255,255,.4)}
+.btn-ghost:hover{border-color:var(--cream)}
+.btn svg{width:17px;height:17px;flex-shrink:0}
+
+/* award proof card (LANDSCAPE 4:3) */
+.award-card{position:relative;aspect-ratio:4/3;max-height:462px;width:100%;
+  border:1px solid rgba(255,255,255,.14);border-radius:5px;overflow:hidden;box-shadow:0 26px 74px rgba(0,0,0,.55)}
+.award-card>img{width:100%;height:100%;object-fit:cover;object-position:50% 42%}
+
+/* ---------- SHARED INFO TOOLTIP (ⓘ) ---------- */
+.info{position:relative;display:inline-flex;align-items:center;justify-content:center;
+  width:15px;height:15px;border-radius:50%;border:1px solid rgba(255,255,255,.42);background:rgba(255,255,255,.07);
+  color:rgba(255,255,255,.8);flex-shrink:0;cursor:help;
+  transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease)}
+/* crisp SVG "i" mark (dot + rounded stem) — replaces the literal text "i" that rendered off-centre/thin */
+.info>svg{width:62%;height:62%;display:block}
+/* C6 · expand pointer target of small ⓘ + read-more toggles to WCAG 2.2 min (visual size unchanged) */
+.info::after{content:"";position:absolute;inset:-6px}
+.rvi-more::before,.svc-imore::before,.arti-imore::before,.gali-imore::before,.aw-more::before,.adv-more::before,.pr-more::before,.vs-more::before{content:"";position:absolute;inset:-3px}
+.stat-lbl .info{width:13px;height:13px}
+.info:hover,.info:focus-visible{border-color:var(--orange);color:#fff;outline:none}
+.info .tip{position:absolute;z-index:30;bottom:calc(100% + 9px);left:50%;transform:translateX(-50%) translateY(4px);
+  width:max-content;max-width:230px;background:var(--black);border:1px solid var(--orange);border-radius:4px;
+  padding:9px 12px;font-family:var(--body);font-size:12px;line-height:1.5;font-style:normal;color:#fff;letter-spacing:0;text-transform:none;text-align:left;white-space:normal;
+  opacity:0;visibility:hidden;transition:opacity .15s var(--ease),transform .15s var(--ease),visibility 0s .2s;pointer-events:none}
+.info:hover .tip,.info:focus-visible .tip{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);transition-delay:.05s}
+.info--award{position:absolute;top:12px;right:12px;z-index:6;width:20px;height:20px;
+  background:rgba(0,0,0,.5);backdrop-filter:blur(3px);border-color:rgba(255,255,255,.5);color:rgba(255,255,255,.9)}
+.info--award .tip{bottom:auto;top:calc(100% + 9px);left:auto;right:0;transform:translateY(4px);width:min(240px,60vw)}
+.info--award:hover .tip,.info--award:focus-visible .tip{transform:translateY(0)}
+
+/* ---------- STAT BAND (Option A: charcoal card, orange top accent, horizontal stat rows) ---------- */
+.statband{position:relative;z-index:6;align-self:center;width:calc(100% - 48px);max-width:var(--wrap);margin:36px auto 0;
+  border-radius:14px;overflow:hidden;
+  background:rgba(10,10,10,.62);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);
+  border:1px solid rgba(255,255,255,.16);
+  box-shadow:0 26px 70px rgba(0,0,0,.5)}
+/* refine: subtle fading orange top hairline → reads as an intentional HI "stat plate", not a default frosted card */
+.statband::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;z-index:2;opacity:.8;
+  background:linear-gradient(90deg,transparent,var(--orange) 28%,var(--orange) 72%,transparent)}
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);list-style:none}
+.stat{display:flex;align-items:center;justify-content:center;gap:13px;padding:24px 16px;border-right:1px solid rgba(255,255,255,.08)}
+.stat:last-child{border-right:none}
+.stat-ic{width:34px;height:34px;flex-shrink:0;color:var(--orange)}
+.stat-ic svg{width:100%;height:100%;display:block;fill:currentColor}
+.stat-text{display:flex;flex-direction:column;gap:3px;text-align:left}
+.stat-num{font-family:var(--head);font-size:clamp(23px,2vw,30px);font-weight:700;color:#fff;line-height:1;letter-spacing:.01em}
+.stat-lbl{display:inline-flex;align-items:center;gap:6px;font-family:var(--sub);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:#ECECEC}
+/* mobile swipe progress line */
+.stat-track{display:none}
+
+@media(max-width:640px){
+  /* CTA — full-width both, even, 1 line */
+  .cta{flex-direction:column;gap:12px;margin-top:22px}
+  .cta .btn{width:100%;font-size:12.5px;padding:15px 16px;letter-spacing:.04em}
+  /* stat band — 2 per view + horizontal slide + progress line */
+  .statband{width:calc(100% - 24px);margin-top:26px}
+  .stat-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .stat-row::-webkit-scrollbar{display:none}
+  .stat{flex:0 0 50%;scroll-snap-align:start;gap:11px;padding:22px 8px}
+  .stat-ic{width:30px;height:30px}
+  .stat-num{font-size:clamp(21px,5.6vw,27px)}
+  .stat-lbl{font-size:10.5px;gap:5px}
+  .stat-lbl .info{width:14px;height:14px;font-size:9.5px}
+  .stat-track{display:block;position:relative;height:3px;margin:2px 16px 15px;background:rgba(255,255,255,.13);border-radius:2px}
+  .stat-thumb{position:absolute;top:0;left:0;height:100%;width:50%;background:var(--orange);border-radius:2px}
+}
+
+/* ---------- RESPONSIVE HERO ---------- */
+@media(max-width:820px){
+  .hero{padding:84px 0 30px}
+  .hero-grid{grid-template-columns:1fr;gap:26px}
+  .award-card{max-width:520px;max-height:none;margin-inline:0}
+}
+@media(max-width:560px){.lead{-webkit-line-clamp:2;line-clamp:2}.hero-body .lead{font-size:16px}}
+@media(min-width:561px) and (max-width:820px){.lead{-webkit-line-clamp:3;line-clamp:3}}
+
+@media(prefers-reduced-motion:reduce){
+  .hero-media img{animation:none;transform:scale(1.05)}
+  *{transition-duration:.01ms !important}
+}
+
+/* ============ AS SEEN ON (press marquee) — folded in 2026-07-04; reuses hero tokens ============ */
+.press{position:relative;padding:clamp(40px,4.4vw,56px) 0;border-top:1px solid rgba(255,255,255,.08)}
+.press-in{max-width:var(--wrap);margin-inline:auto;padding-inline:32px}
+.press-lbl{display:block;text-align:center;font-family:var(--sub);font-weight:600;font-size:12.5px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--cream);opacity:.9;margin-bottom:26px}
+.press-marquee{position:relative;overflow-x:clip;overflow-y:visible}
+/* edge fade via OVERLAYS, not mask (a mask would clip the hover tooltips) */
+.press-marquee::before,.press-marquee::after{content:"";position:absolute;top:0;bottom:0;width:72px;z-index:4;pointer-events:none}
+.press-marquee::before{left:0;background:linear-gradient(90deg,var(--bg) 12%,transparent)}
+.press-marquee::after{right:0;background:linear-gradient(270deg,var(--bg) 12%,transparent)}
+.press-track{list-style:none;display:flex;align-items:center;width:max-content;
+  animation:pressmarq 36s linear infinite}
+.press-marquee:hover .press-track{animation-play-state:paused}
+@keyframes pressmarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.plogo{position:relative;flex:0 0 auto;margin-right:66px;display:flex;align-items:center;justify-content:center}
+.plogo img{height:30px;width:auto;filter:brightness(0) invert(1);opacity:.55;transition:opacity .25s var(--ease)}
+.plogo:hover img{opacity:1}
+/* optical sizing — uniform height != uniform visual presence */
+.plogo.l-az    img{height:29px}
+.plogo.l-tbr   img{height:44px}
+.plogo.l-skope img{height:30px}
+.plogo.l-gig   img{height:26px}
+.plogo.l-web   img{height:34px}
+/* claim tooltip — points UP, consistent with the site's other ⓘ tooltips (text node stays in DOM for SEO) */
+.plogo .tip{position:absolute;z-index:30;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(4px);
+  width:max-content;max-width:260px;background:var(--black);border:1px solid var(--orange);border-radius:4px;
+  padding:9px 12px;font-family:var(--body);font-size:12px;line-height:1.5;color:#fff;text-align:center;white-space:normal;
+  opacity:0;visibility:hidden;transition:opacity .15s var(--ease),transform .15s var(--ease),visibility 0s .2s;pointer-events:none}
+.plogo:hover .tip{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);transition-delay:.05s}
+@media(max-width:640px){
+  .press{padding:34px 0}
+  .press-in{padding-inline:20px}
+  .press-lbl{margin-bottom:20px}
+  .press-marquee::before,.press-marquee::after{width:40px}
+  .press-track{animation-duration:26s}
+  .plogo{margin-right:44px}
+  .plogo img{height:26px}
+  .plogo.l-az  img{height:25px}
+  .plogo.l-tbr img{height:38px}
+  .plogo.l-gig img{height:23px}
+  .plogo.l-web img{height:30px}
+}
+@media(prefers-reduced-motion:reduce){.press-track{animation:none}}
+
+/* ============ SHARED SECTION SCAFFOLDING (matches foundation values; for body sections built into this file) ============ */
+.section{position:relative;padding:clamp(60px,7vw,100px) 0;overflow:clip}
+/* short connective lead between a section intro and its cards (restored from source content) */
+.sec-bridge{max-width:620px;margin:14px auto 4px;text-align:center;font-family:var(--sub);font-size:14.5px;letter-spacing:.01em;color:var(--muted)}
+.section h2{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:0.98;letter-spacing:-0.005em;
+  font-size:clamp(28px,3.4vw,44px);color:#fff}
+.section h2 .o{color:var(--orange)}
+@media(max-width:560px){
+  .wrap{padding-inline:20px}
+  .hero-col{min-width:0}
+  .hero-body .lead{width:min(100%,34ch);max-width:34ch;overflow-wrap:normal;word-break:normal}
+  .section h2{max-width:12.5em;margin-inline:auto;font-size:clamp(26px,7.2vw,34px);line-height:1.04;text-wrap:balance}
+  .section-head--editorial h2{margin-left:0;margin-right:auto}
+}
+.section-head--editorial .arti-intro,.section-head--editorial .gali-intro{margin-left:0;margin-right:auto;text-align:left}
+.artists .sec-bridge,.gallery .sec-bridge{margin-left:0;text-align:left}   /* editorial: bridge left too */
+.rvi-more,.svc-imore,.arti-imore,.gali-imore{transform:translateY(-50%)}   /* center read-more arrow on the text line (was 11px low) */
+.artists>.wrap,.gallery>.wrap,.services>.wrap{position:relative;z-index:1}
+
+/* ============ SECTION 03 · REVIEWS (2-tab · slider · split · leave-a-review) ============ */
+.reviews{background:var(--bg)}
+
+/* intro clamp 2 lines + CENTERED text, JS-hugged arrow (cloned from awards phiên 2 for parity) */
+.rvi-cb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
+.rvi-intro{position:relative;max-width:600px;margin:16px auto 0;text-align:center;
+  font-size:16.5px;line-height:1.62;color:#C9C9C9}
+.rvi-intro b{color:#fff;font-weight:600}
+.rvi-intro-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+.rvi-cb:checked ~ .rvi-intro .rvi-intro-txt{-webkit-line-clamp:40;line-clamp:40}
+.rvi-more{position:absolute;left:0;top:0;width:22px;height:22px;display:grid;place-items:center;
+  color:var(--orange);cursor:pointer;transition:color .2s var(--ease)}
+.rvi-more:hover{color:var(--orange-hi)}
+.rvi-more svg{width:20px;height:20px;transition:transform .25s var(--ease)}
+.rvi-cb:checked ~ .rvi-intro .rvi-more svg{transform:rotate(180deg)}
+.rvi-cb:focus-visible ~ .rvi-intro .rvi-more{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
+
+/* tabs (radio-hack) */
+.rv-tabs{text-align:center}
+.rv-tabs > input[name="rvtab"]{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.rv-tabnav{display:inline-flex;gap:5px;margin-bottom:clamp(28px,3vw,38px);padding:5px;border-radius:999px;
+  background:rgba(255,255,255,.05);border:1px solid var(--card-brd)}
+.rv-tabnav label{display:inline-flex;align-items:center;gap:8px;padding:10px 20px;border-radius:999px;cursor:pointer;
+  font-family:var(--sub);font-weight:600;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--cream);
+  transition:background .2s var(--ease),color .2s var(--ease)}
+.rv-tabnav label svg{width:14px;height:14px;flex-shrink:0}
+.rv-tabnav label:hover{color:#fff}
+.rv-tabnav .t-sm{display:none}
+#rvtab-cust:checked ~ .rv-tabnav label[for="rvtab-cust"],
+#rvtab-video:checked ~ .rv-tabnav label[for="rvtab-video"]{background:var(--orange);color:#fff}
+#rvtab-cust:focus-visible ~ .rv-tabnav label[for="rvtab-cust"],
+#rvtab-video:focus-visible ~ .rv-tabnav label[for="rvtab-video"]{outline:2px solid var(--orange);outline-offset:2px}
+.rv-panel{display:none;text-align:left}
+#rvtab-cust:checked ~ .rv-panel-cust{display:block}
+#rvtab-video:checked ~ .rv-panel-video{display:block}
+
+/* rating bar + leave-a-review (Google only) */
+.rv-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  margin-bottom:22px;padding:15px 20px;border-radius:12px;background:var(--surface);border:1px solid var(--border)}
+.rv-rate{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
+.rv-rate .rv-stars{color:var(--orange);font-size:15px;letter-spacing:2px}
+.rv-rate b{font-family:var(--head);font-size:22px;color:#fff;line-height:1}
+.rv-rate span{font-size:13.5px;color:var(--muted)}
+.rv-leave{display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border-radius:8px;background:var(--orange);color:#fff;
+  font-family:var(--sub);font-weight:600;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;transition:background .2s var(--ease)}
+.rv-leave:hover{background:var(--orange-hi)}
+.rv-leave svg{width:18px;height:18px;background:#fff;border-radius:50%;padding:2px}
+.rv-leave-ic{display:inline-flex;align-items:center}
+.rv-leave-ic svg{position:relative}
+.rv-leave-ic svg:first-child{z-index:2;box-shadow:0 0 0 2.5px var(--orange)}
+.rv-leave-ic svg:last-child{z-index:1;margin-left:-7px}
+.rv-leave:hover .rv-leave-ic svg:first-child{box-shadow:0 0 0 2.5px var(--orange-hi)}
+
+/* full-width slider (reviews live inside cards now — no separate artwork column) */
+.rv-slider-wrap{position:relative;min-width:0}
+.rv-slider{list-style:none;display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;align-items:stretch;padding:2px 2px 4px}
+.rv-slider::-webkit-scrollbar{display:none}
+
+/* slider foot — nav (‹ ›) + progress only, awards-synced (no CTA by default) */
+.rv-foot{display:flex;align-items:center;gap:16px;margin-top:20px}
+.rv-nav{display:flex;gap:9px;flex-shrink:0}
+.rv-navbtn{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--card-brd);background:rgba(255,255,255,.03);color:var(--cream);cursor:pointer;
+  transition:border-color .2s var(--ease),color .2s var(--ease),opacity .2s var(--ease)}
+.rv-navbtn:hover{border-color:var(--orange);color:#fff}
+.rv-navbtn svg{width:17px;height:17px}
+.rv-track{position:relative;flex:1;min-width:100px;height:3px;border-radius:2px;background:rgba(255,255,255,.12)}
+.rv-prog-thumb{position:absolute;top:0;left:0;height:100%;width:40%;background:var(--orange);border-radius:2px}
+
+/* generic MOBILE-SLIDER nav (‹ › + progress) — for sections that are a grid on desktop but a swipe row on
+   mobile (Services, Artists). Same visual as the reviews .rv-foot for cross-slider consistency. Hidden by
+   default; each section reveals its foot at the breakpoint where its grid turns into a slider. */
+.msl-foot{display:none;align-items:center;gap:16px;margin-top:18px}
+.msl-nav{display:flex;gap:9px;flex-shrink:0}
+.msl-navbtn{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--card-brd);background:rgba(255,255,255,.03);color:var(--cream);cursor:pointer;
+  transition:border-color .2s var(--ease),color .2s var(--ease),opacity .2s var(--ease)}
+.msl-navbtn:hover{border-color:var(--orange);color:#fff}
+.msl-navbtn svg{width:17px;height:17px}
+.msl-track{position:relative;flex:1;min-width:100px;height:3px;border-radius:2px;background:rgba(255,255,255,.12)}
+.msl-thumb{position:absolute;top:0;left:0;height:100%;width:40%;background:var(--orange);border-radius:2px}
+@media(max-width:860px){.msl-foot.svc-foot{display:flex}}
+/* edit 2026-07-07: Artists is a slider on desktop too, so its foot nav shows at all widths */
+.msl-foot.art-foot{display:flex}
+
+/* customer review card (fixed height · scrollable body · icon = permalink) */
+.rv-card{flex:0 0 300px;scroll-snap-align:start;display:flex;flex-direction:column;height:266px;
+  padding:18px;background:var(--surface);border:1px solid var(--border);border-radius:12px}
+.rv-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
+.rv-av{width:42px;height:42px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-family:var(--sub);font-weight:600;font-size:15px;color:#fff;letter-spacing:.02em}
+.rv-who{display:flex;flex-direction:column;gap:4px;min-width:0;flex:1}
+.rv-name{font-family:var(--sub);font-weight:600;font-size:14.5px;color:#fff;letter-spacing:.01em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rv-meta{display:flex;align-items:center;gap:9px}
+.rv-stars{color:var(--orange);font-size:11px;letter-spacing:1.5px;flex-shrink:0}
+.rv-date{font-size:11.5px;color:var(--muted)}
+.rv-srclink{flex-shrink:0;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.05);border:1px solid var(--card-brd);transition:border-color .2s var(--ease),background .2s var(--ease)}
+.rv-srclink:hover{border-color:var(--orange);background:rgba(255,255,255,.09)}
+.rv-srclink svg{width:15px;height:15px;display:block}
+.rv-body-scroll{flex:1;overflow-y:auto;margin-right:-8px;padding-right:9px;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.rv-body-scroll::-webkit-scrollbar{width:4px}
+.rv-body-scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.rv-body{font-size:14px;line-height:1.6;color:#CFCFCF}
+.rv-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+.rv-tag{font-family:var(--sub);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--cream);
+  background:rgba(255,255,255,.05);border:1px solid var(--card-brd);border-radius:999px;padding:4px 10px}
+
+/* photo review card — review text (left) + customer tattoo photo (right) */
+.rv-card--photo{flex:0 0 clamp(440px,46vw,516px);flex-direction:row;padding:0;overflow:hidden}
+.rv-pc-text{flex:1;min-width:0;min-height:0;display:flex;flex-direction:column;padding:18px}
+.rv-pc-text .rv-body-scroll{flex:1;min-height:0}
+.rv-pc-media{position:relative;flex:0 0 43%;align-self:stretch;overflow:hidden;background:var(--black)}
+.rv-pc-media img{width:100%;height:100%;object-fit:cover;object-position:50% 42%}
+
+/* video review card (portrait · tattoo-work thumb · no avatar) */
+.rv-vcard{flex:0 0 232px;scroll-snap-align:start}
+.rv-vlink{position:relative;display:block;aspect-ratio:3/4;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:var(--surface)}
+.rv-vlink img{width:100%;height:100%;object-fit:cover;transition:transform .45s var(--ease)}
+.rv-vlink:hover img{transform:scale(1.05)}
+.rv-vbadge{position:absolute;top:10px;left:10px;z-index:3;display:inline-flex;align-items:center;gap:4px;padding:4px 9px;border-radius:999px;
+  background:var(--card);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border:1px solid var(--card-brd);
+  font-family:var(--sub);font-size:11px;font-weight:600;color:#fff}
+.rv-vbadge b{color:var(--orange)}
+.rv-vplay{position:absolute;top:44%;left:50%;transform:translate(-50%,-50%);z-index:3;width:52px;height:52px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);box-shadow:0 8px 30px rgba(0,0,0,.45);transition:transform .2s var(--ease)}
+.rv-vlink:hover .rv-vplay{transform:translate(-50%,-50%) scale(1.08)}
+.rv-vplay svg{width:20px;height:20px;color:#111;margin-left:3px}
+.rv-vmeta{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:34px 14px 14px;
+  background:linear-gradient(0deg,rgba(0,0,0,.85),rgba(0,0,0,0))}
+.rv-vmeta b{display:block;font-family:var(--sub);font-weight:600;font-size:14px;color:#fff}
+.rv-vmeta span{display:block;font-size:12px;color:var(--cream);margin-top:2px}
+
+@media(max-width:760px){.rv-card--photo{flex-basis:clamp(380px,82vw,460px)}}
+@media(max-width:600px){
+  .rv-tabnav{display:flex;width:100%}
+  .rv-tabnav label{flex:1;justify-content:center;padding:12px 8px;font-size:12px;letter-spacing:.04em;text-align:center}
+  .rv-tabnav .t-lg{display:none}
+  .rv-tabnav .t-sm{display:inline}
+  .rvi-intro{max-width:340px}
+  .rv-card{flex-basis:87%;height:300px}
+  .rv-card--photo{flex-basis:88%;flex-direction:column}
+  .rv-pc-media{flex:0 0 120px;width:100%;order:-1}
+  .rv-pc-text{padding:14px 15px}
+  .rv-vcard{flex-basis:62%}
+  .rv-bar{flex-direction:column;align-items:stretch;text-align:center}
+  .rv-rate{justify-content:center}
+  .rv-leave{justify-content:center}
+}
+
+/* ============ SECTION 04 · SERVICES (4-card grid · def always-on · hover reveals styles+CTA · mobile 1-row slider) ============ */
+.services{background:var(--black)}
+.svc-icb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
+.svc-intro{position:relative;max-width:640px;margin:14px auto 0;text-align:center;font-size:16px;line-height:1.6;color:#C9C9C9}
+.svc-intro-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+.svc-icb:checked ~ .svc-intro .svc-intro-txt{-webkit-line-clamp:40;line-clamp:40}
+.svc-imore{position:absolute;left:0;top:0;width:22px;height:22px;display:grid;place-items:center;color:var(--orange);cursor:pointer;transition:color .2s var(--ease)}
+.svc-imore:hover{color:var(--orange-hi)}
+.svc-imore svg{width:20px;height:20px;transition:transform .25s var(--ease)}
+.svc-icb:checked ~ .svc-intro .svc-imore svg{transform:rotate(180deg)}
+.svc-icb:focus-visible ~ .svc-intro .svc-imore{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:clamp(28px,3.4vw,42px)}
+.svc-card{position:relative;aspect-ratio:3/4;border-radius:14px;overflow:hidden;border:1px solid var(--border);
+  background:var(--surface);isolation:isolate;transition:border-color .25s var(--ease),transform .25s var(--ease)}
+.svc-card:hover,.svc-card.is-active{border-color:rgba(204,102,0,.45);transform:translateY(-4px)}
+.svc-card:focus-within{border-color:var(--orange)}
+.svc-card > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:transform .6s var(--ease)}
+.svc-card:hover > img,.svc-card.is-active > img{transform:scale(1.06)}
+.svc-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(0deg,rgba(0,0,0,.9) 3%,rgba(0,0,0,.55) 32%,rgba(0,0,0,.1) 62%,rgba(0,0,0,.3) 100%);
+  transition:background .4s var(--ease)}
+.svc-card:hover .svc-scrim,.svc-card.is-active .svc-scrim{background:linear-gradient(0deg,rgba(0,0,0,.93) 6%,rgba(0,0,0,.68) 46%,rgba(0,0,0,.34) 82%)}
+.svc-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:20px 18px;display:flex;flex-direction:column;gap:7px;pointer-events:none}
+.svc-name{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:-.01em;line-height:1.02;
+  font-size:clamp(19px,1.5vw,22px);color:#fff}
+.svc-def{font-size:13px;line-height:1.5;color:var(--cream)}
+.svc-more{max-height:0;opacity:0;overflow:hidden;display:flex;flex-direction:column;gap:8px;
+  transition:max-height .45s var(--ease),opacity .3s var(--ease),margin-top .45s var(--ease)}
+.svc-card:hover .svc-more,.svc-card:focus-within .svc-more,.svc-card.is-active .svc-more{max-height:240px;opacity:1;margin-top:3px}
+.svc-more-txt{font-size:12.5px;line-height:1.5;color:#C2C2C2}
+.svc-explore{display:inline-flex;align-items:center;gap:7px;font-family:var(--sub);font-weight:600;font-size:11.5px;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--orange)}
+.svc-explore svg{width:15px;height:15px;transition:transform .2s var(--ease)}
+.svc-card:hover .svc-explore svg,.svc-card.is-active .svc-explore svg{transform:translateX(3px)}
+.svc-link{position:absolute;inset:0;z-index:3}
+/* mobile: 1-row swipe slider (no hover on touch → styles+CTA shown by default) */
+@media(max-width:860px){
+  .svc-grid{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;padding:2px 2px 4px}
+  .svc-grid::-webkit-scrollbar{display:none}
+  .svc-card{flex:0 0 46%;scroll-snap-align:start}
+}
+@media(max-width:600px){ .svc-intro{max-width:340px} .svc-card{flex-basis:86%} }
+
+/* ---------- SECTION 05 · NEAR ME (editorial split: studio video + text) ---------- */
+.near{background:var(--bg)}
+.near-grid{display:grid;grid-template-columns:1fr;gap:clamp(26px,4vw,40px);align-items:stretch}
+/* MEDIA — studio-intro video poster (placeholder: founder portrait until real walkthrough video) */
+.near-media{position:relative;margin:0;border-radius:16px;overflow:hidden;aspect-ratio:16/9;cursor:pointer;
+  border:1px solid rgba(255,255,255,.09);box-shadow:0 24px 60px rgba(0,0,0,.5)}
+.near-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .6s var(--ease)}
+.near-media:hover .near-poster{transform:scale(1.04)}
+.near-scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.14) 0%,rgba(0,0,0,0) 32%,rgba(0,0,0,.64) 100%)}
+.near-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(0,0,0,.42);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);border:1.5px solid rgba(255,255,255,.55);
+  transition:transform .25s var(--ease),background .25s var(--ease),border-color .25s var(--ease)}
+.near-media:hover .near-play{transform:translate(-50%,-50%) scale(1.08);background:var(--orange);border-color:var(--orange)}
+.near-play svg{width:26px;height:26px;fill:#fff;margin-left:4px}
+.near-play{padding:0;cursor:pointer;appearance:none;-webkit-appearance:none}
+.near-frame{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:6}
+.near-media.is-playing .near-scrim,.near-media.is-playing .near-play,.near-media.is-playing .near-vcap{opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
+.near-vcap{position:absolute;left:20px;right:20px;bottom:16px;z-index:2;display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--sub);font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:#fff}
+.near-vcap::before{content:"";width:22px;height:1px;background:var(--orange);flex-shrink:0}
+/* TEXT */
+.near-text h2{font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:clamp(27px,3.3vw,42px);line-height:1.0;letter-spacing:-0.008em;color:#fff;margin:0}
+.near-text h2 .o{color:var(--orange)}
+.near-lead{font-size:16.5px;line-height:1.66;color:#C9C9C9;margin:20px 0 0;max-width:560px}
+.near-lead b{color:#fff;font-weight:600}
+.near-chip{display:inline-flex;align-items:center;gap:9px;margin-top:22px;font-family:var(--sub);font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--cream);border:1px solid var(--border);border-radius:999px;padding:9px 16px}
+.near-chip svg{width:15px;height:15px;fill:none;stroke:var(--orange);stroke-width:1.8;flex-shrink:0}
+/* desktop split — video LEFT, text RIGHT (DOM keeps text first: setup-before-visual on mobile) */
+@media(min-width:861px){
+  .near-grid{grid-template-columns:0.95fr 1.05fr;gap:clamp(34px,4vw,58px)}
+  .near-media{aspect-ratio:auto}
+}
+@media(max-width:600px){
+  .near-media{border-radius:14px}
+  .near-play{width:64px;height:64px}
+  .near-play svg{width:22px;height:22px}
+  .near-vcap{font-size:11px;left:16px;bottom:13px}
+}
+
+/* ---------- SECTION 06 · ARTISTS (Ganga grid: photo + style + name; hover/tap panel = full bio) ---------- */
+.artists{background:var(--black)}
+/* intro clamp + JS-hug arrow (cloned from services for section parity) */
+.arti-icb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
+.arti-intro{position:relative;max-width:660px;margin:14px auto 0;text-align:center;font-size:16px;line-height:1.6;color:#C9C9C9}
+.arti-intro-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+.arti-icb:checked ~ .arti-intro .arti-intro-txt{-webkit-line-clamp:40;line-clamp:40}
+.arti-imore{position:absolute;left:0;top:0;width:22px;height:22px;display:grid;place-items:center;color:var(--orange);cursor:pointer;transition:color .2s var(--ease)}
+.arti-imore:hover{color:var(--orange-hi)}
+.arti-imore svg{width:20px;height:20px;transition:transform .25s var(--ease)}
+.arti-icb:checked ~ .arti-intro .arti-imore svg{transform:rotate(180deg)}
+.arti-icb:focus-visible ~ .arti-intro .arti-imore{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
+/* grid */
+/* edit 2026-07-07: Artists = horizontal scroll-snap slider on desktop AND mobile (was 4-col grid) */
+.art-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:clamp(14px,1.5vw,20px);margin-top:clamp(30px,4vw,46px);padding-bottom:4px}
+.art-grid::-webkit-scrollbar{display:none}
+.art-card{position:relative;flex:0 0 23.5%;scroll-snap-align:start}
+.art-photo{position:relative;aspect-ratio:3/4;border-radius:14px;overflow:hidden;background:linear-gradient(160deg,#1e1e1e,#0b0b0b);border:1px solid rgba(255,255,255,.07);transition:border-color .3s var(--ease),transform .3s var(--ease)}
+.art-card:hover .art-photo{border-color:rgba(204,102,0,.5);transform:translateY(-4px)}
+.art-photo>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%;transition:transform .6s var(--ease)}
+.art-card:hover .art-photo>img{transform:scale(1.06)}
+.art-scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.5) 100%);transition:opacity .3s var(--ease)}
+/* hover/tap panel — full bio + styles (text lives in DOM for SEO) */
+.art-panel{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;gap:9px;padding:20px 17px;
+  background:linear-gradient(180deg,rgba(9,9,9,.12) 0%,rgba(9,9,9,.8) 52%,rgba(7,7,7,.95) 100%);
+  opacity:0;transition:opacity .32s var(--ease);pointer-events:none}
+.art-card:hover .art-panel,.art-card.is-active .art-panel{opacity:1}
+.art-card:hover .art-scrim,.art-card.is-active .art-scrim{opacity:0}
+.art-meta{font-family:var(--sub);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--orange-hi)}
+.art-styles{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0}
+.art-styles li{font-family:var(--sub);font-size:10.5px;letter-spacing:.03em;text-transform:uppercase;color:#EDEDED;border:1px solid rgba(255,255,255,.24);border-radius:999px;padding:3px 9px}
+.art-bio{font-size:12.7px;line-height:1.5;color:#D2D2D2;margin:0}
+.art-view{display:inline-flex;align-items:center;gap:7px;font-family:var(--sub);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-top:2px}
+.art-view svg{width:15px;height:15px;fill:none;stroke:var(--orange);stroke-width:2;transition:transform .25s var(--ease)}
+.art-card:hover .art-view svg{transform:translateX(3px)}
+/* monogram placeholder — piercers pending real photo (never fake a real face) */
+.art-photo--mono{background:radial-gradient(120% 90% at 50% 12%,#242424,#090909)}
+.art-mono{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--head);font-weight:700;font-size:clamp(64px,7vw,104px);color:rgba(220,219,190,.15);letter-spacing:.02em}
+.art-monotag{position:absolute;top:11px;left:11px;z-index:3;font-family:var(--sub);font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:#8f8f8f;border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:3px 8px;transition:opacity .3s var(--ease)}
+.art-card:hover .art-monotag{opacity:0}
+/* caption (always visible under photo) */
+.art-cap{padding:13px 3px 0;text-align:center}
+.art-style{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;font-family:var(--sub);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#A6A6A6;min-height:16px}
+.art-badge{position:relative;z-index:6;font-size:10px;letter-spacing:.01em;color:#e8e8e8;background:rgba(255,255,255,.14);border-radius:999px;padding:2px 8px;line-height:1.3;cursor:default}
+.art-tip{position:absolute;bottom:calc(100% + 9px);left:50%;transform:translateX(-50%) translateY(4px);display:flex;flex-direction:column;gap:1px;padding:8px 12px;background:rgba(22,22,22,.98);border:1px solid rgba(255,255,255,.1);border-radius:8px;font-size:10.5px;letter-spacing:.04em;color:#EDEDED;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s var(--ease),transform .2s var(--ease);box-shadow:0 10px 26px rgba(0,0,0,.55)}
+.art-tip::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:rgba(22,22,22,.98)}
+.art-badge:hover .art-tip,.art-badge:focus-visible .art-tip{opacity:1;transform:translateX(-50%) translateY(0)}
+.art-name{font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:clamp(19px,1.9vw,25px);line-height:1;color:#fff;margin-top:6px;letter-spacing:.006em}
+.art-link{position:absolute;inset:0;z-index:5}
+/* responsive */
+/* edit 2026-07-07: slider card width per breakpoint (grid → flex peek) */
+@media(max-width:900px){.art-card{flex-basis:31%}}
+@media(max-width:600px){
+  .arti-intro{max-width:340px}
+  .art-grid{gap:13px}
+  .art-card{flex-basis:72%}
+  .art-panel{padding:16px 14px;gap:8px}
+}
+
+/* ---------- SECTION 07 · GALLERY (Our Work — category cards + popup, mirror live) ---------- */
+.gallery{background:var(--bg)}
+.gali-icb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
+.gali-intro{position:relative;max-width:680px;margin:14px auto 0;text-align:center;font-size:16px;line-height:1.6;color:#C9C9C9}
+.gali-intro-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+.gali-icb:checked ~ .gali-intro .gali-intro-txt{-webkit-line-clamp:40;line-clamp:40}
+.gali-imore{position:absolute;left:0;top:0;width:22px;height:22px;display:grid;place-items:center;color:var(--orange);cursor:pointer;transition:color .2s var(--ease)}
+.gali-imore:hover{color:var(--orange-hi)}
+.gali-imore svg{width:20px;height:20px;transition:transform .25s var(--ease)}
+.gali-icb:checked ~ .gali-intro .gali-imore svg{transform:rotate(180deg)}
+.gal-grid{display:flex;flex-wrap:wrap;justify-content:center;--gg:clamp(14px,1.6vw,22px);gap:var(--gg);margin-top:clamp(30px,4vw,46px)}
+.gal-card{position:relative;flex:0 0 calc((100% - 2*var(--gg))/3);aspect-ratio:4/5;border-radius:14px;overflow:hidden;cursor:pointer;background:#161616;border:1px solid rgba(255,255,255,.07);transition:transform .3s var(--ease),border-color .3s var(--ease)}
+.gal-card:hover{transform:translateY(-4px)}
+.gal-card>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.gal-card:hover>img{transform:scale(1.06)}
+.gal-scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.22),rgba(0,0,0,.1) 42%,rgba(0,0,0,.55));transition:opacity .3s var(--ease)}
+.gal-card:hover .gal-scrim{opacity:.7}
+.gal-label{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;border:2px solid rgba(255,255,255,.92);padding:11px 22px;font-family:var(--head);font-weight:700;font-size:clamp(15px,1.5vw,21px);text-transform:uppercase;letter-spacing:.03em;color:#fff;white-space:nowrap;transition:border-color .3s var(--ease),background .3s var(--ease)}
+.gal-card:hover .gal-label{border-color:var(--orange);background:rgba(204,102,0,.16)}
+.gal-card--award{border-color:rgba(204,102,0,.45)}
+.gal-card--award .gal-label{border-color:var(--orange);background:rgba(204,102,0,.14)}
+.gal-temp{position:absolute;top:12px;left:12px;z-index:3;font-family:var(--sub);font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:#d6d6d6;background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:3px 9px}
+.gal-card--removal{grid-column:1/-1;aspect-ratio:auto;min-height:190px;display:grid;place-items:center;background:radial-gradient(120% 140% at 50% 0%,#242424,#0a0a0a)}
+.gal-rem-inner{text-align:center;padding:34px 20px;z-index:2}
+.gal-rem-inner .gal-label{position:static;transform:none;display:inline-block;margin-bottom:12px}
+.gal-rem-sub{font-family:var(--sub);font-size:13px;letter-spacing:.04em;color:#9a9a9a}
+.gal-more{text-align:center;margin-top:clamp(26px,3.5vw,40px)}
+.gal-more a{display:inline-flex;align-items:center;gap:9px;font-family:var(--sub);font-size:12.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--cream);border:1px solid var(--border);border-radius:999px;padding:12px 22px;transition:border-color .25s var(--ease),color .25s var(--ease)}
+.gal-more a:hover{border-color:var(--orange);color:#fff}
+.gal-more a svg{width:15px;height:15px;fill:none;stroke:var(--orange);stroke-width:2}
+/* IG bridge + button on one row (text left, button right); wraps to stacked on narrow */
+.gal-cta{display:flex;align-items:center;justify-content:space-between;gap:clamp(22px,4vw,52px);margin-top:clamp(26px,3.5vw,40px);flex-wrap:wrap}
+.gal-cta .sec-bridge{margin:0;max-width:520px;flex:1 1 320px}
+.gal-cta .gal-more{margin-top:0;flex:0 0 auto}
+/* Gallery-scoped smoke: push further into the corner + behind the grid so it never crowds the CTA (does NOT touch shared .smoke--bl used by Services) */
+.gallery .smoke--bl{bottom:-12%;left:-16%;width:52%}
+/* popup */
+.gal-modal{position:fixed;inset:0;z-index:130;background:rgba(6,6,6,.93);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);display:none;padding:clamp(20px,5vh,60px) clamp(16px,4vw,60px);overflow-y:auto}
+.gal-modal.open{display:block}
+.gal-modal-head{display:flex;align-items:center;justify-content:space-between;gap:16px;max-width:1080px;margin:0 auto clamp(16px,2.5vw,26px)}
+.gal-modal-title{font-family:var(--head);font-weight:700;font-size:clamp(22px,3.2vw,34px);text-transform:uppercase;letter-spacing:-.01em;color:#fff;margin:0}
+.gal-modal-title span{color:var(--orange)}
+.gal-close{flex-shrink:0;width:46px;height:46px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.4);color:#fff;font-size:24px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:background .2s var(--ease),border-color .2s var(--ease)}
+.gal-close:hover{background:var(--orange);border-color:var(--orange)}
+.gal-modal-grid{max-width:1080px;margin:0 auto;columns:3;column-gap:14px}
+.gal-modal-grid img{width:100%;margin:0 0 14px;border-radius:10px;display:block;break-inside:avoid;background:#161616}
+.gal-modal-note{max-width:640px;margin:6vh auto;text-align:center;color:#c4c4c4;font-size:15.5px;line-height:1.6}
+.gal-modal-note b{color:#fff}
+body.gal-lock{overflow:hidden}
+@media(max-width:860px){.gal-card{flex-basis:calc((100% - var(--gg))/2)}.gal-modal-grid{columns:2}}
+@media(max-width:520px){.gali-intro{max-width:340px}.gal-modal-grid{columns:2;column-gap:10px}.gal-modal-grid img{margin-bottom:10px}.gal-label{font-size:13px;padding:9px 16px}}
+
+/* ---------- SECTION CTA1 · "Your Artist, Your Style" (dark rust-splatter feeder after Gallery) ---------- */
+/* Ganga recipe: dark band + a FULL-BLEED bold splatter that ENVELOPES the whole content block (headline + */
+/* sub + button + phone) so the spray is the STAGE, not a detached blob. Differs from CTA2 (bright-orange */
+/* spray, ghost button) by a DEEP RUST spray + solid-orange button — same dark family, different hue, so the */
+/* two feeders vary without a light band. */
+.s-cta1{background:var(--bg);text-align:center;padding-block:clamp(80px,10vw,148px)}
+/* full-bleed rust spray: 132vw guarantees edge-to-edge; brightness/saturate deepen bright orange -> burnt rust */
+.cta1-splat{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scaleX(-1);
+  width:min(132vw,2048px);max-width:none;height:auto;opacity:.72;mix-blend-mode:normal;
+  filter:brightness(.66) saturate(1.22);pointer-events:none;user-select:none;z-index:0}
+/* top+bottom linear fades dissolve the spray into the dark bg (kills the hard clip at the section edges) +
+   a soft radial vignette over the centre so the cream headline stays crisp on the densest rust */
+.s-cta1::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(to bottom, var(--bg) 0%, rgba(15,15,15,0) 20%, rgba(15,15,15,0) 80%, var(--bg) 100%),
+    radial-gradient(60% 76% at 50% 48%, rgba(0,0,0,.46), rgba(0,0,0,0) 80%)}
+.s-cta1 .wrap{position:relative;z-index:2}
+.s-cta1 .cta1-h{margin:0 auto;max-width:min(1280px,94vw);font-family:var(--head);font-weight:700;text-transform:uppercase;
+  line-height:1.0;letter-spacing:-.005em;font-size:clamp(38px,5.6vw,74px);color:var(--cream);
+  text-shadow:0 3px 28px rgba(0,0,0,.55);text-wrap:balance}
+.s-cta1 .cta1-sub{margin:clamp(16px,2vw,22px) auto 0;max-width:46ch;font-family:var(--sub);
+  font-size:clamp(14px,1.4vw,17px);letter-spacing:.02em;color:#C9C9C9;line-height:1.55}
+.cta1-act{margin-top:clamp(24px,3vw,36px);display:flex;flex-direction:column;align-items:center;gap:15px}
+.cta1-btn{min-height:52px;padding:15px 36px;letter-spacing:.09em;font-size:12.5px;
+  box-shadow:0 14px 34px rgba(204,102,0,.34)}
+.cta1-call{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding-inline:10px;
+  font-family:var(--sub);font-size:14px;letter-spacing:.03em;color:var(--cream);text-decoration:none;
+  transition:color .2s var(--ease)}
+.cta1-call:hover{color:var(--orange-hi)}
+.cta1-call svg{width:15px;height:15px}
+@media(max-width:560px){
+  .s-cta1 .cta1-h{max-width:94vw;font-size:clamp(30px,7vw,46px)}
+  /* content stacks taller than the spray on mobile -> widen to 250vw so it still envelopes headline->phone */
+  .cta1-splat{width:250vw;opacity:.6}
+}
+</style>
+<!-- Session 2 inline CSS ported verbatim from homepage (Awards -> Visit) -->
+<style>
+/* ============================================================================
+   SECTION 10 — AWARDS  ·  "Trophy Rail" (Koray / MoreThanPanel compact)
+   Centered head + clamped intro (arrow icon) · ONE horizontal card rail
+   (‹ › + progress) · card = placement / convention / location·year / Won by
+   · click a card → modal (trophy + evidence slots + story).
+   Cups are transparent PNGs (bg cut) floating on the dark card. No eyebrow.
+   Real plate-verified cups only. Local layout; tokens = foundation.
+   ============================================================================ */
+.s-awards{background:var(--black)}
+.s-awards .wrap{position:relative;z-index:2}
+/* decorative smoke wash (Ganga color-blur.webp) — used ONLY on this proof/statement
+   section, drifting in from the top-left and clipped by .section{overflow:clip}
+   (= Ganga "kind a": opacity .5, no blend, alpha does the work, sits BEHIND content
+   at z:0 → under the .04 grain + the z:2 wrap, so the white heading stays legible).
+   Rare on purpose: one instance, statement section only. Desktop only. */
+.aw-smoke{position:absolute;top:-10%;left:-6%;width:clamp(640px,54vw,1060px);height:auto;z-index:0;
+  opacity:.6;pointer-events:none;user-select:none;
+  -webkit-mask-image:radial-gradient(ellipse 84% 80% at 44% 42%,#000 56%,transparent 94%);mask-image:radial-gradient(ellipse 84% 80% at 44% 42%,#000 56%,transparent 94%)}   /* gentle fade: keeps the visible core B.Long approved, only the clipped edge dissolves; nudged up-left + smaller so it sits behind the heading, not crowding the trophy row */
+@media(max-width:900px){.aw-smoke{display:none}}
+
+/* ---------- centered head + clamped intro ---------- */
+.s-awards .section-head{max-width:680px}
+/* Centered intro (MoreThanPanel style): full text stays in the DOM, clamped to 2 lines
+   via -webkit-line-clamp; the orange arrow is JS-positioned to hug the end of the last
+   visible line so it never drifts far from the text. Content is never removed = SEO-safe. */
+.aw-intro{position:relative;max-width:600px;margin:16px auto 0;text-align:center;text-shadow:none;
+  font-size:16.5px;line-height:1.62;color:#E4E4E4}
+.aw-intro-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+.more-cb:checked ~ .aw-intro .aw-intro-txt{-webkit-line-clamp:40;line-clamp:40}
+.aw-more{position:absolute;left:0;top:0;width:22px;height:22px;display:grid;place-items:center;
+  color:var(--orange);cursor:pointer;opacity:0;transform:translateY(-50%);
+  transition:color .2s var(--ease),opacity .2s var(--ease)}
+.aw-more:hover{color:var(--orange-hi)}
+.aw-more svg{width:20px;height:20px;transition:transform .25s var(--ease)}
+.more-cb:checked ~ .aw-intro .aw-more svg{transform:rotate(180deg)}
+.more-cb:focus-visible ~ .aw-intro .aw-more{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
+
+/* ---------- the rail ---------- */
+.awrail-wrap{margin-top:clamp(28px,3.6vw,40px)}
+.awrail{list-style:none;display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;align-items:flex-start;padding:2px 2px 4px}
+.awrail::-webkit-scrollbar{display:none}
+
+.awrail-card{position:relative;flex:0 0 clamp(300px,26vw,338px);scroll-snap-align:start;
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;
+  transition:border-color .2s var(--ease),transform .2s var(--ease)}
+.awrail-card:hover{border-color:rgba(204,102,0,.45);transform:translateY(-3px)}
+.aw-cardlink{position:absolute;inset:0;z-index:5;cursor:pointer}
+.awrail-card:focus-within{border-color:var(--orange)}
+.aw-open-cb:focus-visible ~ .awrail-wrap{outline:2px solid var(--orange);outline-offset:6px;border-radius:8px}
+
+/* vitrine = transparent cup floating on the dark card, soft warm halo + shadow */
+.aw-vitrine{--ar:4/3;border:none;border-radius:0;box-shadow:none;
+  background:radial-gradient(72% 62% at 50% 42%, rgba(255,255,255,.055), rgba(255,255,255,0) 72%);
+  border-bottom:1px solid var(--hair)}
+.aw-vitrine>img{object-fit:contain;object-position:50% 50%;padding:16px 16px 12px;
+  filter:drop-shadow(0 13px 22px rgba(0,0,0,.55))}
+.aw-open{position:absolute;top:11px;right:11px;z-index:4;display:grid;place-items:center;width:30px;height:30px;
+  border-radius:8px;background:rgba(0,0,0,.5);border:1px solid var(--card-brd);color:#fff;backdrop-filter:blur(3px);
+  pointer-events:none;transition:background .2s var(--ease)}
+.aw-open svg{width:15px;height:15px}
+.awrail-card:hover .aw-open{background:var(--orange);border-color:transparent}
+
+.aw-body{padding:15px 17px 18px}
+.aw-place{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:1.0;letter-spacing:-0.005em;
+  font-size:20px;color:#fff}
+.aw-conv{margin-top:8px;font-family:var(--sub);font-weight:600;font-size:14.5px;line-height:1.3;color:#fff}
+.aw-loc{margin-top:4px;font-size:13.5px;color:var(--muted)}
+.aw-by{margin-top:12px;font-family:var(--sub);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.aw-by b{color:var(--orange);font-weight:600}
+
+/* ---------- rail foot: nav + progress + cta ---------- */
+.awrail-foot{display:flex;align-items:center;gap:16px;margin-top:24px;flex-wrap:wrap}
+.awrail-nav{display:flex;gap:9px}
+.awrail-btn{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--card-brd);background:rgba(255,255,255,.03);color:var(--cream);font-size:19px;line-height:1;
+  cursor:pointer;transition:border-color .2s var(--ease),color .2s var(--ease),opacity .2s var(--ease)}
+.awrail-btn:hover{border-color:var(--orange);color:#fff}
+.awrail-track{position:relative;flex:1;min-width:120px;height:3px;border-radius:2px;background:rgba(255,255,255,.12)}
+.awrail-track .stat-thumb{position:absolute;top:0;left:0;height:100%;width:46%;background:var(--orange);border-radius:2px}
+.awrail-cta{min-height:44px;padding:12px 20px}
+.awrail-cta svg{width:16px;height:16px;transition:transform .2s var(--ease)}
+.awrail-cta:hover svg{transform:translateX(3px)}
+
+/* ============================================================================
+   MODAL (radio-hack · content in DOM · one shared shell, 7 panels)
+   ============================================================================ */
+.aw-cb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
+.aw-modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:22px}
+.aw-open-cb:checked ~ .aw-modal{display:flex}
+.aw-modal-bd{position:absolute;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);cursor:pointer}
+.aw-modal-card{position:relative;z-index:2;width:min(660px,100%);max-height:88vh;overflow-y:auto;
+  background:var(--surface);border:1px solid var(--border);border-radius:15px;padding:clamp(22px,3.2vw,34px);
+  box-shadow:0 44px 120px rgba(0,0,0,.72)}
+.aw-modal-x{position:absolute;top:13px;right:14px;z-index:3;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;
+  border:1px solid var(--card-brd);background:rgba(255,255,255,.05);color:#fff;font-size:19px;line-height:1;cursor:pointer;
+  transition:border-color .2s var(--ease),color .2s var(--ease)}
+.aw-modal-x:hover{border-color:var(--orange);color:var(--orange)}
+
+.aw-panel{display:none}
+#awm-1:checked ~ .aw-modal .aw-panel[data-i="1"],
+#awm-2:checked ~ .aw-modal .aw-panel[data-i="2"],
+#awm-3:checked ~ .aw-modal .aw-panel[data-i="3"],
+#awm-4:checked ~ .aw-modal .aw-panel[data-i="4"],
+#awm-5:checked ~ .aw-modal .aw-panel[data-i="5"],
+#awm-6:checked ~ .aw-modal .aw-panel[data-i="6"],
+#awm-7:checked ~ .aw-modal .aw-panel[data-i="7"]{display:block}
+
+.aw-panel h3{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:-0.005em;line-height:1.02;
+  font-size:clamp(22px,2.6vw,30px);color:#fff;padding-right:34px}
+.aw-panel-meta{margin-top:9px;font-family:var(--sub);font-size:13.5px;letter-spacing:.02em;color:var(--cream)}
+.aw-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:20px}
+.aw-slot{border:1px solid var(--border);border-radius:9px;overflow:hidden;aspect-ratio:1/1;display:grid;place-items:center;
+  background:radial-gradient(70% 60% at 50% 42%, rgba(255,255,255,.05), rgba(255,255,255,0) 72%), #131313}
+.aw-slot>img{width:100%;height:100%;object-fit:contain;padding:12px;filter:drop-shadow(0 8px 14px rgba(0,0,0,.5))}
+.aw-slot--soon{background:repeating-linear-gradient(135deg,#141414,#141414 9px,#181818 9px,#181818 18px);border-style:dashed;border-color:#333}
+.aw-slot--soon span{font-family:var(--sub);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:#9a9a9a;text-align:center;line-height:1.5;padding:6px}
+.aw-panel-story{margin-top:19px;font-size:15px;line-height:1.62;color:#C9C9C9}
+.aw-panel-by{margin-top:16px;padding-top:15px;border-top:1px solid var(--hair);
+  font-family:var(--sub);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.aw-panel-by b{color:var(--orange);font-weight:600}
+
+@media(max-width:980px){.awrail-card{flex:0 0 clamp(280px,42vw,320px)}}
+@media(max-width:560px){
+  .awrail-card{flex:0 0 82%}
+  .awrail-btn{width:40px;height:40px}
+  .awrail-cta{width:100%}
+  /* narrow the intro on mobile so the trailing arrow clears the "…" and never hugs the screen edge */
+  .aw-intro{max-width:320px}
+  /* modal goes near-fullscreen so the trophy + content read large */
+  .aw-modal{align-items:flex-start;padding:12px 10px}
+  .aw-modal-card{width:100%;max-height:94vh;padding:22px 16px 24px;border-radius:14px}
+  /* evidence images become a swipe slider: one big image per view, scroll-snap, next slide peeks */
+  .aw-slots{grid-template-columns:none;display:flex;align-items:flex-start;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;padding-bottom:6px;margin-inline:-2px;scrollbar-width:none}
+  .aw-slots::-webkit-scrollbar{display:none}
+  .aw-slots>.aw-slot{flex:0 0 88%;scroll-snap-align:center;aspect-ratio:3/4}
+}
+
+/* ============================================================================
+   SECTION 11 — THE ADVANTAGES OF CHOOSING HYPER INKERS  (merged into this file)
+   Centered head + clamped lead (same arrow pattern as §10). Below: a tab block —
+   image panel on the LEFT swaps per active tab; 4 tab headers on the RIGHT, first
+   auto-open, click expands its description (accordion) + crossfades its image.
+   CSS-only radio-hack. Tab images 01–03 are TEMPORARY placeholders; 04 = real team.
+   ============================================================================ */
+.s-adv{background:var(--bg)}
+.s-adv .wrap{position:relative;z-index:2}
+.s-adv h2 .o{color:var(--orange)}
+/* centered clamped lead (mirrors §10 intro; arrow JS is a twin instance) */
+.adv-intro{position:relative;max-width:600px;margin:16px auto 0;text-align:center;text-shadow:none;
+  font-size:16.5px;line-height:1.62;color:#C9C9C9}
+.adv-intro-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+.adv-intro-txt b{color:#E9E9E9;font-weight:600}
+.more-cb:checked ~ .adv-intro .adv-intro-txt{-webkit-line-clamp:40;line-clamp:40}
+.adv-more{position:absolute;left:0;top:0;width:20px;height:20px;display:grid;place-items:center;
+  color:var(--orange);cursor:pointer;opacity:0;transform:translateY(-50%);
+  transition:color .2s var(--ease),opacity .2s var(--ease)}
+.adv-more:hover{color:var(--orange-hi)}
+.adv-more svg{width:20px;height:20px;transition:transform .25s var(--ease)}
+.more-cb:checked ~ .adv-intro .adv-more svg{transform:rotate(180deg)}
+.more-cb:focus-visible ~ .adv-intro .adv-more{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
+
+/* tab block */
+.adv-tabs{margin-top:clamp(30px,4vw,46px)}
+.adv-radio{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
+.adv-grid{display:grid;grid-template-columns:1.08fr 0.92fr;gap:clamp(24px,3.4vw,46px);align-items:start}
+/* media panel (left) — 4 stacked shots, active crossfades in */
+.adv-media{position:relative;order:2;aspect-ratio:4/3;border-radius:14px;overflow:hidden;
+  border:1px solid var(--card-brd);box-shadow:0 30px 70px rgba(0,0,0,.5);background:#111}
+.adv-media::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(155deg,rgba(204,102,0,.16),transparent 52%)}
+.adv-shot{position:absolute;inset:0;opacity:0;transition:opacity .4s var(--ease)}
+.adv-shot img{width:100%;height:100%;object-fit:cover;object-position:50% 42%}
+.adv-cap{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:30px 16px 13px;pointer-events:none;
+  font-family:var(--sub);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:#E7E7E7;
+  background:linear-gradient(transparent,rgba(0,0,0,.82))}
+.adv-cap b{color:var(--orange);font-weight:600}
+/* tab list (right) */
+.adv-list{list-style:none;order:1}
+.adv-item + .adv-item{margin-top:10px}
+.adv-head{display:flex;align-items:center;gap:16px;cursor:pointer;padding:13px 16px;border-radius:10px;
+  border:1px solid transparent;border-left:3px solid transparent;background:transparent;
+  transition:border-color .2s var(--ease),background .2s var(--ease)}
+.adv-head:hover{background:rgba(255,255,255,.04)}
+.adv-num{font-family:var(--head);font-weight:700;font-size:clamp(28px,3.1vw,42px);line-height:.9;letter-spacing:-.01em;color:rgba(255,255,255,.10);min-width:1.5ch;text-align:center;transition:color .25s var(--ease)}
+.adv-head h3{margin:0;font-family:var(--sub);font-weight:600;font-size:15px;letter-spacing:.02em;
+  text-transform:uppercase;color:#EDEDED;line-height:1.25}
+.adv-panel{max-height:0;overflow:hidden;transition:max-height .35s var(--ease)}
+.adv-panel p{margin:0;padding:13px 16px 4px;font-size:14.5px;line-height:1.62;color:var(--muted)}
+.adv-panel p b{color:var(--cream);font-weight:600}
+/* active tab N → show shot N, highlight header N, open panel N */
+#adv-t1:checked ~ .adv-grid .adv-shot[data-i="1"],
+#adv-t2:checked ~ .adv-grid .adv-shot[data-i="2"],
+#adv-t3:checked ~ .adv-grid .adv-shot[data-i="3"],
+#adv-t4:checked ~ .adv-grid .adv-shot[data-i="4"]{opacity:1}
+#adv-t1:checked ~ .adv-grid .adv-item:nth-child(1) .adv-head,
+#adv-t2:checked ~ .adv-grid .adv-item:nth-child(2) .adv-head,
+#adv-t3:checked ~ .adv-grid .adv-item:nth-child(3) .adv-head,
+#adv-t4:checked ~ .adv-grid .adv-item:nth-child(4) .adv-head{border-left-color:var(--orange);background:#1b1b1b}
+#adv-t1:checked ~ .adv-grid .adv-item:nth-child(1) .adv-num,
+#adv-t2:checked ~ .adv-grid .adv-item:nth-child(2) .adv-num,
+#adv-t3:checked ~ .adv-grid .adv-item:nth-child(3) .adv-num,
+#adv-t4:checked ~ .adv-grid .adv-item:nth-child(4) .adv-num{color:var(--orange)}
+#adv-t1:checked ~ .adv-grid .adv-item:nth-child(1) .adv-panel,
+#adv-t2:checked ~ .adv-grid .adv-item:nth-child(2) .adv-panel,
+#adv-t3:checked ~ .adv-grid .adv-item:nth-child(3) .adv-panel,
+#adv-t4:checked ~ .adv-grid .adv-item:nth-child(4) .adv-panel{max-height:340px}
+.adv-radio:focus-visible ~ .adv-grid .adv-item .adv-head{outline:2px solid var(--orange);outline-offset:2px}
+
+@media(max-width:820px){
+  .adv-grid{grid-template-columns:1fr;gap:22px}
+  .adv-list{order:1}
+  .adv-media{order:2;aspect-ratio:4/3;width:100%;max-width:520px;margin-inline:auto}
+}
+@media(max-width:560px){
+  .adv-intro{max-width:320px}
+}
+
+/* ============================================================================
+   SECTION 12 — PRICING  ·  "Tattoo Pricing in San Antonio" (real content, 3 tiers)
+   Content = content/05-humanized/2026-06-30_homepage-humanized.md §Pricing, VERBATIM
+   (B.Long-approved): $80 min / $150 hr / $200 hr + Ways to save. Centered head +
+   clamped lead (twin arrow). Three tiers, middle highlighted for rhythm (mirrors
+   B.Long's 3-card ref, re-skinned to dark editorial). NO inline CTA by design —
+   CTA 2 (Get a Free Quote) is its own §13; the humanized CTA map removed it here.
+   ============================================================================ */
+.s-price{background:var(--black)}
+.s-price .wrap{position:relative;z-index:2}
+.s-price h2 .o{color:var(--orange)}
+/* centered clamped lead — twin of §11 (own ids so §10/§11 stay untouched) */
+.pr-intro{position:relative;max-width:680px;margin:16px auto 0;text-align:center;
+  font-size:16.5px;line-height:1.62;color:#C9C9C9}
+.pr-intro-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+.pr-intro-txt b{color:#E9E9E9;font-weight:600}
+.more-cb:checked ~ .pr-intro .pr-intro-txt{-webkit-line-clamp:40;line-clamp:40}
+.pr-more{position:absolute;left:0;top:0;width:20px;height:20px;display:grid;place-items:center;
+  color:var(--orange);cursor:pointer;opacity:0;transform:translateY(-50%);
+  transition:color .2s var(--ease),opacity .2s var(--ease)}
+.pr-more:hover{color:var(--orange-hi)}
+.pr-more svg{width:20px;height:20px;transition:transform .25s var(--ease)}
+.more-cb:checked ~ .pr-intro .pr-more svg{transform:rotate(180deg)}
+.more-cb:focus-visible ~ .pr-intro .pr-more{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
+
+/* three price tiers */
+.pr-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,1.8vw,22px);
+  margin-top:clamp(34px,4vw,50px);align-items:stretch}   /* stretch = 3 cards equal height, bottoms aligned */
+.pr-tier{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  padding:clamp(24px,2.4vw,30px) clamp(22px,2.2vw,28px) clamp(20px,2vw,26px);
+  box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.pr-tier--feat{border-color:rgba(204,102,0,.55);
+  box-shadow:0 30px 72px rgba(0,0,0,.55),inset 0 0 0 1px rgba(204,102,0,.22)}
+.pr-tier--feat::before{content:"";position:absolute;inset:0;border-radius:16px;pointer-events:none;
+  background:radial-gradient(120% 78% at 50% 0%, rgba(204,102,0,.10), transparent 62%)}
+.pr-tier>*{position:relative;z-index:1}
+.pr-tier-label{display:inline-flex;align-items:center;font-family:var(--sub);font-weight:600;
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);
+  padding:6px 12px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.02)}
+.pr-tier--feat .pr-tier-label{color:#fff;background:var(--orange);border-color:transparent}
+.pr-price{display:flex;align-items:baseline;gap:7px;margin-top:18px}
+.pr-price .amt{font-family:var(--sub);font-weight:700;font-size:clamp(38px,4.4vw,52px);line-height:.95;
+  letter-spacing:-.01em;color:#fff}
+.pr-price .per{font-family:var(--sub);font-size:14px;font-weight:500;color:var(--muted)}
+.pr-feats{list-style:none;margin:20px 0 0;padding-top:18px;border-top:1px solid var(--hair)}
+.pr-feat{display:flex;align-items:flex-start;gap:10px;padding:7px 0;font-size:14.5px;line-height:1.45;color:#D3D3D3}
+.pr-feat svg{width:16px;height:16px;flex-shrink:0;margin-top:2px;color:var(--orange)}
+.pr-tier-note{margin:13px 0 0;font-size:12.5px;line-height:1.5;color:var(--muted)}
+
+/* ways to save */
+.pr-save{margin-top:clamp(20px,2.4vw,28px);background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:clamp(18px,2vw,24px) clamp(20px,2.2vw,30px)}
+.pr-save-h{font-family:var(--sub);font-weight:600;font-size:11px;letter-spacing:.13em;text-transform:uppercase;
+  color:var(--muted);text-align:center;margin-bottom:16px}
+.pr-save-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.6vw,22px)}
+.pr-save-item{display:flex;flex-direction:column;gap:4px;text-align:center;padding:0 6px;
+  border-left:1px solid var(--hair)}
+.pr-save-item:first-child{border-left:0}
+.pr-save-item .val{font-family:var(--sub);font-weight:700;font-size:18px;letter-spacing:.01em;color:var(--orange)}
+.pr-save-item .lab{font-size:14px;font-weight:600;color:#E4E4E4}
+.pr-save-item .sub{font-size:12.5px;line-height:1.5;color:var(--muted)}
+
+@media(max-width:820px){
+  /* cards → horizontal swipe slider (peek next), scroll-snap; stretch keeps them equal height */
+  .pr-tiers{display:flex;grid-template-columns:none;max-width:none;gap:14px;
+    overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;padding-bottom:12px}
+  .pr-tiers::-webkit-scrollbar{display:none}
+  .pr-tier{flex:0 0 84%;scroll-snap-align:start}
+  .pr-save-grid{grid-template-columns:1fr;gap:0}
+  .pr-save-item{border-left:0;border-top:1px solid var(--hair);padding:16px 0}
+  .pr-save-item:first-child{border-top:0;padding-top:0}
+}
+@media(max-width:560px){
+  .pr-intro{max-width:340px}
+}
+
+/* ============================================================================
+   SECTION 13 — CTA 2  ·  "Get a Free Quote" (quote feeder after Pricing)
+   Content = humanized §CTA 2 (verbatim): "Want an exact quote before you book?" +
+   free-consultation line + Get a Free Quote / call. Full-bleed dark band, Hyper-
+   orange spray SPLATTER behind a big tribal headline (B.Long reference), ghost
+   button + click-to-call. Splatter = _hero-assets/cta-splatter-orange.png
+   (generated approximation; drop B.Long's exact PNG at the same path to swap).
+   ============================================================================ */
+.s-cta2{position:relative;overflow:hidden;background:var(--bg);text-align:center;
+  padding-block:clamp(74px,10vw,140px)}
+.cta2-splat{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:min(1180px,130%);max-width:none;height:auto;opacity:.5;pointer-events:none;user-select:none;z-index:0}
+/* dark radial scrim over the splatter centre so the headline stays legible */
+.s-cta2::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(58% 72% at 50% 50%, rgba(0,0,0,.6), rgba(0,0,0,0) 78%)}
+.s-cta2 .wrap{position:relative;z-index:2}
+.s-cta2 .cta2-h{margin:0 auto;max-width:min(1280px,94vw);font-family:var(--head);font-weight:700;text-transform:uppercase;
+  line-height:1.0;letter-spacing:-.005em;font-size:clamp(38px,5.6vw,74px);color:var(--cream);
+  text-shadow:0 3px 28px rgba(0,0,0,.55);text-wrap:balance}
+.s-cta2 .cta2-sub{margin:clamp(16px,2vw,22px) auto 0;max-width:46ch;font-family:var(--sub);
+  font-size:clamp(14px,1.4vw,17px);letter-spacing:.02em;color:#C9C9C9;line-height:1.55}
+.cta2-act{margin-top:clamp(24px,3vw,36px);display:flex;flex-direction:column;align-items:center;gap:15px}
+.cta2-btn{min-height:52px;padding:15px 34px;letter-spacing:.09em;text-transform:uppercase;
+  font-size:12.5px;border-width:1px}
+.cta2-call{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding-inline:10px;
+  font-family:var(--sub);font-size:14px;letter-spacing:.03em;color:var(--cream);text-decoration:none;transition:color .2s var(--ease)}
+.cta2-call:hover{color:var(--orange-hi)}
+.cta2-call svg{width:15px;height:15px}
+@media(max-width:560px){
+  .s-cta2 .cta2-h{max-width:94vw;font-size:clamp(30px,7vw,46px)}
+  .cta2-splat{width:170%;opacity:.42}
+}
+
+/* ============================================================================
+   SECTION 14 — VISIT / NAP + LOCAL SERVICE AREA
+   Content = humanized §Visit (verbatim). Part A: NAP contact column + Google Map
+   iframe (old-site layout). Part B: Koray-style Texas map whose pin moves to the
+   correct geographic spot per active city tab (radio-hack) + accordion city list.
+   Re-skinned to dark editorial + Hyper orange. TX path from mjumbewu US SVG.
+   ============================================================================ */
+.s-visit{background:var(--black)}
+.s-visit .wrap{position:relative;z-index:2}
+.s-visit h2 .o{color:var(--orange)}
+.vs-intro{position:relative;max-width:720px;margin:16px auto 0;text-align:center;font-size:16.5px;line-height:1.62;color:#C9C9C9}
+.vs-intro-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+.vs-intro-txt b{color:#E9E9E9;font-weight:600}
+.more-cb:checked ~ .vs-intro .vs-intro-txt{-webkit-line-clamp:40;line-clamp:40}
+.vs-more{position:absolute;left:0;top:0;width:20px;height:20px;display:grid;place-items:center;color:var(--orange);cursor:pointer;opacity:0;transform:translateY(-50%);transition:color .2s var(--ease),opacity .2s var(--ease)}
+.vs-more:hover{color:var(--orange-hi)}
+.vs-more svg{width:20px;height:20px;transition:transform .25s var(--ease)}
+.more-cb:checked ~ .vs-intro .vs-more svg{transform:rotate(180deg)}
+.more-cb:focus-visible ~ .vs-intro .vs-more{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
+
+/* Part A: NAP + map */
+.vs-nap{display:grid;grid-template-columns:0.86fr 1.14fr;gap:clamp(24px,3.4vw,48px);align-items:stretch;margin-top:clamp(34px,4vw,50px)}
+.vs-contact{list-style:none;align-self:center}
+.vs-ci{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--hair)}
+.vs-ci:first-child{border-top:0;padding-top:0}
+.vs-ci:last-child{padding-bottom:0}
+.vs-ci-ic{flex:0 0 auto;width:24px;height:24px;color:var(--orange);margin-top:2px}
+.vs-ci-ic svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.vs-ci-lab{display:block;font-family:var(--sub);font-size:16px;font-weight:600;letter-spacing:.02em;color:var(--orange);margin-bottom:5px}
+.vs-ci-val{display:block;font-size:15px;line-height:1.55;color:#DEDEDE;text-decoration:none}
+a.vs-ci-val:hover{color:var(--orange-hi)}
+.vs-hours span{display:block}
+.vs-map{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--card-brd);min-height:360px;background:#111}
+.vs-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* Part B: local service area (Texas map + accordion) */
+.vs-local{margin-top:clamp(48px,6vw,76px)}
+.vs-local-lead{max-width:620px;margin:0 auto clamp(22px,3vw,34px);text-align:center;font-size:15.5px;line-height:1.6;color:var(--muted)}
+.vs-radio{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.vs-local-grid{display:grid;grid-template-columns:minmax(260px,.82fr) minmax(360px,1.18fr);gap:clamp(18px,3vw,40px);align-items:center;max-width:1080px;margin-inline:auto;padding-block:clamp(10px,1.8vw,18px);border-top:1px solid rgba(255,255,255,.08);border-bottom:1px solid rgba(255,255,255,.08)}
+.vs-txmap{position:relative;isolation:isolate;max-width:480px;margin-inline:auto}
+.vs-txmap::before{content:none}
+.vs-txmap svg{width:100%;height:auto;display:block;overflow:visible;filter:drop-shadow(0 14px 24px rgba(0,0,0,.5))}
+.tx-outline{fill:url(#tx-fill);stroke:rgba(204,102,0,.46);stroke-width:1}
+.route-line{fill:none;stroke:rgba(230,117,0,.24);stroke-width:.95;stroke-linecap:round;stroke-dasharray:1.8 7;transition:stroke .28s var(--ease),stroke-width .28s var(--ease),opacity .28s var(--ease);opacity:.2}
+.pin-glow{opacity:0;fill:none!important;stroke:rgba(230,117,0,.55);stroke-width:.75;transition:opacity .28s var(--ease)}
+.pin-mark{opacity:0;transition:opacity .35s var(--ease)}
+.pin-mark path{fill:var(--orange)}
+.pin-hole{fill:var(--black)}
+.vs-cities{list-style:none;border-left:1px solid rgba(255,255,255,.12)}
+.vs-city{position:relative}
+.vs-city + .vs-city{border-top:1px solid rgba(255,255,255,.075)}
+.vs-city::before{content:"";position:absolute;left:-4px;top:23px;width:7px;height:7px;border:1px solid rgba(230,117,0,.5);background:var(--black);transform:rotate(45deg);transition:background .2s var(--ease),border-color .2s var(--ease)}
+.vs-city-head{display:flex;align-items:center;gap:14px;cursor:pointer;padding:13px 14px 12px 22px;transition:background .2s var(--ease)}
+.vs-city-head:hover{background:linear-gradient(90deg,rgba(230,117,0,.12),transparent 72%)}
+.vs-city-head h3{margin:0;font-family:var(--sub);font-weight:700;text-transform:uppercase;font-size:15px;letter-spacing:.06em;color:#CFCFCF;transition:color .2s var(--ease),transform .2s var(--ease)}
+.vs-city-panel{max-height:0;overflow:hidden;transition:max-height .34s var(--ease)}
+.vs-city-panel p{margin:0;padding:0 18px 14px 22px;font-size:14.5px;line-height:1.58;color:var(--muted)}
+/* active city → show its pin (hide its dot) + highlight list row + open panel */
+#city-sa:checked ~ .vs-local-grid .pin[data-city="sa"] .pin-mark,
+#city-austin:checked ~ .vs-local-grid .pin[data-city="austin"] .pin-mark,
+#city-houston:checked ~ .vs-local-grid .pin[data-city="houston"] .pin-mark,
+#city-dallas:checked ~ .vs-local-grid .pin[data-city="dallas"] .pin-mark{opacity:1}
+#city-sa:checked ~ .vs-local-grid .pin[data-city="sa"] .pin-glow,
+#city-austin:checked ~ .vs-local-grid .pin[data-city="austin"] .pin-glow,
+#city-houston:checked ~ .vs-local-grid .pin[data-city="houston"] .pin-glow,
+#city-dallas:checked ~ .vs-local-grid .pin[data-city="dallas"] .pin-glow{opacity:.95}
+#city-austin:checked ~ .vs-local-grid .route-line[data-route="austin"],
+#city-houston:checked ~ .vs-local-grid .route-line[data-route="houston"],
+#city-dallas:checked ~ .vs-local-grid .route-line[data-route="dallas"]{stroke:rgba(230,117,0,.72);stroke-width:1.35;opacity:.85}
+#city-sa:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(1) .vs-city-head,
+#city-austin:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(2) .vs-city-head,
+#city-houston:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(3) .vs-city-head,
+#city-dallas:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(4) .vs-city-head{background:linear-gradient(90deg,rgba(230,117,0,.18),rgba(255,255,255,.035) 44%,transparent 100%)}
+#city-sa:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(1)::before,
+#city-austin:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(2)::before,
+#city-houston:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(3)::before,
+#city-dallas:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(4)::before{background:var(--orange);border-color:var(--orange)}
+#city-sa:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(1) .vs-city-head h3,
+#city-austin:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(2) .vs-city-head h3,
+#city-houston:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(3) .vs-city-head h3,
+#city-dallas:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(4) .vs-city-head h3{color:#fff;transform:translateX(2px)}
+#city-sa:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(1) .vs-city-panel,
+#city-austin:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(2) .vs-city-panel,
+#city-houston:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(3) .vs-city-panel,
+#city-dallas:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(4) .vs-city-panel{max-height:220px}
+.vs-radio:focus-visible ~ .vs-local-grid .vs-cities .vs-city .vs-city-head{outline:1px solid var(--orange);outline-offset:-1px}
+
+@media(max-width:860px){
+  .vs-nap{grid-template-columns:1fr;gap:26px}
+  .vs-map{min-height:300px}
+  .vs-local-grid{grid-template-columns:1fr;gap:22px}
+  .vs-txmap{max-width:400px;margin-inline:auto}
+}
+
+/* ========== §15 FAQ ========== */
+.s-faq{background:var(--bg)}
+.s-faq h2 .o{color:var(--orange)}
+.faq-lead{margin:14px auto 0;max-width:60ch;text-align:center;font-weight:600;font-size:16.5px;line-height:1.6;color:#C9C9C9}
+.faq-list{max-width:840px;margin:clamp(30px,4vw,46px) auto 0;border-bottom:1px solid var(--hair)}
+.faq-item{border-top:1px solid var(--hair);transition:border-color .25s var(--ease)}
+.faq-item:has(.faq-cb:checked){border-top-color:var(--orange)}
+.faq-cb{position:absolute;width:1px;height:1px;opacity:0;margin:0;pointer-events:none}
+.faq-q{display:flex;align-items:center;gap:15px;cursor:pointer;padding:20px 6px}
+.faq-ic{flex:0 0 auto;width:20px;height:20px;color:#B9B9B9;transition:transform .34s var(--ease),color .2s var(--ease)}
+.faq-ic svg{display:block;width:100%;height:100%}
+.faq-q h3{margin:0;flex:1;font-family:var(--sub);font-weight:600;font-size:clamp(16px,1.9vw,18.5px);letter-spacing:.005em;line-height:1.38;color:#D6D6D6;transition:color .2s var(--ease)}
+.faq-q:hover h3{color:#fff}
+.faq-q:hover .faq-ic{color:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .42s var(--ease)}
+.faq-a p{margin:0;padding:0 40px 24px 41px;font-size:15px;line-height:1.68;color:var(--muted)}
+.faq-cb:checked ~ .faq-q h3{color:#fff}
+.faq-cb:checked ~ .faq-q .faq-ic{transform:rotate(180deg);color:#fff}
+.faq-cb:checked ~ .faq-a{max-height:340px}
+.faq-cb:focus-visible ~ .faq-q{outline:1px solid var(--orange);outline-offset:-1px}
+@media(max-width:560px){.faq-q{padding:17px 4px;gap:12px}.faq-a p{padding:0 12px 20px 36px}}
+
+/* ========== §16 BOOK ========== */
+.s-book{background:var(--black)}
+.s-book h2 .o{color:var(--orange)}
+.bk-form-card{max-width:640px;margin:clamp(28px,3.6vw,44px) auto 0;background:var(--surface);border:1px solid rgba(204,102,0,.34);border-radius:14px;padding:clamp(22px,2.6vw,34px);box-shadow:0 24px 60px rgba(0,0,0,.5);color-scheme:dark}
+.bk-form-intro{margin:0 0 20px;font-size:14px;line-height:1.55;color:#B7B7B7;text-align:center}
+.bk-row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
+.bk-field{margin-bottom:16px}
+.bk-row2 .bk-field{margin-bottom:0}
+.field-label{display:block;font-family:var(--sub);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.bk-input{width:100%;background:#0E0E0E;border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;color:#fff;font-family:var(--body);font-size:14.5px;line-height:1.4;transition:border-color .2s var(--ease),background .2s var(--ease),box-shadow .2s var(--ease)}
+.bk-input::placeholder{color:#8a8a8a}
+.bk-input:focus{outline:none;border-color:var(--orange);background:#141414;box-shadow:0 0 0 3px rgba(204,102,0,.14)}
+textarea.bk-input{min-height:96px;resize:vertical}
+.bk-radios{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.bk-radio{position:relative;display:flex;align-items:center;gap:10px;min-height:44px;padding:9px 12px;border-radius:8px;cursor:pointer;transition:background .15s var(--ease)}
+.bk-radio:hover{background:rgba(204,102,0,.07)}
+.bk-radio:has(input:checked){background:rgba(204,102,0,.12)}
+.bk-radio input{position:absolute;opacity:0;pointer-events:none}
+.bk-dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--muted);flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;transition:border-color .2s var(--ease)}
+.bk-dot::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--orange);transform:scale(0);transition:transform .2s var(--ease)}
+.bk-radio input:checked ~ .bk-dot{border-color:var(--orange)}
+.bk-radio input:checked ~ .bk-dot::after{transform:scale(1)}
+.bk-radio input:focus-visible ~ .bk-dot{outline:2px solid var(--orange);outline-offset:2px}
+.bk-rlabel{font-family:var(--sub);font-size:13.5px;font-weight:600;color:#EDEDED;line-height:1.3}
+.bk-note{display:flex;align-items:flex-start;gap:9px;margin-top:12px;padding:10px 14px;background:rgba(204,102,0,.10);border:1px solid rgba(204,102,0,.34);border-radius:8px;font-size:12.5px;line-height:1.5;color:#EDEDED}
+.bk-note svg{width:16px;height:16px;color:var(--orange);flex-shrink:0;margin-top:1px}
+.bk-note a{color:var(--orange);font-weight:700;text-decoration:none}
+.bk-note a:hover{color:var(--orange-hi)}
+.bk-submit{width:100%;margin-top:8px;display:inline-flex;align-items:center;justify-content:center;gap:9px}
+.bk-submit svg{width:16px;height:16px}
+@media(max-width:480px){.bk-row2{grid-template-columns:1fr}.bk-radios{grid-template-columns:1fr}}
+
+/* ========== §17 GUIDES ========== */
+.s-guides{background:var(--bg)}
+.s-guides h2 .o{color:var(--orange)}
+.gd-lead{margin:14px auto 0;max-width:60ch;text-align:center;font-size:16.5px;line-height:1.6;color:#C9C9C9}
+.gd-radio{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
+.gd-tabnav{display:flex;justify-content:center;gap:8px;margin:clamp(28px,3.6vw,42px) auto 0;flex-wrap:wrap}
+.gd-tab{display:inline-flex;align-items:center;min-height:46px;padding:11px 26px;border:1px solid var(--card-brd);border-radius:999px;cursor:pointer;font-family:var(--sub);font-weight:600;font-size:14px;letter-spacing:.05em;text-transform:uppercase;color:#C6C6C6;transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease);user-select:none}
+.gd-tab:hover{border-color:rgba(255,255,255,.34);color:#fff}
+#gd-tattoo:checked ~ .gd-tabnav label[for="gd-tattoo"],
+#gd-piercing:checked ~ .gd-tabnav label[for="gd-piercing"],
+#gd-removal:checked ~ .gd-tabnav label[for="gd-removal"]{background:var(--orange);border-color:var(--orange);color:#fff}
+.gd-radio:focus-visible ~ .gd-tabnav label{outline:2px solid var(--orange);outline-offset:2px}
+.gd-panel{display:none;margin-top:clamp(26px,3vw,38px)}
+#gd-tattoo:checked ~ .gd-panels .gd-panel--tattoo,
+#gd-piercing:checked ~ .gd-panels .gd-panel--piercing,
+#gd-removal:checked ~ .gd-panels .gd-panel--removal{display:block}
+.gd-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 32px)/3);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.gd-track::-webkit-scrollbar{display:none}
+.gd-card{scroll-snap-align:start;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--card-brd);border-radius:12px;overflow:hidden;text-decoration:none;transition:border-color .2s var(--ease),transform .2s var(--ease),box-shadow .2s var(--ease)}
+.gd-card:hover{border-color:var(--orange);transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.42)}
+.gd-img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;background:#0d0d0d}
+.gd-body{display:flex;flex-direction:column;flex:1;padding:18px 20px 18px}
+.gd-card h3{margin:0 0 9px;font-family:var(--sub);font-weight:600;font-size:16.5px;line-height:1.32;color:#fff;letter-spacing:.005em}
+.gd-card p{margin:0 0 16px;font-size:13.5px;line-height:1.55;color:var(--muted)}
+.gd-meta{margin-top:auto;padding-top:13px;border-top:1px solid var(--hair);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.gd-date{display:inline-flex;align-items:center;gap:6px;font-family:var(--sub);font-size:11.5px;font-weight:600;letter-spacing:.03em;color:#8A8A8A}
+.gd-date svg{width:13px;height:13px;opacity:.85}
+.gd-read{display:inline-flex;align-items:center;gap:7px;font-family:var(--sub);font-weight:600;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--orange)}
+.gd-read svg{width:14px;height:14px;transition:transform .2s var(--ease)}
+.gd-card:hover .gd-read svg{transform:translateX(3px)}
+.gd-foot{display:flex;align-items:center;gap:16px;margin-top:24px;flex-wrap:wrap}
+.gd-navgroup{display:flex;gap:9px}
+.gd-nav{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid var(--card-brd);background:transparent;color:#CFCFCF;font-size:22px;line-height:1;cursor:pointer;transition:border-color .2s var(--ease),color .2s var(--ease),opacity .2s var(--ease)}
+.gd-nav:hover:not(:disabled){border-color:var(--orange);color:#fff}
+.gd-nav:disabled{opacity:.32;cursor:default}
+.gd-progress{position:relative;flex:1;min-width:120px;height:3px;border-radius:2px;background:rgba(255,255,255,.12);overflow:hidden}
+.gd-thumb{position:absolute;top:0;left:0;height:100%;width:40%;background:var(--orange);border-radius:2px}
+.gd-morebtn{min-height:44px;padding:12px 20px;display:inline-flex;align-items:center;gap:9px}
+.gd-morebtn svg{width:16px;height:16px;transition:transform .2s var(--ease)}
+.gd-morebtn:hover svg{transform:translateX(3px)}
+@media(max-width:900px){.gd-track{grid-auto-columns:calc((100% - 16px)/2)}}
+@media(max-width:600px){.gd-track{grid-auto-columns:86%}.gd-morebtn{width:100%;justify-content:center}}
+</style>
+<!-- NEW about-us: only values not covered by the foundation or ported blocks -->
+<style>
+.au-h2{margin-bottom:16px}
+.who-intro{align-items:center}
+.who-intro .section-head{margin:0;max-width:650px;text-align:left}
+.who-intro .section-intro{margin-inline:0;margin-top:18px;max-width:none}
+.who-intro .media-card{aspect-ratio:4/3;max-width:520px;justify-self:end}
+.who-intro .who-video{aspect-ratio:16/9;max-width:560px}
+.who-intro .media-card img{object-position:50% 44%}
+.who-mv{margin-top:clamp(32px,4vw,52px);align-items:center}
+.who-mv .media-card{aspect-ratio:16/10;max-width:520px;justify-self:start}
+.who-mv .media-card img{object-position:50% 42%}
+.who-mv.split--media-right .media-card{justify-self:end}
+.who-mv h3{font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:clamp(21px,2.4vw,28px);line-height:1.03;letter-spacing:-.005em;color:#fff;margin:0}
+.who-mv h3 .o{color:var(--orange)}
+.who-mv .lead{margin-top:14px;max-width:none;color:#D9D9D9;text-shadow:none}
+.au-chips{margin-top:22px}
+.au-story .section-head{margin-bottom:clamp(28px,3vw,36px)}
+.au-story-split{display:block}
+.au-story-split>div{padding:clamp(18px,2.4vw,28px) 0 0;border-top:1px solid var(--hair)}
+.au-story-split>div p{max-width:860px;font-size:clamp(16.5px,1.45vw,18px);line-height:1.7}
+.au-story-timeline{position:relative;margin-top:clamp(34px,4vw,52px)}
+.au-story-split>.au-story-timeline{padding:0;border-top:0}
+.au-story-timeline:before{content:"";position:absolute;left:0;right:0;top:8px;height:2px;background:linear-gradient(90deg,rgba(214,109,0,0),rgba(214,109,0,.95) 9%,rgba(214,109,0,.95) 88%,rgba(214,109,0,0));pointer-events:none}
+.au-story-timeline:after{content:"";position:absolute;top:0;right:-1px;bottom:8px;width:clamp(46px,6vw,96px);background:linear-gradient(90deg,rgba(13,13,13,0),var(--bg));pointer-events:none}
+.au-story-split .arrowlist{list-style:none;display:grid;grid-auto-flow:column;grid-auto-columns:minmax(300px,29%);gap:18px;margin:0;padding:0 clamp(78px,9vw,140px) 10px 0;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;-webkit-overflow-scrolling:touch;cursor:grab}
+.au-story-split .arrowlist:active{cursor:grabbing}
+.au-story-split .arrowlist::-webkit-scrollbar{display:none}
+.au-story-split .arrowlist>li{position:relative;scroll-snap-align:start;padding-top:0}
+.au-story-split .arrowlist>li:before{content:none;display:none}
+.au-story-split .arrowlist>li:after{content:none;display:none}
+.au-story-split .al-dot{display:block;position:relative;z-index:1;width:18px;height:18px;margin:0 auto 22px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 9px rgba(214,109,0,.14),0 0 18px rgba(214,109,0,.42)}
+.au-story-split .al-y{display:block;margin-bottom:22px;text-align:center;font-family:var(--head);font-weight:700;font-size:clamp(34px,4.1vw,54px);line-height:.92;letter-spacing:0;color:#fff;text-transform:uppercase}
+.au-story-split .al-card{min-height:178px;padding:24px 22px;border:1px solid var(--hair);border-radius:8px;background:rgba(255,255,255,.025);transition:transform .22s var(--ease),border-color .22s var(--ease),background .22s var(--ease)}
+.au-story-split .arrowlist>li:hover .al-card{transform:translateY(-4px);border-color:rgba(214,109,0,.55);background:rgba(255,255,255,.04)}
+.au-story-split .al-t{display:block;margin-bottom:12px}
+.s-conventions{background:var(--bg)}
+.s-conventions .section-head{max-width:820px}
+.s-conv-rail{margin-top:clamp(30px,4vw,48px);display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:clamp(14px,2vw,26px);align-items:center}
+.s-conv-logo{min-height:116px;display:flex;align-items:center;justify-content:center;padding:14px;border:1px solid rgba(255,255,255,.08);border-radius:8px;background:rgba(255,255,255,.025)}
+.s-conv-logo img{max-height:82px;width:auto;max-width:100%;object-fit:contain;filter:drop-shadow(0 10px 18px rgba(0,0,0,.45))}
+.s-conv-copy{max-width:900px;margin:clamp(28px,3.5vw,42px) auto 0}
+.s-conv-copy p{font-family:var(--body);font-weight:400;font-size:clamp(16px,1.45vw,18px);line-height:1.7;color:#C9C9C9}
+.s-conv-copy p+p{margin-top:18px}
+@media(max-width:1080px){
+  .au-story-split .arrowlist{grid-auto-columns:minmax(270px,44%)}
+}
+@media(max-width:900px){
+  .s-conv-rail{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:860px){
+  .who-intro .section-head{text-align:left}
+  .who-intro .media-card{max-width:none;justify-self:stretch}
+  .who-mv .media-card{max-width:none;justify-self:stretch}
+  .who-mv > div{order:1}
+  .who-mv > .split-media{order:2}
+}
+@media(max-width:720px){
+  .au-story-split .arrowlist{grid-auto-columns:84%;gap:14px;padding-right:64px;align-items:stretch}
+  .au-story-split .arrowlist>li{display:flex;flex-direction:column}
+  .au-story-split .al-card{flex:1;min-height:0}
+}
+@media(max-width:560px){
+  .s-conv-rail{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .s-conv-rail::-webkit-scrollbar{display:none}
+  .s-conv-logo{flex:0 0 42%;min-height:96px;scroll-snap-align:start}
+  .s-conv-logo img{max-height:66px}
+}
+/* NEW about-us: cinematic band content sits above scrim/grain */
+.au-mv .au-bandwrap{position:relative;z-index:5}
+.au-mv-split{align-items:start;gap:clamp(28px,4vw,56px)}
+.au-mv-col h3{margin-bottom:12px}
+.au-mv .lead{max-width:none}
+/* NEW about-us: founder pull-quote (no blockquote component existed in the foundation) */
+.au-quote{margin:24px 0 0;padding-left:18px;border-left:3px solid var(--orange);
+  font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:1.08;letter-spacing:-.005em;
+  font-size:clamp(19px,2.1vw,26px);color:#fff}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<!-- ==== ABOUT US 2026-07-07 · PORT(hero/artists/services/awards/reviews/cta/visit) + NEW(who/story/mission/founder/safety) ==== -->
+
+<header class="hdr">
+  <div class="wrap">
+    <input type="checkbox" id="navtog" class="nav-toggle" aria-label="Open navigation menu">
+    <a class="logo" href="/" aria-label="Hyper Inkers home">
+      <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers">
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/tattoo">Tattoo</a>
+      <a href="/piercing">Piercing</a>
+      <a href="#artists">Artists</a>
+      <a href="#awards">Awards</a>
+      <a href="#visit">Visit</a>
+      <a href="#book" class="nav-book">Book Now</a>
+    </nav>
+    <a class="book hdr-book" href="#book">Book Now</a>
+    <label for="navtog" class="nav-burger" aria-label="Open menu">
+      <svg class="ico-bars" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="ico-x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </label>
+  </div>
+</header>
+
+<section class="hero" id="main">
+  <div class="hero-media">
+    <img src="https://hyperinkers.com/wp-content/uploads/2026/02/tattoo-parlor-san-antonio.jpg"
+         alt="Hyper Inkers tattoo artists at the San Antonio studio">
+  </div>
+  <div class="hero-scrim"></div>
+  <div class="grain"></div>
+
+  <div class="hero-body">
+    <div class="wrap">
+      <div class="hero-grid">
+
+        <div class="hero-col">
+          <span class="badge">
+            <svg class="gg" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>
+            <span class="badge-col">
+              <span class="badge-r1"><span class="badge-num">4.9</span><span class="stars" aria-label="4.9 out of 5">★★★★★</span></span>
+              <span class="badge-cnt"><b>3,500+</b> Google Reviews</span>
+            </span>
+          </span>
+
+          <h1>The Best Tattoo Studio<span class="o">Stirring Up Your Town</span></h1>
+
+          <p class="lead">An artist-owned tattoo studio in San Antonio, with an award-winning team doing custom tattoos, piercings, and tattoo removal since 2023.</p>
+        </div>
+
+        <figure class="award-card">
+          <img src="_hero-assets/award-sanantonio-2025.jpg" alt="Hyper Inkers tattoo artists with their San Antonio convention awards.">
+        </figure>
+
+        <div class="cta">
+          <a class="btn btn-primary" href="#book">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v3M16 2v3M3.5 9h17M5 5h14a1.5 1.5 0 0 1 1.5 1.5V19A1.5 1.5 0 0 1 19 20.5H5A1.5 1.5 0 0 1 3.5 19V6.5A1.5 1.5 0 0 1 5 5Z"/></svg>
+            Book a Consultation
+          </a>
+          <a class="btn btn-ghost" href="tel:+12109979737">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 3.5 9 4l1 4-2 1.5a12 12 0 0 0 6.5 6.5L16 14l4 1 .5 2.5A2 2 0 0 1 18.4 20 15.5 15.5 0 0 1 4 5.6 2 2 0 0 1 6.5 3.5Z"/></svg>
+            Call (210) 997-9737
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+</section>
+
+<!-- ============ SECTION 01 · WHO WE ARE (NEW · foundation .split + .chips) ============ -->
+<section class="section" id="who" aria-label="Who We Are">
+  <div class="wrap">
+    <div class="split who-intro">
+      <div class="section-head">
+        <h2>Who We <span class="o">Are</span></h2>
+        <p class="section-intro">Hyper Inkers is a tattoo studio in San Antonio, established in July 2023, built by young hearts full of enthusiasm and creativity. Our artists create custom tattoos, piercings, and tattoo removal, backed by advanced techniques and high-quality equipment. These are the core values that drive us to continuously improve and grow every single day.</p>
+      </div>
+      <figure class="split-media media-card near-media who-video" data-yt="NwxyqZ4ZG80">
+        <img class="near-poster" src="https://i.ytimg.com/vi/NwxyqZ4ZG80/maxresdefault.jpg" alt="Hyper Inkers artists at work inside the San Antonio tattoo studio." loading="lazy">
+        <span class="near-scrim" aria-hidden="true"></span>
+        <button class="near-play" type="button" aria-label="Play the Hyper Inkers studio introduction video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+        <figcaption class="near-vcap">Hyper Inkers Tattoo Studio - San Antonio, Texas</figcaption>
+      </figure>
+    </div>
+
+    <div class="split who-mv">
+      <figure class="split-media media-card" style="--ar:16/10">
+        <img src="https://hyperinkers.com/wp-content/uploads/2024/05/DSC06366-scaled.jpg" alt="Detailed tattoo work by a Hyper Inkers artist">
+      </figure>
+      <div>
+        <h3>Our <span class="o">Mission</span></h3>
+        <p>As life becomes more modern and perspectives on art, especially tattoos, continue to evolve, Hyper Inkers stays open-minded and always learning. We embrace the changes of the times to bring our clients the best experience possible. Every piece we create is meant to be a vivid, personal expression of you. We want you to feel pure joy and confidence when you leave our studio, knowing that the mark on your skin truly means something. We're committed to doing it all in the safest, most skilled, and most heartfelt way.</p>
+      </div>
+    </div>
+    <div class="split split--media-right who-mv">
+      <div>
+        <h3>Our <span class="o">Vision</span></h3>
+        <p>At Hyper Inkers, we're more than just a studio. We dream of creating a space that feels like a second home, somewhere you can stop by, even if it's just to say hi or share a laugh, like visiting a friend. We believe in connection, between artists, between artists and clients, and within a community that genuinely loves tattoos and body art. Because to us, art has no limits. And as we continue growing, we carry the strength of everyone who supports us. You are not just our clients, you are part of the Hyper Inkers family, and together we'll keep creating something truly meaningful.</p>
+      </div>
+      <figure class="split-media media-card" style="--ar:16/10">
+        <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-1-scaled.jpg" alt="The Hyper Inkers studio space in San Antonio where artists and clients connect">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 02 · OUR STORY (NEW · foundation .split + .arrowlist) ============ -->
+<section class="section au-story" id="story" aria-label="Our Story">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>Our <span class="o">Story</span></h2>
+    </div>
+    <div class="split au-story-split">
+      <div>
+        <p>Hyper Inkers opened in San Antonio in July 2023, started by working artists who wanted a shop of their own. The idea was simple: treat every tattoo like a masterpiece, and treat every client like family. That focus, on the work and on the people, is what helped a brand-new shop earn thousands of five-star reviews in just a couple of years. Today our artists cover black and grey realism, color, fine line, Japanese, and cover-ups, and we have added piercings and tattoo removal so you can get it all under one roof.</p>
+      </div>
+      <div class="au-story-timeline" aria-label="Hyper Inkers story timeline">
+        <ul class="arrowlist">
+          <li><span class="al-dot" aria-hidden="true"></span><span class="al-y">2023</span><div class="al-card"><span class="al-t">Hyper Inkers opens</span><span class="al-m">Artist-owned from day one. Founder Minh Pham earns his first international titles, including Best of Show at Expo Tattoo Arte Mexico.</span></div></li>
+          <li><span class="al-dot" aria-hidden="true"></span><span class="al-y">2024</span><div class="al-card"><span class="al-t">The wins multiply</span><span class="al-m">Best of Show titles across the U.S. and Asia, and a first trip to Europe.</span></div></li>
+          <li><span class="al-dot" aria-hidden="true"></span><span class="al-y">2025</span><div class="al-card"><span class="al-t">Home-turf glory</span><span class="al-m">Minh wins Best of Show at the San Antonio Tattoo Arts Festival; newer artists Tai and Navei take home their first convention trophies.</span></div></li>
+          <li><span class="al-dot" aria-hidden="true"></span><span class="al-y">2026</span><div class="al-card"><span class="al-t">New York honors</span><span class="al-m">Minh earns Best of Show at the New York Empire State Tattoo Expo.</span></div></li>
+          <li><span class="al-dot" aria-hidden="true"></span><span class="al-y">Today</span><div class="al-card"><span class="al-t">All under one roof</span><span class="al-m">Tattoos, piercings, and tattoo removal, backed by 40+ trophies and thousands of five-star reviews.</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 04 · MEET OUR FOUNDER (NEW · .split--media-right + media-card) ============ -->
+<section class="section au-founder" id="founder" aria-label="Meet Our Founder">
+  <div class="wrap">
+    <div class="split split--media-right">
+      <div>
+        <h2 class="au-h2">Meet Our <span class="o">Founder</span></h2>
+        <p>Hyper Inkers was founded by Minh Pham, who started tattooing in Vietnam at sixteen and has been at it for more than ten years. He studied graphic design first, and that training still shows in his black and grey realism, the style he is best known for, along with color and oriental work. His pieces have won Best of Show at conventions in the U.S., Europe, and Asia, including the San Antonio Tattoo Arts Festival and the New York Empire State Tattoo Expo. Minh still tattoos at the studio every week and holds the team to the same standard.</p>
+        <p class="au-quote">If it's visually striking, it captivates me.</p>
+      </div>
+      <figure class="split-media media-card" style="--ar:3/4">
+        <!-- TODO asset: Minh Pham accepting Best of Show on stage (secondary founder image; portrait used as placeholder) -->
+        <img src="https://hyperinkers.com/wp-content/uploads/2026/02/minh-pham-san-antonio-tattoo-artist-768x1075.jpg" alt="Minh Pham, founder of Hyper Inkers">
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 05 · OUR ARTISTS (PORT homepage .artists) ============ -->
+<section id="artists" class="section artists" aria-label="Tattoo artists in San Antonio">
+  <div class="wrap">
+    <div class="section-head section-head--editorial">
+      <h2>Our <span class="o">Artists</span></h2>
+      <input type="checkbox" id="artiIntro" class="arti-icb" aria-label="Expand the artists introduction">
+      <p class="arti-intro" id="artiIntroBox"><span class="arti-intro-txt" id="artiIntroTxt">Our artists exemplify professionalism from start to finish. They prioritize punctuality, transparent pricing, and a positive, respectful experience for every client. Explore our artists' portfolios to see the range of their skills and styles. Each artist has a diverse body of work, showing versatility and a commitment to excellence.</span><label for="artiIntro" class="arti-imore" id="artiMore" aria-label="Expand or collapse the artists introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
+      <noscript><style>.arti-intro-txt{-webkit-line-clamp:unset;line-clamp:unset}.arti-imore{display:none}</style></noscript>
+      <p class="sec-bridge">Meet the artists behind the work.</p>
+    </div>
+
+    <div class="art-grid msl-row">
+
+      <!-- 1 · Tai Hoa -->
+      <article class="art-card">
+        <div class="art-photo">
+          <img src="https://hyperinkers.com/wp-content/uploads/2026/02/tai-hoa-best-tattoo-artist-in-san-antonio-texas-768x1075.jpg" alt="Tai Hoa, black and grey tattoo artist at Hyper Inkers in San Antonio." loading="lazy">
+          <span class="art-scrim" aria-hidden="true"></span>
+          <div class="art-panel">
+            <p class="art-bio">Tai Hoa is a black and grey tattoo artist at Hyper Inkers, trained in fine art in Saigon. He is known for precise linework, patient detail, and clean shading. A 1st Place win at the 2025 San Antonio Tattoo Arts Festival backs that reputation.</p>
+            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+        <div class="art-cap">
+          <span class="art-style">Black &amp; Grey</span>
+          <span class="art-name">Tai Hoa</span>
+        </div>
+        <a class="art-link" href="/tattoo-artist/tai-hoa" aria-label="View Tai Hoa's profile"></a>
+      </article>
+
+      <!-- 3 · Mancha -->
+      <article class="art-card">
+        <div class="art-photo">
+          <img src="https://hyperinkers.com/wp-content/uploads/2026/02/mancha-hyper-inkers-tattoo-artist-768x1075.jpg" alt="Mancha, black and grey and realism tattoo artist at Hyper Inkers in San Antonio." loading="lazy">
+          <span class="art-scrim" aria-hidden="true"></span>
+          <div class="art-panel">
+            <p class="art-bio">Mancha is a black and grey, blackwork, and anime tattoo artist at Hyper Inkers. Coming from the Lower Valley of El Paso, he is known for dramatic, emotionally charged work with deep contrast and fine detail.</p>
+            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+        <div class="art-cap">
+          <span class="art-style">Black &amp; Grey <span class="art-badge">+2<span class="art-tip"><span>Blackwork</span><span>Anime</span></span></span></span>
+          <span class="art-name">Mancha</span>
+        </div>
+        <a class="art-link" href="/tattoo-artist/mancha" aria-label="View Mancha's profile"></a>
+      </article>
+
+      <!-- 4 · Navei -->
+      <article class="art-card">
+        <div class="art-photo">
+          <img src="https://hyperinkers.com/wp-content/uploads/2026/02/navie-best-tattoo-artists-in-san-antonio-texas-768x1075.jpg" alt="Navei, female fine-line and semi-realism tattoo artist at Hyper Inkers in San Antonio." loading="lazy">
+          <span class="art-scrim" aria-hidden="true"></span>
+          <div class="art-panel">
+            <p class="art-bio">Navei is a female fine-line and semi-realism tattoo artist at Hyper Inkers. Navei Tran trained through specialized study in Vietnam and brings a light, careful hand to personal pieces that need clean lines and restraint.</p>
+            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+        <div class="art-cap">
+          <span class="art-style">Fine Line <span class="art-badge">+1<span class="art-tip"><span>Semi-Realism</span></span></span></span>
+          <span class="art-name">Navei</span>
+        </div>
+        <a class="art-link" href="/tattoo-artist/navei" aria-label="View Navei's profile"></a>
+      </article>
+
+      <!-- 5 · Nicole -->
+      <article class="art-card">
+        <div class="art-photo">
+          <img src="https://hyperinkers.com/wp-content/uploads/2026/02/nicole-best-tattoo-artist-in-san-antonio-768x1075.jpg" alt="Nicole, tattoo artist and professional piercer at Hyper Inkers in San Antonio." loading="lazy">
+          <span class="art-scrim" aria-hidden="true"></span>
+          <div class="art-panel">
+            <p class="art-bio">Nicole is a tattoo artist and professional piercer at Hyper Inkers. She leads the studio's piercing team, works in fine line and blackwork, and clients know her for gentle, precise piercings and tattoos alike.</p>
+            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+        <div class="art-cap">
+          <span class="art-style">Fine Line <span class="art-badge">+2<span class="art-tip"><span>Blackwork</span><span>Piercing</span></span></span></span>
+          <span class="art-name">Nicole</span>
+        </div>
+        <a class="art-link" href="/tattoo-artist/nicole" aria-label="View Nicole's profile"></a>
+      </article>
+
+      <!-- 6 · Zoe -->
+      <article class="art-card">
+        <div class="art-photo">
+          <img src="_artist-photos/zoe.jpg" alt="Zoe Meints, body piercer and certified laser specialist at Hyper Inkers in San Antonio." loading="lazy">
+          <span class="art-scrim" aria-hidden="true"></span>
+          <div class="art-panel">
+            <p class="art-bio">Zoe Meints is a full-time body piercer at Hyper Inkers, working in ear, navel, eyebrow, and nostril piercings. She reads each client's anatomy to place jewelry that fits, turning a nerve-wracking first piercing into a calm, easy session. Zoe is also a Certified Laser Specialist on the studio's tattoo removal team.</p>
+            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+        <div class="art-cap">
+          <span class="art-style">Piercing <span class="art-badge">+1<span class="art-tip"><span>Laser Removal</span></span></span></span>
+          <span class="art-name">Zoe</span>
+        </div>
+        <a class="art-link" href="/tattoo-artist/zoe" aria-label="View Zoe's profile"></a>
+      </article>
+
+      <!-- 7 · Yen -->
+      <article class="art-card">
+        <div class="art-photo">
+          <img src="_artist-photos/yen.jpg" alt="Yen Ngoc Bao Dinh, body piercer at Hyper Inkers in San Antonio." loading="lazy">
+          <span class="art-scrim" aria-hidden="true"></span>
+          <div class="art-panel">
+            <p class="art-bio">Yen Ngoc Bao Dinh is a body piercer at Hyper Inkers, working across a wide range of ear and facial piercings. Certified in bloodborne pathogens, she brings gentle hands and a calm manner to everything from lobe and helix to rook, tragus, and conch.</p>
+            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+        <div class="art-cap">
+          <span class="art-style">Piercing</span>
+          <span class="art-name">Yen</span>
+        </div>
+        <a class="art-link" href="/tattoo-artist/yen" aria-label="View Yen's profile"></a>
+      </article>
+
+      <!-- 8 · Cindy -->
+      <article class="art-card">
+        <div class="art-photo">
+          <img src="_artist-photos/cindy.jpg" alt="Cindy Lam, piercing apprentice and certified laser specialist at Hyper Inkers in San Antonio." loading="lazy">
+          <span class="art-scrim" aria-hidden="true"></span>
+          <div class="art-panel">
+            <p class="art-bio">Cindy Lam is a piercing apprentice at Hyper Inkers with a focus on ear piercings. Certified in CPR, First Aid, and bloodborne pathogens, she brings a builder's eye for precision from her architecture studies at UTSA. Cindy also works removal sessions as a Certified Laser Specialist.</p>
+            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+        <div class="art-cap">
+          <span class="art-style">Piercing <span class="art-badge">+1<span class="art-tip"><span>Laser Removal</span></span></span></span>
+          <span class="art-name">Cindy</span>
+        </div>
+        <a class="art-link" href="/tattoo-artist/cindy" aria-label="View Cindy's profile"></a>
+      </article>
+
+    </div>
+    <div class="msl-foot art-foot">
+      <div class="msl-nav">
+        <button type="button" class="msl-navbtn prev" aria-label="Previous artists"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button type="button" class="msl-navbtn next" aria-label="More artists"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+      <div class="msl-track" aria-hidden="true"><span class="msl-thumb"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 06 · WHAT WE DO (PORT homepage .services) ============ -->
+<section id="services" class="section services" aria-label="Services">
+  <div class="wrap">
+    <div class="section-head center">
+      <h2>What We <span class="o">Do</span></h2>
+      <input type="checkbox" id="svcIntro" class="svc-icb" aria-label="Expand the services introduction">
+      <p class="svc-intro" id="svcIntroBox"><span class="svc-intro-txt" id="svcIntroTxt">We offer a full spectrum of tattoo, piercing, and tattoo removal services, from custom designs and portraits to cover-ups and laser tattoo removal. Our internationally acclaimed artists blend traditional and modern styles to craft masterful designs, and every tattoo is treated as a one-of-a-kind piece born from passion and dedication.</span><label for="svcIntro" class="svc-imore" id="svcMore" aria-label="Expand or collapse the services introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
+      <noscript><style>.svc-intro-txt{-webkit-line-clamp:unset;line-clamp:unset}.svc-imore{display:none}</style></noscript>
+      <p class="sec-bridge">Each service covers a different need.</p>
+    </div>
+
+    <div class="svc-grid msl-row">
+
+      <article class="svc-card">
+        <img src="https://hyperinkers.com/wp-content/uploads/2025/05/realism-tattoo-art-3.png" alt="Black and grey realism tattoo by a Hyper Inkers artist in San Antonio." loading="lazy">
+        <span class="svc-scrim" aria-hidden="true"></span>
+        <div class="svc-body">
+          <h3 class="svc-name">Custom Tattoos</h3>
+          <p class="svc-def">Custom tattoos at Hyper Inkers turn your idea into an original design, drawn from scratch for your body and placement.</p>
+          <div class="svc-more">
+            <p class="svc-more-txt">Award-winning artists work in realism, black and grey, color, fine line, Japanese, anime, and portrait styles.</p>
+            <span class="svc-explore">Explore custom tattoos in San Antonio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+        <a class="svc-link" href="/tattoo" aria-label="Explore custom tattoos in San Antonio"></a>
+      </article>
+
+      <article class="svc-card">
+        <img src="https://hyperinkers.com/wp-content/uploads/2025/07/tattoo-cover-up-san-antonio-scaled.jpg" alt="Tattoo cover-up reworked into new artwork by a Hyper Inkers artist in San Antonio." loading="lazy">
+        <span class="svc-scrim" aria-hidden="true"></span>
+        <div class="svc-body">
+          <h3 class="svc-name">Cover-Up Tattoos</h3>
+          <p class="svc-def">Cover-up tattoos at Hyper Inkers turn old or unwanted ink into new artwork you can feel good wearing.</p>
+          <div class="svc-more">
+            <p class="svc-more-txt">Your artist starts with a free design consult and can work over many existing tattoos, in black and grey or full color.</p>
+            <span class="svc-explore">Explore tattoo cover-ups in San Antonio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+        <a class="svc-link" href="/tattoo-cover-up-san-antonio" aria-label="Explore tattoo cover-ups in San Antonio"></a>
+      </article>
+
+      <article class="svc-card">
+        <img src="https://hyperinkers.com/wp-content/uploads/2025/05/facial-piercing-4-768x960.png" alt="Facial piercing placed by a professional piercer at Hyper Inkers San Antonio." loading="lazy">
+        <span class="svc-scrim" aria-hidden="true"></span>
+        <div class="svc-body">
+          <h3 class="svc-name">Piercing</h3>
+          <p class="svc-def">Piercings at Hyper Inkers give you a clean, precise placement from a trained piercer, with a fresh needle and never a gun.</p>
+          <div class="svc-more">
+            <p class="svc-more-txt">Piercings run walk-in only, covering ear, nose, navel, and more, with jewelry options and aftercare guidance.</p>
+            <span class="svc-explore">Explore body piercing in San Antonio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+        <a class="svc-link" href="/piercing" aria-label="Explore body piercing in San Antonio"></a>
+      </article>
+
+      <article class="svc-card">
+        <!-- TODO asset: real tattoo-removal before/after photo (existing tattoo image used as placeholder) -->
+        <img src="https://hyperinkers.com/wp-content/uploads/2025/05/black-and-grey-tattoo-design-4.png" alt="Black and grey tattoo of the kind Hyper Inkers can lighten or remove in San Antonio." loading="lazy">
+        <span class="svc-scrim" aria-hidden="true"></span>
+        <div class="svc-body">
+          <h3 class="svc-name">Tattoo Removal</h3>
+          <p class="svc-def">Tattoo removal at Hyper Inkers fades unwanted ink over a series of treatments.</p>
+          <div class="svc-more">
+            <p class="svc-more-txt">Certified laser specialists start with a free assessment and space sessions for steady fading across many ink colors.</p>
+            <span class="svc-explore">Explore tattoo removal in San Antonio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+        <a class="svc-link" href="/tattoo-removal" aria-label="Explore tattoo removal in San Antonio"></a>
+      </article>
+
+    </div>
+    <div class="msl-foot svc-foot">
+      <div class="msl-nav">
+        <button type="button" class="msl-navbtn prev" aria-label="Previous services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+        <button type="button" class="msl-navbtn next" aria-label="More services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+      </div>
+      <div class="msl-track" aria-hidden="true"><span class="msl-thumb"></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 07 · SAFETY & CLEANLINESS (NEW · .section--slim compact split) ============ -->
+<section class="section section--slim au-safety" id="safety" aria-label="Safety and Cleanliness">
+  <div class="wrap">
+    <div class="split">
+      <figure class="split-media media-card">
+        <!-- TODO asset: sterile tattoo/piercing station with single-use needles at Hyper Inkers (placeholder shown) -->
+        <img src="https://hyperinkers.com/wp-content/uploads/2025/05/facial-piercing-4-768x960.png" alt="Single-use needles and a sterilized station at Hyper Inkers">
+      </figure>
+      <div>
+        <h2 class="au-h2">Safety &amp; <span class="o">Cleanliness</span></h2>
+        <p>Your safety comes first at every session. We use single-use needles, sterilize our equipment, and keep strict hygiene standards for tattooing, piercing, and tattoo removal alike. The studio stays clean and comfortable, so you can relax and focus on your new piece.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 08 · AWARDS & RECOGNITION (PORT homepage s-awards) ============ -->
+<section class="section s-awards" id="awards">
+  <span class="grain" aria-hidden="true"></span>
+  <img class="aw-smoke" src="_hero-assets/color-blur.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+
+  <div class="wrap">
+
+    <!-- CENTERED HEAD (no eyebrow) -->
+    <header class="section-head center">
+      <h2>Awards &amp; <span class="o">Recognition</span></h2>
+      <input type="checkbox" id="aw-intro" class="more-cb" aria-label="Expand the awards introduction">
+      <p class="aw-intro" id="awIntro"><span class="aw-intro-txt" id="awIntroTxt">Our artists have competed in 20+ world conventions across 10+ countries and brought home over 40 trophies. Recent highlights include Best of Show at the New York Empire State Tattoo Expo and the San Antonio Tattoo Arts Festival, plus a Best of the Best title at the Sinners Tattoo Expo in Dallas. Those wins are a solid assurance of the skill and technique behind every piece we create.</span><label for="aw-intro" class="aw-more" id="awMore" aria-label="Expand or collapse the awards introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
+      <noscript><style>.aw-intro-txt{-webkit-line-clamp:unset;line-clamp:unset}.aw-more{display:none}</style></noscript>
+    </header>
+
+    <!-- radio toggles for the 7 modals (default = none open) -->
+    <input type="radio" name="awm" id="awm-none" class="aw-cb" checked>
+    <input type="radio" name="awm" id="awm-1" class="aw-cb aw-open-cb">
+    <input type="radio" name="awm" id="awm-2" class="aw-cb aw-open-cb">
+    <input type="radio" name="awm" id="awm-3" class="aw-cb aw-open-cb">
+    <input type="radio" name="awm" id="awm-4" class="aw-cb aw-open-cb">
+    <input type="radio" name="awm" id="awm-5" class="aw-cb aw-open-cb">
+    <input type="radio" name="awm" id="awm-6" class="aw-cb aw-open-cb">
+    <input type="radio" name="awm" id="awm-7" class="aw-cb aw-open-cb">
+
+    <!-- THE RAIL -->
+    <div class="awrail-wrap">
+      <ul class="awrail">
+
+        <li class="awrail-card">
+          <label for="awm-1" class="aw-cardlink" aria-label="Open Best of Show, San Antonio Tattoo Arts Festival 2025"></label>
+          <figure class="media-card aw-vitrine" style="--ar:4/3">
+            <img loading="lazy" src="_hero-assets/award-sanantonio-flagship-cut.png" alt="Best of Show trophy, San Antonio Tattoo Arts Festival 2025, won by Minh Pham.">
+            <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          </figure>
+          <div class="aw-body">
+            <h3 class="aw-place">Best of Show</h3>
+            <p class="aw-conv">San Antonio Tattoo Arts Festival</p>
+            <p class="aw-loc">San Antonio, TX · 2025</p>
+          </div>
+        </li>
+
+        <li class="awrail-card">
+          <label for="awm-2" class="aw-cardlink" aria-label="Open Best of the Best, Sinners Tattoo Expo 2025"></label>
+          <figure class="media-card aw-vitrine" style="--ar:4/3">
+            <img loading="lazy" src="_hero-assets/award-sinners-bestofbest-2025-cut.png" alt="Best of the Best trophy, Sinners Tattoo Expo 2025, won by Minh Pham.">
+            <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          </figure>
+          <div class="aw-body">
+            <h3 class="aw-place">Best of the Best</h3>
+            <p class="aw-conv">Sinners Tattoo Expo</p>
+            <p class="aw-loc">Dallas, TX · 2025</p>
+          </div>
+        </li>
+
+        <li class="awrail-card">
+          <label for="awm-3" class="aw-cardlink" aria-label="Open Best of Show, Golden State Tattoo Expo 2025"></label>
+          <figure class="media-card aw-vitrine" style="--ar:4/3">
+            <img loading="lazy" src="_hero-assets/award-goldenstate-trophy-2025-cut.png" alt="Best of Show trophy, Golden State Tattoo Expo 2025, won by Minh Pham.">
+            <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          </figure>
+          <div class="aw-body">
+            <h3 class="aw-place">Best of Show</h3>
+            <p class="aw-conv">Golden State Tattoo Expo 2025</p>
+            <p class="aw-loc">California · 2025</p>
+          </div>
+        </li>
+
+        <li class="awrail-card">
+          <label for="awm-4" class="aw-cardlink" aria-label="Open Best of Show, New York Empire State Tattoo Expo 2026"></label>
+          <figure class="media-card aw-vitrine" style="--ar:4/3">
+            <img loading="lazy" src="_hero-assets/award-saigon-bos-2024-cut.png" alt="Best of Show trophy, New York Empire State Tattoo Expo 2026, won by Minh Pham.">
+            <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          </figure>
+          <div class="aw-body">
+            <h3 class="aw-place">Best of Show</h3>
+            <p class="aw-conv">New York Empire State Tattoo Expo</p>
+            <p class="aw-loc">New York · 2026</p>
+          </div>
+        </li>
+
+        <li class="awrail-card">
+          <label for="awm-5" class="aw-cardlink" aria-label="Open Best of Show, Caserta Tattoo Convention 2025"></label>
+          <figure class="media-card aw-vitrine" style="--ar:4/3">
+            <img loading="lazy" src="_hero-assets/award-rouen-2ndbos-2025-cut.png" alt="Best of Show trophy, Caserta Tattoo Convention 2025, won by Minh Pham.">
+            <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          </figure>
+          <div class="aw-body">
+            <h3 class="aw-place">Best of Show</h3>
+            <p class="aw-conv">Caserta Tattoo Convention</p>
+            <p class="aw-loc">Italy · 2025</p>
+          </div>
+        </li>
+
+        <li class="awrail-card">
+          <label for="awm-6" class="aw-cardlink" aria-label="Open 1st Place Medium Black and Grey, San Antonio 2025"></label>
+          <figure class="media-card aw-vitrine" style="--ar:4/3">
+            <img loading="lazy" src="_hero-assets/award-sanantonio-bg-tai-2025-cut.png" alt="1st place Medium Black and Grey trophy, San Antonio 2025, won by Tai.">
+            <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          </figure>
+          <div class="aw-body">
+            <h3 class="aw-place">1st Place · Medium Black and Grey</h3>
+            <p class="aw-conv">San Antonio Tattoo Arts Festival</p>
+            <p class="aw-loc">San Antonio, TX · 2025</p>
+          </div>
+        </li>
+
+        <li class="awrail-card">
+          <label for="awm-7" class="aw-cardlink" aria-label="Open 3rd Place Small Black and Grey, Houston Tattoo Arts Festival 2025"></label>
+          <figure class="media-card aw-vitrine" style="--ar:4/3">
+            <img loading="lazy" src="_hero-assets/award-houston-nhi-2025-cut.png" alt="3rd place Small Black and Grey trophy, Houston 2025, won by Navei.">
+            <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+          </figure>
+          <div class="aw-body">
+            <h3 class="aw-place">3rd Place · Small Black and Grey</h3>
+            <p class="aw-conv">Houston Tattoo Arts Festival</p>
+            <p class="aw-loc">Houston, TX · 2025</p>
+          </div>
+        </li>
+
+      </ul>
+
+      <div class="awrail-foot">
+        <div class="awrail-nav">
+          <button type="button" class="awrail-btn awrail-prev" aria-label="Previous awards">&lsaquo;</button>
+          <button type="button" class="awrail-btn awrail-next" aria-label="Next awards">&rsaquo;</button>
+        </div>
+        <div class="awrail-track" aria-hidden="true"><span class="stat-thumb"></span></div>
+        <a class="btn btn-ghost awrail-cta" href="/awards">See all 40+ awards
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <!-- SHARED MODAL SHELL (7 panels, content always in DOM) -->
+    <div class="aw-modal" role="dialog" aria-modal="true" aria-label="Award details">
+      <label for="awm-none" class="aw-modal-bd" aria-label="Close award details"></label>
+      <div class="aw-modal-card">
+        <label for="awm-none" class="aw-modal-x" aria-label="Close">&times;</label>
+
+        <div class="aw-panel" data-i="1">
+          <h3>Best of Show</h3>
+          <p class="aw-panel-meta">San Antonio Tattoo Arts Festival 2025 · San Antonio, TX</p>
+          <div class="aw-slots">
+            <figure class="aw-slot"><img src="_hero-assets/award-sanantonio-flagship-cut.png" alt="Best in Show trophy from the 2025 San Antonio Villain Arts Tattoo Festival."></figure>
+            <figure class="aw-slot"><img src="_hero-assets/award-sanantonio-venue-cut.png" alt="Best in Show championship belt from the 2025 San Antonio Villain Arts Tattoo Festival."></figure>
+            <figure class="aw-slot aw-slot--soon"><span>At-venue photo<br>coming soon</span></figure>
+          </div>
+          <p class="aw-panel-story">Best of Show, 2025 San Antonio Tattoo Arts Festival, Minh Pham</p>
+          <p class="aw-panel-by">Won by <b>Minh Pham</b> · Founder &amp; Lead Artist</p>
+        </div>
+
+        <div class="aw-panel" data-i="2">
+          <h3>Best of the Best</h3>
+          <p class="aw-panel-meta">Sinners Tattoo Expo 2025 · Dallas, TX</p>
+          <div class="aw-slots">
+            <figure class="aw-slot"><img src="_hero-assets/award-sinners-bestofbest-2025-cut.png" alt="Best of the Best trophy from the 2025 Sinners Tattoo Expo in Dallas, a black frame with a red skull and roses."></figure>
+            <figure class="aw-slot aw-slot--soon"><span>Certificate scan<br>coming soon</span></figure>
+            <figure class="aw-slot aw-slot--soon"><span>At-venue photo<br>coming soon</span></figure>
+          </div>
+          <p class="aw-panel-story">Best of the Best, 2025 Sinners Tattoo Expo, Dallas, Minh Pham, $10,000 prize</p>
+          <p class="aw-panel-by">Won by <b>Minh Pham</b> · Founder &amp; Lead Artist</p>
+        </div>
+
+        <div class="aw-panel" data-i="3">
+          <h3>Best of Show</h3>
+          <p class="aw-panel-meta">Golden State Tattoo Expo 2025 · California</p>
+          <div class="aw-slots">
+            <figure class="aw-slot"><img src="_hero-assets/award-goldenstate-trophy-2025-cut.png" alt="Best of Show trophy from the 2025 California Golden State Tattoo Expo, a bronze bear-head sculpture."></figure>
+            <figure class="aw-slot aw-slot--soon"><span>Certificate scan<br>coming soon</span></figure>
+            <figure class="aw-slot aw-slot--soon"><span>At-venue photo<br>coming soon</span></figure>
+          </div>
+          <p class="aw-panel-story">Best of Show, 2025 Golden State Tattoo Expo, California, Minh Pham</p>
+          <p class="aw-panel-by">Won by <b>Minh Pham</b> · Founder &amp; Lead Artist</p>
+        </div>
+
+        <div class="aw-panel" data-i="4">
+          <h3>Best of Show</h3>
+          <p class="aw-panel-meta">New York Empire State Tattoo Expo 2026 · New York</p>
+          <div class="aw-slots">
+            <figure class="aw-slot"><img src="_hero-assets/award-saigon-bos-2024-cut.png" alt="Best of Show trophy from the 2024 Saigon International Tattoo Expo, a black and gold frame with a golden Hannya mask."></figure>
+            <figure class="aw-slot aw-slot--soon"><span>Certificate scan<br>coming soon</span></figure>
+            <figure class="aw-slot aw-slot--soon"><span>At-venue photo<br>coming soon</span></figure>
+          </div>
+          <p class="aw-panel-story">Best of Show, 2026 New York Empire State Tattoo Expo, Minh Pham</p>
+          <p class="aw-panel-by">Won by <b>Minh Pham</b> · Founder &amp; Lead Artist</p>
+        </div>
+
+        <div class="aw-panel" data-i="5">
+          <h3>Best of Show</h3>
+          <p class="aw-panel-meta">Caserta Tattoo Convention 2025 · Italy</p>
+          <div class="aw-slots">
+            <figure class="aw-slot"><img src="_hero-assets/award-rouen-2ndbos-2025-cut.png" alt="Best of Show trophy from the 2025 Caserta Tattoo Convention in Italy."></figure>
+            <figure class="aw-slot aw-slot--soon"><span>Certificate scan<br>coming soon</span></figure>
+            <figure class="aw-slot aw-slot--soon"><span>At-venue photo<br>coming soon</span></figure>
+          </div>
+          <p class="aw-panel-story">Best of Show, 2025 Caserta Tattoo Convention, Italy, Minh Pham</p>
+          <p class="aw-panel-by">Won by <b>Minh Pham</b> · Founder &amp; Lead Artist</p>
+        </div>
+
+        <div class="aw-panel" data-i="6">
+          <h3>1st Place · Medium Black &amp; Grey</h3>
+          <p class="aw-panel-meta">San Antonio Tattoo Arts Festival 2025 · San Antonio, TX</p>
+          <div class="aw-slots">
+            <figure class="aw-slot"><img src="_hero-assets/award-sanantonio-bg-tai-2025-cut.png" alt="1st place Medium Black and Grey trophy from the 2025 San Antonio Tattoo Arts Festival, won by Tai."></figure>
+            <figure class="aw-slot aw-slot--soon"><span>Certificate scan<br>coming soon</span></figure>
+            <figure class="aw-slot aw-slot--soon"><span>At-venue photo<br>coming soon</span></figure>
+          </div>
+          <p class="aw-panel-story">1st Place, Medium Black and Grey, 2025 San Antonio Tattoo Arts Festival, Tai</p>
+          <p class="aw-panel-by">Won by <b>Tai</b> · Hyper Inkers Artist</p>
+        </div>
+
+        <div class="aw-panel" data-i="7">
+          <h3>3rd Place · Small Black &amp; Grey</h3>
+          <p class="aw-panel-meta">Houston Tattoo Arts Festival 2025 · Houston, TX</p>
+          <div class="aw-slots">
+            <figure class="aw-slot"><img src="_hero-assets/award-houston-nhi-2025-cut.png" alt="3rd place Small Black and Grey trophy from the 2025 Houston Tattoo Arts Festival, won by Navei."></figure>
+            <figure class="aw-slot aw-slot--soon"><span>Certificate scan<br>coming soon</span></figure>
+            <figure class="aw-slot aw-slot--soon"><span>At-venue photo<br>coming soon</span></figure>
+          </div>
+          <p class="aw-panel-story">3rd Place, Small Black and Grey, 2025 Houston Tattoo Arts Festival, Navei</p>
+          <p class="aw-panel-by">Won by <b>Navei</b> · Hyper Inkers Artist</p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+  (function(){
+    var rail=document.querySelector('.awrail');
+    if(!rail) return;
+    var thumb=document.querySelector('.awrail-track .stat-thumb'),
+        prev=document.querySelector('.awrail-prev'),
+        next=document.querySelector('.awrail-next'),
+        rm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+    function upd(){
+      var vis=rail.clientWidth/rail.scrollWidth,
+          max=rail.scrollWidth-rail.clientWidth,
+          p=max>0?rail.scrollLeft/max:0;
+      if(thumb){thumb.style.width=(vis*100)+'%';thumb.style.left=(p*(1-vis)*100)+'%';}
+      if(prev)prev.style.opacity=rail.scrollLeft<=1?'.35':'1';
+      if(next)next.style.opacity=(rail.scrollLeft+rail.clientWidth>=rail.scrollWidth-1)?'.35':'1';
+    }
+    function step(d){rail.scrollBy({left:d*0.85*rail.clientWidth,behavior:rm?'auto':'smooth'});}
+    rail.addEventListener('scroll',upd,{passive:true});
+    window.addEventListener('resize',upd);
+    if(prev)prev.addEventListener('click',function(){step(-1);});
+    if(next)next.addEventListener('click',function(){step(1);});
+    upd();
+  })();
+
+  /* Keep the orange arrow hugging the end of the last visible line of the intro, for both
+     the 2-line clamped state and the expanded state. Text is never removed from the DOM;
+     -webkit-line-clamp only hides it visually, so this stays SEO-safe. */
+  (function(){
+    var cb=document.getElementById('aw-intro'),
+        txt=document.getElementById('awIntroTxt'),
+        box=document.getElementById('awIntro'),
+        more=document.getElementById('awMore');
+    if(!cb||!txt||!box||!more) return;
+    /* width of the clamp ellipsis (…) in the intro font — Range can't see it, so add it so the arrow clears "…" */
+    function ellipsisW(){
+      var cs=getComputedStyle(txt), p=document.createElement('span');
+      p.textContent='…'; p.style.cssText='position:absolute;visibility:hidden;white-space:pre';
+      p.style.fontFamily=cs.fontFamily; p.style.fontSize=cs.fontSize; p.style.fontWeight=cs.fontWeight;
+      box.appendChild(p); var w=p.getBoundingClientRect().width; box.removeChild(p); return w;
+    }
+    function place(){
+      var rng=document.createRange();
+      rng.selectNodeContents(txt);
+      var rects=rng.getClientRects();
+      if(!rects.length){more.style.opacity='0';return;}
+      var open=cb.checked,
+          clamped=(!open && rects.length>2),
+          line=rects[open?rects.length-1:Math.min(1,rects.length-1)],
+          br=box.getBoundingClientRect(),
+          inset=more.querySelector('path').getBoundingClientRect().left-more.getBoundingClientRect().left,
+          gap=(clamped? 9+ellipsisW() : 8)-inset,   /* clear the "…" then hold a steady gap; independent of icon width */
+          x=Math.min(line.right-br.left+gap, window.innerWidth-br.left-30),   /* clamp to the screen edge only, so the arrow may sit in the side gutter after a near-full line */
+          y=line.top-br.top+line.height/2;
+      more.style.left=x+'px';
+      more.style.top=y+'px';
+      more.style.opacity='1';
+    }
+    cb.addEventListener('change',function(){requestAnimationFrame(place);});
+    window.addEventListener('resize',function(){clearTimeout(place._t);place._t=setTimeout(place,120);});
+    window.addEventListener('load',place);
+    if(document.fonts&&document.fonts.ready){document.fonts.ready.then(place);}
+    place();
+  })();
+  </script>
+
+</section>
+
+<!-- ============ SECTION 08B · WORLD CONVENTIONS (LIVE ABOUT PORT · VIDEOS REMOVED) ============ -->
+<section class="section s-conventions" id="conventions" aria-label="20 plus world conventions">
+  <div class="wrap">
+    <header class="section-head center">
+      <h2>20+ World Conventions <span class="o">With Enthusiasm</span></h2>
+    </header>
+
+    <div class="s-conv-rail" aria-label="Tattoo convention logos">
+      <figure class="s-conv-logo"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/P-2-6-300x127.png" alt="Inksane Tattoo Fest logo" loading="lazy"></figure>
+      <figure class="s-conv-logo"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/P-9-271x300.png" alt="Tattoo Week logo" loading="lazy"></figure>
+      <figure class="s-conv-logo"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/P-3-300x300.png" alt="Villain Arts Tattoo Convention logo" loading="lazy"></figure>
+      <figure class="s-conv-logo"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/P-8-300x300.png" alt="Body Art Expo logo" loading="lazy"></figure>
+      <figure class="s-conv-logo"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/P-10-300x186.png" alt="Palm City Tattoo Expo logo" loading="lazy"></figure>
+      <figure class="s-conv-logo"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/P-7-300x198.png" alt="Land of Ink Bangkok Tattoo Convention logo" loading="lazy"></figure>
+      <figure class="s-conv-logo"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/P-5-300x150.png" alt="Tattoo convention logo" loading="lazy"></figure>
+      <figure class="s-conv-logo"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/P-6-300x90.png" alt="Tattoo convention logo" loading="lazy"></figure>
+      <figure class="s-conv-logo"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/P-4-300x114.png" alt="Tattoo convention logo" loading="lazy"></figure>
+      <figure class="s-conv-logo"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/P-1-300x300.png" alt="Tattoo convention logo" loading="lazy"></figure>
+    </div>
+
+    <div class="s-conv-copy">
+      <p>Our artists actively participate in numerous competitions across various countries, consistently achieving victories that contribute to their undisputed level of skill and technique.</p>
+      <p>They blend traditional knowledge with a commitment to recognizing and absorbing modern trends, resulting in the unique character and style that defines each artist.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 09 · WHAT OUR CLIENTS SAY (PORT homepage .reviews) ============ -->
+<section id="reviews" class="section reviews" aria-label="Reviews">
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="ic-google" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></symbol>
+    <symbol id="ic-fb" viewBox="0 0 24 24"><path fill="#1877F2" d="M24 12c0-6.627-5.373-12-12-12S0 5.373 0 12c0 5.99 4.388 10.954 10.125 11.854V15.47H7.078V12h3.047V9.356c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874V12h3.328l-.532 3.469h-2.796v8.385C19.612 22.954 24 17.99 24 12z"/></symbol>
+  </svg>
+
+  <div class="wrap">
+    <div class="section-head center">
+      <h2>What Our <span class="o">Clients</span> Say</h2>
+      <input type="checkbox" id="rvIntro" class="rvi-cb" aria-label="Expand the reviews introduction">
+      <p class="rvi-intro" id="rvIntroBox"><span class="rvi-intro-txt" id="rvIntroTxt">Hyper Inkers is one of the top-rated tattoo shops in San Antonio, and the same reasons repeat across 3,000+ reviews. Clients point to custom pieces that match the idea they walked in with, walk-ins that move quickly even on busy nights, and piercers who keep first-timers and kids calm. We aim to make every visit feel easy and unhurried, whether it is a first piercing or a full sleeve, so you leave with work you are proud to wear. The written reviews are below, and many clients tell their story on video.</span><label for="rvIntro" class="rvi-more" id="rvMore" aria-label="Expand or collapse the reviews introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
+      <noscript><style>.rvi-intro-txt{-webkit-line-clamp:unset;line-clamp:unset}.rvi-more{display:none}</style></noscript>
+    </div>
+
+    <div class="rv-tabs">
+      <input type="radio" name="rvtab" id="rvtab-cust" checked>
+      <input type="radio" name="rvtab" id="rvtab-video">
+      <div class="rv-tabnav" aria-label="Review type">
+        <label for="rvtab-cust"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7A8.4 8.4 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg><span class="t-lg">Customer Reviews</span><span class="t-sm">Customer</span></label>
+        <label for="rvtab-video"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg><span class="t-lg">Video Reviews</span><span class="t-sm">Video</span></label>
+      </div>
+
+      <!-- TAB 1 · Customer Reviews (Google + Facebook feed) -->
+      <div class="rv-panel rv-panel-cust">
+        <div class="rv-bar">
+          <div class="rv-rate">
+            <span class="rv-stars" aria-label="5 out of 5">★★★★★</span><b>5.0</b>
+            <span>3,000+ reviews on Google &amp; Facebook</span>
+          </div>
+          <a class="rv-leave" href="/reviews"><span class="rv-leave-ic"><svg aria-hidden="true"><use href="#ic-google"></use></svg><svg aria-hidden="true"><use href="#ic-fb"></use></svg></span>Read all our reviews</a>
+        </div>
+
+        <div class="rv-split">
+          <div class="rv-slider-wrap">
+            <ul class="rv-slider">
+
+              <li class="rv-card rv-card--photo">
+                <div class="rv-pc-text">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#6E5A43">T</span>
+                    <span class="rv-who"><span class="rv-name">T</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">5 months ago</span></span></span>
+                    <a class="rv-srclink" href="https://maps.app.goo.gl/UYyfmeaPSMw2Xnc57" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">Feb 9th 2nd tattoo Dragon, Temple with Samurai and Mountains. Navei is RIDICULOUSLY IMPRESSIVE. I came back for a second time with a bigger project and she once again exceeded expectations. If you have dark skin like me and want big Japanese style or anime stuff... she will get the job done and make your dream and your vision come true with her great creativity... 1rst tattoo Shenron Dragon Navei killed it. She not only exceeded my expectations but she applied her own creativity. I have dark skin and she took great care of me and the detail of this project.</p></div>
+                </div>
+                <figure class="rv-pc-media">
+                  <img src="https://hyperinkers.com/wp-content/uploads/2025/05/black-grey-tattoo-designs-2.png" alt="Japanese dragon and samurai sleeve tattoo by a Hyper Inkers artist in San Antonio." loading="lazy">
+                </figure>
+              </li>
+
+              <li class="rv-card rv-card--photo">
+                <div class="rv-pc-text">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#455A60">DB</span>
+                    <span class="rv-who"><span class="rv-name">Devon Brent</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">a year ago</span></span></span>
+                    <a class="rv-srclink" href="https://maps.app.goo.gl/wnFHuiEN1CDJA1BUA" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">Genuinely couldn't have asked for a more incredible experience for my first tattoo. Minh is absolutely phenomenal - his attention to detail is unmatched and he helped ensure my vision came out exactly how I wanted. I get compliments everywhere I go and people immediately ask where/who did the work. Highly recommend Minh and HyperInkers!</p></div>
+                </div>
+                <figure class="rv-pc-media">
+                  <img src="https://hyperinkers.com/wp-content/uploads/2025/05/black-and-grey-tattoo-sleeve-designs-3.png" alt="Black and grey lion and compass sleeve tattoo by a Hyper Inkers artist in San Antonio." loading="lazy">
+                </figure>
+              </li>
+
+              <li class="rv-card">
+                <div class="rv-top">
+                  <span class="rv-av" style="background:#5E4552">CB</span>
+                  <span class="rv-who"><span class="rv-name">Carmendy Burhans</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">a year ago</span></span></span>
+                  <a class="rv-srclink" href="https://maps.app.goo.gl/z3TsTEZmncm6XdNr9" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                </div>
+                <div class="rv-body-scroll"><p class="rv-body">I just came here again to get a tattoo. Tai is such an amazing artist, so great to work with. I'll definitely keep coming back here! (previous) I walked in and got two lobes, two helix, and a nose piercing. I only had to wait for about 20 ish minutes and it was pretty busy. All of the staff were super sweet and helpful. Overall amazing experience.</p></div>
+              </li>
+
+              <li class="rv-card">
+                <div class="rv-top">
+                  <span class="rv-av" style="background:#4E5E45">MW</span>
+                  <span class="rv-who"><span class="rv-name">Maria Isabella Wallace</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">a year ago</span></span></span>
+                  <a class="rv-srclink" href="https://maps.app.goo.gl/VrdY7RiyHwCFv6Z27" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                </div>
+                <div class="rv-body-scroll"><p class="rv-body">I had an amazing experience with Nicole at Hyper Inkers! She recently pierced my nose, and I couldn't be happier with the entire process. From the moment I walked in, she made me feel completely comfortable and at ease. Nicole is not only professional but also incredibly friendly, taking the time to explain everything and answer any questions I had. The piercing itself was quick and practically painless... The aftercare instructions were clear and helpful, and the healing process has been smooth... I'll definitely be returning for future tattoos and piercings!</p></div>
+              </li>
+
+              <li class="rv-card rv-card--photo">
+                <div class="rv-pc-text">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#4A4F66">KJ</span>
+                    <span class="rv-who"><span class="rv-name">Katie Janson</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">5 months ago</span></span></span>
+                    <a class="rv-srclink" href="https://maps.app.goo.gl/7wxQcHuVZXHnqjMr5" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">Such a great tattoo shop! All the artists are super talented and friendly. Navei did a great job on my hand tattoo. Her fine line work and symmetry is impressive. I would definitely recommend her to anyone!</p></div>
+                </div>
+                <figure class="rv-pc-media">
+                  <img src="https://hyperinkers.com/wp-content/uploads/2025/05/geometric-tattoo-designs_-scaled.jpg" alt="Fine line geometric tattoo by a Hyper Inkers artist in San Antonio." loading="lazy">
+                </figure>
+              </li>
+
+              <li class="rv-card">
+                <div class="rv-top">
+                  <span class="rv-av" style="background:#6E4A4A">SF</span>
+                  <span class="rv-who"><span class="rv-name">Selina Falcon</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">2 years ago</span></span></span>
+                  <a class="rv-srclink" href="https://maps.app.goo.gl/ZzoXJcDVxFL35XcL8" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                </div>
+                <div class="rv-body-scroll"><p class="rv-body">I got 4 piercings done. Daith, helix &amp; double conch and it was so quick &amp; looks so good. She knew exactly where to place it to make it pop. 🙌🏽 I love the gold jewelry I got and for only $10 a piercing, LET ME TELL YOUU, ITS SO WORTH IT.</p></div>
+              </li>
+
+              <li class="rv-card rv-card--photo">
+                <div class="rv-pc-text">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#3E5A57">R</span>
+                    <span class="rv-who"><span class="rv-name">Raven</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">4 months ago</span></span></span>
+                    <a class="rv-srclink" href="https://maps.app.goo.gl/M64xgXqs9NAoPpsg6" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">amazing deals, super kind and friendly staff. i got a tattoo from Tai and he knocked it out of the park. the details and depth are immaculate</p></div>
+                </div>
+                <figure class="rv-pc-media">
+                  <img src="https://hyperinkers.com/wp-content/uploads/2025/05/best-color-tattoo-artist-3.png" alt="Color realism portrait tattoo by a Hyper Inkers artist in San Antonio." loading="lazy">
+                </figure>
+              </li>
+
+              <li class="rv-card">
+                <div class="rv-top">
+                  <span class="rv-av" style="background:#6E5A43">AY</span>
+                  <span class="rv-who"><span class="rv-name">Anitta Yebra</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">8 Oct 2025</span></span></span>
+                  <a class="rv-srclink" href="https://www.facebook.com/permalink.php?story_fbid=pfbid02uY6nn77jMyDAbUcsqeamYeamwJxzFtZFioKtvHz8YM3quMETH5nJqFZKFgcejATFl&amp;id=61554785930482" target="_blank" rel="noopener" aria-label="View on Facebook"><svg aria-hidden="true"><use href="#ic-fb"></use></svg></a>
+                </div>
+                <div class="rv-body-scroll"><p class="rv-body">What a Amazing atmosphere &amp; Excellent Customer service… Highly recommend Coming here ☺️</p></div>
+              </li>
+
+              <li class="rv-card">
+                <div class="rv-top">
+                  <span class="rv-av" style="background:#455A60">BM</span>
+                  <span class="rv-who"><span class="rv-name">Bibi Mora</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">8 Oct 2025</span></span></span>
+                  <a class="rv-srclink" href="https://www.facebook.com/bibi.mora.887943/posts/pfbid0W9vvabiaJYo8CyPYymLof9UNxDjiFdyKKfFMR6MDBybqk6DuUvxSVsLJ7CnL3tUzl" target="_blank" rel="noopener" aria-label="View on Facebook"><svg aria-hidden="true"><use href="#ic-fb"></use></svg></a>
+                </div>
+                <div class="rv-body-scroll"><p class="rv-body">Amazing place and very nice people</p></div>
+              </li>
+
+              <li class="rv-card">
+                <div class="rv-top">
+                  <span class="rv-av" style="background:#5E4552">AG</span>
+                  <span class="rv-who"><span class="rv-name">Akeelah Givens</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">12 Oct 2025</span></span></span>
+                  <a class="rv-srclink" href="https://www.facebook.com/akeelah.givens.35/posts/pfbid02YxYU79cqDMps5LzVCoXqAn8uKAxjyAmaEdqjvn5HW8iKsWTsGmaKNFwNx5gxiqMYl" target="_blank" rel="noopener" aria-label="View on Facebook"><svg aria-hidden="true"><use href="#ic-fb"></use></svg></a>
+                </div>
+                <div class="rv-body-scroll"><p class="rv-body">My experience was very good, very polite and good with their work, definitely recommend</p></div>
+              </li>
+
+              <li class="rv-card">
+                <div class="rv-top">
+                  <span class="rv-av" style="background:#4E5E45">KJ</span>
+                  <span class="rv-who"><span class="rv-name">Kelso Jordan</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">3 Nov 2025</span></span></span>
+                  <a class="rv-srclink" href="https://www.facebook.com/Itsfinekelso/posts/pfbid04aRLZZQ3L917KrkUvnH9Aqh4k1fYUFU4SHQNNeTqfYtpKg58zLELfNcenrD9tfsRl" target="_blank" rel="noopener" aria-label="View on Facebook"><svg aria-hidden="true"><use href="#ic-fb"></use></svg></a>
+                </div>
+                <div class="rv-body-scroll"><p class="rv-body">Zoey was so patient with my 10 year old daughter getting her ears pierced after a bad experience previously!! She helped her feel confident and calm through out. I really appreciated her time.</p><div class="rv-tags"><span class="rv-tag">Expert piercing</span><span class="rv-tag">Amazing results</span></div></div>
+              </li>
+
+            </ul>
+            <div class="rv-foot">
+              <div class="rv-nav">
+                <button type="button" class="rv-navbtn prev" aria-label="Previous reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+                <button type="button" class="rv-navbtn next" aria-label="More reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+              </div>
+              <div class="rv-track" aria-hidden="true"><span class="rv-prog-thumb"></span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2 · Video Reviews (mockup — real interview stills pending; thumbnails = real HI work) -->
+      <div class="rv-panel rv-panel-video">
+        <div class="rv-slider-wrap">
+          <ul class="rv-slider rv-vslider">
+
+            <li class="rv-vcard">
+              <div class="rv-vlink" aria-label="Video reviews are being produced">
+                <img src="https://hyperinkers.com/wp-content/uploads/2025/05/realism-tattoo-art-3.png" alt="Client video review placeholder for Hyper Inkers San Antonio" loading="lazy">
+                <span class="rv-vbadge"><b>★</b> Coming soon</span>
+                <span class="rv-vplay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+                <span class="rv-vmeta"><b>Video Reviews</b><span>Card video phỏng vấn KH đang sản xuất. Lazy-load, không autoplay. Alt: &quot;[Tên], [dịch vụ] client, video review of Hyper Inkers San Antonio.&quot;</span></span>
+              </div>
+            </li>
+
+          </ul>
+          <div class="rv-foot">
+            <div class="rv-nav">
+              <button type="button" class="rv-navbtn prev" aria-label="Previous videos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+              <button type="button" class="rv-navbtn next" aria-label="More videos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+            </div>
+            <div class="rv-track" aria-hidden="true"><span class="rv-prog-thumb"></span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 10 · VISIT US (PORT homepage s-visit) ============ -->
+<section class="section s-visit" id="visit">
+  <span class="grain" aria-hidden="true"></span>
+  <div class="wrap">
+
+    <header class="section-head center">
+      <h2>Visit <span class="o">Us</span></h2>
+      <input type="checkbox" id="vs-intro" class="more-cb" aria-label="Expand the visit introduction">
+      <p class="vs-intro"><span class="vs-intro-txt">Hyper Inkers tattoo parlor in San Antonio sits at 8045 Callaghan Road in the northwest of the city. Walk-ins are welcome whenever an artist is free, and larger pieces can be booked ahead so your artist has time reserved for you. Hours run until midnight or 1am, far later than most tattoo places in San Antonio, making Hyper Inkers one of the few walk-in tattoo shops in the city open past midnight. If you get off work late, the visit still fits your evening.</span><label for="vs-intro" class="vs-more" aria-label="Expand or collapse the visit introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
+      <noscript><style>.vs-intro-txt{-webkit-line-clamp:unset;line-clamp:unset}.vs-more{display:none}</style></noscript>
+    </header>
+
+    <!-- Part A — NAP + Google Map -->
+    <div class="vs-nap">
+      <ul class="vs-contact">
+        <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><div><span class="vs-ci-lab">Phone</span><a class="vs-ci-val" href="tel:+12109979737">(210) 997-9737</a></div></li>
+        <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><div><span class="vs-ci-lab">Email</span><a class="vs-ci-val" href="mailto:hyperinkers1@gmail.com">hyperinkers1@gmail.com</a></div></li>
+        <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><span class="vs-ci-lab">Address</span><span class="vs-ci-val">8045 Callaghan Rd, San Antonio, TX 78230</span></div></li>
+        <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><span class="vs-ci-lab">Hours</span><span class="vs-ci-val vs-hours"><span>Mon to Thu, 10am to 12am</span><span>Fri to Sat, 10am to 1am</span><span>Sun, 11am to 1am</span></span></div></li>
+      </ul>
+      <div class="vs-map">
+        <iframe src="https://maps.google.com/maps?q=8045%20Callaghan%20Rd,%20San%20Antonio,%20TX%2078230&z=14&output=embed" loading="lazy" title="Map to Hyper Inkers, 8045 Callaghan Rd, San Antonio, TX"></iframe>
+      </div>
+    </div>
+
+    <!-- edit 2026-07-07: booking form folded into Visit Us (replaces the deleted standalone #book section); id="book" keeps existing CTA anchors resolving -->
+    <form id="book" class="bk-form-card" onsubmit="return false" novalidate aria-label="Book a free tattoo consultation">
+      <p class="bk-form-intro">Book a free consultation with a Hyper Inkers artist in San Antonio, or call and we will help you plan your piece. Bring a reference or just an idea, and your artist will design it custom before any ink.</p>
+      <div class="bk-row2">
+        <div class="bk-field"><label class="field-label" for="bk-name">Your Name</label><input class="bk-input" id="bk-name" type="text" name="your-name" placeholder="Your Name"></div>
+        <div class="bk-field"><label class="field-label" for="bk-phone">Phone Number</label><input class="bk-input" id="bk-phone" type="tel" name="your-phone" placeholder="Phone Number"></div>
+      </div>
+      <div class="bk-row2">
+        <div class="bk-field"><label class="field-label" for="bk-email">Email Address</label><input class="bk-input" id="bk-email" type="email" name="your-email" placeholder="Email Address"></div>
+        <div class="bk-field"><label class="field-label" for="bk-date">Appointment Date</label><input class="bk-input" id="bk-date" type="date" name="appointment-date"></div>
+      </div>
+      <div class="bk-field">
+        <span class="field-label">Choose Your Artist</span>
+        <div class="bk-radios" role="radiogroup" aria-label="Choose your artist">
+          <label class="bk-radio"><input type="radio" name="your-artist" value="Open to rec."><span class="bk-dot" aria-hidden="true"></span><span class="bk-rlabel">Open to rec.</span></label>
+            <label class="bk-radio"><input type="radio" name="your-artist" value="Minh Pham"><span class="bk-dot" aria-hidden="true"></span><span class="bk-rlabel">Minh Pham</span></label>
+            <label class="bk-radio"><input type="radio" name="your-artist" value="Tai Hoa"><span class="bk-dot" aria-hidden="true"></span><span class="bk-rlabel">Tai Hoa</span></label>
+            <label class="bk-radio"><input type="radio" name="your-artist" value="Mancha"><span class="bk-dot" aria-hidden="true"></span><span class="bk-rlabel">Mancha</span></label>
+            <label class="bk-radio"><input type="radio" name="your-artist" value="Navei"><span class="bk-dot" aria-hidden="true"></span><span class="bk-rlabel">Navei</span></label>
+            <label class="bk-radio"><input type="radio" name="your-artist" value="Nicole"><span class="bk-dot" aria-hidden="true"></span><span class="bk-rlabel">Nicole</span></label>
+        </div>
+      </div>
+      <div class="bk-field">
+        <span class="field-label">What Service Do You Need?</span>
+        <div class="bk-radios" role="radiogroup" aria-label="What service do you need">
+          <label class="bk-radio"><input type="radio" name="your-service" value="Custom Tattoo"><span class="bk-dot" aria-hidden="true"></span><span class="bk-rlabel">Custom Tattoo</span></label>
+            <label class="bk-radio"><input type="radio" name="your-service" value="Cover-up Tattoo"><span class="bk-dot" aria-hidden="true"></span><span class="bk-rlabel">Cover-up Tattoo</span></label>
+            <label class="bk-radio"><input type="radio" name="your-service" value="Laser Removal"><span class="bk-dot" aria-hidden="true"></span><span class="bk-rlabel">Laser Removal</span></label>
+        </div>
+        <p class="bk-note" role="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12" stroke-linecap="round"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-linecap="round"/></svg><span>Piercings are walk-ins only. Call <a href="tel:+12109979737">(210) 997-9737</a> for questions.</span></p>
+      </div>
+      <div class="bk-field"><label class="field-label" for="bk-msg">Description</label><textarea class="bk-input" id="bk-msg" name="your-message" placeholder="Description"></textarea></div>
+      <button class="btn btn-primary bk-submit" type="submit">Book a Free Consultation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+    </form>
+
+  </div>
+
+  <script>
+  /* §14 intro arrow — twin */
+  (function(){
+    var box=document.querySelector('.vs-intro'),txt=box&&box.querySelector('.vs-intro-txt'),
+        more=box&&box.querySelector('.vs-more'),cb=document.getElementById('vs-intro');
+    if(!box||!txt||!more||!cb) return;
+    function ellipsisW(){var cs=getComputedStyle(txt),p=document.createElement('span');
+      p.textContent='…';p.style.cssText='position:absolute;visibility:hidden;white-space:pre';
+      p.style.fontFamily=cs.fontFamily;p.style.fontSize=cs.fontSize;p.style.fontWeight=cs.fontWeight;
+      box.appendChild(p);var w=p.getBoundingClientRect().width;box.removeChild(p);return w;}
+    function place(){var rng=document.createRange();rng.selectNodeContents(txt);var rects=rng.getClientRects();
+      if(!rects.length){more.style.opacity='0';return;}
+      var open=cb.checked,clamped=(!open&&rects.length>2),
+          line=rects[open?rects.length-1:Math.min(1,rects.length-1)],br=box.getBoundingClientRect(),
+          inset=more.querySelector('path').getBoundingClientRect().left-more.getBoundingClientRect().left,
+          gap=(clamped?9+ellipsisW():8)-inset,
+          x=Math.min(line.right-br.left+gap,window.innerWidth-br.left-30),y=line.top-br.top+line.height/2;
+      more.style.left=x+'px';more.style.top=y+'px';more.style.opacity='1';}
+    cb.addEventListener('change',function(){requestAnimationFrame(place);});
+    window.addEventListener('resize',function(){clearTimeout(place._t);place._t=setTimeout(place,120);});
+    window.addEventListener('load',place);
+    if(document.fonts&&document.fonts.ready){document.fonts.ready.then(place);}
+    place();
+  })();
+  </script>
+
+</section>
+
+<script>
+/* Reusable YouTube facade: click poster -> load real embed (nocookie) */
+(function(){
+  document.querySelectorAll('.near-media[data-yt]').forEach(function(m){
+    m.addEventListener('click',function(){
+      if(m.classList.contains('is-playing')) return;
+      var f=document.createElement('iframe');
+      f.className='near-frame';
+      f.src='https://www.youtube-nocookie.com/embed/'+m.getAttribute('data-yt')+'?autoplay=1&rel=0';
+      f.title='Hyper Inkers tattoo studio and team introduction video, San Antonio';
+      f.setAttribute('allow','autoplay; encrypted-media; picture-in-picture');
+      f.setAttribute('allowfullscreen','');
+      m.appendChild(f); m.classList.add('is-playing');
+    });
+  });
+})();
+
+/* review + video sliders — nav ‹ › + progress (awards-synced; recompute on tab switch) */
+(function(){
+  var rm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  function initSlider(wrap){
+    var s=wrap.querySelector('.rv-slider'); if(!s) return;
+    var th=wrap.querySelector('.rv-prog-thumb'),
+        prev=wrap.querySelector('.rv-navbtn.prev'),
+        next=wrap.querySelector('.rv-navbtn.next');
+    function upd(){
+      var vis=s.clientWidth/s.scrollWidth;
+      if(th){
+        if(!isFinite(vis)||vis>=1){th.style.width='100%';th.style.left='0';}
+        else{var max=s.scrollWidth-s.clientWidth,p=max>0?s.scrollLeft/max:0;
+          th.style.width=(vis*100)+'%';th.style.left=(p*(1-vis)*100)+'%';}
+      }
+      if(prev)prev.style.opacity=s.scrollLeft<=1?'.35':'1';
+      if(next)next.style.opacity=(s.scrollLeft+s.clientWidth>=s.scrollWidth-1)?'.35':'1';
+    }
+    function step(d){s.scrollBy({left:d*0.85*s.clientWidth,behavior:rm?'auto':'smooth'});}
+    if(prev)prev.addEventListener('click',function(){step(-1);});
+    if(next)next.addEventListener('click',function(){step(1);});
+    s.addEventListener('scroll',upd,{passive:true});
+    window.addEventListener('resize',upd);
+    wrap._rvUpd=upd; upd();
+  }
+  var wraps=[].slice.call(document.querySelectorAll('.rv-slider-wrap'));
+  wraps.forEach(initSlider);
+  [].slice.call(document.querySelectorAll('input[name="rvtab"]')).forEach(function(r){
+    r.addEventListener('change',function(){requestAnimationFrame(function(){wraps.forEach(function(w){if(w._rvUpd)w._rvUpd();});});});
+  });
+})();
+
+/* intro arrow hugs the end of the last visible line of the centered intro (clamped + expanded) — cloned from awards phiên 2; text stays in DOM (SEO-safe) */
+(function(){
+  var cb=document.getElementById('rvIntro'),
+      txt=document.getElementById('rvIntroTxt'),
+      box=document.getElementById('rvIntroBox'),
+      more=document.getElementById('rvMore');
+  if(!cb||!txt||!box||!more) return;
+  function ellipsisW(){
+    var cs=getComputedStyle(txt), p=document.createElement('span');
+    p.textContent='…'; p.style.cssText='position:absolute;visibility:hidden;white-space:pre';
+    p.style.fontFamily=cs.fontFamily; p.style.fontSize=cs.fontSize; p.style.fontWeight=cs.fontWeight;
+    box.appendChild(p); var w=p.getBoundingClientRect().width; box.removeChild(p); return w;
+  }
+  function place(){
+    var rng=document.createRange();
+    rng.selectNodeContents(txt);
+    var rects=rng.getClientRects();
+    if(!rects.length){more.style.opacity='0';return;}
+    var open=cb.checked,
+        clamped=(!open && rects.length>2),
+        line=rects[open?rects.length-1:Math.min(1,rects.length-1)],
+        br=box.getBoundingClientRect(),
+        inset=more.querySelector('path').getBoundingClientRect().left-more.getBoundingClientRect().left,
+        gap=(clamped? 9+ellipsisW() : 8)-inset,
+        x=Math.min(line.right-br.left+gap, window.innerWidth-br.left-30),
+        y=line.top-br.top+line.height/2;
+    more.style.left=x+'px';
+    more.style.top=y+'px';
+    more.style.opacity='1';
+  }
+  var raf=function(){requestAnimationFrame(place);};
+  cb.addEventListener('change',raf);
+  window.addEventListener('resize',function(){clearTimeout(place._t);place._t=setTimeout(place,120);});
+  window.addEventListener('load',raf);
+  if(document.fonts){
+    /* fonts.ready can resolve BEFORE a late @font-face swap that re-wraps the line — so also
+       re-place on every font batch that finishes, and a few delayed passes as a safety net */
+    document.fonts.ready.then(raf);
+    if(document.fonts.addEventListener) document.fonts.addEventListener('loadingdone',raf);
+  }
+  [90,260,650,1400].forEach(function(ms){setTimeout(place,ms);});
+  place();
+})();
+
+/* SERVICES intro — same clamp + JS-hug arrow pattern (cloned from reviews intro) */
+(function(){
+  var cb=document.getElementById('svcIntro'),
+      txt=document.getElementById('svcIntroTxt'),
+      box=document.getElementById('svcIntroBox'),
+      more=document.getElementById('svcMore');
+  if(!cb||!txt||!box||!more) return;
+  function ellipsisW(){
+    var cs=getComputedStyle(txt), p=document.createElement('span');
+    p.textContent='…'; p.style.cssText='position:absolute;visibility:hidden;white-space:pre';
+    p.style.fontFamily=cs.fontFamily; p.style.fontSize=cs.fontSize; p.style.fontWeight=cs.fontWeight;
+    box.appendChild(p); var w=p.getBoundingClientRect().width; box.removeChild(p); return w;
+  }
+  function place(){
+    var rng=document.createRange(); rng.selectNodeContents(txt);
+    var rects=rng.getClientRects();
+    if(!rects.length){more.style.opacity='0';return;}
+    var open=cb.checked,
+        clamped=(!open && rects.length>2),
+        line=rects[open?rects.length-1:Math.min(1,rects.length-1)],
+        br=box.getBoundingClientRect(),
+        inset=more.querySelector('path').getBoundingClientRect().left-more.getBoundingClientRect().left,
+        gap=(clamped? 9+ellipsisW() : 8)-inset,
+        x=Math.min(line.right-br.left+gap, window.innerWidth-br.left-30),
+        y=line.top-br.top+line.height/2;
+    more.style.left=x+'px'; more.style.top=y+'px'; more.style.opacity='1';
+  }
+  var raf=function(){requestAnimationFrame(place);};
+  cb.addEventListener('change',raf);
+  window.addEventListener('resize',function(){clearTimeout(place._t);place._t=setTimeout(place,120);});
+  window.addEventListener('load',raf);
+  if(document.fonts){
+    document.fonts.ready.then(raf);
+    if(document.fonts.addEventListener) document.fonts.addEventListener('loadingdone',raf);
+  }
+  [90,260,650,1400].forEach(function(ms){setTimeout(place,ms);});
+  place();
+})();
+
+/* SERVICES cards — desktop = hover reveals + whole-card link; touch (no-hover) = tap to activate (1st tap reveals, 2nd tap navigates) */
+(function(){
+  var noHover=window.matchMedia('(hover: none)');
+  var cards=[].slice.call(document.querySelectorAll('.svc-card'));
+  if(!cards.length) return;
+  cards.forEach(function(card){
+    card.addEventListener('click',function(e){
+      if(noHover.matches && !card.classList.contains('is-active')){
+        e.preventDefault();
+        cards.forEach(function(c){ if(c!==card) c.classList.remove('is-active'); });
+        card.classList.add('is-active');
+      }
+    });
+  });
+  document.addEventListener('click',function(e){
+    if(noHover.matches && !e.target.closest('.svc-card')){
+      cards.forEach(function(c){ c.classList.remove('is-active'); });
+    }
+  });
+})();
+
+/* ARTISTS intro — same clamp + JS-hug arrow pattern */
+(function(){
+  var cb=document.getElementById('artiIntro'),
+      txt=document.getElementById('artiIntroTxt'),
+      box=document.getElementById('artiIntroBox'),
+      more=document.getElementById('artiMore');
+  if(!cb||!txt||!box||!more) return;
+  function ellipsisW(){
+    var cs=getComputedStyle(txt), p=document.createElement('span');
+    p.textContent='…'; p.style.cssText='position:absolute;visibility:hidden;white-space:pre';
+    p.style.fontFamily=cs.fontFamily; p.style.fontSize=cs.fontSize; p.style.fontWeight=cs.fontWeight;
+    box.appendChild(p); var w=p.getBoundingClientRect().width; box.removeChild(p); return w;
+  }
+  function place(){
+    var rng=document.createRange(); rng.selectNodeContents(txt);
+    var rects=rng.getClientRects();
+    if(!rects.length){more.style.opacity='0';return;}
+    var open=cb.checked,
+        clamped=(!open && rects.length>2),
+        line=rects[open?rects.length-1:Math.min(1,rects.length-1)],
+        br=box.getBoundingClientRect(),
+        inset=more.querySelector('path').getBoundingClientRect().left-more.getBoundingClientRect().left,
+        gap=(clamped? 9+ellipsisW() : 8)-inset,
+        x=Math.min(line.right-br.left+gap, window.innerWidth-br.left-30),
+        y=line.top-br.top+line.height/2;
+    more.style.left=x+'px'; more.style.top=y+'px'; more.style.opacity='1';
+  }
+  var raf=function(){requestAnimationFrame(place);};
+  cb.addEventListener('change',raf);
+  window.addEventListener('resize',function(){clearTimeout(place._t);place._t=setTimeout(place,120);});
+  window.addEventListener('load',raf);
+  if(document.fonts){
+    document.fonts.ready.then(raf);
+    if(document.fonts.addEventListener) document.fonts.addEventListener('loadingdone',raf);
+  }
+  [90,260,650,1400].forEach(function(ms){setTimeout(place,ms);});
+  place();
+})();
+
+/* ARTISTS cards — desktop = hover reveals bio panel + whole-card link; touch = tap to reveal (1st tap panel, 2nd tap navigates) */
+(function(){
+  var noHover=window.matchMedia('(hover: none)');
+  var cards=[].slice.call(document.querySelectorAll('.art-card'));
+  if(!cards.length) return;
+  cards.forEach(function(card){
+    card.addEventListener('click',function(e){
+      if(noHover.matches && !card.classList.contains('is-active')){
+        e.preventDefault();
+        cards.forEach(function(c){ if(c!==card) c.classList.remove('is-active'); });
+        card.classList.add('is-active');
+      }
+    });
+  });
+  document.addEventListener('click',function(e){
+    if(noHover.matches && !e.target.closest('.art-card')){
+      cards.forEach(function(c){ c.classList.remove('is-active'); });
+    }
+  });
+})();
+
+/* GALLERY intro clamp + JS-hug arrow */
+(function(){
+  var cb=document.getElementById('galiIntro'),txt=document.getElementById('galiIntroTxt'),
+      box=document.getElementById('galiIntroBox'),more=document.getElementById('galiMore');
+  if(!cb||!txt||!box||!more) return;
+  function ellipsisW(){var cs=getComputedStyle(txt),p=document.createElement('span');
+    p.textContent='…';p.style.cssText='position:absolute;visibility:hidden;white-space:pre';
+    p.style.fontFamily=cs.fontFamily;p.style.fontSize=cs.fontSize;p.style.fontWeight=cs.fontWeight;
+    box.appendChild(p);var w=p.getBoundingClientRect().width;box.removeChild(p);return w;}
+  function place(){var rng=document.createRange();rng.selectNodeContents(txt);var rects=rng.getClientRects();
+    if(!rects.length){more.style.opacity='0';return;}
+    var open=cb.checked,clamped=(!open&&rects.length>2),
+        line=rects[open?rects.length-1:Math.min(1,rects.length-1)],br=box.getBoundingClientRect(),
+        inset=more.querySelector('path').getBoundingClientRect().left-more.getBoundingClientRect().left,
+        gap=(clamped?9+ellipsisW():8)-inset,
+        x=Math.min(line.right-br.left+gap,window.innerWidth-br.left-30),y=line.top-br.top+line.height/2;
+    more.style.left=x+'px';more.style.top=y+'px';more.style.opacity='1';}
+  var raf=function(){requestAnimationFrame(place);};
+  cb.addEventListener('change',raf);
+  window.addEventListener('resize',function(){clearTimeout(place._t);place._t=setTimeout(place,120);});
+  window.addEventListener('load',raf);
+  if(document.fonts){document.fonts.ready.then(raf);if(document.fonts.addEventListener)document.fonts.addEventListener('loadingdone',raf);}
+  [90,260,650,1400].forEach(function(ms){setTimeout(place,ms);});place();
+})();
+
+/* generic MOBILE-SLIDER nav (‹ › + progress) for Services & Artists — grid on desktop, swipe row on mobile.
+   Mirrors the reviews slider; the foot is CSS-hidden on desktop so this is a harmless no-op there. */
+(function(){
+  var rm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  [].slice.call(document.querySelectorAll('.msl-foot')).forEach(function(foot){
+    var row=foot.parentElement.querySelector('.msl-row'); if(!row) return;
+    var th=foot.querySelector('.msl-thumb'),
+        prev=foot.querySelector('.msl-navbtn.prev'),
+        next=foot.querySelector('.msl-navbtn.next');
+    function upd(){
+      var vis=row.clientWidth/row.scrollWidth;
+      if(th){
+        if(!isFinite(vis)||vis>=1){th.style.width='100%';th.style.left='0';}
+        else{var max=row.scrollWidth-row.clientWidth,p=max>0?row.scrollLeft/max:0;
+          th.style.width=(vis*100)+'%';th.style.left=(p*(1-vis)*100)+'%';}
+      }
+      if(prev)prev.style.opacity=row.scrollLeft<=1?'.35':'1';
+      if(next)next.style.opacity=(row.scrollLeft+row.clientWidth>=row.scrollWidth-1)?'.35':'1';
+    }
+    function step(d){row.scrollBy({left:d*0.85*row.clientWidth,behavior:rm?'auto':'smooth'});}
+    if(prev)prev.addEventListener('click',function(){step(-1);});
+    if(next)next.addEventListener('click',function(){step(1);});
+    row.addEventListener('scroll',upd,{passive:true});
+    window.addEventListener('resize',upd);
+    upd();
+  });
+})();
+
+/* GALLERY popups — click category card -> open modal (Esc / backdrop / x to close) */
+(function(){
+  var LOCK='gal-lock';
+  function openM(id){var m=document.getElementById(id);if(!m)return;m.classList.add('open');document.body.classList.add(LOCK);}
+  function closeAll(){var o=document.querySelectorAll('.gal-modal.open');for(var i=0;i<o.length;i++)o[i].classList.remove('open');document.body.classList.remove(LOCK);}
+  var cards=document.querySelectorAll('.gal-card[data-modal]');
+  for(var i=0;i<cards.length;i++){(function(c){
+    c.addEventListener('click',function(){openM(c.getAttribute('data-modal'));});
+    c.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();openM(c.getAttribute('data-modal'));}});
+  })(cards[i]);}
+  var modals=document.querySelectorAll('.gal-modal');
+  for(var j=0;j<modals.length;j++){modals[j].addEventListener('click',function(e){if(e.target===this||e.target.closest('.gal-close'))closeAll();});}
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')closeAll();});
+})();
+</script>
+<script>
+/* a11y (C2): Escape closes the Awards modal (radio-hack → re-check the "none" radio) */
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'){var n=document.getElementById('awm-none');if(n&&!n.checked)n.checked=true;}
+});
+</script>
+</body>
+</html>
