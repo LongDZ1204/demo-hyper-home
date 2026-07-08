@@ -89,11 +89,17 @@ a{color:inherit;text-decoration:none}
 }
 
 /* text column */
-.badge{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.5);backdrop-filter:blur(3px);
-  border-radius:4px;padding:8px 14px;font-family:var(--sub);font-size:12.5px;letter-spacing:0.03em;color:var(--cream);margin-bottom:24px}
-.badge .gg{width:15px;height:15px;flex-shrink:0}
-.badge .stars{color:var(--orange);letter-spacing:2px;font-size:12.5px}
-.badge b{color:#fff;font-weight:600}
+/* hero Google-review badge — bare (no pill), colored G on dark, gold stars, G medallion style.
+   Reset the foundation .badge pill explicitly (per-property) so no border/bg/pad leaks through. */
+.badge{display:inline-flex;align-items:center;gap:11px;color:var(--cream);margin-bottom:24px;
+  border:0;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding:0;border-radius:0}
+.badge .gg{width:clamp(26px,6vw,30px);height:clamp(26px,6vw,30px);flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
+.badge-col{display:flex;flex-direction:column;gap:2px}
+.badge-r1{display:flex;align-items:center;gap:9px}
+.badge-num{font-family:var(--head);font-weight:700;font-size:clamp(20px,4.4vw,25px);line-height:1;color:#fff;letter-spacing:.01em}
+.badge .stars{color:#F5B301;letter-spacing:2px;font-size:clamp(13px,3.1vw,15px);line-height:1}
+.badge-cnt{font-family:var(--sub);font-size:13px;letter-spacing:.01em;color:#D6D6D6}
+.badge-cnt b{color:#fff;font-weight:700}
 h1{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:0.94;letter-spacing:-0.005em;
   font-size:clamp(34px,4.6vw,60px);color:#fff;text-shadow:0 2px 34px rgba(0,0,0,.55)}
 h1 .o{color:var(--orange);display:block}
@@ -160,16 +166,14 @@ h1 .o{color:var(--orange);display:block}
 
 /* ---------- STAT BAND (Option A: charcoal card, orange top accent, horizontal stat rows) ---------- */
 .statband{position:relative;z-index:6;align-self:center;width:calc(100% - 48px);max-width:var(--wrap);margin:36px auto 0;
-  border-radius:14px;overflow:hidden;
+  border-radius:14px;overflow:hidden;border:0;
   background:rgba(10,10,10,.62);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);
-  border:1px solid rgba(255,255,255,.16);
   box-shadow:0 26px 70px rgba(0,0,0,.5)}
 /* refine: subtle fading orange top hairline → reads as an intentional HI "stat plate", not a default frosted card */
 .statband::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;z-index:2;opacity:.8;
   background:linear-gradient(90deg,transparent,var(--orange) 28%,var(--orange) 72%,transparent)}
 .stat-row{display:grid;grid-template-columns:repeat(4,1fr);list-style:none}
-.stat{display:flex;align-items:center;justify-content:center;gap:13px;padding:24px 16px;border-right:1px solid rgba(255,255,255,.08)}
-.stat:last-child{border-right:none}
+.stat{display:flex;align-items:center;justify-content:center;gap:13px;padding:24px 16px;border-right:0}
 .stat-ic{width:34px;height:34px;flex-shrink:0;color:var(--orange)}
 .stat-ic svg{width:100%;height:100%;display:block;fill:currentColor}
 .stat-text{display:flex;flex-direction:column;gap:3px;text-align:left}
@@ -301,7 +305,7 @@ h1 .o{color:var(--orange);display:block}
 #rvtab-cust:checked ~ .rv-panel-cust{display:block}
 #rvtab-video:checked ~ .rv-panel-video{display:block}
 
-/* rating bar + leave-a-review (Google only) */
+/* rating bar + leave-a-review (Google + Facebook icon treatment) */
 .rv-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
   margin-bottom:22px;padding:15px 20px;border-radius:12px;background:var(--surface);border:1px solid var(--border)}
 .rv-rate{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
@@ -312,6 +316,11 @@ h1 .o{color:var(--orange);display:block}
   font-family:var(--sub);font-weight:600;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;transition:background .2s var(--ease)}
 .rv-leave:hover{background:var(--orange-hi)}
 .rv-leave svg{width:18px;height:18px;background:#fff;border-radius:50%;padding:2px}
+.rv-leave-ic{display:inline-flex;align-items:center}
+.rv-leave-ic svg{position:relative}
+.rv-leave-ic svg:first-child{z-index:2;box-shadow:0 0 0 2.5px var(--orange)}
+.rv-leave-ic svg:last-child{margin-left:-7px;z-index:1}
+.rv-leave:hover .rv-leave-ic svg:first-child{box-shadow:0 0 0 2.5px var(--orange-hi)}
 
 /* full-width slider (reviews live inside cards now — no separate artwork column) */
 .rv-slider-wrap{position:relative;min-width:0}
@@ -605,14 +614,14 @@ body.gal-lock{overflow:hidden}
 @media(max-width:520px){.gali-intro{max-width:340px}.gal-modal-grid{columns:2;column-gap:10px}.gal-modal-grid img{margin-bottom:10px}.gal-label{font-size:13px;padding:9px 16px}}
 
 /* ---------- SECTION CTA1 · "Your Artist, Your Style" (dark rust-splatter feeder after Gallery) ---------- */
-/* Ganga recipe: dark band + a FULL-BLEED bold splatter that ENVELOPES the whole content block (headline + */
+/* Ganga recipe: dark band + a bold splatter that ENVELOPES the whole content block (headline + */
 /* sub + button + phone) so the spray is the STAGE, not a detached blob. Differs from CTA2 (bright-orange */
 /* spray, ghost button) by a DEEP RUST spray + solid-orange button — same dark family, different hue, so the */
 /* two feeders vary without a light band. */
 .s-cta1{background:var(--bg);text-align:center;padding-block:clamp(80px,10vw,148px)}
-/* full-bleed rust spray: 132vw guarantees edge-to-edge; brightness/saturate deepen bright orange -> burnt rust */
+/* contained rust spray: sized to match the current homepage CTA band. */
 .cta1-splat{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scaleX(-1);
-  width:min(132vw,2048px);max-width:none;height:auto;opacity:.72;mix-blend-mode:normal;
+  width:min(95vw,2200px);max-width:none;height:auto;opacity:.72;mix-blend-mode:normal;
   filter:brightness(.66) saturate(1.22);pointer-events:none;user-select:none;z-index:0}
 /* top+bottom linear fades dissolve the spray into the dark bg (kills the hard clip at the section edges) +
    a soft radial vignette over the centre so the cream headline stays crisp on the densest rust */
@@ -948,7 +957,7 @@ body.gal-lock{overflow:hidden}
 .s-cta2{position:relative;overflow:hidden;background:var(--bg);text-align:center;
   padding-block:clamp(74px,10vw,140px)}
 .cta2-splat{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:min(1180px,130%);max-width:none;height:auto;opacity:.5;pointer-events:none;user-select:none;z-index:0}
+  width:min(95vw,2200px);max-width:none;height:auto;opacity:.5;pointer-events:none;user-select:none;z-index:0}
 /* dark radial scrim over the splatter centre so the headline stays legible */
 .s-cta2::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:radial-gradient(58% 72% at 50% 50%, rgba(0,0,0,.6), rgba(0,0,0,0) 78%)}
@@ -967,7 +976,7 @@ body.gal-lock{overflow:hidden}
 .cta2-call svg{width:15px;height:15px}
 @media(max-width:560px){
   .s-cta2 .cta2-h{max-width:94vw;font-size:clamp(30px,7vw,46px)}
-  .cta2-splat{width:170%;opacity:.42}
+  .cta2-splat{width:250vw;opacity:.42}
 }
 
 /* ============================================================================
@@ -1004,8 +1013,6 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 .vs-hours span{display:block}
 .vs-map{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--card-brd);min-height:360px;background:#111}
 .vs-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-.vs-directions{position:absolute;left:14px;bottom:14px;z-index:2;display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:10px 18px;border-radius:9px;background:var(--orange);color:#fff;font-family:var(--sub);font-size:12.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,.45)}
-.vs-directions:hover{background:var(--orange-hi)}
 
 /* Part B: local service area (Texas map + accordion) */
 .vs-local{margin-top:clamp(52px,6.5vw,84px)}
@@ -1441,8 +1448,8 @@ textarea.bk-input{min-height:96px;resize:vertical}
       <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers">
     </a>
     <nav class="nav" aria-label="Primary">
-      <a href="tattoo.html">Tattoo</a>
-      <a href="piercing.html">Piercing</a>
+      <a href="/tattoo">Tattoo</a>
+      <a href="/piercing">Piercing</a>
       <a href="#artists">Artists</a>
       <a href="#work">Our Work</a>
       <a href="#awards">Awards</a>
@@ -1472,8 +1479,10 @@ textarea.bk-input{min-height:96px;resize:vertical}
         <div class="hero-col">
           <span class="badge">
             <svg class="gg" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>
-            <span class="stars">★★★★★</span>
-            <b>5.0</b> · 3,000+ reviews
+            <span class="badge-col">
+              <span class="badge-r1"><span class="badge-num">4.9</span><span class="stars" aria-label="4.9 out of 5">★★★★★</span></span>
+              <span class="badge-cnt"><b>3,500+</b> Google Reviews</span>
+            </span>
           </span>
 
           <h1>Custom Tattoos<span class="o">in San Antonio</span></h1>
@@ -1593,7 +1602,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
             <span class="rv-stars" aria-label="5 out of 5">★★★★★</span><b>5.0</b>
             <span>3,000+ reviews on Google &amp; Facebook</span>
           </div>
-          <a class="rv-leave" href="https://www.google.com/maps/search/Hyper+Inkers+San+Antonio" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ic-google"></use></svg>Leave a Review</a>
+          <a class="rv-leave" href="https://www.google.com/maps/search/Hyper+Inkers+San+Antonio" target="_blank" rel="noopener"><span class="rv-leave-ic"><svg aria-hidden="true"><use href="#ic-google"></use></svg><svg aria-hidden="true"><use href="#ic-fb"></use></svg></span>Leave a Review</a>
         </div>
 
         <div class="rv-split">
@@ -1787,7 +1796,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
         <!-- 1 · Black & Grey — MULTI-IMAGE SLIDER (4) -->
         <li class="st-card">
           <div class="st-media" data-slider>
-            <a class="st-medialink" href="black-and-grey.html" aria-label="Explore black and grey tattoos in San Antonio">
+            <a class="st-medialink" href="https://hyperinkers.com/tattoo/black-and-grey-tattoos-san-antonio" aria-label="Explore black and grey tattoos in San Antonio">
               <span class="st-slides">
                 <span class="st-slide"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-scaled.jpg" alt="Black and grey tattoo by Hyper Inkers in San Antonio" loading="lazy"></span>
                 <span class="st-slide"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-1-scaled.jpg" alt="" loading="lazy"></span>
@@ -1801,9 +1810,9 @@ textarea.bk-input{min-height:96px;resize:vertical}
             <span class="st-dots"><button type="button" class="st-dot is-on" aria-label="Image 1"></button><button type="button" class="st-dot" aria-label="Image 2"></button><button type="button" class="st-dot" aria-label="Image 3"></button><button type="button" class="st-dot" aria-label="Image 4"></button></span>
           </div>
           <div class="st-body">
-            <h3 class="st-name"><a class="st-namelink" href="black-and-grey.html">Black &amp; Grey Tattoos</a></h3>
+            <h3 class="st-name"><a class="st-namelink" href="https://hyperinkers.com/tattoo/black-and-grey-tattoos-san-antonio">Black &amp; Grey Tattoos</a></h3>
             <p class="st-def"><b>Black and grey tattoos at Hyper Inkers build the whole design in black ink and diluted grey washes, no color.</b> The look is timeless and high-contrast, and it ages cleanly over the years.</p>
-            <a class="st-explore" href="black-and-grey.html">Explore<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <a class="st-explore" href="https://hyperinkers.com/tattoo/black-and-grey-tattoos-san-antonio">Explore<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
           </div>
         </li>
 
@@ -2748,7 +2757,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
     </header>
 
     <form class="bk-form-card" onsubmit="return false" novalidate aria-label="Book a free tattoo consultation">
-      <p class="bk-form-intro">Tell us about your ideas, style, size, color and placement, and let us know your budget.</p>
+      <p class="bk-form-intro">Ready to start your tattoo? Book a free consultation with a Hyper Inkers artist in San Antonio, or call and we will help you plan your piece. Bring a reference or just an idea, and your artist will design it custom before any ink. The consultation is free, and there is no pressure to decide before you are ready.</p>
       <div class="bk-row2">
         <div class="bk-field"><label class="field-label" for="bk-name">Your Name</label><input class="bk-input" id="bk-name" type="text" name="your-name" placeholder="Your Name"></div>
         <div class="bk-field"><label class="field-label" for="bk-phone">Phone Number</label><input class="bk-input" id="bk-phone" type="tel" name="your-phone" placeholder="Phone Number"></div>
@@ -2790,7 +2799,6 @@ textarea.bk-input{min-height:96px;resize:vertical}
       </ul>
       <div class="vs-map">
         <iframe src="https://maps.google.com/maps?q=8045%20Callaghan%20Rd,%20San%20Antonio,%20TX%2078230&z=14&output=embed" loading="lazy" title="Map to Hyper Inkers, 8045 Callaghan Rd, San Antonio, TX"></iframe>
-        <a class="vs-directions" href="https://www.google.com/maps/search/?api=1&query=8045%20Callaghan%20Rd%2C%20San%20Antonio%2C%20TX%2078230" target="_blank" rel="noopener">Get Directions</a>
       </div>
     </div>
 
