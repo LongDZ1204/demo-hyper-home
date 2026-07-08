@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
 <title>Hyper Inkers — Tattoo Removal (San Antonio) · page assembly</title>
-<link rel="stylesheet" href="_foundation/hi-foundation.css">
 <link rel="stylesheet" href="fonts-hyperinkers-2026-07-04/hyperinkers-fonts.css">
+<link rel="stylesheet" href="_foundation/hi-foundation.css">
 <style>
 /* ============================================================================
    /tattoo-removal-san-antonio · PAGE ASSEMBLY (single file, sections in order)
@@ -39,6 +39,50 @@
 .hi-cta .btn{min-height:52px;padding:15px 36px;letter-spacing:.09em;font-size:12.5px;white-space:nowrap}
 @media(max-width:560px){ .hi-cta{flex-direction:column;gap:16px} .hi-cta .btn{width:100%} }
 
+/* shared splatter CTA bands — synced to homepage sizing */
+.s-cta1{background:var(--bg);text-align:center;padding-block:clamp(80px,10vw,148px)}
+.cta1-splat{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scaleX(-1);
+  width:min(95vw,2200px);max-width:none;height:auto;opacity:.72;mix-blend-mode:normal;
+  filter:brightness(.66) saturate(1.22);pointer-events:none;user-select:none;z-index:0}
+.s-cta1::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(to bottom, var(--bg) 0%, rgba(15,15,15,0) 20%, rgba(15,15,15,0) 80%, var(--bg) 100%),
+    radial-gradient(60% 76% at 50% 48%, rgba(0,0,0,.46), rgba(0,0,0,0) 80%)}
+.s-cta1 .wrap{position:relative;z-index:2}
+.s-cta1 .cta1-h{margin:0 auto;max-width:min(1280px,94vw);font-family:var(--head);font-weight:700;text-transform:uppercase;
+  line-height:1.0;letter-spacing:-.005em;font-size:clamp(38px,5.6vw,74px);color:var(--cream);
+  text-shadow:0 3px 28px rgba(0,0,0,.55);text-wrap:balance}
+.s-cta1 .cta1-sub{margin:clamp(16px,2vw,22px) auto 0;max-width:46ch;font-family:var(--sub);
+  font-size:clamp(14px,1.4vw,17px);letter-spacing:.02em;color:#C9C9C9;line-height:1.55}
+.cta1-act{margin-top:clamp(24px,3vw,36px);display:flex;flex-direction:column;align-items:center;gap:15px}
+.cta1-btn{min-height:52px;padding:15px 36px;letter-spacing:.09em;font-size:12.5px;box-shadow:0 14px 34px rgba(204,102,0,.34)}
+.cta1-call{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding-inline:10px;
+  font-family:var(--sub);font-size:14px;letter-spacing:.03em;color:var(--cream);text-decoration:none;transition:color .2s var(--ease)}
+.cta1-call:hover{color:var(--orange-hi)}
+.cta1-call svg{width:15px;height:15px}
+.s-cta2{position:relative;overflow:hidden;background:var(--bg);text-align:center;padding-block:clamp(74px,10vw,140px)}
+.cta2-splat{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:min(95vw,2200px);max-width:none;height:auto;opacity:.5;pointer-events:none;user-select:none;z-index:0}
+.s-cta2::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(58% 72% at 50% 50%, rgba(0,0,0,.6), rgba(0,0,0,0) 78%)}
+.s-cta2 .wrap{position:relative;z-index:2}
+.s-cta2 .cta2-h{margin:0 auto;max-width:min(1280px,94vw);font-family:var(--head);font-weight:700;text-transform:uppercase;
+  line-height:1.0;letter-spacing:-.005em;font-size:clamp(38px,5.6vw,74px);color:var(--cream);
+  text-shadow:0 3px 28px rgba(0,0,0,.55);text-wrap:balance}
+.s-cta2 .cta2-sub{margin:clamp(16px,2vw,22px) auto 0;max-width:46ch;font-family:var(--sub);
+  font-size:clamp(14px,1.4vw,17px);letter-spacing:.02em;color:#C9C9C9;line-height:1.55}
+.cta2-act{margin-top:clamp(24px,3vw,36px);display:flex;flex-direction:column;align-items:center;gap:15px}
+.cta2-btn{min-height:52px;padding:15px 34px;letter-spacing:.09em;text-transform:uppercase;font-size:12.5px;border-width:1px}
+.cta2-call{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding-inline:10px;
+  font-family:var(--sub);font-size:14px;letter-spacing:.03em;color:var(--cream);text-decoration:none;transition:color .2s var(--ease)}
+.cta2-call:hover{color:var(--orange-hi)}
+.cta2-call svg{width:15px;height:15px}
+@media(max-width:560px){
+  .s-cta1 .cta1-h,.s-cta2 .cta2-h{max-width:94vw;font-size:clamp(30px,7vw,46px)}
+  .cta1-splat{width:250vw;opacity:.6}
+  .cta2-splat{width:250vw;opacity:.42}
+}
+
 /* ============================================================================
    SECTION 01 · HERO — ported verbatim from homepage/piercing-hub .hero (layout sync,
    B.Long 2026-07-06: benefits → bullet list inside intro (.hero-blist, foundation
@@ -62,7 +106,6 @@
   .cta{grid-column:1;grid-row:2}
   .award-card{grid-column:2;grid-row:1 / span 2;align-self:center;margin-left:auto}
 }
-.hero-trust{display:block;margin-bottom:0}
 /* hero Google badge — match homepage bare badge, overriding the foundation pill locally */
 .hero .badge{display:inline-flex;align-items:center;gap:11px;color:var(--cream);margin-bottom:24px;
   border:0;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding:0;border-radius:0}
@@ -89,13 +132,15 @@
 .award-card{position:relative;aspect-ratio:4/3;max-height:462px;width:100%;
   border:1px solid rgba(255,255,255,.14);border-radius:5px;overflow:hidden;box-shadow:0 26px 74px rgba(0,0,0,.55)}
 .award-card>img{width:100%;height:100%;object-fit:cover;object-position:50% 42%}
-.hero .statband{margin-top:clamp(28px,4vw,46px)}
+.hero .statband{align-self:center;width:calc(100% - 48px);max-width:var(--wrap);margin:36px auto 0;border:0}
+.hero .stat{border-right:0}
 @media(max-width:820px){
   .hero{padding:84px 0 30px}
   .hero-grid{grid-template-columns:1fr;gap:26px}
   .award-card{max-width:520px;max-height:none;margin-inline:0}
 }
 @media(max-width:560px){.hero-body .lead{font-size:16px}}
+@media(max-width:640px){.hero .statband{width:calc(100% - 24px);margin-top:26px}}
 @media(prefers-reduced-motion:reduce){
   .hero-media img{animation:none;transform:scale(1.05)}
 }
@@ -116,6 +161,11 @@
   font-family:var(--sub);font-weight:600;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;transition:background .2s var(--ease)}
 .rv-leave:hover{background:var(--orange-hi)}
 .rv-leave svg{width:18px;height:18px;background:#fff;border-radius:50%;padding:2px}
+.rv-leave-ic{display:inline-flex;align-items:center}
+.rv-leave-ic svg{position:relative}
+.rv-leave-ic svg:first-child{z-index:2;box-shadow:0 0 0 2.5px var(--orange)}
+.rv-leave-ic svg:last-child{margin-left:-7px;z-index:1}
+.rv-leave:hover .rv-leave-ic svg:first-child{box-shadow:0 0 0 2.5px var(--orange-hi)}
 .rv-slider-wrap{position:relative;min-width:0}
 .rv-slider{list-style:none;display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;
   -webkit-overflow-scrolling:touch;scrollbar-width:none;align-items:stretch;padding:2px 2px 4px}
@@ -252,18 +302,9 @@
   border:1px solid rgba(255,255,255,.4);color:#fff;opacity:0;transition:opacity .2s var(--ease)}
 .rmba-tile:hover .rmba-zoom,.rmba-tile:focus-visible .rmba-zoom{opacity:1}
 .rmba-zoom svg{width:15px;height:15px}
-.rmba-tile--soon{cursor:default;display:grid;place-items:center;aspect-ratio:1080 / 677;
-  background:var(--surface);border-style:dashed;border-color:rgba(255,255,255,.16)}
-.rmba-tile--soon:hover{border-color:rgba(255,255,255,.16);transform:none}
-.rmba-tile--soon::after{display:none}
-.rmba-soon{display:flex;flex-direction:column;align-items:center;gap:8px;color:var(--muted);text-align:center;padding:12px}
-.rmba-soon svg{width:26px;height:26px;color:rgba(255,255,255,.28)}
-.rmba-soon span{font-family:var(--sub);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase}
-.rmba-cta{display:flex;justify-content:center;margin-top:clamp(28px,3.4vw,40px)}
-/* white button — browse/gallery action, phân biệt với nút Book cam (B.Long) */
-.rmba-cta .btn{gap:9px;background:#fff;color:var(--bg);border-color:#fff}
-.rmba-cta .btn:hover{background:var(--cream);border-color:var(--cream)}
-.rmba-cta .btn svg{width:16px;height:16px}
+.rmba-cta{margin-top:clamp(28px,3.5vw,42px)}
+.rmba-cta .sec-bridge{max-width:560px}
+.rmba-cta .gal-more a{white-space:nowrap}
 .rmba-lb{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;
   background:rgba(0,0,0,.9);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);padding:24px}
 .rmba-lb.is-open{display:flex}
@@ -285,7 +326,8 @@ body.rmba-lock{overflow:hidden}
   .rmba-intro{max-width:322px}
   .rmba-grid{gap:11px}
   .rmba-lb{padding:14px}.rmba-lb-prev{left:6px}.rmba-lb-next{right:6px}.rmba-lb-btn{width:42px;height:42px}
-  .rmba-cta .btn{width:100%}
+  .rmba-cta .gal-more,.rmba-cta .gal-more a{width:100%;justify-content:center}
+  .rmba-cta .gal-more a{white-space:normal}
 }
 
 /* ============================================================================
@@ -493,24 +535,14 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
 .gd-progress{position:relative;flex:1;min-width:120px;height:3px;border-radius:2px;background:rgba(255,255,255,.12);overflow:hidden}
 .gd-thumb{position:absolute;top:0;left:0;height:100%;width:40%;background:var(--orange);border-radius:2px}
 @media(max-width:900px){.gd-track{grid-auto-columns:calc((100% - 16px)/2)}}
-@media(max-width:600px){.gd-track{grid-auto-columns:86%}.gd-lead{max-width:none}}
+@media(max-width:600px){.gd-track{grid-auto-columns:86%}.gd-lead{max-width:322px}}
 
-/* ==================== SECTION 10 · ADVANTAGES (adv-) — ported verbatim from homepage .s-adv, extended 4→5 tabs (B.Long: "layout bắt buộc đồng bộ toàn web", ảnh stock/random OK) ==================== */
+/* ==================== SECTION 10 · ADVANTAGES (adv-) — ported from homepage .s-adv, content-source 4 tabs ==================== */
 .s-adv{background:var(--bg)}
 .s-adv .wrap{position:relative;z-index:2}
 .s-adv h2 .o{color:var(--orange)}
 .adv-intro{position:relative;max-width:600px;margin:16px auto 0;text-align:center;text-shadow:none;
   font-size:16.5px;line-height:1.62;color:#C9C9C9}
-.adv-intro-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
-.adv-intro-txt b{color:#E9E9E9;font-weight:600}
-.more-cb:checked ~ .adv-intro .adv-intro-txt{-webkit-line-clamp:40;line-clamp:40}
-.adv-more{position:absolute;left:0;top:0;width:20px;height:20px;display:grid;place-items:center;
-  color:var(--orange);cursor:pointer;opacity:0;transform:translateY(-50%);
-  transition:color .2s var(--ease),opacity .2s var(--ease)}
-.adv-more:hover{color:var(--orange-hi)}
-.adv-more svg{width:20px;height:20px;transition:transform .25s var(--ease)}
-.more-cb:checked ~ .adv-intro .adv-more svg{transform:rotate(180deg)}
-.more-cb:focus-visible ~ .adv-intro .adv-more{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
 
 .adv-tabs{margin-top:clamp(30px,4vw,46px)}
 .adv-radio{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
@@ -539,23 +571,19 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
 #adv-t1:checked ~ .adv-grid .adv-shot[data-i="1"],
 #adv-t2:checked ~ .adv-grid .adv-shot[data-i="2"],
 #adv-t3:checked ~ .adv-grid .adv-shot[data-i="3"],
-#adv-t4:checked ~ .adv-grid .adv-shot[data-i="4"],
-#adv-t5:checked ~ .adv-grid .adv-shot[data-i="5"]{opacity:1}
+#adv-t4:checked ~ .adv-grid .adv-shot[data-i="4"]{opacity:1}
 #adv-t1:checked ~ .adv-grid .adv-item:nth-child(1) .adv-head,
 #adv-t2:checked ~ .adv-grid .adv-item:nth-child(2) .adv-head,
 #adv-t3:checked ~ .adv-grid .adv-item:nth-child(3) .adv-head,
-#adv-t4:checked ~ .adv-grid .adv-item:nth-child(4) .adv-head,
-#adv-t5:checked ~ .adv-grid .adv-item:nth-child(5) .adv-head{border-left-color:var(--orange);background:#1b1b1b}
+#adv-t4:checked ~ .adv-grid .adv-item:nth-child(4) .adv-head{border-left-color:var(--orange);background:#1b1b1b}
 #adv-t1:checked ~ .adv-grid .adv-item:nth-child(1) .adv-num,
 #adv-t2:checked ~ .adv-grid .adv-item:nth-child(2) .adv-num,
 #adv-t3:checked ~ .adv-grid .adv-item:nth-child(3) .adv-num,
-#adv-t4:checked ~ .adv-grid .adv-item:nth-child(4) .adv-num,
-#adv-t5:checked ~ .adv-grid .adv-item:nth-child(5) .adv-num{color:var(--orange)}
+#adv-t4:checked ~ .adv-grid .adv-item:nth-child(4) .adv-num{color:var(--orange)}
 #adv-t1:checked ~ .adv-grid .adv-item:nth-child(1) .adv-panel,
 #adv-t2:checked ~ .adv-grid .adv-item:nth-child(2) .adv-panel,
 #adv-t3:checked ~ .adv-grid .adv-item:nth-child(3) .adv-panel,
-#adv-t4:checked ~ .adv-grid .adv-item:nth-child(4) .adv-panel,
-#adv-t5:checked ~ .adv-grid .adv-item:nth-child(5) .adv-panel{max-height:340px}
+#adv-t4:checked ~ .adv-grid .adv-item:nth-child(4) .adv-panel{max-height:340px}
 .adv-radio:focus-visible ~ .adv-grid .adv-item .adv-head{outline:2px solid var(--orange);outline-offset:2px}
 @media(max-width:820px){
   .adv-grid{grid-template-columns:1fr;gap:22px}
@@ -660,8 +688,8 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
       <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers">
     </a>
     <nav class="nav" aria-label="Primary">
-      <a href="tattoo.html">Tattoo</a>
-      <a href="piercing.html">Piercing</a>
+      <a href="/tattoo">Tattoo</a>
+      <a href="/piercing">Piercing</a>
       <a href="#specialists">Artists</a>
       <a href="#before-after">Our Work</a>
       <a href="/awards">Awards</a>
@@ -781,6 +809,7 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
 <section id="reviews" class="section reviews" aria-label="Reviews">
   <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
     <symbol id="ic-google" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></symbol>
+    <symbol id="ic-fb" viewBox="0 0 24 24"><path fill="#1877F2" d="M24 12c0-6.627-5.373-12-12-12S0 5.373 0 12c0 5.99 4.388 10.954 10.125 11.854V15.47H7.078V12h3.047V9.356c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874V12h3.328l-.532 3.469h-2.796v8.385C19.612 22.954 24 17.99 24 12z"/></symbol>
   </svg>
 
   <div class="wrap">
@@ -796,7 +825,7 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
         <span class="rv-stars" aria-label="5 out of 5">★★★★★</span><b>5.0</b>
         <span>3,000+ reviews on Google &amp; Facebook</span>
       </div>
-      <a class="rv-leave" href="https://www.google.com/maps/search/Hyper+Inkers+San+Antonio" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ic-google"></use></svg>Leave a Review</a>
+      <a class="rv-leave" href="/reviews"><span class="rv-leave-ic"><svg aria-hidden="true"><use href="#ic-google"></use></svg><svg aria-hidden="true"><use href="#ic-fb"></use></svg></span>Read all our reviews</a>
     </div>
 
     <div class="rv-slider-wrap">
@@ -866,10 +895,6 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
       </figure>
     </div>
 
-    <div class="hi-cta">
-      <p class="hi-cta-h">Ready to remove that tattoo for good?</p>
-      <a class="btn btn-primary" href="#book">Book Free Consultation</a>
-    </div>
   </div>
 </section>
 
@@ -970,14 +995,11 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
         <img src="_hero-assets/removal/removal-results-3.jpg" alt="Before and after laser tattoo removal of black paw print tattoos at Hyper Inkers in San Antonio." loading="lazy">
         <span class="rmba-zoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3M11 8v6M8 11h6"/></svg></span>
       </button>
-      <div class="rmba-tile rmba-tile--soon" aria-hidden="true"><span class="rmba-soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 15l-5-4-4 3"/></svg><span>More Results Soon</span></span></div>
-      <div class="rmba-tile rmba-tile--soon" aria-hidden="true"><span class="rmba-soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 15l-5-4-4 3"/></svg><span>More Results Soon</span></span></div>
-      <div class="rmba-tile rmba-tile--soon" aria-hidden="true"><span class="rmba-soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2"/><path d="M21 15l-5-4-4 3"/></svg><span>More Results Soon</span></span></div>
     </div>
 
-    <div class="rmba-cta">
-      <a class="btn" href="#gallery" aria-label="See the full tattoo removal before and after gallery">Before &amp; After Gallery
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+    <div class="section-cta rmba-cta">
+      <p class="sec-bridge">This is a sample of real Hyper Inkers tattoo removal results. See the full before and after collection in the tattoo removal gallery.</p>
+      <div class="gal-more"><a href="/tattoo-removal-san-antonio/before-after" aria-label="View the full tattoo removal before and after gallery">View the Full Before &amp; After Gallery <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     </div>
   </div>
 
@@ -986,6 +1008,18 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
     <button class="rmba-lb-btn rmba-lb-prev" type="button" aria-label="Previous result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
     <div class="rmba-lb-stage"><img class="rmba-lb-img" id="rmbaLbImg" src="" alt=""><span class="rmba-lb-count" id="rmbaLbCount"></span></div>
     <button class="rmba-lb-btn rmba-lb-next" type="button" aria-label="Next result"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+  </div>
+</section>
+
+<!-- ==================== CTA 1 · REMOVAL RESULTS STRIP ==================== -->
+<section class="section s-cta1" id="cta-results" aria-label="Book after viewing tattoo removal results">
+  <img class="cta1-splat" src="_hero-assets/cta-splatter-orange.png" alt="" aria-hidden="true">
+  <div class="wrap">
+    <h2 class="cta1-h">Want Your Tattoo to Fade Like These Results?</h2>
+    <p class="cta1-sub">Start with a free consultation and a clear plan before any laser session begins.</p>
+    <div class="cta1-act">
+      <a class="btn btn-primary cta1-btn" href="#book">Book Your Free Consultation</a>
+    </div>
   </div>
 </section>
 
@@ -1025,10 +1059,6 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
 
     <p class="rme-note">Most tattoos fade dramatically and many clear completely, though a few stubborn colors can leave a faint shadow. A free consultation is the quickest way to see how your ink will respond.</p>
 
-    <div class="hi-cta">
-      <p class="hi-cta-h">Wondering if laser removal will work on your ink?</p>
-      <a class="btn btn-primary" href="#book">Book a Free Consultation</a>
-    </div>
   </div>
 </section>
 
@@ -1079,10 +1109,6 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
       </ol>
     </div>
 
-    <div class="hi-cta">
-      <p class="hi-cta-h">Start with a free, no-pressure consultation.</p>
-      <a class="btn btn-primary" href="#book">Book a Free Consultation</a>
-    </div>
   </div>
 </section>
 
@@ -1188,14 +1214,10 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
       </div>
     </div>
 
-    <div class="hi-cta">
-      <p class="hi-cta-h">Still unsure if removal is safe for your skin?</p>
-      <a class="btn btn-primary" href="#book">Book a Free Consultation</a>
-    </div>
   </div>
 </section>
 
-<!-- ==================== SECTION 10 · THE ADVANTAGES OF CHOOSING HYPER INKERS FOR TATTOO REMOVAL (ported verbatim from homepage .s-adv, 4→5 tabs) ==================== -->
+<!-- ==================== SECTION 10 · THE ADVANTAGES OF CHOOSING HYPER INKERS FOR TATTOO REMOVAL ==================== -->
 <section class="section s-adv" id="advantages">
   <span class="grain" aria-hidden="true"></span>
   <div class="wrap">
@@ -1203,47 +1225,41 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
     <header class="section-head center">
       <h2>The <span class="o">Advantages</span> of Choosing Hyper Inkers for Tattoo Removal</h2>
       <input type="checkbox" id="rma-intro" class="more-cb" aria-label="Expand the advantages introduction">
-      <p class="adv-intro"><span class="adv-intro-txt"><b>The advantages of choosing Hyper Inkers for tattoo removal in San Antonio are its German-engineered PicoStar laser, all-color and all-skin capability, minimal discomfort, honest pricing, and an artist-owned studio.</b> Together they set a removal here apart from a standalone laser clinic, where you get a machine but not an artist's eye on your ink.</span><label for="rma-intro" class="adv-more" aria-label="Expand or collapse the advantages introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
-      <noscript><style>.adv-intro-txt{-webkit-line-clamp:unset;line-clamp:unset}.adv-more{display:none}</style></noscript>
+      <p class="hi-intro adv-intro" id="rmaIntro"><span class="hi-intro-txt" id="rmaIntroTxt"><b>The advantages of choosing Hyper Inkers for tattoo removal in San Antonio are an artist-owned studio, one laser for every ink color and skin type, honest per-session pricing, and sessions that fit your schedule.</b> Together they set a removal here apart from a standalone laser clinic, where you get a machine but not an artist's eye on your ink.</span><label for="rma-intro" class="hi-more" id="rmaMore" aria-label="Expand or collapse the advantages introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
+      <noscript><style>.hi-intro-txt{-webkit-line-clamp:unset;line-clamp:unset}.hi-more{display:none}</style></noscript>
+      <p class="hi-bridge">These four advantages are explained below.</p>
     </header>
 
     <div class="adv-tabs">
-      <input type="radio" name="rmadvtab" id="adv-t1" class="adv-radio" checked aria-label="Advanced Picosecond Laser for Faster, Cleaner Fading">
-      <input type="radio" name="rmadvtab" id="adv-t2" class="adv-radio" aria-label="Removes All Ink Colors on All Skin Types">
-      <input type="radio" name="rmadvtab" id="adv-t3" class="adv-radio" aria-label="Minimal Discomfort and Low Scarring Risk">
-      <input type="radio" name="rmadvtab" id="adv-t4" class="adv-radio" aria-label="Honest, Per-Session Pricing">
-      <input type="radio" name="rmadvtab" id="adv-t5" class="adv-radio" aria-label="Artist-Owned and Operated Studio">
+      <input type="radio" name="rmadvtab" id="adv-t1" class="adv-radio" checked aria-label="Artist-Owned Studio, With Your Next Tattoo in Mind">
+      <input type="radio" name="rmadvtab" id="adv-t2" class="adv-radio" aria-label="One Laser for Every Ink Color and Skin Type">
+      <input type="radio" name="rmadvtab" id="adv-t3" class="adv-radio" aria-label="Honest, Per-Session Pricing">
+      <input type="radio" name="rmadvtab" id="adv-t4" class="adv-radio" aria-label="Sessions That Fit Your Schedule">
 
       <div class="adv-grid">
         <div class="adv-media">
-          <!-- DATA-TREO: images reused from elsewhere on this page (B.Long: stock/random ok, layout sync matters more than 1:1 photo match) -->
-          <div class="adv-shot" data-i="1"><img src="_hero-assets/removal/removal-picostar-treatment.jpg" alt="PicoStar laser handpiece fading a tattoo during a removal session at Hyper Inkers in San Antonio."><span class="adv-cap">PicoStar laser &middot; <b>sub-400ps pulses</b></span></div>
-          <div class="adv-shot" data-i="2"><img src="_hero-assets/removal/removal-results-1.jpg" alt="Before and after laser tattoo removal of a faded green neck tattoo at Hyper Inkers in San Antonio."><span class="adv-cap">All ink colors &middot; <b>all skin types</b></span></div>
-          <div class="adv-shot" data-i="3"><img src="_hero-assets/removal/removal-founder-session.jpg" alt="A Hyper Inkers specialist treating a client during a laser tattoo removal session in San Antonio."><span class="adv-cap">Numbing + cooling &middot; <b>low scarring risk</b></span></div>
-          <div class="adv-shot" data-i="4"><img src="_hero-assets/removal/removal-results-2.jpg" alt="Before and after laser tattoo removal of a black fleur-de-lis tattoo at Hyper Inkers in San Antonio."><span class="adv-cap">Per-session pricing &middot; <b>no surprise fees</b></span></div>
-          <div class="adv-shot" data-i="5"><img src="_hero-assets/hi-team-best-of-show-2025.jpg" alt="Hyper Inkers artists celebrating their Best of Show win at the 2025 San Antonio tattoo convention."><span class="adv-cap">Artist-owned &middot; <b>San Antonio studio</b></span></div>
+          <div class="adv-shot" data-i="1"><img src="_hero-assets/hi-team-best-of-show-2025.jpg" alt="Hyper Inkers artist-owned studio team in San Antonio."><span class="adv-cap">Artist-owned &middot; <b>cover-up planning</b></span></div>
+          <div class="adv-shot" data-i="2"><img src="_hero-assets/removal/removal-picostar-treatment.jpg" alt="PicoStar laser handpiece fading a tattoo during a removal session at Hyper Inkers in San Antonio."><span class="adv-cap">PicoStar laser &middot; <b>all ink colors</b></span></div>
+          <div class="adv-shot" data-i="3"><img src="_hero-assets/removal/removal-results-2.jpg" alt="Before and after laser tattoo removal of a black fleur-de-lis tattoo at Hyper Inkers in San Antonio."><span class="adv-cap">Per-session pricing &middot; <b>no surprise fees</b></span></div>
+          <div class="adv-shot" data-i="4"><img src="_hero-assets/removal/removal-founder-session.jpg" alt="A Hyper Inkers specialist treating a client during a laser tattoo removal session in San Antonio."><span class="adv-cap">Open late &middot; <b>quick sessions</b></span></div>
         </div>
 
         <ol class="adv-list">
           <li class="adv-item">
-            <label for="adv-t1" class="adv-head"><span class="adv-num">01</span><h3>Advanced Picosecond Laser for Faster, Cleaner Fading</h3></label>
-            <div class="adv-panel"><p><b>Hyper Inkers removes tattoos with the PicoStar, a German-engineered, FDA-cleared picosecond laser that fades ink faster and cleaner than the older machines many clinics still use.</b> Its sub-400-picosecond pulses and dual 532 and 1064nm wavelengths break up every ink color with very little heat, which means less risk to your skin. Asclepion has engineered lasers for more than forty years, with over five million treatments performed worldwide.</p></div>
+            <label for="adv-t1" class="adv-head"><span class="adv-num">01</span><h3>Artist-Owned Studio, With Your Next Tattoo in Mind</h3></label>
+            <div class="adv-panel"><p><b>Hyper Inkers is an artist-owned and operated studio, so your tattoo removal is planned by a working tattoo artist, not just a technician.</b> That matters most when the goal is a cover-up. The fade is taken to the depth your next design needs, and you can lighten old ink and re-ink under one roof.</p></div>
           </li>
           <li class="adv-item">
-            <label for="adv-t2" class="adv-head"><span class="adv-num">02</span><h3>Removes All Ink Colors on All Skin Types</h3></label>
-            <div class="adv-panel"><p><b>The PicoStar removes all ink colors and treats all skin types, including darker Fitzpatrick tones.</b> Its dual wavelengths handle everything from deep black to stubborn greens and blues, and the gentler 1064nm setting lowers the risk of pigment changes on darker skin.</p></div>
+            <label for="adv-t2" class="adv-head"><span class="adv-num">02</span><h3>One Laser for Every Ink Color and Skin Type</h3></label>
+            <div class="adv-panel"><p><b>Hyper Inkers removes tattoos with the PicoStar, a German-engineered, FDA-cleared picosecond laser built by Asclepion.</b> Its dual wavelengths handle everything from deep black to stubborn greens and blues, and the gentler 1064nm setting lowers the risk of pigment changes on darker skin. Because the pulses carry very little heat, discomfort stays manageable with numbing and cooling, and scarring risk stays low with basic aftercare.</p></div>
           </li>
           <li class="adv-item">
-            <label for="adv-t3" class="adv-head"><span class="adv-num">03</span><h3>Minimal Discomfort &amp; Low Scarring Risk</h3></label>
-            <div class="adv-panel"><p><b>Laser removal at Hyper Inkers keeps discomfort and scarring risk low, thanks to picosecond pulses and active cooling.</b> Because the laser works by pressure rather than heat, most clients find it manageable, and numbing cream plus cooling make each session easier. Scarring risk stays low when you follow the aftercare steps.</p></div>
-          </li>
-          <li class="adv-item">
-            <label for="adv-t4" class="adv-head"><span class="adv-num">04</span><h3>Honest, Per-Session Pricing</h3></label>
+            <label for="adv-t3" class="adv-head"><span class="adv-num">03</span><h3>Honest, Per-Session Pricing</h3></label>
             <div class="adv-panel"><p><b>Hyper Inkers prices tattoo removal honestly, per session by tattoo size, with no surprise fees.</b> You get a clear estimate of sessions and cost at your first consultation, and multi-session packages are available to spread it out.</p></div>
           </li>
           <li class="adv-item">
-            <label for="adv-t5" class="adv-head"><span class="adv-num">05</span><h3>Artist-Owned &amp; Operated Studio</h3></label>
-            <div class="adv-panel"><p><b>Hyper Inkers is an artist-owned and operated studio, so your tattoo removal is planned by a working tattoo artist, not just a technician.</b> That means the fade is set up with your next tattoo in mind, letting you lighten old ink and re-ink under one roof.</p></div>
+            <label for="adv-t4" class="adv-head"><span class="adv-num">04</span><h3>Sessions That Fit Your Schedule</h3></label>
+            <div class="adv-panel"><p><b>A removal session takes about fifteen minutes, and the studio stays open late, seven days a week.</b> Fading runs on six-to-eight-week gaps between visits, so each session is a quick stop rather than a half-day appointment, and evening or weekend visits are easy to keep even in a busy week.</p></div>
           </li>
         </ol>
       </div>
@@ -1299,9 +1315,19 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
 
     <p class="rmc-note"><b>Removal is a cosmetic treatment, so insurance doesn't cover it, but flexible payment options are available.</b> Check the FAQ below for HSA, FSA, and financing details. Your exact price comes together at a free consultation, with no obligation.</p>
 
-    <div class="hi-cta">
-      <p class="hi-cta-h">Get your personalized removal quote.</p>
-      <a class="btn btn-primary" href="#book">Get a Free Quote</a>
+  </div>
+</section>
+
+<!-- ==================== CTA 2 · REMOVAL QUOTE STRIP ==================== -->
+<section class="section s-cta2" id="cta-quote" aria-label="Get an exact tattoo removal quote">
+  <img class="cta2-splat" src="_hero-assets/cta-splatter-orange.png" alt="" aria-hidden="true">
+  <span class="grain" aria-hidden="true"></span>
+  <div class="wrap">
+    <h2 class="cta2-h">Get Your Exact Price at a Free Consultation</h2>
+    <p class="cta2-sub">A no-obligation consultation gives you a clear session plan and price before treatment starts.</p>
+    <div class="cta2-act">
+      <a class="btn btn-ghost cta2-btn" href="#book">Get a Free Quote</a>
+      <a class="cta2-call" href="tel:+12109979737"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .7-.2 1l-2.3 2.2z"/></svg>Call (210) 997-9737</a>
     </div>
   </div>
 </section>
@@ -1317,6 +1343,7 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
         <p class="ac-lead"><b>Tattoo removal aftercare is simple but important: keep the area clean, protect it from the sun, and let any blisters or scabs heal on their own.</b> Good aftercare directly affects your results and keeps scarring risk low, so the basics matter more than anything fancy.</p>
         <p>Right after a session, apply the antibiotic ointment we send you home with, use a cold pack for any swelling, keep the area covered for the first day, and skip the gym and the pool until the next day. Between sessions, protect it with SPF 30 or higher, leave blisters and scabs alone, and moisturize once the skin has healed.</p>
         <p class="ac-avoid"><b>Avoid</b> picking at blisters or scabs, unprotected sun exposure, and the gym or pool for the first day after each session.</p>
+        <p>Your specialist checks the healing at the start of every session and adjusts the plan if your skin needs more time. With the studio open late seven days a week, someone is easy to reach between visits.</p>
         <p class="ac-follow">Always follow your specialist's specific aftercare instructions.</p>
         <a href="#healing-guide" class="ac-link">Learn more about tattoo removal healing<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </div>
@@ -1344,6 +1371,7 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
     <div class="rmbk-nap">
       <ul class="rmbk-contact">
         <li class="rmbk-ci"><span class="rmbk-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><div><span class="rmbk-ci-lab">Hotline</span><a class="rmbk-ci-val" href="tel:+12109979737">(210) 997-9737</a></div></li>
+        <li class="rmbk-ci"><span class="rmbk-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6-10 7L2 6"/></svg></span><div><span class="rmbk-ci-lab">Email</span><a class="rmbk-ci-val" href="mailto:hyperinkers1@gmail.com">hyperinkers1@gmail.com</a></div></li>
         <li class="rmbk-ci"><span class="rmbk-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><span class="rmbk-ci-lab">Address</span><span class="rmbk-ci-val">8045 Callaghan Rd, San Antonio, TX 78230</span></div></li>
         <li class="rmbk-ci"><span class="rmbk-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><span class="rmbk-ci-lab">Hours</span><span class="rmbk-ci-val rmbk-hours"><span>Mon to Thu, 10am to 12am</span><span>Fri to Sat, 10am to 1am</span><span>Sun, 11am to 1am</span></span></div></li>
       </ul>
@@ -1397,7 +1425,7 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
           <div class="rmis-tab rmis-tab--sat">
             <input type="radio" name="rmfaq-group-a" id="rmfaq-a4" class="rmis-cb">
             <label for="rmfaq-a4" class="rmis-head"><h3 class="rmis-q">Can you remove a face, neck, or hand tattoo?</h3><span class="rmis-icon" aria-hidden="true"></span></label>
-            <div class="rmis-panel"><div class="rmis-inner"><p>Yes. Face, neck, and hand tattoos can be safely removed with the PicoStar using smaller spot sizes and conservative settings for these sensitive areas.</p></div></div>
+            <div class="rmis-panel"><div class="rmis-inner"><p>Yes. Face, neck, and hand tattoos can be safely removed with the PicoStar using smaller spot sizes and conservative settings for these sensitive areas. These placements often matter most for jobs and military enlistment, since employers and recruiting standards focus on visible ink.</p></div></div>
           </div>
           <div class="rmis-tab rmis-tab--sat">
             <input type="radio" name="rmfaq-group-a" id="rmfaq-a5" class="rmis-cb">
@@ -1497,7 +1525,10 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
   <div class="wrap">
     <header class="section-head center">
       <h2>Tattoo Removal <span class="o">Guides</span> &amp; Resources</h2>
-      <p class="gd-lead"><b>Tattoo removal guides and resources from Hyper Inkers cover how the process works, healing, costs, and skin-specific care.</b> Each guide answers one question in depth, so you can dig into the part that matters most for your tattoo.</p>
+      <input type="checkbox" id="rmgd-intro" class="more-cb" aria-label="Expand the guides introduction">
+      <p class="hi-intro gd-lead" id="rmgdIntro"><span class="hi-intro-txt" id="rmgdIntroTxt"><b>Tattoo removal guides and resources from Hyper Inkers cover how the process works, healing, costs, and skin-specific care.</b> Each guide answers one question in depth, so you can dig into the part that matters most for your tattoo.</span><label for="rmgd-intro" class="hi-more" id="rmgdMore" aria-label="Expand or collapse the guides introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
+      <noscript><style>.hi-intro-txt{-webkit-line-clamp:unset;line-clamp:unset}.hi-more{display:none}</style></noscript>
+      <p class="hi-bridge">Explore our tattoo removal guides below:</p>
     </header>
 
     <div class="gd-slider">
@@ -1528,7 +1559,7 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
     {"@type":"Question","name":"Can a tattoo be completely removed?","acceptedAnswer":{"@type":"Answer","text":"Most tattoos can be completely removed with enough sessions, though some colors may leave a faint shadow. Black ink clears the most completely, while greens, yellows, and light blues are the most stubborn."}},
     {"@type":"Question","name":"Do removal creams or at-home methods work?","acceptedAnswer":{"@type":"Answer","text":"No. Tattoo removal creams and at-home methods do not work, because they cannot reach the ink in the dermis, and some carry a real scarring risk."}},
     {"@type":"Question","name":"How does PicoStar compare to PicoSure or PicoWay?","acceptedAnswer":{"@type":"Answer","text":"PicoStar, PicoSure, and PicoWay are all picosecond lasers. The PicoStar uses sub-400-picosecond pulses and a large spot size for even coverage, though results depend most on the operator's skill."}},
-    {"@type":"Question","name":"Can you remove a face, neck, or hand tattoo?","acceptedAnswer":{"@type":"Answer","text":"Yes. Face, neck, and hand tattoos can be safely removed with the PicoStar using smaller spot sizes and conservative settings for these sensitive areas."}},
+    {"@type":"Question","name":"Can you remove a face, neck, or hand tattoo?","acceptedAnswer":{"@type":"Answer","text":"Yes. Face, neck, and hand tattoos can be safely removed with the PicoStar using smaller spot sizes and conservative settings for these sensitive areas. These placements often matter most for jobs and military enlistment, since employers and recruiting standards focus on visible ink."}},
     {"@type":"Question","name":"Can you fade a tattoo for a cover-up?","acceptedAnswer":{"@type":"Answer","text":"Yes. Fading a tattoo for a cover-up usually takes two to four sessions, enough to lighten old ink so a new design covers it cleanly."}},
     {"@type":"Question","name":"Does laser tattoo removal hurt?","acceptedAnswer":{"@type":"Answer","text":"Laser tattoo removal causes mild discomfort, often compared to a rubber band snapping against the skin. Numbing cream and cooling keep each session manageable."}},
     {"@type":"Question","name":"Does tattoo removal cause cancer?","acceptedAnswer":{"@type":"Answer","text":"No. There is no evidence that laser tattoo removal causes cancer. The PicoStar uses non-ionizing light that does not damage DNA."}},
@@ -1589,6 +1620,8 @@ hiHugArrow('rmc-intro','rmcIntroTxt','rmcIntro','rmcMore');       /* §11 */
 hiHugArrow('rmrv-intro','rmrvIntroTxt','rmrvIntro','rmrvMore');   /* §02 */
 hiHugArrow('rmsp-intro-cb','rmspIntroTxt','rmspIntro','rmspMore'); /* §04 */
 hiHugArrow('rmvs-intro-cb','rmvsIntroTxt','rmvsIntro','rmvsMore'); /* §Visit */
+hiHugArrow('rma-intro','rmaIntroTxt','rmaIntro','rmaMore');         /* §10 */
+hiHugArrow('rmgd-intro','rmgdIntroTxt','rmgdIntro','rmgdMore');     /* §15 */
 
 /* §01 hero statband — mobile swipe progress thumb (foundation .stat-track) */
 (function(){
