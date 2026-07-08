@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="robots" content="noindex, nofollow">
-<title>Hyper Inkers — Custom Tattoos in San Antonio</title>
+<title>Hyper Inkers — Black and Grey Tattoos in San Antonio</title>
 <link rel="stylesheet" href="fonts-hyperinkers-2026-07-04/hyperinkers-fonts.css">
 <link rel="stylesheet" href="_foundation/hi-foundation.css">
 <!-- Session 1 inline CSS (hero + top sections) -->
@@ -89,11 +89,15 @@ a{color:inherit;text-decoration:none}
 }
 
 /* text column */
-.badge{display:inline-flex;align-items:center;gap:10px;border:1px solid rgba(255,255,255,.16);background:rgba(0,0,0,.5);backdrop-filter:blur(3px);
-  border-radius:4px;padding:8px 14px;font-family:var(--sub);font-size:12.5px;letter-spacing:0.03em;color:var(--cream);margin-bottom:24px}
-.badge .gg{width:15px;height:15px;flex-shrink:0}
-.badge .stars{color:var(--orange);letter-spacing:2px;font-size:12.5px}
-.badge b{color:#fff;font-weight:600}
+.badge{display:inline-flex;align-items:center;gap:11px;color:var(--cream);margin-bottom:24px;
+  border:0;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding:0;border-radius:0}
+.badge .gg{width:clamp(26px,6vw,30px);height:clamp(26px,6vw,30px);flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
+.badge-col{display:flex;flex-direction:column;gap:2px}
+.badge-r1{display:flex;align-items:center;gap:9px}
+.badge-num{font-family:var(--head);font-weight:700;font-size:clamp(20px,4.4vw,25px);line-height:1;color:#fff;letter-spacing:.01em}
+.badge .stars{color:#F5B301;letter-spacing:2px;font-size:clamp(13px,3.1vw,15px);line-height:1}
+.badge-cnt{font-family:var(--sub);font-size:13px;letter-spacing:.01em;color:#D6D6D6}
+.badge-cnt b{color:#fff;font-weight:700}
 h1{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:0.94;letter-spacing:-0.005em;
   font-size:clamp(34px,4.6vw,60px);color:#fff;text-shadow:0 2px 34px rgba(0,0,0,.55)}
 h1 .o{color:var(--orange);display:block}
@@ -312,6 +316,11 @@ h1 .o{color:var(--orange);display:block}
   font-family:var(--sub);font-weight:600;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;transition:background .2s var(--ease)}
 .rv-leave:hover{background:var(--orange-hi)}
 .rv-leave svg{width:18px;height:18px;background:#fff;border-radius:50%;padding:2px}
+.rv-leave-ic{display:inline-flex;align-items:center}
+.rv-leave-ic svg{position:relative}
+.rv-leave-ic svg:first-child{z-index:2;box-shadow:0 0 0 2.5px var(--orange)}
+.rv-leave-ic svg:last-child{margin-left:-7px;z-index:1}
+.rv-leave:hover .rv-leave-ic svg:first-child{box-shadow:0 0 0 2.5px var(--orange-hi)}
 
 /* full-width slider (reviews live inside cards now — no separate artwork column) */
 .rv-slider-wrap{position:relative;min-width:0}
@@ -455,23 +464,14 @@ h1 .o{color:var(--orange);display:block}
 }
 @media(max-width:600px){ .svc-intro{max-width:340px} .svc-card{flex-basis:86%} }
 
-/* ---------- SECTION 05 · NEAR ME (editorial split: studio video + text) ---------- */
+/* ---------- SECTION 05 · NEAR ME (editorial split: studio image + text) ---------- */
 .near{background:var(--bg)}
 .near-grid{display:grid;grid-template-columns:1fr;gap:clamp(26px,4vw,40px);align-items:stretch}
-/* MEDIA — studio-intro video poster (placeholder: founder portrait until real walkthrough video) */
-.near-media{position:relative;margin:0;border-radius:16px;overflow:hidden;aspect-ratio:16/9;cursor:pointer;
+.near-media{position:relative;margin:0;border-radius:16px;overflow:hidden;aspect-ratio:16/9;cursor:default;
   border:1px solid rgba(255,255,255,.09);box-shadow:0 24px 60px rgba(0,0,0,.5)}
 .near-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .6s var(--ease)}
 .near-media:hover .near-poster{transform:scale(1.04)}
 .near-scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.14) 0%,rgba(0,0,0,0) 32%,rgba(0,0,0,.64) 100%)}
-.near-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;display:grid;place-items:center;
-  background:rgba(0,0,0,.42);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);border:1.5px solid rgba(255,255,255,.55);
-  transition:transform .25s var(--ease),background .25s var(--ease),border-color .25s var(--ease)}
-.near-media:hover .near-play{transform:translate(-50%,-50%) scale(1.08);background:var(--orange);border-color:var(--orange)}
-.near-play svg{width:26px;height:26px;fill:#fff;margin-left:4px}
-.near-play{padding:0;cursor:pointer;appearance:none;-webkit-appearance:none}
-.near-frame{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:6}
-.near-media.is-playing .near-scrim,.near-media.is-playing .near-play,.near-media.is-playing .near-vcap{opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
 .near-vcap{position:absolute;left:20px;right:20px;bottom:16px;z-index:2;display:inline-flex;align-items:center;gap:9px;
   font-family:var(--sub);font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:#fff}
 .near-vcap::before{content:"";width:22px;height:1px;background:var(--orange);flex-shrink:0}
@@ -489,8 +489,6 @@ h1 .o{color:var(--orange);display:block}
 }
 @media(max-width:600px){
   .near-media{border-radius:14px}
-  .near-play{width:64px;height:64px}
-  .near-play svg{width:22px;height:22px}
   .near-vcap{font-size:11px;left:16px;bottom:13px}
 }
 
@@ -1081,6 +1079,10 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 /* ========== §16 BOOK ========== */
 .s-book{background:var(--black)}
 .s-book h2 .o{color:var(--orange)}
+.bk-book-intro{max-width:640px;margin:14px auto 0;text-align:center;font-size:15.5px;line-height:1.55;color:#C9C9C9}
+.bk-book-intro b{color:#fff;font-weight:600}
+.s-book .vs-nap{margin-top:clamp(30px,3.8vw,46px);margin-bottom:clamp(28px,3.6vw,44px)}
+.s-book .vs-map{min-height:330px}
 .bk-form-card{max-width:640px;margin:clamp(28px,3.6vw,44px) auto 0;background:var(--surface);border:1px solid rgba(204,102,0,.34);border-radius:14px;padding:clamp(22px,2.6vw,34px);box-shadow:0 24px 60px rgba(0,0,0,.5);color-scheme:dark}
 .bk-form-intro{margin:0 0 20px;font-size:14px;line-height:1.55;color:#B7B7B7;text-align:center}
 .bk-row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
@@ -1167,7 +1169,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
        multi-image sets (Black&Grey / Realism / Portrait, 4 each); the rest are
        single-image and can gain more photos the same way.
    Whole image = a link to the style page; arrows/dots sit ABOVE the link (valid
-   HTML, buttons are siblings of <a>). Images = real HI per-style showcase photos.
+	   HTML, buttons are siblings of the image anchor). Images = real HI per-style showcase photos.
    Tokens = foundation (linked); local CSS = .st- namespace.
    ============================================================================ */
 .s-styles{background:var(--bg)}
@@ -1391,23 +1393,11 @@ textarea.bk-input{min-height:96px;resize:vertical}
 .gft-icb:checked ~ .gft-intro .gft-imore svg{transform:rotate(180deg)}
 .gft-icb:focus-visible ~ .gft-intro .gft-imore{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
 
-/* filter chips */
-.gft-chips{display:flex;flex-wrap:nowrap;justify-content:center;gap:10px;
-  margin:clamp(26px,3vw,38px) auto 0;max-width:100%;overflow-x:auto;scrollbar-width:none}
-.gft-chips::-webkit-scrollbar{display:none}
-.gft-chip{appearance:none;border:1px solid var(--card-brd);background:transparent;color:var(--muted);
-  font-family:var(--sub);font-weight:600;font-size:13.5px;letter-spacing:.02em;text-transform:uppercase;
-  padding:9px 17px;border-radius:100px;cursor:pointer;white-space:nowrap;
-  transition:color .2s var(--ease),border-color .2s var(--ease),background .2s var(--ease)}
-.gft-chip:hover{color:#fff;border-color:var(--muted)}
-.gft-chip[aria-pressed="true"]{color:#fff;background:var(--orange);border-color:var(--orange)}
-.gft-chip:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
-
 /* grid — CLEAN image tiles (no label / credit / badge) */
-.gft-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(12px,1.4vw,18px);
-  margin-top:clamp(24px,2.6vw,34px)}
-.gft-tile{position:relative;aspect-ratio:4/5;border-radius:12px;overflow:hidden;
-  background:#161616;border:1px solid rgba(255,255,255,.07);animation:gftIn .38s var(--ease) both}
+.gft-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,1.8vw,24px);
+  margin-top:clamp(32px,4vw,52px)}
+.gft-tile{position:relative;aspect-ratio:4/5;border-radius:14px;overflow:hidden;
+  background:#161616;border:1px solid rgba(255,255,255,.08);box-shadow:0 24px 54px rgba(0,0,0,.36);animation:gftIn .38s var(--ease) both}
 .gft-tile.is-hidden{display:none}
 .gft-tile>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
   transition:transform .6s var(--ease)}
@@ -1417,18 +1407,12 @@ textarea.bk-input{min-height:96px;resize:vertical}
 
 /* trailing CTA — uses the foundation .section-cta component (bridge left + ghost pill right) */
 
-@media(max-width:960px){.gft-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:960px){.gft-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:640px){
   .gft-intro{max-width:330px}
-  /* one horizontal-scroll row — no wrap, page stays short */
-  .gft-chips{flex-wrap:nowrap;overflow-x:auto;justify-content:flex-start;
-    scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;
-    padding:2px 16px;margin-left:-16px;margin-right:-16px;max-width:none;
-    scrollbar-width:none}
-  .gft-chips::-webkit-scrollbar{display:none}
-  .gft-chip{scroll-snap-align:start;flex:0 0 auto}
   .gft-grid{grid-template-columns:repeat(2,1fr);gap:10px}
 }
+@media(max-width:460px){.gft-grid{grid-template-columns:1fr}}
 
 /* ============ black-and-grey HERO (bgh-) — from section-bg-01 ============ */
 
@@ -1536,19 +1520,13 @@ textarea.bk-input{min-height:96px;resize:vertical}
 /* ============ RELATED STYLES (rel-) — image card slider ============ */
 .s-related{background:var(--bg)}
 .s-related .wrap{position:relative;z-index:2}
-.rel-lead{max-width:760px;margin:14px auto 0;text-align:center;font-size:16.5px;line-height:1.62;color:#C9C9C9}
-.rel-lead b{color:#fff;font-weight:600}
-.rel-rail{display:flex;gap:20px;margin:clamp(28px,3.5vw,40px) 0 0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:2px}
+.rel-rail{display:flex;gap:clamp(18px,2vw,28px);margin:clamp(34px,4vw,52px) 0 0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding-bottom:4px}
 .rel-rail::-webkit-scrollbar{display:none}
-.rel-card{flex:0 0 clamp(238px,26vw,288px);scroll-snap-align:start;display:flex;flex-direction:column;background:var(--surface);border:1px solid var(--card-brd);border-radius:12px;overflow:hidden;text-decoration:none;transition:border-color .25s var(--ease),transform .25s var(--ease)}
-.rel-card:hover{border-color:var(--orange);transform:translateY(-3px)}
-.rel-thumb{position:relative;aspect-ratio:4/3;overflow:hidden;background:#0c0c0c}
+.rel-card{flex:0 0 clamp(320px,31vw,390px);scroll-snap-align:start;display:block;background:transparent;border:0;border-radius:0;overflow:visible;text-decoration:none;transition:transform .25s var(--ease)}
+.rel-card:hover{transform:translateY(-4px)}
+.rel-thumb{position:relative;display:block;aspect-ratio:3/4;overflow:hidden;background:#0c0c0c;border-radius:14px;border:1px solid var(--card-brd);box-shadow:0 24px 58px rgba(0,0,0,.42)}
 .rel-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease);filter:grayscale(.12)}
 .rel-card:hover .rel-thumb img{transform:scale(1.06)}
-.rel-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 18px}
-.rel-name{font-family:var(--head);font-weight:600;font-size:16px;line-height:1.32;color:#fff}
-.rel-meta svg{width:18px;height:18px;flex-shrink:0;fill:none;stroke:var(--orange);stroke-width:2;transition:stroke .2s var(--ease)}
-.rel-card:hover .rel-meta svg{stroke:var(--orange-hi)}
 .rel-foot{display:flex;align-items:center;gap:20px;margin:22px 0 0}
 .rel-navs{display:flex;gap:10px;flex:0 0 auto}
 .rel-nav{width:44px;height:44px;border-radius:50%;border:1px solid var(--card-brd);background:var(--surface);color:#fff;display:grid;place-items:center;cursor:pointer;transition:border-color .2s var(--ease),color .2s var(--ease)}
@@ -1557,8 +1535,10 @@ textarea.bk-input{min-height:96px;resize:vertical}
 .rel-nav svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
 .rel-track{position:relative;flex:1;height:2px;background:var(--border);border-radius:2px}
 .rel-bar{position:absolute;left:0;top:0;height:100%;width:35%;background:var(--orange);border-radius:2px;transition:left .3s var(--ease),width .3s var(--ease)}
-.rel-hub{margin:22px 0 0;text-align:center}
-.rel-hub a{color:var(--orange-hi);text-decoration:underline;text-underline-offset:3px;font-family:var(--sub);text-transform:uppercase;letter-spacing:.04em;font-size:12.5px}
+@media(max-width:760px){
+  .rel-card{flex-basis:82%}
+  .rel-foot{gap:14px}
+}
 </style></head>
 
 <body>
@@ -1569,8 +1549,8 @@ textarea.bk-input{min-height:96px;resize:vertical}
       <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers">
     </a>
     <nav class="nav" aria-label="Primary">
-      <a href="tattoo.html">Tattoo</a>
-      <a href="piercing.html">Piercing</a>
+      <a href="/tattoo">Tattoo</a>
+      <a href="/piercing">Piercing</a>
       <a href="#artists">Artists</a>
       <a href="#work">Our Work</a>
       <a href="#awards">Awards</a>
@@ -1598,11 +1578,13 @@ textarea.bk-input{min-height:96px;resize:vertical}
     <div class="wrap">
       <div class="bgh-center">
 
-        <!-- DATA-TREO: swap href for the real Google Business Profile review URL -->
-        <a class="badge" href="https://www.google.com/maps/search/?api=1&amp;query=Hyper+Inkers+San+Antonio" target="_blank" rel="noopener" aria-label="Read Hyper Inkers reviews on Google, rated 5.0 stars">
+        <span class="badge">
           <svg class="gg" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>
-          <span class="stars">★★★★★</span> <b>5.0</b> Google Rating
-        </a>
+          <span class="badge-col">
+            <span class="badge-r1"><span class="badge-num">4.9</span><span class="stars" aria-label="4.9 out of 5">★★★★★</span></span>
+            <span class="badge-cnt"><b>3,500+</b> Google Reviews</span>
+          </span>
+        </span>
 
         <h1>Best Black and Grey Tattoo Artists <span class="o">in San Antonio</span></h1>
 
@@ -1696,7 +1678,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
             <span class="rv-stars" aria-label="5 out of 5">★★★★★</span><b>5.0</b>
             <span>3,000+ reviews on Google &amp; Facebook</span>
           </div>
-          <a class="rv-leave" href="https://www.google.com/maps/search/Hyper+Inkers+San+Antonio" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ic-google"></use></svg>Leave a Review</a>
+          <a class="rv-leave" href="/reviews"><span class="rv-leave-ic"><svg aria-hidden="true"><use href="#ic-google"></use></svg><svg aria-hidden="true"><use href="#ic-fb"></use></svg></span>Read all our reviews</a>
         </div>
 
         <div class="rv-split">
@@ -1877,14 +1859,13 @@ textarea.bk-input{min-height:96px;resize:vertical}
 
       <div class="near-text">
         <h2>Best Black and Grey Realism Tattoo Artist in <span class="o">San Antonio</span>, Near Me</h2>
-        <p class="near-lead"><b>The best place to get a custom tattoo in San Antonio is Hyper Inkers.</b> Thousands of five-star reviews back that up, but what really sets the work apart is the artists. They include founder Minh Pham, whose custom pieces earned Best of Show at the San Antonio Tattoo Arts Festival, and the team brings more than 15 years of combined experience across realism, black and grey, color, and fine line. The studio sits on Callaghan Road in northwest San Antonio, with walk-ins welcome late into the night.</p>
+        <p class="near-lead"><b>The best black and grey realism tattoo artists in San Antonio are at Hyper Inkers.</b> The studio is recognized for portraits, memorial pieces, and large-scale black and grey work judged at tattoo conventions. Hyper Inkers is led by founder Minh Pham, who has worked in the style for over ten years, and the studio sits on Callaghan Road in northwest San Antonio, with walk-ins welcome and free consultations any day of the week.</p>
       </div>
 
-      <figure class="near-media" data-yt="NwxyqZ4ZG80">
+      <figure class="near-media">
         <img class="near-poster" src="https://i.ytimg.com/vi/NwxyqZ4ZG80/maxresdefault.jpg" alt="Hyper Inkers artists at work inside the San Antonio tattoo studio." loading="lazy">
         <span class="near-scrim" aria-hidden="true"></span>
-        <button class="near-play" type="button" aria-label="Play the Hyper Inkers studio tour video"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
-        <figcaption class="near-vcap">Take a look inside the studio</figcaption>
+        <figcaption class="near-vcap">Inside the Hyper Inkers studio</figcaption>
       </figure>
 
     </div>
@@ -2007,84 +1988,36 @@ textarea.bk-input{min-height:96px;resize:vertical}
   <span class="grain" aria-hidden="true"></span>
   <div class="wrap">
 
-    <!-- CENTERED HEAD (no eyebrow) -->
     <header class="section-head center">
       <h2>Black and Grey Tattoo <span class="o">Gallery</span> in San Antonio</h2>
       <input type="checkbox" id="gft-intro" class="gft-icb" aria-label="Expand the gallery introduction">
-      <p class="gft-intro" id="gftIntro"><span class="gft-intro-txt" id="gftIntroTxt"><b>The gallery shows real custom tattoos done in-house at Hyper Inkers, in fine line, black and grey, bold color, and large-scale realism.</b> Every piece was drawn from scratch for that client and tattooed by one of the artists above. Award-winning pieces are filtered on their own.</span><label for="gft-intro" class="gft-imore" id="gftMore" aria-label="Expand or collapse the gallery introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
+      <p class="gft-intro" id="gftIntro"><span class="gft-intro-txt" id="gftIntroTxt"><b>The black and grey tattoo gallery at Hyper Inkers shows real work done in the studio, from realism portraits to black and white sleeves.</b> Look for smooth gradient shading, full tonal contrast, clean linework, and balanced composition that flows with the body.</span><label for="gft-intro" class="gft-imore" id="gftMore" aria-label="Expand or collapse the gallery introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
       <noscript><style>.gft-intro-txt{-webkit-line-clamp:unset;line-clamp:unset}.gft-imore{display:none}</style></noscript>
     </header>
 
-    <!-- FILTER CHIPS (no "All" — toggle active chip to reset to everything) -->
-    <div class="gft-chips" role="group" aria-label="Filter tattoos by style">
-      <button type="button" class="gft-chip" data-filter="award"       aria-pressed="false">Award Pieces</button>
-      <button type="button" class="gft-chip" data-filter="realism"     aria-pressed="false">Realism</button>
-      <button type="button" class="gft-chip" data-filter="black-grey"  aria-pressed="false">Black &amp; Grey</button>
-      <button type="button" class="gft-chip" data-filter="color"       aria-pressed="false">Color</button>
-      <button type="button" class="gft-chip" data-filter="japanese"    aria-pressed="false">Japanese</button>
-      <button type="button" class="gft-chip" data-filter="fine-line"   aria-pressed="false">Fine Line</button>
-      <button type="button" class="gft-chip" data-filter="traditional" aria-pressed="false">Traditional</button>
-    </div>
-
-    <!-- GRID — clean image tiles; data-style/data-award drive filtering (hidden) -->
     <div class="gft-grid" id="gftGrid">
-      <figure class="gft-tile" data-style="realism" data-award="1"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/new-11.jpg" alt="Realism custom tattoo at Hyper Inkers in San Antonio." loading="lazy"></figure>
-      <figure class="gft-tile" data-style="color" data-award="1"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/new-9.jpg" alt="Color custom tattoo at Hyper Inkers in San Antonio." loading="lazy"></figure>
-      <figure class="gft-tile" data-style="black-grey" data-award="1"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-by-hyper-iners-in-san-antonio-9.jpg" alt="Black and grey custom tattoo at Hyper Inkers in San Antonio." loading="lazy"></figure>
-      <figure class="gft-tile" data-style="japanese" data-award="1"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/new-3.jpg" alt="Japanese custom tattoo at Hyper Inkers in San Antonio." loading="lazy"></figure>
-      <figure class="gft-tile" data-style="realism"><img src="https://hyperinkers.com/wp-content/uploads/2024/10/3-1-1-819x1024.jpg" alt="Realism custom tattoo at Hyper Inkers in San Antonio." loading="lazy"></figure>
-      <figure class="gft-tile" data-style="fine-line" data-award="1"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/line-work-tattoo-style-by-hyper-inkers-5.jpg" alt="Fine line custom tattoo at Hyper Inkers in San Antonio." loading="lazy"></figure>
-      <figure class="gft-tile" data-style="color"><img src="https://hyperinkers.com/wp-content/uploads/2024/10/1-2-2-819x1024.jpg" alt="Color custom tattoo at Hyper Inkers in San Antonio." loading="lazy"></figure>
-      <figure class="gft-tile" data-style="black-grey"><img src="https://hyperinkers.com/wp-content/uploads/2024/10/1-1-1-819x1024.jpg" alt="Black and grey custom tattoo at Hyper Inkers in San Antonio." loading="lazy"></figure>
-      <figure class="gft-tile" data-style="japanese"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/asia-tattoo-style-by-hyper-inkers-3-768x1150.jpg" alt="Japanese custom tattoo at Hyper Inkers in San Antonio." loading="lazy"></figure>
-      <figure class="gft-tile" data-style="fine-line"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/DSC00995-768x1149.jpg" alt="Fine line custom tattoo at Hyper Inkers in San Antonio." loading="lazy"></figure>
-      <figure class="gft-tile" data-style="realism"><img src="https://hyperinkers.com/wp-content/uploads/2024/10/5-1-819x1024.jpg" alt="Realism custom tattoo at Hyper Inkers in San Antonio." loading="lazy"></figure>
-      <figure class="gft-tile" data-style="color"><img src="https://hyperinkers.com/wp-content/uploads/2024/10/3-4-1-819x1024.jpg" alt="Color custom tattoo at Hyper Inkers in San Antonio." loading="lazy"></figure>
-      <figure class="gft-tile" data-style="black-grey"><img src="https://hyperinkers.com/wp-content/uploads/2024/10/5-5-819x1024.jpg" alt="Black and grey custom tattoo at Hyper Inkers in San Antonio." loading="lazy"></figure>
-      <figure class="gft-tile" data-style="japanese"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/DSC07735.jpg" alt="Japanese custom tattoo at Hyper Inkers in San Antonio." loading="lazy"></figure>
-      <figure class="gft-tile" data-style="fine-line"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/DSC02005-768x1149.jpg" alt="Fine line custom tattoo at Hyper Inkers in San Antonio." loading="lazy"></figure>
-      <!-- Traditional (real HI style-showcase pieces) -->
-      <figure class="gft-tile" data-style="traditional"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/american-traditional-tattoos_.jpg" alt="Traditional custom tattoo at Hyper Inkers in San Antonio." loading="lazy"></figure>
-      <figure class="gft-tile" data-style="traditional"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/modern-traditional-tattoo-style_.jpg" alt="Traditional custom tattoo at Hyper Inkers in San Antonio." loading="lazy"></figure>
+      <figure class="gft-tile"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-scaled.jpg" alt="Large black and grey realism tattoo by Hyper Inkers in San Antonio." loading="lazy"></figure>
+      <figure class="gft-tile"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-1-scaled.jpg" alt="Black and grey tattoo by a Hyper Inkers artist in San Antonio." loading="lazy"></figure>
+      <figure class="gft-tile"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-2-scaled.jpg" alt="Black and grey realism tattoo by Hyper Inkers in San Antonio." loading="lazy"></figure>
+      <figure class="gft-tile"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-3-scaled.jpg" alt="Black and grey tattoo detail by Hyper Inkers in San Antonio." loading="lazy"></figure>
+      <figure class="gft-tile"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/realism-tattoo-by-hyper-iners-in-san-antonio-scaled.jpg" alt="Black and grey realism tattoo by Hyper Inkers in San Antonio." loading="lazy"></figure>
+      <figure class="gft-tile"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-by-hyper-iners-in-san-antonio-9.jpg" alt="Black and grey custom tattoo by Hyper Inkers in San Antonio." loading="lazy"></figure>
+      <figure class="gft-tile"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/realism-tattoo-by-hyper-iners-in-san-antonio-7-scaled.jpg" alt="Black and grey realism portrait tattoo by Hyper Inkers in San Antonio." loading="lazy"></figure>
+      <figure class="gft-tile"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/realism-tattoo-by-hyper-iners-in-san-antonio-8-scaled.jpg" alt="Black and grey realism tattoo shading by Hyper Inkers in San Antonio." loading="lazy"></figure>
+      <figure class="gft-tile"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/realism-tattoo-by-hyper-iners-in-san-antonio-9-scaled.jpg" alt="Black and grey realism tattoo by a Hyper Inkers artist in San Antonio." loading="lazy"></figure>
+      <figure class="gft-tile"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/black-grey-tattoo-designs-2.png" alt="Black and grey sleeve tattoo design by Hyper Inkers in San Antonio." loading="lazy"></figure>
+      <figure class="gft-tile"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/black-and-grey-tattoo-sleeve-designs-3.png" alt="Black and grey sleeve tattoo by Hyper Inkers in San Antonio." loading="lazy"></figure>
     </div>
 
     <div class="section-cta">
-      <p class="sec-bridge">This is a sample of our custom tattoo work. See the full collection in the Hyper Inkers tattoo gallery.</p>
+      <p class="sec-bridge">Follow Hyper Inkers on Instagram for the studio's latest black and grey work, or view the full tattoo gallery.</p>
       <div class="gal-more"><a href="/tattoo-gallery">View the Full Tattoo Gallery <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div>
     </div>
 
   </div>
 
   <script>
-  /* (1) FILTER — chips toggle; active chip filters, click again resets to all.
-     'award' filters by data-award; the rest by data-style. */
-  (function(){
-    var grid=document.getElementById('gftGrid');
-    if(!grid) return;
-    var chips=[].slice.call(document.querySelectorAll('.gft-chip')),
-        tiles=[].slice.call(grid.querySelectorAll('.gft-tile')),
-        active=null;
-    function apply(f){
-      tiles.forEach(function(t){
-        var show = !f || (f==='award' ? t.dataset.award==='1' : t.dataset.style===f);
-        t.classList.toggle('is-hidden', !show);
-        if(show){ t.style.animation='none'; void t.offsetWidth; t.style.animation=''; }
-      });
-    }
-    chips.forEach(function(c){
-      c.addEventListener('click',function(){
-        var f=c.dataset.filter;
-        if(active===f){ active=null; c.setAttribute('aria-pressed','false'); apply(null); return; }
-        active=f;
-        chips.forEach(function(x){x.setAttribute('aria-pressed', x===c ? 'true':'false');});
-        apply(f);
-      });
-    });
-    // default: activate the first chip so the initial gallery stays short (B.Long)
-    if(chips[0]){ active=chips[0].dataset.filter; chips[0].setAttribute('aria-pressed','true'); apply(active); }
-  })();
-
-  /* (2) HUG-ARROW — orange arrow hugs the end of the last visible intro line.
+  /* HUG-ARROW — orange arrow hugs the end of the last visible intro line.
      Bin rects by rounded top (clamped -webkit-box + inline <b> returns noisy rects). */
   (function(){
     var cb=document.getElementById('gft-intro'),
@@ -2360,10 +2293,23 @@ textarea.bk-input{min-height:96px;resize:vertical}
 
     <header class="section-head center">
       <h2>Book Your Black and Grey <span class="o">Tattoo</span> in San Antonio</h2>
+      <p class="bk-book-intro"><b>Book your black and grey tattoo at Hyper Inkers with a free consultation.</b> Bring a reference or a rough idea; our artists will guide size, placement, and session planning before you commit.</p>
     </header>
 
+    <div class="vs-nap">
+      <ul class="vs-contact">
+        <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><div><span class="vs-ci-lab">Phone</span><a class="vs-ci-val" href="tel:+12109979737">(210) 997-9737</a></div></li>
+        <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><div><span class="vs-ci-lab">Email</span><a class="vs-ci-val" href="mailto:hyperinkers1@gmail.com">hyperinkers1@gmail.com</a></div></li>
+        <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><span class="vs-ci-lab">Address</span><span class="vs-ci-val">8045 Callaghan Rd, San Antonio, TX 78230</span></div></li>
+        <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><span class="vs-ci-lab">Hours</span><span class="vs-ci-val vs-hours"><span>Mon to Thu, 10am to 12am</span><span>Fri to Sat, 10am to 1am</span><span>Sun, 11am to 1am</span></span></div></li>
+      </ul>
+      <div class="vs-map">
+        <iframe src="https://maps.google.com/maps?q=8045%20Callaghan%20Rd,%20San%20Antonio,%20TX%2078230&z=14&output=embed" loading="lazy" title="Map to Hyper Inkers, 8045 Callaghan Rd, San Antonio, TX"></iframe>
+      </div>
+    </div>
+
     <form class="bk-form-card" onsubmit="return false" novalidate aria-label="Book a free tattoo consultation">
-      <p class="bk-form-intro">Tell us about your ideas, style, size, color and placement, and let us know your budget.</p>
+      <p class="bk-form-intro">Tell us about your black and grey idea, size, placement, reference photos, and budget.</p>
       <div class="bk-row2">
         <div class="bk-field"><label class="field-label" for="bk-name">Your Name</label><input class="bk-input" id="bk-name" type="text" name="your-name" placeholder="Your Name"></div>
         <div class="bk-field"><label class="field-label" for="bk-phone">Phone Number</label><input class="bk-input" id="bk-phone" type="tel" name="your-phone" placeholder="Phone Number"></div>
@@ -2405,24 +2351,19 @@ textarea.bk-input{min-height:96px;resize:vertical}
   <div class="wrap">
     <header class="section-head center">
       <h2>Tattoo Styles Related to <span class="o">Black and Grey</span> in San Antonio</h2>
-      <p class="rel-lead">Tattoo styles related to black and grey at Hyper Inkers in San Antonio include realism, portrait, color, and traditional work. If it is not quite the look you want, our artists work in these as well.</p>
     </header>
     <div class="rel-rail" id="relRail">
-      <a class="rel-card" href="/tattoo/realism-tattoos-san-antonio">
+      <a class="rel-card" href="/tattoo/realism-tattoos-san-antonio" aria-label="Explore realism tattoos">
         <span class="rel-thumb"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/realism-tattoo-by-hyper-iners-in-san-antonio-7-scaled.jpg" alt="Realism tattoo by Hyper Inkers in San Antonio" loading="lazy"></span>
-        <span class="rel-meta"><span class="rel-name">Realism Tattoos in San Antonio</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-      <a class="rel-card" href="/tattoo/portrait-tattoos-san-antonio">
+      <a class="rel-card" href="/tattoo/portrait-tattoos-san-antonio" aria-label="Explore portrait tattoos">
         <span class="rel-thumb"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/portrait-tattoo-by-hyper-iners-in-san-antonio.jpg" alt="Portrait tattoo by Hyper Inkers in San Antonio" loading="lazy"></span>
-        <span class="rel-meta"><span class="rel-name">Portrait Tattoos in San Antonio</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-      <a class="rel-card" href="/tattoo/color-tattoo-in-san-antonio">
+      <a class="rel-card" href="/tattoo/color-tattoo-in-san-antonio" aria-label="Explore color tattoos">
         <span class="rel-thumb"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/color-tattoo-style-by-hyper-inkers-1-scaled.jpg" alt="Color tattoo by Hyper Inkers in San Antonio" loading="lazy"></span>
-        <span class="rel-meta"><span class="rel-name">Color Tattoos in San Antonio</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
-      <a class="rel-card" href="/tattoo/traditional-tattoos-in-san-antonio">
+      <a class="rel-card" href="/tattoo/traditional-tattoos-in-san-antonio" aria-label="Explore traditional tattoos">
         <span class="rel-thumb"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/american-traditional-tattoos_.jpg" alt="American traditional tattoo at Hyper Inkers in San Antonio" loading="lazy"></span>
-        <span class="rel-meta"><span class="rel-name">Traditional Tattoos in San Antonio</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
       </a>
     </div>
     <div class="rel-foot">
@@ -2432,7 +2373,6 @@ textarea.bk-input{min-height:96px;resize:vertical}
       </div>
       <div class="rel-track"><span class="rel-bar" id="relBar"></span></div>
     </div>
-    <p class="rel-hub"><a href="tattoo.html">View all tattoo styles</a></p>
   </div>
 </section>
 
@@ -2470,20 +2410,6 @@ textarea.bk-input{min-height:96px;resize:vertical}
   rail.addEventListener('scroll',upd,{passive:true});
   window.addEventListener('resize',upd);
   upd();
-})();
-/* Section 05 · Near-Me — YouTube facade: click poster -> load real embed (nocookie) */
-(function(){
-  var m=document.querySelector('.near-media[data-yt]');
-  if(m){ m.addEventListener('click',function(){
-    if(m.classList.contains('is-playing')) return;
-    var f=document.createElement('iframe');
-    f.className='near-frame';
-    f.src='https://www.youtube-nocookie.com/embed/'+m.getAttribute('data-yt')+'?autoplay=1&rel=0';
-    f.title='Hyper Inkers tattoo studio and team introduction video, San Antonio';
-    f.setAttribute('allow','autoplay; encrypted-media; picture-in-picture');
-    f.setAttribute('allowfullscreen','');
-    m.appendChild(f); m.classList.add('is-playing');
-  }); }
 })();
 (function(){
   var row=document.querySelector('.stat-row'), thumb=document.querySelector('.stat-thumb');
