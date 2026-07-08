@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<title>Hyper Inkers — Header Nav DEMO v2 (lean · promo bar · simple dropdown + flyout)</title>
+<link rel="stylesheet" href="fonts-hyperinkers-2026-07-04/hyperinkers-fonts.css">
+<link rel="stylesheet" href="_foundation/hi-foundation.css">
+<!--
+  ============================================================================
+  HEADER NAV DEMO v2 · 2026-07-08 · Cinematic Dark Editorial
+  SPEC LOCKED (Gate 0/3):
+   - LEAN header, Ganga-style: transparent nav + top scrim, 5 items distributed
+   - Promo TOP BAR: "See Hyper Inkers deals for you →" -> /promotions (dismissible ✕)
+   - HOME dropped (logo -> home) · Promotions moved to promo bar
+   - SERVICES = simple 1-column dropdown + hover FLYOUT for children
+        Custom Tattoo ›  -> Black&Grey / Realism / Fine Line / Japanese / Traditional
+        Piercing ›       -> Ear / Face / Body
+        Cover-Up / Removal = direct links (no children)
+      (NO "All styles →" / "All piercings →" footer links — removed per B.Long)
+   - Gallery / About = simple 1-column dropdown (no children)
+   - Live clock: America/Chicago (SA), single line, + Open/Closed from real hours
+   - Mobile: fullscreen drawer, tap-to-expand accordion (2 levels), clock pinned top
+   - Tokens from hi-foundation.css (NOT modified)
+  ============================================================================
+-->
+<style>
+:root{
+  --hh:76px;               /* header height */
+  --promo-h:36px;          /* promo bar height (set to 0px on dismiss) */
+  --nav-tr:.09em;          /* nav letter-spacing */
+  --open:#37D67A;          /* status: open */
+}
+
+/* ---------------- PROMO TOP BAR ---------------- */
+/* Editorial bare strip — solid black, no icon, no accent line; contrast against transparent nav */
+.promobar{position:fixed;top:0;left:0;right:0;height:var(--promo-h);z-index:61;
+  background:#0A0A0A;overflow:hidden}
+.promobar .wrap{position:relative;display:flex;align-items:center;justify-content:center;
+  min-height:var(--promo-h);padding-block:0}
+.promo-msg{display:inline-flex;align-items:center;gap:10px;font-family:var(--sub);font-size:12px;
+  letter-spacing:.09em;text-transform:uppercase;color:var(--cream);
+  text-underline-offset:3px;transition:color .18s var(--ease)}
+.promo-msg:hover{color:var(--orange);text-decoration:underline;text-decoration-color:var(--orange)}
+.promo-msg .arw{color:var(--orange);transition:transform .18s var(--ease)}
+.promo-msg:hover .arw{transform:translateX(3px)}
+.promo-x{position:absolute;right:0;top:50%;transform:translateY(-50%);width:30px;height:30px;
+  display:inline-flex;align-items:center;justify-content:center;background:none;border:0;color:var(--muted);
+  cursor:pointer;transition:color .18s var(--ease)}
+.promo-x:hover{color:#fff}
+.promo-x svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+
+/* ---------------- HEADER (transparent + scrim) ---------------- */
+/* full-bleed: logo hugs left edge, Book Now hugs right edge (Ganga-style) */
+.hdr .wrap,.promobar .wrap{max-width:none;padding-inline:40px}
+.hdr{position:fixed;top:var(--promo-h);left:0;right:0;z-index:60}
+.hdr::before{content:"";position:absolute;inset:0;height:150px;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,.28) 48%,transparent 100%)}
+.hdr .wrap{position:relative;display:flex;align-items:center;gap:36px;min-height:var(--hh)}
+/* logo shows its native BRAND ORANGE (source asset is already #CC6600) — force no filter */
+.hdr .logo{flex:0 0 auto}
+.hdr .logo img{height:28px;width:auto;filter:none !important}
+
+/* nav list — distributed (Ganga-style airy) */
+.nav{display:flex;align-items:center;flex:1 1 auto;justify-content:center}
+.nav > ul{display:flex;align-items:center;gap:30px;list-style:none;margin:0;padding:0}
+.nav li{position:relative}
+.navlink{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;font-family:var(--sub);font-size:13px;
+  letter-spacing:var(--nav-tr);text-transform:uppercase;color:var(--cream);opacity:.86;
+  padding:8px 0;cursor:pointer;transition:opacity .2s var(--ease),color .2s var(--ease)}
+.navlink:hover,.has-drop:focus-within > .navlink{opacity:1;color:#fff}
+.navlink::after{content:"";position:absolute;left:0;bottom:2px;height:2px;width:0;background:var(--orange);
+  transition:width .22s var(--ease)}
+.navlink:hover::after,.has-drop:focus-within > .navlink::after{width:100%}
+.caret{width:9px;height:9px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;
+  transition:transform .22s var(--ease);opacity:.7}
+.has-drop:hover .caret,.has-drop:focus-within .caret{transform:rotate(180deg)}
+
+/* right cluster: clock + book */
+.hdr-right{margin-left:auto;display:flex;align-items:center;gap:18px;flex:0 0 auto}
+.clock{display:inline-flex;align-items:center;gap:8px;font-family:var(--sub);font-size:12px;letter-spacing:.05em;
+  text-transform:uppercase;color:var(--cream);white-space:nowrap;padding-left:26px;
+  border-left:1px solid rgba(255,255,255,.22)}
+.clock .t{color:#fff;font-variant-numeric:tabular-nums}
+.clock .sep{opacity:.4}
+.clock .dot{width:7px;height:7px;border-radius:50%;background:var(--open);box-shadow:0 0 0 3px rgba(55,214,122,.20);flex:0 0 auto}
+.clock .st{color:#EDEDED}
+.clock.closed .dot{background:#8B8B8B;box-shadow:none}
+.clock.closed .st{color:var(--muted)}
+.hdr .book{font-family:var(--sub);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#fff;
+  border:1px solid rgba(255,255,255,.38);padding:11px 19px;border-radius:4px;
+  transition:border-color .2s var(--ease),background .2s var(--ease)}
+.hdr .book:hover{border-color:var(--orange);background:var(--orange)}
+
+/* ---------------- DROPDOWNS (level-1) ---------------- */
+.drop{opacity:0;visibility:hidden;transform:translateY(8px);
+  transition:opacity .18s var(--ease),transform .22s var(--ease),visibility 0s .22s;z-index:59}
+.has-drop:hover > .drop,.has-drop:focus-within > .drop{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.has-drop::after{content:"";position:absolute;left:0;right:0;top:100%;height:16px;display:none}   /* hover bridge */
+.has-drop:hover::after{display:block}
+
+.menu{position:absolute;top:calc(100% + 14px);left:0;min-width:232px;
+  background:var(--surface);border:1px solid var(--border);
+  border-radius:4px;padding:8px;box-shadow:0 22px 50px rgba(0,0,0,.55)}
+.menu .lvl1{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:1px}
+.menu .lvl1 > li{position:relative}
+.menu .lvl1 > li > a{display:flex;align-items:center;gap:10px;font-family:var(--sub);font-size:12.5px;
+  letter-spacing:.03em;text-transform:uppercase;color:var(--cream);padding:11px 12px;border-radius:3px;
+  transition:background .16s var(--ease),color .16s var(--ease)}
+.menu .lvl1 > li > a:hover,.has-sub:focus-within > a{background:rgba(255,255,255,.05);color:#fff}
+.caret-r{width:8px;height:8px;margin-left:auto;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;
+  opacity:.65;transition:transform .18s var(--ease)}
+.has-sub:hover .caret-r,.has-sub:focus-within .caret-r{transform:translateX(2px);opacity:1}
+
+/* flyout (level-2 children) */
+.fly{position:absolute;top:-9px;left:calc(100% + 6px);min-width:210px;
+  background:var(--surface);border:1px solid var(--border);border-radius:4px;
+  padding:8px;box-shadow:0 22px 50px rgba(0,0,0,.55);
+  opacity:0;visibility:hidden;transform:translateX(-6px);
+  transition:opacity .16s var(--ease),transform .2s var(--ease),visibility 0s .2s;z-index:60}
+.has-sub:hover > .fly,.has-sub:focus-within > .fly{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+.has-sub::before{content:"";position:absolute;top:0;left:calc(100% - 8px);width:18px;height:100%;display:none} /* fly bridge */
+.has-sub:hover::before{display:block}
+.fly a{display:flex;align-items:center;font-family:var(--body);font-size:13.5px;color:var(--cream);
+  padding:9px 12px;border-radius:3px;transition:color .14s var(--ease),background .14s var(--ease)}
+.fly a:hover{color:#fff;background:rgba(255,255,255,.05)}
+
+/* simple menu (Gallery / About) reuses .menu; its <a> already styled above */
+.menu.simple .lvl1 > li > a{font-size:12.5px}
+
+/* ---------------- MOBILE ---------------- */
+.nav-toggle{position:absolute;width:1px;height:1px;opacity:0;overflow:hidden}
+.nav-burger{display:none}
+.m-clock,.m-book{display:none}
+
+@media(max-width:940px){
+  .hdr .wrap,.promobar .wrap{gap:14px;padding-inline:20px}
+  .nav > .clock{display:none}                           /* hide desktop clock in mobile drawer */
+  .hdr-right .book{display:inline-flex;padding:9px 15px;font-size:11px;letter-spacing:.06em}  /* compact CTA stays in header */
+  .nav-burger{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;
+    margin-left:10px;color:var(--cream);cursor:pointer;z-index:70;background:none;border:0}
+  .nav-burger svg{width:26px;height:26px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+  .nav-burger .ico-x{display:none}
+  .nav-toggle:checked ~ .nav-burger .ico-bars{display:none}
+  .nav-toggle:checked ~ .nav-burger .ico-x{display:block}
+  .nav-toggle:focus-visible ~ .nav-burger{outline:2px solid var(--orange);outline-offset:2px;border-radius:4px}
+
+  .nav{position:fixed;inset:0;z-index:65;flex-direction:column;align-items:stretch;justify-content:flex-start;
+    background:rgba(10,10,10,.985);opacity:0;visibility:hidden;transform:translateY(-6px);
+    padding:calc(var(--promo-h) + var(--hh) + 8px) 26px 40px;overflow-y:auto;
+    transition:opacity .3s var(--ease),transform .35s var(--ease),visibility 0s .35s}
+  .nav-toggle:checked ~ .nav{opacity:1;visibility:visible;transform:none;transition-delay:0s}
+  body:has(#navtog:checked){overflow:hidden}
+
+  .nav > ul{flex-direction:column;align-items:stretch;gap:0;width:100%}
+  .nav li{border-bottom:1px solid var(--hair)}
+  .navlink{justify-content:space-between;width:100%;font-size:16px;letter-spacing:.04em;padding:16px 2px;opacity:1}
+  .navlink::after{display:none}
+  .caret{width:14px;height:14px}
+  .has-drop:hover .caret,.has-drop:focus-within .caret{transform:none}
+  .has-drop.open > .navlink .caret{transform:rotate(180deg)}
+
+  /* level-1 dropdown -> inline accordion */
+  .drop{position:static;opacity:1;visibility:visible;transform:none;transition:none;display:none}
+  .has-drop.open > .drop{display:block}
+  .has-drop::after{display:none !important}
+  .menu{min-width:0;background:none;border:0;box-shadow:none;padding:0 0 10px}
+  .menu .lvl1 > li{border-bottom:0}
+  .menu .lvl1 > li > a{padding:12px 12px;color:var(--muted);font-size:13px}
+  .menu .lvl1 > li > a:hover{background:none;color:#fff}
+
+  /* level-2 flyout -> nested inline accordion */
+  .fly{position:static;opacity:1;visibility:visible;transform:none;transition:none;display:none;
+    background:none;border:0;box-shadow:none;padding:0 0 6px 14px;min-width:0}
+  .has-sub.open > .fly{display:block}
+  .has-sub::before{display:none !important}
+  .caret-r{width:12px;height:12px}
+  .has-sub.open .caret-r{transform:rotate(90deg)}
+  .fly a{padding:9px 12px;font-size:13px;color:var(--muted)}
+  .fly a:hover{background:none;color:#fff;padding-left:12px}
+
+  /* clock pinned to top of drawer */
+  .m-clock{order:-1;display:flex;align-items:center;gap:8px;font-family:var(--sub);font-size:12px;letter-spacing:.05em;
+    text-transform:uppercase;color:var(--cream);padding:0 2px 16px;margin-bottom:6px;border-bottom:1px solid var(--hair)}
+  .m-clock .t{color:#fff;font-variant-numeric:tabular-nums}
+  .m-clock .sep{opacity:.4}
+  .m-clock .dot{width:7px;height:7px;border-radius:50%;background:var(--open);box-shadow:0 0 0 3px rgba(55,214,122,.2)}
+  .m-clock.closed .dot{background:#8B8B8B;box-shadow:none}
+  .m-clock .st{color:#EDEDED}
+  .m-clock.closed .st{color:var(--muted)}
+
+  .m-book{display:flex;align-items:center;justify-content:center;margin-top:20px;min-height:54px;
+    background:var(--orange);color:#fff;border-radius:4px;font-family:var(--sub);font-size:14px;
+    letter-spacing:.06em;text-transform:uppercase}
+}
+
+/* ---------------- DEMO backdrop ---------------- */
+.demo-hero{position:relative;min-height:100svh;display:flex;align-items:flex-end;overflow:hidden}
+.demo-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.demo-hero .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(15,15,15,.15) 0%,rgba(15,15,15,.55) 70%,var(--bg) 100%)}
+.demo-hero .cap{position:relative;padding:0 32px 70px;max-width:var(--wrap);margin-inline:auto;width:100%}
+.demo-hero h1{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:.94;font-size:clamp(38px,6vw,84px);color:#fff}
+.demo-hero p{font-family:var(--body);color:var(--muted);margin-top:14px;font-size:15px}
+.demo-sect{padding:90px 0;border-top:1px solid var(--border)}
+.demo-sect .wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:32px}
+.demo-sect h2{font-family:var(--head);text-transform:uppercase;font-size:28px;color:#fff;margin-bottom:12px}
+.demo-sect p{font-family:var(--body);color:var(--muted);max-width:620px}
+.skip{position:absolute;left:12px;top:-70px;z-index:100;background:var(--orange);color:#fff;
+  font-family:var(--sub);font-size:13px;letter-spacing:.04em;text-transform:uppercase;padding:11px 18px;border-radius:4px;transition:top .2s var(--ease)}
+.skip:focus{top:12px;outline:2px solid #fff;outline-offset:2px}
+
+/* ================= FOOTER ================= */
+.ft{background:#0A0A0A;border-top:1px solid var(--border);color:var(--muted);font-family:var(--body);padding:62px 0 26px}
+.ft-top{text-align:center;padding-bottom:40px;border-bottom:1px solid var(--hair)}
+.ft-logo{height:34px;width:auto;margin:0 auto;display:block}
+.ft-tag{margin-top:15px;font-family:var(--sub);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--cream)}
+/* real icon images already include their own circle ring — no extra border, just a hover lift */
+.ft-social{display:flex;justify-content:center;gap:16px;margin-top:22px}
+.ft-social a{width:38px;height:38px;display:inline-flex;align-items:center;justify-content:center;
+  transition:transform .18s var(--ease),opacity .18s var(--ease);opacity:.9}
+.ft-social a:hover{opacity:1;transform:translateY(-2px)}
+.ft-social img{width:100%;height:100%;object-fit:contain}
+
+.ft-cols{display:grid;grid-template-columns:1.15fr 1fr 1fr 1.05fr;gap:34px;padding:46px 0 40px}
+.ft-col h4{font-family:var(--sub);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--orange);margin-bottom:18px}
+.ft-col ul{list-style:none;margin:0;padding:0}
+.ft-col > ul > li{margin-bottom:11px}
+.ft-col a{color:var(--cream);font-size:14px;transition:color .16s var(--ease)}
+.ft-col a:hover{color:var(--orange)}
+
+/* nested sub-items under Custom Tattoo / Piercing — indented, smaller, muted */
+.ft-sub{margin:8px 0 12px 4px !important;padding-left:12px}
+.ft-sub li{margin-bottom:7px !important}
+.ft-sub a{font-size:12.5px;color:var(--muted)}
+.ft-sub a::before{content:"· ";color:var(--orange)}
+.ft-sub a:hover{color:var(--orange)}
+.ft-sub-inline{display:flex;flex-wrap:wrap;gap:0 14px;margin-top:6px !important}
+.ft-sub-inline li{margin-bottom:0 !important}
+
+.ft-hours p{font-size:13.5px;color:var(--muted);margin:0 0 9px;white-space:nowrap}
+.ft-vdiv{height:1px;background:var(--hair);margin:16px 0}
+.ft-nap p{font-size:13.5px;color:var(--cream);margin:0 0 9px;line-height:1.45}
+.ft-nap a{color:var(--cream);transition:color .16s var(--ease)}
+.ft-nap a:hover{color:var(--orange)}
+
+.ft-strip{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;
+  padding-top:22px;border-top:1px solid var(--hair)}
+.ft-legal{display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.ft-legal a{color:var(--muted);font-size:12px;letter-spacing:.02em;transition:color .16s var(--ease)}
+.ft-legal a:hover{color:var(--orange)}
+.ft-legal .sep{color:rgba(255,255,255,.2);font-size:12px}
+.ft-pay{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.ft-pay .lbl{font-family:var(--sub);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:2px}
+.ft-pay .mark{border:1px solid var(--border);border-radius:3px;padding:5px 9px;font-family:var(--sub);
+  font-size:10.5px;letter-spacing:.04em;text-transform:uppercase;color:var(--cream)}
+.ft-pay .mark-img{height:22px;width:auto;border-radius:3px;background:#EFE7DA;padding:4px 8px}
+.ft-dmca{display:inline-flex;align-items:center;opacity:.85;transition:opacity .16s var(--ease)}
+.ft-dmca:hover{opacity:1}
+.ft-dmca img{height:20px;width:auto;display:block}
+.ft-copy{text-align:center;margin-top:24px;font-size:12px;letter-spacing:.03em;color:var(--muted)}
+
+@media(max-width:820px){
+  .ft-cols{grid-template-columns:1fr 1fr;gap:30px 24px}
+  .ft-hours p,.ft-nap p{white-space:normal}
+}
+@media(max-width:480px){
+  .ft-cols{grid-template-columns:1fr}
+  .ft-strip{flex-direction:column;align-items:flex-start;gap:16px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- ======================= PROMO BAR ======================= -->
+<div class="promobar" id="promobar">
+  <div class="wrap">
+    <a class="promo-msg" href="/promotions">
+      See Hyper Inkers deals for you <span class="arw">→</span>
+    </a>
+    <button class="promo-x" id="promoX" aria-label="Dismiss promotion">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="hdr">
+  <div class="wrap">
+    <input type="checkbox" id="navtog" class="nav-toggle" aria-label="Open navigation menu">
+
+    <a class="logo" href="/" aria-label="Hyper Inkers home">
+      <img src="assets/hi-logo.webp" alt="Hyper Inkers">
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <ul>
+        <!-- SERVICES: simple 1-col dropdown + flyout children -->
+        <li class="has-drop">
+          <a class="navlink" href="/services" aria-haspopup="true">Services
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="drop menu" role="menu">
+            <ul class="lvl1">
+              <li class="has-sub">
+                <a href="/tattoo">Custom Tattoo
+                  <svg class="caret-r" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                </a>
+                <div class="fly" role="menu">
+                  <a href="/tattoo/black-and-grey">Black &amp; Grey</a>
+                  <a href="/tattoo/realism">Realism</a>
+                  <a href="/tattoo/fine-line">Fine Line</a>
+                  <a href="/tattoo/japanese">Japanese</a>
+                  <a href="/tattoo/traditional">Traditional</a>
+                </div>
+              </li>
+              <li><a href="/tattoo/cover-up">Cover-Up Tattoo</a></li>
+              <li class="has-sub">
+                <a href="/piercing">Piercing
+                  <svg class="caret-r" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                </a>
+                <div class="fly" role="menu">
+                  <a href="/piercing/ear-piercing">Ear Piercing</a>
+                  <a href="/piercing/face-piercing">Face Piercing</a>
+                  <a href="/piercing/body-piercing">Body Piercing</a>
+                </div>
+              </li>
+              <li><a href="/tattoo-removal">Tattoo Removal</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li><a class="navlink" href="/artists">Artists</a></li>
+
+        <!-- GALLERY: simple dropdown -->
+        <li class="has-drop">
+          <a class="navlink" href="/gallery" aria-haspopup="true">Gallery
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="drop menu simple" role="menu">
+            <ul class="lvl1">
+              <li><a href="/gallery/tattoo">Tattoo Gallery</a></li>
+              <li><a href="/gallery/piercing">Piercing Gallery</a></li>
+              <li><a href="/gallery/tattoo-removal-before-after">Removal Before &amp; After</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <!-- ABOUT: simple dropdown -->
+        <li class="has-drop">
+          <a class="navlink" href="/about-us" aria-haspopup="true">About Us
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="drop menu simple" role="menu">
+            <ul class="lvl1">
+              <li><a href="/contact">Contact</a></li>
+              <li><a href="/faq">FAQ</a></li>
+              <li><a href="/testimonials">Testimonials</a></li>
+              <li><a href="/awards">Awards</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li><a class="navlink" href="/blog">Blog</a></li>
+      </ul>
+
+      <!-- desktop clock now sits WITH the menu (right after Blog, divider between) -->
+      <div class="clock" id="hiClock" aria-label="Current time in San Antonio and open status">
+        <span class="t">—</span><span class="sep">·</span><span>SA</span><span class="sep">·</span>
+        <span class="dot"></span><span class="st">—</span>
+      </div>
+
+      <!-- mobile-only clock + book (top / bottom of drawer) -->
+      <div class="m-clock" id="hiClockM" aria-hidden="true">
+        <span class="t">—</span><span class="sep">·</span><span>SA</span><span class="sep">·</span>
+        <span class="dot"></span><span class="st">—</span>
+      </div>
+      <a class="m-book" href="#book">Book Now</a>
+    </nav>
+
+    <div class="hdr-right">
+      <a class="book" href="#book">Book Now</a>
+    </div>
+
+    <label for="navtog" class="nav-burger" aria-label="Open menu">
+      <svg class="ico-bars" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="ico-x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </label>
+  </div>
+</header>
+
+<!-- ======================= DEMO BODY ======================= -->
+<section class="demo-hero" id="main">
+  <img src="https://hyperinkers.com/wp-content/uploads/2026/02/tattoo-parlor-san-antonio.jpg"
+       alt="Hyper Inkers tattoo studio interior in San Antonio.">
+  <div class="scrim"></div>
+  <div class="cap">
+    <h1>Header Nav<br>Demo v2</h1>
+    <p>Lean transparent nav · promo top bar · live San Antonio clock · Services simple dropdown + flyout. Hover / scroll to test.</p>
+  </div>
+</section>
+<section class="demo-sect"><div class="wrap"><h2>Scroll test — dark section</h2><p>Transparent nav stays readable over dark content via the top scrim. Promo bar can be dismissed with ✕.</p></div></section>
+<section class="demo-sect"><div class="wrap"><h2>Another section</h2><p>Hover “Services”, then hover “Custom Tattoo ›” or “Piercing ›” to reveal the flyout of sub-services. Footer below ↓</p></div></section>
+
+<!-- ======================= FOOTER ======================= -->
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-top">
+      <img class="ft-logo" src="assets/hi-logo.webp" alt="Hyper Inkers">
+      <div class="ft-tag">Tattoo Parlor in San Antonio</div>
+      <!-- real brand social icons (site assets, gold/tan circle) — replaces hand-drawn SVGs -->
+      <div class="ft-social">
+        <a href="#" aria-label="Hyper Inkers on TikTok"><img src="assets/i-9.png.webp" alt="" loading="lazy"></a>
+        <a href="#" aria-label="Hyper Inkers on Instagram"><img src="assets/i-11.png.webp" alt="" loading="lazy"></a>
+        <a href="#" aria-label="Hyper Inkers on YouTube"><img src="assets/i-10.png.webp" alt="" loading="lazy"></a>
+        <a href="#" aria-label="Hyper Inkers on Facebook"><img src="assets/i-12.png.webp" alt="" loading="lazy"></a>
+      </div>
+    </div>
+
+    <div class="ft-cols">
+      <!-- SERVICES: nested (style-spoke under Custom Tattoo, Ear/Face/Body under Piercing) -->
+      <div class="ft-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/tattoo">Custom Tattoo</a>
+            <ul class="ft-sub">
+              <li><a href="/tattoo/black-and-grey">Black &amp; Grey</a></li>
+              <li><a href="/tattoo/realism">Realism</a></li>
+              <li><a href="/tattoo/fine-line">Fine Line</a></li>
+              <li><a href="/tattoo/japanese">Japanese</a></li>
+              <li><a href="/tattoo/traditional">Traditional</a></li>
+            </ul>
+          </li>
+          <li><a href="/tattoo/cover-up">Cover-Up Tattoo</a></li>
+          <li><a href="/piercing">Piercing</a>
+            <ul class="ft-sub ft-sub-inline">
+              <li><a href="/piercing/ear-piercing">Ear</a></li>
+              <li><a href="/piercing/face-piercing">Face</a></li>
+              <li><a href="/piercing/body-piercing">Body</a></li>
+            </ul>
+          </li>
+          <li><a href="/tattoo-removal">Tattoo Removal</a></li>
+        </ul>
+      </div>
+
+      <!-- EXPLORE: Reviews now lives here (Get Directions button removed per B.Long) -->
+      <div class="ft-col">
+        <h4>Explore</h4>
+        <ul>
+          <li><a href="/about-us">About Us</a></li>
+          <li><a href="/artists">Artists</a></li>
+          <li><a href="/awards">Awards</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/reviews">Reviews</a></li>
+        </ul>
+      </div>
+
+      <!-- RESOURCES: Gallery + 3 aftercare (moved out of Services) -->
+      <div class="ft-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="/gallery">Gallery</a></li>
+          <li><a href="/tattoo-aftercare">Tattoo Aftercare</a></li>
+          <li><a href="/piercing-aftercare">Piercing Aftercare</a></li>
+          <li><a href="/tattoo-removal-aftercare">Removal Aftercare</a></li>
+        </ul>
+      </div>
+
+      <!-- VISIT US: hours + NAP only, no button row -->
+      <div class="ft-col">
+        <h4>Visit Us</h4>
+        <div class="ft-hours">
+          <p>Mon–Thu: 10am – 12am</p>
+          <p>Fri–Sat: 10am – 1am</p>
+          <p>Sun: 11am – 1am</p>
+        </div>
+        <div class="ft-vdiv"></div>
+        <div class="ft-nap">
+          <p>Tel: <a href="tel:+12109979737">(210) 997-9737</a></p>
+          <p>Mail: <a href="mailto:hyperinkers1@gmail.com">hyperinkers1@gmail.com</a></p>
+          <p>8045 Callaghan Rd,<br>San Antonio, TX 78230</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ft-strip">
+      <div class="ft-legal">
+        <a href="/privacy-policy">Privacy Policy</a><span class="sep">·</span>
+        <a href="/terms">Terms &amp; Conditions</a><span class="sep">·</span>
+        <a href="/deposit-policy">Deposit Policy</a><span class="sep">·</span>
+        <!-- real DMCA badge image (site asset) replaces the text link -->
+        <a href="/dmca" class="ft-dmca"><img src="assets/dmca-badge.png" alt="DMCA Protected" loading="lazy"></a>
+      </div>
+      <div class="ft-pay">
+        <span class="lbl">We accept</span>
+        <!-- real payment marks (site assets): PayPal / Visa / Mastercard -->
+        <img class="mark-img" src="assets/i-20-300x176.png.webp" alt="PayPal" loading="lazy">
+        <img class="mark-img" src="assets/i-19-300x177.png.webp" alt="Visa" loading="lazy">
+        <img class="mark-img" src="assets/i-18-300x176.png.webp" alt="Mastercard" loading="lazy">
+        <!-- NOTE: i-17 asset is a plain "$" mark, not the real Afterpay logo — kept as text pill until the real Afterpay badge is supplied -->
+        <span class="mark">Afterpay</span>
+      </div>
+    </div>
+
+    <div class="ft-copy">© 2026 Hyper Inkers. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+/* ---- Live San Antonio clock + Open/Closed (America/Chicago, DST-safe) ---- */
+(function(){
+  var nodes=[document.getElementById('hiClock'),document.getElementById('hiClockM')].filter(Boolean);
+  if(!nodes.length) return;
+  var SCH={0:[660,1500],1:[600,1440],2:[600,1440],3:[600,1440],4:[600,1440],5:[600,1500],6:[600,1500]};
+  var WD={Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6};
+  function fmtH(min){min=((min%1440)+1440)%1440;var h=Math.floor(min/60);var ap=h<12?'AM':'PM';var h12=h%12;if(h12===0)h12=12;return h12+' '+ap;}
+  function tick(){
+    var now=new Date();
+    var parts=new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',weekday:'short',hour:'2-digit',minute:'2-digit',hour12:false}).formatToParts(now);
+    var map={};parts.forEach(function(x){map[x.type]=x.value;});
+    var d=WD[map.weekday];
+    var m=(parseInt(map.hour,10)%24)*60+parseInt(map.minute,10);
+    var disp=new Intl.DateTimeFormat('en-US',{timeZone:'America/Chicago',hour:'numeric',minute:'2-digit',hour12:true}).format(now);
+    var today=SCH[d], yest=SCH[(d+6)%7];
+    var open=false, closeMin=null;
+    if(m>=today[0] && m<Math.min(today[1],1440)){open=true;closeMin=today[1];}
+    if(!open && yest[1]>1440 && m<(yest[1]-1440)){open=true;closeMin=yest[1];}
+    var shortText, fullText;
+    if(open){shortText='Open';fullText='Open · till '+fmtH(closeMin);}
+    else{var no=(m<today[0])?fmtH(today[0]):fmtH(SCH[(d+1)%7][0]);shortText='Closed';fullText='Closed · opens '+no;}
+    nodes.forEach(function(el){
+      el.querySelector('.t').textContent=disp;
+      // desktop = short (hours in tooltip) · mobile drawer = full (has room)
+      el.querySelector('.st').textContent=(el.id==='hiClockM')?fullText:shortText;
+      el.setAttribute('title','San Antonio · '+disp+' · '+fullText);
+      el.classList.toggle('closed',!open);
+    });
+  }
+  tick(); setInterval(tick,30000);
+})();
+
+/* ---- Promo bar dismiss ---- */
+(function(){
+  var x=document.getElementById('promoX'), bar=document.getElementById('promobar');
+  if(!x||!bar) return;
+  x.addEventListener('click',function(){
+    bar.remove();
+    document.documentElement.style.setProperty('--promo-h','0px');
+  });
+})();
+
+/* ---- Mobile accordion: 2 levels (desktop keeps hover flyout) ---- */
+(function(){
+  var mq=window.matchMedia('(max-width:940px)');
+  // level 1 (Services / Gallery / About)
+  document.querySelectorAll('.has-drop > .navlink').forEach(function(a){
+    a.addEventListener('click',function(e){
+      if(!mq.matches) return;
+      e.preventDefault();
+      var li=a.parentElement, was=li.classList.contains('open');
+      document.querySelectorAll('.has-drop.open').forEach(function(o){if(o!==li)o.classList.remove('open');});
+      li.classList.toggle('open',!was);
+    });
+  });
+  // level 2 (Custom Tattoo / Piercing flyout parents)
+  document.querySelectorAll('.has-sub > a').forEach(function(a){
+    a.addEventListener('click',function(e){
+      if(!mq.matches) return;
+      e.preventDefault();
+      a.parentElement.classList.toggle('open');
+    });
+  });
+  mq.addEventListener('change',function(){document.querySelectorAll('.open').forEach(function(o){o.classList.remove('open');});});
+})();
+</script>
+</body>
+</html>
