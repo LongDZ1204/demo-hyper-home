@@ -53,9 +53,17 @@
 .award-card>img{width:100%;height:100%;object-fit:cover;object-position:50% 42%}
 /* crisp svg-i mark inside .info (foundation styles only the text-i; the ported svg variant needs sizing) — belongs in foundation reconcile; kept here so the hero ⓘ renders standalone */
 .info>svg{width:62%;height:62%;display:block}
-/* trust-chip row (two foundation .badge side by side) */
-.hero-trust{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:24px}
-.hero-trust .badge{margin-bottom:0}
+/* hero Google-review badge — bare (no pill), colored G on dark, gold stars, G medallion style.
+   Reset the foundation .badge pill explicitly (per-property) so no border/bg/pad leaks through. */
+.badge{display:inline-flex;align-items:center;gap:11px;color:var(--cream);margin-bottom:24px;
+  border:0;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding:0;border-radius:0}
+.badge .gg{width:clamp(26px,6vw,30px);height:clamp(26px,6vw,30px);flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
+.badge-col{display:flex;flex-direction:column;gap:2px}
+.badge-r1{display:flex;align-items:center;gap:9px}
+.badge-num{font-family:var(--head);font-weight:700;font-size:clamp(20px,4.4vw,25px);line-height:1;color:#fff;letter-spacing:.01em}
+.badge .stars{color:#F5B301;letter-spacing:2px;font-size:clamp(13px,3.1vw,15px);line-height:1}
+.badge-cnt{font-family:var(--sub);font-size:13px;letter-spacing:.01em;color:#D6D6D6}
+.badge-cnt b{color:#fff;font-weight:700}
 /* NEW · benefit-chip bar — foundation .chip pills with embedded .info/.tip (label visible, tooltip = DOM text-node) */
 .hb-bar{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;max-width:600px}
 .hb-bar .chip{gap:8px;cursor:default}
@@ -65,7 +73,9 @@
 .hero-blist li{position:relative;padding-left:24px;font-size:14.5px;line-height:1.5;color:#C9C9C9}
 .hero-blist li::before{content:"";position:absolute;left:2px;top:7px;width:8px;height:8px;border:1.6px solid var(--orange);border-radius:50%}
 .hero-blist li b{color:#fff;font-weight:600}
-.hero .statband{margin-top:clamp(28px,4vw,46px)}
+.hero .statband{align-self:center;margin:36px auto 0;border:0}
+.hero .stat{border-right:0}
+@media(max-width:640px){.hero .statband{width:calc(100% - 24px);margin-top:26px}}
 /* ---------- RESPONSIVE HERO (ported verbatim) ---------- */
 @media(max-width:820px){
   .hero{padding:84px 0 30px}
@@ -110,7 +120,7 @@
 #rvtab-cust:checked ~ .rv-panel-cust{display:block}
 #rvtab-video:checked ~ .rv-panel-video{display:block}
 
-/* rating bar + leave-a-review (Google only) */
+/* rating bar + leave-a-review (Google + Facebook icon treatment) */
 .rv-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
   margin-bottom:22px;padding:15px 20px;border-radius:12px;background:var(--surface);border:1px solid var(--border)}
 .rv-rate{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
@@ -121,6 +131,11 @@
   font-family:var(--sub);font-weight:600;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;transition:background .2s var(--ease)}
 .rv-leave:hover{background:var(--orange-hi)}
 .rv-leave svg{width:18px;height:18px;background:#fff;border-radius:50%;padding:2px}
+.rv-leave-ic{display:inline-flex;align-items:center}
+.rv-leave-ic svg{position:relative}
+.rv-leave-ic svg:first-child{z-index:2;box-shadow:0 0 0 2.5px var(--orange)}
+.rv-leave-ic svg:last-child{margin-left:-7px;z-index:1}
+.rv-leave:hover .rv-leave-ic svg:first-child{box-shadow:0 0 0 2.5px var(--orange-hi)}
 
 /* full-width slider (reviews live inside cards now — no separate artwork column) */
 .rv-slider-wrap{position:relative;min-width:0}
@@ -409,7 +424,7 @@
 /* ---------- FEEDER 1 · s-cta1 (dark rust-splatter, solid button) — ported homepage §CTA1 ---------- */
 .s-cta1{background:var(--bg);text-align:center;padding-block:clamp(80px,10vw,148px)}
 .cta1-splat{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scaleX(-1);
-  width:min(132vw,2048px);max-width:none;height:auto;opacity:.72;mix-blend-mode:normal;
+  width:min(95vw,2200px);max-width:none;height:auto;opacity:.72;mix-blend-mode:normal;
   filter:brightness(.66) saturate(1.22);pointer-events:none;user-select:none;z-index:0}
 .s-cta1::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
@@ -562,7 +577,7 @@
 .s-cta2{position:relative;overflow:hidden;background:var(--bg);text-align:center;
   padding-block:clamp(74px,10vw,140px)}
 .cta2-splat{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:min(1180px,130%);max-width:none;height:auto;opacity:.5;pointer-events:none;user-select:none;z-index:0}
+  width:min(95vw,2200px);max-width:none;height:auto;opacity:.5;pointer-events:none;user-select:none;z-index:0}
 .s-cta2::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:radial-gradient(58% 72% at 50% 50%, rgba(0,0,0,.6), rgba(0,0,0,0) 78%)}
 .s-cta2 .wrap{position:relative;z-index:2}
@@ -582,7 +597,7 @@
 .cta2-call svg{width:15px;height:15px}
 @media(max-width:560px){
   .s-cta2 .cta2-h{max-width:94vw;font-size:clamp(30px,7vw,46px)}
-  .cta2-splat{width:170%;opacity:.42}
+  .cta2-splat{width:250vw;opacity:.42}
 }
 
 /* ========== SECTION 11 · Jewelry ========== */
@@ -703,6 +718,10 @@
 .ac-list li::after{content:"";position:absolute;left:6.5px;top:7px;width:8px;height:5px;
   border-left:2px solid var(--orange);border-bottom:2px solid var(--orange);transform:rotate(-45deg)}
 .ac-list li b{color:#fff;font-weight:600}
+.s-aftercare .ac-list{list-style:disc;margin-left:1.1em;gap:10px}
+.s-aftercare .ac-list li{position:static;padding-left:0}
+.s-aftercare .ac-list li::before,.s-aftercare .ac-list li::after{display:none}
+.s-aftercare .ac-list li::marker{color:var(--muted)}
 .ac-link{display:inline-flex;align-items:center;gap:8px;margin-top:clamp(20px,2.4vw,28px);color:var(--orange);font-weight:600;
   font-family:var(--sub);font-size:14.5px;border-bottom:1px solid rgba(204,102,0,.4);
   transition:color .2s var(--ease),border-color .2s var(--ease)}
@@ -743,47 +762,6 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 .vs-directions{position:absolute;left:14px;bottom:14px;z-index:2;display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:10px 18px;border-radius:9px;background:var(--orange);color:#fff;font-family:var(--sub);font-size:12.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;text-decoration:none;box-shadow:0 10px 24px rgba(0,0,0,.45)}
 .vs-directions:hover{background:var(--orange-hi)}
 .vs-directions svg{width:15px;height:15px;flex-shrink:0;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-/* Part B: local service area (Texas map + accordion) */
-.vs-local{margin-top:clamp(52px,6.5vw,84px)}
-.vs-local-lead{max-width:660px;margin:0 auto clamp(26px,3.2vw,40px);text-align:center;font-size:15.5px;line-height:1.6;color:var(--muted)}
-.vs-radio{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
-.vs-local-grid{display:grid;grid-template-columns:1.02fr 0.98fr;gap:clamp(20px,3.4vw,54px);align-items:center}
-.vs-txmap{position:relative}
-.vs-txmap svg{width:100%;height:auto;display:block;overflow:visible;filter:drop-shadow(0 24px 44px rgba(0,0,0,.5))}
-.vs-txmap .tx-outline{fill:url(#tx-fill);stroke:rgba(204,102,0,.34);stroke-width:1.2}
-.pin-glow{opacity:0;transition:opacity .45s var(--ease)}
-.pin-mark{opacity:0;transition:opacity .35s var(--ease)}
-.pin-mark path{fill:var(--orange)}
-.pin-hole{fill:var(--black)}
-.vs-cities{list-style:none}
-.vs-city + .vs-city{margin-top:2px}
-.vs-city-head{display:flex;align-items:center;gap:14px;cursor:pointer;padding:15px 16px;border-left:2px solid var(--border);transition:border-color .2s var(--ease),background .2s var(--ease)}
-.vs-city-head:hover{background:var(--surface)}
-.vs-city-head h3{margin:0;font-family:var(--sub);font-weight:600;font-size:16px;letter-spacing:.01em;color:#CFCFCF;transition:color .2s var(--ease)}
-.vs-city-panel{max-height:0;overflow:hidden;transition:max-height .38s var(--ease)}
-.vs-city-panel p{margin:0;padding:2px 16px 15px 18px;font-size:14.5px;line-height:1.6;color:var(--muted)}
-/* active city → show its pin (hide its dot) + highlight list row + open panel */
-#city-sa:checked ~ .vs-local-grid .pin[data-city="sa"] .pin-mark,
-#city-austin:checked ~ .vs-local-grid .pin[data-city="austin"] .pin-mark,
-#city-houston:checked ~ .vs-local-grid .pin[data-city="houston"] .pin-mark,
-#city-dallas:checked ~ .vs-local-grid .pin[data-city="dallas"] .pin-mark{opacity:1}
-#city-sa:checked ~ .vs-local-grid .pin[data-city="sa"] .pin-glow,
-#city-austin:checked ~ .vs-local-grid .pin[data-city="austin"] .pin-glow,
-#city-houston:checked ~ .vs-local-grid .pin[data-city="houston"] .pin-glow,
-#city-dallas:checked ~ .vs-local-grid .pin[data-city="dallas"] .pin-glow{opacity:1}
-#city-sa:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(1) .vs-city-head,
-#city-austin:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(2) .vs-city-head,
-#city-houston:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(3) .vs-city-head,
-#city-dallas:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(4) .vs-city-head{border-left-color:var(--orange);background:var(--surface)}
-#city-sa:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(1) .vs-city-head h3,
-#city-austin:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(2) .vs-city-head h3,
-#city-houston:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(3) .vs-city-head h3,
-#city-dallas:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(4) .vs-city-head h3{color:#fff}
-#city-sa:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(1) .vs-city-panel,
-#city-austin:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(2) .vs-city-panel,
-#city-houston:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(3) .vs-city-panel,
-#city-dallas:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(4) .vs-city-panel{max-height:220px}
-.vs-radio:focus-visible ~ .vs-local-grid .vs-cities .vs-city .vs-city-head{outline:1px solid var(--orange);outline-offset:-1px}
 /* NEW — closing mini-CTA (humanized L321) */
 /* ===== SECTION 15.5 · Closing CTA (plain flat dark band, no glow/watermark) ===== */
 .s-close{background:var(--black);text-align:center;position:relative;padding-block:clamp(66px,9vw,120px)}
@@ -795,8 +773,6 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 @media(max-width:860px){
   .vs-nap{grid-template-columns:1fr;gap:26px}
   .vs-map{min-height:300px}
-  .vs-local-grid{grid-template-columns:1fr;gap:22px}
-  .vs-txmap{max-width:400px;margin-inline:auto}
 }
 
 /* ========== SECTION 16 · FAQ ========== */
@@ -822,7 +798,7 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 @media(max-width:560px){.faq-q{padding:17px 4px;gap:12px}.faq-a p{padding:0 12px 20px 36px}}
 
 /* ========== SECTION 17 · Guides ========== */
-/* ========== SECTION 17 · GUIDES (ported homepage L1112-1153, SIMPLIFIED 3-tab → single slider; tab/radio/panel + gd-date rules dropped) ========== */
+/* ========== SECTION 17 · GUIDES (ported homepage L1112-1153, SIMPLIFIED 3-tab → single slider) ========== */
 .s-guides{background:var(--bg)}
 .gd-lead{margin:14px auto 0;max-width:60ch;text-align:center;font-size:16.5px;line-height:1.6;color:#C9C9C9}
 .gd-lead b{color:#fff;font-weight:600}
@@ -834,7 +810,9 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 .gd-body{display:flex;flex-direction:column;flex:1;padding:18px 20px 18px}
 .gd-card h3{margin:0 0 9px;font-family:var(--sub);font-weight:600;font-size:16.5px;line-height:1.32;color:#fff;letter-spacing:.005em}
 .gd-card p{margin:0 0 16px;font-size:13.5px;line-height:1.55;color:var(--muted)}
-.gd-meta{margin-top:auto;padding-top:13px;border-top:1px solid var(--hair);display:flex;align-items:center;justify-content:flex-end;gap:10px}
+.gd-meta{margin-top:auto;padding-top:13px;border-top:1px solid var(--hair);display:flex;align-items:center;justify-content:space-between;gap:10px}
+.gd-date{display:inline-flex;align-items:center;gap:6px;font-family:var(--sub);font-size:11.5px;font-weight:600;letter-spacing:.03em;color:#8A8A8A}
+.gd-date svg{width:13px;height:13px;opacity:.85}
 .gd-read{display:inline-flex;align-items:center;gap:7px;font-family:var(--sub);font-weight:600;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--orange)}
 .gd-read svg{width:14px;height:14px;transition:transform .2s var(--ease)}
 .gd-card:hover .gd-read svg{transform:translateX(3px)}
@@ -864,8 +842,8 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
       <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers">
     </a>
     <nav class="nav" aria-label="Primary">
-      <a href="tattoo.html">Tattoo</a>
-      <a href="piercing.html">Piercing</a>
+      <a href="/tattoo">Tattoo</a>
+      <a href="/piercing">Piercing</a>
       <a href="#services">Piercings</a>
       <a href="#artists">Piercers</a>
       <a href="#gallery">Gallery</a>
@@ -894,13 +872,13 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
       <div class="hero-grid">
 
         <div class="hero-col">
-          <div class="hero-trust">
-            <span class="badge">
-              <svg class="gg" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>
-              <span class="stars">★★★★★</span>
-              <b>5.0</b> Google Rating
+          <span class="badge">
+            <svg class="gg" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>
+            <span class="badge-col">
+              <span class="badge-r1"><span class="badge-num">4.9</span><span class="stars" aria-label="4.9 out of 5">★★★★★</span></span>
+              <span class="badge-cnt"><b>3,500+</b> Google Reviews</span>
             </span>
-          </div>
+          </span>
 
           <h1>Best Piercing Shop <span class="o">in San Antonio</span></h1>
 
@@ -1015,7 +993,7 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
             <span class="rv-stars" aria-label="5 out of 5">★★★★★</span><b>5.0</b>
             <span>3,000+ reviews on Google &amp; Facebook</span>
           </div>
-          <a class="rv-leave" href="https://www.google.com/maps/search/Hyper+Inkers+San+Antonio" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ic-google"></use></svg>Read all reviews on Google</a>
+          <a class="rv-leave" href="/reviews"><span class="rv-leave-ic"><svg aria-hidden="true"><use href="#ic-google"></use></svg><svg aria-hidden="true"><use href="#ic-fb"></use></svg></span>Read all our reviews</a>
         </div>
 
         <div class="rv-split">
@@ -1259,7 +1237,7 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
             <span class="svc-explore">Explore ear piercing in San Antonio <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </div>
-        <a class="svc-link" href="ear-piercing-san-antonio.html" aria-label="Explore ear piercing in San Antonio"></a>
+        <a class="svc-link" href="/ear-piercing-san-antonio" aria-label="Explore ear piercing in San Antonio"></a>
       </article>
 
       <article class="svc-card">
@@ -1851,44 +1829,6 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
       </div>
     </div>
 
-    <!-- Part B — Local service area (Texas map, per-city pin) -->
-    <div class="vs-local">
-      <p class="vs-local-lead">Clients travel to Hyper Inkers from across Texas. The studio sits within an easy drive of Austin, Houston, and Dallas.</p>
-      <input type="radio" name="vscity" id="city-sa" class="vs-radio" checked aria-label="San Antonio, Texas">
-      <input type="radio" name="vscity" id="city-austin" class="vs-radio" aria-label="Austin, Texas">
-      <input type="radio" name="vscity" id="city-houston" class="vs-radio" aria-label="Houston, Texas">
-      <input type="radio" name="vscity" id="city-dallas" class="vs-radio" aria-label="Dallas, Texas">
-      <div class="vs-local-grid">
-        <div class="vs-txmap">
-          <svg viewBox="283 326 253 244" role="img" aria-label="Map of Texas showing the Hyper Inkers service area">
-            <defs>
-              <radialGradient id="tx-fill" cx="50%" cy="40%" r="74%">
-                <stop offset="0%" stop-color="#3c2c1d"/>
-                <stop offset="55%" stop-color="#29201a"/>
-                <stop offset="100%" stop-color="#181310"/>
-              </radialGradient>
-              <radialGradient id="pin-glow" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#E67500" stop-opacity="0.62"/>
-                <stop offset="52%" stop-color="#CC6600" stop-opacity="0.17"/>
-                <stop offset="100%" stop-color="#CC6600" stop-opacity="0"/>
-              </radialGradient>
-            </defs>
-            <path id="txPath" class="tx-outline" d="M 361.46423,330.57358 L 384.15502,331.65952 L 415.24771,332.80264 L 412.9131,356.25844 L 412.61634,374.41196 L 412.68448,376.49375 L 417.02831,380.31218 L 419.01496,381.75934 L 420.19917,381.19965 L 420.57254,379.38193 L 421.71286,381.18555 L 423.8245,381.22948 L 423.82183,379.78239 L 425.49177,380.74966 L 426.63047,381.15853 L 426.2712,385.12618 L 430.35939,385.21969 L 433.28471,386.41686 L 437.23945,386.94224 L 439.62083,389.02122 L 441.74493,386.94505 L 445.46987,387.55996 L 447.69078,390.7849 L 448.76574,391.10586 L 448.60527,393.07113 L 450.81888,393.86342 L 453.14903,391.80862 L 455.28205,392.42354 L 457.51143,392.45902 L 458.4445,394.89446 L 464.77259,397.00891 L 466.36564,396.24198 L 467.85511,392.06427 L 468.19583,392.06427 L 469.10232,392.14591 L 470.33137,394.21454 L 474.26125,394.87982 L 477.59825,396.0027 L 481.02388,397.19867 L 482.86446,396.22367 L 483.57822,393.70883 L 488.03144,393.75303 L 489.84018,394.68381 L 492.63943,392.5773 L 493.74307,392.6215 L 494.59411,394.22657 L 498.64883,394.22657 L 500.1677,392.19795 L 502.03507,392.60519 L 503.9811,395.00847 L 507.50167,397.05262 L 510.36043,397.86243 L 511.87405,398.66227 L 514.32075,400.65959 L 517.36379,399.3318 L 520.05488,400.47068 L 520.61869,406.57662 L 520.57893,416.27879 L 521.26479,425.8128 L 521.96697,429.41791 L 524.6423,433.83777 L 525.54048,438.7885 L 529.75643,444.32652 L 529.95245,447.47146 L 530.69882,448.2573 L 529.96875,456.63737 L 527.09665,461.64387 L 528.62962,463.79674 L 527.99954,466.13482 L 527.32997,473.53914 L 525.82565,476.87714 L 526.12053,480.37949 L 520.45565,481.96467 L 510.59436,486.49117 L 509.6244,488.43109 L 507.03783,490.37102 L 504.93625,491.82596 L 503.64296,492.63426 L 497.98485,497.96906 L 495.23662,500.07065 L 489.90182,503.30385 L 484.24371,505.72876 L 477.93895,509.12363 L 476.16069,510.57858 L 470.34091,514.13511 L 466.94604,514.78175 L 463.06619,520.2782 L 459.02468,520.60153 L 458.05471,522.54145 L 460.31796,524.48138 L 458.86301,529.97783 L 457.56973,534.50433 L 456.43811,538.38418 L 455.62981,542.91067 L 456.43811,545.33558 L 458.21637,552.28698 L 459.18634,558.43007 L 460.9646,561.1783 L 459.99464,562.63325 L 456.92309,564.57317 L 451.26497,560.69332 L 445.76852,559.5617 L 444.47523,560.04668 L 441.24202,559.40004 L 437.03885,556.32849 L 431.86572,555.19687 L 424.26767,551.802 L 422.16609,547.92214 L 420.8728,541.45573 L 417.6396,539.5158 L 416.99295,537.25255 L 417.6396,536.60591 L 417.96292,533.21104 L 416.66963,532.5644 L 416.02299,531.59444 L 417.31627,527.2296 L 415.69967,524.96636 L 412.46646,523.67307 L 409.07159,519.30824 L 405.51506,512.68016 L 401.31189,510.09359 L 401.47355,508.15367 L 396.13875,495.86747 L 395.33045,491.6643 L 393.55219,489.72438 L 393.39053,488.26943 L 387.40909,482.93464 L 384.82252,479.86309 L 384.82252,478.73146 L 382.23595,476.62988 L 375.44621,475.49825 L 368.00983,474.85161 L 364.93828,472.58837 L 360.41179,474.36663 L 356.85526,475.82158 L 354.59201,479.05478 L 353.62205,482.77298 L 349.25722,488.91607 L 346.83231,491.34098 L 344.24574,490.37102 L 342.46748,489.23939 L 340.52755,488.59275 L 336.6477,486.32951 L 336.6477,485.68286 L 334.86944,483.74294 L 329.6963,481.64135 L 322.25992,473.88165 L 319.99667,469.1935 L 319.99667,461.11047 L 316.76346,454.64405 L 316.27848,451.89583 L 314.66188,450.92586 L 313.53025,448.82428 L 308.51878,446.72269 L 307.2255,445.10609 L 300.11243,437.18472 L 298.81915,433.95151 L 294.13099,431.68826 L 292.67604,427.32339 L 290.08945,424.41352 L 288.14954,423.92856 L 287.50031,419.25092 L 295.50218,419.93681 L 324.53717,422.68026 L 353.57225,424.28062 L 355.80578,404.8188 L 359.69233,349.26378 L 361.29272,330.51646 L 362.66446,330.54504 M 461.69381,560.20778 L 461.128,553.0947 L 458.37976,545.90078 L 457.81394,538.86853 L 459.34972,530.62382 L 462.66378,523.75323 L 466.13948,518.33758 L 469.29188,514.78103 L 469.93852,515.02353 L 465.16952,521.65163 L 460.80468,528.19891 L 458.78391,534.827 L 458.46059,540.00016 L 459.34972,546.14328 L 461.9363,553.3372 L 462.42128,558.51034 L 462.58294,559.9653 L 461.69381,560.20778 z"/>
-            <g class="pin" data-city="sa"><circle class="pin-glow" cx="438.5" cy="485.9" r="40" fill="url(#pin-glow)"/><g class="pin-mark" transform="translate(438.5,485.9)"><path d="M0,0 C-6,-8 -9,-11 -9,-16 A9,9 0 1 1 9,-16 C9,-11 6,-8 0,0 Z"/><circle class="pin-hole" cx="0" cy="-16" r="3.3"/></g></g>
-            <g class="pin" data-city="austin"><circle class="pin-glow" cx="452.4" cy="467.4" r="40" fill="url(#pin-glow)"/><g class="pin-mark" transform="translate(452.4,467.4)"><path d="M0,0 C-6,-8 -9,-11 -9,-16 A9,9 0 1 1 9,-16 C9,-11 6,-8 0,0 Z"/><circle class="pin-hole" cx="0" cy="-16" r="3.3"/></g></g>
-            <g class="pin" data-city="houston"><circle class="pin-glow" cx="496.3" cy="478.5" r="40" fill="url(#pin-glow)"/><g class="pin-mark" transform="translate(496.3,478.5)"><path d="M0,0 C-6,-8 -9,-11 -9,-16 A9,9 0 1 1 9,-16 C9,-11 6,-8 0,0 Z"/><circle class="pin-hole" cx="0" cy="-16" r="3.3"/></g></g>
-            <g class="pin" data-city="dallas"><circle class="pin-glow" cx="469.9" cy="412.3" r="40" fill="url(#pin-glow)"/><g class="pin-mark" transform="translate(469.9,412.3)"><path d="M0,0 C-6,-8 -9,-11 -9,-16 A9,9 0 1 1 9,-16 C9,-11 6,-8 0,0 Z"/><circle class="pin-hole" cx="0" cy="-16" r="3.3"/></g></g>
-          </svg>
-        </div>
-        <ol class="vs-cities">
-          <li class="vs-city"><label for="city-sa" class="vs-city-head"><h3>San Antonio, TX</h3></label><div class="vs-city-panel"><p>8045 Callaghan Rd, off Loop 410, about 10 minutes from San Antonio International Airport. Open late seven days a week, walk-ins welcome. Serving Downtown, the Riverwalk, and Stone Oak.</p></div></li>
-          <li class="vs-city"><label for="city-austin" class="vs-city-head"><h3>Austin, TX</h3></label><div class="vs-city-panel"><p>About 80 miles up I-35, roughly 1 hour 20 minutes.</p></div></li>
-          <li class="vs-city"><label for="city-houston" class="vs-city-head"><h3>Houston, TX</h3></label><div class="vs-city-panel"><p>About 200 miles via I-10, roughly 3 hours.</p></div></li>
-          <li class="vs-city"><label for="city-dallas" class="vs-city-head"><h3>Dallas, TX</h3></label><div class="vs-city-panel"><p>About 275 miles down I-35, roughly 4 hours. Open late, so you can drive in and still get pierced the same evening.</p></div></li>
-        </ol>
-      </div>
-    </div>
-
   </div>
 </section>
 
@@ -1994,10 +1934,10 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 
     <div class="gd-slider">
       <div class="gd-track">
-        <a class="gd-card" href="/blog"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/8-step-expert-guide-for-first-time-clients-768x576.jpg" alt="Guide cover: piercing aftercare" loading="lazy"><div class="gd-body"><h3>Piercing Aftercare</h3><p>How to clean and protect a new piercing while it heals.</p><div class="gd-meta"><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
-        <a class="gd-card" href="/blog"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/what-to-eat-before-your-first-tattoo-768x576.jpg" alt="Guide cover: how long piercings take to heal" loading="lazy"><div class="gd-body"><h3>How Long Do Piercings Take to Heal</h3><p>Healing ranges by placement, from lobe to cartilage.</p><div class="gd-meta"><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
-        <a class="gd-card" href="/blog"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/07/best-female-tattoo-artist-in-san-antonio-tx-768x576.jpg" alt="Guide cover: how to choose piercing jewelry" loading="lazy"><div class="gd-body"><h3>How to Choose Piercing Jewelry</h3><p>Materials, sizing, and what is safe for a fresh piercing.</p><div class="gd-meta"><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
-        <a class="gd-card" href="/blog"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/first-tattoo-tips-the-a-z-preparation-guide-everything-you-need-to-know-do-1-768x576.jpg" alt="Guide cover: does getting pierced hurt" loading="lazy"><div class="gd-body"><h3>Does Getting Pierced Hurt</h3><p>What the pinch actually feels like by placement.</p><div class="gd-meta"><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
+        <a class="gd-card" href="/blog"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/8-step-expert-guide-for-first-time-clients-768x576.jpg" alt="Guide cover: piercing aftercare" loading="lazy"><div class="gd-body"><h3>Piercing Aftercare</h3><p>How to clean and protect a new piercing while it heals.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>Updated May 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
+        <a class="gd-card" href="/blog"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/what-to-eat-before-your-first-tattoo-768x576.jpg" alt="Guide cover: how long piercings take to heal" loading="lazy"><div class="gd-body"><h3>How Long Do Piercings Take to Heal</h3><p>Healing ranges by placement, from lobe to cartilage.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>Updated Jun 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
+        <a class="gd-card" href="/blog"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/07/best-female-tattoo-artist-in-san-antonio-tx-768x576.jpg" alt="Guide cover: how to choose piercing jewelry" loading="lazy"><div class="gd-body"><h3>How to Choose Piercing Jewelry</h3><p>Materials, sizing, and what is safe for a fresh piercing.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>Updated May 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
+        <a class="gd-card" href="/blog"><img class="gd-img" src="https://hyperinkers.com/wp-content/uploads/2025/05/first-tattoo-tips-the-a-z-preparation-guide-everything-you-need-to-know-do-1-768x576.jpg" alt="Guide cover: does getting pierced hurt" loading="lazy"><div class="gd-body"><h3>Does Getting Pierced Hurt</h3><p>What the pinch actually feels like by placement.</p><div class="gd-meta"><span class="gd-date"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2" stroke-linecap="round" stroke-linejoin="round"/></svg>Updated Apr 2025</span><span class="gd-read">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></span></div></div></a>
       </div>
       <div class="gd-foot">
         <div class="gd-navgroup">
