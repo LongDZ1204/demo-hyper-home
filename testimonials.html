@@ -1,0 +1,1356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#0F0F0F">
+  <title>Testimonials & Reviews | Hyper Inkers - San Antonio TX</title>
+  <meta name="description" content="Read Hyper Inkers reviews from Google, Facebook, and Yelp, watch video reviews, and filter customer feedback by rating.">
+  <link rel="canonical" href="https://hyperinkers.com/testimonials">
+  <link rel="stylesheet" href="fonts-hyperinkers-2026-07-04/hyperinkers-fonts.css">
+  <link rel="stylesheet" href="_foundation/hi-foundation.css">
+
+  <style>
+    :root {
+      --wrap: 1240px;
+      --bg: #0F0F0F;
+      --black: #000;
+      --surface: #161616;
+      --border: #2A2A2A;
+      --card-brd: rgba(255,255,255,.16);
+      --cream: #DCDBBE;
+      --text: #FFFFFF;
+      --muted: #B0B0B0;
+      --muted-2: #8f887f;
+      --orange: #CC6600;
+      --orange-hi: #E67500;
+      --head: var(--hi-font-display, "TT Runs Trial", Impact, sans-serif);
+      --sub: var(--hi-font-heading, "TT Runs Trial", Arial, sans-serif);
+      --body: var(--hi-font-body, "SVN Gilroy", Arial, sans-serif);
+      --ease: cubic-bezier(.16,1,.3,1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body {
+      font-family: var(--body);
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      font-size: 17px;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    body.dialog-open { overflow: hidden; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; color: inherit; }
+    a:focus-visible,
+    button:focus-visible,
+    dialog:focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+    .wrap { max-width: var(--wrap); margin-inline: auto; padding-inline: 32px; }
+    .skip {
+      position: absolute;
+      left: 12px;
+      top: -70px;
+      z-index: 100;
+      background: var(--orange);
+      color: #fff;
+      font-family: var(--sub);
+      font-size: 13px;
+      letter-spacing: .04em;
+      text-transform: uppercase;
+      padding: 11px 18px;
+      border-radius: 4px;
+      transition: top .2s var(--ease);
+    }
+    .skip:focus { top: 12px; outline: 2px solid #fff; outline-offset: 2px; }
+
+    /* ---- HEADER ---- */
+    .hdr { position: absolute; top: 0; left: 0; right: 0; z-index: 40; }
+    .hdr .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-height: 78px;
+    }
+    .hdr .logo img { height: 26px; width: auto; filter: brightness(0) invert(1); }
+    .nav {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+      font-family: var(--sub);
+      font-size: 12.5px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+    .nav a { opacity: .82; transition: opacity .2s var(--ease), color .2s var(--ease); }
+    .nav a:hover,
+    .nav a[aria-current="page"] { opacity: 1; color: #fff; }
+    .hdr .book {
+      font-family: var(--sub);
+      font-size: 12.5px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #fff;
+      border: 1px solid rgba(255,255,255,.35);
+      padding: 11px 20px;
+      border-radius: 4px;
+      transition: border-color .2s var(--ease), background .2s var(--ease);
+    }
+    .hdr .book:hover { border-color: var(--orange); background: var(--orange); }
+    .nav-toggle { position: absolute; width: 1px; height: 1px; opacity: 0; overflow: hidden; }
+    .nav-burger, .nav-book { display: none; }
+
+    /* ---- HERO ---- */
+    .hero {
+      position: relative;
+      min-height: min(100svh, 900px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: clip;
+      background: var(--black);
+      padding: 114px 0 42px;
+    }
+    .hero-media, .hero-scrim, .grain { position: absolute; inset: 0; }
+    .hero-media { z-index: 0; }
+    .hero-media img {
+      width: 100%; height: 100%; object-fit: cover; object-position: 46% 40%;
+      animation: kenburns 30s var(--ease) infinite alternate;
+      transform-origin: 46% 40%;
+    }
+    @keyframes kenburns { from { transform: scale(1.05); } to { transform: scale(1.12); } }
+    .hero-scrim {
+      z-index: 1;
+      background:
+        linear-gradient(90deg, rgba(13,13,13,.97) 0%, rgba(13,13,13,.9) 34%, rgba(13,13,13,.58) 56%, rgba(13,13,13,.4) 100%),
+        linear-gradient(0deg, rgba(13,13,13,.75) 0%, rgba(13,13,13,0) 42%);
+    }
+    .grain {
+      z-index: 2; pointer-events: none; opacity: .04; mix-blend-mode: overlay;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+    .hero-body { position: relative; z-index: 5; }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(320px, .72fr);
+      gap: 46px;
+      align-items: center;
+    }
+    .stars { color: #f5b301; letter-spacing: 2px; line-height: 1; }
+    h1 {
+      margin: 0; font-family: var(--head); font-weight: 700; text-transform: uppercase;
+      line-height: .94; letter-spacing: 0;
+      font-size: clamp(40px, 5.8vw, 78px); color: #fff;
+      text-shadow: 0 2px 34px rgba(0,0,0,.55);
+    }
+    h1 .o { display: block; color: var(--orange); }
+    .lead { margin: 22px 0 0; max-width: 640px; font-size: 16.5px; line-height: 1.64; color: #e4e4e4; text-shadow: 0 1px 10px rgba(0,0,0,.55); }
+    .cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 28px; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      gap: 10px; min-height: 54px; padding: 15px 22px; border-radius: 4px;
+      font-family: var(--sub); font-weight: 600; font-size: 14.5px;
+      letter-spacing: .06em; text-transform: uppercase; cursor: pointer;
+      border: 1px solid transparent;
+      transition: background .2s var(--ease), border-color .2s var(--ease), color .2s var(--ease);
+    }
+    .btn-primary { background: var(--orange); color: #fff; }
+    .btn-primary:hover { background: var(--orange-hi); }
+    .btn-ghost { background: rgba(0,0,0,.3); color: #fff; border-color: rgba(255,255,255,.4); }
+    .btn-ghost:hover { border-color: var(--cream); }
+    .btn svg { width: 17px; height: 17px; flex-shrink: 0; }
+
+    /* hero proof card — clean, no glow border */
+    .hero-proof {
+      position: relative;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background: rgba(12,12,12,.64);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 24px;
+      box-shadow: 0 26px 74px rgba(0,0,0,.48);
+    }
+    .proof-quote { margin: 0; font-size: clamp(20px, 2vw, 28px); line-height: 1.24; font-weight: 700; color: #fff; }
+    .mention-list { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 20px; }
+    .mention-list span {
+      display: inline-flex; align-items: center; gap: 7px;
+      border: 1px solid var(--border); border-radius: 999px;
+      padding: 7px 11px; color: #eee;
+      font-family: var(--sub); font-size: 11px; letter-spacing: .06em; text-transform: uppercase;
+      background: rgba(255,255,255,.04);
+    }
+    .mention-list span::before {
+      content: "";
+      width: 11px;
+      height: 11px;
+      flex: 0 0 11px;
+      background: var(--orange);
+      clip-path: polygon(14% 52%, 31% 38%, 44% 55%, 78% 18%, 94% 33%, 45% 84%);
+    }
+
+    /* ---- SECTION SCAFFOLDING ---- */
+    .section { position: relative; padding: clamp(60px, 7vw, 100px) 0; overflow: clip; }
+    .section-head { max-width: 760px; margin: 0 auto 34px; text-align: center; }
+    .section-kicker {
+      margin: 0 0 9px; font-family: var(--sub); color: var(--orange);
+      font-size: 12px; letter-spacing: .14em; text-transform: uppercase;
+    }
+    h2 {
+      margin: 0; font-family: var(--head);
+      font-size: clamp(28px, 3.4vw, 44px); line-height: 1;
+      text-transform: uppercase; letter-spacing: 0;
+    }
+    h2 .o { color: var(--orange); }
+    .section-lead { margin: 16px auto 0; color: var(--muted); font-size: 16px; line-height: 1.7; max-width: 720px; }
+
+    /* ============ VIDEO REVIEWS — portrait cards (matching homepage rv-vcard) + service tabs ============ */
+    .vid-tabs { text-align: center; margin-bottom: clamp(24px, 3vw, 34px); }
+    .vid-tablist {
+      display: inline-flex; flex-wrap: wrap; gap: 8px;
+      padding: 5px; border-radius: 999px;
+      background: rgba(255,255,255,.05); border: 1px solid var(--card-brd);
+    }
+    .vid-tab {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 9px 16px; border-radius: 999px; cursor: pointer;
+      font-family: var(--sub); font-weight: 600; font-size: 12px;
+      letter-spacing: .05em; text-transform: uppercase; color: var(--cream);
+      border: 0; background: none;
+      transition: background .2s var(--ease), color .2s var(--ease);
+    }
+    .vid-tab:hover { color: #fff; }
+    .vid-tab.is-active { background: var(--orange); color: #fff; }
+
+    .vid-slider-wrap { position: relative; min-width: 0; }
+    .vid-slider {
+      list-style: none; display: flex; gap: 16px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none;
+      align-items: stretch; padding: 2px 2px 4px;
+    }
+    .vid-slider::-webkit-scrollbar { display: none; }
+
+    /* portrait video card — full image, play button, meta overlay */
+    .vid-card {
+      flex: 0 0 232px; scroll-snap-align: start;
+    }
+    .vid-card.is-hidden { display: none; }
+    .vid-link {
+      position: relative; display: block; aspect-ratio: 3/4;
+      border-radius: 12px; overflow: hidden;
+      border: 1px solid var(--border); background: var(--surface);
+    }
+    .vid-link img {
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform .45s var(--ease);
+    }
+    .vid-link:hover img { transform: scale(1.05); }
+    .vid-badge {
+      position: absolute; top: 10px; left: 10px; z-index: 3;
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 4px 9px; border-radius: 999px;
+      background: rgba(0,0,0,.5); backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      border: 1px solid var(--card-brd);
+      font-family: var(--sub); font-size: 11px; font-weight: 600; color: #fff;
+    }
+    .vid-badge b { color: var(--orange); }
+    .vid-play {
+      position: absolute; top: 44%; left: 50%;
+      transform: translate(-50%, -50%); z-index: 3;
+      width: 52px; height: 52px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,.92);
+      box-shadow: 0 8px 30px rgba(0,0,0,.45);
+      transition: transform .2s var(--ease);
+      border: 0; cursor: pointer;
+    }
+    .vid-link:hover .vid-play { transform: translate(-50%, -50%) scale(1.08); }
+    .vid-play svg { width: 20px; height: 20px; color: #111; margin-left: 3px; }
+    .vid-meta {
+      position: absolute; left: 0; right: 0; bottom: 0; z-index: 3;
+      padding: 34px 14px 14px;
+      background: linear-gradient(0deg, rgba(0,0,0,.85), rgba(0,0,0,0));
+    }
+    .vid-meta b { display: block; font-family: var(--sub); font-weight: 600; font-size: 14px; color: #fff; }
+    .vid-meta span { display: block; font-size: 12px; color: var(--cream); margin-top: 2px; }
+    .vid-duration {
+      position: absolute; bottom: 10px; right: 10px; z-index: 4;
+      font-family: var(--sub); font-size: 11px; letter-spacing: .06em;
+      border-radius: 4px; padding: 4px 8px;
+      background: rgba(0,0,0,.78); color: #fff;
+    }
+
+    /* vid slider foot — nav + progress */
+    .vid-foot { display: flex; align-items: center; gap: 16px; margin-top: 20px; }
+    .vid-navbtn {
+      display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+      border: 1px solid var(--card-brd); background: rgba(255,255,255,.03);
+      color: var(--cream); cursor: pointer;
+      transition: border-color .2s var(--ease), color .2s var(--ease);
+    }
+    .vid-navbtn:hover { border-color: var(--orange); color: #fff; }
+    .vid-navbtn svg { width: 17px; height: 17px; }
+    .vid-nav { display: flex; gap: 9px; flex-shrink: 0; }
+    .vid-track { position: relative; flex: 1; min-width: 100px; height: 3px; border-radius: 2px; background: rgba(255,255,255,.12); }
+    .vid-prog { position: absolute; top: 0; left: 0; height: 100%; width: 40%; background: var(--orange); border-radius: 2px; }
+
+    /* ============ CUSTOMER REVIEWS — horizontal slider (like homepage) ============ */
+    .platform-stack { display: grid; gap: clamp(30px, 3.6vw, 42px); margin-top: 38px; min-width: 0; }
+    .platform-section { min-width: 0; }
+    .platform-head {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap; margin-bottom: 22px;
+      padding: 15px 20px; border-radius: 12px;
+      background: var(--surface); border: 1px solid var(--border);
+      min-width: 0;
+    }
+    .platform-rate {
+      display: flex; align-items: center; gap: 11px; flex-wrap: wrap;
+      min-width: 0;
+    }
+    .platform-rate .rv-stars { color: var(--orange); font-size: 15px; letter-spacing: 2px; }
+    .platform-rate b { font-family: var(--head); font-size: 22px; color: #fff; line-height: 1; }
+    .platform-rate > span:not(.rv-stars):not(.platform-mini-icons) { font-size: 13.5px; color: var(--muted); }
+    .platform-rate .platform-name { color: #fff; font-weight: 600; }
+    .platform-mini-icons { display: inline-flex; align-items: center; flex-shrink: 0; }
+    .platform-mini-icons svg {
+      width: 18px; height: 18px; background: #fff; border-radius: 50%;
+      padding: 2px; position: relative;
+    }
+    .platform-mini-icons .fb-mini { margin-left: -7px; z-index: 1; }
+    .platform-mini-icons .google-mini { z-index: 2; box-shadow: 0 0 0 2.5px var(--surface); }
+    .platform-mini-icons .yelp-mini { color: #d82128; z-index: 2; }
+    .platform-actions {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      justify-content: flex-end; min-width: 0;
+    }
+    .platform-actions .btn { min-height: 44px; padding: 12px 16px; font-size: 11.5px; }
+
+    /* star filter tabs */
+    .review-controls {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin: 20px 0 14px; align-items: center;
+      justify-content: space-between; min-width: 0;
+    }
+    .star-tabs { display: flex; flex-wrap: wrap; gap: 8px; }
+    .star-filter {
+      min-height: 38px; border: 1px solid var(--border); border-radius: 999px;
+      background: rgba(255,255,255,.04); padding: 8px 13px;
+      color: var(--muted); cursor: pointer;
+      font-family: var(--sub); font-size: 12px; letter-spacing: .06em; text-transform: uppercase;
+      transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+    }
+    .star-filter b { margin-left: 7px; color: #fff; }
+    .star-filter:hover { color: #fff; border-color: var(--orange); }
+    .star-filter.is-active { color: #fff; border-color: var(--orange); background: var(--orange); }
+    .star-filter.is-active b { color: #fff; }
+    .review-count {
+      margin: 0; color: var(--muted-2); font-family: var(--sub);
+      font-size: 12px; letter-spacing: .08em; text-transform: uppercase;
+    }
+
+    /* review cards in slider (matching homepage rv-card) */
+    .rv-slider-wrap { position: relative; min-width: 0; }
+    .rv-slider {
+      list-style: none; display: flex; gap: 18px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch; scrollbar-width: none;
+      align-items: stretch; padding: 2px 2px 4px;
+    }
+    .rv-slider::-webkit-scrollbar { display: none; }
+    .rv-card {
+      flex: 0 0 300px; scroll-snap-align: start;
+      display: flex; flex-direction: column; height: 266px;
+      padding: 18px; background: var(--surface);
+      border: 1px solid var(--border); border-radius: 12px;
+    }
+    .rv-card.is-hidden { display: none; }
+    .rv-top { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 12px; }
+    .rv-av {
+      width: 42px; height: 42px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--sub); font-weight: 600; font-size: 15px; color: #fff; letter-spacing: .02em;
+    }
+    .rv-who { display: flex; flex-direction: column; gap: 4px; min-width: 0; flex: 1; }
+    .rv-name {
+      font-family: var(--sub); font-weight: 600; font-size: 14.5px; color: #fff;
+      letter-spacing: .01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .rv-meta { display: flex; align-items: center; gap: 9px; }
+    .rv-stars { color: var(--orange); font-size: 11px; letter-spacing: 1.5px; flex-shrink: 0; }
+    .rv-date { font-size: 11.5px; color: var(--muted); }
+    .rv-srclink {
+      flex-shrink: 0; width: 28px; height: 28px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,.05); border: 1px solid var(--card-brd);
+      transition: border-color .2s var(--ease), background .2s var(--ease);
+    }
+    .rv-srclink:hover { border-color: var(--orange); background: rgba(255,255,255,.09); }
+    .rv-srclink svg { width: 15px; height: 15px; display: block; }
+    .rv-body-scroll {
+      flex: 1; overflow-y: auto; margin-right: -8px; padding-right: 9px;
+      scrollbar-width: thin; scrollbar-color: var(--border) transparent;
+    }
+    .rv-body-scroll::-webkit-scrollbar { width: 4px; }
+    .rv-body-scroll::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+    .rv-body { font-size: 14px; line-height: 1.6; color: #CFCFCF; }
+    .rv-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 11px; }
+    .rv-tag {
+      font-family: var(--sub); font-size: 10px; letter-spacing: .05em; text-transform: uppercase;
+      color: var(--cream); background: rgba(255,255,255,.05); border: 1px solid var(--card-brd);
+      border-radius: 999px; padding: 4px 10px;
+    }
+
+    /* photo review card */
+    .rv-card--photo { flex: 0 0 clamp(440px, 46vw, 516px); flex-direction: row; padding: 0; overflow: hidden; }
+    .rv-pc-text { flex: 1; min-width: 0; min-height: 0; display: flex; flex-direction: column; padding: 18px; }
+    .rv-pc-text .rv-body-scroll { flex: 1; min-height: 0; }
+    .rv-pc-media { position: relative; flex: 0 0 43%; align-self: stretch; overflow: hidden; background: var(--black); }
+    .rv-pc-media img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%; }
+
+    /* slider foot — nav + progress */
+    .rv-foot { display: flex; align-items: center; gap: 16px; margin-top: 20px; }
+    .rv-nav { display: flex; gap: 9px; flex-shrink: 0; }
+    .rv-navbtn {
+      display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50%;
+      border: 1px solid var(--card-brd); background: rgba(255,255,255,.03);
+      color: var(--cream); cursor: pointer;
+      transition: border-color .2s var(--ease), color .2s var(--ease);
+    }
+    .rv-navbtn:hover { border-color: var(--orange); color: #fff; }
+    .rv-navbtn svg { width: 17px; height: 17px; }
+    .rv-track { position: relative; flex: 1; min-width: 100px; height: 3px; border-radius: 2px; background: rgba(255,255,255,.12); }
+    .rv-prog-thumb { position: absolute; top: 0; left: 0; height: 100%; width: 40%; background: var(--orange); border-radius: 2px; }
+
+    .empty-state {
+      display: none; border: 1px dashed var(--border);
+      border-radius: 8px; padding: 28px; text-align: center;
+      color: var(--muted); background: rgba(204,102,0,.08);
+    }
+    .empty-state.is-visible { display: block; }
+
+    /* dialog */
+    .reviews-dialog {
+      width: min(840px, calc(100vw - 28px));
+      max-height: min(760px, calc(100dvh - 28px));
+      padding: 0;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #111;
+      color: var(--text);
+      box-shadow: 0 30px 100px rgba(0,0,0,.72);
+    }
+    .reviews-dialog::backdrop { background: rgba(0,0,0,.78); backdrop-filter: blur(4px); }
+    .dialog-shell { display: flex; flex-direction: column; max-height: min(760px, calc(100dvh - 28px)); }
+    .dialog-head {
+      position: sticky; top: 0; z-index: 3;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 18px; padding: 20px 22px;
+      border-bottom: 1px solid var(--border); background: #111;
+    }
+    .dialog-head h2 { font-size: clamp(24px, 5vw, 36px); }
+    .dialog-close {
+      width: 42px; height: 42px; border-radius: 50%;
+      border: 1px solid var(--border); background: #181818;
+      display: grid; place-items: center; cursor: pointer; flex-shrink: 0;
+    }
+    .dialog-close svg { width: 21px; height: 21px; stroke: currentColor; }
+    .dialog-body { overflow: auto; padding: 18px 22px 24px; }
+    .modal-review {
+      border: 1px solid var(--border); border-radius: 8px;
+      padding: 18px; background: var(--surface);
+    }
+    .modal-review + .modal-review { margin-top: 12px; }
+    .modal-review[hidden] { display: none; }
+    .modal-review .review-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 14px; }
+    .modal-review .source-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      color: var(--muted); font-family: var(--sub); font-size: 11px;
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+    .modal-review .source-badge svg { width: 18px; height: 18px; flex-shrink: 0; }
+    .modal-review h3 {
+      margin: 0; font-family: var(--sub); font-size: 18px;
+      line-height: 1.25; color: #fff; letter-spacing: 0;
+    }
+    .modal-review p { margin: 9px 0 0; color: var(--muted); line-height: 1.62; }
+    .modal-review .review-meta {
+      display: flex; align-items: center; gap: 12px;
+      margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--border);
+    }
+    .modal-review .avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      display: grid; place-items: center; flex: 0 0 auto;
+      background: #262626; color: #fff; font-weight: 800; font-size: 13px;
+    }
+    .modal-review .review-who { min-width: 0; }
+    .modal-review .review-name {
+      display: block; color: #fff; font-weight: 700; font-size: 14px; line-height: 1.25;
+    }
+    .modal-review .review-sub {
+      display: block; color: var(--muted-2); font-family: var(--sub);
+      font-size: 11px; letter-spacing: .06em; text-transform: uppercase; margin-top: 3px;
+    }
+
+    /* homepage quote CTA */
+    .s-cta2 {
+      position: relative; overflow: hidden; background: var(--bg); text-align: center;
+      padding-block: clamp(74px, 10vw, 140px);
+    }
+    .cta2-splat {
+      position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+      width: min(95vw, 2200px); max-width: none; height: auto;
+      opacity: .5; pointer-events: none; user-select: none; z-index: 0;
+    }
+    .s-cta2::after {
+      content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: radial-gradient(58% 72% at 50% 50%, rgba(0,0,0,.6), rgba(0,0,0,0) 78%);
+    }
+    .s-cta2 .wrap { position: relative; z-index: 2; }
+    .s-cta2 .cta2-h {
+      margin: 0 auto; max-width: min(1280px, 94vw);
+      font-family: var(--head); font-weight: 700; text-transform: uppercase;
+      line-height: 1; letter-spacing: 0; font-size: clamp(38px, 5.6vw, 74px);
+      color: var(--cream); text-shadow: 0 3px 28px rgba(0,0,0,.55);
+      text-wrap: balance;
+    }
+    .s-cta2 .cta2-sub {
+      margin: clamp(16px, 2vw, 22px) auto 0; max-width: 46ch;
+      font-family: var(--sub); font-size: clamp(14px, 1.4vw, 17px);
+      letter-spacing: .02em; color: #C9C9C9; line-height: 1.55;
+    }
+    .cta2-act {
+      margin-top: clamp(24px, 3vw, 36px);
+      display: flex; flex-direction: column; align-items: center; gap: 15px;
+    }
+    .cta2-btn {
+      min-height: 52px; padding: 15px 34px;
+      letter-spacing: .09em; text-transform: uppercase;
+      font-size: 12.5px; border-width: 1px;
+    }
+    .cta2-call {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      min-height: 44px; padding-inline: 10px;
+      font-family: var(--sub); font-size: 14px; letter-spacing: .03em;
+      color: var(--cream); text-decoration: none;
+      transition: color .2s var(--ease);
+    }
+    .cta2-call:hover { color: var(--orange-hi); }
+    .cta2-call svg { width: 15px; height: 15px; }
+
+    /* footer */
+    .site-footer {
+      border-top: 1px solid var(--border); background: #080808;
+      padding: 38px 0; color: var(--muted); text-align: center;
+    }
+    .site-footer strong {
+      display: block; margin-bottom: 7px; color: var(--orange);
+      font-family: var(--sub); font-size: 22px; letter-spacing: .08em; text-transform: uppercase;
+    }
+    .phone-fab {
+      position: fixed; right: 22px; bottom: 22px; z-index: 36;
+      width: 56px; height: 56px; border-radius: 50%;
+      background: var(--orange); color: #fff;
+      display: grid; place-items: center;
+      box-shadow: 0 12px 34px rgba(204,102,0,.42);
+    }
+    .phone-fab svg { width: 24px; height: 24px; fill: currentColor; }
+
+    /* ---- RESPONSIVE ---- */
+    @media (max-width: 900px) {
+      .hdr .hdr-book { display: none; }
+      .nav-burger {
+        display: inline-flex; align-items: center; justify-content: center;
+        width: 44px; height: 44px; color: var(--cream); cursor: pointer; z-index: 60;
+        background: none; border: 0;
+      }
+      .nav-burger svg { width: 26px; height: 26px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; }
+      .nav-burger .ico-x { display: none; }
+      .nav-toggle:checked ~ .nav-burger .ico-bars { display: none; }
+      .nav-toggle:checked ~ .nav-burger .ico-x { display: block; }
+      .nav {
+        position: fixed; inset: 0; z-index: 55;
+        flex-direction: column; align-items: center; justify-content: center;
+        gap: 28px; background: rgba(8,8,8,.985);
+        font-size: clamp(24px, 7.5vw, 36px); letter-spacing: .01em;
+        opacity: 0; visibility: hidden; transform: translateY(-6px);
+        transition: opacity .3s var(--ease), transform .35s var(--ease), visibility 0s .35s;
+      }
+      .nav .nav-book {
+        display: inline-flex; align-items: center; justify-content: center;
+        margin-top: 10px; min-height: 52px; padding: 14px 34px;
+        background: var(--orange); color: #fff; border-radius: 4px;
+        font-size: 15px; letter-spacing: .06em;
+      }
+      .nav-toggle:checked ~ .nav { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+      body:has(#navtog:checked) { overflow: hidden; }
+      .hero { padding: 96px 0 30px; }
+      .hero-grid { grid-template-columns: 1fr; gap: 28px; }
+      .hero-proof { max-width: 620px; }
+      .platform-head { align-items: stretch; flex-direction: column; }
+      .platform-actions { justify-content: flex-start; }
+    }
+    @media (max-width: 760px) { .rv-card--photo { flex-basis: clamp(380px,82vw,460px); } }
+    @media (max-width: 640px) {
+      .wrap { padding-inline: 18px; }
+      .lead { font-size: 16px; display: -webkit-box; -webkit-line-clamp: 4; line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+      .cta { flex-direction: column; gap: 12px; }
+      .cta .btn { width: 100%; font-size: 12.5px; padding: 15px 16px; letter-spacing: .04em; }
+      .vid-card { flex-basis: 62%; }
+      .rv-card { flex-basis: 87%; height: 300px; }
+      .rv-card--photo { flex-basis: 88%; flex-direction: column; }
+      .rv-pc-media { flex: 0 0 120px; width: 100%; order: -1; }
+      .rv-pc-text { padding: 14px 15px; }
+      .platform-head > div, .platform-actions, .platform-actions .btn { width: 100%; }
+      .platform-actions { flex-direction: column; }
+      .star-tabs { overflow-x: auto; flex-wrap: nowrap; width: 100%; padding-bottom: 5px; scrollbar-width: none; }
+      .star-tabs::-webkit-scrollbar { display: none; }
+      .star-filter { white-space: nowrap; }
+      .vid-tablist { flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; gap: 4px; }
+      .vid-tablist::-webkit-scrollbar { display: none; }
+      .vid-tab { font-size: 11px; padding: 8px 12px; white-space: nowrap; }
+      .s-cta2 .cta2-h { max-width: 94vw; font-size: clamp(30px, 7vw, 46px); }
+      .cta2-splat { width: 250vw; opacity: .42; }
+      .reviews-dialog { width: 100vw; max-height: 92dvh; margin: auto 0 0; border-radius: 14px 14px 0 0; }
+      .dialog-shell { max-height: 92dvh; }
+      .phone-fab {
+        right: 16px; bottom: 16px; width: 52px; height: 52px;
+        opacity: 0; pointer-events: none; transform: translateY(8px);
+        transition: opacity .2s var(--ease), transform .2s var(--ease), background .2s var(--ease);
+      }
+      body.show-phone-fab .phone-fab { opacity: 1; pointer-events: auto; transform: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-media img { animation: none; transform: scale(1.05); }
+      *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <symbol id="ic-google" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></symbol>
+    <symbol id="ic-fb" viewBox="0 0 24 24"><path fill="#1877F2" d="M24 12c0-6.627-5.373-12-12-12S0 5.373 0 12c0 5.99 4.388 10.954 10.125 11.854V15.47H7.078V12h3.047V9.356c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874V12h3.328l-.532 3.469h-2.796v8.385C19.612 22.954 24 17.99 24 12z"/></symbol>
+    <symbol id="ic-yelp" viewBox="0 0 24 24"><path fill="currentColor" d="M11.2 3.3c.42-.2.92-.2 1.34 0 .41.2.68.58.73 1.04l.43 4.58c.05.52-.26 1.02-.75 1.2-.5.18-1.05.01-1.36-.42L8.9 5.94a1.34 1.34 0 0 1 .45-1.96l1.85-.68Zm5.53 6.33c.12-.45.48-.8.94-.9l2.02-.45c.45-.1.93.04 1.24.4.3.35.39.84.22 1.27l-.78 1.95c-.18.48-.66.79-1.17.76l-3.45-.23c-.54-.03-.99-.42-1.1-.95-.11-.52.18-1.05.69-1.26l1.39-.59Zm-1.26 5.1c.34-.4.9-.53 1.38-.32l3.78 1.64c.43.18.72.58.76 1.05.04.46-.18.9-.57 1.16l-1.76 1.16c-.43.28-.99.27-1.4-.04l-3.11-2.34c-.43-.33-.58-.91-.36-1.4.22-.5.75-.76 1.28-.63Zm-5.35 1.2c.5.18.82.66.79 1.19l-.2 3.45c-.03.46-.29.88-.7 1.1-.42.21-.91.17-1.28-.11l-1.66-1.26a1.34 1.34 0 0 1-.19-1.96l2.04-2.14c.36-.38.91-.49 1.4-.31Zm-1.38-4.67c.12.51-.08 1.05-.5 1.35l-2.78 1.94c-.38.27-.88.31-1.3.1a1.34 1.34 0 0 1-.72-1.1l-.18-2.1c-.04-.51.22-.99.66-1.24l3.05-1.66c.47-.25 1.05-.17 1.43.2.39.37.52.94.34 1.44Z"/></symbol>
+  </svg>
+
+  <header class="hdr">
+    <div class="wrap">
+      <input type="checkbox" id="navtog" class="nav-toggle" aria-label="Open navigation menu">
+      <a class="logo" href="/" aria-label="Hyper Inkers home">
+        <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers">
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="/tattoo">Tattoo</a>
+        <a href="/piercing">Piercing</a>
+        <a href="/tattoo-removal-san-antonio">Removal</a>
+        <a href="/tattoo-artist">Artists</a>
+        <a href="/gallery/tattoo">Our Work</a>
+        <a href="/testimonials" aria-current="page">Reviews</a>
+        <a href="/contact#booking" class="nav-book">Book Now</a>
+      </nav>
+      <a class="book hdr-book" href="/contact#booking">Book Now</a>
+      <label for="navtog" class="nav-burger" aria-label="Open menu">
+        <svg class="ico-bars" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        <svg class="ico-x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </label>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="hero-media">
+        <img src="https://hyperinkers.com/wp-content/uploads/2026/02/tattoo-parlor-san-antonio.jpg" alt="Hyper Inkers tattoo artists at the San Antonio studio">
+      </div>
+      <div class="hero-scrim"></div>
+      <div class="grain"></div>
+
+      <div class="hero-body">
+        <div class="wrap">
+          <div class="hero-grid">
+            <div class="hero-col">
+              <h1>Hyper Inkers Reviews<span class="o">Real Client Stories</span></h1>
+              <p class="lead">See what clients say about custom tattoos, cover-ups, piercings, and tattoo removal at Hyper Inkers in San Antonio. This page keeps the proof fast to scan first, then opens the full review list only when you need it.</p>
+
+              <div class="cta">
+                <a class="btn btn-primary" href="#customer-reviews">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-8.5 8.5 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.7A8.4 8.4 0 0 1 4 11.5 8.5 8.5 0 0 1 12.5 3 8.4 8.4 0 0 1 21 11.5z"/></svg>
+                  Scan reviews
+                </a>
+                <a class="btn btn-ghost" href="tel:+12109979737">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6.5 3.5 9 4l1 4-2 1.5a12 12 0 0 0 6.5 6.5L16 14l4 1 .5 2.5A2 2 0 0 1 18.4 20 15.5 15.5 0 0 1 4 5.6 2 2 0 0 1 6.5 3.5Z"/></svg>
+                  Call us now
+                </a>
+              </div>
+            </div>
+
+            <aside class="hero-proof" aria-label="Review themes">
+              <p class="proof-quote">Most reviews repeat the same four reasons: clean studio, patient artists, custom work, and easy walk-ins.</p>
+              <div class="mention-list" aria-label="People often mention">
+                <span>Clean studio</span>
+                <span>Patient artists</span>
+                <span>Custom designs</span>
+                <span>Walk-ins</span>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ VIDEO REVIEWS — portrait cards + service tabs ============ -->
+    <section class="section" aria-labelledby="video-title">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 id="video-title">Video <span class="o">Reviews</span></h2>
+          <p class="section-lead">Watch real clients share their Hyper Inkers experience. Filter by service to find reviews that match what you're looking for.</p>
+        </header>
+
+        <div class="vid-tabs" aria-label="Filter video reviews by service">
+          <div class="vid-tablist" role="tablist">
+            <button class="vid-tab is-active" type="button" data-vid-filter="all" role="tab">All</button>
+            <button class="vid-tab" type="button" data-vid-filter="tattoo" role="tab">Tattoo</button>
+            <button class="vid-tab" type="button" data-vid-filter="piercing" role="tab">Piercing</button>
+            <button class="vid-tab" type="button" data-vid-filter="cover-up" role="tab">Cover-Up</button>
+            <button class="vid-tab" type="button" data-vid-filter="removal" role="tab">Removal</button>
+          </div>
+        </div>
+
+        <div class="vid-slider-wrap">
+          <ul class="vid-slider" id="vidSlider">
+            <li class="vid-card" data-service="tattoo">
+              <div class="vid-link">
+                <img src="_hero-assets/adv-tab-01.png" alt="Kate Sullivan video review — custom tattoo at Hyper Inkers San Antonio" loading="lazy">
+                <span class="vid-badge"><b>★</b> 5.0</span>
+                <button class="vid-play" type="button" aria-label="Play Kate Sullivan's video review"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                <span class="vid-duration">1:24</span>
+                <span class="vid-meta"><b>Kate Sullivan</b><span>Custom Tattoo</span></span>
+              </div>
+            </li>
+
+            <li class="vid-card" data-service="tattoo">
+              <div class="vid-link">
+                <img src="_hero-assets/adv-tab-03.png" alt="Mike Thornton video review — Japanese sleeve at Hyper Inkers San Antonio" loading="lazy">
+                <span class="vid-badge"><b>★</b> 5.0</span>
+                <button class="vid-play" type="button" aria-label="Play Mike Thornton's video review"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                <span class="vid-duration">2:31</span>
+                <span class="vid-meta"><b>Mike Thornton</b><span>Japanese Sleeve</span></span>
+              </div>
+            </li>
+
+            <li class="vid-card" data-service="piercing">
+              <div class="vid-link">
+                <img src="_artist-photos/cindy.jpg" alt="Emma Becker video review — nose piercing at Hyper Inkers San Antonio" loading="lazy">
+                <span class="vid-badge"><b>★</b> 5.0</span>
+                <button class="vid-play" type="button" aria-label="Play Emma Becker's video review"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                <span class="vid-duration">0:54</span>
+                <span class="vid-meta"><b>Emma Becker</b><span>Nose Piercing</span></span>
+              </div>
+            </li>
+
+            <li class="vid-card" data-service="removal">
+              <div class="vid-link">
+                <img src="_hero-assets/removal/removal-picostar-treatment.jpg" alt="David Carrillo video review — tattoo removal at Hyper Inkers San Antonio" loading="lazy">
+                <span class="vid-badge"><b>★</b> 5.0</span>
+                <button class="vid-play" type="button" aria-label="Play David Carrillo's video review"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                <span class="vid-duration">3:42</span>
+                <span class="vid-meta"><b>David Carrillo</b><span>Tattoo Removal</span></span>
+              </div>
+            </li>
+
+            <li class="vid-card" data-service="cover-up">
+              <div class="vid-link">
+                <img src="https://hyperinkers.com/wp-content/uploads/2025/07/tattoo-cover-up-san-antonio-scaled.jpg" alt="Jordan Miles video review — cover-up tattoo at Hyper Inkers San Antonio" loading="lazy">
+                <span class="vid-badge"><b>★</b> 5.0</span>
+                <button class="vid-play" type="button" aria-label="Play Jordan Miles's video review"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                <span class="vid-duration">2:15</span>
+                <span class="vid-meta"><b>Jordan Miles</b><span>Cover-Up Tattoo</span></span>
+              </div>
+            </li>
+
+            <li class="vid-card" data-service="tattoo">
+              <div class="vid-link">
+                <img src="https://hyperinkers.com/wp-content/uploads/2025/05/realism-tattoo-art-3.png" alt="Lena Park video review — realism tattoo at Hyper Inkers San Antonio" loading="lazy">
+                <span class="vid-badge"><b>★</b> 5.0</span>
+                <button class="vid-play" type="button" aria-label="Play Lena Park's video review"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></button>
+                <span class="vid-duration">1:58</span>
+                <span class="vid-meta"><b>Lena Park</b><span>Realism Portrait</span></span>
+              </div>
+            </li>
+          </ul>
+
+          <div class="vid-foot">
+            <div class="vid-nav">
+              <button type="button" class="vid-navbtn" data-dir="prev" aria-label="Previous video reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+              <button type="button" class="vid-navbtn" data-dir="next" aria-label="More video reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+            </div>
+            <div class="vid-track" aria-hidden="true"><span class="vid-prog"></span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CUSTOMER REVIEWS — slider per platform ============ -->
+    <section class="section" id="customer-reviews" aria-labelledby="customer-title" style="background:#0a0a0a">
+      <div class="wrap">
+        <header class="section-head">
+          <h2 id="customer-title">Customer <span class="o">Reviews</span></h2>
+          <p class="section-lead">Swipe through reviews grouped by platform. Use the star filter to find the feedback that matters most to you.</p>
+        </header>
+
+        <div class="platform-stack" aria-label="Review platforms">
+
+          <!-- GOOGLE -->
+          <section class="platform-section" data-platform-section data-platform="google" data-platform-name="Google">
+            <div class="platform-head">
+              <div class="platform-rate" aria-label="Google reviews rating">
+                <span class="rv-stars" aria-label="4.9 out of 5">★★★★★</span><b>4.9</b>
+                <span><span class="platform-name">847 Google reviews</span></span>
+              </div>
+              <div class="platform-actions">
+                <button class="btn btn-primary" type="button" data-open-reviews data-platform="google"><span class="platform-mini-icons"><svg class="google-mini" aria-hidden="true"><use href="#ic-google"></use></svg></span>Read all on Google</button>
+                <a class="btn btn-ghost" href="https://g.page/r/hyper-inkers/review" target="_blank" rel="noopener">Leave a review</a>
+              </div>
+            </div>
+
+            <div class="review-controls">
+              <div class="star-tabs" aria-label="Filter Google reviews by rating">
+                <button class="star-filter is-active" type="button" data-star-filter="all">All <b>0</b></button>
+                <button class="star-filter" type="button" data-star-filter="5">5 stars <b>0</b></button>
+                <button class="star-filter" type="button" data-star-filter="4">4 stars <b>0</b></button>
+                <button class="star-filter" type="button" data-star-filter="3">3 stars <b>0</b></button>
+              </div>
+              <p class="review-count" data-review-count>Showing reviews</p>
+            </div>
+
+            <div class="rv-slider-wrap">
+              <ul class="rv-slider" data-rv-slider>
+                <li class="rv-card rv-card--photo" data-review-card data-rating="5" data-source="Google" data-author="T" data-service="Japanese Tattoo">
+                  <div class="rv-pc-text">
+                    <div class="rv-top">
+                      <span class="rv-av" style="background:#6E5A43">T</span>
+                      <span class="rv-who"><span class="rv-name">T</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">5 months ago</span></span></span>
+                      <a class="rv-srclink" href="https://maps.app.goo.gl/UYyfmeaPSMw2Xnc57" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                    </div>
+                    <div class="rv-body-scroll"><p class="rv-body">Navei is RIDICULOUSLY IMPRESSIVE. I came back with a bigger project and she exceeded expectations again. She brought creativity to the idea and handled dark skin with care.</p></div>
+                  </div>
+                  <figure class="rv-pc-media"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/black-grey-tattoo-designs-2.png" alt="Japanese dragon and samurai sleeve tattoo by a Hyper Inkers artist." loading="lazy"></figure>
+                </li>
+
+                <li class="rv-card rv-card--photo" data-review-card data-rating="5" data-source="Google" data-author="Devon Brent" data-service="First Tattoo">
+                  <div class="rv-pc-text">
+                    <div class="rv-top">
+                      <span class="rv-av" style="background:#455A60">DB</span>
+                      <span class="rv-who"><span class="rv-name">Devon Brent</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">a year ago</span></span></span>
+                      <a class="rv-srclink" href="https://maps.app.goo.gl/wnFHuiEN1CDJA1BUA" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                    </div>
+                    <div class="rv-body-scroll"><p class="rv-body">Minh is absolutely phenomenal. His attention to detail is unmatched and he helped ensure my vision came out exactly how I wanted. People ask where the work was done everywhere I go.</p></div>
+                  </div>
+                  <figure class="rv-pc-media"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/black-and-grey-tattoo-sleeve-designs-3.png" alt="Black and grey lion sleeve tattoo." loading="lazy"></figure>
+                </li>
+
+                <li class="rv-card" data-review-card data-rating="5" data-source="Google" data-author="Carmendy Burhans" data-service="Tattoo + Piercing">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#5E4552">CB</span>
+                    <span class="rv-who"><span class="rv-name">Carmendy Burhans</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">a year ago</span></span></span>
+                    <a class="rv-srclink" href="https://maps.app.goo.gl/z3TsTEZmncm6XdNr9" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">Tai is such an amazing artist and so great to work with. I also walked in for lobes, helix, and nose piercing. Staff were sweet, helpful, and moved things quickly even while busy.</p></div>
+                </li>
+
+                <li class="rv-card" data-review-card data-rating="5" data-source="Google" data-author="Maria Isabella Wallace" data-service="Nose Piercing">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#4E5E45">MW</span>
+                    <span class="rv-who"><span class="rv-name">Maria Isabella Wallace</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">a year ago</span></span></span>
+                    <a class="rv-srclink" href="https://maps.app.goo.gl/VrdY7RiyHwCFv6Z27" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">Nicole made the whole process comfortable and easy. She explained everything, answered questions, and the piercing was quick with clear aftercare instructions.</p></div>
+                </li>
+
+                <li class="rv-card rv-card--photo" data-review-card data-rating="5" data-source="Google" data-author="Katie Janson" data-service="Fine Line Tattoo">
+                  <div class="rv-pc-text">
+                    <div class="rv-top">
+                      <span class="rv-av" style="background:#4A4F66">KJ</span>
+                      <span class="rv-who"><span class="rv-name">Katie Janson</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">5 months ago</span></span></span>
+                      <a class="rv-srclink" href="https://maps.app.goo.gl/7wxQcHuVZXHnqjMr5" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                    </div>
+                    <div class="rv-body-scroll"><p class="rv-body">All the artists are super talented and friendly. Navei did a great job on my hand tattoo. Her fine line work and symmetry are impressive.</p></div>
+                  </div>
+                  <figure class="rv-pc-media"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/geometric-tattoo-designs_-scaled.jpg" alt="Fine line geometric tattoo by Hyper Inkers." loading="lazy"></figure>
+                </li>
+
+                <li class="rv-card" data-review-card data-rating="4" data-source="Google" data-author="Selina Falcon" data-service="Ear Piercing">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#6E4A4A">SF</span>
+                    <span class="rv-who"><span class="rv-name">Selina Falcon</span><span class="rv-meta"><span class="rv-stars" aria-label="4 out of 5">★★★★☆</span><span class="rv-date">2 years ago</span></span></span>
+                    <a class="rv-srclink" href="https://maps.app.goo.gl/ZzoXJcDVxFL35XcL8" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">I got daith, helix, and double conch piercings done. It was quick, placement looked good, and the jewelry made the setup pop.</p></div>
+                </li>
+
+                <li class="rv-card rv-card--photo" data-review-card data-rating="5" data-source="Google" data-author="Raven" data-service="Color Tattoo">
+                  <div class="rv-pc-text">
+                    <div class="rv-top">
+                      <span class="rv-av" style="background:#3E5A57">R</span>
+                      <span class="rv-who"><span class="rv-name">Raven</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">4 months ago</span></span></span>
+                      <a class="rv-srclink" href="https://maps.app.goo.gl/M64xgXqs9NAoPpsg6" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                    </div>
+                    <div class="rv-body-scroll"><p class="rv-body">Amazing deals and friendly staff. Tai knocked it out of the park, with detail and depth that made the piece feel finished and clean.</p></div>
+                  </div>
+                  <figure class="rv-pc-media"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/best-color-tattoo-artist-3.png" alt="Color realism portrait tattoo." loading="lazy"></figure>
+                </li>
+              </ul>
+
+              <div class="rv-foot">
+                <div class="rv-nav">
+                  <button type="button" class="rv-navbtn" data-dir="prev" aria-label="Previous reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+                  <button type="button" class="rv-navbtn" data-dir="next" aria-label="More reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+                </div>
+                <div class="rv-track" aria-hidden="true"><span class="rv-prog-thumb"></span></div>
+              </div>
+            </div>
+            <div class="empty-state" data-empty-state>No reviews match this star rating yet.</div>
+          </section>
+
+          <!-- FACEBOOK -->
+          <section class="platform-section" data-platform-section data-platform="facebook" data-platform-name="Facebook">
+            <div class="platform-head">
+              <div class="platform-rate" aria-label="Facebook reviews rating">
+                <span class="rv-stars" aria-label="4.9 out of 5">★★★★★</span><b>4.9</b>
+                <span><span class="platform-name">152 Facebook reviews</span></span>
+              </div>
+              <div class="platform-actions">
+                <button class="btn btn-primary" type="button" data-open-reviews data-platform="facebook"><span class="platform-mini-icons"><svg class="fb-mini" aria-hidden="true"><use href="#ic-fb"></use></svg></span>Read all on Facebook</button>
+                <a class="btn btn-ghost" href="https://www.facebook.com/hyperinkers/reviews" target="_blank" rel="noopener">Leave a review</a>
+              </div>
+            </div>
+
+            <div class="review-controls">
+              <div class="star-tabs" aria-label="Filter Facebook reviews by rating">
+                <button class="star-filter is-active" type="button" data-star-filter="all">All <b>0</b></button>
+                <button class="star-filter" type="button" data-star-filter="5">5 stars <b>0</b></button>
+                <button class="star-filter" type="button" data-star-filter="4">4 stars <b>0</b></button>
+                <button class="star-filter" type="button" data-star-filter="3">3 stars <b>0</b></button>
+              </div>
+              <p class="review-count" data-review-count>Showing reviews</p>
+            </div>
+
+            <div class="rv-slider-wrap">
+              <ul class="rv-slider" data-rv-slider>
+                <li class="rv-card" data-review-card data-rating="5" data-source="Facebook" data-author="Anitta Yebra" data-service="Studio Visit">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#6E5A43">AY</span>
+                    <span class="rv-who"><span class="rv-name">Anitta Yebra</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">8 Oct 2025</span></span></span>
+                    <a class="rv-srclink" href="https://www.facebook.com/permalink.php?story_fbid=pfbid02uY6nn77jMyDAbUcsqeamYeamwJxzFtZFioKtvHz8YM3quMETH5nJqFZKFgcejATFl&id=61554785930482" target="_blank" rel="noopener" aria-label="View on Facebook"><svg aria-hidden="true"><use href="#ic-fb"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">Amazing atmosphere and excellent customer service. Highly recommend coming here.</p></div>
+                </li>
+
+                <li class="rv-card" data-review-card data-rating="5" data-source="Facebook" data-author="Bibi Mora" data-service="Studio Visit">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#455A60">BM</span>
+                    <span class="rv-who"><span class="rv-name">Bibi Mora</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">8 Oct 2025</span></span></span>
+                    <a class="rv-srclink" href="#" target="_blank" rel="noopener" aria-label="View on Facebook"><svg aria-hidden="true"><use href="#ic-fb"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">Amazing place and very nice people.</p></div>
+                </li>
+
+                <li class="rv-card" data-review-card data-rating="5" data-source="Facebook" data-author="Akeelah Givens" data-service="Cover-Up">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#5E4552">AG</span>
+                    <span class="rv-who"><span class="rv-name">Akeelah Givens</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">12 Oct 2025</span></span></span>
+                    <a class="rv-srclink" href="#" target="_blank" rel="noopener" aria-label="View on Facebook"><svg aria-hidden="true"><use href="#ic-fb"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">My experience was very good. The team was polite and good with their work. Definitely recommend.</p></div>
+                </li>
+
+                <li class="rv-card" data-review-card data-rating="5" data-source="Facebook" data-author="Kelso Jordan" data-service="Kids Ear Piercing">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#4E5E45">KJ</span>
+                    <span class="rv-who"><span class="rv-name">Kelso Jordan</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">3 Nov 2025</span></span></span>
+                    <a class="rv-srclink" href="#" target="_blank" rel="noopener" aria-label="View on Facebook"><svg aria-hidden="true"><use href="#ic-fb"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">Zoey was patient with my 10-year-old daughter after a previous bad experience. She helped her feel confident and calm throughout.</p><div class="rv-tags"><span class="rv-tag">Expert piercing</span><span class="rv-tag">Amazing results</span></div></div>
+                </li>
+
+                <li class="rv-card" data-review-card data-rating="4" data-source="Facebook" data-author="Olivia Hart" data-service="Walk-In Visit">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#4A4F66">OH</span>
+                    <span class="rv-who"><span class="rv-name">Olivia Hart</span><span class="rv-meta"><span class="rv-stars" aria-label="4 out of 5">★★★★☆</span><span class="rv-date">Jan 2026</span></span></span>
+                    <a class="rv-srclink" href="#" target="_blank" rel="noopener" aria-label="View on Facebook"><svg aria-hidden="true"><use href="#ic-fb"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">The shop was busy when I came in, but the team kept checking in and the final tattoo came out clean.</p></div>
+                </li>
+
+                <li class="rv-card" data-review-card data-rating="3" data-source="Facebook" data-author="Marco Silva" data-service="Piercing Visit">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#6E4A4A">MS</span>
+                    <span class="rv-who"><span class="rv-name">Marco Silva</span><span class="rv-meta"><span class="rv-stars" aria-label="3 out of 5">★★★☆☆</span><span class="rv-date">Feb 2026</span></span></span>
+                    <a class="rv-srclink" href="#" target="_blank" rel="noopener" aria-label="View on Facebook"><svg aria-hidden="true"><use href="#ic-fb"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">Wait time was longer than expected, but the piercer explained aftercare clearly and the placement looked good.</p></div>
+                </li>
+              </ul>
+
+              <div class="rv-foot">
+                <div class="rv-nav">
+                  <button type="button" class="rv-navbtn" data-dir="prev" aria-label="Previous reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+                  <button type="button" class="rv-navbtn" data-dir="next" aria-label="More reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+                </div>
+                <div class="rv-track" aria-hidden="true"><span class="rv-prog-thumb"></span></div>
+              </div>
+            </div>
+            <div class="empty-state" data-empty-state>No reviews match this star rating yet.</div>
+          </section>
+
+          <!-- YELP -->
+          <section class="platform-section" data-platform-section data-platform="yelp" data-platform-name="Yelp">
+            <div class="platform-head">
+              <div class="platform-rate" aria-label="Yelp reviews rating">
+                <span class="rv-stars" aria-label="4.8 out of 5">★★★★★</span><b>4.8</b>
+                <span><span class="platform-name">203 Yelp reviews</span></span>
+              </div>
+              <div class="platform-actions">
+                <button class="btn btn-primary" type="button" data-open-reviews data-platform="yelp"><span class="platform-mini-icons"><svg class="yelp-mini" aria-hidden="true"><use href="#ic-yelp"></use></svg></span>Read all on Yelp</button>
+                <a class="btn btn-ghost" href="https://www.yelp.com/search?find_desc=Hyper%20Inkers&find_loc=San%20Antonio%2C%20TX" target="_blank" rel="noopener">Leave a review</a>
+              </div>
+            </div>
+
+            <div class="review-controls">
+              <div class="star-tabs" aria-label="Filter Yelp reviews by rating">
+                <button class="star-filter is-active" type="button" data-star-filter="all">All <b>0</b></button>
+                <button class="star-filter" type="button" data-star-filter="5">5 stars <b>0</b></button>
+                <button class="star-filter" type="button" data-star-filter="4">4 stars <b>0</b></button>
+                <button class="star-filter" type="button" data-star-filter="3">3 stars <b>0</b></button>
+              </div>
+              <p class="review-count" data-review-count>Showing reviews</p>
+            </div>
+
+            <div class="rv-slider-wrap">
+              <ul class="rv-slider" data-rv-slider>
+                <li class="rv-card" data-review-card data-rating="5" data-source="Yelp" data-author="Carlos Trujillo" data-service="Portrait Tattoo">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#6E5A43">CT</span>
+                    <span class="rv-who"><span class="rv-name">Carlos Trujillo</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">Dec 2025</span></span></span>
+                    <a class="rv-srclink" href="#" target="_blank" rel="noopener" aria-label="View on Yelp"><svg aria-hidden="true"><use href="#ic-yelp"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">Best black-and-grey realism in San Antonio, hands down. The detail in the eyes made the portrait feel real.</p></div>
+                </li>
+
+                <li class="rv-card" data-review-card data-rating="5" data-source="Yelp" data-author="Marcus Williams" data-service="Anime Tattoo">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#455A60">MW</span>
+                    <span class="rv-who"><span class="rv-name">Marcus Williams</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">Jan 2026</span></span></span>
+                    <a class="rv-srclink" href="#" target="_blank" rel="noopener" aria-label="View on Yelp"><svg aria-hidden="true"><use href="#ic-yelp"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">Anime sleeve colors came out bold, and the team explained aftercare in a way that was easy to follow.</p></div>
+                </li>
+
+                <li class="rv-card" data-review-card data-rating="5" data-source="Yelp" data-author="Ashley Hendricks" data-service="Laser Removal">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#5E4552">AH</span>
+                    <span class="rv-who"><span class="rv-name">Ashley Hendricks</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">Nov 2025</span></span></span>
+                    <a class="rv-srclink" href="#" target="_blank" rel="noopener" aria-label="View on Yelp"><svg aria-hidden="true"><use href="#ic-yelp"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">The team explained what removal could and could not do before I booked. That made the decision easier.</p></div>
+                </li>
+
+                <li class="rv-card" data-review-card data-rating="4" data-source="Yelp" data-author="Jessica Lin" data-service="Fine Line Tattoo">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#4E5E45">JL</span>
+                    <span class="rv-who"><span class="rv-name">Jessica Lin</span><span class="rv-meta"><span class="rv-stars" aria-label="4 out of 5">★★★★☆</span><span class="rv-date">Feb 2026</span></span></span>
+                    <a class="rv-srclink" href="#" target="_blank" rel="noopener" aria-label="View on Yelp"><svg aria-hidden="true"><use href="#ic-yelp"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">Fine line wrist piece. Booking was easy, the shop was clean, and the linework healed nicely.</p></div>
+                </li>
+
+                <li class="rv-card" data-review-card data-rating="4" data-source="Yelp" data-author="Tyler Nguyen" data-service="Nose Piercing">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#4A4F66">TN</span>
+                    <span class="rv-who"><span class="rv-name">Tyler Nguyen</span><span class="rv-meta"><span class="rv-stars" aria-label="4 out of 5">★★★★☆</span><span class="rv-date">Mar 2026</span></span></span>
+                    <a class="rv-srclink" href="#" target="_blank" rel="noopener" aria-label="View on Yelp"><svg aria-hidden="true"><use href="#ic-yelp"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">Walked in for a septum. The shop was spotless, and the piercer had me laughing the whole time.</p></div>
+                </li>
+
+                <li class="rv-card" data-review-card data-rating="3" data-source="Yelp" data-author="Dana Cruz" data-service="Walk-In Tattoo">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#6E4A4A">DC</span>
+                    <span class="rv-who"><span class="rv-name">Dana Cruz</span><span class="rv-meta"><span class="rv-stars" aria-label="3 out of 5">★★★☆☆</span><span class="rv-date">Apr 2026</span></span></span>
+                    <a class="rv-srclink" href="#" target="_blank" rel="noopener" aria-label="View on Yelp"><svg aria-hidden="true"><use href="#ic-yelp"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">The piece came out clean, but the walk-in queue moved slower than I expected on a weekend night.</p></div>
+                </li>
+              </ul>
+
+              <div class="rv-foot">
+                <div class="rv-nav">
+                  <button type="button" class="rv-navbtn" data-dir="prev" aria-label="Previous reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+                  <button type="button" class="rv-navbtn" data-dir="next" aria-label="More reviews"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+                </div>
+                <div class="rv-track" aria-hidden="true"><span class="rv-prog-thumb"></span></div>
+              </div>
+            </div>
+            <div class="empty-state" data-empty-state>No reviews match this star rating yet.</div>
+          </section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA · quote feeder ============ -->
+    <section class="section s-cta2" id="quote">
+      <img class="cta2-splat" src="_hero-assets/cta-splatter-orange.png" alt="" aria-hidden="true">
+      <span class="grain" aria-hidden="true"></span>
+      <div class="wrap">
+        <h2 class="cta2-h">Want an exact quote before you book?</h2>
+        <p class="cta2-sub">A free consultation gives you a firm price for your idea, with no surprises.</p>
+        <div class="cta2-act">
+          <a class="btn btn-ghost cta2-btn" href="/contact#booking">Get a Free Quote</a>
+          <a class="cta2-call" href="tel:+12109979737"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .7-.2 1l-2.3 2.2z"/></svg>Call (210) 997-9737</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- DIALOG for full review list -->
+  <dialog class="reviews-dialog" id="reviewsDialog" aria-labelledby="reviewsDialogTitle">
+    <div class="dialog-shell">
+      <header class="dialog-head">
+        <div>
+          <p class="section-kicker" id="dialogKicker">All reviews</p>
+          <h2 id="reviewsDialogTitle">All Reviews</h2>
+        </div>
+        <button class="dialog-close" type="button" aria-label="Close reviews" data-close-reviews>
+          <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        </button>
+      </header>
+      <div class="dialog-body" id="modalReviews"></div>
+    </div>
+  </dialog>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <strong>Hyper Inkers</strong>
+      <span>8045 Callaghan Rd, San Antonio, TX 78230 - (210) 997-9737</span>
+    </div>
+  </footer>
+
+  <a href="tel:+12109979737" class="phone-fab" aria-label="Call Hyper Inkers">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 15.5c-1.25 0-2.45-.2-3.57-.57-.35-.11-.74-.03-1.02.24l-2.2 2.2c-2.83-1.44-5.15-3.75-6.59-6.59l2.2-2.21c.28-.26.36-.65.25-1C8.7 6.45 8.5 5.25 8.5 4c0-.55-.45-1-1-1H4c-.55 0-1 .45-1 1 0 9.39 7.61 17 17 17 .55 0 1-.45 1-1v-3.5c0-.55-.45-1-1-1zM19 12h2c0-4.97-4.03-9-9-9v2c3.87 0 7 3.13 7 7zm-4 0h2c0-2.76-2.24-5-5-5v2c1.66 0 3 1.34 3 3z"/></svg>
+  </a>
+
+  <script>
+    (() => {
+      /* ---- shared slider util ---- */
+      function initSlider(sliderEl, footEl) {
+        if (!sliderEl || !footEl) return;
+        const prevBtn = footEl.querySelector('[data-dir="prev"]');
+        const nextBtn = footEl.querySelector('[data-dir="next"]');
+        const prog = footEl.querySelector('.vid-prog, .rv-prog-thumb');
+
+        const getVisibleCards = () => Array.from(sliderEl.children).filter(c => c.offsetParent !== null);
+
+        const scrollByCard = (dir) => {
+          const cards = getVisibleCards();
+          if (!cards.length) return;
+          const cardW = cards[0].offsetWidth + parseFloat(getComputedStyle(sliderEl).gap || 18);
+          sliderEl.scrollBy({ left: dir * cardW, behavior: 'smooth' });
+        };
+
+        const updateProgress = () => {
+          if (!prog) return;
+          const max = sliderEl.scrollWidth - sliderEl.clientWidth;
+          const pct = max > 0 ? sliderEl.scrollLeft / max : 0;
+          prog.style.width = Math.max(15, pct * 100) + '%';
+        };
+
+        if (prevBtn) prevBtn.addEventListener('click', () => scrollByCard(-1));
+        if (nextBtn) nextBtn.addEventListener('click', () => scrollByCard(1));
+        sliderEl.addEventListener('scroll', updateProgress, { passive: true });
+        updateProgress();
+      }
+
+      /* ---- VIDEO SECTION: service tabs + slider ---- */
+      const vidSlider = document.getElementById('vidSlider');
+      const vidCards = Array.from(vidSlider?.querySelectorAll('.vid-card') || []);
+      const vidTabs = Array.from(document.querySelectorAll('.vid-tab'));
+      const vidFoot = document.querySelector('.vid-foot');
+
+      function filterVideos(service) {
+        vidCards.forEach(card => {
+          card.classList.toggle('is-hidden', service !== 'all' && card.dataset.service !== service);
+        });
+        vidTabs.forEach(t => t.classList.toggle('is-active', t.dataset.vidFilter === service));
+      }
+
+      vidTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          filterVideos(tab.dataset.vidFilter);
+          vidSlider.scrollTo({ left: 0, behavior: 'smooth' });
+        });
+      });
+
+      initSlider(vidSlider, vidFoot);
+
+      /* ---- CUSTOMER REVIEWS: slider per platform + star filter + dialog ---- */
+      const sections = Array.from(document.querySelectorAll('[data-platform-section]'));
+      const dialog = document.getElementById('reviewsDialog');
+      const modalReviews = document.getElementById('modalReviews');
+      const modalTitle = document.getElementById('reviewsDialogTitle');
+      const modalKicker = document.getElementById('dialogKicker');
+      const closeBtn = document.querySelector('[data-close-reviews]');
+
+      const sourceIcons = { Google: 'ic-google', Facebook: 'ic-fb', Yelp: 'ic-yelp' };
+      const getActiveStar = s => s.dataset.activeStar || 'all';
+      const getCards = s => Array.from(s.querySelectorAll('[data-review-card]'));
+      const getMatching = (s, star) => {
+        star = star || getActiveStar(s);
+        return getCards(s).filter(c => star === 'all' || c.dataset.rating === star);
+      };
+
+      function updateCounts(section) {
+        const cards = getCards(section);
+        section.querySelectorAll('[data-star-filter]').forEach(btn => {
+          const star = btn.dataset.starFilter;
+          const n = star === 'all' ? cards.length : cards.filter(c => c.dataset.rating === star).length;
+          const b = btn.querySelector('b');
+          if (b) b.textContent = n;
+        });
+      }
+
+      function renderSection(section) {
+        updateCounts(section);
+        const star = getActiveStar(section);
+        const matching = getMatching(section, star);
+        const platformName = section.dataset.platformName || 'Platform';
+        const count = section.querySelector('[data-review-count]');
+        const empty = section.querySelector('[data-empty-state]');
+
+        getCards(section).forEach(c => c.classList.add('is-hidden'));
+        matching.forEach(c => c.classList.remove('is-hidden'));
+
+        section.querySelectorAll('[data-star-filter]').forEach(btn => {
+          btn.classList.toggle('is-active', btn.dataset.starFilter === star);
+        });
+
+        if (count) {
+          count.textContent = matching.length
+            ? `Showing ${matching.length}${star === 'all' ? '' : ` ${star}-star`} ${platformName} reviews`
+            : `No ${star === 'all' ? '' : star + '-star '}${platformName} reviews`;
+        }
+        if (empty) empty.classList.toggle('is-visible', matching.length === 0);
+
+        // reset slider scroll
+        const slider = section.querySelector('[data-rv-slider]');
+        if (slider) slider.scrollTo({ left: 0 });
+      }
+
+      sections.forEach(section => {
+        section.dataset.activeStar = 'all';
+
+        section.querySelectorAll('[data-star-filter]').forEach(btn => {
+          btn.addEventListener('click', () => {
+            section.dataset.activeStar = btn.dataset.starFilter;
+            renderSection(section);
+          });
+        });
+
+        // init slider nav
+        const slider = section.querySelector('[data-rv-slider]');
+        const foot = section.querySelector('.rv-foot');
+        initSlider(slider, foot);
+
+        renderSection(section);
+      });
+
+      /* ---- DIALOG ---- */
+      const renderModal = (section, star) => {
+        star = star || getActiveStar(section);
+        const matching = getMatching(section, star);
+        const platformName = section.dataset.platformName || 'Platform';
+        modalReviews.innerHTML = '';
+        modalTitle.textContent = `${platformName} Reviews`;
+        modalKicker.textContent = star === 'all' ? `${matching.length} total reviews` : `${matching.length} ${star}-star reviews`;
+
+        if (!matching.length) {
+          const e = document.createElement('div');
+          e.className = 'empty-state is-visible';
+          e.textContent = 'No reviews match this star rating yet.';
+          modalReviews.append(e);
+          return;
+        }
+
+        matching.forEach(card => {
+          const item = document.createElement('article');
+          item.className = 'modal-review';
+          const source = card.dataset.source || 'Review';
+          const author = card.dataset.author || 'Client';
+          const service = card.dataset.service || 'Service';
+          const title = card.querySelector('.rv-name')?.textContent || 'Client review';
+          const text = card.querySelector('.rv-body')?.textContent || '';
+          const stars = card.querySelector('.rv-stars')?.textContent || '★★★★★';
+          const icon = sourceIcons[source] || 'ic-google';
+          item.innerHTML = `
+            <div class="review-top">
+              <span class="source-badge"><svg><use href="#${icon}"></use></svg>${source}</span>
+              <span class="stars" aria-label="${card.dataset.rating || 5} stars">${stars}</span>
+            </div>
+            <h3>${title}</h3>
+            <p>${text}</p>
+            <div class="review-meta">
+              <span class="avatar">${author.split(' ').map(p => p[0]).join('').slice(0, 2)}</span>
+              <span class="review-who"><span class="review-name">${author}</span><span class="review-sub">${service}</span></span>
+            </div>`;
+          modalReviews.append(item);
+        });
+      };
+
+      const openers = Array.from(document.querySelectorAll('[data-open-reviews]'));
+      const findSection = trigger => {
+        const p = trigger.dataset.platform;
+        if (p) return sections.find(s => s.dataset.platform === p);
+        return trigger.closest('[data-platform-section]') || sections[0];
+      };
+
+      openers.forEach(btn => {
+        btn.addEventListener('click', () => {
+          const section = findSection(btn);
+          if (!section) return;
+          renderModal(section);
+          if (typeof dialog.showModal === 'function') dialog.showModal();
+          else dialog.setAttribute('open', '');
+          document.body.classList.add('dialog-open');
+        });
+      });
+
+      const closeDialog = () => { dialog.close(); document.body.classList.remove('dialog-open'); };
+      closeBtn.addEventListener('click', closeDialog);
+      dialog.addEventListener('close', () => document.body.classList.remove('dialog-open'));
+      dialog.addEventListener('click', e => { if (e.target === dialog) closeDialog(); });
+
+      /* ---- Phone FAB ---- */
+      const updatePhoneFab = () => {
+        const hero = document.querySelector('.hero');
+        const threshold = Math.max(360, (hero?.offsetHeight || 640) - 160);
+        const shouldShow = window.innerWidth > 640 || window.scrollY > threshold;
+        document.body.classList.toggle('show-phone-fab', shouldShow);
+      };
+      window.addEventListener('scroll', updatePhoneFab, { passive: true });
+      window.addEventListener('resize', updatePhoneFab);
+      updatePhoneFab();
+    })();
+  </script>
+</body>
+</html>
