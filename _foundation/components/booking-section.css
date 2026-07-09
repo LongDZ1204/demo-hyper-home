@@ -1,0 +1,86 @@
+/* ============================================================================
+   HYPER INKERS — BOOKING SECTION  (inline, non-modal · v1 · 2026-07-08)
+   For the always-visible "#book" section embedded near the bottom of a page.
+   NOT the popup — see booking-form.css/.html/.js for the click-to-open modal.
+   Same de-AI'd visual system as the popup (v7.4): plain condensed-caps labels
+   (orange only on the required "*"), dropdowns for multi-choice fields, CTA
+   dims until required fields validate then glows, no decorative orange
+   border / arrow / boxed note.
+   Depends on: _foundation/hi-foundation.css (tokens + fonts) — link AFTER it.
+   Namespaced `.bks-*` on purpose — a page may embed BOTH this section and the
+   popup trigger, and must never let their class names collide.
+   ============================================================================ */
+.bks-card{
+  max-width:640px;margin:clamp(28px,3.6vw,44px) auto 0;
+  background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:clamp(22px,2.6vw,34px);box-shadow:0 24px 60px rgba(0,0,0,.5);color-scheme:dark;
+}
+.bks-intro{margin:0 0 24px;font-size:14px;line-height:1.55;color:var(--muted);text-align:center}
+
+.bks-row{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.bks-group{margin-bottom:22px}
+
+.bks-label{
+  display:block;font-family:var(--sub);font-size:14px;font-weight:700;color:var(--text);
+  letter-spacing:.09em;text-transform:uppercase;margin-bottom:10px;
+}
+.bks-label .req{color:var(--orange);margin-left:3px}
+.bks-label .opt{color:var(--muted);font-weight:600;margin-left:6px;letter-spacing:.06em;text-transform:none}
+
+.bks-input,.bks-textarea,.bks-select{
+  width:100%;background:#0E0E0E;border:1.5px solid var(--border);border-radius:8px;
+  padding:14px 15px;color:#fff;font-family:var(--body);font-size:15.5px;line-height:1.4;
+  transition:border-color .2s var(--ease),background .2s var(--ease),box-shadow .2s var(--ease);
+}
+.bks-input::placeholder,.bks-textarea::placeholder{color:#8a8a8a}
+.bks-input:focus,.bks-textarea:focus,.bks-select:focus{
+  outline:none;border-color:var(--orange);background:#141414;box-shadow:0 0 0 3px rgba(204,102,0,.14);
+}
+.bks-input[type="date"]{color-scheme:dark}
+.bks-textarea{min-height:96px;resize:vertical}
+
+.bks-select{
+  appearance:none;-webkit-appearance:none;cursor:pointer;padding-right:40px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23B0B0B0' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");
+  background-repeat:no-repeat;background-position:right 15px center;
+}
+.bks-select.is-empty{color:var(--muted)}
+.bks-select option{color:#111;background:#fff}
+
+.bks-note{margin-top:12px;padding:0;background:none;border:none;font-size:12.5px;line-height:1.5;color:var(--muted)}
+.bks-note a{color:var(--orange);font-weight:700;text-decoration:none;border-bottom:1px solid var(--orange)}
+.bks-note a:hover{color:var(--orange-hi)}
+
+.bks-foot{margin-top:4px;padding-top:18px;border-top:1px solid var(--border)}
+.bks-status{
+  font-family:var(--sub);font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--muted);text-align:center;margin-bottom:10px;transition:color .2s var(--ease);
+}
+.bks-status.is-ready{color:var(--orange)}
+.bks-status .check{margin-right:5px}
+.bks-submit{
+  width:100%;background:var(--orange);color:#fff;padding:17px 24px;border-radius:4px;
+  font-family:var(--head);font-weight:700;font-size:19px;text-transform:uppercase;letter-spacing:2px;
+  border:none;cursor:pointer;
+  transition:opacity .25s var(--ease),box-shadow .25s var(--ease),transform .15s var(--ease),background .2s var(--ease);
+}
+.bks-submit:disabled{opacity:.4;filter:saturate(.55);cursor:not-allowed;box-shadow:none}
+.bks-submit:not(:disabled){box-shadow:0 6px 26px rgba(204,102,0,.45)}
+.bks-submit:not(:disabled):hover{background:var(--orange-hi);transform:translateY(-1px);box-shadow:0 8px 30px rgba(204,102,0,.55)}
+
+.bks-success{display:none;text-align:center;padding:8px 4px 4px}
+.bks-success.active{display:block}
+.bks-success__icon{
+  width:56px;height:56px;border-radius:50%;background:rgba(204,102,0,.12);border:2px solid var(--orange);
+  display:flex;align-items:center;justify-content:center;margin:0 auto 16px;color:var(--orange);
+}
+.bks-success__icon svg{width:28px;height:28px}
+.bks-success h3{font-family:var(--sub);font-size:20px;font-weight:800;color:#fff;margin-bottom:8px}
+.bks-success p{color:var(--muted);font-size:13.5px;line-height:1.55;max-width:360px;margin:0 auto}
+.bks-success p strong{color:var(--orange)}
+
+@media(max-width:480px){
+  .bks-row{grid-template-columns:1fr;gap:0}
+  .bks-input,.bks-textarea,.bks-select{padding:13px 14px;font-size:15px}
+  .bks-submit{padding:15px 20px;font-size:17px;letter-spacing:1.5px}
+}

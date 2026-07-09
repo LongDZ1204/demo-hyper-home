@@ -1,0 +1,175 @@
+/* ============================================================================
+   HYPER INKERS — BOOKING FORM  (design-system component · v7 · 2026-07-08)
+   v7 changes vs v6: Service+Artist → dropdowns · sticky footer (status + CTA)
+   · CTA dims until required fields valid, then glows ("ready") · header fixed,
+   body scrolls, footer pinned.
+   Approved source: 2026-07-08_booking-popup-v7.html
+   Depends on: _foundation/hi-foundation.css (tokens + fonts) — link AFTER it.
+   Embed guide: _foundation/components/README.md
+   ----------------------------------------------------------------------------
+   --hi-* are ALIASES to the LOCKED foundation tokens plus a few component-local
+   values. Not global tokens — do not use outside this component.
+   ============================================================================ */
+:root{
+  --hi-bg:var(--bg); --hi-bg-card:var(--surface); --hi-bg-elevated:#1a1a1a;
+  --hi-orange:var(--orange); --hi-orange-hover:var(--orange-hi); --hi-orange-soft:rgba(204,102,0,.12);
+  --hi-text:var(--text); --hi-muted:var(--muted);
+  --hi-border:var(--border); --hi-border-accent:rgba(204,102,0,.25);
+  --hi-radius:10px; --hi-radius-lg:16px; --hi-radius-btn:4px;
+  --hi-req:#4fa3ba;                                   /* teal-family required marker */
+  --hi-display:var(--head); --hi-heading:var(--sub); --hi-body:var(--body);
+}
+
+body.modal-open{ overflow:hidden; }
+.modal-overlay input:focus-visible,
+.modal-overlay textarea:focus-visible,
+.modal-overlay select:focus-visible,
+.modal-overlay button:focus-visible{
+  outline:3px solid var(--hi-orange); outline-offset:2px; border-radius:var(--hi-radius-btn);
+}
+@media (prefers-reduced-motion: reduce){
+  .modal-overlay *, .modal-overlay *::before, .modal-overlay *::after{
+    animation-duration:.01ms !important; transition-duration:.01ms !important;
+  }
+}
+
+/* ===== OVERLAY ===== */
+.modal-overlay{
+  position:fixed; inset:0; z-index:200;
+  background:rgba(0,0,0,.75); backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px);
+  display:none; align-items:center; justify-content:center; padding:24px;
+  opacity:0; transition:opacity .3s;
+}
+.modal-overlay.open{ display:flex; opacity:1; }
+
+/* ===== CARD (flex column: fixed header · scroll body · fixed footer) ===== */
+.modal{
+  background:var(--hi-bg); border:1px solid var(--hi-border);   /* v7.3: neutral edge, was orange-tinted */
+  border-radius:var(--hi-radius-lg); overflow:hidden;
+  width:100%; max-width:640px; max-height:calc(100vh - 48px);
+  display:flex; flex-direction:column; position:relative;
+  transform:scale(.94) translateY(20px); opacity:0;
+  transition:transform .3s cubic-bezier(.4,0,.2,1), opacity .3s;
+  box-shadow:0 30px 80px rgba(0,0,0,.6);
+}
+.modal-overlay.open .modal{ transform:scale(1) translateY(0); opacity:1; }
+
+/* ===== HEADER (fixed) ===== */
+.modal__header-band{
+  flex:0 0 auto; background:var(--hi-bg); color:#fff; padding:28px 28px 20px; text-align:left;
+  position:relative; border-bottom:1px solid var(--hi-border);
+}
+.modal__header-band h2{
+  font-family:var(--hi-display); font-size:clamp(26px,4.5vw,34px);
+  font-weight:700; letter-spacing:.5px; text-transform:uppercase; color:var(--hi-orange); line-height:.98;
+}
+.modal__close{
+  position:absolute; top:24px; right:22px; width:34px; height:34px; border-radius:50%;
+  background:transparent; border:1px solid var(--hi-border); color:var(--hi-muted);
+  display:flex; align-items:center; justify-content:center;
+  transition:color .2s, border-color .2s; cursor:pointer;
+}
+.modal__close:hover{ border-color:var(--hi-orange); color:#fff; }
+.modal__close svg{ width:15px; height:15px; }
+
+/* ===== SCROLL BODY ===== */
+.modal__scroll{ flex:1 1 auto; overflow-y:auto; padding:22px 28px 24px; }
+.modal__intro{
+  color:var(--hi-muted); font-size:14px; line-height:1.55; text-align:left; margin:0 0 22px; max-width:52ch;
+}
+
+/* ===== FIELDS ===== */
+.field-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.field-group{ margin-bottom:22px; }                    /* v7.1: more air between fields (Ganga-like) */
+.field-label{                                          /* v7.3: plain condensed caps — removed orange tick */
+  display:block;
+  font-family:var(--hi-heading); font-size:14px; font-weight:700; color:var(--hi-text);
+  letter-spacing:.09em; text-transform:uppercase; margin-bottom:10px;
+}
+.field-label .req{ color:var(--hi-orange); margin-left:3px; }   /* v7.4: required * → orange (was teal) */
+.field-label .opt{ color:var(--hi-muted); font-weight:600; margin-left:6px; letter-spacing:.06em; text-transform:none; }
+
+.field-input, .field-textarea, .field-select{
+  width:100%; background:var(--hi-bg-card); border:1.5px solid var(--hi-border);
+  border-radius:var(--hi-radius); padding:14px 15px; color:#fff; font-size:15.5px; font-family:var(--hi-body);
+  transition:border-color .2s, background .2s;
+}
+.field-input::placeholder, .field-textarea::placeholder{ color:var(--hi-muted); }
+.field-input:focus, .field-textarea:focus, .field-select:focus{ outline:none; border-color:var(--hi-orange); background:var(--hi-bg-elevated); }
+.field-input[type="date"]{ color-scheme:dark; }
+.field-textarea{ min-height:76px; resize:vertical; line-height:1.55; }
+
+/* dropdown (native select, custom trigger). NB: the popped option list is OS-drawn. */
+.field-select{
+  appearance:none; -webkit-appearance:none; cursor:pointer; padding-right:40px;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23B0B0B0' stroke-width='2'><path d='M6 9l6 6 6-6'/></svg>");
+  background-repeat:no-repeat; background-position:right 14px center;
+}
+.field-select.is-empty{ color:var(--hi-muted); }        /* show placeholder option muted */
+.field-select option{ color:#111; background:#fff; }    /* OS list rows readable */
+
+/* ===== WALK-IN NOTE (plain inline line) ===== */
+.walk-in-note{
+  margin-top:11px; padding:0 0 0 2px; background:none; border:none;
+  font-size:13px; color:var(--hi-muted); line-height:1.5; display:block;
+}
+.walk-in-note a{ color:var(--hi-orange); font-weight:700; border-bottom:1px solid var(--hi-orange); }
+.walk-in-note a:hover{ color:var(--hi-orange-hover); }
+
+/* ===== FOOTER (sticky: status line + CTA) ===== */
+.modal__footer{
+  flex:0 0 auto; background:var(--hi-bg); border-top:1px solid var(--hi-border);
+  padding:14px 28px 18px;
+}
+.modal__status{
+  font-family:var(--hi-heading); font-size:11.5px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--hi-muted); text-align:center; margin-bottom:10px; transition:color .2s;
+}
+.modal__status.is-ready{ color:var(--hi-orange); }
+.modal__status .check{ margin-right:5px; }
+.modal__submit{
+  width:100%; background:var(--hi-orange); color:#fff; padding:17px 24px; border-radius:var(--hi-radius-btn);
+  font-family:var(--hi-display); font-weight:700; font-size:19px; text-transform:uppercase; letter-spacing:2px;
+  display:inline-flex; align-items:center; justify-content:center; gap:8px; cursor:pointer;
+  transition:opacity .25s, box-shadow .25s, transform .15s, filter .25s;
+}
+.modal__submit:disabled{ opacity:.4; filter:saturate(.55); cursor:not-allowed; box-shadow:none; }
+.modal__submit:not(:disabled){ box-shadow:0 6px 26px rgba(204,102,0,.45); }   /* GLOW when ready */
+.modal__submit:not(:disabled):hover{ background:var(--hi-orange-hover); transform:translateY(-1px); box-shadow:0 8px 30px rgba(204,102,0,.55); }
+
+/* ===== SUCCESS STATE ===== */
+.modal-success{ display:none; text-align:center; padding:28px 28px 32px; }
+.modal-success.active{ display:block; }
+.modal-success__icon{
+  width:64px; height:64px; border-radius:50%; background:var(--hi-orange-soft); border:2px solid var(--hi-orange);
+  display:flex; align-items:center; justify-content:center; margin:0 auto 18px; color:var(--hi-orange);
+}
+.modal-success__icon svg{ width:32px; height:32px; }
+.modal-success h3{ font-family:var(--hi-heading); font-size:22px; font-weight:800; color:#fff; margin-bottom:10px; }
+.modal-success p{ color:var(--hi-muted); font-size:13.5px; line-height:1.55; max-width:360px; margin:0 auto; }
+.modal-success p strong{ color:var(--hi-orange); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width:767px){
+  /* v7.2: floating card with even breathing margins (Ganga-like framing),
+     but footer stays pinned INSIDE the card → no wasted black gap. */
+  .modal-overlay{ padding:16px; align-items:center; }
+  .modal{ max-width:100%; width:100%; max-height:calc(100dvh - 32px); border-radius:16px; }
+  .modal__header-band{ padding:24px 20px 16px; }
+  .modal__header-band h2{ font-size:28px; letter-spacing:.5px; }
+  .modal__close{ top:20px; right:16px; width:30px; height:30px; }
+  .modal__scroll{ padding:18px 18px 20px; }
+  .modal__intro{ font-size:13px; margin-bottom:18px; }
+  .field-grid{ grid-template-columns:1fr; gap:0; }
+  .field-input, .field-textarea, .field-select{ padding:13px 14px; font-size:15px; }
+  .field-select{ padding-right:38px; }
+  .walk-in-note{ font-size:12px; }
+  .modal__footer{ padding:12px 18px 16px; }
+  .modal__submit{ padding:15px 20px; font-size:17px; letter-spacing:1.5px; }
+}
+@media (max-width:379px){
+  .modal__header-band h2{ font-size:24px; }
+}
+@supports (padding: max(0px)){
+  @media (max-width:767px){ .modal__footer{ padding-bottom:max(16px, env(safe-area-inset-bottom)); } }
+}

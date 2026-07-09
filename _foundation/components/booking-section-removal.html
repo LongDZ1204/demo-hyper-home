@@ -1,0 +1,57 @@
+<!-- ============================================================================
+     HYPER INKERS — BOOKING SECTION markup, REMOVAL variant  (v1 · 2026-07-08)
+     For the /tattoo-removal-san-antonio page only. Simplified on purpose: no
+     Service/Artist choice (removal has no artist selection in the live copy
+     this was ported from — don't add fields that weren't already there).
+     Drop this inside <section class="section s-book" id="book"> — the H2
+     header stays in the page; this file is only the card.
+     Requires: booking-section.css (linked in <head>) + booking-section.js
+     (before </body>).
+     ============================================================================ -->
+<div class="bks-card">
+  <div data-bks-body>
+    <p class="bks-intro">Bring a photo of your tattoo or just come in, and your specialist will assess the ink and map out a plan. No pressure, no commitment to decide before you're ready.</p>
+
+    <form data-bks-form aria-label="Book a free tattoo removal consultation">
+      <div class="bks-row">
+        <div class="bks-group">
+          <label class="bks-label" for="bksrm-name">Your Name<span class="req">*</span></label>
+          <input class="bks-input" id="bksrm-name" type="text" name="your-name" placeholder="Your Name" required>
+        </div>
+        <div class="bks-group">
+          <label class="bks-label" for="bksrm-phone">Phone Number<span class="req">*</span></label>
+          <input class="bks-input" id="bksrm-phone" type="tel" name="your-phone" placeholder="Phone Number" required>
+        </div>
+      </div>
+
+      <div class="bks-row">
+        <div class="bks-group">
+          <label class="bks-label" for="bksrm-email">Email Address<span class="req">*</span></label>
+          <input class="bks-input" id="bksrm-email" type="email" name="your-email" placeholder="Email Address" required>
+        </div>
+        <div class="bks-group">
+          <label class="bks-label" for="bksrm-date">Preferred Date<span class="opt">Optional</span></label>
+          <input class="bks-input" id="bksrm-date" type="date" name="appointment-date">
+        </div>
+      </div>
+
+      <div class="bks-group">
+        <label class="bks-label" for="bksrm-msg">Describe Your Tattoo<span class="opt">Optional</span></label>
+        <textarea class="bks-textarea" id="bksrm-msg" name="your-message" placeholder="Size and colors"></textarea>
+      </div>
+
+      <p class="bks-note" role="note">Prefer to call? <a href="tel:+12109979737">(210) 997-9737</a></p>
+
+      <div class="bks-foot">
+        <p class="bks-status" data-bks-status>3 required fields remaining</p>
+        <button type="submit" class="bks-submit" data-bks-submit disabled>Book a Free Consultation</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="bks-success" data-bks-success>
+    <div class="bks-success__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <h3>Request sent!</h3>
+    <p>We'll reply within <strong>24 hours</strong> to confirm your specialist and session estimate.</p>
+  </div>
+</div>

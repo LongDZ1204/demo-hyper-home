@@ -1,0 +1,78 @@
+<!-- ============================================================================
+     HYPER INKERS — BOOKING SECTION markup, FULL variant  (v1 · 2026-07-08)
+     For pages that offer both Service and Artist choice (homepage, /tattoo,
+     /piercing, /black-and-grey, /about-us). Drop this inside the page's own
+     <section class="section s-book" id="book"> — the surrounding <header>
+     with the section H2 stays in the page; this file is only the card.
+     Requires: booking-section.css (linked in <head>) + booking-section.js
+     (before </body>). Roster/copy below is per-page content — verify against
+     the live page's own artist list before reusing on a different page.
+     ============================================================================ -->
+<div class="bks-card">
+  <div data-bks-body>
+    <p class="bks-intro">Book a free consultation with a Hyper Inkers artist in San Antonio. Share a few details below and we will help you plan your visit. There is no pressure to decide before you are ready.</p>
+
+    <form data-bks-form aria-label="Book a free tattoo consultation">
+      <div class="bks-row">
+        <div class="bks-group">
+          <label class="bks-label" for="bks-name">Your Name<span class="req">*</span></label>
+          <input class="bks-input" id="bks-name" type="text" name="your-name" placeholder="Your Name" required>
+        </div>
+        <div class="bks-group">
+          <label class="bks-label" for="bks-phone">Phone Number<span class="req">*</span></label>
+          <input class="bks-input" id="bks-phone" type="tel" name="your-phone" placeholder="Phone Number" required>
+        </div>
+      </div>
+
+      <div class="bks-row">
+        <div class="bks-group">
+          <label class="bks-label" for="bks-email">Email Address<span class="req">*</span></label>
+          <input class="bks-input" id="bks-email" type="email" name="your-email" placeholder="Email Address" required>
+        </div>
+        <div class="bks-group">
+          <label class="bks-label" for="bks-date">Appointment Date<span class="opt">Optional</span></label>
+          <input class="bks-input" id="bks-date" type="date" name="appointment-date">
+        </div>
+      </div>
+
+      <div class="bks-group">
+        <label class="bks-label" for="bks-service">Service<span class="req">*</span></label>
+        <select class="bks-select is-empty" id="bks-service" name="your-service" required>
+          <option value="" disabled selected>Choose a service</option>
+          <option value="Custom Tattoo">Custom Tattoo</option>
+          <option value="Cover-up Tattoo">Cover-up Tattoo</option>
+          <option value="Laser Removal">Laser Removal</option>
+        </select>
+        <p class="bks-note" role="note">Piercings are walk-ins only. Call <a href="tel:+12109979737">(210) 997-9737</a> for questions.</p>
+      </div>
+
+      <div class="bks-group">
+        <label class="bks-label" for="bks-artist">Choose Your Artist<span class="opt">Optional</span></label>
+        <select class="bks-select" id="bks-artist" name="your-artist">
+          <option value="Open to rec." selected>Open to recommendation</option>
+          <option value="Minh Pham">Minh Pham</option>
+          <option value="Tai Hoa">Tai Hoa</option>
+          <option value="Mancha">Mancha</option>
+          <option value="Navei">Navei</option>
+          <option value="Nicole">Nicole</option>
+        </select>
+      </div>
+
+      <div class="bks-group">
+        <label class="bks-label" for="bks-msg">Description<span class="opt">Optional</span></label>
+        <textarea class="bks-textarea" id="bks-msg" name="your-message" placeholder="e.g. Small fine-line rose on forearm, ~3 inches"></textarea>
+      </div>
+
+      <div class="bks-foot">
+        <p class="bks-status" data-bks-status>4 required fields remaining</p>
+        <button type="submit" class="bks-submit" data-bks-submit disabled>Book a Free Consultation</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="bks-success" data-bks-success>
+    <div class="bks-success__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+    <h3>Request sent!</h3>
+    <p>We'll reply within <strong>24 hours</strong> with available dates, your artist match, and a rough quote.</p>
+  </div>
+</div>
