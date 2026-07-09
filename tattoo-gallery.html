@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tattoo Gallery in San Antonio, TX | Hyper Inkers</title>
+<meta name="description" content="See real tattoo work from Hyper Inkers artists in San Antonio across realism, black and grey, color, Japanese, portrait, fine line, and cover-up styles.">
+<link rel="canonical" href="https://hyperinkers.com/portfolio/tattoo">
+<link rel="stylesheet" href="fonts-hyperinkers-2026-07-04/hyperinkers-fonts.css">
+<link rel="stylesheet" href="_foundation/hi-foundation.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"ImageGallery","name":"Tattoo Gallery | Hyper Inkers San Antonio","url":"https://hyperinkers.com/portfolio/tattoo"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Home","item":"https://hyperinkers.com"},
+  {"@type":"ListItem","position":2,"name":"Portfolio","item":"https://hyperinkers.com/portfolio"},
+  {"@type":"ListItem","position":3,"name":"Tattoo Gallery","item":"https://hyperinkers.com/portfolio/tattoo"}
+]}
+</script>
+<style>
+body.portfolio-page{background:var(--bg);color:#fff}
+html{scroll-padding-top:88px}
+.gallery-hdr{position:fixed;background:rgba(5,5,5,.84);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 12px 30px rgba(0,0,0,.22)}
+.gallery-hdr .wrap{position:relative}
+.gallery-hdr .nav a[aria-current="page"]{opacity:1;color:#fff}
+.portfolio-main{position:relative;overflow:hidden;background:linear-gradient(180deg,#030303 0%,#090909 38%,#101010 100%);padding:clamp(112px,10vw,140px) 0 clamp(68px,8vw,104px)}
+.portfolio-main::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,0) 24%,rgba(0,0,0,.28) 100%)}
+.portfolio-main .wrap{position:relative;z-index:2}
+.portfolio-breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:clamp(12px,1.8vw,18px);font-family:var(--sub);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:rgba(220,219,190,.72)}
+.portfolio-breadcrumb a{color:rgba(255,255,255,.64)}
+.portfolio-breadcrumb a:hover{color:#fff}
+.portfolio-breadcrumb span{color:var(--orange)}
+.gallery-head{max-width:820px;margin-bottom:clamp(18px,2.4vw,28px)}
+.gallery-head h1{font-size:clamp(34px,4.8vw,66px);line-height:.96;text-wrap:balance}
+.gallery-head h1 .o{color:var(--orange)}
+.gallery-head p{max-width:680px;margin-top:10px;color:#d8d8d8;font-size:clamp(14px,1.25vw,17px);line-height:1.55}
+.portfolio-filter{display:flex;flex-wrap:wrap;gap:9px 10px;align-items:center;justify-content:flex-start;max-width:860px;margin-bottom:clamp(22px,3vw,34px)}
+.filter-pill{appearance:none;border:1px solid rgba(255,255,255,.18);background:rgba(14,14,14,.82);color:rgba(255,255,255,.66);border-radius:999px;min-height:32px;padding:7px 14px;font-family:var(--sub);font-size:10px;line-height:1.05;letter-spacing:.075em;text-transform:uppercase;cursor:pointer;transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease)}
+.filter-pill:hover,.filter-pill:focus-visible{background:rgba(255,255,255,.045);border-color:rgba(255,255,255,.34);color:#fff;outline:none;transform:translateY(-1px)}
+.filter-pill.is-active{background:var(--orange);border-color:var(--orange);color:#fff;box-shadow:none}
+.portfolio-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(13px,1.5vw,18px)}
+.portfolio-tile{display:block;position:relative;min-width:0;aspect-ratio:4/5;overflow:hidden;border-radius:14px;background:#151515;border:1px solid rgba(255,255,255,.07);box-shadow:0 22px 54px rgba(0,0,0,.32);cursor:zoom-in;text-decoration:none;transition:transform .3s var(--ease),border-color .3s var(--ease)}
+.portfolio-tile:hover{transform:translateY(-4px);border-color:rgba(204,102,0,.55)}
+.portfolio-tile[hidden]{display:none}
+.portfolio-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease);filter:saturate(.96) contrast(1.03) brightness(.92)}
+.portfolio-tile:hover img{transform:scale(1.055)}
+.portfolio-lightbox{position:fixed;inset:0;z-index:200;display:none;place-items:center;padding:clamp(18px,4vw,44px);background:rgba(0,0,0,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+.portfolio-lightbox.is-open{display:grid}
+.portfolio-lightbox__panel{position:relative;max-width:min(94vw,1180px);max-height:90vh}
+.portfolio-lightbox img{display:block;max-width:100%;max-height:90vh;width:auto;height:auto;object-fit:contain;border-radius:12px;border:1px solid rgba(255,255,255,.1);box-shadow:0 28px 92px rgba(0,0,0,.68)}
+.portfolio-lightbox__close{position:absolute;top:-14px;right:-14px;z-index:2;width:42px;height:42px;border-radius:999px;border:1px solid rgba(204,102,0,.72);background:#050505;color:#fff;font:24px/1 Arial,sans-serif;cursor:pointer}
+.portfolio-lightbox__close:hover,.portfolio-lightbox__close:focus-visible{background:var(--orange);color:#080808;outline:none}
+.portfolio-final-cta{position:relative;overflow:hidden;background:var(--bg);text-align:center;padding-block:clamp(82px,10vw,148px)}
+.portfolio-final-cta .cta-splat{position:absolute;left:50%;top:50%;z-index:0;width:min(96vw,2100px);max-width:none;height:auto;opacity:.56;transform:translate(-50%,-50%) scaleX(-1);filter:brightness(.7) saturate(1.18);pointer-events:none;user-select:none}
+.portfolio-final-cta::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(to bottom,var(--bg) 0%,rgba(15,15,15,0) 20%,rgba(15,15,15,0) 80%,var(--bg) 100%),radial-gradient(58% 72% at 50% 48%,rgba(0,0,0,.56),rgba(0,0,0,0) 78%)}
+.portfolio-final-cta .wrap{position:relative;z-index:2}
+.portfolio-final-cta h2{margin:0 auto;max-width:min(1080px,94vw);font-size:clamp(34px,5.2vw,72px);line-height:1;color:var(--cream);text-shadow:0 3px 28px rgba(0,0,0,.58);text-wrap:balance}
+.portfolio-final-cta p{margin:clamp(16px,2vw,22px) auto 0;max-width:54ch;font-family:var(--sub);font-size:clamp(14px,1.35vw,17px);letter-spacing:.02em;color:#d2d2d2;line-height:1.56}
+.portfolio-cta-actions{margin-top:clamp(24px,3vw,36px);display:flex;justify-content:center}
+.portfolio-cta-actions .btn{min-height:52px;padding:15px 36px;letter-spacing:.09em;font-size:12.5px;box-shadow:0 14px 34px rgba(204,102,0,.3)}
+.footer-mini{background:#070707;padding:44px 0 28px}
+.footer-mini__grid{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:30px}
+.footer-mini img{height:30px;width:auto;margin-bottom:14px}
+.footer-mini h3{font-family:var(--sub);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-bottom:12px}
+.footer-mini a,.footer-mini p{display:block;color:#a9a9a9;font-size:13px;margin-bottom:8px}
+.footer-mini a:hover{color:#fff}
+.footer-bottom{margin-top:34px;padding-top:18px;border-top:1px solid var(--border);font-size:12px;color:#858585;text-align:center}
+@media(max-width:980px){
+  .portfolio-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media(max-width:900px){
+  html{scroll-padding-top:78px}
+  .gallery-hdr .nav a[aria-current="page"]{color:#fff}
+}
+@media(max-width:640px){
+  .portfolio-main{padding:96px 0 64px}
+  .portfolio-breadcrumb{font-size:10px;margin-bottom:12px}
+  .gallery-head{margin-bottom:17px}
+  .gallery-head h1{font-size:clamp(30px,10vw,44px)}
+  .gallery-head p{margin-top:8px;font-size:14px;line-height:1.5}
+  .portfolio-filter{gap:8px;margin-bottom:20px}
+  .filter-pill{min-height:30px;padding:6px 10px;font-size:9.5px;letter-spacing:.05em}
+  .portfolio-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+  .portfolio-tile{border-radius:12px}
+  .portfolio-lightbox{padding:14px}
+  .portfolio-lightbox__close{top:10px;right:10px}
+  .portfolio-final-cta .cta-splat{width:250vw;opacity:.48}
+  .footer-mini__grid{grid-template-columns:1fr;gap:22px}
+}
+@media(min-width:641px) and (max-width:980px){.footer-mini__grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body class="portfolio-page">
+<a class="skip" href="#gallery">Skip to gallery</a>
+
+<header class="hdr gallery-hdr">
+  <div class="wrap">
+    <input id="navtog" class="nav-toggle" type="checkbox" aria-label="Toggle navigation">
+    <a class="logo" href="/" aria-label="Hyper Inkers home">
+      <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers">
+    </a>
+    <nav class="nav" aria-label="Primary navigation">
+      <a href="/">Home</a>
+      <a href="/about-us">About Us</a>
+      <a href="/tattoo-artists">Artists</a>
+      <a href="/tattoo">Tattoo</a>
+      <a href="/piercing">Piercing</a>
+      <a href="/tattoo-removal">Removal</a>
+      <a href="/portfolio/tattoo" aria-current="page">Gallery</a>
+      <a href="tel:+12109979737" class="nav-book">Call Now</a>
+    </nav>
+    <a class="book hdr-book" href="tel:+12109979737">Call Now</a>
+    <label class="nav-burger" for="navtog" aria-label="Open or close navigation">
+      <svg class="ico-bars" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="ico-x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </label>
+  </div>
+</header>
+
+<main id="main">
+  <section class="section portfolio-main" id="gallery" aria-labelledby="gallery-title">
+    <div class="wrap">
+      <div class="gallery-head">
+        <nav class="portfolio-breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Home</a>
+          <span>/</span>
+          <a href="/portfolio">Portfolio</a>
+          <span>/</span>
+          <span>Tattoo Gallery</span>
+        </nav>
+        <h1 id="gallery-title">Tattoo <span class="o">Gallery</span></h1>
+        <p>Filter by style, then click any image to view the tattoo work full size.</p>
+      </div>
+      <div class="portfolio-filter" data-gallery-filter role="toolbar" aria-label="Filter by tattoo style">
+        <button class="filter-pill is-active" type="button" data-filter="realism" aria-pressed="true">Realism</button>
+        <button class="filter-pill" type="button" data-filter="black-grey" aria-pressed="false">Black &amp; Grey</button>
+        <button class="filter-pill" type="button" data-filter="color" aria-pressed="false">Color</button>
+        <button class="filter-pill" type="button" data-filter="japanese" aria-pressed="false">Japanese</button>
+        <button class="filter-pill" type="button" data-filter="traditional" aria-pressed="false">Traditional</button>
+        <button class="filter-pill" type="button" data-filter="portrait" aria-pressed="false">Portrait</button>
+        <button class="filter-pill" type="button" data-filter="fine-line" aria-pressed="false">Fine Line</button>
+        <button class="filter-pill" type="button" data-filter="geometric" aria-pressed="false">Geometric</button>
+        <button class="filter-pill" type="button" data-filter="cover-up" aria-pressed="false">Cover-Up</button>
+      </div>
+      <div class="portfolio-grid">
+        <a class="portfolio-tile" href="https://hyperinkers.com/wp-content/uploads/2024/10/1-4-2-819x1024.jpg" data-tags="realism color" aria-label="View full-size color realism tattoo"><img src="https://hyperinkers.com/wp-content/uploads/2024/10/1-4-2-819x1024.jpg" alt="Color realism tattoo at Hyper Inkers in San Antonio." loading="eager" decoding="async"></a>
+        <a class="portfolio-tile" href="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-1-scaled.jpg" data-tags="black-grey realism" aria-label="View full-size black and grey realism tattoo"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-1-scaled.jpg" alt="Black and grey realism tattoo at Hyper Inkers." loading="eager" decoding="async"></a>
+        <a class="portfolio-tile" href="https://hyperinkers.com/wp-content/uploads/2026/01/realism-tattoo-by-hyper-iners-in-san-antonio-7-scaled.jpg" data-tags="realism black-grey" aria-label="View full-size realism tattoo"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/realism-tattoo-by-hyper-iners-in-san-antonio-7-scaled.jpg" alt="Realism tattoo by Hyper Inkers in San Antonio." loading="eager" decoding="async"></a>
+        <a class="portfolio-tile" href="https://hyperinkers.com/wp-content/uploads/2025/05/best-color-tattoo-artist-3.png" data-tags="color" aria-label="View full-size color tattoo"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/best-color-tattoo-artist-3.png" alt="Color tattoo design by a Hyper Inkers artist." loading="eager" decoding="async"></a>
+        <a class="portfolio-tile" href="https://hyperinkers.com/wp-content/uploads/2026/01/asia-tattoo-style-by-hyper-inkers-3-768x1150.jpg" data-tags="japanese color" aria-label="View full-size Japanese tattoo"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/asia-tattoo-style-by-hyper-inkers-3-768x1150.jpg" alt="Japanese tattoo by Hyper Inkers." loading="lazy" decoding="async"></a>
+        <a class="portfolio-tile" href="https://hyperinkers.com/wp-content/uploads/2024/05/new-5.jpg" data-tags="traditional color" aria-label="View full-size traditional tattoo"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/new-5.jpg" alt="Traditional tattoo at Hyper Inkers." loading="lazy" decoding="async"></a>
+        <a class="portfolio-tile" href="https://hyperinkers.com/wp-content/uploads/2026/01/portrait-tattoo-by-hyper-iners-in-san-antonio.jpg" data-tags="portrait realism black-grey" aria-label="View full-size portrait tattoo"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/portrait-tattoo-by-hyper-iners-in-san-antonio.jpg" alt="Portrait tattoo by Hyper Inkers in San Antonio." loading="lazy" decoding="async"></a>
+        <a class="portfolio-tile" href="https://hyperinkers.com/wp-content/uploads/2025/07/fine-line-tattoo-shops-san-antonio.jpg" data-tags="fine-line" aria-label="View full-size fine line tattoo"><img src="https://hyperinkers.com/wp-content/uploads/2025/07/fine-line-tattoo-shops-san-antonio.jpg" alt="Fine line tattoo by Hyper Inkers." loading="lazy" decoding="async"></a>
+        <a class="portfolio-tile" href="https://hyperinkers.com/wp-content/uploads/2025/05/geometric-tattoo-designs_-scaled.jpg" data-tags="geometric black-grey" aria-label="View full-size geometric tattoo"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/geometric-tattoo-designs_-scaled.jpg" alt="Geometric tattoo design by Hyper Inkers." loading="lazy" decoding="async"></a>
+        <a class="portfolio-tile" href="https://hyperinkers.com/wp-content/uploads/2025/07/tattoo-cover-up-san-antonio-scaled.jpg" data-tags="cover-up color black-grey" aria-label="View full-size cover-up tattoo"><img src="https://hyperinkers.com/wp-content/uploads/2025/07/tattoo-cover-up-san-antonio-scaled.jpg" alt="Cover-up tattoo by Hyper Inkers in San Antonio." loading="lazy" decoding="async"></a>
+        <a class="portfolio-tile" href="https://hyperinkers.com/wp-content/uploads/2024/05/i-2-768x1149.jpg" data-tags="black-grey traditional" aria-label="View full-size blackwork tattoo"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/i-2-768x1149.jpg" alt="Blackwork tattoo at Hyper Inkers." loading="lazy" decoding="async"></a>
+        <a class="portfolio-tile" href="https://hyperinkers.com/wp-content/uploads/2026/01/color-tattoo-style-by-hyper-inkers-1-scaled.jpg" data-tags="color realism" aria-label="View full-size custom color tattoo"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/color-tattoo-style-by-hyper-inkers-1-scaled.jpg" alt="Color tattoo style by Hyper Inkers." loading="lazy" decoding="async"></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio-final-cta" aria-label="Call Hyper Inkers about a tattoo">
+    <img class="cta-splat" src="_hero-assets/cta-splatter-orange.png" alt="" aria-hidden="true" loading="lazy">
+    <div class="wrap">
+      <h2>Found a style you want to build from?</h2>
+      <p>Call the studio and tell us what style, size, and placement you are considering. We will help route the idea to the right artist before you book.</p>
+      <div class="portfolio-cta-actions">
+        <a class="btn btn-primary" href="tel:+12109979737">Call (210) 997-9737</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="portfolio-lightbox" data-gallery-lightbox role="dialog" aria-modal="true" aria-label="Full-size gallery image" hidden>
+  <div class="portfolio-lightbox__panel">
+    <button class="portfolio-lightbox__close" type="button" data-lightbox-close aria-label="Close full-size image">&times;</button>
+    <img alt="" data-lightbox-image>
+  </div>
+</div>
+
+<footer class="footer-mini" aria-label="Footer">
+  <div class="wrap">
+    <div class="footer-mini__grid">
+      <div>
+        <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers">
+        <p>8045 Callaghan Rd, San Antonio, TX 78230</p>
+        <p><a href="tel:+12109979737">(210) 997-9737</a></p>
+      </div>
+      <div><h3>Studio</h3><a href="/about-us">About Us</a><a href="/tattoo-artists">Artists</a><a href="/awards">Awards</a></div>
+      <div><h3>Services</h3><a href="/tattoo">Tattoo</a><a href="/piercing">Piercing</a><a href="/tattoo-removal">Removal</a></div>
+      <div><h3>Gallery</h3><a href="/portfolio/tattoo">Tattoo Gallery</a><a href="/portfolio/piercing">Piercing Gallery</a><a href="/portfolio/removal">Removal Gallery</a></div>
+    </div>
+    <div class="footer-bottom">&copy; 2026 Hyper Inkers Studio. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var root=document.querySelector('[data-gallery-filter]');
+  var tiles=[].slice.call(document.querySelectorAll('.portfolio-tile'));
+  var lightbox=document.querySelector('[data-gallery-lightbox]');
+  var lightboxImage=document.querySelector('[data-lightbox-image]');
+  var lastTrigger=null;
+
+  if(root&&tiles.length){
+    function applyFilter(filter){
+      tiles.forEach(function(tile){
+        var tags=(tile.getAttribute('data-tags')||'').split(/\s+/);
+        tile.hidden=tags.indexOf(filter)===-1;
+      });
+    }
+
+    root.addEventListener('click',function(event){
+      var button=event.target.closest('.filter-pill');
+      if(!button) return;
+      var filter=button.getAttribute('data-filter');
+      root.querySelectorAll('.filter-pill').forEach(function(pill){
+        var active=pill===button;
+        pill.classList.toggle('is-active',active);
+        pill.setAttribute('aria-pressed',active?'true':'false');
+      });
+      applyFilter(filter);
+    });
+
+    var activeButton=root.querySelector('.filter-pill.is-active')||root.querySelector('.filter-pill');
+    if(activeButton){
+      root.querySelectorAll('.filter-pill').forEach(function(pill){
+        var active=pill===activeButton;
+        pill.classList.toggle('is-active',active);
+        pill.setAttribute('aria-pressed',active?'true':'false');
+      });
+      applyFilter(activeButton.getAttribute('data-filter'));
+    }
+  }
+
+  function closeLightbox(){
+    if(!lightbox) return;
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('hidden','');
+    document.body.style.overflow='';
+    if(lightboxImage) lightboxImage.removeAttribute('src');
+    if(lastTrigger) lastTrigger.focus();
+  }
+
+  function openLightbox(tile){
+    if(!lightbox||!lightboxImage) return;
+    var img=tile.querySelector('img');
+    lastTrigger=tile;
+    lightboxImage.src=tile.getAttribute('href');
+    lightboxImage.alt=img ? img.alt : '';
+    lightbox.removeAttribute('hidden');
+    lightbox.classList.add('is-open');
+    document.body.style.overflow='hidden';
+    var closeButton=lightbox.querySelector('[data-lightbox-close]');
+    if(closeButton) closeButton.focus();
+  }
+
+  if(lightbox&&lightboxImage&&tiles.length){
+    tiles.forEach(function(tile){
+      tile.addEventListener('click',function(event){
+        event.preventDefault();
+        openLightbox(tile);
+      });
+    });
+    lightbox.addEventListener('click',function(event){
+      if(event.target===lightbox||event.target.closest('[data-lightbox-close]')) closeLightbox();
+    });
+    document.addEventListener('keydown',function(event){
+      if(event.key==='Escape'&&lightbox.classList.contains('is-open')) closeLightbox();
+    });
+  }
+})();
+</script>
+</body>
+</html>
