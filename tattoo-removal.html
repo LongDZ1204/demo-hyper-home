@@ -7,6 +7,7 @@
 <title>Hyper Inkers — Tattoo Removal (San Antonio) · page assembly</title>
 <link rel="stylesheet" href="fonts-hyperinkers-2026-07-04/hyperinkers-fonts.css">
 <link rel="stylesheet" href="_foundation/hi-foundation.css">
+<link rel="stylesheet" href="_foundation/components/booking-section.css">
 <style>
 /* ============================================================================
    /tattoo-removal-san-antonio · PAGE ASSEMBLY (single file, sections in order)
@@ -473,25 +474,10 @@ body.rmba-lock{overflow:hidden}
 #rmfaq-d:checked ~ .rmfaq-panels .rmfaq-panel--d{display:block}
 @media(max-width:640px){.rmfaq-tab{padding:10px 16px;font-size:12px}}
 
-/* ==================== SECTION 14 · BOOK (form, port .bk- verbatim from homepage) ==================== */
+/* ==================== SECTION 14 · BOOK ==================== */
 .s-book{background:var(--black)}
-.bk-form-card{max-width:640px;margin:clamp(28px,3.6vw,44px) auto 0;background:var(--surface);border:1px solid rgba(204,102,0,.34);border-radius:14px;padding:clamp(22px,2.6vw,34px);box-shadow:0 24px 60px rgba(0,0,0,.5);color-scheme:dark}
-.bk-form-intro{margin:0 0 20px;font-size:14px;line-height:1.55;color:#B7B7B7;text-align:center}
-.bk-row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
-.bk-field{margin-bottom:16px}
-.bk-row2 .bk-field{margin-bottom:0}
-.field-label{display:block;font-family:var(--sub);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
-.bk-input{width:100%;background:#0E0E0E;border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;color:#fff;font-family:var(--body);font-size:14.5px;line-height:1.4;transition:border-color .2s var(--ease),background .2s var(--ease),box-shadow .2s var(--ease)}
-.bk-input::placeholder{color:#8a8a8a}
-.bk-input:focus{outline:none;border-color:var(--orange);background:#141414;box-shadow:0 0 0 3px rgba(204,102,0,.14)}
-textarea.bk-input{min-height:96px;resize:vertical}
-.bk-note{display:flex;align-items:flex-start;gap:9px;margin-top:12px;padding:10px 14px;background:rgba(204,102,0,.10);border:1px solid rgba(204,102,0,.34);border-radius:8px;font-size:12.5px;line-height:1.5;color:#EDEDED}
-.bk-note svg{width:16px;height:16px;color:var(--orange);flex-shrink:0;margin-top:1px}
-.bk-note a{color:var(--orange);font-weight:700;text-decoration:none}
-.bk-note a:hover{color:var(--orange-hi)}
-.bk-submit{width:100%;margin-top:8px;display:inline-flex;align-items:center;justify-content:center;gap:9px}
-.bk-submit svg{width:16px;height:16px}
-@media(max-width:480px){.bk-row2{grid-template-columns:1fr}}
+/* form styling (de-AI'd, glow CTA, no Service/Artist choice) now lives in
+   _foundation/components/booking-section.css — linked in <head> */
 /* NAP + map — port .vs-ci/.vs-map, now used by the standalone Visit section before FAQ (B.Long 2026-07-06 split from Book) */
 .rmbk-nap{display:grid;grid-template-columns:0.86fr 1.14fr;gap:clamp(24px,3.4vw,48px);align-items:stretch;margin:clamp(34px,4vw,50px) auto 0;max-width:960px}
 .rmbk-contact{list-style:none;align-self:center}
@@ -1502,20 +1488,54 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
       <h2>Book Your Free Tattoo <span class="o">Removal</span> Consultation</h2>
     </header>
 
-    <form class="bk-form-card" onsubmit="return false" novalidate aria-label="Book a free tattoo removal consultation">
-      <p class="bk-form-intro">Bring a photo of your tattoo or just come in, and your specialist will assess the ink and map out a plan. No pressure, no commitment to decide before you're ready.</p>
-      <div class="bk-row2">
-        <div class="bk-field"><label class="field-label" for="rmbk-name">Your Name</label><input class="bk-input" id="rmbk-name" type="text" name="your-name" placeholder="Your Name"></div>
-        <div class="bk-field"><label class="field-label" for="rmbk-phone">Phone Number</label><input class="bk-input" id="rmbk-phone" type="tel" name="your-phone" placeholder="Phone Number"></div>
+    <!-- de-AI'd v1 2026-07-08: ported from _foundation/components/booking-section-removal.html -->
+    <div class="bks-card">
+      <div data-bks-body>
+        <p class="bks-intro">Bring a photo of your tattoo or just come in, and your specialist will assess the ink and map out a plan. No pressure, no commitment to decide before you're ready.</p>
+
+        <form data-bks-form aria-label="Book a free tattoo removal consultation">
+          <div class="bks-row">
+            <div class="bks-group">
+              <label class="bks-label" for="bksrm-name">Your Name<span class="req">*</span></label>
+              <input class="bks-input" id="bksrm-name" type="text" name="your-name" placeholder="Your Name" required>
+            </div>
+            <div class="bks-group">
+              <label class="bks-label" for="bksrm-phone">Phone Number<span class="req">*</span></label>
+              <input class="bks-input" id="bksrm-phone" type="tel" name="your-phone" placeholder="Phone Number" required>
+            </div>
+          </div>
+
+          <div class="bks-row">
+            <div class="bks-group">
+              <label class="bks-label" for="bksrm-email">Email Address<span class="req">*</span></label>
+              <input class="bks-input" id="bksrm-email" type="email" name="your-email" placeholder="Email Address" required>
+            </div>
+            <div class="bks-group">
+              <label class="bks-label" for="bksrm-date">Preferred Date<span class="opt">Optional</span></label>
+              <input class="bks-input" id="bksrm-date" type="date" name="appointment-date">
+            </div>
+          </div>
+
+          <div class="bks-group">
+            <label class="bks-label" for="bksrm-msg">Describe Your Tattoo<span class="opt">Optional</span></label>
+            <textarea class="bks-textarea" id="bksrm-msg" name="your-message" placeholder="Size and colors"></textarea>
+          </div>
+
+          <p class="bks-note" role="note">Prefer to call? <a href="tel:+12109979737">(210) 997-9737</a></p>
+
+          <div class="bks-foot">
+            <p class="bks-status" data-bks-status>3 required fields remaining</p>
+            <button type="submit" class="bks-submit" data-bks-submit disabled>Book a Free Consultation</button>
+          </div>
+        </form>
       </div>
-      <div class="bk-row2">
-        <div class="bk-field"><label class="field-label" for="rmbk-email">Email Address</label><input class="bk-input" id="rmbk-email" type="email" name="your-email" placeholder="Email Address"></div>
-        <div class="bk-field"><label class="field-label" for="rmbk-date">Preferred Date</label><input class="bk-input" id="rmbk-date" type="date" name="appointment-date"></div>
+
+      <div class="bks-success" data-bks-success>
+        <div class="bks-success__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <h3>Request sent!</h3>
+        <p>We'll reply within <strong>24 hours</strong> to confirm your specialist and session estimate.</p>
       </div>
-      <div class="bk-field"><label class="field-label" for="rmbk-msg">Describe Your Tattoo</label><textarea class="bk-input" id="rmbk-msg" name="your-message" placeholder="Size and colors"></textarea></div>
-      <p class="bk-note" role="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12" stroke-linecap="round"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-linecap="round"/></svg><span>Prefer to call? <a href="tel:+12109979737">(210) 997-9737</a></span></p>
-      <button class="btn btn-primary bk-submit" type="submit">Book a Free Consultation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    </form>
+    </div>
   </div>
 </section>
 
@@ -1809,6 +1829,7 @@ hiHugArrow('rmgd-intro','rmgdIntroTxt','rmgdIntro','rmgdMore');     /* §15 */
   update();
 })();
 </script>
+<script src="_foundation/components/booking-section.js" defer></script>
 
 </body>
 </html>
