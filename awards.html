@@ -24,10 +24,12 @@
 .awh{position:relative;overflow:clip;min-height:min(76svh,760px);display:flex;align-items:center;
   padding-top:120px;padding-bottom:clamp(68px,7vw,104px)}
 .awh-media{position:absolute;inset:0;z-index:0}
-.awh-media img{width:100%;height:100%;object-fit:cover;object-position:50% 34%}
+.awh-media img{width:100%;height:100%;object-fit:cover;object-position:50% 34%;
+  filter:brightness(.56) saturate(.9) contrast(1.08)}
 .awh-scrim{position:absolute;inset:0;z-index:1;background:
-  radial-gradient(62% 82% at 50% 50%,rgba(13,13,13,.74) 0%,rgba(13,13,13,.54) 46%,rgba(13,13,13,.24) 72%,rgba(13,13,13,0) 100%),
-  linear-gradient(180deg,rgba(13,13,13,.82) 0%,rgba(13,13,13,.2) 28%,rgba(13,13,13,.2) 66%,rgba(13,13,13,.9) 100%)}
+  radial-gradient(62% 82% at 50% 50%,rgba(0,0,0,.84) 0%,rgba(0,0,0,.66) 46%,rgba(0,0,0,.36) 72%,rgba(0,0,0,.16) 100%),
+  linear-gradient(90deg,rgba(0,0,0,.68) 0%,rgba(0,0,0,.28) 42%,rgba(0,0,0,.72) 100%),
+  linear-gradient(180deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.34) 28%,rgba(0,0,0,.34) 66%,rgba(0,0,0,.95) 100%)}
 .awh .wrap{position:relative;z-index:3;width:100%}
 .awh-in{max-width:min(980px,100%);margin-inline:auto;text-align:center}
 .awh h1{margin-bottom:8px}
@@ -55,7 +57,7 @@
 /* ============================================================================
    RECORDS — sticky Placement filter + year sections + card grid
    ============================================================================ */
-.sap{position:relative;background:var(--bg)}
+.sap{position:relative;background:#050505}
 
 /* filter radios are visually hidden; the visible bar is a following sibling so
    the :checked ~ combinator can reach both the labels and the year grids. */
@@ -69,7 +71,6 @@
   padding:9px 15px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.03);
   transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease)}
 .sapf-lab:hover{border-color:rgba(204,102,0,.5);color:#fff}
-.sapf-lab .n{font-size:11px;color:var(--muted)}
 .sapf-cb:focus-visible ~ .sap-filterbar .sapf-lab[data-for]{outline:none}
 /* active state — one rule per filter (radios precede the bar) */
 #awf-all:checked   ~ .sap-filterbar label[for="awf-all"],
@@ -79,12 +80,6 @@
 #awf-3rd:checked   ~ .sap-filterbar label[for="awf-3rd"],
 #awf-other:checked ~ .sap-filterbar label[for="awf-other"]{
   background:var(--orange);border-color:transparent;color:#fff}
-#awf-all:checked   ~ .sap-filterbar label[for="awf-all"] .n,
-#awf-bos:checked   ~ .sap-filterbar label[for="awf-bos"] .n,
-#awf-1st:checked   ~ .sap-filterbar label[for="awf-1st"] .n,
-#awf-2nd:checked   ~ .sap-filterbar label[for="awf-2nd"] .n,
-#awf-3rd:checked   ~ .sap-filterbar label[for="awf-3rd"] .n,
-#awf-other:checked ~ .sap-filterbar label[for="awf-other"] .n{color:rgba(255,255,255,.75)}
 .sapf-cb:focus-visible ~ .sap-filterbar .sapf-lab{outline:2px solid var(--orange);outline-offset:2px}
 
 /* filter hide logic — CSS only; hidden cards stay in the DOM (SEO/GEO safe) */
@@ -100,13 +95,47 @@
 #awf-3rd:checked   ~ .sap-year:not(:has(.f-3rd)){display:none}
 #awf-other:checked ~ .sap-year:not(:has(.f-other)){display:none}
 
+/* per-year award reveal: full archive stays in the DOM, each dense year opens on demand */
+.aw-load-cb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
+.aw-loadmore{display:none;align-items:center;justify-content:center;gap:9px;width:100%;max-width:360px;
+  margin:28px auto 0;min-height:50px;border:1px solid transparent;border-radius:999px;
+  background:var(--orange);color:#fff;font-family:var(--sub);font-weight:700;font-size:12px;
+  letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 12px 30px rgba(204,102,0,.34);
+  transition:background .2s var(--ease),transform .2s var(--ease),box-shadow .2s var(--ease)}
+.aw-loadmore:hover{background:var(--orange-hi);transform:translateY(-1px);box-shadow:0 16px 36px rgba(230,117,0,.38)}
+.aw-loadmore svg{width:16px;height:16px;transition:transform .22s var(--ease)}
+.aw-loadmore .less{display:none}
+
+#awf-all:checked ~ #awload-2025:not(:checked) ~ #y2025 .sap-grid > .awc:nth-child(n+9),
+#awf-all:checked ~ #awload-2024:not(:checked) ~ #y2024 .sap-grid > .awc:nth-child(n+9){display:none}
+#awf-all:checked ~ #y2025 .aw-loadmore,
+#awf-all:checked ~ #y2024 .aw-loadmore{display:flex}
+#awf-bos:checked ~ .sap-year .aw-loadmore,
+#awf-1st:checked ~ .sap-year .aw-loadmore,
+#awf-2nd:checked ~ .sap-year .aw-loadmore,
+#awf-3rd:checked ~ .sap-year .aw-loadmore,
+#awf-other:checked ~ .sap-year .aw-loadmore{display:none}
+#awload-2025:checked ~ #y2025 .aw-loadmore .more,
+#awload-2024:checked ~ #y2024 .aw-loadmore .more{display:none}
+#awload-2025:checked ~ #y2025 .aw-loadmore .less,
+#awload-2024:checked ~ #y2024 .aw-loadmore .less{display:inline}
+#awload-2025:checked ~ #y2025 .aw-loadmore svg,
+#awload-2024:checked ~ #y2024 .aw-loadmore svg{transform:rotate(180deg)}
+
 /* year section */
-.sap-year{padding:clamp(44px,5.4vw,74px) 0}
-.sap-year + .sap-year{padding-top:0}
+.sap-year{position:relative;padding:clamp(44px,5.4vw,74px) 0;border-top:1px solid rgba(255,255,255,.065)}
+.sap-year + .sap-year{padding-top:clamp(44px,5.4vw,74px)}
+#y2026,#y2024{background:
+  radial-gradient(70% 72% at 50% 0%,rgba(204,102,0,.065),rgba(204,102,0,0) 58%),
+  #070707}
+#y2025,#y2023{background:
+  linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,0) 190px),
+  #101010}
 .sap-yhead{display:flex;align-items:baseline;gap:16px;margin-bottom:clamp(24px,3vw,36px);flex-wrap:wrap}
 .sap-yhead h2{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:.98;letter-spacing:-.005em;
   font-size:clamp(28px,3.4vw,44px);color:#fff}
 .sap-yhead h2 .o{color:var(--orange)}
+.sap-yintro{flex:0 0 100%;max-width:780px;margin:12px 0 0;font-size:15.5px;line-height:1.62;color:#B8B8B8}
 
 /* ---------- card grid ---------- */
 .sap-grid{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));
@@ -227,69 +256,34 @@
   .sap-filterbar .wrap::-webkit-scrollbar{display:none}
   .sapf-lab{flex:0 0 auto;white-space:nowrap;padding:9px 14px}
 }
+@media(max-width:720px){
+  .aw-loadmore{width:calc(100% - 32px);max-width:360px;margin:26px auto 6px}
+}
 
 /* ============================================================================
-   FAQ  (H2 + 5 H3 interrogative · <details> = crawlable, content in DOM)
+   FAQ  (homepage accordion pattern · content remains in DOM)
    ============================================================================ */
-.s-faq{background:var(--black)}
-.faq-list{max-width:820px;margin:clamp(30px,4vw,44px) auto 0;border-top:1px solid var(--hair)}
-.faq-item{border-bottom:1px solid var(--hair)}
-.faq-item summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:18px;
-  padding:20px 4px;font-family:var(--sub);font-weight:600;font-size:clamp(15px,1.5vw,17.5px);letter-spacing:.01em;
-  color:#fff;text-transform:none}
-.faq-item summary::-webkit-details-marker{display:none}
-.faq-item summary::after{content:"";flex-shrink:0;width:13px;height:13px;
-  background:var(--orange);clip-path:polygon(46% 0,54% 0,54% 46%,100% 46%,100% 54%,54% 54%,54% 100%,46% 100%,46% 54%,0 54%,0 46%,46% 46%);
-  transition:transform .25s var(--ease)}
-.faq-item[open] summary::after{transform:rotate(45deg)}
-.faq-item summary:hover{color:var(--orange-hi)}
-.faq-a{padding:0 4px 22px;font-size:15px;line-height:1.64;color:#C9C9C9;max-width:74ch}
+.s-faq{background:var(--bg)}
+.s-faq h2 .o{color:var(--orange)}
+.faq-list{max-width:840px;margin:clamp(30px,4vw,46px) auto 0;border-bottom:1px solid var(--hair)}
+.faq-item{border-top:1px solid var(--hair);transition:border-color .25s var(--ease)}
+.faq-item:has(.faq-cb:checked){border-top-color:var(--orange)}
+.faq-cb{position:absolute;width:1px;height:1px;opacity:0;margin:0;pointer-events:none}
+.faq-q{display:flex;align-items:center;gap:15px;cursor:pointer;padding:20px 6px}
+.faq-ic{flex:0 0 auto;width:20px;height:20px;color:#B9B9B9;transition:transform .34s var(--ease),color .2s var(--ease)}
+.faq-ic svg{display:block;width:100%;height:100%}
+.faq-q h3{margin:0;flex:1;font-family:var(--sub);font-weight:600;font-size:clamp(16px,1.9vw,18.5px);letter-spacing:.005em;line-height:1.38;color:#D6D6D6;transition:color .2s var(--ease)}
+.faq-q:hover h3{color:#fff}
+.faq-q:hover .faq-ic{color:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .42s var(--ease)}
+.faq-a p{margin:0;padding:0 40px 24px 41px;font-size:15px;line-height:1.68;color:var(--muted)}
 .faq-a a{color:var(--orange-hi);font-weight:600;border-bottom:1px solid rgba(230,117,0,.4)}
 .faq-a a:hover{color:#fff}
-
-/* ============================================================================
-   BOOKING FORM
-   ============================================================================ */
-.s-book{background:var(--black)}
-.s-book h2 .o{color:var(--orange)}
-.book-lead{margin:12px auto 0;max-width:58ch;text-align:center;font-size:15.5px;line-height:1.6;color:#C9C9C9}
-.bk-form-card{max-width:640px;margin:clamp(24px,3.2vw,38px) auto 0;background:var(--surface);
-  border:1px solid rgba(204,102,0,.34);border-radius:14px;padding:clamp(22px,2.6vw,34px);
-  box-shadow:0 24px 60px rgba(0,0,0,.5);color-scheme:dark}
-.bk-form-intro{margin:0 0 20px;font-size:14px;line-height:1.55;color:#B7B7B7;text-align:center}
-.bk-row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:16px}
-.bk-field{margin-bottom:16px}
-.bk-row2 .bk-field{margin-bottom:0}
-.field-label{display:block;font-family:var(--sub);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--orange);margin-bottom:8px}
-.bk-input{width:100%;background:#0E0E0E;border:1.5px solid var(--border);border-radius:8px;padding:12px 14px;color:#fff;
-  font-family:var(--body);font-size:14.5px;line-height:1.4;transition:border-color .2s var(--ease),background .2s var(--ease),box-shadow .2s var(--ease)}
-.bk-input::placeholder{color:#8a8a8a}
-.bk-input:focus{outline:none;border-color:var(--orange);background:#141414;box-shadow:0 0 0 3px rgba(204,102,0,.14)}
-textarea.bk-input{min-height:96px;resize:vertical}
-.bk-radios{display:grid;grid-template-columns:1fr 1fr;gap:2px}
-.bk-radio{position:relative;display:flex;align-items:center;gap:10px;min-height:44px;padding:9px 12px;border-radius:8px;
-  cursor:pointer;transition:background .15s var(--ease)}
-.bk-radio:hover{background:rgba(204,102,0,.07)}
-.bk-radio:has(input:checked){background:rgba(204,102,0,.12)}
-.bk-radio input{position:absolute;opacity:0;pointer-events:none}
-.bk-dot{width:18px;height:18px;border-radius:50%;border:2px solid var(--muted);flex-shrink:0;display:inline-flex;
-  align-items:center;justify-content:center;transition:border-color .2s var(--ease)}
-.bk-dot::after{content:"";width:8px;height:8px;border-radius:50%;background:var(--orange);transform:scale(0);transition:transform .2s var(--ease)}
-.bk-radio input:checked ~ .bk-dot{border-color:var(--orange)}
-.bk-radio input:checked ~ .bk-dot::after{transform:scale(1)}
-.bk-radio input:focus-visible ~ .bk-dot{outline:2px solid var(--orange);outline-offset:2px}
-.bk-rlabel{font-family:var(--sub);font-size:13.5px;font-weight:600;color:#EDEDED;line-height:1.3}
-.bk-note{display:flex;align-items:flex-start;gap:9px;margin-top:12px;padding:10px 14px;background:rgba(204,102,0,.10);
-  border:1px solid rgba(204,102,0,.34);border-radius:8px;font-size:12.5px;line-height:1.5;color:#EDEDED}
-.bk-note svg{width:16px;height:16px;color:var(--orange);flex-shrink:0;margin-top:1px}
-.bk-note a{color:var(--orange);font-weight:700;text-decoration:none}
-.bk-note a:hover{color:var(--orange-hi)}
-.bk-submit{width:100%;margin-top:8px;display:inline-flex;align-items:center;justify-content:center;gap:9px}
-.bk-submit svg{width:16px;height:16px}
-@media(max-width:480px){
-  .bk-row2,.bk-radios{grid-template-columns:1fr}
-}
+.faq-cb:checked ~ .faq-q h3{color:#fff}
+.faq-cb:checked ~ .faq-q .faq-ic{transform:rotate(180deg);color:#fff}
+.faq-cb:checked ~ .faq-a{max-height:340px}
+.faq-cb:focus-visible ~ .faq-q{outline:1px solid var(--orange);outline-offset:-1px}
+@media(max-width:560px){.faq-q{padding:17px 4px;gap:12px}.faq-a p{padding:0 12px 20px 36px}}
 
 /* ---------- FOOTER ---------- */
 .pf{border-top:1px solid var(--border);padding:40px 0;background:var(--black)}
@@ -302,7 +296,23 @@ textarea.bk-input{min-height:96px;resize:vertical}
   .awh{min-height:0;padding-top:104px;padding-bottom:72px}
   .awh-in{max-width:100%}
   .awh-intro{max-width:100%;font-size:15.5px;line-height:1.52;margin-top:16px}
-  .sap-grid{grid-template-columns:1fr}
+  .sap-yhead{margin-bottom:22px}
+  .sap-yintro{font-size:14.5px;line-height:1.55;margin-top:10px}
+  .sap-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .sap-grid--flag{grid-template-columns:1fr}
+  .aw-body{padding:11px 11px 13px}
+  .awc-place{font-size:clamp(15px,4.35vw,18px);line-height:1.06}
+  .awc-conv{margin-top:7px;font-size:12.5px;line-height:1.32}
+  .awc-loc{font-size:11.5px;line-height:1.4}
+  .awc-by{margin-top:10px;font-size:9.5px;letter-spacing:.07em}
+  .aw-open{top:8px;right:8px;width:26px;height:26px;border-radius:7px}
+  .aw-open svg{width:13px;height:13px}
+  .aw-soon-ic{width:30px;height:30px}
+  .aw-soon-t{font-size:8px;letter-spacing:.08em}
+  .awc--flag .aw-body{padding:22px 18px 24px}
+  .awc--flag .awc-place{font-size:clamp(24px,7.2vw,30px)}
+  .awc--flag .awc-conv{font-size:15px}
+  .awc--flag .awc-story{font-size:14.5px}
 }
 </style>
 </head>
@@ -323,9 +333,9 @@ textarea.bk-input{min-height:96px;resize:vertical}
       <a href="/#work">Our Work</a>
       <a href="/awards" aria-current="page">Awards</a>
       <a href="/#visit">Visit</a>
-      <a href="#book" class="nav-book">Book Now</a>
+      <a href="/contact#booking" class="nav-book">Book Now</a>
     </nav>
-    <a class="book hdr-book" href="#book">Book Now</a>
+    <a class="book hdr-book" href="/contact#booking">Book Now</a>
     <label for="navtog" class="nav-burger" aria-label="Open menu">
       <svg class="ico-bars" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       <svg class="ico-x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
@@ -401,19 +411,25 @@ textarea.bk-input{min-height:96px;resize:vertical}
   <!-- Sticky filter bar -->
   <div class="sap-filterbar">
     <div class="wrap" role="group" aria-label="Filter awards by placement">
-      <label class="sapf-lab" for="awf-all">All <span class="n">28</span></label>
-      <label class="sapf-lab" for="awf-bos">Best of Show <span class="n">10</span></label>
-      <label class="sapf-lab" for="awf-1st">1st Place <span class="n">6</span></label>
-      <label class="sapf-lab" for="awf-2nd">2nd Place <span class="n">3</span></label>
-      <label class="sapf-lab" for="awf-3rd">3rd Place <span class="n">5</span></label>
-      <label class="sapf-lab" for="awf-other">Other Honors <span class="n">4</span></label>
+      <label class="sapf-lab" for="awf-all">All</label>
+      <label class="sapf-lab" for="awf-bos">Best of Show</label>
+      <label class="sapf-lab" for="awf-1st">1st Place</label>
+      <label class="sapf-lab" for="awf-2nd">2nd Place</label>
+      <label class="sapf-lab" for="awf-3rd">3rd Place</label>
+      <label class="sapf-lab" for="awf-other">Other Honors</label>
     </div>
   </div>
+
+  <input type="checkbox" id="awload-2025" class="aw-load-cb" aria-label="Show all 2025 awards">
+  <input type="checkbox" id="awload-2024" class="aw-load-cb" aria-label="Show all 2024 awards">
 
   <!-- ============ 2026 (flagship) ============ -->
   <section class="section sap-year" id="y2026" aria-labelledby="h2026">
     <div class="wrap">
-      <div class="sap-yhead"><h2 id="h2026">2026 <span class="o">Tattoo Convention Awards</span></h2></div>
+      <div class="sap-yhead">
+        <h2 id="h2026">2026 <span class="o">Tattoo Convention Awards</span></h2>
+        <p class="sap-yintro">The 2026 archive starts with Minh Pham's Best of Show win at the New York Empire State Tattoo Expo, a national-stage milestone for Hyper Inkers.</p>
+      </div>
       <ul class="sap-grid sap-grid--flag">
         <li class="awc awc--flag f-bos">
           <label for="awm-1" class="aw-cardlink" aria-label="Open New York Empire State Tattoo Expo 2026, Best of Show, won by Minh Pham"></label>
@@ -436,7 +452,10 @@ textarea.bk-input{min-height:96px;resize:vertical}
   <!-- ============ 2025 (densest year) ============ -->
   <section class="section sap-year" id="y2025" aria-labelledby="h2025">
     <div class="wrap">
-      <div class="sap-yhead"><h2 id="h2025">2025 <span class="o">Tattoo Convention Awards</span></h2></div>
+      <div class="sap-yhead">
+        <h2 id="h2025">2025 <span class="o">Tattoo Convention Awards</span></h2>
+        <p class="sap-yintro">In 2025, Hyper Inkers expanded from San Antonio to California, Dallas, France, and Italy, earning Best of Show trophies plus category wins from Minh, Tai, Navei, and Nhi.</p>
+      </div>
       <ul class="sap-grid">
 
         <li class="awc f-bos">
@@ -539,6 +558,10 @@ textarea.bk-input{min-height:96px;resize:vertical}
         </li>
 
       </ul>
+      <label class="aw-loadmore" for="awload-2025">
+        <span class="more">Load more 2025 awards</span><span class="less">Show fewer 2025 awards</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </label>
     </div>
   </section>
 
@@ -547,7 +570,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
     <img class="sap-cta1-splat" src="_hero-assets/cta-splatter-orange.png" alt="" aria-hidden="true">
     <div class="wrap">
       <p class="h">Inspired by an <span class="o">award-winning</span> tattoo?</p>
-      <a class="btn btn-primary" href="#book">
+      <a class="btn btn-primary" href="/contact#booking">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v3M16 2v3M3.5 9h17M5 5h14a1.5 1.5 0 0 1 1.5 1.5V19A1.5 1.5 0 0 1 19 20.5H5A1.5 1.5 0 0 1 3.5 19V6.5A1.5 1.5 0 0 1 5 5Z"/></svg>
         Book a Consultation
       </a>
@@ -557,7 +580,10 @@ textarea.bk-input{min-height:96px;resize:vertical}
   <!-- ============ 2024 ============ -->
   <section class="section sap-year" id="y2024" aria-labelledby="h2024">
     <div class="wrap">
-      <div class="sap-yhead"><h2 id="h2024">2024 <span class="o">Tattoo Convention Awards</span></h2></div>
+      <div class="sap-yhead">
+        <h2 id="h2024">2024 <span class="o">Tattoo Convention Awards</span></h2>
+        <p class="sap-yintro">The 2024 season established Hyper Inkers internationally, with Best of Show wins in Houston, Vietnam, Arizona, and Anime Ink, plus first-place and specialty awards across the U.S., Europe, and Brazil's online Tattoo Week.</p>
+      </div>
       <ul class="sap-grid">
 
         <li class="awc f-bos">
@@ -660,13 +686,20 @@ textarea.bk-input{min-height:96px;resize:vertical}
         </li>
 
       </ul>
+      <label class="aw-loadmore" for="awload-2024">
+        <span class="more">Load more 2024 awards</span><span class="less">Show fewer 2024 awards</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </label>
     </div>
   </section>
 
   <!-- ============ 2023 ============ -->
   <section class="section sap-year" id="y2023" aria-labelledby="h2023">
     <div class="wrap">
-      <div class="sap-yhead"><h2 id="h2023">2023 <span class="o">Tattoo Convention Awards</span></h2></div>
+      <div class="sap-yhead">
+        <h2 id="h2023">2023 <span class="o">Tattoo Convention Awards</span></h2>
+        <p class="sap-yintro">These 2023 wins show the early competition foundation: Best of Show in Mexico, first-place category awards, and international placements in Singapore and Colombia.</p>
+      </div>
       <ul class="sap-grid">
 
         <li class="awc f-bos">
@@ -787,77 +820,38 @@ textarea.bk-input{min-height:96px;resize:vertical}
 
 <!-- ==== FAQ ==== -->
 <section class="section s-faq" id="faq">
+  <span class="grain" aria-hidden="true"></span>
   <div class="wrap">
     <header class="section-head center">
       <h2>Hyper Inkers Awards <span class="o">FAQ</span></h2>
     </header>
     <div class="faq-list">
-      <details class="faq-item" name="awfaq" open>
-        <summary>Who won the San Antonio Tattoo Arts Festival 2025?</summary>
-        <div class="faq-a">Minh Pham of Hyper Inkers won Best of Show at the San Antonio Tattoo Arts Festival 2025. Hyper Inkers also took two first-place category awards that weekend: Minh won 1st Place Large Color, and Tai won 1st Place Female Medium Black and Grey.</div>
-      </details>
-      <details class="faq-item" name="awfaq">
-        <summary>What awards has Minh Pham won?</summary>
-        <div class="faq-a">Minh Pham has won 10 Best of Show titles and more than 40 competition trophies across 20+ tattoo conventions in 8 countries from 2023 to 2026. His Best of Show wins include the New York Empire State Tattoo Expo, the Golden State Tattoo Expo, the Caserta Tattoo Convention in Italy, and the San Antonio Tattoo Arts Festival.</div>
-      </details>
-      <details class="faq-item" name="awfaq">
-        <summary>How many tattoo awards has Hyper Inkers won?</summary>
-        <div class="faq-a">Hyper Inkers has won more than 40 competition trophies across 20+ tattoo conventions in 8 countries between 2023 and 2026, including 10 Best of Show titles. Most were earned by founder Minh Pham, with category wins from artists such as Tai, Navei, and Nhi.</div>
-      </details>
-      <details class="faq-item" name="awfaq">
-        <summary>Which tattoo conventions has Hyper Inkers competed in?</summary>
-        <div class="faq-a">Hyper Inkers artists have competed across the United States, Europe, Asia, and Latin America. These include the New York Empire State Tattoo Expo, the Golden State Tattoo Expo, the Sinners Tattoo Expo, the Caserta Tattoo Convention in Italy, the Houston Tattoo Festival, and the SaiGon Tattoo Expo.</div>
-      </details>
-      <details class="faq-item" name="awfaq">
-        <summary>Who is the best black and grey tattoo artist in San Antonio?</summary>
-        <div class="faq-a"><a href="/tattoo-artist/minh-pham">Minh Pham</a>, the founder of Hyper Inkers, is a black and grey realism specialist and a 10-time Best of Show winner. You can see his work and meet the rest of our award-winning artists on our <a href="/#artists">artists page</a>.</div>
-      </details>
+      <div class="faq-item">
+        <input type="radio" name="awfaqacc" id="awfaq-1" class="faq-cb" checked aria-label="Who won the San Antonio Tattoo Arts Festival 2025?">
+        <label for="awfaq-1" class="faq-q"><span class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span><h3>Who won the San Antonio Tattoo Arts Festival 2025?</h3></label>
+        <div class="faq-a"><p>Minh Pham of Hyper Inkers won Best of Show at the San Antonio Tattoo Arts Festival 2025. Hyper Inkers also took two first-place category awards that weekend: Minh won 1st Place Large Color, and Tai won 1st Place Female Medium Black and Grey.</p></div>
+      </div>
+      <div class="faq-item">
+        <input type="radio" name="awfaqacc" id="awfaq-2" class="faq-cb" aria-label="What awards has Minh Pham won?">
+        <label for="awfaq-2" class="faq-q"><span class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span><h3>What awards has Minh Pham won?</h3></label>
+        <div class="faq-a"><p>Minh Pham has won 10 Best of Show titles and more than 40 competition trophies across 20+ tattoo conventions in 8 countries from 2023 to 2026. His Best of Show wins include the New York Empire State Tattoo Expo, the Golden State Tattoo Expo, the Caserta Tattoo Convention in Italy, and the San Antonio Tattoo Arts Festival.</p></div>
+      </div>
+      <div class="faq-item">
+        <input type="radio" name="awfaqacc" id="awfaq-3" class="faq-cb" aria-label="How many tattoo awards has Hyper Inkers won?">
+        <label for="awfaq-3" class="faq-q"><span class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span><h3>How many tattoo awards has Hyper Inkers won?</h3></label>
+        <div class="faq-a"><p>Hyper Inkers has won more than 40 competition trophies across 20+ tattoo conventions in 8 countries between 2023 and 2026, including 10 Best of Show titles. Most were earned by founder Minh Pham, with category wins from artists such as Tai, Navei, and Nhi.</p></div>
+      </div>
+      <div class="faq-item">
+        <input type="radio" name="awfaqacc" id="awfaq-4" class="faq-cb" aria-label="Which tattoo conventions has Hyper Inkers competed in?">
+        <label for="awfaq-4" class="faq-q"><span class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span><h3>Which tattoo conventions has Hyper Inkers competed in?</h3></label>
+        <div class="faq-a"><p>Hyper Inkers artists have competed across the United States, Europe, Asia, and Latin America. These include the New York Empire State Tattoo Expo, the Golden State Tattoo Expo, the Sinners Tattoo Expo, the Caserta Tattoo Convention in Italy, the Houston Tattoo Festival, and the SaiGon Tattoo Expo.</p></div>
+      </div>
+      <div class="faq-item">
+        <input type="radio" name="awfaqacc" id="awfaq-5" class="faq-cb" aria-label="Who is the best black and grey tattoo artist in San Antonio?">
+        <label for="awfaq-5" class="faq-q"><span class="faq-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></span><h3>Who is the best black and grey tattoo artist in San Antonio?</h3></label>
+        <div class="faq-a"><p><a href="/tattoo-artist/minh-pham">Minh Pham</a>, the founder of Hyper Inkers, is a black and grey realism specialist and a 10-time Best of Show winner. You can see his work and meet the rest of our award-winning artists on our <a href="/#artists">artists page</a>.</p></div>
+      </div>
     </div>
-  </div>
-</section>
-
-<!-- ==== BOOKING FORM ==== -->
-<section class="section s-book" id="book">
-  <span class="grain" aria-hidden="true"></span>
-  <div class="wrap">
-    <header class="section-head center">
-      <h2>Book an <span class="o">Award-Winning</span> Tattoo Consultation</h2>
-      <p class="book-lead">Tell us the award, style, or artist that inspired your tattoo. We will help match the idea to the right Hyper Inkers artist in San Antonio.</p>
-    </header>
-
-    <form class="bk-form-card" onsubmit="return false" novalidate aria-label="Book a free tattoo consultation">
-      <p class="bk-form-intro">Ready to start your tattoo? Book a free consultation with a Hyper Inkers artist in San Antonio, or call and we will help you plan your piece. Bring a reference or just an idea, and your artist will design it custom before any ink.</p>
-      <div class="bk-row2">
-        <div class="bk-field"><label class="field-label" for="awbk-name">Your Name</label><input class="bk-input" id="awbk-name" type="text" name="your-name" placeholder="Your Name"></div>
-        <div class="bk-field"><label class="field-label" for="awbk-phone">Phone Number</label><input class="bk-input" id="awbk-phone" type="tel" name="your-phone" placeholder="Phone Number"></div>
-      </div>
-      <div class="bk-row2">
-        <div class="bk-field"><label class="field-label" for="awbk-email">Email Address</label><input class="bk-input" id="awbk-email" type="email" name="your-email" placeholder="Email Address"></div>
-        <div class="bk-field"><label class="field-label" for="awbk-date">Appointment Date</label><input class="bk-input" id="awbk-date" type="date" name="appointment-date"></div>
-      </div>
-      <div class="bk-field">
-        <span class="field-label">Choose Your Artist</span>
-        <div class="bk-radios" role="radiogroup" aria-label="Choose your artist">
-          <label class="bk-radio"><input type="radio" name="your-artist" value="Open to rec."><span class="bk-dot" aria-hidden="true"></span><span class="bk-rlabel">Open to rec.</span></label>
-          <label class="bk-radio"><input type="radio" name="your-artist" value="Minh Pham"><span class="bk-dot" aria-hidden="true"></span><span class="bk-rlabel">Minh Pham</span></label>
-          <label class="bk-radio"><input type="radio" name="your-artist" value="Tai Hoa"><span class="bk-dot" aria-hidden="true"></span><span class="bk-rlabel">Tai Hoa</span></label>
-          <label class="bk-radio"><input type="radio" name="your-artist" value="Mancha"><span class="bk-dot" aria-hidden="true"></span><span class="bk-rlabel">Mancha</span></label>
-          <label class="bk-radio"><input type="radio" name="your-artist" value="Navei"><span class="bk-dot" aria-hidden="true"></span><span class="bk-rlabel">Navei</span></label>
-          <label class="bk-radio"><input type="radio" name="your-artist" value="Nicole"><span class="bk-dot" aria-hidden="true"></span><span class="bk-rlabel">Nicole</span></label>
-        </div>
-      </div>
-      <div class="bk-field">
-        <span class="field-label">What Service Do You Need?</span>
-        <div class="bk-radios" role="radiogroup" aria-label="What service do you need">
-          <label class="bk-radio"><input type="radio" name="your-service" value="Custom Tattoo"><span class="bk-dot" aria-hidden="true"></span><span class="bk-rlabel">Custom Tattoo</span></label>
-          <label class="bk-radio"><input type="radio" name="your-service" value="Cover-up Tattoo"><span class="bk-dot" aria-hidden="true"></span><span class="bk-rlabel">Cover-up Tattoo</span></label>
-          <label class="bk-radio"><input type="radio" name="your-service" value="Award-Inspired Tattoo"><span class="bk-dot" aria-hidden="true"></span><span class="bk-rlabel">Award-Inspired Tattoo</span></label>
-        </div>
-        <p class="bk-note" role="note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12" stroke-linecap="round"/><line x1="12" y1="16" x2="12.01" y2="16" stroke-linecap="round"/></svg><span>Prefer to talk first? Call <a href="tel:+12109979737">(210) 997-9737</a> and we will help you plan the piece.</span></p>
-      </div>
-      <div class="bk-field"><label class="field-label" for="awbk-msg">Description</label><textarea class="bk-input" id="awbk-msg" name="your-message" placeholder="Tell us the award, style, artist, placement, or reference that inspired your tattoo."></textarea></div>
-      <button class="btn btn-primary bk-submit" type="submit">Book a Free Consultation <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-    </form>
   </div>
 </section>
 
