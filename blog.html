@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Insights, aftercare guides, and stories from Hyper Inkers, San Antonio's tattoo, piercing, and tattoo removal studio.">
+<title>Blog | Hyper Inkers</title>
+<link rel="stylesheet" href="fonts-hyperinkers-2026-07-04/hyperinkers-fonts.css">
+<link rel="stylesheet" href="_foundation/hi-foundation.css">
+<style>
+:root{
+  --blog-page:#F8F5EC;
+  --blog-paper:#FFFFFF;
+  --blog-soft:#F1EDE3;
+  --blog-ink:#11110F;
+  --blog-muted:#5D5A53;
+  --blog-line:rgba(17,17,15,.12);
+  --blog-shadow:0 18px 46px rgba(22,18,12,.13);
+}
+body{background:var(--blog-page);color:var(--blog-ink)}
+main{overflow:clip;background:var(--blog-page)}
+.hdr{position:sticky;top:0;background:#050505;border-bottom:1px solid rgba(255,255,255,.1);box-shadow:0 10px 30px rgba(0,0,0,.24)}
+.blog-hero{position:relative;min-height:0;background:var(--blog-paper);padding:clamp(46px,6vw,76px) 0 clamp(22px,3vw,36px);border-bottom:1px solid var(--blog-line)}
+.blog-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(78% 130% at 8% 0%,rgba(204,102,0,.12),rgba(204,102,0,0) 58%),linear-gradient(180deg,#fff 0%,var(--blog-page) 100%);z-index:0}
+.blog-hero .grain{opacity:.025;mix-blend-mode:multiply}
+.blog-hero .wrap{position:relative;z-index:2}
+.crumb{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:clamp(22px,3vw,32px);font-family:var(--sub);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#6D675E}
+.crumb a{color:#1B1B18}
+.crumb span[aria-current="page"]{color:var(--orange)}
+.blog-hero h1{max-width:850px;margin:0;color:var(--blog-ink);text-shadow:none}
+.blog-hero h1 .o{display:inline;color:var(--orange)}
+.blog-lead{max-width:690px;margin-top:18px;font-size:18px;line-height:1.65;color:var(--blog-muted)}
+.blog-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:34px}
+.blog-tab{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:46px;padding:11px 24px;border:1px solid var(--blog-line);border-radius:999px;background:#fff;color:#26231F;font-family:var(--sub);font-size:13.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;cursor:pointer;box-shadow:0 8px 24px rgba(22,18,12,.08);transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease),transform .2s var(--ease),box-shadow .2s var(--ease)}
+.blog-tab:hover{border-color:rgba(204,102,0,.45);color:#111;transform:translateY(-1px);box-shadow:0 12px 28px rgba(22,18,12,.12)}
+.blog-tab.is-active{background:var(--orange);border-color:var(--orange);color:#fff;box-shadow:0 16px 34px rgba(204,102,0,.25)}
+.blog-tab:focus-visible,.blog-link:focus-visible,.pagination a:focus-visible,.pagination .current:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+.section-blog{background:var(--blog-page);color:var(--blog-ink)}
+.section-blog h2,.section-blog h3{color:var(--blog-ink);text-shadow:none}
+.section-blog p{color:var(--blog-muted)}
+.section-blog .section-title-row h2{max-width:none;margin-inline:0}
+.blog-hero + .section-blog{padding-top:clamp(28px,3vw,40px)}
+.section-blog.alt{background:var(--blog-soft)}
+.section-title-row{display:flex;align-items:center;gap:20px;margin-bottom:clamp(24px,3vw,36px)}
+.section-title-row h2{white-space:nowrap}
+.section-title-row::after{content:"";height:1px;flex:1;background:linear-gradient(90deg,var(--orange),rgba(204,102,0,0))}
+.featured-grid{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);gap:18px;align-items:stretch}
+.feature-hero,.feature-mini,.post-card{position:relative;overflow:hidden;border:1px solid var(--card-brd);transition:border-color .2s var(--ease),transform .2s var(--ease),box-shadow .2s var(--ease)}
+.feature-hero,.feature-mini{background:var(--blog-paper);border-color:var(--blog-line);border-radius:12px;box-shadow:var(--blog-shadow)}
+.feature-hero:hover,.feature-mini:hover{border-color:rgba(204,102,0,.55);transform:translateY(-3px);box-shadow:0 26px 64px rgba(22,18,12,.2)}
+.feature-img,.post-img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;background:#E7E1D6}
+.feature-hero .feature-img{aspect-ratio:16/10}
+.feature-body{padding:20px 22px 22px}
+.badge-hot{position:absolute;top:16px;left:16px;z-index:2;display:inline-flex;align-items:center;min-height:34px;padding:8px 14px;border-radius:4px;background:var(--orange);color:#fff;font-family:var(--sub);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;box-shadow:0 14px 32px rgba(0,0,0,.38)}
+.meta-row{display:inline-flex;align-items:center;gap:6px;margin-bottom:12px;font-family:var(--sub);font-size:11.5px;font-weight:600;letter-spacing:.03em;text-transform:none;color:#8A8A8A}
+.meta-row::before{display:none}
+.feature-hero h3,.feature-mini h3{font-family:var(--sub);font-weight:600;text-transform:uppercase;letter-spacing:.035em;line-height:1.25;color:var(--blog-ink)}
+.feature-hero h3{font-size:clamp(21px,2.1vw,28px)}
+.feature-mini h3{font-size:15px}
+.feature-hero p,.feature-mini p{margin-top:10px;color:var(--blog-muted);font-size:14px;line-height:1.55;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.feature-mini-stack{display:grid;gap:14px}
+.feature-mini{display:grid;grid-template-columns:132px minmax(0,1fr);gap:0}
+.feature-mini .feature-img{height:100%;min-height:132px}
+.feature-mini .feature-body{padding:16px 18px}
+.blog-link{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-family:var(--sub);font-size:12.5px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;color:var(--orange)}
+.blog-link svg{width:15px;height:15px;transition:transform .2s var(--ease)}
+.feature-hero:hover .blog-link svg,.feature-mini:hover .blog-link svg,.post-card:hover .blog-link svg{transform:translateX(3px)}
+.latest-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:clamp(24px,3vw,36px)}
+.latest-head .section-title-row{flex:1;margin-bottom:0}
+.latest-note{max-width:360px;margin:0;color:var(--blog-muted);font-size:14px;line-height:1.55;text-align:right}
+.posts-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.post-card{display:flex;flex-direction:column;border-radius:12px;background:var(--blog-paper);color:#121212;border-color:var(--blog-line);box-shadow:var(--blog-shadow)}
+.post-card:hover{border-color:rgba(204,102,0,.7);transform:translateY(-3px);box-shadow:0 26px 64px rgba(22,18,12,.2)}
+.post-card .post-img{border-bottom:1px solid rgba(0,0,0,.08)}
+.post-body{display:flex;flex-direction:column;flex:1;padding:18px 20px 20px}
+.post-card .meta-row{color:#777;margin-bottom:12px}
+.post-card h3{font-family:var(--sub);font-weight:600;text-transform:none;letter-spacing:0;line-height:1.28;color:#111;font-size:17px;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.post-card p{margin:10px 0 0;color:#666;font-size:13.5px;line-height:1.55;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}
+.post-card .blog-link{margin-top:auto;padding-top:16px;color:var(--orange)}
+.pagination{display:flex;justify-content:center;gap:8px;list-style:none;margin-top:36px}
+.pagination a,.pagination span{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;border:1px solid var(--blog-line);font-family:var(--sub);font-size:13px;color:var(--blog-ink);background:#fff}
+.pagination .current{background:var(--orange);border-color:var(--orange);color:#fff}
+.pagination a:hover{border-color:var(--orange);color:var(--orange)}
+.blog-cta{position:relative;overflow:hidden;text-align:center;background:#FBF8EF;border-top:1px solid var(--blog-line);border-bottom:1px solid var(--blog-line);padding-block:clamp(74px,10vw,140px)}
+.blog-cta-splat{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:min(95vw,2200px);max-width:none;height:auto;opacity:.28;pointer-events:none;user-select:none;z-index:0}
+.blog-cta::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(58% 72% at 50% 50%,rgba(251,248,239,.78),rgba(251,248,239,.45) 58%,rgba(251,248,239,.92) 100%)}
+.blog-cta .wrap{position:relative;z-index:2}
+.blog-cta h2{max-width:min(980px,94vw);margin:0 auto;font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:1;letter-spacing:0;font-size:clamp(38px,5.2vw,68px);color:var(--blog-ink);text-shadow:none;text-wrap:balance}
+.blog-cta p{max-width:50ch;margin:clamp(16px,2vw,22px) auto 0;color:#4F4A45;font-family:var(--sub);font-size:clamp(14px,1.4vw,17px);letter-spacing:.02em;line-height:1.55}
+.blog-cta .cta{justify-content:center;margin-top:clamp(24px,3vw,36px)}
+.blog-cta-call{border:0!important;min-height:44px;padding-inline:10px;color:var(--blog-ink);background:transparent}
+.blog-cta-call:hover{color:var(--orange)}
+.pf{border-top:1px solid var(--border);padding:40px 0;background:var(--black)}
+.pf-in{display:flex;flex-direction:column;gap:8px;text-align:center}
+.pf-nap{font-size:13.5px;color:var(--muted);line-height:1.6}
+.pf-nap a{color:var(--cream)}
+.pf-copy{font-size:12px;color:#777;letter-spacing:.03em}
+@media(max-width:1020px){
+  .featured-grid{grid-template-columns:1fr}
+  .feature-mini-stack{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .feature-mini{grid-template-columns:1fr}
+  .feature-mini .feature-img{height:auto;min-height:0}
+  .posts-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .latest-head{display:block}
+  .latest-note{text-align:left;margin-top:12px;max-width:560px}
+}
+@media(max-width:700px){
+  .blog-hero{padding:104px 0 24px}
+  .blog-lead{font-size:15.5px}
+  .blog-tabs{justify-content:flex-start;gap:8px;margin-top:26px}
+  .blog-tab{padding:10px 15px;font-size:11.5px;letter-spacing:.035em;min-height:42px}
+  .section-title-row{gap:14px}
+  .section-title-row h2{white-space:normal}
+  .feature-mini-stack{grid-template-columns:1fr}
+  .feature-mini{grid-template-columns:112px minmax(0,1fr)}
+  .feature-mini .feature-img{height:100%;min-height:112px}
+  .posts-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .post-body{padding:13px 12px 14px}
+  .post-card h3{font-size:13.5px;-webkit-line-clamp:3}
+  .post-card p{font-size:12px;line-height:1.45;-webkit-line-clamp:2}
+  .post-card .meta-row{font-size:9.5px;gap:0;margin-bottom:8px}
+  .post-card .blog-link{font-size:10.5px;padding-top:12px}
+  .pagination{margin-top:28px}
+  .blog-cta h2{font-size:clamp(30px,10vw,46px)}
+  .blog-cta-splat{width:250vw;opacity:.42}
+}
+@media(max-width:430px){
+  .wrap{padding-inline:18px}
+  .blog-hero h1{font-size:clamp(34px,12vw,48px)}
+  .blog-tab{padding:9px 12px;font-size:10.5px;gap:5px}
+  .feature-body{padding:17px 16px 18px}
+  .feature-mini{grid-template-columns:96px minmax(0,1fr)}
+  .feature-mini .feature-img{min-height:104px}
+  .feature-mini .feature-body{padding:12px}
+  .feature-mini h3{font-size:12.5px;-webkit-line-clamp:2;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}
+  .feature-mini p{font-size:11.5px;margin-top:6px}
+  .post-card{border-radius:10px}
+  .post-img{aspect-ratio:4/3}
+  .post-card h3{font-size:12.5px}
+  .post-card p{font-size:11.5px}
+}
+@media(max-width:374px){
+  .wrap{padding-inline:14px}
+  .blog-tab{font-size:10px;padding-inline:9px}
+  .posts-grid{gap:10px}
+  .post-body{padding:11px 10px 12px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="hdr">
+  <div class="wrap">
+    <input type="checkbox" id="navtog" class="nav-toggle" aria-label="Open navigation menu">
+    <a class="logo" href="/" aria-label="Hyper Inkers home">
+      <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers">
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/tattoo">Tattoo</a>
+      <a href="/piercing">Piercing</a>
+      <a href="/tattoo-removal">Removal</a>
+      <a href="/tattoo-artist">Artists</a>
+      <a href="/awards">Awards</a>
+      <a href="/blog" aria-current="page">Blog</a>
+      <a href="#book" class="nav-book">Book Now</a>
+    </nav>
+    <a class="book hdr-book" href="#book">Book Now</a>
+    <label for="navtog" class="nav-burger" aria-label="Open menu">
+      <svg class="ico-bars" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="ico-x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </label>
+  </div>
+</header>
+
+<main id="main">
+  <section class="blog-hero" aria-labelledby="blog-title">
+    <span class="grain" aria-hidden="true"></span>
+    <div class="wrap">
+      <nav class="crumb" aria-label="Breadcrumb">
+        <a href="/">Home</a><span aria-hidden="true">/</span><span aria-current="page">Blog</span>
+      </nav>
+      <h1 id="blog-title">Blog <span class="o">Hub</span></h1>
+      <p class="blog-lead">Insights, aftercare guides, and stories from San Antonio's premier tattoo and piercing studio, written by our award-winning artists with 15+ years of experience.</p>
+      <div class="blog-tabs" role="tablist" aria-label="Filter blog posts by category">
+        <button class="blog-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="posts-grid" aria-label="Tattoo articles">Tattoo</button>
+        <button class="blog-tab" type="button" role="tab" aria-selected="false" aria-controls="posts-grid" aria-label="Piercing articles">Piercing</button>
+        <button class="blog-tab" type="button" role="tab" aria-selected="false" aria-controls="posts-grid" aria-label="Tattoo removal articles">Tattoo Removal</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-blog" aria-labelledby="featured-title">
+    <div class="wrap">
+      <div class="section-title-row">
+        <h2 id="featured-title">Featured <span class="o">Articles</span></h2>
+      </div>
+      <div class="featured-grid">
+        <article class="feature-hero">
+          <span class="badge-hot" aria-label="Hot article">Hot</span>
+          <img class="feature-img" src="https://hyperinkers.com/wp-content/uploads/2025/12/where-tattoos-are-most-popular-300x225.jpg" alt="Where Tattoos Are Most Popular" width="600" height="450" loading="eager" fetchpriority="high">
+          <div class="feature-body">
+            <div class="meta-row">Updated May 19, 2026</div>
+            <h3>Where Tattoos Are Most Popular? A 2026 Global Study</h3>
+            <p>Report highlights. According to the most comprehensive global survey data from 2018-2024, Italy ranks as the most tattooed country at 48%, followed by Sweden at 47% and the United States at 46%.</p>
+            <a href="#" class="blog-link">Read article <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </article>
+        <div class="feature-mini-stack">
+          <article class="feature-mini">
+            <img class="feature-img" src="https://hyperinkers.com/wp-content/uploads/2025/12/tattoo-prevalence-in-the-united-states-300x225.jpeg" alt="Tattoo prevalence statistics in the United States" width="300" height="225" loading="lazy">
+            <div class="feature-body">
+              <div class="meta-row">Updated May 15, 2026</div>
+              <h3>How Many People Have Tattoos in The US? 2026 Data</h3>
+              <p>Latest 2026 survey reveals 32% of Americans now have at least one tattoo.</p>
+              <a href="#" class="blog-link">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </article>
+          <article class="feature-mini">
+            <img class="feature-img" src="https://hyperinkers.com/wp-content/uploads/2025/07/best-piercings-for-beginners-5-300x225.png" alt="Best piercings for beginners, ear cartilage and nostril options" width="300" height="225" loading="lazy">
+            <div class="feature-body">
+              <div class="meta-row">Updated May 12, 2026</div>
+              <h3>What is The Best Piercing for Beginners? 4 Places to Consider</h3>
+              <p>Earlobe, helix, nostril, and navel: beginner-friendly options ranked by pain.</p>
+              <a href="#" class="blog-link">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </article>
+          <article class="feature-mini">
+            <img class="feature-img" src="https://hyperinkers.com/wp-content/uploads/2025/12/Percentage-of-people-who-regret-tattoos-300x225.jpg" alt="Percentage of people who regret their tattoos statistics chart" width="300" height="225" loading="lazy">
+            <div class="feature-body">
+              <div class="meta-row">Updated May 10, 2026</div>
+              <h3>Tattoo Regret Statistics: When Removal Becomes The Answer</h3>
+              <p>27% of tattooed adults consider removal. Here's what drives the decision.</p>
+              <a href="#" class="blog-link">Read <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-blog alt" aria-labelledby="latest-title">
+    <div class="wrap">
+      <div class="latest-head">
+        <div class="section-title-row">
+          <h2 id="latest-title">Latest <span class="o">Posts</span></h2>
+        </div>
+      </div>
+      <div class="posts-grid" id="posts-grid" role="region" aria-label="Latest blog posts">
+        <article class="post-card">
+          <img class="post-img" src="https://hyperinkers.com/wp-content/uploads/2025/07/what-to-avoid-after-getting-a-piercing-2-300x225.png" alt="What to avoid after getting a piercing, aftercare guide" width="400" height="300" loading="eager">
+          <div class="post-body">
+            <div class="meta-row">Updated May 8, 2026</div>
+            <h3>What to Avoid After Getting a Piercing? 7 Things You Need to Know</h3>
+            <p>Getting a new piercing marks the beginning of a healing journey that requires careful attention to aftercare practices and lifestyle choices.</p>
+            <a href="#" class="blog-link">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </article>
+        <article class="post-card">
+          <img class="post-img" src="https://hyperinkers.com/wp-content/uploads/2025/07/foods-after-piercings-6-300x225.png" alt="Healing foods to eat after a new piercing" width="400" height="300" loading="eager">
+          <div class="post-body">
+            <div class="meta-row">Updated May 5, 2026</div>
+            <h3>What to Eat After Getting a Piercing? Foods That Speed Healing</h3>
+            <p>Your dietary choices following a new piercing significantly impact healing success, comfort levels, and complication risk during recovery.</p>
+            <a href="#" class="blog-link">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </article>
+        <article class="post-card">
+          <img class="post-img" src="https://hyperinkers.com/wp-content/uploads/2025/07/do-piercing-hurt-3-300x225.png" alt="Pain scale for different piercing types" width="400" height="300" loading="eager">
+          <div class="post-body">
+            <div class="meta-row">Updated May 3, 2026</div>
+            <h3>Do Piercings Hurt? Understanding The Pain of Piercing in 2026</h3>
+            <p>The question "Do piercings hurt?" ranks among the most common concerns for anyone considering body modification at a professional studio.</p>
+            <a href="#" class="blog-link">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </article>
+        <article class="post-card">
+          <img class="post-img" src="https://hyperinkers.com/wp-content/uploads/2025/07/what-to-eat-tongue-piercing-1-300x225.png" alt="Soft foods recommended after tongue piercing" width="400" height="300" loading="eager">
+          <div class="post-body">
+            <div class="meta-row">Updated May 1, 2026</div>
+            <h3>What to Eat After a Tongue Piercing: A Complete Food Guide</h3>
+            <p>The journey of tongue piercing transformation extends beyond the piercing chair. While the modification itself is quick, healing takes weeks.</p>
+            <a href="#" class="blog-link">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </article>
+        <article class="post-card">
+          <img class="post-img" src="https://hyperinkers.com/wp-content/uploads/2025/07/oral-piercing-aftercare-3-300x225.png" alt="Oral piercing aftercare routine" width="400" height="300" loading="eager">
+          <div class="post-body">
+            <div class="meta-row">Updated April 28, 2026</div>
+            <h3>Oral Piercing Aftercare: A Complete Guide to Healing Your New Piercing</h3>
+            <p>Getting an oral piercing is an exciting way to express your individuality; however, it requires diligent aftercare to prevent complications.</p>
+            <a href="#" class="blog-link">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </article>
+        <article class="post-card">
+          <img class="post-img" src="https://hyperinkers.com/wp-content/uploads/2025/12/where-tattoos-are-most-popular-300x225.jpg" alt="Where tattoos are most popular, global popularity map" width="400" height="300" loading="eager">
+          <div class="post-body">
+            <div class="meta-row">Updated April 25, 2026</div>
+            <h3>How to Choose Your First Custom Tattoo Artist in San Antonio</h3>
+            <p>Selecting the right artist for your first piece is the most important decision you'll make. Style, portfolio, hygiene, and chemistry all matter.</p>
+            <a href="#" class="blog-link">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </article>
+        <article class="post-card">
+          <img class="post-img" src="https://hyperinkers.com/wp-content/uploads/2025/12/tattoo-prevalence-in-the-united-states-300x225.jpeg" alt="Tattoo prevalence in the United States chart" width="400" height="300" loading="eager">
+          <div class="post-body">
+            <div class="meta-row">Updated April 22, 2026</div>
+            <h3>Laser Tattoo Removal: What to Expect in Your First Session</h3>
+            <p>Modern laser technology has transformed tattoo removal from a long, scarring process into a precise, manageable treatment with clear stages.</p>
+            <a href="#" class="blog-link">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </article>
+        <article class="post-card">
+          <img class="post-img" src="https://hyperinkers.com/wp-content/uploads/2025/12/Percentage-of-people-who-regret-tattoos-300x225.jpg" alt="Tattoo regret statistics chart" width="400" height="300" loading="eager">
+          <div class="post-body">
+            <div class="meta-row">Updated April 19, 2026</div>
+            <h3>Cover-Up vs. Removal: Which Path is Right for Your Old Tattoo?</h3>
+            <p>When you no longer love a tattoo, two paths emerge: artistic cover-up or laser removal. Each has trade-offs in cost, time, and final result.</p>
+            <a href="#" class="blog-link">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </article>
+        <article class="post-card">
+          <img class="post-img" src="https://hyperinkers.com/wp-content/uploads/2025/07/best-piercings-for-beginners-5-300x225.png" alt="Best piercings for beginners" width="400" height="300" loading="eager">
+          <div class="post-body">
+            <div class="meta-row">Updated April 16, 2026</div>
+            <h3>How Much Does Tattoo Removal Cost in San Antonio? 2026 Pricing Guide</h3>
+            <p>Tattoo removal pricing varies based on size, color, location, and sessions needed. Here's a transparent breakdown of what San Antonio studios charge.</p>
+            <a href="#" class="blog-link">Read more <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+          </div>
+        </article>
+      </div>
+      <nav aria-label="Pagination">
+        <ul class="pagination">
+          <li><span class="current" aria-current="page" tabindex="0" aria-label="Current page, page 1">1</span></li>
+          <li><a href="#" aria-label="Go to page 2">2</a></li>
+          <li><a href="#" aria-label="Go to page 3">3</a></li>
+          <li><span aria-hidden="true">...</span></li>
+          <li><a href="#" aria-label="Go to page 10">10</a></li>
+        </ul>
+      </nav>
+    </div>
+  </section>
+
+  <section class="section blog-cta" id="book" aria-labelledby="book-title">
+    <img class="blog-cta-splat" src="_hero-assets/cta-splatter-orange.png" alt="" aria-hidden="true">
+    <div class="wrap">
+      <h2 id="book-title">Have a tattoo or piercing question?</h2>
+      <p>Talk with Hyper Inkers before you book. The team can help with placement, artist fit, aftercare, cover-ups, or removal questions.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="/contact">Book Now <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+        <a class="btn btn-ghost blog-cta-call" href="tel:+12109979737">Call (210) 997-9737</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="pf">
+  <div class="wrap pf-in">
+    <p class="pf-nap"><b>Hyper Inkers</b> &middot; 8045 Callaghan Rd, San Antonio, TX 78230 &middot; <a href="tel:+12109979737">(210) 997-9737</a> &middot; Mon-Thu 10am-12am, Fri-Sat 10am-1am, Sun 11am-1am</p>
+    <p class="pf-copy">&copy; Hyper Inkers &middot; Tattoo, Piercing, and Tattoo Removal Guides</p>
+  </div>
+</footer>
+</body>
+</html>
