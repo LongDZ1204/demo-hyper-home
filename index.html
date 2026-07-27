@@ -822,11 +822,17 @@ body.gal-lock{overflow:hidden}
      640px so it cannot take any — which blows the seal column out to ~490px and
      leaves a hole between the seal and the text. Packing the tracks at the
      start keeps that leftover space at the far right, where it belongs. */
-  .soa-plaque{grid-template-columns:max-content minmax(0,640px);
+  .soa-plaque{grid-template-columns:max-content minmax(0,1fr);
     justify-content:start;
     column-gap:clamp(26px,3vw,44px);row-gap:14px}
   .soa-p-seal{grid-column:1;grid-row:1 / span 3;align-self:center}
   .soa-p-h,.soa-p-txt,.soa-p-link{grid-column:2}
+  /* text runs the full track on desktop; the caps above only govern the
+     stacked layout, where the viewport is the limit anyway */
+  .soa-p-h,.soa-p-txt{max-width:none}
+  /* CTA breaks to the opposite edge, so the block is anchored at both ends
+     instead of trailing off to the right */
+  .soa-p-link{justify-self:end}
 }
 
 /* ============================================================================
