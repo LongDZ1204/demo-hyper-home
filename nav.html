@@ -11,7 +11,7 @@
   ============================================================================
   HEADER NAV DEMO v2 · 2026-07-08 · Cinematic Dark Editorial
   SPEC LOCKED (Gate 0/3):
-   - LEAN header, Ganga-style: transparent nav + top scrim, 5 items distributed
+   - LEAN header, Ganga-style: transparent nav + top scrim, 6 items distributed
    - Promo TOP BAR: "See Hyper Inkers deals for you →" -> /promotions (dismissible ✕)
    - HOME dropped (logo -> home) · Promotions moved to promo bar
    - SERVICES = simple 1-column dropdown + hover FLYOUT for children
@@ -19,7 +19,9 @@
         Piercing ›       -> Ear / Face / Body
         Cover-Up / Removal = direct links (no children)
       (NO "All styles →" / "All piercings →" footer links — removed per B.Long)
-   - Gallery / About = simple 1-column dropdown (no children)
+   - Gallery / About Us = simple 1-column dropdown (no children)
+   - CONTACT US promoted out of About Us -> top-level, last item before the clock (2026-07-27)
+   - Logo = live brand asset (Asset-49, native orange #CC6600) hotlinked from hyperinkers.com
    - Live clock: America/Chicago (SA), single line, + Open/Closed from real hours
    - Mobile: fullscreen drawer, tap-to-expand accordion (2 levels), clock pinned top
    - Tokens from hi-foundation.css (NOT modified)
@@ -291,7 +293,8 @@
     <input type="checkbox" id="navtog" class="nav-toggle" aria-label="Open navigation menu">
 
     <a class="logo" href="/" aria-label="Hyper Inkers home">
-      <img src="assets/hi-logo.webp" alt="Hyper Inkers">
+      <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp"
+           alt="Hyper Inkers" width="1024" height="192">
     </a>
 
     <nav class="nav" aria-label="Primary">
@@ -354,7 +357,6 @@
           </a>
           <div class="drop menu simple" role="menu">
             <ul class="lvl1">
-              <li><a href="/contact">Contact</a></li>
               <li><a href="/faq">FAQ</a></li>
               <li><a href="/testimonials">Testimonials</a></li>
               <li><a href="/awards">Awards</a></li>
@@ -363,6 +365,9 @@
         </li>
 
         <li><a class="navlink" href="/blog">Blog</a></li>
+
+        <!-- CONTACT US: promoted out of the About Us dropdown — last item before the clock -->
+        <li><a class="navlink" href="/contact">Contact Us</a></li>
       </ul>
 
       <!-- desktop clock now sits WITH the menu (right after Blog, divider between) -->
@@ -407,7 +412,8 @@
 <footer class="ft">
   <div class="wrap">
     <div class="ft-top">
-      <img class="ft-logo" src="assets/hi-logo.webp" alt="Hyper Inkers">
+      <img class="ft-logo" src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp"
+           alt="Hyper Inkers" width="1024" height="192">
       <div class="ft-tag">Tattoo Parlor in San Antonio</div>
       <!-- real brand social icons (site assets, gold/tan circle) — replaces hand-drawn SVGs -->
       <div class="ft-social">
