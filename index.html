@@ -776,17 +776,23 @@ body.gal-lock{overflow:hidden}
    juried; this one is a city-wide reader vote, so it gets its own heading rather
    than an 8th rail card, and the intro's "these are juried awards, not
    popularity votes" line keeps scoping only to the rail.
-   DOM order is heading -> seal -> paragraph -> link, so mobile reads in that
-   order and the seal is never orphaned above the heading that names it. On
-   desktop the grid lifts the seal into a left column spanning all three rows —
-   the same technique .hero-grid uses for .award-card. No `order`, so visual
-   order, tab order and screen-reader order stay identical. */
-.soa-plaque{margin-top:clamp(26px,3.2vw,42px);
-  padding:clamp(20px,2.3vw,30px) clamp(18px,2.3vw,32px);
-  background:var(--card);border:1px solid var(--card-brd);border-radius:14px;
+   Deliberately NOT a bordered card. The section background is --black and
+   --card is rgba(0,0,0,.5), so a fill here paints black on black and does
+   nothing — the 1px border was the only thing making it read as a box, and a
+   full-width bordered box next to seven bordered rail cards is one frame too
+   many. Same conclusion .statband reached: drop the border, mark the block with
+   a single hairline instead. That also fixes the dead space on the right; it
+   only looked like a defect because a border was drawn around it.
+   DOM order is seal -> heading -> paragraph -> link. On desktop the grid lifts
+   the seal into a left column spanning all three rows, the same technique
+   .hero-grid uses for .award-card. No `order`, so visual order, tab order and
+   screen-reader order stay identical. */
+.soa-plaque{margin-top:clamp(28px,3.4vw,46px);
+  padding-top:clamp(26px,3vw,40px);
+  border-top:1px solid rgba(255,255,255,.09);
   display:grid;gap:14px;justify-items:start}
-.soa-p-seal{width:auto;height:clamp(78px,10vw,128px);flex-shrink:0;
-  filter:drop-shadow(0 3px 10px rgba(0,0,0,.55))}
+.soa-p-seal{width:auto;height:clamp(96px,12vw,160px);
+  filter:drop-shadow(0 4px 14px rgba(0,0,0,.6))}
 /* Heading and body deliberately inherit `.section h3` / `.section p` from
    hi-foundation.css — those are (0,1,1) selectors and outrank a plain class, so
    anything restated here would be dead code. Only two intentional overrides,
@@ -795,7 +801,7 @@ body.gal-lock{overflow:hidden}
      ("Best of Show"); this heading is 62 characters, where that tracking costs
      a whole extra line on a phone.
    - font-size floor on narrow screens, same reason. */
-.soa-p-h{margin:0}
+.soa-p-h{margin:0;max-width:640px}
 .soa-plaque h3{letter-spacing:.02em}
 @media(max-width:430px){ .soa-plaque h3{font-size:16.5px;line-height:1.2} }
 .soa-p-txt{margin:0;font-size:clamp(15px,1.15vw,16.5px);max-width:68ch}
@@ -806,9 +812,13 @@ body.gal-lock{overflow:hidden}
 .soa-p-link:hover{color:var(--orange-hi)}
 .soa-p-link:hover svg{transform:translateX(3px)}
 .soa-p-link:focus-visible{outline:2px solid var(--orange-hi);outline-offset:4px;border-radius:4px}
+/* The text track is capped rather than each element, so heading, paragraph and
+   link all share one measure. Left to 1fr the heading ran ~1050px on a 1440
+   screen — an unreadable line length, and the giveaway look of text stretched
+   to fill a container. */
 @media(min-width:821px){
-  .soa-plaque{grid-template-columns:auto minmax(0,1fr);
-    column-gap:clamp(24px,2.6vw,40px);row-gap:13px}
+  .soa-plaque{grid-template-columns:auto minmax(0,640px);
+    column-gap:clamp(26px,3vw,44px);row-gap:14px}
   .soa-p-seal{grid-column:1;grid-row:1 / span 3;align-self:center}
   .soa-p-h,.soa-p-txt,.soa-p-link{grid-column:2}
 }
@@ -2217,9 +2227,9 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 
     <!-- READERS' AWARD · SA Current Best of San Antonio 2026 -->
     <div class="soa-plaque">
-      <h3 class="soa-p-h">Voted Best Tattoo Shop and Piercing Studio in San Antonio, 2026</h3>
       <img class="soa-p-seal" src="_hero-assets/press/sacurrent-best-of-2026.png" width="358" height="400" loading="lazy"
            alt="San Antonio Current Best of San Antonio 2026 award for Hyper Inkers, Best Piercing Studio and Tattoo Shop">
+      <h3 class="soa-p-h">Voted Best Tattoo Shop and Piercing Studio in San Antonio, 2026</h3>
       <p class="soa-p-txt">Readers of the San Antonio Current voted Hyper Inkers Best Piercing Studio/Tattoo Shop in the 2026 Best of San Antonio awards, published July 22, 2026. Best of San Antonio is a citywide readers&rsquo; poll now in its 36th year, run across more than 150 categories, with nominations opening in February and voting closing in June. Hyper Inkers won the category in its third year open on Callaghan Road.</p>
       <a class="soa-p-link" href="https://community.sacurrent.com/best-of/2026/around-town/best-piercing-studio-tattoo-shop-39288255" target="_blank" rel="noopener">See the San Antonio Current results
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
