@@ -102,6 +102,75 @@ a{color:inherit;text-decoration:none}
 .badge .stars{color:#F5B301;letter-spacing:2px;font-size:clamp(13px,3.1vw,15px);line-height:1}
 .badge-cnt{font-family:var(--sub);font-size:13px;letter-spacing:.01em;color:#D6D6D6}
 .badge-cnt b{color:#fff;font-weight:700}
+/* trust row — Google rating + SA Current "Best of San Antonio 2026".
+   Hard rule: ONE line at every viewport. Nothing wraps, nothing overflows.
+   Both chips are flex-nowrap and every text node carries white-space:nowrap;
+   the size steps below are tuned per band, incl. 821-1099px where the hero grid
+   is still 2 columns and the text column is at its NARROWEST. */
+.trustbar{display:flex;flex-wrap:nowrap;align-items:center;gap:18px;margin-bottom:24px;max-width:100%}
+.trustbar .badge{margin-bottom:0;flex:0 0 auto}
+.badge-r1,.badge-cnt{white-space:nowrap}
+.tb-div{flex:0 0 1px;align-self:stretch;min-height:36px;background:var(--card-brd)}
+/* Safety net: the label column is the ONLY shrinkable part of the row. If the
+   copy is ever rewritten longer than the space allows, it ellipsizes instead of
+   wrapping or pushing the row out of the column. */
+.soa{display:inline-flex;align-items:center;gap:12px;flex:0 1 auto;min-width:0;text-decoration:none;color:var(--cream)}
+.soa-shield{height:60px;width:auto;flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
+.soa-col{display:flex;flex-direction:column;gap:1px;min-width:0;flex:0 1 auto;overflow:hidden}
+/* Two short lines, mirroring the Google chip's rhythm. Longest token is 16 chars
+   ("San Antonio 2026"); "Readers' Choice Winner" lives in the link's aria-label
+   instead, where it costs no width. */
+.soa-r0,.soa-r1{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-family:var(--sub);line-height:1.16}
+.soa-r0{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:#B0B0B0}
+.soa-r1{font-size:15px;font-weight:700;letter-spacing:.01em;color:#fff}
+.soa:hover .soa-r1{color:var(--orange-hi)}
+.soa:focus-visible{outline:2px solid var(--orange-hi);outline-offset:4px;border-radius:4px}
+/* 821-1099px · hero grid is still 2-col here, so the text column is at its
+   NARROWEST of the whole range (~374px at 821). Tightest band in the file. */
+@media(min-width:821px) and (max-width:1099px){
+  .trustbar{gap:11px}
+  .badge{gap:8px}
+  .badge-cnt{font-size:10.5px}
+  .soa{gap:9px}
+  .soa-shield{height:40px}
+  .soa-r0{font-size:8.5px}
+  .soa-r1{font-size:11.5px}
+}
+/* <=560px · grid is 1-col, squeeze comes from the viewport itself */
+@media(max-width:560px){
+  .trustbar{gap:11px}
+  .badge{gap:8px}
+  .badge-cnt{font-size:11px}
+  .soa{gap:9px}
+  .soa-shield{height:42px}
+  .soa-r0{font-size:9px}
+  .soa-r1{font-size:12px}
+}
+@media(max-width:410px){
+  .trustbar{gap:8px}
+  .badge{gap:6px}
+  .badge .gg{width:24px;height:24px}
+  .badge-num{font-size:18px}
+  .badge .stars{font-size:12px;letter-spacing:1px}
+  .badge-cnt{font-size:9.5px}
+  .tb-div{min-height:32px}
+  .soa{gap:7px}
+  .soa-shield{height:35px}
+  .soa-r0{font-size:8px}
+  .soa-r1{font-size:10.5px}
+}
+@media(max-width:355px){
+  .trustbar{gap:6px}
+  .badge .gg{width:22px;height:22px}
+  .badge-num{font-size:16px}
+  .badge .stars{font-size:11px;letter-spacing:.5px}
+  .badge-cnt{font-size:8px}
+  .tb-div{min-height:28px}
+  .soa{gap:6px}
+  .soa-shield{height:30px}
+  .soa-r0{font-size:7px}
+  .soa-r1{font-size:9px}
+}
 h1{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:0.94;letter-spacing:-0.005em;
   font-size:clamp(34px,4.6vw,60px);color:#fff;text-shadow:0 2px 34px rgba(0,0,0,.55)}
 h1 .o{color:var(--orange);display:block}
@@ -1203,6 +1272,7 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
       <div class="hero-grid">
 
         <div class="hero-col">
+          <div class="trustbar">
           <span class="badge">
             <svg class="gg" viewBox="0 0 48 48" aria-hidden="true"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></svg>
             <span class="badge-col">
@@ -1210,6 +1280,20 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
               <span class="badge-cnt"><b>3,500+</b> Google Reviews</span>
             </span>
           </span>
+
+            <span class="tb-div" aria-hidden="true"></span>
+
+            <a class="soa" href="https://community.sacurrent.com/best-of/2026/around-town/best-piercing-studio-tattoo-shop-39288255"
+               target="_blank" rel="noopener"
+               aria-label="San Antonio Current, Best of San Antonio 2026, Readers' Choice winner for Best Piercing Studio and Tattoo Shop. Opens the San Antonio Current results page.">
+              <img class="soa-shield" src="_hero-assets/press/sacurrent-best-of-2026.png" width="906" height="935"
+                   alt="San Antonio Current Best of San Antonio 2026 winner badge">
+              <span class="soa-col">
+                <span class="soa-r0">Best of</span>
+                <span class="soa-r1">San Antonio</span>
+              </span>
+            </a>
+          </div>
 
           <h1>Best Tattoo Shop<span class="o">in San Antonio</span></h1>
 
