@@ -772,6 +772,46 @@ body.gal-lock{overflow:hidden}
 .awrail-cta{min-height:44px;padding:12px 20px}
 .awrail-cta svg{width:16px;height:16px;transition:transform .2s var(--ease)}
 .awrail-cta:hover svg{transform:translateX(3px)}
+/* READERS' AWARD PLAQUE — closes the awards section. The 7 trophies above are
+   juried; this one is a city-wide reader vote, so it gets its own heading rather
+   than an 8th rail card, and the intro's "these are juried awards, not
+   popularity votes" line keeps scoping only to the rail.
+   DOM order is heading -> seal -> paragraph -> link, so mobile reads in that
+   order and the seal is never orphaned above the heading that names it. On
+   desktop the grid lifts the seal into a left column spanning all three rows —
+   the same technique .hero-grid uses for .award-card. No `order`, so visual
+   order, tab order and screen-reader order stay identical. */
+.soa-plaque{margin-top:clamp(26px,3.2vw,42px);
+  padding:clamp(20px,2.3vw,30px) clamp(18px,2.3vw,32px);
+  background:var(--card);border:1px solid var(--card-brd);border-radius:14px;
+  display:grid;gap:14px;justify-items:start}
+.soa-p-seal{width:auto;height:clamp(78px,10vw,128px);flex-shrink:0;
+  filter:drop-shadow(0 3px 10px rgba(0,0,0,.55))}
+/* Heading and body deliberately inherit `.section h3` / `.section p` from
+   hi-foundation.css — those are (0,1,1) selectors and outrank a plain class, so
+   anything restated here would be dead code. Only two intentional overrides,
+   both scoped tightly enough to actually win:
+   - letter-spacing: the foundation .04em is tuned for short uppercase labels
+     ("Best of Show"); this heading is 62 characters, where that tracking costs
+     a whole extra line on a phone.
+   - font-size floor on narrow screens, same reason. */
+.soa-p-h{margin:0}
+.soa-plaque h3{letter-spacing:.02em}
+@media(max-width:430px){ .soa-plaque h3{font-size:16.5px;line-height:1.2} }
+.soa-p-txt{margin:0;font-size:clamp(15px,1.15vw,16.5px);max-width:68ch}
+.soa-p-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;
+  font-family:var(--sub);font-weight:600;font-size:13px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--orange);text-decoration:none}
+.soa-p-link svg{width:16px;height:16px;transition:transform .2s var(--ease)}
+.soa-p-link:hover{color:var(--orange-hi)}
+.soa-p-link:hover svg{transform:translateX(3px)}
+.soa-p-link:focus-visible{outline:2px solid var(--orange-hi);outline-offset:4px;border-radius:4px}
+@media(min-width:821px){
+  .soa-plaque{grid-template-columns:auto minmax(0,1fr);
+    column-gap:clamp(24px,2.6vw,40px);row-gap:13px}
+  .soa-p-seal{grid-column:1;grid-row:1 / span 3;align-self:center}
+  .soa-p-h,.soa-p-txt,.soa-p-link{grid-column:2}
+}
 
 /* ============================================================================
    MODAL (radio-hack · content in DOM · one shared shell, 7 panels)
@@ -2173,6 +2213,17 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
+    </div>
+
+    <!-- READERS' AWARD · SA Current Best of San Antonio 2026 -->
+    <div class="soa-plaque">
+      <h3 class="soa-p-h">Voted Best Tattoo Shop and Piercing Studio in San Antonio, 2026</h3>
+      <img class="soa-p-seal" src="_hero-assets/press/sacurrent-best-of-2026.png" width="358" height="400" loading="lazy"
+           alt="San Antonio Current Best of San Antonio 2026 award for Hyper Inkers, Best Piercing Studio and Tattoo Shop">
+      <p class="soa-p-txt">Readers of the San Antonio Current voted Hyper Inkers Best Piercing Studio/Tattoo Shop in the 2026 Best of San Antonio awards, published July 22, 2026. Best of San Antonio is a citywide readers&rsquo; poll now in its 36th year, run across more than 150 categories, with nominations opening in February and voting closing in June. Hyper Inkers won the category in its third year open on Callaghan Road.</p>
+      <a class="soa-p-link" href="https://community.sacurrent.com/best-of/2026/around-town/best-piercing-studio-tattoo-shop-39288255" target="_blank" rel="noopener">See the San Antonio Current results
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
     </div>
 
     <!-- SHARED MODAL SHELL (7 panels, content always in DOM) -->
