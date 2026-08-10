@@ -590,9 +590,25 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 
 /* ---- Founder · move quote BELOW the image (mobile stacks text→image→quote via DOM order; desktop keeps quote under the text, image spanning right) ---- */
 @media(min-width:861px){
-.au-founder-split{align-items:start}
-  .au-founder-split>.split-media{grid-column:2;grid-row:1 / span 2}
-  .au-founder-split>.au-quote{grid-column:1;grid-row:2;margin-top:22px}
+  /* Ảnh cao hơn cột chữ. Nếu chỉ cho ảnh span các hàng có nội dung thì phần cao
+     dôi ra bị CHIA ĐỀU vào những hàng đó -> heading, quote, link bị đẩy xa nhau
+     (đúng lỗi B.Long báo). Thêm 2 hàng 1fr kẹp trên/dưới để chỗ dôi rơi hết vào
+     đó, cột chữ khít lại và tự căn giữa theo ảnh. */
+  /* row-gap:0 — .split khai gap chung tới 68px, nhân với 4 khoảng giữa 5 hàng là
+     gần 272px hở dọc. Khoảng cách giữa các khối do margin của chính chúng lo. */
+  .au-founder-split{align-items:start;grid-template-rows:1fr auto auto auto 1fr;row-gap:0}
+  .au-founder-split>div{grid-column:1;grid-row:2}
+  .au-founder-split>.au-quote{grid-column:1;grid-row:3;margin-top:22px}
+  .au-founder-split>.sec-link--inline{grid-column:1;grid-row:4;margin-top:18px}
+  .au-founder-split>.split-media{grid-column:2;grid-row:1 / span 5}
+}
+/* Mobile: chữ -> ẢNH -> link -> quote (ảnh luôn nằm dưới đoạn giới thiệu, còn
+   link và quote đọc sau ảnh). .split-media order:2 ở hi-ds là luật chung, đây là
+   ngoại lệ có chủ đích của riêng khối founder. */
+@media(max-width:860px){
+  .au-founder-split>.split-media{order:1}
+  .au-founder-split>.sec-link--inline{order:2;margin-top:20px}
+  .au-founder-split>.au-quote{order:3}
 }
 
 

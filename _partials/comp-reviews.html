@@ -1,0 +1,360 @@
+    <div class="rv-tabs">
+      <input type="radio" name="rvtab" id="rvtab-video" checked>
+      <input type="radio" name="rvtab" id="rvtab-cust">
+      <input type="radio" name="rvtab" id="rvtab-plat">
+      <!-- 3 icon dạng ĐẶC (fill), port từ morethanpanel.com — khác hẳn bộ icon nét mảnh
+           mặc định trước đó: khung phim có tam giác play khoét vào, bong bóng thoại có
+           ngôi sao khoét vào, ngôi sao kèm huy hiệu tick. Đổ màu theo currentColor nên
+           tự đổi cream -> trắng khi tab active. -->
+      <div class="rv-tabnav" aria-label="Review type">
+        <label for="rvtab-video"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M19 15V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h13c1.1 0 2-.9 2-2zM8 14V6l6 4z"/></svg>Video Reviews</label>
+        <label for="rvtab-cust"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 20.077V4.615q0-.69.463-1.152Q3.925 3 4.615 3h14.77q.69 0 1.152.463q.463.462.463 1.152v10.77q0 .69-.462 1.153q-.463.462-1.153.462H6.077L3 20.077Zm6.517-6.404L12 12.167l2.483 1.506l-.66-2.825l2.196-1.885l-2.886-.255L12 6.058l-1.133 2.65l-2.886.255l2.196 1.885l-.66 2.825Z"/></svg>Customer Reviews</label>
+        <label for="rvtab-plat"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10.898 2.9a1 1 0 0 0-1.794 0l-1.93 3.91l-4.317.628a1 1 0 0 0-.554 1.706l3.124 3.044l-.738 4.3a1 1 0 0 0 1.451 1.054l3.05-1.604a5.5 5.5 0 0 1 7.96-6.259l.549-.535a1 1 0 0 0-.554-1.706l-4.317-.627l-1.93-3.912ZM19 14.5a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0Zm-2.146-1.854a.5.5 0 0 0-.708 0L13.5 15.293l-.646-.647a.5.5 0 0 0-.708.708l1 1a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0 0-.708Z"/></svg>Platform Reviews</label>
+      </div>
+
+      <!-- ================================================================
+           TAB 1 · VIDEO REVIEWS
+           ⚠️ MOCKUP — 4 card giữ chỗ. Tên "Client Name", điểm 5.0 và thời
+           lượng đều LÀ GIẢ, chỉ để chốt layout. Pool review thật hiện chỉ
+           có 1 video hợp lệ (Bella · Damien · tattoo — xem
+           projects/hyper-inkers/data/google-reviews/…-categorized.md §7).
+           KHÔNG ĐẨY TAB NÀY LÊN SITE THẬT khi chưa thay bằng video thật:
+           gắn tên + điểm sao lên video không tồn tại là testimonial giả.
+           ================================================================ -->
+      <div class="rv-panel rv-panel-video">
+        <div class="rv-slider-wrap is-auto">
+          <ul class="rv-slider rv-vslider">
+
+            <li class="rv-vcard">
+              <div class="rv-vlink" aria-label="Video review placeholder — Custom Tattoo">
+                <img src="https://hyperinkers.com/wp-content/uploads/2025/05/realism-tattoo-art-3.png" alt="Placeholder thumbnail for a Hyper Inkers client video review about a custom tattoo." loading="lazy">
+                <span class="rv-vbadge"><b>★</b> 5.0</span>
+                <span class="rv-vplay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+                <span class="rv-vdate"><svg aria-hidden="true"><use href="#ic-cal"></use></svg>12 Jun</span>
+                <span class="rv-vmeta"><b>Client Name</b><em>Custom Tattoo</em></span>
+              </div>
+            </li>
+
+            <li class="rv-vcard">
+              <div class="rv-vlink" aria-label="Video review placeholder — First Tattoo">
+                <img src="https://hyperinkers.com/wp-content/uploads/2025/05/black-grey-tattoo-designs-2.png" alt="Placeholder thumbnail for a Hyper Inkers client video review about a first tattoo." loading="lazy">
+                <span class="rv-vbadge"><b>★</b> 5.0</span>
+                <span class="rv-vplay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+                <span class="rv-vdate"><svg aria-hidden="true"><use href="#ic-cal"></use></svg>28 May</span>
+                <span class="rv-vmeta"><b>Client Name</b><em>First Tattoo</em></span>
+              </div>
+            </li>
+
+            <li class="rv-vcard">
+              <div class="rv-vlink" aria-label="Video review placeholder — Ear Piercing">
+                <img src="https://hyperinkers.com/wp-content/uploads/2025/05/geometric-tattoo-designs_-scaled.jpg" alt="Placeholder thumbnail for a Hyper Inkers client video review about an ear piercing." loading="lazy">
+                <span class="rv-vbadge"><b>★</b> 5.0</span>
+                <span class="rv-vplay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+                <span class="rv-vdate"><svg aria-hidden="true"><use href="#ic-cal"></use></svg>3 May</span>
+                <span class="rv-vmeta"><b>Client Name</b><em>Ear Piercing</em></span>
+              </div>
+            </li>
+
+            <li class="rv-vcard">
+              <div class="rv-vlink" aria-label="Video review placeholder — Cover-Up Tattoo">
+                <img src="https://hyperinkers.com/wp-content/uploads/2025/05/best-color-tattoo-artist-3.png" alt="Placeholder thumbnail for a Hyper Inkers client video review about a cover-up tattoo." loading="lazy">
+                <span class="rv-vbadge"><b>★</b> 5.0</span>
+                <span class="rv-vplay"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg></span>
+                <span class="rv-vdate"><svg aria-hidden="true"><use href="#ic-cal"></use></svg>17 Apr</span>
+                <span class="rv-vmeta"><b>Client Name</b><em>Cover-Up Tattoo</em></span>
+              </div>
+            </li>
+
+          </ul>
+          <div class="rv-dots" role="tablist" aria-label="Video review slides"></div>
+        </div>
+      </div>
+
+      <!-- ================================================================
+           TAB 2 · CUSTOMER REVIEWS — 4 card tuyển chọn.
+           Nội dung THẬT 100%: tên, câu chữ, ngày, permalink lấy từ
+           projects/hyper-inkers/data/google-reviews/ (pull 2026-07-02).
+           Heading mỗi card là trích NGUYÊN VĂN một mệnh đề trong chính
+           review đó — không viết mới.
+           Luật dedup: 4 review này KHÔNG xuất hiện lại ở tab Platform.
+           ================================================================ -->
+      <div class="rv-panel rv-panel-cust">
+        <div class="rv-slider-wrap is-auto">
+          <ul class="rv-slider rv-sslider">
+
+            <!-- ⚠️ ẢNH TRÊN 2 CARD DƯỚI LÀ ẢNH GALLERY CỦA SHOP, CHƯA PHẢI ẢNH KHÁCH ĐÍNH KÈM.
+                 Cả 4 khách ở tab này đều CÓ ảnh thật trong review Google (Devon Brent 2 ·
+                 Lyndsay F 1 · brian may 1 · Maria I. Wallace 3 — xem file categorized 02/07).
+                 Phải tải ảnh thật từ GBP quyền chủ tài khoản và THAY VÀO trước khi lên site:
+                 gắn ảnh gallery vào card mang tên một khách cụ thể là ngầm khẳng định
+                 "đây là hình xăm của người này". -->
+
+            <li class="rv-scard rv-scard--photo">
+              <figure class="rv-sc-media">
+                <img src="https://hyperinkers.com/wp-content/uploads/2025/05/black-and-grey-tattoo-sleeve-designs-3.png" alt="Black and grey lion and compass sleeve tattoo by a Hyper Inkers artist in San Antonio." loading="lazy">
+                <div class="rv-sc-top rv-sc-top--on">
+                  <span class="rv-sc-stars" aria-label="5 out of 5">★★★★★</span>
+                  <span class="rv-sc-date"><svg aria-hidden="true"><use href="#ic-cal"></use></svg>Jul 2025</span>
+                </div>
+              </figure>
+              <div class="rv-sc-main">
+                <p class="rv-sc-h">His attention to detail is unmatched</p>
+                <div class="rv-sc-body"><p>Genuinely couldn't have asked for a more incredible experience for my first tattoo. Minh is absolutely phenomenal - his attention to detail is unmatched and he helped ensure my vision came out exactly how I wanted. I get compliments everywhere I go and people immediately ask where/who did the work. Highly recommend Minh and HyperInkers!</p></div>
+                <div class="rv-sc-foot">
+                  <span class="rv-sc-name">Devon Brent</span>
+                  <em class="rv-sc-role">First Tattoo | Minh</em>
+                </div>
+              </div>
+            </li>
+
+            <li class="rv-scard">
+              <div class="rv-sc-main">
+                <div class="rv-sc-top">
+                  <span class="rv-sc-stars" aria-label="5 out of 5">★★★★★</span>
+                  <span class="rv-sc-date"><svg aria-hidden="true"><use href="#ic-cal"></use></svg>Jan 2026</span>
+                </div>
+                <p class="rv-sc-h">She cleaned everything thoroughly</p>
+                <div class="rv-sc-body"><p>Nicole was an absolutely amazing piercer! She was so calm and gentle, explained everything, and did the piercing so smoothly! She cleaned everything thoroughly, and took her time with set-up to make sure she had everything and that everything was prepared before she began! She did my daith, and it's just so pretty, I'm actually in love! She has such a wide variety of jewelry too, so you don't have to just get a boring starter piece! 10/10 recommend!!!</p></div>
+                <div class="rv-sc-foot">
+                  <span class="rv-sc-name">Lyndsay F</span>
+                  <em class="rv-sc-role">Daith Piercing | Nicole</em>
+                </div>
+              </div>
+            </li>
+
+            <li class="rv-scard rv-scard--photo">
+              <figure class="rv-sc-media">
+                <img src="https://hyperinkers.com/wp-content/uploads/2025/05/black-and-grey-tattoo-design-4.png" alt="Black and grey tattoo by a Hyper Inkers artist in San Antonio." loading="lazy">
+                <div class="rv-sc-top rv-sc-top--on">
+                  <span class="rv-sc-stars" aria-label="5 out of 5">★★★★★</span>
+                  <span class="rv-sc-date"><svg aria-hidden="true"><use href="#ic-cal"></use></svg>Jun 2026</span>
+                </div>
+              </figure>
+              <div class="rv-sc-main">
+                <p class="rv-sc-h">The outcome was above and beyond</p>
+                <div class="rv-sc-body"><p>I booked an appointment for a tattoo design I wanted. It was my first time getting a tattoo and was scheduled with Christian "Z" as my artist. WOW! Not only was he extremely professional, but he took his time and the Outcome was above and beyond. I Highly recommend "Z" and this establishment if you are looking for a Tattoo 👍</p></div>
+                <div class="rv-sc-foot">
+                  <span class="rv-sc-name">brian may</span>
+                  <em class="rv-sc-role">First Tattoo | Christian &ldquo;Z&rdquo;</em>
+                </div>
+              </div>
+            </li>
+
+            <li class="rv-scard">
+              <div class="rv-sc-main">
+                <div class="rv-sc-top">
+                  <span class="rv-sc-stars" aria-label="5 out of 5">★★★★★</span>
+                  <span class="rv-sc-date"><svg aria-hidden="true"><use href="#ic-cal"></use></svg>Jul 2025</span>
+                </div>
+                <p class="rv-sc-h">Quick and practically painless</p>
+                <div class="rv-sc-body"><p>I had an amazing experience with Nicole at Hyper Inkers! She recently pierced my nose, and I couldn't be happier with the entire process. From the moment I walked in, she made me feel completely comfortable and at ease. Nicole is not only professional but also incredibly friendly, taking the time to explain everything and answer any questions I had. The piercing itself was quick and practically painless... The aftercare instructions were clear and helpful, and the healing process has been smooth... I'll definitely be returning for future tattoos and piercings!</p></div>
+                <div class="rv-sc-foot">
+                  <span class="rv-sc-name">Maria Isabella Wallace</span>
+                  <em class="rv-sc-role">Nose Piercing | Nicole</em>
+                </div>
+              </div>
+            </li>
+
+          </ul>
+          <div class="rv-dots" role="tablist" aria-label="Customer review slides"></div>
+        </div>
+      </div>
+
+      <!-- ================================================================
+           TAB 3 · PLATFORM REVIEWS — sub-tab Google / Facebook.
+           Số liệu: pull live 2026-07-02 (Google 4.9★/3,470 · Facebook
+           100% recommend/1,008). CẦN KÉO LẠI SỐ trước khi lên site thật.
+           ⚠️ SCHEMA: Facebook chỉ có "Recommends" nhị phân, KHÔNG có thang
+           sao — vì vậy thanh Facebook KHÔNG hiển thị điểm số, và review
+           Facebook TUYỆT ĐỐI không được đưa vào AggregateRating JSON-LD.
+           Chỉ Google được vào AggregateRating.
+           ================================================================ -->
+      <div class="rv-panel rv-panel-plat">
+        <input type="radio" name="rvplat" id="rvplat-gg" checked>
+        <input type="radio" name="rvplat" id="rvplat-fb">
+        <div class="rv-subnav" aria-label="Review platform">
+          <label for="rvplat-gg"><svg aria-hidden="true"><use href="#ic-google"></use></svg><span>Google</span></label>
+          <label for="rvplat-fb"><svg aria-hidden="true"><use href="#ic-fb"></use></svg><span>Facebook</span></label>
+        </div>
+
+        <!-- SUB-TAB · GOOGLE -->
+        <div class="rv-sub rv-sub-gg">
+          <div class="rv-bar">
+            <div class="rv-rate">
+              <span class="rv-stars" aria-label="5.0 out of 5">★★★★★</span><b>5.0</b>
+              <span>(3,000+ Reviews)</span>
+            </div>
+            <a class="rv-leave" href="https://maps.google.com/?cid=11149913610046039477" target="_blank" rel="noopener"><span class="rv-leave-ic"><svg aria-hidden="true"><use href="#ic-google"></use></svg></span>Read our Google reviews</a>
+          </div>
+
+          <div class="rv-slider-wrap is-auto">
+            <ul class="rv-slider">
+
+              <li class="rv-card rv-card--photo">
+                <div class="rv-pc-text">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#6E5A43">T</span>
+                    <span class="rv-who"><span class="rv-name">T</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">5 months ago</span></span></span>
+                    <a class="rv-srclink" href="https://maps.app.goo.gl/UYyfmeaPSMw2Xnc57" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">Feb 9th 2nd tattoo Dragon, Temple with Samurai and Mountains. Navei is RIDICULOUSLY IMPRESSIVE. I came back for a second time with a bigger project and she once again exceeded expectations. If you have dark skin like me and want big Japanese style or anime stuff... she will get the job done and make your dream and your vision come true with her great creativity... 1rst tattoo Shenron Dragon Navei killed it. She not only exceeded my expectations but she applied her own creativity. I have dark skin and she took great care of me and the detail of this project.</p></div>
+                </div>
+                <figure class="rv-pc-media">
+                  <img src="https://hyperinkers.com/wp-content/uploads/2025/05/black-grey-tattoo-designs-2.png" alt="Japanese dragon and samurai sleeve tattoo by a Hyper Inkers artist in San Antonio." loading="lazy">
+                </figure>
+              </li>
+
+              <li class="rv-card">
+                <div class="rv-top">
+                  <span class="rv-av" style="background:#5E4552">CB</span>
+                  <span class="rv-who"><span class="rv-name">Carmendy Burhans</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">a year ago</span></span></span>
+                  <a class="rv-srclink" href="https://maps.app.goo.gl/z3TsTEZmncm6XdNr9" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                </div>
+                <div class="rv-body-scroll"><p class="rv-body">I just came here again to get a tattoo. Tai is such an amazing artist, so great to work with. I'll definitely keep coming back here! (previous) I walked in and got two lobes, two helix, and a nose piercing. I only had to wait for about 20 ish minutes and it was pretty busy. All of the staff were super sweet and helpful. Overall amazing experience.</p></div>
+              </li>
+
+              <li class="rv-card rv-card--photo">
+                <div class="rv-pc-text">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#4A4F66">KJ</span>
+                    <span class="rv-who"><span class="rv-name">Katie Janson</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">5 months ago</span></span></span>
+                    <a class="rv-srclink" href="https://maps.app.goo.gl/7wxQcHuVZXHnqjMr5" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">Such a great tattoo shop! All the artists are super talented and friendly. Navei did a great job on my hand tattoo. Her fine line work and symmetry is impressive. I would definitely recommend her to anyone!</p></div>
+                </div>
+                <figure class="rv-pc-media">
+                  <img src="https://hyperinkers.com/wp-content/uploads/2025/05/geometric-tattoo-designs_-scaled.jpg" alt="Fine line geometric tattoo by a Hyper Inkers artist in San Antonio." loading="lazy">
+                </figure>
+              </li>
+
+              <li class="rv-card">
+                <div class="rv-top">
+                  <span class="rv-av" style="background:#6E4A4A">SF</span>
+                  <span class="rv-who"><span class="rv-name">Selina Falcon</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">2 years ago</span></span></span>
+                  <a class="rv-srclink" href="https://maps.app.goo.gl/ZzoXJcDVxFL35XcL8" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                </div>
+                <div class="rv-body-scroll"><p class="rv-body">I got 4 piercings done. Daith, helix &amp; double conch and it was so quick &amp; looks so good. She knew exactly where to place it to make it pop. 🙌🏽 I love the gold jewelry I got and for only $10 a piercing, LET ME TELL YOUU, ITS SO WORTH IT.</p></div>
+              </li>
+
+              <li class="rv-card rv-card--photo">
+                <div class="rv-pc-text">
+                  <div class="rv-top">
+                    <span class="rv-av" style="background:#3E5A57">R</span>
+                    <span class="rv-who"><span class="rv-name">Raven</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">4 months ago</span></span></span>
+                    <a class="rv-srclink" href="https://maps.app.goo.gl/M64xgXqs9NAoPpsg6" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                  </div>
+                  <div class="rv-body-scroll"><p class="rv-body">amazing deals, super kind and friendly staff. i got a tattoo from Tai and he knocked it out of the park. the details and depth are immaculate</p></div>
+                </div>
+                <figure class="rv-pc-media">
+                  <img src="https://hyperinkers.com/wp-content/uploads/2025/05/best-color-tattoo-artist-3.png" alt="Color realism portrait tattoo by a Hyper Inkers artist in San Antonio." loading="lazy">
+                </figure>
+              </li>
+
+              <li class="rv-card">
+                <div class="rv-top">
+                  <span class="rv-av" style="background:#3E5A57">NW</span>
+                  <span class="rv-who"><span class="rv-name">Nik W</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">4 months ago</span></span></span>
+                  <a class="rv-srclink" href="https://maps.app.goo.gl/vyAXJ2fqTmh2rLKB6" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                </div>
+                <div class="rv-body-scroll"><p class="rv-body">Super clean shop, dope interior. Zoe did my nose piercing and made sure it was proportionate and that I was super happy w the placement. She made me comfortable and I'm 100% gonna return to hyperinkerz for my next piercing.</p></div>
+              </li>
+
+              <li class="rv-card">
+                <div class="rv-top">
+                  <span class="rv-av" style="background:#6E5A43">ER</span>
+                  <span class="rv-who"><span class="rv-name">Em Rose</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">a year ago</span></span></span>
+                  <a class="rv-srclink" href="https://maps.app.goo.gl/TtNndh18KLZLAHmU7" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                </div>
+                <div class="rv-body-scroll"><p class="rv-body">I got two piercings for the 10 dollars deals on Thursday and they were done so well! The helix i got didn't hurt at all, much less than the first one that i got done and the stacked lobe i got barely hurt as well! I will definitely be coming back for more piercings once these are healed!</p></div>
+              </li>
+
+              <li class="rv-card">
+                <div class="rv-top">
+                  <span class="rv-av" style="background:#455A60">RE</span>
+                  <span class="rv-who"><span class="rv-name">Ricardo Elizondo</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">a month ago</span></span></span>
+                  <a class="rv-srclink" href="https://maps.app.goo.gl/F5qhSBtx4FPKz6HV8" target="_blank" rel="noopener" aria-label="View on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+                </div>
+                <div class="rv-body-scroll"><p class="rv-body">Really great experience. Super cool, non judgmental staff. I had a funny request of a tattoo and the artist, Nevi (hope I spelled that right), was more than eager to oblige. Very clean facility, very chill vibe.</p></div>
+              </li>
+
+            </ul>
+            <div class="rv-dots" role="tablist" aria-label="Google review slides"></div>
+          </div>
+        </div>
+
+        <!-- SUB-TAB · FACEBOOK
+             Card text-only là ĐÚNG THỰC TẾ: 0/25 review Facebook lấy được
+             có ảnh đính kèm. Sao 5★ chỉ là quy ước hiển thị cho "Recommends"
+             (B.Long chốt 2026-07-02) — không phải điểm Facebook chấm. -->
+        <div class="rv-sub rv-sub-fb">
+          <div class="rv-bar">
+            <div class="rv-rate">
+              <b>100%</b>
+              <span>Rec (1000+ Reviews)</span>
+            </div>
+            <a class="rv-leave" href="https://www.facebook.com/hyperinkers/reviews" target="_blank" rel="noopener"><span class="rv-leave-ic"><svg aria-hidden="true"><use href="#ic-fb"></use></svg></span>Read our Facebook reviews</a>
+          </div>
+
+          <div class="rv-slider-wrap is-auto">
+            <ul class="rv-slider">
+
+              <li class="rv-card">
+                <div class="rv-top">
+                  <span class="rv-av" style="background:#4E5E45">KJ</span>
+                  <span class="rv-who"><span class="rv-name">Kelso Jordan</span><span class="rv-meta"><span class="rv-stars" aria-label="Recommends Hyper Inkers">★★★★★</span><span class="rv-date">3 Nov 2025</span></span></span>
+                  <a class="rv-srclink" href="https://www.facebook.com/Itsfinekelso/posts/pfbid04aRLZZQ3L917KrkUvnH9Aqh4k1fYUFU4SHQNNeTqfYtpKg58zLELfNcenrD9tfsRl" target="_blank" rel="noopener" aria-label="View on Facebook"><svg aria-hidden="true"><use href="#ic-fb"></use></svg></a>
+                </div>
+                <div class="rv-body-scroll"><p class="rv-body">Zoey was so patient with my 10 year old daughter getting her ears pierced after a bad experience previously!! She helped her feel confident and calm through out. I really appreciated her time.</p><div class="rv-tags"><span class="rv-tag">Expert piercing</span><span class="rv-tag">Amazing results</span></div></div>
+              </li>
+
+              <li class="rv-card">
+                <div class="rv-top">
+                  <span class="rv-av" style="background:#6E4A4A">MM</span>
+                  <span class="rv-who"><span class="rv-name">Melissa Maldonado-Varela</span><span class="rv-meta"><span class="rv-stars" aria-label="Recommends Hyper Inkers">★★★★★</span><span class="rv-date">27 Sep 2025</span></span></span>
+                  <a class="rv-srclink" href="https://www.facebook.com/melissa.maldonado.564/posts/pfbid02oJcdhGwiTaDP2pHutGrFSiZ5VUTGPxbMqY727C1ymcF8cXXp4r32pSrM41hboWaFl" target="_blank" rel="noopener" aria-label="View on Facebook"><svg aria-hidden="true"><use href="#ic-fb"></use></svg></a>
+                </div>
+                <div class="rv-body-scroll"><p class="rv-body">The staff was amazing and the process was super fast! we got the belly piercing and my daughter barely felt any pain! Everything was clean and sanitized! we are definitely coming back!</p></div>
+              </li>
+
+              <li class="rv-card">
+                <div class="rv-top">
+                  <span class="rv-av" style="background:#4A4F66">LS</span>
+                  <span class="rv-who"><span class="rv-name">Luke Sterling</span><span class="rv-meta"><span class="rv-stars" aria-label="Recommends Hyper Inkers">★★★★★</span><span class="rv-date">23 Aug 2025</span></span></span>
+                  <a class="rv-srclink" href="https://www.facebook.com/pablo242000/posts/pfbid02gfkwFqcq3g2Pf2GtP7hQxD2vPDyoCNCM675PRNcCJboftu7qxWC5ig2QpKdETtkwl" target="_blank" rel="noopener" aria-label="View on Facebook"><svg aria-hidden="true"><use href="#ic-fb"></use></svg></a>
+                </div>
+                <div class="rv-body-scroll"><p class="rv-body">This was a great experience to get my nose in usually terrified of needles but she made it really quick and simple</p></div>
+              </li>
+
+              <li class="rv-card">
+                <div class="rv-top">
+                  <span class="rv-av" style="background:#5E4552">AG</span>
+                  <span class="rv-who"><span class="rv-name">Akeelah Givens</span><span class="rv-meta"><span class="rv-stars" aria-label="Recommends Hyper Inkers">★★★★★</span><span class="rv-date">12 Oct 2025</span></span></span>
+                  <a class="rv-srclink" href="https://www.facebook.com/akeelah.givens.35/posts/pfbid02YxYU79cqDMps5LzVCoXqAn8uKAxjyAmaEdqjvn5HW8iKsWTsGmaKNFwNx5gxiqMYl" target="_blank" rel="noopener" aria-label="View on Facebook"><svg aria-hidden="true"><use href="#ic-fb"></use></svg></a>
+                </div>
+                <div class="rv-body-scroll"><p class="rv-body">My experience was very good, very polite and good with their work, definitely recommend</p></div>
+              </li>
+
+              <li class="rv-card">
+                <div class="rv-top">
+                  <span class="rv-av" style="background:#6E5A43">AY</span>
+                  <span class="rv-who"><span class="rv-name">Anitta Yebra</span><span class="rv-meta"><span class="rv-stars" aria-label="Recommends Hyper Inkers">★★★★★</span><span class="rv-date">8 Oct 2025</span></span></span>
+                  <a class="rv-srclink" href="https://www.facebook.com/permalink.php?story_fbid=pfbid02uY6nn77jMyDAbUcsqeamYeamwJxzFtZFioKtvHz8YM3quMETH5nJqFZKFgcejATFl&amp;id=61554785930482" target="_blank" rel="noopener" aria-label="View on Facebook"><svg aria-hidden="true"><use href="#ic-fb"></use></svg></a>
+                </div>
+                <div class="rv-body-scroll"><p class="rv-body">What a Amazing atmosphere &amp; Excellent Customer service… Highly recommend Coming here ☺️</p></div>
+              </li>
+
+              <li class="rv-card">
+                <div class="rv-top">
+                  <span class="rv-av" style="background:#455A60">BM</span>
+                  <span class="rv-who"><span class="rv-name">Bibi Mora</span><span class="rv-meta"><span class="rv-stars" aria-label="Recommends Hyper Inkers">★★★★★</span><span class="rv-date">8 Oct 2025</span></span></span>
+                  <a class="rv-srclink" href="https://www.facebook.com/bibi.mora.887943/posts/pfbid0W9vvabiaJYo8CyPYymLof9UNxDjiFdyKKfFMR6MDBybqk6DuUvxSVsLJ7CnL3tUzl" target="_blank" rel="noopener" aria-label="View on Facebook"><svg aria-hidden="true"><use href="#ic-fb"></use></svg></a>
+                </div>
+                <div class="rv-body-scroll"><p class="rv-body">Amazing place and very nice people</p></div>
+              </li>
+
+            </ul>
+            <div class="rv-dots" role="tablist" aria-label="Facebook review slides"></div>
+          </div>
+        </div>
+      </div>
+    </div>

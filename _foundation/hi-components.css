@@ -475,10 +475,7 @@
    the seal into a left column spanning all three rows, the same technique
    .hero-grid uses for .award-card. No `order`, so visual order, tab order and
    screen-reader order stay identical. */
-.soa-plaque{margin-top:clamp(28px,3.4vw,46px);
-  padding-top:clamp(26px,3vw,40px);
-  border-top:1px solid rgba(255,255,255,.09);
-  display:grid;gap:14px;justify-items:start}
+.soa-plaque{display:grid;gap:14px;justify-items:start}
 .soa-p-seal{width:auto;height:clamp(96px,12vw,160px);
   filter:drop-shadow(0 4px 14px rgba(0,0,0,.6))}
 /* Heading and body deliberately inherit `.section h3` / `.section p` from
@@ -529,13 +526,13 @@
                          it is the width at which 220/246 matches the artwork's
                          ratio, so `contain` fills the box exactly with no
                          letterboxing from 880px up. */
-  .soa-p-seal{grid-column:1;grid-row:1 / span 3;
+  .soa-p-seal{grid-column:1;grid-row:1 / span 2;
     align-self:stretch;height:100%;width:100%;min-height:0;
     object-fit:contain;object-position:left center}
-  .soa-p-h,.soa-p-txt,.soa-p-link{grid-column:2}
+  .soa-p-txt,.soa-p-link{grid-column:2}
   /* text runs the full track on desktop; the caps above only govern the
      stacked layout, where the viewport is the limit anyway */
-  .soa-p-h,.soa-p-txt{max-width:none}
+  .soa-p-txt{max-width:none}
   /* CTA breaks to the opposite edge, so the block is anchored at both ends
      instead of trailing off to the right */
   .soa-p-link{justify-self:end}
@@ -626,3 +623,8 @@
 .pillbar-th{position:absolute;top:0;left:0;height:100%;min-width:32px;border-radius:10px;background:rgba(255,255,255,.42);transition:background .2s var(--ease)}
 .pillbar:hover .pillbar-th,.pillbar-th:active{background:rgba(255,255,255,.6)}
 @media(max-width:640px){.pillrow{gap:8px}}
+
+/* Section giải bình chọn: đứng riêng nên phải tự khai nền. Trang chủ dùng nền
+   theo class section (.s-awards đen -> .s-readers xám -> .s-adv ...), About dùng
+   .band-a/.band-b nên class dưới đây chỉ là nền mặc định, .band-* đè lên được. */
+.s-readers{background:var(--black)}   /* trang chủ: nối tiếp dải đen của Awards, đúng như khi nó còn nằm trong section đó */

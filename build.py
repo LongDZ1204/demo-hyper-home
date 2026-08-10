@@ -56,7 +56,9 @@ def main():
     if "--publish" in sys.argv:
         publish = Path(sys.argv[sys.argv.index("--publish") + 1]).resolve()
 
-    parts = {n: block(n) for n in ("header", "footer")}
+    # tự nhận mọi mảnh trong _partials/ — thêm file mới là dùng được ngay,
+    # không phải sửa script. Page nào không đặt mốc thì mảnh đó bỏ qua.
+    parts = {p.stem: block(p.stem) for p in sorted(PARTIALS.glob("*.html"))}
     changed, missing = [], []
 
     for page in pages():
@@ -69,6 +71,10 @@ def main():
                 changed.append(f"{page.name} · {name}")
         if not hit:
             missing.append(page.name)
+        else:
+            for name in parts:
+                if f"@include {name}" in html and f"/include {name}" not in html:
+                    sys.exit(f"{page.name}: có mốc mở '@include {name}' nhưng thiếu mốc đóng")
         if html != orig and not check:
             page.write_text(html, encoding="utf-8")
 

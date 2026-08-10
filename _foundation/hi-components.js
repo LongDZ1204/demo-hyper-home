@@ -110,3 +110,242 @@
   // sync lại khi đổi tab review/FAQ (đổi số pill hiển thị không đổi, nhưng width có thể đổi)
   window.addEventListener('load', function(){ setTimeout(function(){ window.dispatchEvent(new Event('resize')); }, 300); });
 })();
+
+/* ---------- YouTube facade (poster -> nhúng thật) ---------- */
+
+/* Section 05 · Near-Me — YouTube facade: click poster -> load real embed (nocookie) */
+(function(){
+  var m=document.querySelector('.near-media[data-yt]');
+  if(m){ m.addEventListener('click',function(){
+    if(m.classList.contains('is-playing')) return;
+    var f=document.createElement('iframe');
+    f.className='near-frame';
+    f.src='https://www.youtube-nocookie.com/embed/'+m.getAttribute('data-yt')+'?autoplay=1&rel=0';
+    f.title='Hyper Inkers tattoo studio and team introduction video, San Antonio';
+    f.setAttribute('allow','autoplay; encrypted-media; picture-in-picture');
+    f.setAttribute('allowfullscreen','');
+    m.appendChild(f); m.classList.add('is-playing');
+  }); }
+})();
+(function(){
+  var row=document.querySelector('.stat-row'), thumb=document.querySelector('.stat-thumb');
+  if(!row||!thumb) return;
+  function upd(){
+    var vis=row.clientWidth/row.scrollWidth;
+    var max=row.scrollWidth-row.clientWidth;
+    var p=max>0?row.scrollLeft/max:0;
+    thumb.style.width=(vis*100)+'%';
+    thumb.style.left=(p*(1-vis)*100)+'%';
+  }
+  row.addEventListener('scroll',upd,{passive:true});
+  window.addEventListener('resize',upd);
+  upd();
+})();
+/* ---------- Reviews / video slider — 2 chế độ chung 1 engine ---------- */
+/* review + video sliders — nav ‹ › + progress (awards-synced; recompute on tab switch) */
+/* Reviews slider — 2 chế độ trên cùng 1 engine:
+     · mặc định        : user tự kéo, hiện ‹ › + thanh progress
+     · .is-auto        : tự chạy 5s/màn, hiện dots (tối đa 5 dot, rìa thu nhỏ)
+   Auto dừng khi: hover · focus bàn phím · user chạm/kéo (dừng hẳn) ·
+   tab trình duyệt bị ẩn · panel tab đang đóng · máy bật prefers-reduced-motion. */
+(function(){
+  var rm=window.matchMedia('(prefers-reduced-motion:reduce)').matches,
+      AUTO_MS=5000;
+  function initSlider(wrap){
+    var s=wrap.querySelector('.rv-slider'); if(!s) return;
+    var th=wrap.querySelector('.rv-prog-thumb'),
+        prev=wrap.querySelector('.rv-navbtn.prev'),
+        next=wrap.querySelector('.rv-navbtn.next'),
+        dots=wrap.querySelector('.rv-dots'),
+        auto=wrap.classList.contains('is-auto'),
+        btns=[],timer=null,hold=false,killed=false;
+
+    /* Số "màn cuộn", KHÔNG phải số card — card có 2 bề rộng khác nhau nên đếm card sẽ sai.
+       Dư dưới 12px coi như không dư (tránh sinh 1 dot thừa vì lệch padding vài pixel). */
+    function pages(){
+      if(!s.clientWidth) return 1;
+      var over=s.scrollWidth-s.clientWidth;
+      return over<12?1:Math.ceil(over/s.clientWidth)+1;
+    }
+    /* Màn CUỐI thường chỉ dư một phần (vd cuộn tối đa 338px trong khi 1 màn rộng 1176px).
+       Vì vậy phải chốt sẵn toạ độ từng màn rồi so khoảng cách — lấy scrollLeft chia
+       clientWidth sẽ luôn ra 0 ở màn cuối, làm dot sáng sai và slider kẹt không quay vòng. */
+    function stops(){
+      var n=pages(),max=Math.max(0,s.scrollWidth-s.clientWidth),a=[];
+      for(var i=0;i<n;i++) a.push(Math.min(i*s.clientWidth,max));
+      return a;
+    }
+    function cur(){
+      var p=stops(),best=0,min=Infinity;
+      for(var i=0;i<p.length;i++){var d=Math.abs(p[i]-s.scrollLeft); if(d<min){min=d;best=i;}}
+      return best;
+    }
+    function goto(i){
+      var p=stops();
+      s.scrollTo({left:p[Math.max(0,Math.min(i,p.length-1))],behavior:rm?'auto':'smooth'});
+    }
+
+    function buildDots(){
+      if(!dots||!s.clientWidth) return;
+      var n=pages();
+      dots.style.display=n<2?'none':'';   /* 1 màn thì không có gì để điều hướng */
+      if(btns.length===n) return;
+      dots.innerHTML='';btns=[];
+      for(var i=0;i<n;i++){
+        var b=document.createElement('button');
+        b.type='button';b.className='rv-dot';
+        b.setAttribute('aria-label','Go to slide '+(i+1)+' of '+n);
+        b.addEventListener('click',(function(k){return function(){kill();goto(k);};})(i));
+        dots.appendChild(b);btns.push(b);
+      }
+    }
+    function paintDots(){
+      if(!btns.length) return;
+      var n=btns.length,a=cur(),
+          start=Math.max(0,Math.min(a-2,n-5)),end=Math.min(n-1,start+4);
+      btns.forEach(function(b,i){
+        b.className='rv-dot'
+          +(i===a?' is-on':'')
+          +(i===start-1||i===end+1?' is-edge':'')
+          +(i<start-1||i>end+1?' is-hide':'');
+        b.setAttribute('aria-current',i===a?'true':'false');
+      });
+    }
+    function upd(){
+      if(!s.clientWidth) return;
+      var vis=s.clientWidth/s.scrollWidth;
+      if(th){
+        if(!isFinite(vis)||vis>=1){th.style.width='100%';th.style.left='0';}
+        else{var max=s.scrollWidth-s.clientWidth,p=max>0?s.scrollLeft/max:0;
+          th.style.width=(vis*100)+'%';th.style.left=(p*(1-vis)*100)+'%';}
+      }
+      if(prev)prev.style.opacity=s.scrollLeft<=1?'.35':'1';
+      if(next)next.style.opacity=(s.scrollLeft+s.clientWidth>=s.scrollWidth-1)?'.35':'1';
+      buildDots();paintDots();
+    }
+    function step(d){s.scrollBy({left:d*0.85*s.clientWidth,behavior:rm?'auto':'smooth'});}
+    function tick(){
+      if(hold||killed||document.hidden||!wrap.offsetParent||!s.clientWidth) return;
+      if(pages()<2) return;
+      var nx=cur()+1; goto(nx>=pages()?0:nx);
+    }
+    function kill(){killed=true;if(timer){clearInterval(timer);timer=null;}}
+
+    if(prev)prev.addEventListener('click',function(){step(-1);});
+    if(next)next.addEventListener('click',function(){step(1);});
+    s.addEventListener('scroll',upd,{passive:true});
+    window.addEventListener('resize',upd);
+
+    if(auto&&!rm){
+      timer=setInterval(tick,AUTO_MS);
+      wrap.addEventListener('mouseenter',function(){hold=true;});
+      wrap.addEventListener('mouseleave',function(){hold=false;});
+      wrap.addEventListener('focusin',function(){hold=true;});
+      wrap.addEventListener('focusout',function(){hold=false;});
+      s.addEventListener('pointerdown',kill,{passive:true});
+      s.addEventListener('touchstart',kill,{passive:true});
+      s.addEventListener('wheel',kill,{passive:true});
+    }
+    wrap._rvUpd=upd; upd();
+  }
+  var wraps=[].slice.call(document.querySelectorAll('.rv-slider-wrap'));
+  wraps.forEach(initSlider);
+  /* panel ẩn có clientWidth = 0 → mọi phép đo (số dot, bề rộng progress) đều sai.
+     Phải đo lại ngay sau khi đổi tab HOẶC đổi sub-tab nền tảng. */
+  [].slice.call(document.querySelectorAll('input[name="rvtab"],input[name="rvplat"]')).forEach(function(r){
+    r.addEventListener('change',function(){
+      requestAnimationFrame(function(){wraps.forEach(function(w){if(w._rvUpd)w._rvUpd();});});
+      /* mobile: hàng tab cuộn ngang → kéo tab vừa chọn vào tầm nhìn, tránh
+         trạng thái "tab đang mở nằm ngoài màn hình" */
+      var lb=document.querySelector('label[for="'+r.id+'"]');
+      if(lb&&lb.parentNode.scrollWidth>lb.parentNode.clientWidth+2){
+        lb.scrollIntoView({inline:'center',block:'nearest',behavior:rm?'auto':'smooth'});
+      }
+    });
+  });
+})();
+/* ---------- Services card — hover desktop / chạm mobile ---------- */
+
+/* SERVICES cards — desktop = hover reveals + whole-card link; touch (no-hover) = tap to activate (1st tap reveals, 2nd tap navigates) */
+(function(){
+  var noHover=window.matchMedia('(hover: none)');
+  var cards=[].slice.call(document.querySelectorAll('.svc-card'));
+  if(!cards.length) return;
+  cards.forEach(function(card){
+    card.addEventListener('click',function(e){
+      if(noHover.matches && !card.classList.contains('is-active')){
+        e.preventDefault();
+        cards.forEach(function(c){ if(c!==card) c.classList.remove('is-active'); });
+        card.classList.add('is-active');
+      }
+    });
+  });
+  document.addEventListener('click',function(e){
+    if(noHover.matches && !e.target.closest('.svc-card')){
+      cards.forEach(function(c){ c.classList.remove('is-active'); });
+    }
+  });
+})();
+/* ---------- Artists card — hover desktop / chạm mobile ---------- */
+
+/* ARTISTS cards — desktop = hover reveals bio panel + whole-card link; touch = tap to reveal (1st tap panel, 2nd tap navigates) */
+(function(){
+  var noHover=window.matchMedia('(hover: none)');
+  var cards=[].slice.call(document.querySelectorAll('.art-card'));
+  if(!cards.length) return;
+  cards.forEach(function(card){
+    card.addEventListener('click',function(e){
+      if(noHover.matches && !card.classList.contains('is-active')){
+        e.preventDefault();
+        cards.forEach(function(c){ if(c!==card) c.classList.remove('is-active'); });
+        card.classList.add('is-active');
+      }
+    });
+  });
+  document.addEventListener('click',function(e){
+    if(noHover.matches && !e.target.closest('.art-card')){
+      cards.forEach(function(c){ c.classList.remove('is-active'); });
+    }
+  });
+})();
+/* ---------- Slider mobile dùng chung (msl) — ‹ › + thanh kéo ---------- */
+
+/* generic MOBILE-SLIDER nav (‹ › + progress) for Services & Artists — grid on desktop, swipe row on mobile.
+   Mirrors the reviews slider; the foot is CSS-hidden on desktop so this is a harmless no-op there. */
+(function(){
+  var rm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  [].slice.call(document.querySelectorAll('.msl-foot')).forEach(function(foot){
+    var row=foot.parentElement.querySelector('.msl-row'); if(!row) return;
+    var th=foot.querySelector('.msl-thumb'),
+        track=foot.querySelector('.msl-track'),
+        prev=foot.querySelector('.msl-navbtn.prev'),
+        next=foot.querySelector('.msl-navbtn.next');
+    function upd(){
+      var vis=row.clientWidth/row.scrollWidth;
+      if(th){
+        if(!isFinite(vis)||vis>=1){th.style.width='100%';}
+        else{var max=row.scrollWidth-row.clientWidth,p=max>0?row.scrollLeft/max:0;
+          /* FILL trái: từ phần nhìn thấy (đầu) -> 100% (cuối), liền mạch */
+          var w=(vis+p*(1-vis))*100;
+          th.style.width=Math.min(100,Math.max(8,w))+'%';}
+      }
+      if(prev)prev.style.opacity=row.scrollLeft<=1?'.35':'1';
+      if(next)next.style.opacity=(row.scrollLeft+row.clientWidth>=row.scrollWidth-1)?'.35':'1';
+    }
+    function step(d){row.scrollBy({left:d*0.85*row.clientWidth,behavior:rm?'auto':'smooth'});}
+    if(prev)prev.addEventListener('click',function(){step(-1);});
+    if(next)next.addEventListener('click',function(){step(1);});
+    /* KÉO track để tua slider (scrub) */
+    if(track){
+      function scrub(clientX){var r=track.getBoundingClientRect(),ratio=(clientX-r.left)/r.width;
+        ratio=Math.min(1,Math.max(0,ratio));row.scrollLeft=ratio*(row.scrollWidth-row.clientWidth);}
+      track.addEventListener('pointerdown',function(e){track.classList.add('dragging');try{track.setPointerCapture(e.pointerId);}catch(_){}scrub(e.clientX);e.preventDefault();});
+      track.addEventListener('pointermove',function(e){if(track.classList.contains('dragging'))scrub(e.clientX);});
+      function end(){track.classList.remove('dragging');}
+      track.addEventListener('pointerup',end);track.addEventListener('pointercancel',end);
+    }
+    row.addEventListener('scroll',upd,{passive:true});
+    window.addEventListener('resize',upd);
+    upd();
+  });
+})();

@@ -122,6 +122,10 @@
 @media(max-width:860px){
   .near-grid{row-gap:0}
   .near-media{margin-top:var(--gap-block)}
+  /* …nhưng khi cùng khối .near-media đó nằm trong lưới .split (About, section
+     "Artist-Owned"), .split VẪN giữ row-gap 32px, nên margin trên cộng thêm vào
+     thành 54px hở giữa đoạn chữ và video. Trong .split thì row-gap cầm nhịp. */
+  .split > .near-media{margin-top:0}
 }
 
 /* ============================================================================
