@@ -8,7 +8,7 @@ Xuất bản qua GitHub Pages: <https://longdz1204.github.io/demo-hyper-home/>
 | Muốn đổi | Sửa file |
 |---|---|
 | Màu, khoảng cách, cỡ chữ, nút, mũi tên nén — **toàn site** | `_foundation/hi-ds.css` |
-| **Artists · Services · Awards · Reviews · slider mobile · pill-nav · Visit · CTA feeder · FAQ** — *kiểu dáng* | `_foundation/hi-components.css` + `hi-components.js` |
+| **Artists · Services · Awards · Reviews · slider mobile · pill-nav · Visit · CTA feeder · FAQ · Gallery** — *kiểu dáng* | `_foundation/hi-components.css` + `hi-components.js` |
 | **Nội dung thẻ** của 4 component đó (tên artist, chữ trên thẻ dịch vụ, review, giải) | `_partials/comp-*.html` → chạy `python3 build.py` |
 | Header, footer, promo bar, nút lên đầu trang — **kiểu dáng** | `_foundation/hi-chrome.css` |
 | Header, footer — **nội dung / link** | `_partials/header.html`, `_partials/footer.html` → chạy `python3 build.py` |
@@ -26,6 +26,33 @@ component nằm ở `_partials/comp-*.html` và bơm bằng `build.py`. Page ch�
 `section-head` (H2 + intro + link) — phần thân thì dùng chung, không chép tay.
 
 `_foundation/hi-foundation.css` **đang khoá** — không sửa.
+
+## 3 hành vi dùng chung toàn site
+
+Đặt ở lớp chung nên page nào đã port là có ngay, page chưa port nhận khi port.
+
+**Chrome trốn khi cuộn xuống.** Cuộn xuống ẩn CẢ promo bar + header, cuộn lên hiện lại,
+cả desktop lẫn mobile. Cờ là class `.chrome-off` trên `<html>` (không phải trên `.hdr`) —
+để thanh dính ở giữa trang cũng đọc được trạng thái. `.hdr` nằm ở `top:var(--promo-h)` nên
+muốn giấu hết phải `translateY(calc(-100% - var(--promo-h)))`, thiếu vế sau là hở đúng
+một dải bằng promo bar. Mở drawer mobile thì chrome bật lại (drawer chừa sẵn padding-top
+bằng chrome, header trốn thì đầu drawer rỗng một mảng).
+
+Rời khỏi đỉnh trang thì `<html>` thêm `.scrolled` → header đổi sang **nền đặc**. Ở đỉnh nó
+trong suốt để đè lên ảnh hero, nhưng lúc hiện lại giữa vùng nội dung dày mà vẫn trong suốt
+thì chữ trang đâm xuyên chữ menu.
+
+**Thanh dính luân phiên với chrome.** Gắn class `.stickybar` cho thanh nào cần dính
+(hiện có thanh lọc trang awards). Còn trong mạch trang thì hiện bình thường; khi đã bám
+lên đỉnh mà chrome đang hiện thì thanh trốn — không để 2 thanh chồng nhau ăn hết màn hình.
+JS chèn một mốc vô hình cao 1px ngay trước thanh và quan sát bằng `IntersectionObserver`
+để biết lúc nào là "đã dính"; **không đo trực tiếp thanh** vì lúc bị ẩn nó đã dịch
+`transform`, toạ độ không còn tin được.
+
+**Gallery bấm vào xem full + qua lại.** Nút trái/phải, số đếm `5 / 19`, phím ←/→, Esc,
+vuốt ngang trên mobile. Danh sách để lướt là các ô **đang hiện** — đổi pill là đổi danh
+sách, đúng nghĩa "qua lại trong cùng mục". Nút + số đếm do `hi-components.js` tự dựng nếu
+page chưa có, nên 4 trang gallery không phải sửa HTML rồi lệch nhau.
 
 ## Thứ tự nạp CSS (quan trọng)
 

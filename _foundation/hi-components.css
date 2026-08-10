@@ -883,3 +883,58 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 .faqacc-inner li{margin-bottom:8px}
 .faqacc-inner p b,.faqacc-inner li b{color:#fff;font-weight:600}
 @media(max-width:640px){.faqtab-nav{gap:8px;padding:8px;border-radius:16px;justify-content:flex-start}.faqtab{padding:10px 18px;font-size:12px}}
+
+/* ============================================================================
+   GALLERY — bộ lọc pill + lưới ảnh + đèn xem ảnh (lightbox).
+   Chuyển từ _pages/home.css 2026-08-10 để 4 trang gallery dùng chung một bản.
+   Nút qua lại + số đếm do hi-components.js tự dựng, page không phải viết thêm HTML.
+   ============================================================================ */
+/* ---------- PILL-FILTER PORTFOLIO (đồng bộ layout gallery các trang khác) ---------- */
+/* pill filter — CHUNG format với tab review (.rv-tabnav): khung bo tròn (bg+border) + pill borderless,
+   active = cam; 1 hàng, tràn thì CUỘN NGANG (không wrap nhiều hàng) — đồng bộ mọi section dạng pill */
+.galf{display:flex;flex-wrap:nowrap;gap:10px;width:100%;margin:clamp(24px,3vw,34px) 0 0;
+  padding:10px;border-radius:20px;background:var(--glass-nav);border:1px solid var(--glass-brd);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);overflow-x:auto}
+.galf-pill{appearance:none;-webkit-appearance:none;flex:0 0 auto;border:0;background:transparent;color:var(--cream);
+  border-radius:15px;padding:10px 22px;font-family:var(--sub);font-weight:600;font-size:12.5px;letter-spacing:.05em;
+  text-transform:uppercase;white-space:nowrap;cursor:pointer;transition:background .2s var(--ease),color .2s var(--ease)}
+.galf-pill:hover,.galf-pill:focus-visible{color:#fff;outline:none}
+.galf-pill.is-active{background:var(--orange);color:#fff}
+.galp-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(13px,1.5vw,18px);margin-top:clamp(22px,3vw,30px)}
+.galp-tile{position:relative;display:block;min-width:0;aspect-ratio:4/5;overflow:hidden;border-radius:14px;background:#151515;border:1px solid rgba(255,255,255,.07);cursor:zoom-in;transition:transform .3s var(--ease),border-color .3s var(--ease)}
+.galp-tile:hover{transform:translateY(-4px);border-color:rgba(204,102,0,.55)}
+.galp-tile[hidden]{display:none}
+.galp-tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.galp-tile:hover img{transform:scale(1.055)}
+@media(max-width:980px){.galp-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:640px){.galf{gap:8px;padding:8px;border-radius:16px;justify-content:flex-start}.galf-pill{padding:10px 18px;font-size:12px;letter-spacing:.04em}.galp-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}}
+/* lightbox — bấm 1 tile xem full-size */
+.galp-lb{position:fixed;inset:0;z-index:200;display:none;place-items:center;padding:clamp(18px,4vw,44px);background:rgba(0,0,0,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.galp-lb.is-open{display:grid}
+.galp-lb img{display:block;max-width:min(94vw,1080px);max-height:88vh;width:auto;height:auto;object-fit:contain;border-radius:12px;border:1px solid rgba(255,255,255,.12);box-shadow:0 28px 90px rgba(0,0,0,.7)}
+.galp-lb__close{position:absolute;top:20px;right:20px;width:46px;height:46px;border-radius:999px;border:1px solid rgba(255,255,255,.3);background:rgba(0,0,0,.5);color:#fff;font-size:24px;line-height:1;cursor:pointer;display:grid;place-items:center;transition:background .2s var(--ease),border-color .2s var(--ease)}
+.galp-lb__close:hover{background:var(--orange);border-color:var(--orange)}
+body.galp-lock{overflow:hidden}
+
+/* nút qua/lại + số đếm — dựng bằng JS nên page cũ không cần sửa HTML.
+   Nút nằm sát mép trái/phải màn hình chứ không sát ảnh: ảnh dọc thì hẹp, nút bám ảnh
+   sẽ nhảy vị trí mỗi lần đổi tấm. */
+.galp-lb__nav{position:absolute;top:50%;transform:translateY(-50%);width:52px;height:52px;
+  display:grid;place-items:center;border-radius:999px;border:1px solid rgba(255,255,255,.22);
+  background:rgba(0,0,0,.45);color:#fff;cursor:pointer;backdrop-filter:blur(6px);
+  transition:background .2s var(--ease),border-color .2s var(--ease),transform .2s var(--ease)}
+.galp-lb__nav:hover{background:var(--orange);border-color:transparent}
+.galp-lb__nav:disabled{opacity:.25;cursor:default;background:rgba(0,0,0,.45);border-color:rgba(255,255,255,.22)}
+.galp-lb__nav svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.galp-lb__nav--prev{left:clamp(10px,2.4vw,28px)}
+.galp-lb__nav--next{right:clamp(10px,2.4vw,28px)}
+.galp-lb__count{position:absolute;right:clamp(14px,3vw,34px);bottom:clamp(14px,3vw,30px);
+  display:inline-flex;align-items:center;gap:7px;padding:9px 17px;border-radius:999px;
+  background:rgba(0,0,0,.5);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(6px);
+  font-family:var(--sub);font-size:13px;letter-spacing:.06em;color:var(--cream)}
+.galp-lb__count b{color:#fff;font-weight:700}
+@media(max-width:640px){
+  /* mobile: nút thu nhỏ và hạ xuống ngang tầm ngón cái, không đè giữa ảnh */
+  .galp-lb__nav{width:44px;height:44px;top:auto;bottom:clamp(14px,3vw,30px);transform:none}
+  .galp-lb__count{left:50%;right:auto;transform:translateX(-50%)}
+}

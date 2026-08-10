@@ -1895,37 +1895,7 @@
 </button>
 <!-- /include footer -->
 
-<script>
-/* GALLERY — pill filter (lọc theo data-tags) + lightbox (href = ảnh full, DOM giữ nguyên cho SEO) */
-(function(){
-  var root=document.querySelector('[data-gallery-filter]');
-  var grid=document.querySelector('[data-gallery-grid]');
-  var tiles=grid?[].slice.call(grid.querySelectorAll('.galp-tile')):[];
-  if(root&&tiles.length){
-    function applyFilter(f){
-      tiles.forEach(function(t){
-        if(f==='all'){t.hidden=false;return;}
-        var tags=(t.getAttribute('data-tags')||'').split(/\s+/);
-        t.hidden=tags.indexOf(f)===-1;
-      });
-    }
-    root.addEventListener('click',function(e){
-      var b=e.target.closest('.galf-pill'); if(!b) return;
-      root.querySelectorAll('.galf-pill').forEach(function(p){var a=p===b;p.classList.toggle('is-active',a);p.setAttribute('aria-pressed',a?'true':'false');});
-      applyFilter(b.getAttribute('data-filter'));
-    });
-    var initPill=root.querySelector('.galf-pill.is-active')||root.querySelector('.galf-pill');
-    if(initPill) applyFilter(initPill.getAttribute('data-filter'));
-  }
-  var lb=document.querySelector('[data-gallery-lightbox]');
-  var lbImg=lb?lb.querySelector('[data-lightbox-image]'):null, last=null;
-  function close(){ if(!lb)return; lb.classList.remove('is-open'); document.body.classList.remove('galp-lock'); if(lbImg)lbImg.removeAttribute('src'); if(last)last.focus(); }
-  function open(tile){ if(!lb||!lbImg)return; last=tile; var im=tile.querySelector('img'); lbImg.src=tile.getAttribute('href'); lbImg.alt=im?im.alt:''; lb.classList.add('is-open'); document.body.classList.add('galp-lock'); }
-  tiles.forEach(function(t){ t.addEventListener('click',function(e){e.preventDefault();open(t);}); });
-  if(lb){ lb.addEventListener('click',function(e){ if(e.target===lb||e.target.closest('[data-lightbox-close]')) close(); }); }
-  document.addEventListener('keydown',function(e){ if(e.key==='Escape'&&lb&&lb.classList.contains('is-open')) close(); });
-})();
-</script>
+<!-- engine gallery (lọc + lightbox + qua lại) đã chuyển sang _foundation/hi-components.js -->
 <script>
 /* a11y (C2): Escape closes the Awards modal (radio-hack → re-check the "none" radio) */
 document.addEventListener('keydown',function(e){

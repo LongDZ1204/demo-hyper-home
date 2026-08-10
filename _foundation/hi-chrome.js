@@ -38,20 +38,42 @@
   x.addEventListener('click',function(){bar.remove();document.documentElement.style.setProperty('--promo-h','0px');});
 })();
 
-/* Hide-on-scroll: cuộn xuống ẩn menu (giữ logo + CTA), cuộn lên hiện lại */
+/* Hide-on-scroll: cuộn xuống trốn CẢ chrome (promo bar + header), cuộn lên hiện lại.
+   Cờ đặt ở <html> để thanh dính giữa trang cũng đọc được trạng thái này. */
 (function(){
-  var hdr=document.querySelector('.hdr'), tog=document.getElementById('navtog');
-  if(!hdr) return;
-  var last=window.scrollY, threshold=120, ticking=false;
+  var root=document.documentElement, tog=document.getElementById('navtog');
+  if(!document.querySelector('.hdr')) return;
+  var last=window.scrollY, threshold=90, ticking=false;
+  /* ngưỡng 6px: cuộn bằng trackpad hay rung tay sinh ra chuỗi ±1px, không lọc thì
+     header nhấp nháy lên xuống liên tục */
   function upd(){
     var y=window.scrollY;
-    if(window.innerWidth<=940){ hdr.classList.remove('nav-hidden'); ticking=false; last=y; return; }  /* mobile: header cố định */
-    if(tog && tog.checked){ ticking=false; last=y; return; }   /* drawer đang mở -> giữ nguyên */
-    if(y>threshold && y>last+4) hdr.classList.add('nav-hidden');
-    else if(y<last-4 || y<=threshold) hdr.classList.remove('nav-hidden');
+    root.classList.toggle('scrolled', y>threshold);   /* rời đỉnh -> header có nền đặc */
+    if(tog && tog.checked){ root.classList.remove('chrome-off'); ticking=false; last=y; return; }
+    if(y>threshold && y>last+6) root.classList.add('chrome-off');
+    else if(y<last-6 || y<=threshold) root.classList.remove('chrome-off');
     last=y; ticking=false;
   }
+  upd();
   window.addEventListener('scroll',function(){ if(!ticking){ requestAnimationFrame(upd); ticking=true; } },{passive:true});
+  if(tog) tog.addEventListener('change',function(){ if(tog.checked) root.classList.remove('chrome-off'); });
+})();
+
+/* Thanh dính: gắn .is-stuck khi thanh đã bám lên đỉnh, để CSS biết lúc nào cần
+   nhường chỗ cho chrome. Đo bằng một mốc vô hình cao 1px đặt ngay TRƯỚC thanh —
+   không đo trực tiếp thanh vì lúc bị ẩn nó đã dịch transform, toạ độ không còn tin được. */
+(function(){
+  var bars=document.querySelectorAll('.stickybar');
+  if(!bars.length || !('IntersectionObserver' in window)) return;
+  bars.forEach(function(bar){
+    var anchor=document.createElement('span');
+    anchor.className='stickybar-anchor';
+    anchor.setAttribute('aria-hidden','true');
+    bar.parentNode.insertBefore(anchor, bar);
+    new IntersectionObserver(function(entries){
+      bar.classList.toggle('is-stuck', !entries[0].isIntersecting);
+    },{threshold:0}).observe(anchor);
+  });
 })();
 
 /* Mobile accordion: 2 levels (desktop keeps hover flyout) */

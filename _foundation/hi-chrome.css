@@ -43,14 +43,45 @@
 .hdr .book{font-family:var(--sub);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#fff;border:1px solid rgba(255,255,255,.38);padding:11px 19px;border-radius:4px;transition:border-color .2s var(--ease),background .2s var(--ease)}
 .hdr .book:hover{border-color:var(--orange);background:var(--orange)}
 
-/* Hide-on-scroll: cuộn XUỐNG ẩn menu (giữ logo + CTA), cuộn LÊN hiện lại. Logo & Book Now luôn ở nguyên chỗ.
-   Desktop ẩn dải link .nav; mobile ẩn nút burger (KHÔNG đụng .nav drawer để không kẹt khi mở menu). */
-.nav-burger{transition:opacity .3s var(--ease),visibility 0s}
-@media(min-width:941px){
-  .nav{transition:opacity .3s var(--ease),transform .3s var(--ease),visibility 0s}
-  .hdr.nav-hidden .nav{opacity:0;visibility:hidden;transform:translateY(-8px);pointer-events:none;transition:opacity .3s var(--ease),transform .3s var(--ease),visibility 0s .3s}
+/* ============================================================================
+   HIDE-ON-SCROLL — cuộn XUỐNG trốn CẢ chrome (promo bar + header), cuộn LÊN hiện lại.
+   Áp cho cả desktop lẫn mobile. Bản trước chỉ ẩn dải link .nav và chỉ chạy desktop,
+   nên vẫn còn 112px chiếm đỉnh màn hình suốt lúc đọc.
+
+   .hdr nằm ở top:var(--promo-h) nên translateY(-100%) mới chỉ đẩy hết CHIỀU CAO
+   CỦA NÓ — vẫn hở đúng một dải bằng promo bar. Phải trừ thêm --promo-h.
+   Trạng thái nằm ở <html> (class .chrome-off) để thanh dính ở giữa trang cũng đọc được.
+   ============================================================================ */
+.promobar,.hdr{transition:transform .34s var(--ease)}
+html.chrome-off .promobar{transform:translateY(-100%)}
+html.chrome-off .hdr{transform:translateY(calc(-100% - var(--promo-h)))}
+
+/* Rời khỏi đỉnh thì header phải có nền ĐẶC. Ở đỉnh nó trong suốt để đè lên ảnh hero —
+   nhưng từ khi cuộn lên là hiện lại, nó rơi giữa vùng nội dung dày, chỉ có dải mờ
+   ::before thì chữ trang đâm xuyên qua chữ menu, đọc không ra. */
+.hdr{transition:transform .34s var(--ease),background-color .25s var(--ease)}
+html.scrolled .hdr{background:rgba(10,10,10,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--hair)}
+html.scrolled .hdr::before{opacity:0}
+/* mở drawer mobile là chrome bật lại (JS lo), nhưng chặn thêm ở CSS cho chắc:
+   drawer chừa sẵn padding-top bằng chrome, header trốn thì đầu drawer rỗng một mảng */
+html:has(#navtog:checked).chrome-off .promobar,
+html:has(#navtog:checked).chrome-off .hdr{transform:none}
+
+/* ============================================================================
+   THANH DÍNH (.stickybar) — luân phiên với chrome để không có 2 thanh chồng nhau.
+   Lúc thanh còn nằm trong mạch trang thì hiện bình thường. Khi nó ĐÃ DÍNH lên đỉnh
+   (JS gắn .is-stuck qua một mốc vô hình đặt ngay trước nó) mà chrome đang hiện thì
+   thanh trốn đi — chrome giữ đỉnh. Chrome trốn thì thanh thế chỗ ngay.
+   ============================================================================ */
+.stickybar{position:sticky;top:0;z-index:30;
+  transition:transform .3s var(--ease),opacity .2s var(--ease)}
+html:not(.chrome-off) .stickybar.is-stuck{transform:translateY(-100%);opacity:0;pointer-events:none}
+.stickybar-anchor{display:block;height:1px;margin-bottom:-1px;pointer-events:none}
+
+@media(prefers-reduced-motion:reduce){
+  .promobar,.hdr,.stickybar{transition:none}
 }
-/* Mobile: header GIỮ CỐ ĐỊNH (không hide-on-scroll) — chỉ desktop mới ẩn dải nav khi cuộn */
 
 /* DROPDOWNS (level-1) */
 .drop{opacity:0;visibility:hidden;transform:translateY(8px);transition:opacity .18s var(--ease),transform .22s var(--ease),visibility 0s .22s;z-index:59}

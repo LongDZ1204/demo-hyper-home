@@ -45,10 +45,9 @@
    the :checked ~ combinator can reach both the labels and the year grids. */
 .sapf-cb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
 
-/* top phải bằng chiều cao chrome, KHÔNG hardcode: --promo-h bị JS set về 0 khi
-   người dùng tắt thanh khuyến mãi, thanh lọc phải tự bám theo. */
-.sap-filterbar{position:sticky;top:var(--chrome-h);z-index:30;background:#0B0B0B;
-  border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+/* position/top/z-index nằm ở .stickybar (hi-chrome.css) — thanh này luân phiên với
+   chrome: chrome hiện thì nó trốn, chrome trốn thì nó lên đỉnh. Ở đây chỉ còn phần nhìn. */
+.sap-filterbar{background:#0B0B0B;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .sap-filterbar .wrap{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;padding-block:14px}
 .sapf-lab{display:inline-flex;align-items:center;gap:7px;cursor:pointer;
   font-family:var(--sub);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--cream);
@@ -154,6 +153,10 @@
 .awc-place{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:1;letter-spacing:-.005em;
   font-size:clamp(20px,2.1vw,28px)}
 .section .awc-place{color:var(--orange)}
+/* Thẻ giải trang này canh TRÁI + padding rộng hơn. `.aw-body` chung (rail trang chủ)
+   canh giữa vì thẻ bên đó hẹp hơn nhiều. Luật này từng bị bộ lọc trùng gỡ mất do
+   bộ lọc chỉ so TÊN thuộc tính chứ không so GIÁ TRỊ — nay viết .awc để thắng (0,2,0). */
+.awc .aw-body{padding:15px 17px 18px;text-align:left}
 .awc-conv{margin-top:8px;font-family:var(--sub);font-weight:600;font-size:14.5px;line-height:1.3;color:#fff}
 .awc-loc{margin-top:4px;font-size:13.5px;line-height:1.45;color:var(--muted)}
 .awc-by{margin-top:12px;font-family:var(--sub);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
@@ -241,7 +244,7 @@
   /* mobile: show 6 cards (2 cols x 3 rows) before Load more, instead of 8 */
   #awf-all:checked ~ #awload-2025:not(:checked) ~ #y2025 .sap-grid > .awc:nth-child(n+7),
   #awf-all:checked ~ #awload-2024:not(:checked) ~ #y2024 .sap-grid > .awc:nth-child(n+7){display:none}
-  .aw-body{padding:11px 11px 13px}
+  .awc .aw-body{padding:11px 11px 13px}
   .awc-place{font-size:clamp(15px,4.35vw,18px);line-height:1.06}
   .awc-conv{margin-top:7px;font-size:12.5px;line-height:1.32}
   .awc-loc{font-size:11.5px;line-height:1.4}

@@ -349,3 +349,113 @@
     upd();
   });
 })();
+
+/* ============================================================================
+   GALLERY — lọc theo pill + đèn xem ảnh có QUA/LẠI trong đúng mục đang lọc.
+   Chuyển từ inline index.html 2026-08-10, thêm phần điều hướng.
+
+   Nút qua/lại + số đếm do JS tự dựng nếu page chưa có: 4 trang gallery đang mỗi
+   trang một bản HTML, dựng bằng JS thì không phải sửa 4 file rồi lệch nhau lần nữa.
+   Danh sách để lướt là các ô ĐANG HIỆN — đổi pill là đổi luôn danh sách, đúng nghĩa
+   "qua lại trong cùng mục".
+   ============================================================================ */
+(function(){
+  var root=document.querySelector('[data-gallery-filter]');
+  var grid=document.querySelector('[data-gallery-grid]');
+  var lb=document.querySelector('[data-gallery-lightbox]');
+  var tiles=grid?[].slice.call(grid.querySelectorAll('.galp-tile')):[];
+  if(!tiles.length) return;
+
+  /* ---- bộ lọc pill ---- */
+  function applyFilter(f){
+    tiles.forEach(function(t){
+      if(f==='all'){t.hidden=false;return;}
+      var tags=(t.getAttribute('data-tags')||'').split(/\s+/);
+      t.hidden=tags.indexOf(f)===-1;
+    });
+  }
+  if(root){
+    root.addEventListener('click',function(e){
+      var b=e.target.closest('.galf-pill'); if(!b) return;
+      root.querySelectorAll('.galf-pill').forEach(function(p){
+        var a=p===b; p.classList.toggle('is-active',a); p.setAttribute('aria-pressed',a?'true':'false');
+      });
+      applyFilter(b.getAttribute('data-filter'));
+    });
+    var initPill=root.querySelector('.galf-pill.is-active')||root.querySelector('.galf-pill');
+    if(initPill) applyFilter(initPill.getAttribute('data-filter'));
+  }
+
+  /* ---- đèn xem ảnh ---- */
+  if(!lb) return;
+  var lbImg=lb.querySelector('[data-lightbox-image]');
+  if(!lbImg) return;
+  var last=null, list=[], idx=-1;
+
+  function svgArrow(d){
+    return '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="'+d+'"/></svg>';
+  }
+  var prev=lb.querySelector('[data-lightbox-prev]'), next=lb.querySelector('[data-lightbox-next]'),
+      count=lb.querySelector('[data-lightbox-count]');
+  if(!prev){
+    prev=document.createElement('button'); prev.type='button';
+    prev.className='galp-lb__nav galp-lb__nav--prev'; prev.setAttribute('data-lightbox-prev','');
+    prev.setAttribute('aria-label','Previous image'); prev.innerHTML=svgArrow('M15 5l-7 7 7 7');
+    lb.appendChild(prev);
+  }
+  if(!next){
+    next=document.createElement('button'); next.type='button';
+    next.className='galp-lb__nav galp-lb__nav--next'; next.setAttribute('data-lightbox-next','');
+    next.setAttribute('aria-label','Next image'); next.innerHTML=svgArrow('M9 5l7 7-7 7');
+    lb.appendChild(next);
+  }
+  if(!count){
+    count=document.createElement('div'); count.className='galp-lb__count';
+    count.setAttribute('data-lightbox-count',''); count.setAttribute('aria-live','polite');
+    lb.appendChild(count);
+  }
+
+  function visible(){ return tiles.filter(function(t){ return !t.hidden; }); }
+  function show(i){
+    if(i<0||i>=list.length) return;
+    idx=i;
+    var t=list[i], im=t.querySelector('img');
+    lbImg.src=t.getAttribute('href');
+    lbImg.alt=im?im.alt:'';
+    count.innerHTML='<b>'+(i+1)+'</b> / '+list.length;
+    prev.disabled=(i===0); next.disabled=(i===list.length-1);
+  }
+  function open(tile){
+    list=visible(); var i=list.indexOf(tile); if(i<0){ list=[tile]; i=0; }
+    last=tile; lb.classList.add('is-open'); document.body.classList.add('galp-lock');
+    show(i);
+  }
+  function close(){
+    lb.classList.remove('is-open'); document.body.classList.remove('galp-lock');
+    lbImg.removeAttribute('src'); if(last) last.focus();
+  }
+  function step(d){ var i=idx+d; if(i>=0&&i<list.length) show(i); }
+
+  tiles.forEach(function(t){ t.addEventListener('click',function(e){ e.preventDefault(); open(t); }); });
+  prev.addEventListener('click',function(e){ e.stopPropagation(); step(-1); });
+  next.addEventListener('click',function(e){ e.stopPropagation(); step(1); });
+  lb.addEventListener('click',function(e){
+    if(e.target.closest('.galp-lb__nav')||e.target.closest('.galp-lb__count')) return;
+    if(e.target===lb||e.target.closest('[data-lightbox-close]')) close();
+  });
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('is-open')) return;
+    if(e.key==='Escape') close();
+    else if(e.key==='ArrowLeft') step(-1);
+    else if(e.key==='ArrowRight') step(1);
+  });
+  /* vuốt ngang trên mobile — 45px mới tính, để cuộn dọc trong đèn không bị hiểu nhầm */
+  var x0=null,y0=null;
+  lb.addEventListener('touchstart',function(e){ x0=e.touches[0].clientX; y0=e.touches[0].clientY; },{passive:true});
+  lb.addEventListener('touchend',function(e){
+    if(x0===null) return;
+    var dx=e.changedTouches[0].clientX-x0, dy=e.changedTouches[0].clientY-y0;
+    if(Math.abs(dx)>45 && Math.abs(dx)>Math.abs(dy)) step(dx<0?1:-1);
+    x0=y0=null;
+  },{passive:true});
+})();
