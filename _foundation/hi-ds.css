@@ -45,11 +45,8 @@
    để mọi chỗ dùng --fs-h2/--fs-display đều nhận cùng một luật. */
 @media(max-width:560px){:root{--fs-h2:clamp(26px,7.2vw,34px);--fs-display:clamp(30px,7vw,46px)}}
 /* Cap 340px chỉ dành cho lead CĂN GIỮA (giữ độ dài dòng đẹp). Lead căn trái
-   (editorial + Near) phải full width, nếu không sẽ hở một máng phải lởm chởm
-   so với ảnh/slider bên dưới. */
-@media(max-width:600px){
-  .section-head--editorial .arti-intro,.section-head--editorial .gali-intro,.near-lead{max-width:none}
-}
+   (editorial + Near) phải full width — luật gỡ cap gom xuống khối "Cap bề ngang
+   ở mobile" bên dưới, khoá theo KHỐI HEAD chứ không theo tên từng lead. */
 
 /* --- áp thang: padding section --- */
 .section{padding-block:var(--sp-section)}
@@ -89,6 +86,28 @@
   /* .near .near-lead chứ không phải .near-lead: luật gộp token `--lead-mw` nằm SAU
      trong file, cùng 1 hạng specificity thì luật sau thắng. Thêm 1 class để vượt lên. */
   .near .near-lead{max-width:none}               /* gỡ --lead-mw 340px — hụt 50px */
+  /* Khoá theo KHỐI HEAD, không theo tên từng lead. Bản cũ liệt kê .arti-intro +
+     .gali-intro nên .aw-intro và .gd-lead lọt sổ, vẫn dính cap 340px trong cột
+     390px — hụt 50px, đúng cái "hố lệch phải" mà luật này sinh ra để chặn.
+     Danh sách tên thì mỗi section mới lại quên một cái; điều kiện "nằm trong head
+     căn trái" thì không quên được. */
+  .section-head--editorial > p,
+  .section-head--editorial > .section-intro{max-width:none}
+}
+/* text-wrap:balance san đều độ dài các dòng — đúng cho heading CĂN GIỮA (hụt đều
+   hai bên), sai cho căn trái: đo ở 430px thì số dòng KHÔNG đổi mà dòng dài nhất
+   ngắn đi 54-58px, nên mép phải của heading thành răng cưa so với mép card ngay
+   dưới. Bỏ balance = chữ chảy đầy dòng, cao bằng cũ.
+   Dùng `pretty` chứ không phải `wrap`: cả hai đều chảy đầy dòng đầu (381px), nhưng
+   `wrap` để "BEST TATTOO ARTISTS IN SAN ANTONIO, NEAR ME" rớt chữ "ME" đứng một mình
+   dòng cuối (53px), `pretty` kéo thành "NEAR ME" (156px). Trình duyệt chưa hiểu
+   `pretty` thì rơi về greedy wrap — vẫn đúng hướng, chỉ mất phần chống mồ côi.
+   Kèm max-width:none để gỡ cap 12.5em (=387px) và margin-inline:0 để hộp bám mép
+   trái cột thay vì tự căn giữa. */
+@media(max-width:560px){
+  .section .section-head--editorial > h1,
+  .section .section-head--editorial > h2,
+  .section .section-head--editorial > h3{max-width:none;margin-inline:0;text-wrap:pretty}
 }
 /* .section h2{max-width:12.5em} ở ≤560px là luật cho heading TRƯNG BÀY. Câu hỏi
    FAQ cũng là h2/h3 nên ăn nhầm: hộp còn 200px trong cột 390px, câu 1 dòng bị bẻ
