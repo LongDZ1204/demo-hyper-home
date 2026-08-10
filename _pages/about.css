@@ -42,9 +42,7 @@ h1 .o{color:var(--orange);display:block}
 .more-cb{position:absolute;width:1px;height:1px;opacity:0;margin:0}
 .lead{margin-top:22px;max-width:560px;font-size:16.5px;line-height:1.62;color:#E4E4E4;text-shadow:0 1px 10px rgba(0,0,0,.55);
   display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;line-clamp:4;overflow:hidden}
-.more-cb:checked ~ .lead{-webkit-line-clamp:unset;line-clamp:unset}
 .lead-extra{max-width:560px;max-height:0;overflow:hidden;opacity:0;transition:opacity .3s var(--ease),margin-top .3s var(--ease);text-shadow:0 1px 10px rgba(0,0,0,.5)}
-.more-cb:checked ~ .lead-extra{max-height:900px;opacity:1;margin-top:16px}
 .lx-setup{font-size:15px;line-height:1.55;color:#D6D6D6;margin-bottom:10px}
 .benefit-list{list-style:none;display:flex;flex-direction:column;gap:9px}
 .benefit-list li{position:relative;padding-left:18px;font-size:14.5px;line-height:1.5;color:#CFCFCF}
@@ -56,10 +54,6 @@ h1 .o{color:var(--orange);display:block}
 .more-btn:hover{color:var(--orange-hi)}
 .more-btn svg{width:14px;height:14px;transition:transform .25s var(--ease)}
 .more-btn .less{display:none}
-.more-cb:checked ~ .more-btn .more{display:none}
-.more-cb:checked ~ .more-btn .less{display:inline}
-.more-cb:checked ~ .more-btn svg{transform:rotate(180deg)}
-.more-cb:focus-visible ~ .more-btn{outline:2px solid var(--orange);outline-offset:3px;border-radius:2px}
 
 .cta{display:flex;flex-wrap:wrap;gap:14px;margin-top:28px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:54px;padding:15px 22px;border-radius:4px;
@@ -85,7 +79,6 @@ h1 .o{color:var(--orange);display:block}
 .info>svg{width:62%;height:62%;display:block}
 /* C6 · expand pointer target of small ⓘ + read-more toggles to WCAG 2.2 min (visual size unchanged) */
 .info::after{content:"";position:absolute;inset:-6px}
-.rvi-more::before,.svc-imore::before,.arti-imore::before,.gali-imore::before,.aw-more::before,.adv-more::before,.pr-more::before,.vs-more::before{content:"";position:absolute;inset:-3px}
 .stat-lbl .info{width:13px;height:13px}
 .info:hover,.info:focus-visible{border-color:var(--orange);color:#fff;outline:none}
 .info .tip{position:absolute;z-index:30;bottom:calc(100% + 9px);left:50%;transform:translateX(-50%) translateY(4px);
@@ -209,7 +202,7 @@ h1 .o{color:var(--orange);display:block}
 }
 .section-head--editorial .arti-intro,.section-head--editorial .gali-intro{margin-left:0;margin-right:auto;text-align:left}
 .artists .sec-bridge,.gallery .sec-bridge{margin-left:0;text-align:left}   /* editorial: bridge left too */
-.rvi-more,.svc-imore,.arti-imore,.gali-imore{transform:translateY(-50%)}   /* center read-more arrow on the text line (was 11px low) */
+
 .artists>.wrap,.gallery>.wrap,.services>.wrap{position:relative;z-index:1}
 
 /* ============ SECTION 03 · REVIEWS (2-tab · slider · split · leave-a-review) ============ */
@@ -220,14 +213,6 @@ h1 .o{color:var(--orange);display:block}
 .rvi-intro{position:relative;max-width:600px;margin:16px auto 0;text-align:center;
   font-size:16.5px;line-height:1.62;color:#C9C9C9}
 .rvi-intro b{color:#fff;font-weight:600}
-.rvi-intro-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
-.rvi-cb:checked ~ .rvi-intro .rvi-intro-txt{-webkit-line-clamp:40;line-clamp:40}
-.rvi-more{position:absolute;left:0;top:0;width:22px;height:22px;display:grid;place-items:center;
-  color:var(--orange);cursor:pointer;transition:color .2s var(--ease)}
-.rvi-more:hover{color:var(--orange-hi)}
-.rvi-more svg{width:20px;height:20px;transition:transform .25s var(--ease)}
-.rvi-cb:checked ~ .rvi-intro .rvi-more svg{transform:rotate(180deg)}
-.rvi-cb:focus-visible ~ .rvi-intro .rvi-more{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
 
 /* tabs (radio-hack) */
 .rv-tabs{text-align:center}
@@ -368,13 +353,6 @@ h1 .o{color:var(--orange);display:block}
 .services{background:var(--black)}
 .svc-icb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
 .svc-intro{position:relative;max-width:640px;margin:14px auto 0;text-align:center;font-size:16px;line-height:1.6;color:#C9C9C9}
-.svc-intro-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
-.svc-icb:checked ~ .svc-intro .svc-intro-txt{-webkit-line-clamp:40;line-clamp:40}
-.svc-imore{position:absolute;left:0;top:0;width:22px;height:22px;display:grid;place-items:center;color:var(--orange);cursor:pointer;transition:color .2s var(--ease)}
-.svc-imore:hover{color:var(--orange-hi)}
-.svc-imore svg{width:20px;height:20px;transition:transform .25s var(--ease)}
-.svc-icb:checked ~ .svc-intro .svc-imore svg{transform:rotate(180deg)}
-.svc-icb:focus-visible ~ .svc-intro .svc-imore{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
 .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:clamp(28px,3.4vw,42px)}
 .svc-card{position:relative;aspect-ratio:3/4;border-radius:14px;overflow:hidden;border:1px solid var(--border);
   background:var(--surface);isolation:isolate;transition:border-color .25s var(--ease),transform .25s var(--ease)}
@@ -390,8 +368,6 @@ h1 .o{color:var(--orange);display:block}
 .svc-name{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:-.01em;line-height:1.02;
   font-size:clamp(19px,1.5vw,22px);color:#fff}
 .svc-def{font-size:13px;line-height:1.5;color:var(--cream)}
-.svc-more{max-height:0;opacity:0;overflow:hidden;display:flex;flex-direction:column;gap:8px;
-  transition:max-height .45s var(--ease),opacity .3s var(--ease),margin-top .45s var(--ease)}
 .svc-card:hover .svc-more,.svc-card:focus-within .svc-more,.svc-card.is-active .svc-more{max-height:240px;opacity:1;margin-top:3px}
 .svc-more-txt{font-size:12.5px;line-height:1.5;color:#C2C2C2}
 .svc-explore{display:inline-flex;align-items:center;gap:7px;font-family:var(--sub);font-weight:600;font-size:11.5px;
@@ -452,13 +428,6 @@ h1 .o{color:var(--orange);display:block}
 /* intro clamp + JS-hug arrow (cloned from services for section parity) */
 .arti-icb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
 .arti-intro{position:relative;max-width:660px;margin:14px auto 0;text-align:center;font-size:16px;line-height:1.6;color:#C9C9C9}
-.arti-intro-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
-.arti-icb:checked ~ .arti-intro .arti-intro-txt{-webkit-line-clamp:40;line-clamp:40}
-.arti-imore{position:absolute;left:0;top:0;width:22px;height:22px;display:grid;place-items:center;color:var(--orange);cursor:pointer;transition:color .2s var(--ease)}
-.arti-imore:hover{color:var(--orange-hi)}
-.arti-imore svg{width:20px;height:20px;transition:transform .25s var(--ease)}
-.arti-icb:checked ~ .arti-intro .arti-imore svg{transform:rotate(180deg)}
-.arti-icb:focus-visible ~ .arti-intro .arti-imore{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
 /* grid */
 /* edit 2026-07-07: Artists = horizontal scroll-snap slider on desktop AND mobile (was 4-col grid) */
 .art-grid{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:clamp(14px,1.5vw,20px);margin-top:clamp(30px,4vw,46px);padding-bottom:4px}
@@ -510,12 +479,6 @@ h1 .o{color:var(--orange);display:block}
 .gallery{background:var(--bg)}
 .gali-icb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
 .gali-intro{position:relative;max-width:680px;margin:14px auto 0;text-align:center;font-size:16px;line-height:1.6;color:#C9C9C9}
-.gali-intro-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
-.gali-icb:checked ~ .gali-intro .gali-intro-txt{-webkit-line-clamp:40;line-clamp:40}
-.gali-imore{position:absolute;left:0;top:0;width:22px;height:22px;display:grid;place-items:center;color:var(--orange);cursor:pointer;transition:color .2s var(--ease)}
-.gali-imore:hover{color:var(--orange-hi)}
-.gali-imore svg{width:20px;height:20px;transition:transform .25s var(--ease)}
-.gali-icb:checked ~ .gali-intro .gali-imore svg{transform:rotate(180deg)}
 .gal-grid{display:flex;flex-wrap:wrap;justify-content:center;--gg:clamp(14px,1.6vw,22px);gap:var(--gg);margin-top:clamp(30px,4vw,46px)}
 .gal-card{position:relative;flex:0 0 calc((100% - 2*var(--gg))/3);aspect-ratio:4/5;border-radius:14px;overflow:hidden;cursor:pointer;background:#161616;border:1px solid rgba(255,255,255,.07);transition:transform .3s var(--ease),border-color .3s var(--ease)}
 .gal-card:hover{transform:translateY(-4px)}
@@ -620,15 +583,7 @@ body.gal-lock{overflow:hidden}
    visible line so it never drifts far from the text. Content is never removed = SEO-safe. */
 .aw-intro{position:relative;max-width:600px;margin:16px auto 0;text-align:center;text-shadow:none;
   font-size:16.5px;line-height:1.62;color:#E4E4E4}
-.aw-intro-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
-.more-cb:checked ~ .aw-intro .aw-intro-txt{-webkit-line-clamp:40;line-clamp:40}
-.aw-more{position:absolute;left:0;top:0;width:22px;height:22px;display:grid;place-items:center;
-  color:var(--orange);cursor:pointer;opacity:0;transform:translateY(-50%);
   transition:color .2s var(--ease),opacity .2s var(--ease)}
-.aw-more:hover{color:var(--orange-hi)}
-.aw-more svg{width:20px;height:20px;transition:transform .25s var(--ease)}
-.more-cb:checked ~ .aw-intro .aw-more svg{transform:rotate(180deg)}
-.more-cb:focus-visible ~ .aw-intro .aw-more{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
 
 /* ---------- the rail ---------- */
 .awrail-wrap{margin-top:clamp(28px,3.6vw,40px)}
@@ -745,16 +700,7 @@ body.gal-lock{overflow:hidden}
 /* centered clamped lead (mirrors §10 intro; arrow JS is a twin instance) */
 .adv-intro{position:relative;max-width:600px;margin:16px auto 0;text-align:center;text-shadow:none;
   font-size:16.5px;line-height:1.62;color:#C9C9C9}
-.adv-intro-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
-.adv-intro-txt b{color:#E9E9E9;font-weight:600}
-.more-cb:checked ~ .adv-intro .adv-intro-txt{-webkit-line-clamp:40;line-clamp:40}
-.adv-more{position:absolute;left:0;top:0;width:20px;height:20px;display:grid;place-items:center;
-  color:var(--orange);cursor:pointer;opacity:0;transform:translateY(-50%);
   transition:color .2s var(--ease),opacity .2s var(--ease)}
-.adv-more:hover{color:var(--orange-hi)}
-.adv-more svg{width:20px;height:20px;transition:transform .25s var(--ease)}
-.more-cb:checked ~ .adv-intro .adv-more svg{transform:rotate(180deg)}
-.more-cb:focus-visible ~ .adv-intro .adv-more{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
 
 /* tab block */
 .adv-tabs{margin-top:clamp(30px,4vw,46px)}
@@ -825,16 +771,7 @@ body.gal-lock{overflow:hidden}
 /* centered clamped lead — twin of §11 (own ids so §10/§11 stay untouched) */
 .pr-intro{position:relative;max-width:680px;margin:16px auto 0;text-align:center;
   font-size:16.5px;line-height:1.62;color:#C9C9C9}
-.pr-intro-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
-.pr-intro-txt b{color:#E9E9E9;font-weight:600}
-.more-cb:checked ~ .pr-intro .pr-intro-txt{-webkit-line-clamp:40;line-clamp:40}
-.pr-more{position:absolute;left:0;top:0;width:20px;height:20px;display:grid;place-items:center;
-  color:var(--orange);cursor:pointer;opacity:0;transform:translateY(-50%);
   transition:color .2s var(--ease),opacity .2s var(--ease)}
-.pr-more:hover{color:var(--orange-hi)}
-.pr-more svg{width:20px;height:20px;transition:transform .25s var(--ease)}
-.more-cb:checked ~ .pr-intro .pr-more svg{transform:rotate(180deg)}
-.more-cb:focus-visible ~ .pr-intro .pr-more{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
 
 /* three price tiers */
 .pr-tiers{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,1.8vw,22px);
@@ -932,14 +869,6 @@ body.gal-lock{overflow:hidden}
 .s-visit .wrap{position:relative;z-index:2}
 .s-visit h2 .o{color:var(--orange)}
 .vs-intro{position:relative;max-width:720px;margin:16px auto 0;text-align:center;font-size:16.5px;line-height:1.62;color:#C9C9C9}
-.vs-intro-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
-.vs-intro-txt b{color:#E9E9E9;font-weight:600}
-.more-cb:checked ~ .vs-intro .vs-intro-txt{-webkit-line-clamp:40;line-clamp:40}
-.vs-more{position:absolute;left:0;top:0;width:20px;height:20px;display:grid;place-items:center;color:var(--orange);cursor:pointer;opacity:0;transform:translateY(-50%);transition:color .2s var(--ease),opacity .2s var(--ease)}
-.vs-more:hover{color:var(--orange-hi)}
-.vs-more svg{width:20px;height:20px;transition:transform .25s var(--ease)}
-.more-cb:checked ~ .vs-intro .vs-more svg{transform:rotate(180deg)}
-.more-cb:focus-visible ~ .vs-intro .vs-more{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
 
 /* Part A: NAP + map */
 .vs-nap{display:grid;grid-template-columns:0.86fr 1.14fr;gap:clamp(24px,3.4vw,48px);align-items:stretch;margin-top:clamp(34px,4vw,50px)}
@@ -1127,7 +1056,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
 .who-mv h3 .o{color:var(--orange)}
 .who-mv .lead{margin-top:18px;max-width:none;color:#D9D9D9;text-shadow:none}
 .au-chips{margin-top:22px}
-.au-story .section-head{margin-bottom:clamp(28px,3vw,36px)}
+/* gap head→nội dung lấy theo --gap-head-body của hi-ds.css, không khai riêng */
 .au-story-split{display:block}
 .au-story-split>div{padding:clamp(18px,2.4vw,28px) 0 0;border-top:1px solid var(--hair)}
 .au-story-split>div p{max-width:860px;font-size:clamp(16.5px,1.45vw,18px);line-height:1.7}
@@ -1201,7 +1130,7 @@ textarea.bk-input{min-height:96px;resize:vertical}
    (1) breadcrumb  (2) Ganga-style hero (full image + heading anchored bottom)
    (3) visible 2-tone section-band alternation so no two neighbours share a nền
    ============================================================================ */
-:root{--band-a:#000000;--band-b:#1A1B20}
+:root{--band-a:var(--black);--band-b:var(--bg)}   /* 2026-08-10: #1A1B20 là tone thứ ba (ngả xanh), lệch với mọi page khác */
 
 /* ---- (1) breadcrumb · over hero image, top-left ---- */
 .crumb ol{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;padding:0;
@@ -1240,7 +1169,8 @@ textarea.bk-input{min-height:96px;resize:vertical}
 }
 
 /* ---- (3) section-band alternation · a=#000 dark, b=#1A1B20 raised (clearly visible step) ---- */
-.section{border-top:1px solid rgba(255,255,255,.05)}
+/* hairline chỉ đặt ở chỗ 2 section BUỘC cùng tone; so-le rồi thì không cần */
+#who{border-top:1px solid var(--hair)}
 .band-a{background:var(--band-a)}
 .band-b{background:var(--band-b)}
 
@@ -1279,3 +1209,5 @@ textarea.bk-input{min-height:96px;resize:vertical}
   .au-founder-split>.split-media{grid-column:2;grid-row:1 / span 2}
   .au-founder-split>.au-quote{grid-column:1;grid-row:2;margin-top:22px}
 }
+
+.lead-txt b{color:#E9E9E9;font-weight:600}

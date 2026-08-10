@@ -73,6 +73,10 @@
 /* head căn trái ở mobile chạy hết bề ngang wrap, chừa 34px để "…" + mũi tên không đội ra ngoài
    (nếu không, hàm place() phải bấm phanh mép màn hình và gap co lại còn 2px) */
 @media(max-width:600px){.section-head--editorial .has-clamp{padding-right:34px}}
+/* Lead có clamp mà KHÔNG bị cap bề ngang thì chạy sát mép cột, không còn chỗ cho
+   "…" + mũi tên (~31px) → hàm đặt mũi tên phải bấm phanh mép màn và gap âm.
+   Lead căn giữa đã có --lead-mw chừa sẵn 25px mỗi bên; lead nào chưa có thì cấp. */
+.section-intro.has-clamp{max-width:var(--lead-mw)}
 
 /* --- Cap bề ngang ở mobile: CHỈ áp cho chữ căn giữa ---------------------------
    Chữ căn giữa mà hộp hẹp hơn cột thì hụt ĐỀU hai bên → đọc ra là có chủ ý, và
@@ -101,6 +105,11 @@
        của .section-head); khối nội dung KHÔNG tự khai margin-top nữa, tránh
        phụ thuộc vào margin collapse để ra đúng số. --- */
 .section-head{margin-bottom:var(--gap-head-body)}
+/* Khoảng cách head→nội dung sống ở ĐÚNG 1 chỗ: .section-head margin-bottom.
+   Khối nội dung đứng ngay sau head KHÔNG được tự khai margin-top, nếu không
+   CSS gộp lề (lấy max) và số nào lớn hơn sẽ âm thầm thắng — đúng cái bẫy đã
+   dính ở homepage. Luật chung này thay cho việc liệt kê tên từng khối. */
+.section-head + *{margin-top:0}
 .rv-tabs,.svc-grid,.art-grid,.galf,.awrail-wrap,.adv-tabs,
 .pr-tiers,.vs-nap,.faqtab-nav,.gd-carousel,.bks-card{margin-top:0}
 
