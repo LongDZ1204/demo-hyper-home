@@ -1,0 +1,112 @@
+<!-- HYPER INKERS — HEADER dùng chung. NGUỒN DUY NHẤT.
+     Sửa file này rồi chạy `python3 build.py` là 21 page cập nhật theo.
+     CSS ở _foundation/hi-chrome.css · JS ở _foundation/hi-chrome.js -->
+<!-- ======================= PROMO BAR ======================= -->
+<div class="promobar" id="promobar">
+  <div class="wrap">
+    <a class="promo-msg" href="/promotions">See Hyper Inkers deals for you <span class="arw">→</span></a>
+    <button class="promo-x" id="promoX" aria-label="Dismiss promotion">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="hdr">
+  <div class="wrap">
+    <input type="checkbox" id="navtog" class="nav-toggle" aria-label="Open navigation menu">
+
+    <a class="logo" href="/" aria-label="Hyper Inkers home">
+      <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers" width="1024" height="192">
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <ul>
+        <li class="has-drop">
+          <a class="navlink" href="/services" aria-haspopup="true">Services
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="drop menu" role="menu">
+            <ul class="lvl1">
+              <li class="has-sub">
+                <a href="/tattoo">Custom Tattoo
+                  <svg class="caret-r" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                </a>
+                <div class="fly" role="menu">
+                  <a href="/tattoo/black-and-grey">Black &amp; Grey</a>
+                  <a href="/tattoo/realism">Realism</a>
+                  <a href="/tattoo/fine-line">Fine Line</a>
+                  <a href="/tattoo/japanese">Japanese</a>
+                  <a href="/tattoo/traditional">Traditional</a>
+                </div>
+              </li>
+              <li><a href="/tattoo/cover-up">Cover-Up Tattoo</a></li>
+              <li class="has-sub">
+                <a href="/piercing">Piercing
+                  <svg class="caret-r" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                </a>
+                <div class="fly" role="menu">
+                  <a href="/piercing/ear-piercing">Ear Piercing</a>
+                  <a href="/piercing/face-piercing">Face Piercing</a>
+                  <a href="/piercing/body-piercing">Body Piercing</a>
+                </div>
+              </li>
+              <li><a href="/tattoo-removal">Tattoo Removal</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li><a class="navlink" href="/artists">Artists</a></li>
+
+        <li class="has-drop">
+          <a class="navlink" href="/gallery" aria-haspopup="true">Gallery
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="drop menu simple" role="menu">
+            <ul class="lvl1">
+              <li><a href="/gallery/tattoo">Tattoo Gallery</a></li>
+              <li><a href="/gallery/piercing">Piercing Gallery</a></li>
+              <li><a href="/gallery/tattoo-removal-before-after">Removal Before &amp; After</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="has-drop">
+          <a class="navlink" href="/about-us" aria-haspopup="true">About Us
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="drop menu simple" role="menu">
+            <ul class="lvl1">
+              <li><a href="/faq">FAQ</a></li>
+              <li><a href="/testimonials">Testimonials</a></li>
+              <li><a href="/awards">Awards</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li><a class="navlink" href="/blog">Blog</a></li>
+        <li><a class="navlink" href="/contact">Contact Us</a></li>
+      </ul>
+
+      <div class="clock" id="hiClock" aria-label="Current time in San Antonio and open status">
+        <span class="t">—</span><span class="sep">·</span><span>SA</span><span class="sep">·</span>
+        <span class="dot"></span><span class="st">—</span>
+      </div>
+
+      <div class="m-clock" id="hiClockM" aria-hidden="true">
+        <span class="t">—</span><span class="sep">·</span><span>SA</span><span class="sep">·</span>
+        <span class="dot"></span><span class="st">—</span>
+      </div>
+      <a class="m-book" href="#book">Book Now</a>
+    </nav>
+
+    <div class="hdr-right">
+      <a class="book" href="#book">Book Now</a>
+    </div>
+
+    <label for="navtog" class="nav-burger" aria-label="Open menu">
+      <svg class="ico-bars" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      <svg class="ico-x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </label>
+  </div>
+</header>

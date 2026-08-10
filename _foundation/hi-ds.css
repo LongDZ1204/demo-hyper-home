@@ -1,0 +1,251 @@
+/* ============================================================================
+   HYPER INKERS — DESIGN SYSTEM v1  (spacing · type · CTA · lead-clamp · sec-link)
+   NGUỒN DUY NHẤT — sửa ở đây, mọi page đổi theo. Tách khỏi inline homepage ngày 2026-08-10.
+   ============================================================================ */
+/* NẠP CUỐI CÙNG trong <head>: lớp này cố tình ghi đè giá trị lẻ của từng component. */
+/* ============================================================================
+   DESIGN TOKENS v1 — thang SPACING + TYPE (chốt 2026-08-09)
+   Khối đặt CUỐI file để thắng cascade khi ghi đè giá trị lẻ của component.
+   Khi port sang _foundation/hi-foundation.css: bê nguyên :root lên đầu,
+   rồi xoá dần các giá trị lẻ trong từng component (không cần khối ghi đè nữa).
+   ============================================================================ */
+:root{
+  /* --- SPACING dọc: 5 nấc, không dùng số lẻ ngoài 5 nấc này --- */
+  --sp-section:clamp(60px,7vw,100px);      /* padding-block section thường */
+  --sp-section-cta:clamp(74px,9vw,140px);  /* padding-block CTA bán hàng full-bleed */
+  --sp-band:clamp(34px,4.4vw,56px);        /* dải mỏng: press bar / logo bar */
+  --gap-head-lead:16px;                    /* H2 → lead */
+  --gap-lead-bridge:14px;                  /* lead → câu dẫn (sec-bridge) */
+  --gap-head-body:clamp(26px,2.6vw,34px);  /* khối head → khối nội dung đầu */
+  --gap-block:clamp(22px,2.2vw,30px);      /* khối → khối cùng cấp */
+  --gap-subsec:clamp(48px,5vw,72px);       /* ranh giới tiểu-section trong 1 section */
+  --lead-mw:660px;
+  /* --- TYPE: 1 display + H1→H6 · 6 nấc text --- */
+  --fs-display:clamp(38px,5.6vw,74px);     /* chữ lớn CTA bán hàng */
+  --fs-h1:clamp(34px,4.6vw,60px);
+  --fs-h2:clamp(28px,3.4vw,44px);
+  --fs-h3:clamp(22px,2.6vw,30px);          /* heading khối lớn: panel award, tab title */
+  --fs-h4:clamp(19px,1.9vw,25px);          /* tên card lớn: artist, service */
+  --fs-h5:clamp(16px,1.6vw,19px);          /* card nhỏ, câu hỏi FAQ trụ */
+  --fs-h6:clamp(13.5px,1.35vw,15px);       /* micro-heading: why-choose, FAQ vệ tinh */
+  --fs-lead:16.5px;                        /* lead dưới H2 */
+  --fs-lead-sm:15px;                       /* lead phụ trong tiểu-section */
+  --fs-body:14.5px;                        /* body chính trong card */
+  --fs-sm:13.5px;                          /* body phụ, meta dài */
+  --fs-xs:12.5px;                          /* caption, bio, nav */
+  --fs-micro:11px;                         /* eyebrow / label in hoa */
+  /* --- CTA: 2 cỡ, dùng chung cho cả 4 lớp --- */
+  --btn-h:52px;      --btn-px:32px;   --btn-fs:13px;    /* cỡ L: CTA bán hàng */
+  --btn-h-sm:44px;   --btn-px-sm:24px;--btn-fs-sm:12.5px;/* cỡ S: CTA điều hướng */
+  --btn-ls:.09em;    --btn-r:4px;
+}
+@media(max-width:600px){:root{--lead-mw:340px;--fs-lead:15.5px}}
+/* Dưới 560px H2 và chữ display phải co theo vw NHANH hơn (7vw thay vì 3.4/5.6vw),
+   nếu không heading 2 dòng sẽ tụt xuống quá nhỏ so với thân bài. Ghi đè ở token
+   để mọi chỗ dùng --fs-h2/--fs-display đều nhận cùng một luật. */
+@media(max-width:560px){:root{--fs-h2:clamp(26px,7.2vw,34px);--fs-display:clamp(30px,7vw,46px)}}
+/* Cap 340px chỉ dành cho lead CĂN GIỮA (giữ độ dài dòng đẹp). Lead căn trái
+   (editorial + Near) phải full width, nếu không sẽ hở một máng phải lởm chởm
+   so với ảnh/slider bên dưới. */
+@media(max-width:600px){
+  .section-head--editorial .arti-intro,.section-head--editorial .gali-intro,.near-lead{max-width:none}
+}
+
+/* --- áp thang: padding section --- */
+.section{padding-block:var(--sp-section)}
+.s-cta1,.s-cta2{padding-block:var(--sp-section-cta)}
+.press{padding-block:var(--sp-band)}
+
+/* --- clamp lead DÙNG CHUNG (không bịa class riêng cho từng section nữa).
+       5 section cũ vẫn dùng class riêng của nó; khi port sang design-system
+       thì gộp hết về bộ .lead-cb / .lead-txt / .lead-more này. --- */
+.lead-cb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
+.has-clamp{position:relative}
+.lead-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+.lead-cb:checked ~ .has-clamp .lead-txt{-webkit-line-clamp:40;line-clamp:40}
+.lead-more{position:absolute;left:0;top:0;width:22px;height:22px;display:grid;place-items:center;
+  color:var(--orange);cursor:pointer;opacity:0;transform:translateY(-50%);transition:color .2s var(--ease)}
+.lead-more:hover{color:var(--orange-hi)}
+.lead-more svg{width:20px;height:20px;transition:transform .25s var(--ease)}
+.lead-cb:checked ~ .has-clamp .lead-more svg{transform:rotate(180deg)}
+.lead-cb:focus-visible ~ .has-clamp .lead-more{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
+.lead-txt b{color:#E9E9E9;font-weight:600}
+/* head căn trái ở mobile chạy hết bề ngang wrap, chừa 34px để "…" + mũi tên không đội ra ngoài
+   (nếu không, hàm place() phải bấm phanh mép màn hình và gap co lại còn 2px) */
+@media(max-width:600px){.section-head--editorial .has-clamp{padding-right:34px}}
+
+/* --- Cap bề ngang ở mobile: CHỈ áp cho chữ căn giữa ---------------------------
+   Chữ căn giữa mà hộp hẹp hơn cột thì hụt ĐỀU hai bên → đọc ra là có chủ ý, và
+   25px lề đó chính là chỗ cho mũi tên nén đứng (contentRight+31 vẫn trong màn).
+   Chữ căn 1 bên mà bị cap thì toàn bộ phần hụt dồn sang phải thành một cái hố
+   lệch, đổi lại không được gì: ở 390px cột đã tương đương ~38ch, vẫn nằm trong
+   khoảng dễ đọc 45–75ch. Nên khối căn trái chạy full. */
+@media(max-width:600px){
+  .hero-body .lead{width:auto;max-width:none}   /* gỡ cap 34ch — hụt 47px, cộng thêm 3 dòng */
+  /* .near .near-lead chứ không phải .near-lead: luật gộp token `--lead-mw` nằm SAU
+     trong file, cùng 1 hạng specificity thì luật sau thắng. Thêm 1 class để vượt lên. */
+  .near .near-lead{max-width:none}               /* gỡ --lead-mw 340px — hụt 50px */
+}
+/* .section h2{max-width:12.5em} ở ≤560px là luật cho heading TRƯNG BÀY. Câu hỏi
+   FAQ cũng là h2/h3 nên ăn nhầm: hộp còn 200px trong cột 390px, câu 1 dòng bị bẻ
+   thành 3 dòng và chừa 172px trống. Heading trong accordion không cần cap. */
+.section .faqacc-q{max-width:none}
+
+/* --- áp thang: khối head (H2 → lead → câu dẫn) --- */
+.rvi-intro,.svc-intro,.arti-intro,.gali-intro,.aw-intro,.adv-intro,
+.pr-intro,.vs-intro,.faq-lead,.gd-lead,.near-lead{
+  margin-top:var(--gap-head-lead);font-size:var(--fs-lead);max-width:var(--lead-mw)}
+.sec-bridge{margin-top:var(--gap-lead-bridge);margin-bottom:0}
+
+/* --- áp thang: head → khối nội dung. Gap sống ở ĐÚNG 1 chỗ (margin-bottom
+       của .section-head); khối nội dung KHÔNG tự khai margin-top nữa, tránh
+       phụ thuộc vào margin collapse để ra đúng số. --- */
+.section-head{margin-bottom:var(--gap-head-body)}
+.rv-tabs,.svc-grid,.art-grid,.galf,.awrail-wrap,.adv-tabs,
+.pr-tiers,.vs-nap,.faqtab-nav,.gd-carousel,.bks-card{margin-top:0}
+
+/* --- áp thang: khối → khối cùng cấp (chỗ lệch thật: 30/32/40/46) --- */
+.galp-grid,.gal-cta,.soa-plaque,.gd-foot{margin-top:var(--gap-block)}
+/* --- ranh giới tiểu-section (Visit: NAP → khu vực phục vụ) --- */
+.vs-local{margin-top:var(--gap-subsec)}
+/* --- Near: khi xếp dọc trên mobile, row-gap của grid cộng dồn với margin của
+       lead làm H2→lead ra 42px. Tắt row-gap, để margin cầm nhịp như section khác. --- */
+@media(max-width:860px){
+  .near-grid{row-gap:0}
+  .near-media{margin-top:var(--gap-block)}
+}
+
+/* ============================================================================
+   HỆ CTA — 4 lớp. Luật đọc: MÀU nói "đây là việc gì", CỠ nói "nặng hay nhẹ".
+     A1 .btn-primary  · bán hàng CHÍNH   — nền cam đặc, tối đa 1 cái/section
+     A2 .btn-sell     · bán hàng PHỤ     — viền CAM (vẫn là hành động mua)
+     B1 .btn-ghost    · điều hướng       — viền TRẮNG mờ, không bán gì
+     B2 .msl-* / dots · điều hướng slider
+     C  .cta1-call…   · text link, không khung
+   Trước chuẩn hoá: A2 và B1 dùng CHUNG viền trắng → user không phân biệt được
+   "gọi đặt lịch" với "xem thêm bài viết". Tách bằng màu viền.
+   ============================================================================ */
+.btn{min-height:var(--btn-h);padding:15px var(--btn-px);border-radius:var(--btn-r);
+  font-size:var(--btn-fs);letter-spacing:var(--btn-ls)}
+.btn--sm{min-height:var(--btn-h-sm);padding:12px var(--btn-px-sm);font-size:var(--btn-fs-sm)}
+.btn-primary{background:var(--orange);color:#fff;border-color:var(--orange)}
+.btn-primary:hover{background:var(--orange-hi);border-color:var(--orange-hi)}
+.btn-sell{background:rgba(0,0,0,.35);color:var(--cream);border-color:var(--orange)}
+.btn-sell:hover{background:var(--orange);border-color:var(--orange);color:#fff}
+.btn-ghost{background:rgba(0,0,0,.3);color:#fff;border-color:rgba(255,255,255,.22)}
+.btn-ghost:hover{border-color:var(--cream)}
+/* các modifier cũ đang tự khai padding/size lẻ → trả về thang chung */
+.cta1-btn,.cta2-btn{min-height:var(--btn-h);padding:15px var(--btn-px);
+  font-size:var(--btn-fs);letter-spacing:var(--btn-ls)}
+.cta .btn{font-size:var(--btn-fs);padding:15px var(--btn-px);letter-spacing:var(--btn-ls)}
+
+/* --- B1 · LINK SANG TRANG KHÁC = TEXT + GẠCH CHÂN, KHÔNG PHẢI NÚT ---------
+   Khung nút là tín hiệu "bấm vào đây để mua". Dùng nó cho link đọc tiếp
+   (xem hết giải, xem hết bài) làm loãng chính cái nút bán hàng. Điều hướng
+   dùng chữ có gạch chân: vẫn thấy bấm được, nhưng không tranh chỗ với CTA. */
+.sec-link{display:inline-flex;align-items:center;gap:9px;background:none;border:0;border-radius:0;
+  min-height:0;padding:0 0 4px;border-bottom:1px solid rgba(220,219,190,.34);
+  font-family:var(--sub);font-weight:600;font-size:var(--fs-sm);letter-spacing:.07em;
+  text-transform:uppercase;color:var(--cream);
+  transition:color .2s var(--ease),border-color .2s var(--ease)}
+.sec-link:hover{color:var(--orange);border-bottom-color:var(--orange)}
+.sec-link svg{width:15px;height:15px;transition:transform .2s var(--ease)}
+.sec-link:hover svg{transform:translateX(3px)}
+/* Link LUÔN nằm trong khối head và LUÔN ở MÉP PHẢI — kể cả head căn giữa.
+   Điều kiện: khối head phải rộng đủ .wrap. Awards đang bó max-width:680px trên
+   chính .section-head nên right:0 của nó rơi vào giữa trang và đè lên lead →
+   chuyển giới hạn 680px xuống riêng H2, head giữ nguyên chiều rộng. */
+.section-head{position:relative}
+.section-head--editorial{padding-right:210px}
+/* hi-foundation.css (file khoá) đặt .section-head{max-width:760px} cho MỌI head,
+   Awards còn siết thêm 680px. Gỡ trần ở khối head, hạ trần xuống riêng H2 để
+   heading vẫn ngắt dòng như cũ mà mép phải của head lại chạm mép .wrap. */
+.section-head.center{max-width:none}
+.section-head.center > h2{max-width:760px;margin-inline:auto}
+.s-awards .section-head{max-width:none}
+.s-awards .section-head > h2{max-width:680px;margin-inline:auto}
+.section-head.center > .rvi-intro,.section-head.center > .aw-intro,
+.section-head.center > .adv-intro,.section-head.center > .pr-intro,
+.section-head.center > .vs-intro,.section-head.center > .svc-intro,
+.section-head.center > .faq-lead,.section-head.center > .gd-lead{margin-inline:auto}
+.sec-link--head{position:absolute;right:0;bottom:0}
+/* chỉ chừa chỗ cho link ở head NÀO CÓ link — nếu không 6 head còn lại bị đội
+   thêm 32px vô cớ và gap head→nội dung lại lệch */
+.section-head.center:has(> .sec-link--head){padding-bottom:32px}
+
+/* --- Form Book: bám đúng component chuẩn toàn site `_foundation/components/
+       booking-form.css` (bản v7 ở /form). 7 điểm lệch đã nắn: heading cam +
+       căn trái + có dải phân cách · intro căn trái 52ch · input radius 10px ·
+       focus bỏ vòng sáng · textarea 76px · mũi tên select 14px · note 13px.
+       Khi port: chuyển cả khối này vào booking-section.css và gỡ H2 section
+       ở MỌI page cùng lúc (nếu không page cũ sẽ có 2 heading). --- */
+.s-book{--bks-pad:clamp(22px,2.6vw,30px)}
+.s-book .bks-card{margin-top:0;padding:0;overflow:hidden}
+.s-book [data-bks-body]{padding:0 var(--bks-pad) clamp(26px,3vw,34px)}
+.s-book .bks-success{padding:clamp(26px,3vw,34px) var(--bks-pad)}
+/* dải heading full-bleed: kéo ngược đúng bằng padding của body */
+/* .section h2 (0,1,1) thắng .bks-title (0,1,0) nên phải gắn thêm .s-book */
+/* max-width:none để gỡ luật mobile `.section h2{max-width:12.5em}` — nếu không
+   dải phân cách chỉ dài 12.5em và hụt so với mép card */
+.s-book .bks-title{margin:0 calc(-1 * var(--bks-pad)) 22px;max-width:none;
+  padding:clamp(24px,2.8vw,30px) var(--bks-pad) 20px;border-bottom:1px solid var(--border);
+  font-family:var(--head);font-weight:700;text-transform:uppercase;
+  font-size:clamp(26px,4.5vw,34px);letter-spacing:.5px;line-height:.98;
+  color:var(--orange);text-align:left}
+.s-book .bks-title .o{color:inherit}
+.s-book .bks-intro{text-align:left;max-width:52ch;margin:0 0 22px}
+/* Tông: popup đặt card trên nền tối và field SÁNG HƠN card 1 bậc (#161616). Bản nhúng đảo
+   ngược nên ô nhập gần như tàng hình → trả về đúng quan hệ của popup.
+   Dùng background-color, KHÔNG dùng shorthand `background` — shorthand xoá luôn
+   background-image tức là mũi tên của <select>. */
+.s-book .bks-card{background-color:var(--black);border:1px solid var(--border);border-radius:16px}
+.s-book .bks-input,.s-book .bks-textarea,.s-book .bks-select{
+  background-color:var(--surface);border-color:var(--border);border-radius:10px;line-height:normal}
+.s-book .bks-input:focus,.s-book .bks-textarea:focus,.s-book .bks-select:focus{
+  background-color:#1a1a1a;border-color:var(--orange);box-shadow:none}
+.s-book .bks-textarea{min-height:76px;line-height:1.55}
+.s-book .bks-select{background-position:right 14px center}
+.s-book .bks-intro,.s-book .bks-note,.s-book .bks-status{color:var(--muted)}
+.s-book .bks-note{margin-top:11px;padding-left:2px;font-size:13px}
+.s-book .bks-foot{margin-top:0;padding:18px 0 0}
+@media(max-width:760px){
+  .section-head--editorial{padding-right:0}
+  .section-head.center{padding-bottom:0}
+  .sec-link--head{position:static;margin-top:18px}
+  .section-head.center > .sec-link--head{margin-inline:auto}
+}
+/* gỡ tàn dư khuôn nút cũ ở 3 link đã đổi (selector cũ có 1 element nên phải 2 class) */
+.gal-more .sec-link{border:0;border-bottom:1px solid rgba(220,219,190,.34);border-radius:0;padding:0 0 4px;font-size:var(--fs-sm)}
+.gal-more .sec-link:hover{border-bottom-color:var(--orange)}
+.gal-more .sec-link svg{stroke:currentColor;fill:none;stroke-width:2.2}
+@media(max-width:600px){.gd-morebtn{width:auto}}
+
+/* --- NHỊP NỀN GIỮA CÁC SECTION ------------------------------------------
+   2 tone so-le: --black #000 ↔ --bg #0F0F0F. Chỗ nào buộc phải để 2 section
+   cùng tone liền nhau thì chèn hairline, KHÔNG bịa thêm tone thứ ba.
+   Trang này so-le đúng 13/14 chỗ; riêng CTA feeder nằm kẹp giữa 2 hàng xóm
+   nên tô màu gì cũng đụng một bên → tách bằng hairline (đúng cách .press
+   đang tách khỏi hero). */
+.s-cta1,.s-cta2{border-block:1px solid var(--hair)}
+/* B2: dot đang lệch nhau (reviews 34px bo tròn · awards 26px bo 5px) → 1 khuôn */
+.rv-dot.is-on,.awrail-dot.is-active{width:26px;border-radius:999px;background:var(--orange)}
+/* C: text link CTA */
+.cta1-call,.cta2-call{font-size:var(--fs-body);letter-spacing:.03em}
+
+/* ============================================================================
+   THANG HEADING dưới H2 — trước chuẩn hoá có 6 cỡ (30·25·23·19·17·15) mà 23 và
+   17 không mang vai trò riêng nào, chỉ là số lẻ. Gom về 4 nấc, mỗi nấc = 1 VAI TRÒ.
+   Lưu ý specificity: đã có sẵn `.section h3` (0,1,1) làm nền, nên mọi luật dưới
+   phải đạt >= 2 class mới thắng — vì thế đều gắn tiền tố `.section`.
+   ============================================================================ */
+.section .aw-panel-h{font-size:var(--fs-h3)}                                   /* H3 · panel/khối lớn */
+.section .art-name,.section .svc-name,
+.section .soa-p-h,.section .gd-feat-h{font-size:var(--fs-h4)}                  /* H4 · tên card lớn */
+.section .faqacc-item--pillar .faqacc-q,
+.section .gd-item-h{font-size:var(--fs-h5)}                                    /* H5 · card nhỏ / FAQ trụ */
+.section .faqacc-item--sat .faqacc-q,
+.section .adv-head h3{font-size:var(--fs-h6)}                                  /* H6 · micro-heading */
+/* nối H1/H2/display vào token để thang chỉ còn MỘT nguồn số */
+.hero h1{font-size:var(--fs-h1)}
+.section h2{font-size:var(--fs-h2)}
+.s-cta1 .cta1-h,.s-cta2 .cta2-h{font-size:var(--fs-display)}
