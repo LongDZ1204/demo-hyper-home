@@ -653,3 +653,99 @@
   .soa-p-txt{order:2}
   .soa-p-link{order:3}
 }
+
+/* ==================== VISIT · NAP + bản đồ + khu vực phục vụ ==================== */
+/* ============================================================================
+   SECTION 14 — VISIT / NAP + LOCAL SERVICE AREA
+   Content = humanized §Visit (verbatim). Part A: NAP contact column + Google Map
+   iframe (old-site layout). Part B: Koray-style Texas map whose pin moves to the
+   correct geographic spot per active city tab (radio-hack) + accordion city list.
+   Re-skinned to dark editorial + Hyper orange. TX path from mjumbewu US SVG.
+   ============================================================================ */
+.s-visit{background:var(--black)}
+.s-visit .wrap{position:relative;z-index:2}
+.s-visit h2 .o{color:var(--orange)}
+.vs-intro{position:relative;max-width:720px;margin:16px auto 0;text-align:center;font-size:16.5px;line-height:1.62;color:#C9C9C9}
+
+/* Part A: NAP + map */
+.vs-nap{display:grid;grid-template-columns:0.86fr 1.14fr;gap:clamp(24px,3.4vw,48px);align-items:stretch;margin-top:clamp(34px,4vw,50px)}
+.vs-contact{list-style:none;align-self:center}
+.vs-ci{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--hair)}
+.vs-ci:first-child{border-top:0;padding-top:0}
+.vs-ci:last-child{padding-bottom:0}
+.vs-ci-ic{flex:0 0 auto;width:24px;height:24px;color:var(--orange);margin-top:2px}
+.vs-ci-ic svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.vs-ci-lab{display:block;font-family:var(--sub);font-size:16px;font-weight:600;letter-spacing:.02em;color:var(--orange);margin-bottom:5px}
+.vs-ci-val{display:block;font-size:15px;line-height:1.55;color:#DEDEDE;text-decoration:none}
+a.vs-ci-val:hover{color:var(--orange-hi)}
+.vs-hours span{display:block}
+.vs-map{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--card-brd);min-height:360px;background:#111}
+.vs-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* Part B: local service area (Texas map + accordion) */
+.vs-local{margin-top:clamp(48px,6vw,76px)}
+.vs-local-lead{max-width:620px;margin:0 auto clamp(22px,3vw,34px);text-align:center;font-size:15.5px;line-height:1.6;color:var(--muted)}
+.vs-radio{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.vs-local-grid{display:grid;grid-template-columns:minmax(280px,.85fr) minmax(360px,1.15fr);gap:clamp(24px,3.5vw,44px);align-items:start;max-width:1080px;margin-inline:auto}
+/* flat single-fill Texas map box (Sutliff & Stout style, dark-adapted) */
+.vs-txmap{position:relative;isolation:isolate;width:100%}
+.vs-mapbox{position:relative;background:#0C0C0C;border:1px solid rgba(255,255,255,.09);padding:30px 30px 34px;min-height:340px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.vs-maptag{position:absolute;top:16px;right:18px;font-family:var(--sub);font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:rgba(255,255,255,.2)}
+.vs-txmap svg{width:100%;height:auto;max-height:284px;display:block;overflow:visible}
+.tx-flat{fill:rgba(255,255,255,.05);stroke:rgba(255,255,255,.2);stroke-width:1.4;stroke-linejoin:round}
+.vs-dot{fill:rgba(220,219,190,.34);transition:opacity .28s var(--ease)}
+.vs-pin{opacity:0;transition:opacity .3s var(--ease)}
+.vs-pin path{fill:var(--orange)}
+.vs-pin circle{fill:#0C0C0C}
+/* home-studio caption bottom-left of map, swaps with the active city */
+.vs-cap{position:absolute;left:22px;bottom:18px;opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
+.vs-cap-k{display:block;font-family:var(--sub);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:5px}
+.vs-cap-city{display:block;font-family:var(--sub);font-weight:700;text-transform:uppercase;font-size:18px;letter-spacing:.06em;color:#fff;line-height:1.1}
+.vs-cap-sub{display:block;font-size:12.5px;color:var(--muted);margin-top:4px}
+/* master-detail list */
+.vs-cities{list-style:none}
+/* ĐỒNG BỘ style tab với Why-Choose (.adv-*): thanh dọc cam nổi bên trái thay cho
+   border-left trên chính head, divider chỉ nằm GIỮA item, chữ 15px như .adv-head h3 */
+.vs-city{position:relative}
+.vs-city::before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:2px;background:rgba(255,255,255,.12);transition:background .22s var(--ease),box-shadow .22s var(--ease)}
+.vs-city + .vs-city{border-top:1px solid rgba(255,255,255,.07)}
+.vs-city-head{display:flex;align-items:center;justify-content:space-between;gap:16px;cursor:pointer;padding:18px 24px 12px 30px;transition:color .2s var(--ease)}
+.vs-city-head .vs-city-name{margin:0;font-family:var(--sub);font-weight:600;text-transform:uppercase;font-size:var(--fs-h6);letter-spacing:.02em;color:#BEBEBE;line-height:1.25;transition:color .2s var(--ease)}
+.vs-city-head:hover .vs-city-name{color:#EDEDED}
+.vs-city-meta{flex-shrink:0;font-family:var(--sub);font-size:13.5px;font-weight:600;letter-spacing:.02em;color:#8a8a8a;white-space:nowrap}
+.vs-city-home{color:var(--orange);text-transform:uppercase;letter-spacing:.16em;font-size:11.5px}
+.vs-city-panel{max-height:0;overflow:hidden;transition:max-height .34s var(--ease)}
+.vs-city-panel p{margin:0;padding:0 24px 22px 30px;font-size:15px;line-height:1.64;color:#C9C9C9;max-width:470px}
+/* active city → pin on map + hide its dot + swap caption + highlight row + open panel */
+#city-sa:checked ~ .vs-local-grid .vs-pin[data-city="sa"],
+#city-austin:checked ~ .vs-local-grid .vs-pin[data-city="austin"],
+#city-houston:checked ~ .vs-local-grid .vs-pin[data-city="houston"],
+#city-dallas:checked ~ .vs-local-grid .vs-pin[data-city="dallas"]{opacity:1}
+#city-sa:checked ~ .vs-local-grid .vs-dot[data-city="sa"],
+#city-austin:checked ~ .vs-local-grid .vs-dot[data-city="austin"],
+#city-houston:checked ~ .vs-local-grid .vs-dot[data-city="houston"],
+#city-dallas:checked ~ .vs-local-grid .vs-dot[data-city="dallas"]{opacity:0}
+#city-sa:checked ~ .vs-local-grid .vs-cap[data-city="sa"],
+#city-austin:checked ~ .vs-local-grid .vs-cap[data-city="austin"],
+#city-houston:checked ~ .vs-local-grid .vs-cap[data-city="houston"],
+#city-dallas:checked ~ .vs-local-grid .vs-cap[data-city="dallas"]{opacity:1}
+#city-sa:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(1)::before,
+#city-austin:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(2)::before,
+#city-houston:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(3)::before,
+#city-dallas:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(4)::before{background:var(--orange);box-shadow:0 0 16px rgba(204,102,0,.42)}
+#city-sa:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(1) .vs-city-head .vs-city-name,
+#city-austin:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(2) .vs-city-head .vs-city-name,
+#city-houston:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(3) .vs-city-head .vs-city-name,
+#city-dallas:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(4) .vs-city-head .vs-city-name{color:#fff}
+#city-sa:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(1) .vs-city-panel,
+#city-austin:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(2) .vs-city-panel,
+#city-houston:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(3) .vs-city-panel,
+#city-dallas:checked ~ .vs-local-grid .vs-cities .vs-city:nth-child(4) .vs-city-panel{max-height:200px}
+.vs-radio:focus-visible ~ .vs-local-grid .vs-cities .vs-city .vs-city-head{outline:1px solid var(--orange);outline-offset:-1px}
+
+@media(max-width:860px){
+  .vs-nap{grid-template-columns:1fr;gap:26px}
+  .vs-map{min-height:300px}
+  .vs-local-grid{grid-template-columns:1fr;gap:24px}
+  .vs-mapbox{min-height:280px;padding:24px 24px 28px}
+}

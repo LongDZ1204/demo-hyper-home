@@ -394,43 +394,7 @@ from{transform:translateX(0)}to{transform:translateX(-50%)}
 .s-cta2 .wrap{position:relative;z-index:2}
 
 
-/* ============================================================================
-   SECTION 14 — VISIT / NAP + LOCAL SERVICE AREA
-   Content = humanized §Visit (verbatim). Part A: NAP contact column + Google Map
-   iframe (old-site layout). Part B: Koray-style Texas map whose pin moves to the
-   correct geographic spot per active city tab (radio-hack) + accordion city list.
-   Re-skinned to dark editorial + Hyper orange. TX path from mjumbewu US SVG.
-   ============================================================================ */
-.s-visit{background:var(--black)}
-.s-visit .wrap{position:relative;z-index:2}
-.s-visit h2 .o{color:var(--orange)}
-.vs-intro{position:relative;max-width:720px;margin:16px auto 0;text-align:center;font-size:16.5px;line-height:1.62;color:#C9C9C9}
 
-/* Part A: NAP + map */
-.vs-nap{display:grid;grid-template-columns:0.86fr 1.14fr;gap:clamp(24px,3.4vw,48px);align-items:stretch;margin-top:clamp(34px,4vw,50px)}
-.vs-contact{list-style:none;align-self:center}
-.vs-ci{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--hair)}
-.vs-ci:first-child{border-top:0;padding-top:0}
-.vs-ci:last-child{padding-bottom:0}
-.vs-ci-ic{flex:0 0 auto;width:24px;height:24px;color:var(--orange);margin-top:2px}
-.vs-ci-ic svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.vs-ci-lab{display:block;font-family:var(--sub);font-size:16px;font-weight:600;letter-spacing:.02em;color:var(--orange);margin-bottom:5px}
-.vs-ci-val{display:block;font-size:15px;line-height:1.55;color:#DEDEDE;text-decoration:none}
-a.vs-ci-val:hover{color:var(--orange-hi)}
-.vs-hours span{display:block}
-.vs-map{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--card-brd);min-height:360px;background:#111}
-.vs-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-
-/* Part B: local service area (Texas map + accordion) */
-
-
-/* active city → show its pin (hide its dot) + highlight list row + open panel */
-
-
-@media(max-width:860px){
-.vs-nap{grid-template-columns:1fr;gap:26px}
-  .vs-map{min-height:300px}
-}
 
 
 /* ========== §15 FAQ ========== */

@@ -1,0 +1,293 @@
+/* ============================================================================
+   awards.html — CSS riêng của page. Tách khỏi <style> inline 2026-08-10.
+   Component dùng chung (rail giải, modal, visit, FAQ) sống ở _foundation/.
+   ============================================================================ */
+/* ============================================================================
+   HYPER INKERS — AWARDS PAGE  /awards/   (2026-07-07)
+   Build via workflow ui-build. Content = 2026-06-26_awards-client-review.md
+   (client-reviewed, verbatim). Architecture = 2026-06-26_awards-outline-am.md
+   (LOCKED): year-H2 backbone (2026→2023) · card grid · ONE Placement filter
+   (CSS-only) · modal per win (DOM-render, NO JS fetch) · FAQ + schema (GEO).
+   Tokens + components inherited from _foundation/hi-foundation.css (never forked).
+   7 awards have plate-verified cut trophies; the other 21 use a clean placeholder
+   vitrine (no invented trophy→award pairing). Swap real PNGs at the same paths.
+   ============================================================================ */
+
+/* ---------- HERO · Ganga layout (full-bleed image, breadcrumb top-center, heading pinned bottom-center) — synced with the About page hero ---------- */
+.awh{position:relative;overflow:clip;min-height:min(100svh,880px);padding:0;display:flex}
+.awh-media{position:absolute;inset:0;z-index:0}
+.awh-media img{width:100%;height:100%;object-fit:cover;object-position:50% 42%}
+.awh-scrim{position:absolute;inset:0;z-index:1;background:
+  linear-gradient(180deg, rgba(0,0,0,.90) 0%, rgba(0,0,0,.72) 24%, rgba(0,0,0,.72) 72%, rgba(0,0,0,.93) 100%)}
+.awh .wrap{position:relative;z-index:3;flex:1;display:flex;flex-direction:column;padding-block:104px 58px}
+/* breadcrumb over the hero image, centered above the heading */
+
+
+.awh .crumb{margin-bottom:16px}
+.awh .crumb ol{justify-content:center}
+/* heading cluster centered horizontally, pinned to the BOTTOM of the hero */
+.awh-in{margin-top:auto;margin-inline:auto;max-width:860px;text-align:center}
+.awh h1{margin-bottom:0;font-size:clamp(42px,6.4vw,82px);line-height:1.04;letter-spacing:.004em}
+.awh h1 .o{color:var(--orange)}
+.awh-tag{margin-top:16px;font-family:var(--sub);font-size:clamp(14px,1.7vw,19px);
+  letter-spacing:.14em;text-transform:uppercase;color:var(--cream);text-shadow:0 1px 10px rgba(0,0,0,.6)}
+.awh-intro{margin:18px auto 0;max-width:640px;font-size:clamp(15px,1.25vw,17px);line-height:1.62;
+  color:#E7E7E7;text-shadow:0 1px 10px rgba(0,0,0,.6)}
+.awh-intro a{color:var(--orange-hi);font-weight:600;border-bottom:1px solid rgba(230,117,0,.4)}
+.awh-intro a:hover{color:#fff;border-color:#fff}
+
+/* ============================================================================
+   RECORDS — sticky Placement filter + year sections + card grid
+   ============================================================================ */
+.sap{position:relative;background:#050505}
+
+/* filter radios are visually hidden; the visible bar is a following sibling so
+   the :checked ~ combinator can reach both the labels and the year grids. */
+.sapf-cb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
+
+/* top phải bằng chiều cao chrome, KHÔNG hardcode: --promo-h bị JS set về 0 khi
+   người dùng tắt thanh khuyến mãi, thanh lọc phải tự bám theo. */
+.sap-filterbar{position:sticky;top:var(--chrome-h);z-index:30;background:#0B0B0B;
+  border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.sap-filterbar .wrap{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;padding-block:14px}
+.sapf-lab{display:inline-flex;align-items:center;gap:7px;cursor:pointer;
+  font-family:var(--sub);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--cream);
+  padding:9px 15px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.03);
+  transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease)}
+.sapf-lab:hover{border-color:rgba(204,102,0,.5);color:#fff}
+.sapf-cb:focus-visible ~ .sap-filterbar .sapf-lab[data-for]{outline:none}
+/* active state — one rule per filter (radios precede the bar) */
+#awf-all:checked   ~ .sap-filterbar label[for="awf-all"],
+#awf-bos:checked   ~ .sap-filterbar label[for="awf-bos"],
+#awf-1st:checked   ~ .sap-filterbar label[for="awf-1st"],
+#awf-2nd:checked   ~ .sap-filterbar label[for="awf-2nd"],
+#awf-3rd:checked   ~ .sap-filterbar label[for="awf-3rd"],
+#awf-other:checked ~ .sap-filterbar label[for="awf-other"]{
+  background:var(--orange);border-color:transparent;color:#fff}
+.sapf-cb:focus-visible ~ .sap-filterbar .sapf-lab{outline:2px solid var(--orange);outline-offset:2px}
+
+/* filter hide logic — CSS only; hidden cards stay in the DOM (SEO/GEO safe) */
+#awf-bos:checked   ~ .sap-year .awc:not(.f-bos){display:none}
+#awf-1st:checked   ~ .sap-year .awc:not(.f-1st){display:none}
+#awf-2nd:checked   ~ .sap-year .awc:not(.f-2nd){display:none}
+#awf-3rd:checked   ~ .sap-year .awc:not(.f-3rd){display:none}
+#awf-other:checked ~ .sap-year .awc:not(.f-other){display:none}
+/* collapse a year section that has zero matching cards for the active filter */
+#awf-bos:checked   ~ .sap-year:not(:has(.f-bos)){display:none}
+#awf-1st:checked   ~ .sap-year:not(:has(.f-1st)){display:none}
+#awf-2nd:checked   ~ .sap-year:not(:has(.f-2nd)){display:none}
+#awf-3rd:checked   ~ .sap-year:not(:has(.f-3rd)){display:none}
+#awf-other:checked ~ .sap-year:not(:has(.f-other)){display:none}
+
+/* per-year award reveal: full archive stays in the DOM, each dense year opens on demand */
+.aw-load-cb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
+.aw-loadmore{display:none;align-items:center;justify-content:center;gap:9px;width:100%;max-width:360px;
+  margin:28px auto 0;min-height:50px;border:1px solid transparent;border-radius:999px;
+  background:var(--orange);color:#fff;font-family:var(--sub);font-weight:700;font-size:12px;
+  letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 12px 30px rgba(204,102,0,.34);
+  transition:background .2s var(--ease),transform .2s var(--ease),box-shadow .2s var(--ease)}
+.aw-loadmore:hover{background:var(--orange-hi);transform:translateY(-1px);box-shadow:0 16px 36px rgba(230,117,0,.38)}
+.aw-loadmore svg{width:16px;height:16px;transition:transform .22s var(--ease)}
+.aw-loadmore .less{display:none}
+
+#awf-all:checked ~ #awload-2025:not(:checked) ~ #y2025 .sap-grid > .awc:nth-child(n+9),
+#awf-all:checked ~ #awload-2024:not(:checked) ~ #y2024 .sap-grid > .awc:nth-child(n+9){display:none}
+#awf-all:checked ~ #y2025 .aw-loadmore,
+#awf-all:checked ~ #y2024 .aw-loadmore{display:flex}
+#awf-bos:checked ~ .sap-year .aw-loadmore,
+#awf-1st:checked ~ .sap-year .aw-loadmore,
+#awf-2nd:checked ~ .sap-year .aw-loadmore,
+#awf-3rd:checked ~ .sap-year .aw-loadmore,
+#awf-other:checked ~ .sap-year .aw-loadmore{display:none}
+#awload-2025:checked ~ #y2025 .aw-loadmore .more,
+#awload-2024:checked ~ #y2024 .aw-loadmore .more{display:none}
+#awload-2025:checked ~ #y2025 .aw-loadmore .less,
+#awload-2024:checked ~ #y2024 .aw-loadmore .less{display:inline}
+#awload-2025:checked ~ #y2025 .aw-loadmore svg,
+#awload-2024:checked ~ #y2024 .aw-loadmore svg{transform:rotate(180deg)}
+
+/* year section */
+.sap-year{position:relative;padding:clamp(44px,5.4vw,74px) 0;border-top:1px solid rgba(255,255,255,.065)}
+.sap-year + .sap-year{padding-top:clamp(44px,5.4vw,74px)}
+#y2026,#y2024{background:
+  radial-gradient(70% 72% at 50% 0%,rgba(204,102,0,.065),rgba(204,102,0,0) 58%),
+  #070707}
+#y2025,#y2023{background:
+  linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,0) 190px),
+  #101010}
+.sap-yhead{display:flex;align-items:baseline;gap:16px;margin-bottom:clamp(24px,3vw,36px);flex-wrap:wrap}
+.sap-yhead h2{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:.98;letter-spacing:-.005em;
+  font-size:clamp(28px,3.4vw,44px);color:#fff}
+.sap-yhead h2 .o{color:var(--orange)}
+.sap-yintro{flex:0 0 100%;max-width:780px;margin:12px 0 0;font-size:15.5px;line-height:1.62;color:#B8B8B8}
+
+/* ---------- card grid ---------- */
+.sap-grid{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));
+  gap:clamp(16px,1.8vw,22px)}
+
+.awc{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;
+  transition:border-color .2s var(--ease),transform .2s var(--ease)}
+.awc:hover{border-color:rgba(204,102,0,.45);transform:translateY(-3px)}
+.awc:focus-within{border-color:var(--orange)}
+
+
+/* vitrine = transparent cup floating on the dark card (ported from homepage §10) */
+.aw-vitrine{--ar:4/3;position:relative;border:none;border-radius:0;box-shadow:none;
+  background:radial-gradient(72% 62% at 50% 42%,rgba(255,255,255,.055),rgba(255,255,255,0) 72%);
+  border-bottom:1px solid var(--hair)}
+.aw-vitrine>img{width:100%;height:100%;object-fit:contain;object-position:50% 50%;padding:16px 16px 12px;
+  filter:drop-shadow(0 13px 22px rgba(0,0,0,.55))}
+/* placeholder vitrine — same footprint, trophy glyph, honest "coming soon" */
+.aw-vitrine--soon{background:repeating-linear-gradient(135deg,#141414,#141414 10px,#181818 10px,#181818 20px)}
+.aw-soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
+.aw-soon-ic{width:40px;height:40px;color:#4a4a4a}
+.aw-soon-t{font-family:var(--sub);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#7d7d7d;text-align:center;line-height:1.5}
+
+
+.awc:hover .aw-open{background:var(--orange);border-color:transparent}
+
+
+.awc-place{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:1;letter-spacing:-.005em;
+  font-size:clamp(20px,2.1vw,28px);color:#fff}
+.awc-conv{margin-top:8px;font-family:var(--sub);font-weight:600;font-size:14.5px;line-height:1.3;color:#fff}
+.awc-loc{margin-top:4px;font-size:13.5px;line-height:1.45;color:var(--muted)}
+.awc-by{margin-top:12px;font-family:var(--sub);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.awc-by b{color:var(--orange);font-weight:600}
+
+/* ---------- 2026 flagship card (wide, image left · story right) ---------- */
+.sap-grid--flag{grid-template-columns:1fr}
+.awc--flag{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:stretch}
+.awc--flag .aw-vitrine{--ar:auto;border-bottom:none;border-right:1px solid var(--hair);min-height:300px}
+.awc--flag .aw-body{padding:clamp(24px,3vw,38px);display:flex;flex-direction:column;justify-content:center}
+.awc--flag .awc-place{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:-.005em;
+  font-size:clamp(24px,2.8vw,34px);line-height:1.02}
+.awc--flag .awc-conv{font-size:15.5px;margin-top:10px}
+.awc--flag .awc-story{margin-top:14px;font-size:15px;line-height:1.6;color:#C9C9C9}
+.awc--flag .awc-by{margin-top:16px;padding-top:14px;border-top:1px solid var(--hair)}
+@media(max-width:720px){
+.awc--flag{grid-template-columns:1fr}
+  .awc--flag .aw-vitrine{border-right:none;border-bottom:1px solid var(--hair);min-height:0;--ar:4/3}
+}
+
+
+/* ---------- CTA-1 splatter strip (after 2025) ---------- */
+.sap-cta1{position:relative;overflow:hidden;background:var(--bg);border:0;outline:0}
+.sap-cta1-splat{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scaleX(-1);
+  width:min(96vw,1900px);max-width:none;height:auto;opacity:.58;filter:brightness(.68) saturate(1.2);
+  pointer-events:none;user-select:none;z-index:0}
+.sap-cta1::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(58% 76% at 50% 50%,rgba(0,0,0,.58),rgba(0,0,0,0) 78%)}
+.sap-cta1 .wrap{position:relative;z-index:2;max-width:1280px;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:clamp(22px,2.6vw,32px);padding-block:clamp(66px,5.2vw,92px);text-align:center}
+.sap-cta1 .h{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:-.005em;line-height:1.02;
+  font-size:clamp(34px,4.1vw,56px);color:var(--cream);max-width:15ch;text-shadow:0 3px 28px rgba(0,0,0,.55);text-wrap:balance}
+.sap-cta1 .h .o{color:var(--orange)}
+.sap-cta1 .btn{flex:0 0 auto;min-width:360px;min-height:60px;padding-inline:34px;
+  box-shadow:0 14px 34px rgba(204,102,0,.34)}
+@media(max-width:720px){
+.sap-cta1 .wrap{padding-block:clamp(58px,16vw,82px)}
+  .sap-cta1 .h{max-width:94vw;font-size:clamp(30px,9vw,46px)}
+  .sap-cta1 .btn{width:100%;max-width:330px;min-width:0;min-height:56px;padding-inline:20px}
+  .sap-cta1-splat{width:245vw;opacity:.58}
+}
+
+
+/* ============================================================================
+   MODAL (radio-hack · content always in DOM · one shell, 28 panels)
+   Ported from homepage §10 (.aw-* system), extended to 28 wins.
+   ============================================================================ */
+
+
+/* reveal the panel whose modal-open radio is checked (content always in DOM) */
+#awm-1:checked ~ .aw-modal .aw-panel[data-i="1"],#awm-2:checked ~ .aw-modal .aw-panel[data-i="2"],#awm-3:checked ~ .aw-modal .aw-panel[data-i="3"],#awm-4:checked ~ .aw-modal .aw-panel[data-i="4"],#awm-5:checked ~ .aw-modal .aw-panel[data-i="5"],#awm-6:checked ~ .aw-modal .aw-panel[data-i="6"],#awm-7:checked ~ .aw-modal .aw-panel[data-i="7"],#awm-8:checked ~ .aw-modal .aw-panel[data-i="8"],#awm-9:checked ~ .aw-modal .aw-panel[data-i="9"],#awm-10:checked ~ .aw-modal .aw-panel[data-i="10"],#awm-11:checked ~ .aw-modal .aw-panel[data-i="11"],#awm-12:checked ~ .aw-modal .aw-panel[data-i="12"],#awm-13:checked ~ .aw-modal .aw-panel[data-i="13"],#awm-14:checked ~ .aw-modal .aw-panel[data-i="14"],#awm-15:checked ~ .aw-modal .aw-panel[data-i="15"],#awm-16:checked ~ .aw-modal .aw-panel[data-i="16"],#awm-17:checked ~ .aw-modal .aw-panel[data-i="17"],#awm-18:checked ~ .aw-modal .aw-panel[data-i="18"],#awm-19:checked ~ .aw-modal .aw-panel[data-i="19"],#awm-20:checked ~ .aw-modal .aw-panel[data-i="20"],#awm-21:checked ~ .aw-modal .aw-panel[data-i="21"],#awm-22:checked ~ .aw-modal .aw-panel[data-i="22"],#awm-23:checked ~ .aw-modal .aw-panel[data-i="23"],#awm-24:checked ~ .aw-modal .aw-panel[data-i="24"],#awm-25:checked ~ .aw-modal .aw-panel[data-i="25"],#awm-26:checked ~ .aw-modal .aw-panel[data-i="26"],#awm-27:checked ~ .aw-modal .aw-panel[data-i="27"],#awm-28:checked ~ .aw-modal .aw-panel[data-i="28"]{display:block}
+.aw-panel h3{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:-.005em;line-height:1.04;
+  font-size:clamp(21px,2.5vw,29px);color:#fff;padding-right:34px}
+
+.aw-panel-meta b{color:#fff;font-weight:600}
+
+.aw-slots.one{grid-template-columns:minmax(0,260px)}
+.aw-slots.two{grid-template-columns:repeat(2,1fr)}
+
+
+@media(max-width:900px){
+.sap-filterbar .wrap{flex-wrap:nowrap;justify-content:flex-start;gap:8px;overflow-x:auto;
+    -webkit-overflow-scrolling:touch;scrollbar-width:none;padding-block:12px}
+  .sap-filterbar .wrap::-webkit-scrollbar{display:none}
+  .sapf-lab{flex:0 0 auto;white-space:nowrap;padding:9px 14px}
+}
+
+@media(max-width:720px){
+.aw-loadmore{width:calc(100% - 32px);max-width:360px;margin:26px auto 6px}
+}
+
+
+/* ============================================================================
+   FAQ  (homepage accordion pattern · content remains in DOM)
+   ============================================================================ */
+.s-faq{background:var(--bg)}
+.s-faq h2 .o{color:var(--orange)}
+.faq-list{max-width:840px;margin:clamp(30px,4vw,46px) auto 0;border-bottom:1px solid var(--hair)}
+.faq-item{border-top:1px solid var(--hair);transition:border-color .25s var(--ease)}
+.faq-item:has(.faq-cb:checked){border-top-color:var(--orange)}
+.faq-cb{position:absolute;width:1px;height:1px;opacity:0;margin:0;pointer-events:none}
+.faq-q{display:flex;align-items:center;gap:15px;cursor:pointer;padding:20px 6px}
+.faq-ic{flex:0 0 auto;width:20px;height:20px;color:#B9B9B9;transition:transform .34s var(--ease),color .2s var(--ease)}
+.faq-ic svg{display:block;width:100%;height:100%}
+.faq-q h3{margin:0;flex:1;font-family:var(--sub);font-weight:600;font-size:clamp(16px,1.9vw,18.5px);letter-spacing:.005em;line-height:1.38;color:#D6D6D6;transition:color .2s var(--ease)}
+.faq-q:hover h3{color:#fff}
+.faq-q:hover .faq-ic{color:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .42s var(--ease)}
+.faq-a p{margin:0;padding:0 40px 24px 41px;font-size:15px;line-height:1.68;color:var(--muted)}
+.faq-a a{color:var(--orange-hi);font-weight:600;border-bottom:1px solid rgba(230,117,0,.4)}
+.faq-a a:hover{color:#fff}
+.faq-cb:checked ~ .faq-q h3{color:#fff}
+.faq-cb:checked ~ .faq-q .faq-ic{transform:rotate(180deg);color:#fff}
+.faq-cb:checked ~ .faq-a{max-height:340px}
+.faq-cb:focus-visible ~ .faq-q{outline:1px solid var(--orange);outline-offset:-1px}
+@media(max-width:560px){
+.faq-q{padding:17px 4px;gap:12px}.faq-a p{padding:0 12px 20px 36px}
+}
+
+
+/* ============================================================================
+   VISIT US · NAP + Google Map — port nguyên khối #visit của about-us (bỏ đoạn
+   intro dưới heading). Cùng class .vs-* với about-us và trang artists hub.
+   Nền #000: FAQ đang là #0F0F0F nên so-le; trùng tone với footer thì đã có
+   hairline border-top của .pf ngăn, không thêm tone thứ ba.
+   ============================================================================ */
+
+
+.s-visit .section-head{margin-bottom:0}
+
+
+/* ---------- FOOTER ---------- */
+
+
+@media(max-width:560px){
+.awh .wrap{padding-block:88px 40px}
+  .awh h1{font-size:clamp(34px,9vw,52px);overflow-wrap:break-word}
+  .awh-tag{letter-spacing:.1em}
+  .awh-in{max-width:100%}
+  .awh-intro{max-width:100%;font-size:15.5px;line-height:1.55;margin-top:16px}
+  .sap-yhead{margin-bottom:22px}
+  .sap-yintro{font-size:14.5px;line-height:1.55;margin-top:10px}
+  .sap-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .sap-grid--flag{grid-template-columns:1fr}
+  /* mobile: show 6 cards (2 cols x 3 rows) before Load more, instead of 8 */
+  #awf-all:checked ~ #awload-2025:not(:checked) ~ #y2025 .sap-grid > .awc:nth-child(n+7),
+  #awf-all:checked ~ #awload-2024:not(:checked) ~ #y2024 .sap-grid > .awc:nth-child(n+7){display:none}
+  .aw-body{padding:11px 11px 13px}
+  .awc-place{font-size:clamp(15px,4.35vw,18px);line-height:1.06}
+  .awc-conv{margin-top:7px;font-size:12.5px;line-height:1.32}
+  .awc-loc{font-size:11.5px;line-height:1.4}
+  .awc-by{margin-top:10px;font-size:9.5px;letter-spacing:.07em}
+  .aw-open{top:8px;right:8px;width:26px;height:26px;border-radius:7px}
+  .aw-open svg{width:13px;height:13px}
+  .aw-soon-ic{width:30px;height:30px}
+  .aw-soon-t{font-size:8px;letter-spacing:.08em}
+  .awc--flag .aw-body{padding:22px 18px 24px}
+  .awc--flag .awc-place{font-size:clamp(24px,7.2vw,30px)}
+  .awc--flag .awc-conv{font-size:15px}
+  .awc--flag .awc-story{font-size:14.5px}
+}
+

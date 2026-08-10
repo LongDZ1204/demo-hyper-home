@@ -8,390 +8,155 @@
 <meta name="description" content="Every Hyper Inkers tattoo competition award by year, from the 2026 New York Empire State Best of Show to wins across 20+ conventions in 8 countries. See who won each convention.">
 <link rel="stylesheet" href="fonts-hyperinkers-2026-07-04/hyperinkers-fonts.css">
 <link rel="stylesheet" href="_foundation/hi-foundation.css">
-<style>
-/* ============================================================================
-   HYPER INKERS — AWARDS PAGE  /awards/   (2026-07-07)
-   Build via workflow ui-build. Content = 2026-06-26_awards-client-review.md
-   (client-reviewed, verbatim). Architecture = 2026-06-26_awards-outline-am.md
-   (LOCKED): year-H2 backbone (2026→2023) · card grid · ONE Placement filter
-   (CSS-only) · modal per win (DOM-render, NO JS fetch) · FAQ + schema (GEO).
-   Tokens + components inherited from _foundation/hi-foundation.css (never forked).
-   7 awards have plate-verified cut trophies; the other 21 use a clean placeholder
-   vitrine (no invented trophy→award pairing). Swap real PNGs at the same paths.
-   ============================================================================ */
-
-/* ---------- HERO (cinematic band + answer-first intro) ---------- */
-.awh{position:relative;overflow:clip;min-height:min(76svh,760px);display:flex;align-items:center;
-  padding-top:120px;padding-bottom:clamp(68px,7vw,104px)}
-.awh-media{position:absolute;inset:0;z-index:0}
-.awh-media img{width:100%;height:100%;object-fit:cover;object-position:50% 34%;
-  filter:brightness(.56) saturate(.9) contrast(1.08)}
-.awh-scrim{position:absolute;inset:0;z-index:1;background:
-  radial-gradient(62% 82% at 50% 50%,rgba(0,0,0,.84) 0%,rgba(0,0,0,.66) 46%,rgba(0,0,0,.36) 72%,rgba(0,0,0,.16) 100%),
-  linear-gradient(90deg,rgba(0,0,0,.68) 0%,rgba(0,0,0,.28) 42%,rgba(0,0,0,.72) 100%),
-  linear-gradient(180deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.34) 28%,rgba(0,0,0,.34) 66%,rgba(0,0,0,.95) 100%)}
-.awh .wrap{position:relative;z-index:3;width:100%}
-.awh-in{max-width:min(980px,100%);margin-inline:auto;text-align:center}
-.awh h1{margin-bottom:8px}
-.awh h1 .o{color:var(--orange);display:block}
-.awh-intro{margin:20px auto 0;max-width:760px;text-align:center;--clamp:4;
-  text-shadow:0 1px 12px rgba(0,0,0,.6)}
-.awh-intro a{color:var(--orange-hi);font-weight:600;border-bottom:1px solid rgba(230,117,0,.4)}
-.awh-intro a:hover{color:#fff;border-color:#fff}
-.awh .more-btn{margin:12px auto 0}
-
-/* ---------- STAT BAND (5 stats) — floats over the hero/records seam ---------- */
-.aw-statwrap{position:relative;z-index:6;margin-top:calc(-1 * clamp(30px,4vw,52px));margin-bottom:clamp(30px,4vw,52px)}
-.aw-statwrap .statband{border:0;box-shadow:0 26px 70px rgba(0,0,0,.5)}
-.aw-statwrap .stat{border-right:0}
-.stat-row.cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}
-@media(max-width:900px){
-  .aw-statwrap .statband{width:calc(100% - 24px)}
-  .aw-statwrap .stat-row.cols-5{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-  .aw-statwrap .stat-row.cols-5::-webkit-scrollbar{display:none}
-  .aw-statwrap .stat{flex:0 0 50%;scroll-snap-align:start;gap:11px;padding:22px 8px}
-  .aw-statwrap .stat-track{display:block;position:relative;height:3px;margin:2px 16px 15px;background:rgba(255,255,255,.13);border-radius:2px}
-  .aw-statwrap .stat-thumb{position:absolute;top:0;left:0;height:100%;width:50%;background:var(--orange);border-radius:2px}
-}
-
-/* ============================================================================
-   RECORDS — sticky Placement filter + year sections + card grid
-   ============================================================================ */
-.sap{position:relative;background:#050505}
-
-/* filter radios are visually hidden; the visible bar is a following sibling so
-   the :checked ~ combinator can reach both the labels and the year grids. */
-.sapf-cb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
-
-.sap-filterbar{position:sticky;top:0;z-index:30;background:rgba(10,10,10,.92);
-  backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);border-bottom:1px solid var(--border)}
-.sap-filterbar .wrap{display:flex;gap:9px;flex-wrap:wrap;justify-content:center;padding-block:14px}
-.sapf-lab{display:inline-flex;align-items:center;gap:7px;cursor:pointer;
-  font-family:var(--sub);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--cream);
-  padding:9px 15px;border:1px solid var(--border);border-radius:999px;background:rgba(255,255,255,.03);
-  transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease)}
-.sapf-lab:hover{border-color:rgba(204,102,0,.5);color:#fff}
-.sapf-cb:focus-visible ~ .sap-filterbar .sapf-lab[data-for]{outline:none}
-/* active state — one rule per filter (radios precede the bar) */
-#awf-all:checked   ~ .sap-filterbar label[for="awf-all"],
-#awf-bos:checked   ~ .sap-filterbar label[for="awf-bos"],
-#awf-1st:checked   ~ .sap-filterbar label[for="awf-1st"],
-#awf-2nd:checked   ~ .sap-filterbar label[for="awf-2nd"],
-#awf-3rd:checked   ~ .sap-filterbar label[for="awf-3rd"],
-#awf-other:checked ~ .sap-filterbar label[for="awf-other"]{
-  background:var(--orange);border-color:transparent;color:#fff}
-.sapf-cb:focus-visible ~ .sap-filterbar .sapf-lab{outline:2px solid var(--orange);outline-offset:2px}
-
-/* filter hide logic — CSS only; hidden cards stay in the DOM (SEO/GEO safe) */
-#awf-bos:checked   ~ .sap-year .awc:not(.f-bos){display:none}
-#awf-1st:checked   ~ .sap-year .awc:not(.f-1st){display:none}
-#awf-2nd:checked   ~ .sap-year .awc:not(.f-2nd){display:none}
-#awf-3rd:checked   ~ .sap-year .awc:not(.f-3rd){display:none}
-#awf-other:checked ~ .sap-year .awc:not(.f-other){display:none}
-/* collapse a year section that has zero matching cards for the active filter */
-#awf-bos:checked   ~ .sap-year:not(:has(.f-bos)){display:none}
-#awf-1st:checked   ~ .sap-year:not(:has(.f-1st)){display:none}
-#awf-2nd:checked   ~ .sap-year:not(:has(.f-2nd)){display:none}
-#awf-3rd:checked   ~ .sap-year:not(:has(.f-3rd)){display:none}
-#awf-other:checked ~ .sap-year:not(:has(.f-other)){display:none}
-
-/* per-year award reveal: full archive stays in the DOM, each dense year opens on demand */
-.aw-load-cb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
-.aw-loadmore{display:none;align-items:center;justify-content:center;gap:9px;width:100%;max-width:360px;
-  margin:28px auto 0;min-height:50px;border:1px solid transparent;border-radius:999px;
-  background:var(--orange);color:#fff;font-family:var(--sub);font-weight:700;font-size:12px;
-  letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 12px 30px rgba(204,102,0,.34);
-  transition:background .2s var(--ease),transform .2s var(--ease),box-shadow .2s var(--ease)}
-.aw-loadmore:hover{background:var(--orange-hi);transform:translateY(-1px);box-shadow:0 16px 36px rgba(230,117,0,.38)}
-.aw-loadmore svg{width:16px;height:16px;transition:transform .22s var(--ease)}
-.aw-loadmore .less{display:none}
-
-#awf-all:checked ~ #awload-2025:not(:checked) ~ #y2025 .sap-grid > .awc:nth-child(n+9),
-#awf-all:checked ~ #awload-2024:not(:checked) ~ #y2024 .sap-grid > .awc:nth-child(n+9){display:none}
-#awf-all:checked ~ #y2025 .aw-loadmore,
-#awf-all:checked ~ #y2024 .aw-loadmore{display:flex}
-#awf-bos:checked ~ .sap-year .aw-loadmore,
-#awf-1st:checked ~ .sap-year .aw-loadmore,
-#awf-2nd:checked ~ .sap-year .aw-loadmore,
-#awf-3rd:checked ~ .sap-year .aw-loadmore,
-#awf-other:checked ~ .sap-year .aw-loadmore{display:none}
-#awload-2025:checked ~ #y2025 .aw-loadmore .more,
-#awload-2024:checked ~ #y2024 .aw-loadmore .more{display:none}
-#awload-2025:checked ~ #y2025 .aw-loadmore .less,
-#awload-2024:checked ~ #y2024 .aw-loadmore .less{display:inline}
-#awload-2025:checked ~ #y2025 .aw-loadmore svg,
-#awload-2024:checked ~ #y2024 .aw-loadmore svg{transform:rotate(180deg)}
-
-/* year section */
-.sap-year{position:relative;padding:clamp(44px,5.4vw,74px) 0;border-top:1px solid rgba(255,255,255,.065)}
-.sap-year + .sap-year{padding-top:clamp(44px,5.4vw,74px)}
-#y2026,#y2024{background:
-  radial-gradient(70% 72% at 50% 0%,rgba(204,102,0,.065),rgba(204,102,0,0) 58%),
-  #070707}
-#y2025,#y2023{background:
-  linear-gradient(180deg,rgba(255,255,255,.035),rgba(255,255,255,0) 190px),
-  #101010}
-.sap-yhead{display:flex;align-items:baseline;gap:16px;margin-bottom:clamp(24px,3vw,36px);flex-wrap:wrap}
-.sap-yhead h2{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:.98;letter-spacing:-.005em;
-  font-size:clamp(28px,3.4vw,44px);color:#fff}
-.sap-yhead h2 .o{color:var(--orange)}
-.sap-yintro{flex:0 0 100%;max-width:780px;margin:12px 0 0;font-size:15.5px;line-height:1.62;color:#B8B8B8}
-
-/* ---------- card grid ---------- */
-.sap-grid{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));
-  gap:clamp(16px,1.8vw,22px)}
-
-.awc{position:relative;background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;
-  transition:border-color .2s var(--ease),transform .2s var(--ease)}
-.awc:hover{border-color:rgba(204,102,0,.45);transform:translateY(-3px)}
-.awc:focus-within{border-color:var(--orange)}
-.aw-cardlink{position:absolute;inset:0;z-index:5;cursor:pointer}
-
-/* vitrine = transparent cup floating on the dark card (ported from homepage §10) */
-.aw-vitrine{--ar:4/3;position:relative;border:none;border-radius:0;box-shadow:none;
-  background:radial-gradient(72% 62% at 50% 42%,rgba(255,255,255,.055),rgba(255,255,255,0) 72%);
-  border-bottom:1px solid var(--hair)}
-.aw-vitrine>img{width:100%;height:100%;object-fit:contain;object-position:50% 50%;padding:16px 16px 12px;
-  filter:drop-shadow(0 13px 22px rgba(0,0,0,.55))}
-/* placeholder vitrine — same footprint, trophy glyph, honest "coming soon" */
-.aw-vitrine--soon{background:repeating-linear-gradient(135deg,#141414,#141414 10px,#181818 10px,#181818 20px)}
-.aw-soon{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px}
-.aw-soon-ic{width:40px;height:40px;color:#4a4a4a}
-.aw-soon-t{font-family:var(--sub);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:#7d7d7d;text-align:center;line-height:1.5}
-
-.aw-open{position:absolute;top:11px;right:11px;z-index:4;display:grid;place-items:center;width:30px;height:30px;
-  border-radius:8px;background:rgba(0,0,0,.5);border:1px solid var(--card-brd);color:#fff;backdrop-filter:blur(3px);
-  pointer-events:none;transition:background .2s var(--ease)}
-.aw-open svg{width:15px;height:15px}
-.awc:hover .aw-open{background:var(--orange);border-color:transparent}
-
-.aw-body{padding:15px 17px 18px}
-.awc-place{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:1;letter-spacing:-.005em;
-  font-size:clamp(20px,2.1vw,28px);color:#fff}
-.awc-conv{margin-top:8px;font-family:var(--sub);font-weight:600;font-size:14.5px;line-height:1.3;color:#fff}
-.awc-loc{margin-top:4px;font-size:13.5px;line-height:1.45;color:var(--muted)}
-.awc-by{margin-top:12px;font-family:var(--sub);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.awc-by b{color:var(--orange);font-weight:600}
-
-/* ---------- 2026 flagship card (wide, image left · story right) ---------- */
-.sap-grid--flag{grid-template-columns:1fr}
-.awc--flag{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);align-items:stretch}
-.awc--flag .aw-vitrine{--ar:auto;border-bottom:none;border-right:1px solid var(--hair);min-height:300px}
-.awc--flag .aw-body{padding:clamp(24px,3vw,38px);display:flex;flex-direction:column;justify-content:center}
-.awc--flag .awc-place{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:-.005em;
-  font-size:clamp(24px,2.8vw,34px);line-height:1.02}
-.awc--flag .awc-conv{font-size:15.5px;margin-top:10px}
-.awc--flag .awc-story{margin-top:14px;font-size:15px;line-height:1.6;color:#C9C9C9}
-.awc--flag .awc-by{margin-top:16px;padding-top:14px;border-top:1px solid var(--hair)}
-@media(max-width:720px){
-  .awc--flag{grid-template-columns:1fr}
-  .awc--flag .aw-vitrine{border-right:none;border-bottom:1px solid var(--hair);min-height:0;--ar:4/3}
-}
-
-/* ---------- CTA-1 splatter strip (after 2025) ---------- */
-.sap-cta1{position:relative;overflow:hidden;background:var(--bg);border:0;outline:0}
-.sap-cta1-splat{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%) scaleX(-1);
-  width:min(96vw,1900px);max-width:none;height:auto;opacity:.58;filter:brightness(.68) saturate(1.2);
-  pointer-events:none;user-select:none;z-index:0}
-.sap-cta1::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
-  background:radial-gradient(58% 76% at 50% 50%,rgba(0,0,0,.58),rgba(0,0,0,0) 78%)}
-.sap-cta1 .wrap{position:relative;z-index:2;max-width:1280px;display:flex;flex-direction:column;align-items:center;justify-content:center;
-  gap:clamp(22px,2.6vw,32px);padding-block:clamp(66px,5.2vw,92px);text-align:center}
-.sap-cta1 .h{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:-.005em;line-height:1.02;
-  font-size:clamp(34px,4.1vw,56px);color:var(--cream);max-width:15ch;text-shadow:0 3px 28px rgba(0,0,0,.55);text-wrap:balance}
-.sap-cta1 .h .o{color:var(--orange)}
-.sap-cta1 .btn{flex:0 0 auto;min-width:360px;min-height:60px;padding-inline:34px;
-  box-shadow:0 14px 34px rgba(204,102,0,.34)}
-@media(max-width:720px){
-  .sap-cta1 .wrap{padding-block:clamp(58px,16vw,82px)}
-  .sap-cta1 .h{max-width:94vw;font-size:clamp(30px,9vw,46px)}
-  .sap-cta1 .btn{width:100%;max-width:330px;min-width:0;min-height:56px;padding-inline:20px}
-  .sap-cta1-splat{width:245vw;opacity:.58}
-}
-
-/* ============================================================================
-   MODAL (radio-hack · content always in DOM · one shell, 28 panels)
-   Ported from homepage §10 (.aw-* system), extended to 28 wins.
-   ============================================================================ */
-.aw-cb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
-.aw-modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:22px}
-.aw-open-cb:checked ~ .aw-modal{display:flex}
-.aw-modal-bd{position:absolute;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);cursor:pointer}
-.aw-modal-card{position:relative;z-index:2;width:min(640px,100%);max-height:88vh;overflow-y:auto;
-  background:var(--surface);border:1px solid var(--border);border-radius:15px;padding:clamp(22px,3.2vw,34px);
-  box-shadow:0 44px 120px rgba(0,0,0,.72)}
-.aw-modal-x{position:absolute;top:13px;right:14px;z-index:3;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;
-  border:1px solid var(--card-brd);background:rgba(255,255,255,.05);color:#fff;font-size:19px;line-height:1;cursor:pointer;
-  transition:border-color .2s var(--ease),color .2s var(--ease)}
-.aw-modal-x:hover{border-color:var(--orange);color:var(--orange)}
-.aw-panel{display:none}
-/* reveal the panel whose modal-open radio is checked (content always in DOM) */
-#awm-1:checked ~ .aw-modal .aw-panel[data-i="1"],#awm-2:checked ~ .aw-modal .aw-panel[data-i="2"],#awm-3:checked ~ .aw-modal .aw-panel[data-i="3"],#awm-4:checked ~ .aw-modal .aw-panel[data-i="4"],#awm-5:checked ~ .aw-modal .aw-panel[data-i="5"],#awm-6:checked ~ .aw-modal .aw-panel[data-i="6"],#awm-7:checked ~ .aw-modal .aw-panel[data-i="7"],#awm-8:checked ~ .aw-modal .aw-panel[data-i="8"],#awm-9:checked ~ .aw-modal .aw-panel[data-i="9"],#awm-10:checked ~ .aw-modal .aw-panel[data-i="10"],#awm-11:checked ~ .aw-modal .aw-panel[data-i="11"],#awm-12:checked ~ .aw-modal .aw-panel[data-i="12"],#awm-13:checked ~ .aw-modal .aw-panel[data-i="13"],#awm-14:checked ~ .aw-modal .aw-panel[data-i="14"],#awm-15:checked ~ .aw-modal .aw-panel[data-i="15"],#awm-16:checked ~ .aw-modal .aw-panel[data-i="16"],#awm-17:checked ~ .aw-modal .aw-panel[data-i="17"],#awm-18:checked ~ .aw-modal .aw-panel[data-i="18"],#awm-19:checked ~ .aw-modal .aw-panel[data-i="19"],#awm-20:checked ~ .aw-modal .aw-panel[data-i="20"],#awm-21:checked ~ .aw-modal .aw-panel[data-i="21"],#awm-22:checked ~ .aw-modal .aw-panel[data-i="22"],#awm-23:checked ~ .aw-modal .aw-panel[data-i="23"],#awm-24:checked ~ .aw-modal .aw-panel[data-i="24"],#awm-25:checked ~ .aw-modal .aw-panel[data-i="25"],#awm-26:checked ~ .aw-modal .aw-panel[data-i="26"],#awm-27:checked ~ .aw-modal .aw-panel[data-i="27"],#awm-28:checked ~ .aw-modal .aw-panel[data-i="28"]{display:block}
-.aw-panel h3{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:-.005em;line-height:1.04;
-  font-size:clamp(21px,2.5vw,29px);color:#fff;padding-right:34px}
-.aw-panel-meta{margin-top:9px;font-family:var(--sub);font-size:13px;letter-spacing:.02em;color:var(--cream)}
-.aw-panel-meta b{color:#fff;font-weight:600}
-.aw-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:20px}
-.aw-slots.one{grid-template-columns:minmax(0,260px)}
-.aw-slots.two{grid-template-columns:repeat(2,1fr)}
-.aw-slot{border:1px solid var(--border);border-radius:9px;overflow:hidden;aspect-ratio:1/1;display:grid;place-items:center;
-  background:radial-gradient(70% 60% at 50% 42%,rgba(255,255,255,.05),rgba(255,255,255,0) 72%),#131313}
-.aw-slot>img{width:100%;height:100%;object-fit:contain;padding:12px;filter:drop-shadow(0 8px 14px rgba(0,0,0,.5))}
-.aw-panel-story{margin-top:19px;font-size:15px;line-height:1.64;color:#C9C9C9}
-.aw-panel-by{margin-top:16px;padding-top:15px;border-top:1px solid var(--hair);
-  font-family:var(--sub);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.aw-panel-by b{color:var(--orange);font-weight:600}
-@media(max-width:560px){
-  .aw-modal{align-items:flex-start;padding:12px 10px}
-  .aw-modal-card{width:100%;max-height:94vh;padding:22px 16px 24px;border-radius:14px}
-  .aw-slots{grid-template-columns:none;display:flex;align-items:flex-start;gap:10px;overflow-x:auto;
-    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-bottom:6px;scrollbar-width:none}
-  .aw-slots::-webkit-scrollbar{display:none}
-  .aw-slots>.aw-slot{flex:0 0 78%;scroll-snap-align:center;aspect-ratio:3/4}
-}
-
-@media(max-width:900px){
-  .sap-filterbar .wrap{flex-wrap:nowrap;justify-content:flex-start;gap:8px;overflow-x:auto;
-    -webkit-overflow-scrolling:touch;scrollbar-width:none;padding-block:12px}
-  .sap-filterbar .wrap::-webkit-scrollbar{display:none}
-  .sapf-lab{flex:0 0 auto;white-space:nowrap;padding:9px 14px}
-}
-@media(max-width:720px){
-  .aw-loadmore{width:calc(100% - 32px);max-width:360px;margin:26px auto 6px}
-}
-
-/* ============================================================================
-   FAQ  (homepage accordion pattern · content remains in DOM)
-   ============================================================================ */
-.s-faq{background:var(--bg)}
-.s-faq h2 .o{color:var(--orange)}
-.faq-list{max-width:840px;margin:clamp(30px,4vw,46px) auto 0;border-bottom:1px solid var(--hair)}
-.faq-item{border-top:1px solid var(--hair);transition:border-color .25s var(--ease)}
-.faq-item:has(.faq-cb:checked){border-top-color:var(--orange)}
-.faq-cb{position:absolute;width:1px;height:1px;opacity:0;margin:0;pointer-events:none}
-.faq-q{display:flex;align-items:center;gap:15px;cursor:pointer;padding:20px 6px}
-.faq-ic{flex:0 0 auto;width:20px;height:20px;color:#B9B9B9;transition:transform .34s var(--ease),color .2s var(--ease)}
-.faq-ic svg{display:block;width:100%;height:100%}
-.faq-q h3{margin:0;flex:1;font-family:var(--sub);font-weight:600;font-size:clamp(16px,1.9vw,18.5px);letter-spacing:.005em;line-height:1.38;color:#D6D6D6;transition:color .2s var(--ease)}
-.faq-q:hover h3{color:#fff}
-.faq-q:hover .faq-ic{color:#fff}
-.faq-a{max-height:0;overflow:hidden;transition:max-height .42s var(--ease)}
-.faq-a p{margin:0;padding:0 40px 24px 41px;font-size:15px;line-height:1.68;color:var(--muted)}
-.faq-a a{color:var(--orange-hi);font-weight:600;border-bottom:1px solid rgba(230,117,0,.4)}
-.faq-a a:hover{color:#fff}
-.faq-cb:checked ~ .faq-q h3{color:#fff}
-.faq-cb:checked ~ .faq-q .faq-ic{transform:rotate(180deg);color:#fff}
-.faq-cb:checked ~ .faq-a{max-height:340px}
-.faq-cb:focus-visible ~ .faq-q{outline:1px solid var(--orange);outline-offset:-1px}
-@media(max-width:560px){.faq-q{padding:17px 4px;gap:12px}.faq-a p{padding:0 12px 20px 36px}}
-
-/* ---------- FOOTER ---------- */
-.pf{border-top:1px solid var(--border);padding:40px 0;background:var(--black)}
-.pf-in{display:flex;flex-direction:column;gap:8px;text-align:center}
-.pf-nap{font-size:13.5px;color:var(--muted);line-height:1.6}
-.pf-nap a{color:var(--cream)}
-.pf-copy{font-size:12px;color:#777;letter-spacing:.03em}
-
-@media(max-width:560px){
-  .awh{min-height:0;padding-top:104px;padding-bottom:72px}
-  .awh-in{max-width:100%}
-  .awh-intro{max-width:100%;font-size:15.5px;line-height:1.52;margin-top:16px}
-  .sap-yhead{margin-bottom:22px}
-  .sap-yintro{font-size:14.5px;line-height:1.55;margin-top:10px}
-  .sap-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-  .sap-grid--flag{grid-template-columns:1fr}
-  .aw-body{padding:11px 11px 13px}
-  .awc-place{font-size:clamp(15px,4.35vw,18px);line-height:1.06}
-  .awc-conv{margin-top:7px;font-size:12.5px;line-height:1.32}
-  .awc-loc{font-size:11.5px;line-height:1.4}
-  .awc-by{margin-top:10px;font-size:9.5px;letter-spacing:.07em}
-  .aw-open{top:8px;right:8px;width:26px;height:26px;border-radius:7px}
-  .aw-open svg{width:13px;height:13px}
-  .aw-soon-ic{width:30px;height:30px}
-  .aw-soon-t{font-size:8px;letter-spacing:.08em}
-  .awc--flag .aw-body{padding:22px 18px 24px}
-  .awc--flag .awc-place{font-size:clamp(24px,7.2vw,30px)}
-  .awc--flag .awc-conv{font-size:15px}
-  .awc--flag .awc-story{font-size:14.5px}
-}
-</style>
+<link rel="stylesheet" href="_foundation/hi-base.css">
+<link rel="stylesheet" href="_foundation/hi-chrome.css">
+<link rel="stylesheet" href="_foundation/components/booking-section.css">
+<link rel="stylesheet" href="_foundation/hi-components.css">
+<link rel="stylesheet" href="_pages/awards.css">
+<!-- hi-ds.css NẠP CUỐI: lớp design-system cố tình thắng cascade so với CSS lẻ của page -->
+<link rel="stylesheet" href="_foundation/hi-ds.css">
 </head>
 <body>
 <a class="skip" href="#records">Skip to content</a>
 
 <!-- ==== HEADER (shared foundation .hdr + CSS-only drawer) ==== -->
+<!-- @include header -->
+<!-- HYPER INKERS — HEADER dùng chung. NGUỒN DUY NHẤT.
+     Sửa file này rồi chạy `python3 build.py` là 21 page cập nhật theo.
+     CSS ở _foundation/hi-chrome.css · JS ở _foundation/hi-chrome.js -->
+<!-- ======================= PROMO BAR ======================= -->
+<div class="promobar" id="promobar">
+  <div class="wrap">
+    <a class="promo-msg" href="deals.html">See Hyper Inkers deals for you <span class="arw">→</span></a>
+    <button class="promo-x" id="promoX" aria-label="Dismiss promotion">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
 <header class="hdr">
   <div class="wrap">
     <input type="checkbox" id="navtog" class="nav-toggle" aria-label="Open navigation menu">
-    <a class="logo" href="/" aria-label="Hyper Inkers home">
-      <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers">
+
+    <a class="logo" href="index.html" aria-label="Hyper Inkers home">
+      <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers" width="1024" height="192">
     </a>
+
     <nav class="nav" aria-label="Primary">
-      <a href="/tattoo">Tattoo</a>
-      <a href="/piercing">Piercing</a>
-      <a href="/#artists">Artists</a>
-      <a href="/#work">Our Work</a>
-      <a href="/awards" aria-current="page">Awards</a>
-      <a href="/#visit">Visit</a>
-      <a href="/contact#booking" class="nav-book">Book Now</a>
+      <ul>
+        <li class="has-drop">
+          <a class="navlink" href="soon.html" aria-haspopup="true">Services
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="drop menu" role="menu">
+            <ul class="lvl1">
+              <li class="has-sub">
+                <a href="tattoo.html">Custom Tattoo
+                  <svg class="caret-r" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                </a>
+                <div class="fly" role="menu">
+                  <a href="black-and-grey.html">Black &amp; Grey</a>
+                  <a href="soon.html">Realism</a>
+                  <a href="soon.html">Fine Line</a>
+                  <a href="soon.html">Japanese</a>
+                  <a href="soon.html">Traditional</a>
+                </div>
+              </li>
+              <li><a href="soon.html">Cover-Up Tattoo</a></li>
+              <li class="has-sub">
+                <a href="piercing.html">Piercing
+                  <svg class="caret-r" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                </a>
+                <div class="fly" role="menu">
+                  <a href="ear-piercing-san-antonio.html">Ear Piercing</a>
+                  <a href="soon.html">Face Piercing</a>
+                  <a href="soon.html">Body Piercing</a>
+                </div>
+              </li>
+              <li><a href="tattoo-removal.html">Tattoo Removal</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li><a class="navlink" href="artists.html">Artists</a></li>
+
+        <li class="has-drop">
+          <a class="navlink" href="portfolio.html" aria-haspopup="true">Gallery
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="drop menu simple" role="menu">
+            <ul class="lvl1">
+              <li><a href="tattoo-gallery.html">Tattoo Gallery</a></li>
+              <li><a href="piercing-gallery.html">Piercing Gallery</a></li>
+              <li><a href="removal-gallery.html">Removal Before &amp; After</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="has-drop">
+          <a class="navlink" href="about.html" aria-haspopup="true">About Us
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="drop menu simple" role="menu">
+            <ul class="lvl1">
+              <li><a href="soon.html">FAQ</a></li>
+              <li><a href="testimonials.html">Testimonials</a></li>
+              <li><a href="awards.html">Awards</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li><a class="navlink" href="blog.html">Blog</a></li>
+        <li><a class="navlink" href="contact.html">Contact Us</a></li>
+      </ul>
+
+      <div class="clock" id="hiClock" aria-label="Current time in San Antonio and open status">
+        <span class="t">—</span><span class="sep">·</span><span>SA</span><span class="sep">·</span>
+        <span class="dot"></span><span class="st">—</span>
+      </div>
+
+      <div class="m-clock" id="hiClockM" aria-hidden="true">
+        <span class="t">—</span><span class="sep">·</span><span>SA</span><span class="sep">·</span>
+        <span class="dot"></span><span class="st">—</span>
+      </div>
+      <a class="m-book" href="#book">Book Now</a>
     </nav>
-    <a class="book hdr-book" href="/contact#booking">Book Now</a>
+
+    <div class="hdr-right">
+      <a class="book" href="#book">Book Now</a>
+    </div>
+
     <label for="navtog" class="nav-burger" aria-label="Open menu">
       <svg class="ico-bars" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       <svg class="ico-x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </label>
   </div>
 </header>
+<!-- /include header -->
 
 <!-- ==== HERO ==== -->
 <section class="awh" id="main">
   <div class="awh-media">
-    <img src="https://hyperinkers.com/wp-content/uploads/2025/04/power-brows-1.jpg"
-         alt="Hyper Inkers team holding their Best of Show award at the 2025 San Antonio Tattoo Arts Festival.">
+    <img src="_hero-assets/awards-hero-interior.jpg"
+         alt="Framed competition awards and certificates on the wall inside the Hyper Inkers tattoo studio in San Antonio, TX.">
   </div>
   <div class="awh-scrim"></div>
   <div class="grain" aria-hidden="true"></div>
   <div class="wrap">
     <div class="awh-in">
-      <h1>Hyper Inkers Awards<span class="o">40+ International Tattoo Competition Wins</span></h1>
-      <input type="checkbox" id="awh-more" class="more-cb" aria-label="Expand the full awards introduction">
-      <p class="lead awh-intro">Hyper Inkers is an award-winning tattoo studio in San Antonio, Texas. Since 2023, our artists, led by founder <a href="/tattoo-artist/minh-pham">Minh Pham</a>, have won more than 40 competition trophies, including 10 Best of Show titles, at over 20 tattoo conventions across 8 countries. This page records every Hyper Inkers award by year, from the 2026 New York Empire State Best of Show to wins at the San Antonio Tattoo Arts Festival, Golden State Expo, and Sinners Tattoo Expo, with the artists, the pieces, and the competitions behind each trophy.</p>
-      <label for="awh-more" class="more-btn">
-        <span class="more">Read more</span><span class="less">Show less</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-      </label>
+      <nav class="crumb" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">Awards</li>
+        </ol>
+      </nav>
+      <h1><span class="o">Hyper Inkers</span> Awards</h1>
+      <p class="awh-tag">40+ International Tattoo Competition Wins</p>
+      <p class="lead awh-intro">An award-winning San Antonio tattoo studio led by founder <a href="/tattoo-artist/minh-pham">Minh Pham</a>, with 40+ competition trophies and 10 Best of Show titles won across 20+ conventions in 8 countries since 2023.</p>
     </div>
   </div>
 </section>
-
-<!-- ==== STAT BAND (5 stats, no header) ==== -->
-<div class="aw-statwrap">
-  <div class="statband">
-    <ul class="stat-row cols-5" aria-label="Hyper Inkers awards at a glance">
-      <li class="stat">
-        <span class="stat-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h12v2h3v3a4 4 0 0 1-4 4h-.4A6 6 0 0 1 13 15.9V18h3v3H8v-3h3v-2.1A6 6 0 0 1 7.4 12H7a4 4 0 0 1-4-4V5h3V3Zm0 4H5v1a2 2 0 0 0 1 1.7V7Zm12 0v2.7A2 2 0 0 0 19 8V7h-1Z"/></svg></span>
-        <span class="stat-text"><span class="stat-num">40+</span><span class="stat-lbl">Trophies</span></span>
-      </li>
-      <li class="stat">
-        <span class="stat-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a5 5 0 0 1 5 5c0 3.6-5 11-5 11S7 10.6 7 7a5 5 0 0 1 5-5Zm0 3a2 2 0 1 0 0 4 2 2 0 0 0 0-4ZM5 20h14v2H5v-2Z"/></svg></span>
-        <span class="stat-text"><span class="stat-num">20+</span><span class="stat-lbl">Conventions</span></span>
-      </li>
-      <li class="stat">
-        <span class="stat-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20Zm6.9 6h-3a15 15 0 0 0-1.3-3.6A8 8 0 0 1 18.9 8ZM12 4.2A12 12 0 0 1 13.8 8h-3.6A12 12 0 0 1 12 4.2ZM4.3 14a8 8 0 0 1 0-4h3.3a17 17 0 0 0 0 4H4.3Zm.8 2h3a15 15 0 0 0 1.3 3.6A8 8 0 0 1 5.1 16Zm3-8h-3a8 8 0 0 1 4.3-3.6A15 15 0 0 0 8.1 8ZM12 19.8A12 12 0 0 1 10.2 16h3.6A12 12 0 0 1 12 19.8Zm.9-5.8h-1.8a15 15 0 0 1 0-4h1.8a15 15 0 0 1 0 4Zm1.5 5.6a15 15 0 0 0 1.3-3.6h3a8 8 0 0 1-4.3 3.6ZM16.4 14a17 17 0 0 0 0-4h3.3a8 8 0 0 1 0 4h-3.3Z"/></svg></span>
-        <span class="stat-text"><span class="stat-num">8</span><span class="stat-lbl">Countries</span></span>
-      </li>
-      <li class="stat">
-        <span class="stat-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2 2.9 6 6.6.6-5 4.3 1.5 6.5L12 16l-6 3.4L7.5 13l-5-4.3L9 8l3-6Z"/></svg></span>
-        <span class="stat-text"><span class="stat-num">10&times;</span><span class="stat-lbl">Best of Show</span></span>
-      </li>
-      <li class="stat">
-        <span class="stat-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v2H5a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7ZM5 9h14v10H5V9Z"/></svg></span>
-        <span class="stat-text"><span class="stat-num">2023–26</span><span class="stat-lbl">Award Years</span></span>
-      </li>
-    </ul>
-    <div class="stat-track" aria-hidden="true"><span class="stat-thumb"></span></div>
-  </div>
-</div>
 
 <!-- ==== RECORDS: filter + year sections + modal ==== -->
 <div class="sap" id="records">
@@ -855,13 +620,117 @@
   </div>
 </section>
 
+<!-- ==== VISIT US · NAP + map (port từ about-us #visit, bỏ intro dưới heading) ==== -->
+<section class="section s-visit" id="visit" aria-label="Visit Hyper Inkers in San Antonio">
+  <span class="grain" aria-hidden="true"></span>
+  <div class="wrap">
+    <header class="section-head center">
+      <h2>Visit the <span class="o">Hyper Inkers Studio</span> on Callaghan Road</h2>
+    </header>
+
+    <div class="vs-nap">
+      <ul class="vs-contact">
+        <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><div><span class="vs-ci-lab">Phone</span><a class="vs-ci-val" href="tel:+12109979737">(210) 997-9737</a></div></li>
+        <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><div><span class="vs-ci-lab">Email</span><a class="vs-ci-val" href="mailto:hyperinkers1@gmail.com">hyperinkers1@gmail.com</a></div></li>
+        <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><span class="vs-ci-lab">Address</span><span class="vs-ci-val">8045 Callaghan Rd, San Antonio, TX 78230</span></div></li>
+        <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><span class="vs-ci-lab">Hours</span><span class="vs-ci-val vs-hours"><span>Mon to Thu, 10am to 12am</span><span>Fri to Sat, 10am to 1am</span><span>Sun, 11am to 1am</span></span></div></li>
+      </ul>
+      <div class="vs-map">
+        <iframe src="https://maps.google.com/maps?q=8045%20Callaghan%20Rd,%20San%20Antonio,%20TX%2078230&z=14&output=embed" loading="lazy" title="Map to Hyper Inkers, 8045 Callaghan Rd, San Antonio, TX"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ==== FOOTER ==== -->
-<footer class="pf">
-  <div class="wrap pf-in">
-    <p class="pf-nap"><b>Hyper Inkers</b> &middot; 8045 Callaghan Rd, San Antonio, TX 78230 &middot; <a href="tel:+12109979737">(210) 997-9737</a> &middot; Mon–Thu 10am–12am, Fri–Sat 10am–1am, Sun 11am–1am</p>
-    <p class="pf-copy">© Hyper Inkers &middot; Award-Winning Tattoo Studio in San Antonio</p>
+<!-- @include footer -->
+<!-- HYPER INKERS — FOOTER + nút lên đầu trang, dùng chung. NGUỒN DUY NHẤT. -->
+<!-- ======================= FOOTER ======================= -->
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-top">
+      <img class="ft-logo" src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png" alt="Hyper Inkers" width="1024" height="192">
+      <div class="ft-tag">Tattoo Parlor in San Antonio</div>
+      <div class="ft-social">
+        <a href="#" aria-label="Hyper Inkers on TikTok"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/i-9.png" alt="" loading="lazy"></a>
+        <a href="#" aria-label="Hyper Inkers on Instagram"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/i-11.png" alt="" loading="lazy"></a>
+        <a href="#" aria-label="Hyper Inkers on YouTube"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/i-10.png" alt="" loading="lazy"></a>
+        <a href="#" aria-label="Hyper Inkers on Facebook"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/i-12.png" alt="" loading="lazy"></a>
+      </div>
+    </div>
+
+    <div class="ft-cols">
+      <div class="ft-col">
+        <p class="ft-col-t">Services</p>
+        <ul>
+          <li><a href="tattoo.html">Custom Tattoo</a></li>
+          <li><a href="piercing.html">Piercing</a></li>
+          <li><a href="soon.html">Cover-Up</a></li>
+          <li><a href="tattoo-removal.html">Removal</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <p class="ft-col-t">Explore</p>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="artists.html">Artists</a></li>
+          <li><a href="awards.html">Awards</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="soon.html">FAQ</a></li>
+          <li><a href="testimonials.html">Reviews</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <p class="ft-col-t">Resources</p>
+        <ul>
+          <li><a href="portfolio.html">Gallery</a></li>
+          <li><a href="soon.html">Tattoo Aftercare</a></li>
+          <li><a href="soon.html">Piercing Aftercare</a></li>
+          <li><a href="soon.html">Removal Aftercare</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <p class="ft-col-t">Visit Us</p>
+        <div class="ft-hours">
+          <p>Mon–Thu: 10am – 12am</p>
+          <p>Fri–Sat: 10am – 1am</p>
+          <p>Sun: 11am – 1am</p>
+        </div>
+        <div class="ft-vdiv"></div>
+        <div class="ft-nap">
+          <p>Tel: <a href="tel:+12109979737">(210) 997-9737</a></p>
+          <p>Mail: <a href="mailto:hyperinkers1@gmail.com">hyperinkers1@gmail.com</a></p>
+          <p>8045 Callaghan Rd,<br>San Antonio, TX 78230</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ft-strip">
+      <div class="ft-legal">
+        <a href="soon.html">Privacy Policy</a><span class="sep">·</span>
+        <a href="soon.html">Terms &amp; Conditions</a><span class="sep">·</span>
+        <a href="soon.html">Deposit Policy</a><span class="sep">·</span>
+        <a class="ft-dmca" href="//www.dmca.com/Protection/Status.aspx?ID=a96c1ca9-ca35-470f-8c2f-31640fe42845" target="_blank" rel="noopener"><img src="https://images.dmca.com/Badges/dmca-badge-w100-5x1-04.png?ID=a96c1ca9-ca35-470f-8c2f-31640fe42845" alt="DMCA Protected" loading="lazy"></a>
+      </div>
+      <div class="ft-pay">
+        <span class="lbl">We accept</span>
+        <span class="pm pm-pp" aria-label="PayPal">PayPal</span>
+        <span class="pm pm-visa" aria-label="Visa">VISA</span>
+        <span class="pm pm-mc" aria-label="Mastercard"><svg viewBox="0 0 38 22" aria-hidden="true"><circle cx="15" cy="11" r="8" fill="currentColor" fill-opacity=".95"/><circle cx="23" cy="11" r="8" fill="currentColor" fill-opacity=".45"/></svg></span>
+        <span class="pm pm-cash" aria-label="Cash">$</span>
+        <span class="pm pm-afterpay" aria-label="Afterpay">Afterpay</span>
+      </div>
+    </div>
+
+    <div class="ft-copy">© 2026 Hyper Inkers. All rights reserved.</div>
   </div>
 </footer>
+
+<!-- ======================== BACK TO TOP ======================== -->
+<button type="button" class="to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+<!-- /include footer -->
 
 <!-- ==== SCHEMA (GEO payload: award arrays + FAQPage) ==== -->
 <script type="application/ld+json">
@@ -947,23 +816,10 @@
 document.addEventListener('keydown',function(e){
   if(e.key==='Escape'){var n=document.getElementById('awm-none');if(n&&!n.checked)n.checked=true;}
 });
-(function(){
-  var wrap=document.querySelector('.aw-statwrap'),
-      row=wrap&&wrap.querySelector('.stat-row'),
-      thumb=wrap&&wrap.querySelector('.stat-thumb');
-  if(!row||!thumb) return;
-  function updateStatThumb(){
-    var visible=row.clientWidth/row.scrollWidth,
-        max=row.scrollWidth-row.clientWidth,
-        progress=max>0?row.scrollLeft/max:0;
-    thumb.style.width=(visible*100)+'%';
-    thumb.style.left=(progress*(1-visible)*100)+'%';
-  }
-  row.addEventListener('scroll',updateStatThumb,{passive:true});
-  window.addEventListener('resize',updateStatThumb);
-  updateStatThumb();
-})();
 </script>
 
+<script src="_foundation/hi-chrome.js" defer></script>
+<script src="_foundation/hi-components.js" defer></script>
+<script src="_foundation/hi-ds.js" defer></script>
 </body>
 </html>

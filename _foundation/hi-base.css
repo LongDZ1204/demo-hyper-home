@@ -14,7 +14,7 @@
   --body:"Gilroy","Helvetica Neue",Arial,sans-serif;
   --ease:cubic-bezier(0.16,1,0.3,1);
   --wrap:1240px;
-  --hh:76px; --promo-h:36px; --nav-tr:.09em; --open:#37D67A; /* header v2: height · promo bar · nav tracking · open-status green */
+  --hh:76px; --promo-h:36px; --chrome-h:calc(var(--promo-h) + var(--hh)); --nav-tr:.09em; --open:#37D67A; /* header v2: height · promo bar · nav tracking · open-status green */
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{overflow-x:clip}
