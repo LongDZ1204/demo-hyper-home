@@ -181,7 +181,13 @@
 .section-head.center > .adv-intro,.section-head.center > .pr-intro,
 .section-head.center > .vs-intro,.section-head.center > .svc-intro,
 .section-head.center > .faq-lead,.section-head.center > .gd-lead{margin-inline:auto}
+/* bottom:14px chứ không phải 0 — link neo vào ĐÁY hộp head, mà đáy hộp cũng là
+   nơi khối nội dung bắt đầu, nên để 0 thì gạch chân gần chạm thanh tab bên dưới.
+   14px nhấc link lên; padding-bottom phía dưới chừa chỗ để nó không đè lead. */
 .sec-link--head{position:absolute;right:0;bottom:0}
+/* chỉ head CĂN GIỮA mới nhấc link lên: ở head editorial link nằm NGANG với lead
+   (cột phải), nhấc lên là lệch hàng với dòng chữ bên cạnh. */
+.section-head.center > .sec-link--head{bottom:14px}
 /* Biến thể cho section KHÔNG có .section-head (layout chia đôi chữ|ảnh): link
    đứng ngay dưới đoạn chữ, cùng cột, không neo tuyệt đối vào đâu cả. */
 .sec-link--inline{margin-top:22px;justify-self:start;width:fit-content}
@@ -191,6 +197,10 @@
 /* chỉ chừa chỗ cho link ở head NÀO CÓ link — nếu không 6 head còn lại bị đội
    thêm 32px vô cớ và gap head→nội dung lại lệch */
 .section-head.center:has(> .sec-link--head){padding-bottom:32px}
+/* Chỗ chừa rộng hơn chỉ cần ở desktop: ở đó lead căn giữa còn link neo mép phải
+   nên hai thứ không nằm cùng dòng, phải tách nhau ra cho khỏi dính thanh tab.
+   Mobile cột hẹp, link đã tự xuống hàng, chừa thêm là hở vô cớ. */
+@media(min-width:861px){.section-head.center:has(> .sec-link--head){padding-bottom:58px}}
 
 /* --- Form Book: bám đúng component chuẩn toàn site `_foundation/components/
        booking-form.css` (bản v7 ở /form). 7 điểm lệch đã nắn: heading cam +
@@ -259,7 +269,10 @@
    ============================================================================ */
 .section .aw-panel-h{font-size:var(--fs-h3)}                                   /* H3 · panel/khối lớn */
 .section .art-name,.section .svc-name,
-.section .soa-p-h,.section .gd-feat-h{font-size:var(--fs-h4)}                  /* H4 · tên card lớn */
+.section .gd-feat-h{font-size:var(--fs-h4)}                                    /* H4 · tên card lớn */
+/* .soa-p-h từng ở nhóm H4 khi khối giải còn là phần đuôi của section Awards.
+   2026-08-10 nó thành H2 của một section riêng, nên phải ăn cỡ H2. */
+.section .soa-p-h{font-size:var(--fs-h2);line-height:1.08}
 .section .faqacc-item--pillar .faqacc-q,
 .section .gd-item-h{font-size:var(--fs-h5)}                                    /* H5 · card nhỏ / FAQ trụ */
 .section .faqacc-item--sat .faqacc-q,

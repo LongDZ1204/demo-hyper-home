@@ -526,13 +526,13 @@
                          it is the width at which 220/246 matches the artwork's
                          ratio, so `contain` fills the box exactly with no
                          letterboxing from 880px up. */
-  .soa-p-seal{grid-column:1;grid-row:1 / span 2;
+  .soa-p-seal{grid-column:1;grid-row:1 / span 3;
     align-self:stretch;height:100%;width:100%;min-height:0;
     object-fit:contain;object-position:left center}
-  .soa-p-txt,.soa-p-link{grid-column:2}
+  .soa-p-h,.soa-p-txt,.soa-p-link{grid-column:2}
   /* text runs the full track on desktop; the caps above only govern the
      stacked layout, where the viewport is the limit anyway */
-  .soa-p-txt{max-width:none}
+  .soa-p-h,.soa-p-txt{max-width:none}
   /* CTA breaks to the opposite edge, so the block is anchored at both ends
      instead of trailing off to the right */
   .soa-p-link{justify-self:end}
@@ -634,12 +634,16 @@
    Huy hiệu KHÔNG kéo giãn nữa: khi heading còn nằm trong lưới, khối chữ cao gần
    bằng huy hiệu nên stretch là đúng; giờ khối chữ thấp hơn, stretch làm hàng phình
    ra và link bị đẩy tụt xuống đáy. Cho huy hiệu cao cố định và neo lên trên. */
-@media(min-width:880px){
-  /* hàng 3 cỡ 1fr nuốt phần cao dôi của huy hiệu, nhờ vậy đoạn chữ và link vẫn
-     khít nhau ở trên thay vì bị kéo giãn theo chiều cao ảnh */
-  .s-readers .soa-plaque{justify-content:center;align-items:start;grid-template-rows:auto auto 1fr}
-  .s-readers .soa-p-seal{grid-row:1 / span 3;align-self:start;
-    height:clamp(160px,17vw,240px);width:auto;min-height:0}
-  .s-readers .soa-p-txt{grid-row:1}
-  .s-readers .soa-p-link{grid-row:2;justify-self:start;align-self:start;margin-top:4px}
+/* Section giải bình chọn: huy hiệu trái | (H2 + đoạn chữ + link) phải, link neo
+   mép phải để khối được chặn ở cả hai đầu. H2 nằm TRONG lưới chứ không tách ra
+   .section-head căn giữa: tách ra thì heading trôi khỏi khối chữ nó nói về. */
+
+/* Mobile: đọc tên giải TRƯỚC rồi mới thấy huy hiệu — cùng luật "chữ trước, ảnh sau"
+   như .split, nhưng .soa-plaque là lưới riêng nên phải khai riêng. */
+@media(max-width:879px){
+  .soa-plaque{display:flex;flex-direction:column}
+  .soa-p-h{order:0}
+  .soa-p-seal{order:1}
+  .soa-p-txt{order:2}
+  .soa-p-link{order:3}
 }
