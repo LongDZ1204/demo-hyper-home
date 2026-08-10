@@ -144,7 +144,9 @@
 
 /* ==================== REVIEWS (tiếp) · card ảnh, customer story ==================== */
 /* customer review card (fixed height · scrollable body · icon = permalink) */
-.rv-card{flex:0 0 300px;scroll-snap-align:start;display:flex;flex-direction:column;height:266px;
+/* 3 thẻ khít (B.Long chốt 10/08) — panel này thẻ mang nhiều nội dung hơn 2 panel kia,
+   nên cố ý ít cột hơn. 36px = 2 khe × 18px. */
+.rv-card{flex:0 0 calc((100% - 36px)/3);scroll-snap-align:start;display:flex;flex-direction:column;height:266px;
   padding:18px;background:var(--glass-surf);border:1px solid var(--glass-brd);border-radius:12px;
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .rv-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
@@ -169,7 +171,14 @@
   background:rgba(255,255,255,.05);border:1px solid var(--card-brd);border-radius:999px;padding:4px 10px}
 
 /* photo review card — review text (left) + customer tattoo photo (right) */
-.rv-card--photo{flex:0 0 clamp(440px,46vw,516px);flex-direction:row;padding:0;overflow:hidden}
+/* thẻ ảnh phải cùng 1/3 như thẻ chữ, nếu không hàng lại so le. Băng ảnh hạ 43%→38%
+   vì ở khổ hẹp hơn thì cột chữ mới đủ rộng để không xuống dòng từng chữ một. */
+.rv-card--photo{flex:0 0 calc((100% - 36px)/3);flex-direction:row;padding:0;overflow:hidden}
+.rv-card--photo .rv-pc-media{flex-basis:36%}
+/* Ở khổ 1/3 cột chữ chỉ còn ~234px: avatar tròn 42px + khe 12px ăn mất 1/4 hàng tên,
+   nên tên bị cắt "Katie Jans..." và "5 months ago" rớt 3 dòng. Bỏ avatar ở riêng thẻ ảnh
+   (bản mobile của panel này vốn đã bỏ) — thẻ đã có ảnh làm điểm nhìn, không cần thêm. */
+.rv-card--photo .rv-av{display:none}
 .rv-pc-text{flex:1;min-width:0;min-height:0;display:flex;flex-direction:column;padding:18px}
 .rv-pc-text .rv-body-scroll{flex:1;min-height:0}
 .rv-pc-media{position:relative;flex:0 0 43%;align-self:stretch;overflow:hidden;background:var(--black)}
@@ -182,7 +191,10 @@
    Thay bằng lớp gạch chéo mờ gợi nét shading của kim xăm — chi tiết gắn với
    nghề, không phải hiệu ứng chung. (Vạch cam mép trái đã gỡ theo yêu cầu.)
    -------------------------------------------------------------------------- */
-.rv-scard{flex:0 0 clamp(300px,30vw,364px);scroll-snap-align:start;display:flex;flex-direction:column;
+/* 4 thẻ khít mỗi màn (B.Long chốt 10/08). Tính bằng calc chứ không đặt px cứng:
+   px cứng thì mỗi bề ngang trang lại ra một số thẻ lẻ — trước đây 300px ra ~3,7 thẻ.
+   54px = 3 khe × 18px của .rv-slider. */
+.rv-scard{flex:0 0 calc((100% - 54px)/4);scroll-snap-align:start;display:flex;flex-direction:column;
   height:486px;border-radius:12px;background:var(--surface);
   border:1px solid var(--border);
   position:relative;overflow:hidden}
@@ -229,7 +241,7 @@
 .rv-sc-role{display:block;font-size:12.5px;font-style:italic;color:var(--cream);margin-top:4px}
 
 /* video review card (portrait · tattoo-work thumb · no avatar) */
-.rv-vcard{flex:0 0 clamp(232px,24vw,300px);scroll-snap-align:start}
+.rv-vcard{flex:0 0 calc((100% - 54px)/4);scroll-snap-align:start}   /* 4 thẻ khít */
 .rv-vlink{position:relative;display:block;aspect-ratio:3/4;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:var(--surface)}
 .rv-vlink img{width:100%;height:100%;object-fit:cover;transition:transform .45s var(--ease)}
 .rv-vlink:hover img{transform:scale(1.05)}
@@ -376,7 +388,8 @@
 .art-card .art-name{font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:clamp(19px,1.9vw,25px);line-height:1;color:#fff;margin-top:6px;letter-spacing:.006em}
 .art-link{position:absolute;inset:0;z-index:5}
 /* responsive */
-@media(max-width:900px){.art-grid{grid-template-columns:repeat(3,1fr)}}
+/* nấc 3 cột ở ≤900px đã bỏ 10/08: chuẩn chỉ có 4 cột (desktop) và 2 (mobile),
+   thêm nấc 3 làm artists lệch nhịp với service/review ở cùng dải màn hình. */
 @media(max-width:600px){
   .arti-intro{max-width:340px}
   .art-grid{display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:13px;padding-bottom:4px}
@@ -420,7 +433,9 @@
 .awrail::before,.awrail::after{display:none}
 
 /* transparent — bỏ khung card, trophy nổi trên nền section; center-focus: ô vào giữa TO hơn */
-.awrail-card{position:relative;flex:0 0 clamp(178px,17vw,210px);
+/* 5 thẻ khít mỗi màn (B.Long chốt). px cứng cho ra 5,72 thẻ — thẻ thứ 6 thò ra một mẩu,
+   nhìn như lỗi cắt chứ không ra 'còn nữa'. gap của .awrail là clamp nên trừ bằng chính biến. */
+.awrail-card{position:relative;flex:0 0 calc((100% - 4*clamp(12px,1.5vw,20px))/5);
   background:transparent;border:none;border-radius:0;overflow:visible;
   transform:scale(.9);opacity:.58;transform-origin:center 58%;
   transition:transform .4s var(--ease),opacity .4s var(--ease)}
@@ -581,7 +596,10 @@
   font-family:var(--sub);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
 .aw-panel-by b{color:var(--orange);font-weight:600}
 
+/* mobile 2 thẻ/màn (B.Long chốt). Dùng 48% giống mọi rail khác — px cứng ở đây
+   từng cho ra ~1,9 thẻ ở 430px, thẻ thứ 2 bị cắt mất một mẩu. */
 @media(max-width:980px){.awrail-card{flex:0 0 clamp(200px,30vw,258px)}}
+@media(max-width:600px){.awrail-card{flex:0 0 48%}}
 /* B.Long fix-batch: mobile awards = GIỮ slider (rail cuộn) nhưng hiển thị 2 card/khung */
 @media(max-width:640px){
   .awrail{gap:12px;padding:12px 2px}

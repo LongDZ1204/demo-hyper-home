@@ -27,7 +27,9 @@
 .awh .crumb ol{justify-content:center}
 /* heading cluster centered horizontally, pinned to the BOTTOM of the hero */
 .awh-in{margin-top:auto;margin-inline:auto;max-width:860px;text-align:center}
-.awh h1{margin-bottom:0;font-size:clamp(42px,6.4vw,82px);line-height:1.04;letter-spacing:.004em}
+/* H1 lấy token chung: bản cũ để clamp(...,82px) nên hero awards to hơn hero về/trang chủ
+   (82 vs 60) — cùng một cấp thẻ mà hai cỡ, đúng lỗi C2 của bộ chuẩn. */
+.awh h1{margin-bottom:0;font-size:var(--fs-h1);line-height:1.04;letter-spacing:.004em}
 .awh h1 .o{color:var(--orange)}
 .awh-tag{margin-top:16px;font-family:var(--sub);font-size:clamp(14px,1.7vw,19px);
   letter-spacing:.14em;text-transform:uppercase;color:var(--cream);text-shadow:0 1px 10px rgba(0,0,0,.6)}

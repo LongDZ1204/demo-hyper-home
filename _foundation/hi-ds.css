@@ -277,9 +277,15 @@
 .section .aw-panel-h{font-size:var(--fs-h3)}                                   /* H3 · panel/khối lớn */
 .section .art-name,.section .svc-name,
 .section .gd-feat-h{font-size:var(--fs-h4)}                                    /* H4 · tên card lớn */
-/* .soa-p-h từng ở nhóm H4 khi khối giải còn là phần đuôi của section Awards.
-   2026-08-10 nó thành H2 của một section riêng, nên phải ăn cỡ H2. */
-.section .soa-p-h{font-size:var(--fs-h2);line-height:1.08}
+/* Khối SA Current: CỠ CHỮ ĐI THEO CẤP THẺ, không theo class — trang chủ nó là <h3>
+   (khối phụ trong nhịp Awards), trang about là <h2> (section đứng riêng). B.Long chốt 10/08.
+   Vẫn giữ font display: cấp thẻ là chuyện dàn bài, sức nặng thị giác là chuyện khác. */
+.section .soa-p-h{font-family:var(--head);font-weight:700;text-transform:uppercase;
+  letter-spacing:-.005em;line-height:1.08}
+.section h2.soa-p-h{font-size:var(--fs-h2)}
+.section h3.soa-p-h{font-size:var(--fs-h3)}
+/* hi-foundation chỉ khai `.section h2 .o` — h3 dùng cụm cam thì mất màu */
+.section h3 .o{color:var(--orange)}
 .section .faqacc-item--pillar .faqacc-q,
 .section .gd-item-h{font-size:var(--fs-h5)}                                    /* H5 · card nhỏ / FAQ trụ */
 .section .faqacc-item--sat .faqacc-q,
