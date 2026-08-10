@@ -8,7 +8,7 @@ Xuất bản qua GitHub Pages: <https://longdz1204.github.io/demo-hyper-home/>
 | Muốn đổi | Sửa file |
 |---|---|
 | Màu, khoảng cách, cỡ chữ, nút, mũi tên nén — **toàn site** | `_foundation/hi-ds.css` |
-| **Artists · Services · Awards · Reviews · slider mobile · pill-nav** — *kiểu dáng* | `_foundation/hi-components.css` + `hi-components.js` |
+| **Artists · Services · Awards · Reviews · slider mobile · pill-nav · Visit · CTA feeder · FAQ** — *kiểu dáng* | `_foundation/hi-components.css` + `hi-components.js` |
 | **Nội dung thẻ** của 4 component đó (tên artist, chữ trên thẻ dịch vụ, review, giải) | `_partials/comp-*.html` → chạy `python3 build.py` |
 | Header, footer, promo bar, nút lên đầu trang — **kiểu dáng** | `_foundation/hi-chrome.css` |
 | Header, footer — **nội dung / link** | `_partials/header.html`, `_partials/footer.html` → chạy `python3 build.py` |
@@ -66,8 +66,14 @@ mất tín hiệu internal link, và trang bị giật khi tải.
 |---|---|
 | `index.html` | ✅ |
 | `about.html` | ✅ |
+| `awards.html` | ✅ |
 | `soon.html` | ✅ |
-| 19 page còn lại | ⏳ vẫn dùng CSS + header riêng của từng file |
+| 18 page còn lại | ⏳ vẫn dùng CSS + header riêng của từng file |
+
+**FAQ có 2 tầng dùng chung**: `.faqtab-nav` (thanh chủ đề) + `.faqacc` (accordion). Page ít câu
+hỏi thì bỏ tab, dùng thẳng `.faqacc` trong `.wrap` — vẫn ăn đúng khổ 840px và cỡ chữ.
+6 page chưa port (`tattoo`, `piercing`, `portfolio`, `black-and-grey`, `ear-piercing`,
+`tattoo-removal`) còn dùng accordion `.faq-*` đời cũ, đổi sang `.faqacc` khi port.
 
 ## Cách kiểm chứng khi port một page
 
