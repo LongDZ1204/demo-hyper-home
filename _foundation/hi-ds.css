@@ -92,6 +92,15 @@
 @media(max-width:600px){
   .has-clamp{padding-right:34px}
   .section-head.center .has-clamp{padding-right:0}
+  /* MỞ ra thì trả lại đủ bề ngang: lúc đó mũi tên bám đuôi dòng CUỐI — dòng cuối
+     bao giờ cũng ngắn nên tự có chỗ, không cần chừa. Chỉ 2 dòng lúc NÉN mới phải
+     chừa, vì dấu "…" luôn lấp đầy dòng bị cắt.
+     Đã thử 4 cách để dòng nén cũng chạy đủ (float ::before chặn riêng dòng 2 ·
+     shape-outside · line-clamp trên display:block) — đều không được: trong
+     `display:-webkit-box` (bắt buộc để có line-clamp) float bỏ qua margin-top nên
+     luôn khoét từ dòng 1, còn `line-clamp` chuẩn thì Chrome ở đây chưa hiểu
+     (CSS.supports trả false) nên chữ bung hết 13 dòng. */
+  .lead-cb:checked ~ .has-clamp{padding-right:0}
 }
 /* Lead có clamp mà KHÔNG bị cap bề ngang thì chạy sát mép cột, không còn chỗ cho
    "…" + mũi tên (~31px) → hàm đặt mũi tên phải bấm phanh mép màn và gap âm.
