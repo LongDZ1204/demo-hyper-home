@@ -127,10 +127,21 @@
    `pretty` thì rơi về greedy wrap — vẫn đúng hướng, chỉ mất phần chống mồ côi.
    Kèm max-width:none để gỡ cap 12.5em (=387px) và margin-inline:0 để hộp bám mép
    trái cột thay vì tự căn giữa. */
-@media(max-width:560px){
+@media(max-width:600px){
   .section .section-head--editorial > h1,
   .section .section-head--editorial > h2,
   .section .section-head--editorial > h3{max-width:none;margin-inline:0;text-wrap:pretty}
+}
+/* Từ tablet trở lên, heading căn trái BÓ BẰNG đoạn dẫn ngay dưới nó (--lead-mw).
+   Trước đó heading chạy 966px trong khi đoạn dẫn chỉ 660px — hai mép trái thẳng
+   hàng, mép phải lệch 306px, đọc ra là hai khối rời nhau chứ không phải một khối
+   head. Bó bằng token chứ không bằng số để hai cái luôn dính nhau khi đổi thang.
+   Đặt trong @media(min-width:601px) để không đụng luật mobile bên trên: dưới
+   600px token --lead-mw chỉ còn 340px, cap theo nó sẽ bóp heading lại. */
+@media(min-width:601px){
+  .section .section-head--editorial > h1,
+  .section .section-head--editorial > h2,
+  .section .section-head--editorial > h3{max-width:var(--lead-mw)}
 }
 /* .section h2{max-width:12.5em} ở ≤560px là luật cho heading TRƯNG BÀY. Câu hỏi
    FAQ cũng là h2/h3 nên ăn nhầm: hộp còn 200px trong cột 390px, câu 1 dòng bị bẻ
@@ -218,7 +229,10 @@
 .section-head.center{max-width:none}
 .section-head.center > h2{max-width:760px;margin-inline:auto}
 .s-awards .section-head{max-width:none}
-.s-awards .section-head > h2{max-width:680px;margin-inline:auto}
+/* .center chứ không phải mọi head: 680px là bề ngang riêng của khối Awards khi
+   heading CĂN GIỮA. Head căn trái của Awards phải theo luật chung (bó bằng đoạn
+   dẫn = --lead-mw), nếu không nó lẻ ra 680 trong khi 3 section anh em đều 660. */
+.s-awards .section-head.center > h2{max-width:680px;margin-inline:auto}
 .section-head.center > .rvi-intro,.section-head.center > .aw-intro,
 .section-head.center > .adv-intro,.section-head.center > .pr-intro,
 .section-head.center > .vs-intro,.section-head.center > .svc-intro,
@@ -230,6 +244,11 @@
 .section-head--editorial > h2,
 .section-head--editorial > p,
 .s-awards .section-head--editorial > h2{margin-inline:0;text-align:left}
+/* Luật `text-align:left` ngay trên có 2 hạng class nên nó thắng luật căn đều
+   `.has-clamp` (1 hạng) đứng ở đầu file — index và about vì thế vẫn so le trong
+   khi awards đã căn đều. Khai lại với 3 hạng để trả lại căn đều cho đúng những
+   đoạn dẫn NÀY, không đụng đoạn không nén. */
+.section-head--editorial > p.has-clamp{text-align:justify;text-align-last:left}
 /* bottom:14px chứ không phải 0 — link neo vào ĐÁY hộp head, mà đáy hộp cũng là
    nơi khối nội dung bắt đầu, nên để 0 thì gạch chân gần chạm thanh tab bên dưới.
    14px nhấc link lên; padding-bottom phía dưới chừa chỗ để nó không đè lead. */
