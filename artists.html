@@ -8,190 +8,153 @@
 <title>Tattoo Artists in San Antonio | Hyper Inkers</title>
 <link rel="stylesheet" href="fonts-hyperinkers-2026-07-04/hyperinkers-fonts.css">
 <link rel="stylesheet" href="_foundation/hi-foundation.css">
-<style>
-body.artists-page{background:var(--bg);color:#fff}
-html{scroll-padding-top:88px}
-
-/* Header: same foundation markup as homepage/detail, with a darker fixed treatment for a hub page. */
-.artists-hdr{position:fixed;background:rgba(5,5,5,.84);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);box-shadow:0 12px 30px rgba(0,0,0,.22)}
-.artists-hdr .wrap{position:relative}
-.artists-hdr .nav a[aria-current="page"]{opacity:1;color:#fff}
-#artists,#book{scroll-margin-top:0}
-
-.artist-hub-hero{position:relative;min-height:74svh;display:flex;align-items:flex-end;overflow:hidden;background:
-  linear-gradient(180deg,#030303 0%,#0f0f0f 70%,#070707 100%);padding:132px 0 clamp(62px,8vw,94px)}
-.artist-hub-hero::after{content:"";position:absolute;inset:auto 0 0;z-index:1;height:34%;pointer-events:none;background:linear-gradient(180deg,rgba(15,15,15,0),#070707)}
-.artist-hub-hero .wrap{position:relative;z-index:2}
-.hub-smoke--hero{top:-20%;right:-26%;width:min(92vw,1280px);opacity:.48;transform:scaleX(-1) rotate(8deg)}
-.hub-smoke--hero-left{bottom:-22%;left:-26%;width:min(62vw,860px);opacity:.22;transform:rotate(-9deg)}
-.artist-breadcrumb{display:flex;gap:8px;align-items:center;margin-bottom:clamp(22px,3vw,34px);font-family:var(--sub);font-size:12px;letter-spacing:.09em;text-transform:uppercase;color:rgba(220,219,190,.72)}
-.artist-breadcrumb a{color:rgba(255,255,255,.64)}
-.artist-breadcrumb a:hover{color:#fff}
-.artist-breadcrumb span{color:var(--orange)}
-.artist-hero-layout{display:grid;grid-template-columns:minmax(0,.95fr) minmax(360px,.86fr);gap:clamp(34px,5vw,76px);align-items:center}
-.artist-hero-copy{max-width:680px}
-.artist-hero-copy h1{font-size:clamp(48px,6.65vw,94px);line-height:.88;letter-spacing:-.005em;text-wrap:balance}
-.artist-hero-copy h1 .o{display:inline;color:var(--orange)}
-.artist-hero-copy p{max-width:610px;margin-top:clamp(20px,2.8vw,30px);font-size:clamp(16px,1.45vw,20px);line-height:1.62;color:#d9d9d9;text-shadow:0 2px 18px rgba(0,0,0,.45)}
-.artist-hero-actions{margin-top:clamp(26px,3.4vw,38px)}
-.artist-hero-visual{position:relative;min-width:0}
-.artist-hero-visual::before{content:"";position:absolute;inset:-12% -16%;z-index:-1;background:url("_hero-assets/color-blur.webp") center/cover no-repeat;opacity:.28;filter:blur(2px) brightness(.82);transform:rotate(7deg)}
-.artist-team-frame{position:relative;overflow:hidden;aspect-ratio:4/3;border-radius:14px;border:1px solid rgba(255,255,255,.1);background:#111;box-shadow:0 28px 70px rgba(0,0,0,.48)}
-.artist-team-frame img{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 52%;filter:saturate(.88) contrast(1.05) brightness(.78)}
-.artist-team-frame::after{content:"";position:absolute;inset:0;pointer-events:none;background:
-  linear-gradient(180deg,rgba(0,0,0,.16),rgba(0,0,0,.08) 48%,rgba(0,0,0,.42)),
-  radial-gradient(70% 60% at 24% 18%,rgba(204,102,0,.18),rgba(204,102,0,0) 62%)}
-
-.artists-hub-list{position:relative;background:
-  linear-gradient(180deg,#070707 0%,#101010 48%,#0b0b0b 100%);overflow:hidden}
-.artists-hub-list .wrap{position:relative;z-index:2}
-.hub-smoke--grid-a{top:2%;right:-18%;width:min(74vw,1040px);opacity:.34;transform:scaleX(-1) rotate(4deg)}
-.hub-smoke--grid-b{top:44%;left:-24%;width:min(76vw,1060px);opacity:.24;transform:rotate(-5deg)}
-.artists-hub-list .section-head{margin-bottom:clamp(30px,4vw,46px)}
-.artists-hub-list .section-intro{max-width:760px}
-.hub-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(18px,2vw,24px) clamp(14px,1.5vw,20px)}
-.hub-artist-card{position:relative;min-width:0}
-.hub-artist-media{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:14px;background:linear-gradient(160deg,#1e1e1e,#0b0b0b);border:1px solid rgba(255,255,255,.07);transition:border-color .3s var(--ease),transform .3s var(--ease)}
-.hub-artist-card:hover .hub-artist-media,.hub-artist-card:focus-within .hub-artist-media,.hub-artist-card.is-bio-open .hub-artist-media{border-color:rgba(204,102,0,.5);transform:translateY(-4px)}
-.hub-artist-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%;transition:transform .6s var(--ease)}
-.hub-artist-card:hover .hub-artist-media img,.hub-artist-card:focus-within .hub-artist-media img,.hub-artist-card.is-bio-open .hub-artist-media img{transform:scale(1.06)}
-.hub-artist-scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.5) 100%);transition:opacity .3s var(--ease)}
-.hub-artist-panel{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;gap:9px;padding:20px 17px;background:linear-gradient(180deg,rgba(9,9,9,.12) 0%,rgba(9,9,9,.8) 52%,rgba(7,7,7,.95) 100%);opacity:0;transition:opacity .32s var(--ease);pointer-events:none}
-.hub-artist-card:hover .hub-artist-panel,.hub-artist-card:focus-within .hub-artist-panel,.hub-artist-card.is-bio-open .hub-artist-panel{opacity:1}
-.hub-artist-card:hover .hub-artist-scrim,.hub-artist-card:focus-within .hub-artist-scrim,.hub-artist-card.is-bio-open .hub-artist-scrim{opacity:0}
-.hub-artist-copy{font-size:12.7px;line-height:1.5;color:#d2d2d2;margin:0}
-.hub-artist-cta{display:inline-flex;align-items:center;gap:7px;margin-top:2px;font-family:var(--sub);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#fff}
-.hub-artist-cta svg{width:15px;height:15px;fill:none;stroke:var(--orange);stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:transform .25s var(--ease)}
-.hub-artist-card:hover .hub-artist-cta svg,.hub-artist-card:focus-within .hub-artist-cta svg,.hub-artist-card.is-bio-open .hub-artist-cta svg{transform:translateX(3px)}
-.hub-artist-body{position:relative;z-index:6;padding:13px 3px 0;text-align:center}
-.hub-artist-name{display:block;font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:clamp(19px,1.9vw,25px);line-height:1;letter-spacing:.006em;color:#fff;margin:6px 0 0}
-.hub-artist-role{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;font-family:var(--sub);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#a6a6a6;min-height:16px}
-.hub-badge{position:relative;z-index:7;font-size:10px;letter-spacing:.01em;color:#e8e8e8;background:rgba(255,255,255,.14);border-radius:999px;padding:2px 8px;line-height:1.3}
-.hub-tip{position:absolute;bottom:calc(100% + 9px);left:50%;transform:translateX(-50%) translateY(4px);display:flex;flex-direction:column;gap:1px;padding:8px 12px;background:rgba(22,22,22,.98);border:1px solid rgba(255,255,255,.1);border-radius:8px;font-size:10.5px;letter-spacing:.04em;color:#ededed;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s var(--ease),transform .2s var(--ease);box-shadow:0 10px 26px rgba(0,0,0,.55)}
-.hub-tip::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:rgba(22,22,22,.98)}
-.hub-badge:hover .hub-tip,.hub-badge:focus-visible .hub-tip{opacity:1;transform:translateX(-50%) translateY(0)}
-.hub-artist-link{position:absolute;inset:0;z-index:5}
-
-.artists-final-cta{position:relative;overflow:hidden;background:var(--bg);text-align:center;padding-block:clamp(82px,10vw,148px)}
-.artists-final-cta .cta-splat{position:absolute;left:50%;top:50%;z-index:0;width:min(96vw,2100px);max-width:none;height:auto;opacity:.62;transform:translate(-50%,-50%) scaleX(-1);filter:brightness(.7) saturate(1.18);pointer-events:none;user-select:none}
-.artists-final-cta::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:
-  linear-gradient(to bottom,var(--bg) 0%,rgba(15,15,15,0) 20%,rgba(15,15,15,0) 80%,var(--bg) 100%),
-  radial-gradient(58% 72% at 50% 48%,rgba(0,0,0,.56),rgba(0,0,0,0) 78%)}
-.artists-final-cta .wrap{position:relative;z-index:2}
-.artists-final-cta h2{margin:0 auto;max-width:min(1080px,94vw);font-size:clamp(34px,5.2vw,72px);line-height:1;color:var(--cream);text-shadow:0 3px 28px rgba(0,0,0,.58);text-wrap:balance}
-.artists-final-cta p{margin:clamp(16px,2vw,22px) auto 0;max-width:54ch;font-family:var(--sub);font-size:clamp(14px,1.35vw,17px);letter-spacing:.02em;color:#d2d2d2;line-height:1.56}
-.artists-cta-actions{margin-top:clamp(24px,3vw,36px);display:flex;flex-direction:column;align-items:center;gap:15px}
-.artists-cta-actions .btn{min-height:52px;padding:15px 36px;letter-spacing:.09em;font-size:12.5px;box-shadow:0 14px 34px rgba(204,102,0,.3)}
-.artists-cta-call{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding-inline:10px;font-family:var(--sub);font-size:14px;letter-spacing:.03em;color:var(--cream);transition:color .2s var(--ease)}
-.artists-cta-call:hover{color:var(--orange-hi)}
-.artists-cta-call svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-
-.footer-mini{background:#070707;padding:44px 0 28px}
-.footer-mini__grid{display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:30px}
-.footer-mini img{height:30px;width:auto;margin-bottom:14px}
-.footer-mini h3{font-family:var(--sub);font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-bottom:12px}
-.footer-mini a,.footer-mini p{display:block;color:#a9a9a9;font-size:13px;margin-bottom:8px}
-.footer-mini a:hover{color:#fff}
-.footer-bottom{margin-top:34px;padding-top:18px;border-top:1px solid var(--hair);font-size:12px;color:#858585;text-align:center}
-
-@media(max-width:980px){
-  .artist-hero-layout{grid-template-columns:minmax(0,.92fr) minmax(300px,.78fr);gap:32px}
-  .artist-hero-copy h1{font-size:clamp(46px,7.4vw,76px)}
-  .hub-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-}
-@media(max-width:900px){
-  html{scroll-padding-top:78px}
-  .artists-hdr .nav a[aria-current="page"]{color:#fff}
-  .artist-hub-hero{min-height:auto;padding-top:120px}
-  #artists,#book{scroll-margin-top:0}
-}
-@media(max-width:760px){
-  .artist-hero-layout{grid-template-columns:1fr;align-items:start}
-  .artist-hero-visual{max-width:720px}
-}
-@media(max-width:640px){
-  .artist-hub-hero{padding:112px 0 58px}
-  .artist-breadcrumb{font-size:11px;margin-bottom:20px}
-  .artist-hero-copy h1{font-size:clamp(44px,14.5vw,68px)}
-  .artist-hero-actions .btn{width:100%}
-  .artist-hero-layout{gap:28px}
-  .artist-team-frame{border-radius:12px}
-  .artist-hero-visual::before{inset:-18% -28%;opacity:.22}
-  .hub-smoke--hero{top:5%;right:-94%;width:184vw;opacity:.25}
-  .hub-smoke--hero-left{display:none}
-  .artists-hub-list{padding-top:54px}
-  .artists-hub-list .section-head{margin-bottom:30px}
-  .hub-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 13px}
-  .hub-artist-card{padding-bottom:0;border-bottom:0}
-  .hub-artist-media{border-radius:12px;transform:none}
-  .hub-artist-card:hover .hub-artist-media,.hub-artist-card:focus-within .hub-artist-media,.hub-artist-card.is-bio-open .hub-artist-media{transform:none}
-  .hub-artist-panel{display:flex;padding:12px 10px;gap:6px;background:linear-gradient(180deg,rgba(9,9,9,.08) 0%,rgba(8,8,8,.76) 42%,rgba(5,5,5,.97) 100%)}
-  .hub-artist-copy{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:5;overflow:hidden;font-size:10px;line-height:1.38;color:#e4e4e4}
-  .hub-artist-cta{font-size:9px;gap:5px;letter-spacing:.07em}
-  .hub-artist-cta svg{width:12px;height:12px}
-  .hub-artist-role{font-size:10px;gap:5px;letter-spacing:.065em}
-  .hub-artist-name{font-size:clamp(19px,6.1vw,25px)}
-  .hub-badge{font-size:9px;padding:1px 6px}
-  .hub-smoke--grid-a{top:0;right:-96%;width:190vw;opacity:.22}
-  .hub-smoke--grid-b{display:none}
-  .artists-final-cta .cta-splat{width:250vw;opacity:.5}
-  .footer-mini__grid{grid-template-columns:1fr;gap:22px}
-}
-@media(min-width:641px) and (max-width:980px){
-  .footer-mini__grid{grid-template-columns:1fr 1fr}
-}
-</style>
+<link rel="stylesheet" href="_foundation/hi-base.css">
+<link rel="stylesheet" href="_foundation/hi-chrome.css">
+<link rel="stylesheet" href="_foundation/components/booking-section.css">
+<link rel="stylesheet" href="_foundation/hi-components.css">
+<link rel="stylesheet" href="_pages/artists.css">
+<!-- hi-ds.css NẠP CUỐI: lớp design-system cố tình thắng cascade so với CSS lẻ của page -->
+<link rel="stylesheet" href="_foundation/hi-ds.css">
 </head>
 <body class="artists-page">
 <a class="skip" href="#artists">Skip to artists</a>
 
-<header class="hdr artists-hdr">
+<!-- ==== HEADER (shared foundation .hdr + CSS-only drawer) ==== -->
+<!-- @include header -->
+<!-- HYPER INKERS — HEADER dùng chung. NGUỒN DUY NHẤT.
+     Sửa file này rồi chạy `python3 build.py` là 21 page cập nhật theo.
+     CSS ở _foundation/hi-chrome.css · JS ở _foundation/hi-chrome.js -->
+<!-- ======================= PROMO BAR ======================= -->
+<div class="promobar" id="promobar">
   <div class="wrap">
-    <input id="navtog" class="nav-toggle" type="checkbox" aria-label="Toggle navigation">
-    <a class="logo" href="/" aria-label="Hyper Inkers home">
-      <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers">
+    <a class="promo-msg" href="deals.html">See Hyper Inkers deals for you <span class="arw">→</span></a>
+    <button class="promo-x" id="promoX" aria-label="Dismiss promotion">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="hdr">
+  <div class="wrap">
+    <input type="checkbox" id="navtog" class="nav-toggle" aria-label="Open navigation menu">
+
+    <a class="logo" href="index.html" aria-label="Hyper Inkers home">
+      <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers" width="1024" height="192">
     </a>
-    <nav class="nav" aria-label="Primary navigation">
-      <a href="/">Home</a>
-      <a href="/about-us">About Us</a>
-      <a href="/tattoo-artists" aria-current="page">Artists</a>
-      <a href="/tattoo">Tattoo</a>
-      <a href="/piercing">Piercing</a>
-      <a href="/tattoo-removal">Removal</a>
-      <a href="/tattoo-gallery">Gallery</a>
-      <a href="#book" class="nav-book">Book Now</a>
+
+    <nav class="nav" aria-label="Primary">
+      <ul>
+        <li class="has-drop">
+          <a class="navlink" href="soon.html" aria-haspopup="true">Services
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="drop menu" role="menu">
+            <ul class="lvl1">
+              <li class="has-sub">
+                <a href="tattoo.html">Custom Tattoo
+                  <svg class="caret-r" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                </a>
+                <div class="fly" role="menu">
+                  <a href="black-and-grey.html">Black &amp; Grey</a>
+                  <a href="soon.html">Realism</a>
+                  <a href="soon.html">Fine Line</a>
+                  <a href="soon.html">Japanese</a>
+                  <a href="soon.html">Traditional</a>
+                </div>
+              </li>
+              <li><a href="soon.html">Cover-Up Tattoo</a></li>
+              <li class="has-sub">
+                <a href="piercing.html">Piercing
+                  <svg class="caret-r" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                </a>
+                <div class="fly" role="menu">
+                  <a href="ear-piercing-san-antonio.html">Ear Piercing</a>
+                  <a href="soon.html">Face Piercing</a>
+                  <a href="soon.html">Body Piercing</a>
+                </div>
+              </li>
+              <li><a href="tattoo-removal.html">Tattoo Removal</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li><a class="navlink" href="artists.html">Artists</a></li>
+
+        <li class="has-drop">
+          <a class="navlink" href="portfolio.html" aria-haspopup="true">Gallery
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="drop menu simple" role="menu">
+            <ul class="lvl1">
+              <li><a href="tattoo-gallery.html">Tattoo Gallery</a></li>
+              <li><a href="piercing-gallery.html">Piercing Gallery</a></li>
+              <li><a href="removal-gallery.html">Removal Before &amp; After</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="has-drop">
+          <a class="navlink" href="about.html" aria-haspopup="true">About Us
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="drop menu simple" role="menu">
+            <ul class="lvl1">
+              <li><a href="soon.html">FAQ</a></li>
+              <li><a href="testimonials.html">Testimonials</a></li>
+              <li><a href="awards.html">Awards</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li><a class="navlink" href="blog.html">Blog</a></li>
+        <li><a class="navlink" href="contact.html">Contact Us</a></li>
+      </ul>
+
+      <div class="clock" id="hiClock" aria-label="Current time in San Antonio and open status">
+        <span class="t">—</span><span class="sep">·</span><span>SA</span><span class="sep">·</span>
+        <span class="dot"></span><span class="st">—</span>
+      </div>
+
+      <div class="m-clock" id="hiClockM" aria-hidden="true">
+        <span class="t">—</span><span class="sep">·</span><span>SA</span><span class="sep">·</span>
+        <span class="dot"></span><span class="st">—</span>
+      </div>
+      <a class="m-book" href="#book">Book Now</a>
     </nav>
-    <a class="book hdr-book" href="#book">Book Now</a>
-    <label class="nav-burger" for="navtog" aria-label="Open or close navigation">
+
+    <div class="hdr-right">
+      <a class="book" href="#book">Book Now</a>
+    </div>
+
+    <label for="navtog" class="nav-burger" aria-label="Open menu">
       <svg class="ico-bars" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       <svg class="ico-x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </label>
   </div>
 </header>
+<!-- /include header -->
 
 <main id="main">
-  <section class="section artist-hub-hero" id="top" aria-label="Tattoo artists in San Antonio">
-    <img class="smoke hub-smoke--hero smoke--drift" src="_hero-assets/color-blur.webp" alt="" aria-hidden="true" loading="eager" decoding="async">
-    <img class="smoke hub-smoke--hero-left" src="_hero-assets/color-blur.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
-    <div class="wrap">
-      <nav class="artist-breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a>
-        <span>/</span>
-        <span>Artists</span>
-      </nav>
-      <div class="artist-hero-layout">
-        <div class="artist-hero-copy">
+  <section class="hero hero--team" id="top" aria-label="Tattoo artists in San Antonio">
+    <div class="hero-media">
+      <img src="_hero-assets/hi-team-best-of-show-2025.jpg" alt="The Hyper Inkers tattoo artist team in San Antonio with their Best of Show trophies." loading="eager" decoding="async" fetchpriority="high">
+    </div>
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="grain" aria-hidden="true"></div>
+
+    <div class="hero-body">
+      <div class="wrap hero-stack">
+        <div class="hero-lede">
+          <nav class="crumb" aria-label="Breadcrumb">
+            <ol>
+              <li><a href="/">Home</a></li>
+              <li aria-current="page">Artists</li>
+            </ol>
+          </nav>
           <h1>Tattoo <span class="o">Artists</span> in San Antonio</h1>
-          <p>Meet the Hyper Inkers team before you book. Compare each artist's style, working fit, and specialty so your tattoo or piercing lands with the right person from the start.</p>
-          <div class="cta artist-hero-actions">
-            <a class="btn btn-ghost" href="tel:+12109979737" aria-label="Call Hyper Inkers at 210 997 9737">Call (210) 997-9737</a>
-          </div>
+          <p class="hero-lead">Meet the Hyper Inkers team before you book. Compare each artist's style, working fit, and specialty so your tattoo or piercing lands with the right person from the start.</p>
         </div>
-        <figure class="artist-hero-visual" aria-label="Hyper Inkers team">
-          <div class="artist-team-frame">
-            <img src="_hero-assets/hi-team-best-of-show-2025.jpg" alt="Hyper Inkers tattoo artist team celebrating a Best of Show award." loading="eager" decoding="async">
-          </div>
-        </figure>
       </div>
     </div>
   </section>
@@ -200,7 +163,7 @@ html{scroll-padding-top:88px}
     <img class="smoke hub-smoke--grid-a smoke--drift" src="_hero-assets/color-blur.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
     <img class="smoke hub-smoke--grid-b" src="_hero-assets/color-blur.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
     <div class="wrap">
-      <header class="section-head section-head--editorial">
+      <header class="section-head center">
         <h2>Meet the <span class="o">Artists</span></h2>
         <p class="section-intro">The top tattoo artists in San Antonio work at Hyper Inkers. Each bio lists the style, training, and fit notes that help you match your idea to the right artist before the consultation.</p>
       </header>
@@ -276,6 +239,40 @@ html{scroll-padding-top:88px}
 
         <article class="hub-artist-card" itemscope itemtype="https://schema.org/Person">
           <figure class="hub-artist-media">
+            <img src="https://i.postimg.cc/W1P2K1VF/Christian-Z.jpg" alt="Z, black and grey anime and dark gothic tattoo artist at Hyper Inkers in San Antonio." loading="lazy" itemprop="image">
+            <span class="hub-artist-scrim" aria-hidden="true"></span>
+            <figcaption class="hub-artist-panel">
+              <p class="hub-artist-copy">Z is a black and grey anime and dark gothic tattoo artist, working in styles like cybersigilism. With three years of experience, he focuses on a close connection with each client to make every piece as striking as possible.</p>
+              <span class="hub-artist-cta">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </figcaption>
+          </figure>
+          <div class="hub-artist-body">
+            <meta itemprop="jobTitle" content="Black and Grey Anime, Dark Gothic, Cybersigilism">
+            <span class="hub-artist-role">Anime <span class="hub-badge">+2<span class="hub-tip"><span>Dark Gothic</span><span>Cybersigilism</span></span></span></span>
+            <h3 class="hub-artist-name" itemprop="name">Z</h3>
+          </div>
+          <a class="hub-artist-link" href="/tattoo-artist/z" aria-label="View Z's profile"></a>
+        </article>
+
+        <article class="hub-artist-card" itemscope itemtype="https://schema.org/Person">
+          <figure class="hub-artist-media">
+            <img src="https://i.postimg.cc/Z5hTg5mn/Genesis-%281%29.jpg" alt="Genesis Bisani, fine line tattoo artist at Hyper Inkers in San Antonio." loading="lazy" itemprop="image">
+            <span class="hub-artist-scrim" aria-hidden="true"></span>
+            <figcaption class="hub-artist-panel">
+              <p class="hub-artist-copy">Genesis Bisani is a fine line tattoo artist with three years of experience. Originally from Dallas, she is drawn to pieces with strong emotion, character, and individuality, and works to make every session feel welcoming and collaborative.</p>
+              <span class="hub-artist-cta">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            </figcaption>
+          </figure>
+          <div class="hub-artist-body">
+            <meta itemprop="jobTitle" content="Fine Line">
+            <span class="hub-artist-role">Fine Line</span>
+            <h3 class="hub-artist-name" itemprop="name">Genesis</h3>
+          </div>
+          <a class="hub-artist-link" href="/tattoo-artist/genesis" aria-label="View Genesis's profile"></a>
+        </article>
+
+        <article class="hub-artist-card" itemscope itemtype="https://schema.org/Person">
+          <figure class="hub-artist-media">
             <img src="https://hyperinkers.com/wp-content/uploads/2026/02/nicole-best-tattoo-artist-in-san-antonio-768x1075.jpg" alt="Nicole, tattoo artist and professional piercer at Hyper Inkers in San Antonio." loading="lazy" itemprop="image">
             <span class="hub-artist-scrim" aria-hidden="true"></span>
             <figcaption class="hub-artist-panel">
@@ -345,14 +342,39 @@ html{scroll-padding-top:88px}
     </div>
   </section>
 
-  <section class="section artists-final-cta" id="book" aria-label="Book an artist consultation">
-    <img class="cta-splat" src="_hero-assets/cta-splatter-orange.png" alt="" aria-hidden="true" loading="lazy" decoding="async">
+  <section class="section s-cta1" id="book" aria-label="Book an artist consultation">
+    <img class="cta-smoke cta1-smoke" src="_hero-assets/color-blur.webp" alt="" aria-hidden="true">
     <div class="wrap">
-      <h2>Not sure which artist fits your idea?</h2>
-      <p>A free consultation helps us match your subject, placement, size, and style to the right Hyper Inkers artist before you commit to a booking.</p>
-      <div class="artists-cta-actions">
-        <a class="btn btn-primary" href="/contact">Book a Free Consultation</a>
-        <a class="artists-cta-call" href="tel:+12109979737"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .7-.2 1l-2.3 2.2z"/></svg>Call (210) 997-9737</a>
+      <p class="cta1-h">Not sure which <span class="o">artist</span> fits your idea?</p>
+      <div class="cta1-act">
+        <a class="btn btn-primary cta1-btn" href="/contact">Book a Free Consultation</a>
+        <a class="cta1-call" href="tel:+12109979737"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .7-.2 1l-2.3 2.2z"/></svg>Call (210) 997-9737</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT US · port nguyên section #visit của about-us (heading + NAP + Google Map),
+       bỏ đoạn intro dưới heading theo yêu cầu; form booking không port vì hub đã có CTA riêng -->
+  <section class="section s-visit" id="visit" aria-label="Visit Hyper Inkers in San Antonio" itemscope itemtype="https://schema.org/TattooParlor">
+    <span class="grain" aria-hidden="true"></span>
+    <div class="wrap">
+      <meta itemprop="name" content="Hyper Inkers">
+      <meta itemprop="url" content="https://hyperinkers.com/">
+
+      <header class="section-head center">
+        <h2>Visit the <span class="o">Hyper Inkers Studio</span> on Callaghan Road</h2>
+      </header>
+
+      <div class="vs-nap">
+        <ul class="vs-contact">
+          <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6 19.8 19.8 0 0 1-3.1-8.7A2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg></span><div><span class="vs-ci-lab">Phone</span><a class="vs-ci-val" href="tel:+12109979737" itemprop="telephone">(210) 997-9737</a></div></li>
+          <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><div><span class="vs-ci-lab">Email</span><a class="vs-ci-val" href="mailto:hyperinkers1@gmail.com" itemprop="email">hyperinkers1@gmail.com</a></div></li>
+          <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><div><span class="vs-ci-lab">Address</span><span class="vs-ci-val" itemprop="address" itemscope itemtype="https://schema.org/PostalAddress"><span itemprop="streetAddress">8045 Callaghan Rd</span>, <span itemprop="addressLocality">San Antonio</span>, <span itemprop="addressRegion">TX</span> <span itemprop="postalCode">78230</span></span></div></li>
+          <li class="vs-ci"><span class="vs-ci-ic"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><span class="vs-ci-lab">Hours</span><span class="vs-ci-val vs-hours"><span>Mon to Thu, 10am to 12am</span><span>Fri to Sat, 10am to 1am</span><span>Sun, 11am to 1am</span></span><meta itemprop="openingHours" content="Mo-Th 10:00-24:00"><meta itemprop="openingHours" content="Fr-Sa 10:00-25:00"><meta itemprop="openingHours" content="Su 11:00-25:00"></div></li>
+        </ul>
+        <div class="vs-map">
+          <iframe src="https://maps.google.com/maps?q=8045%20Callaghan%20Rd,%20San%20Antonio,%20TX%2078230&z=14&output=embed" loading="lazy" title="Map to Hyper Inkers, 8045 Callaghan Rd, San Antonio, TX"></iframe>
+        </div>
       </div>
     </div>
   </section>
@@ -391,33 +413,97 @@ html{scroll-padding-top:88px}
 })();
 </script>
 
-<footer class="footer-mini">
+<!-- ==== FOOTER dùng chung ==== -->
+<!-- @include footer -->
+<!-- HYPER INKERS — FOOTER + nút lên đầu trang, dùng chung. NGUỒN DUY NHẤT. -->
+<!-- ======================= FOOTER ======================= -->
+<footer class="ft">
   <div class="wrap">
-    <div class="footer-mini__grid">
-      <div>
-        <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers">
-        <p>Tattoo parlor in San Antonio, Texas.</p>
-      </div>
-      <div>
-        <h3>Studio</h3>
-        <a href="/about-us">About us</a>
-        <a href="/awards">Awards</a>
-        <a href="/tattoo-gallery">Gallery</a>
-      </div>
-      <div>
-        <h3>Services</h3>
-        <a href="/tattoo">Custom tattoo</a>
-        <a href="/piercing">Piercing</a>
-        <a href="/tattoo-removal">Tattoo removal</a>
-      </div>
-      <div>
-        <h3>Contact</h3>
-        <p>(210) 997-9737</p>
-        <p>8045 Callaghan Rd, San Antonio, TX 78230</p>
+    <div class="ft-top">
+      <img class="ft-logo" src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png" alt="Hyper Inkers" width="1024" height="192">
+      <div class="ft-tag">Tattoo Parlor in San Antonio</div>
+      <div class="ft-social">
+        <a href="https://www.tiktok.com/@hyperinkers" target="_blank" rel="noopener" aria-label="Hyper Inkers on TikTok"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/i-9.png" alt="" loading="lazy"></a>
+        <a href="https://www.instagram.com/hyperinkers/" target="_blank" rel="noopener" aria-label="Hyper Inkers on Instagram"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/i-11.png" alt="" loading="lazy"></a>
+        <a href="https://www.youtube.com/@hyperinkers" target="_blank" rel="noopener" aria-label="Hyper Inkers on YouTube"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/i-10.png" alt="" loading="lazy"></a>
+        <a href="https://www.facebook.com/hyperinkers" target="_blank" rel="noopener" aria-label="Hyper Inkers on Facebook"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/i-12.png" alt="" loading="lazy"></a>
       </div>
     </div>
-    <div class="footer-bottom">Copyright &copy; 2026 Hyper Inkers &middot; Artists hub mockup</div>
+
+    <div class="ft-cols">
+      <div class="ft-col">
+        <p class="ft-col-t">Services</p>
+        <ul>
+          <li><a href="tattoo.html">Custom Tattoo</a></li>
+          <li><a href="piercing.html">Piercing</a></li>
+          <li><a href="soon.html">Cover-Up</a></li>
+          <li><a href="tattoo-removal.html">Removal</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <p class="ft-col-t">Explore</p>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="artists.html">Artists</a></li>
+          <li><a href="awards.html">Awards</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="soon.html">FAQ</a></li>
+          <li><a href="testimonials.html">Reviews</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <p class="ft-col-t">Resources</p>
+        <ul>
+          <li><a href="portfolio.html">Gallery</a></li>
+          <li><a href="soon.html">Tattoo Aftercare</a></li>
+          <li><a href="soon.html">Piercing Aftercare</a></li>
+          <li><a href="soon.html">Removal Aftercare</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <p class="ft-col-t">Visit Us</p>
+        <div class="ft-hours">
+          <p>Mon–Thu: 10am – 12am</p>
+          <p>Fri–Sat: 10am – 1am</p>
+          <p>Sun: 11am – 1am</p>
+        </div>
+        <div class="ft-vdiv"></div>
+        <div class="ft-nap">
+          <p>Tel: <a href="tel:+12109979737">(210) 997-9737</a></p>
+          <p>Mail: <a href="mailto:hyperinkers1@gmail.com">hyperinkers1@gmail.com</a></p>
+          <p>8045 Callaghan Rd,<br>San Antonio, TX 78230</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ft-strip">
+      <div class="ft-legal">
+        <a href="soon.html">Privacy Policy</a><span class="sep">·</span>
+        <a href="soon.html">Terms &amp; Conditions</a><span class="sep">·</span>
+        <a href="soon.html">Deposit Policy</a><span class="sep">·</span>
+        <a class="ft-dmca" href="//www.dmca.com/Protection/Status.aspx?ID=a96c1ca9-ca35-470f-8c2f-31640fe42845" target="_blank" rel="noopener"><img src="https://images.dmca.com/Badges/dmca-badge-w100-5x1-04.png?ID=a96c1ca9-ca35-470f-8c2f-31640fe42845" alt="DMCA Protected" loading="lazy"></a>
+      </div>
+      <div class="ft-pay">
+        <span class="lbl">We accept</span>
+        <span class="pm pm-pp" aria-label="PayPal">PayPal</span>
+        <span class="pm pm-visa" aria-label="Visa">VISA</span>
+        <span class="pm pm-mc" aria-label="Mastercard"><svg viewBox="0 0 38 22" aria-hidden="true"><circle cx="15" cy="11" r="8" fill="currentColor" fill-opacity=".95"/><circle cx="23" cy="11" r="8" fill="currentColor" fill-opacity=".45"/></svg></span>
+        <span class="pm pm-cash" aria-label="Cash">$</span>
+        <span class="pm pm-afterpay" aria-label="Afterpay">Afterpay</span>
+      </div>
+    </div>
+
+    <div class="ft-copy">© 2026 Hyper Inkers. All rights reserved.</div>
   </div>
 </footer>
+
+<!-- ======================== BACK TO TOP ======================== -->
+<button type="button" class="to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+<!-- /include footer -->
+<script src="_foundation/hi-chrome.js" defer></script>
+<script src="_foundation/hi-components.js" defer></script>
+<script src="_foundation/hi-ds.js" defer></script>
 </body>
 </html>
