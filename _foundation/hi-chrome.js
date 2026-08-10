@@ -71,7 +71,11 @@
     anchor.setAttribute('aria-hidden','true');
     bar.parentNode.insertBefore(anchor, bar);
     new IntersectionObserver(function(entries){
-      bar.classList.toggle('is-stuck', !entries[0].isIntersecting);
+      var e=entries[0];
+      /* "ngoài tầm nhìn" có HAI hướng: mốc trôi lên trên (thanh đã dính) và mốc còn nằm
+         dưới màn hình (thanh còn ở xa phía dưới, chưa dính gì cả). Chỉ hướng thứ nhất mới
+         là dính — nếu không thì ngay lúc mở trang thanh đã bị coi là đang dính và bị ẩn. */
+      bar.classList.toggle('is-stuck', !e.isIntersecting && e.boundingClientRect.top < 0);
     },{threshold:0}).observe(anchor);
   });
 })();

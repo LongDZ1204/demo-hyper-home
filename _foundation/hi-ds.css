@@ -181,6 +181,13 @@
 .section-head.center > .adv-intro,.section-head.center > .pr-intro,
 .section-head.center > .vs-intro,.section-head.center > .svc-intro,
 .section-head.center > .faq-lead,.section-head.center > .gd-lead{margin-inline:auto}
+/* Head CANH TRÁI (mọi head có anchor text đều dùng bản này — B.Long chốt 2026-08-10):
+   mấy đoạn intro tự khai `margin:16px auto 0` + `text-align:center` ngay trong component,
+   .s-awards còn khai `margin-inline:auto` cho h2. Không gỡ thì heading nằm trái mà đoạn
+   chữ dưới vẫn dạt vào giữa, nhìn như lỗi căn lề. */
+.section-head--editorial > h2,
+.section-head--editorial > p,
+.s-awards .section-head--editorial > h2{margin-inline:0;text-align:left}
 /* bottom:14px chứ không phải 0 — link neo vào ĐÁY hộp head, mà đáy hộp cũng là
    nơi khối nội dung bắt đầu, nên để 0 thì gạch chân gần chạm thanh tab bên dưới.
    14px nhấc link lên; padding-bottom phía dưới chừa chỗ để nó không đè lead. */

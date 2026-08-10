@@ -892,14 +892,25 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 /* ---------- PILL-FILTER PORTFOLIO (đồng bộ layout gallery các trang khác) ---------- */
 /* pill filter — CHUNG format với tab review (.rv-tabnav): khung bo tròn (bg+border) + pill borderless,
    active = cam; 1 hàng, tràn thì CUỘN NGANG (không wrap nhiều hàng) — đồng bộ mọi section dạng pill */
+/* Pill lọc gallery = NÚT VIỀN RIÊNG (B.Long chốt 2026-08-10, trả về kiểu cũ của
+   trang tattoo-gallery). Trước gói trong khung kính chung với tab review — nhìn thành
+   một dải liền, không ra "nút bấm". Hàng trần, tràn thì cuộn ngang.
+   Gắn thêm class .stickybar ở HTML nên khi cuộn nó bám đỉnh (và luân phiên với chrome). */
 .galf{display:flex;flex-wrap:nowrap;gap:10px;width:100%;margin:clamp(24px,3vw,34px) 0 0;
-  padding:10px;border-radius:20px;background:var(--glass-nav);border:1px solid var(--glass-brd);
-  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);overflow-x:auto}
-.galf-pill{appearance:none;-webkit-appearance:none;flex:0 0 auto;border:0;background:transparent;color:var(--cream);
-  border-radius:15px;padding:10px 22px;font-family:var(--sub);font-weight:600;font-size:12.5px;letter-spacing:.05em;
-  text-transform:uppercase;white-space:nowrap;cursor:pointer;transition:background .2s var(--ease),color .2s var(--ease)}
-.galf-pill:hover,.galf-pill:focus-visible{color:#fff;outline:none}
-.galf-pill.is-active{background:var(--orange);color:#fff}
+  padding:0;border:0;background:none;border-radius:0;overflow-x:auto}
+.galf-pill{appearance:none;-webkit-appearance:none;flex:0 0 auto;
+  border:1px solid rgba(255,255,255,.18);background:rgba(14,14,14,.82);color:rgba(255,255,255,.66);
+  border-radius:999px;padding:10px 20px;font-family:var(--sub);font-weight:600;font-size:12.5px;
+  letter-spacing:.05em;text-transform:uppercase;white-space:nowrap;cursor:pointer;
+  transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease)}
+.galf-pill:hover,.galf-pill:focus-visible{background:rgba(255,255,255,.045);border-color:rgba(255,255,255,.34);color:#fff;outline:none}
+.galf-pill.is-active{background:var(--orange);border-color:var(--orange);color:#fff}
+/* Lúc đã bám đỉnh thì hàng nút cần một nền để ảnh không trôi lộn xộn phía sau.
+   Nền chỉ rộng bằng .wrap (không tràn mép màn hình) nên bo tròn cho ra dáng thanh nổi,
+   thay vì một dải chữ nhật hụt hai bên. */
+.galf.is-stuck{padding:8px 10px;border-radius:999px;background:rgba(10,10,10,.94);
+  border:1px solid var(--hair);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:0 14px 34px rgba(0,0,0,.45)}
 .galp-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(13px,1.5vw,18px);margin-top:clamp(22px,3vw,30px)}
 .galp-tile{position:relative;display:block;min-width:0;aspect-ratio:4/5;overflow:hidden;border-radius:14px;background:#151515;border:1px solid rgba(255,255,255,.07);cursor:zoom-in;transition:transform .3s var(--ease),border-color .3s var(--ease)}
 .galp-tile:hover{transform:translateY(-4px);border-color:rgba(204,102,0,.55)}

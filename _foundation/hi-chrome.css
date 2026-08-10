@@ -63,10 +63,18 @@ html.chrome-off .hdr{transform:translateY(calc(-100% - var(--promo-h)))}
 html.scrolled .hdr{background:rgba(10,10,10,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   border-bottom:1px solid var(--hair)}
 html.scrolled .hdr::before{opacity:0}
-/* mở drawer mobile là chrome bật lại (JS lo), nhưng chặn thêm ở CSS cho chắc:
-   drawer chừa sẵn padding-top bằng chrome, header trốn thì đầu drawer rỗng một mảng */
-html:has(#navtog:checked).chrome-off .promobar,
-html:has(#navtog:checked).chrome-off .hdr{transform:none}
+/* Drawer mobile (.nav) là CON của .hdr. Mà `transform` và `backdrop-filter` đặt lên .hdr
+   biến chính .hdr thành khung neo cho mọi `position:fixed` bên trong — drawer khai inset:0
+   nhưng co lại đúng bằng cái header, nội dung trang lòi ra phía sau.
+   (Án lệ 2026-08-10: mở menu sau khi cuộn thì drawer chỉ cao 160px thay vì full màn hình.)
+   Nên lúc drawer mở phải gỡ CẢ HAI, và tắt luôn transition — nếu không có 340ms
+   transform chạy dở, drawer vẫn lệch chỗ trong lúc đang mở ra. */
+/* drawer giờ đục hoàn toàn nên nó che luôn logo. Nhấc logo lên trên drawer để lúc mở
+   menu vẫn còn đường về trang chủ (nút X và nút Book Now đã nằm sẵn trong drawer). */
+html:has(#navtog:checked) .hdr .logo{position:relative;z-index:66}
+html:has(#navtog:checked) .promobar{transform:none}
+html:has(#navtog:checked) .hdr{transform:none;transition:none;
+  backdrop-filter:none;-webkit-backdrop-filter:none}
 
 /* ============================================================================
    THANH DÍNH (.stickybar) — luân phiên với chrome để không có 2 thanh chồng nhau.
@@ -78,6 +86,8 @@ html:has(#navtog:checked).chrome-off .hdr{transform:none}
   transition:transform .3s var(--ease),opacity .2s var(--ease)}
 html:not(.chrome-off) .stickybar.is-stuck{transform:translateY(-100%);opacity:0;pointer-events:none}
 .stickybar-anchor{display:block;height:1px;margin-bottom:-1px;pointer-events:none}
+/* (đã bỏ luật mở overflow cho .section chứa .stickybar — đo lại thấy overflow:clip
+   KHÔNG chặn sticky, vì clip không tạo khung cuộn. Giữ clip để khói vẫn bị cắt gọn.) */
 
 @media(prefers-reduced-motion:reduce){
   .promobar,.hdr,.stickybar{transition:none}
@@ -123,7 +133,7 @@ html:not(.chrome-off) .stickybar.is-stuck{transform:translateY(-100%);opacity:0;
   .nav-toggle:checked ~ .nav-burger .ico-bars{display:none}
   .nav-toggle:checked ~ .nav-burger .ico-x{display:block}
   .nav-toggle:focus-visible ~ .nav-burger{outline:2px solid var(--orange);outline-offset:2px;border-radius:4px}
-  .nav{position:fixed;inset:0;z-index:65;flex-direction:column;align-items:stretch;justify-content:flex-start;background:rgba(10,10,10,.985);opacity:0;visibility:hidden;transform:translateY(-6px);padding:calc(var(--promo-h) + var(--hh) + 8px) 26px 40px;overflow-y:auto;transition:opacity .3s var(--ease),transform .35s var(--ease),visibility 0s .35s}
+  .nav{position:fixed;inset:0;z-index:65;flex-direction:column;align-items:stretch;justify-content:flex-start;background:#0A0A0A;opacity:0;visibility:hidden;transform:translateY(-6px);padding:calc(var(--promo-h) + var(--hh) + 8px) 26px 40px;overflow-y:auto;transition:opacity .3s var(--ease),transform .35s var(--ease),visibility 0s .35s}
   .nav-toggle:checked ~ .nav{opacity:1;visibility:visible;transform:none;transition-delay:0s}
   body:has(#navtog:checked){overflow:hidden}
   .nav > ul{flex-direction:column;align-items:stretch;gap:0;width:100%}
