@@ -1,0 +1,89 @@
+# Hyper Inkers — bản dựng demo
+
+Demo tĩnh để khách và dev xem toàn bộ hiệu ứng, nhịp trang và hệ thống thiết kế trước khi lên WordPress.
+Xuất bản qua GitHub Pages: <https://longdz1204.github.io/demo-hyper-home/>
+
+## Sửa ở đâu
+
+| Muốn đổi | Sửa file |
+|---|---|
+| Màu, khoảng cách, cỡ chữ, nút, mũi tên nén — **toàn site** | `_foundation/hi-ds.css` |
+| Header, footer, promo bar, nút lên đầu trang — **kiểu dáng** | `_foundation/hi-chrome.css` |
+| Header, footer — **nội dung / link** | `_partials/header.html`, `_partials/footer.html` → chạy `python3 build.py` |
+| Biến gốc (`--orange`, `--wrap`…), reset | `_foundation/hi-base.css` |
+| Riêng một page | `_pages/<page>.css` |
+| Form đặt lịch | `_foundation/components/booking-section.css` (nhúng) · `booking-form.css` (popup) |
+
+`_foundation/hi-foundation.css` **đang khoá** — không sửa.
+
+## Thứ tự nạp CSS (quan trọng)
+
+```html
+fonts → hi-foundation.css → hi-base.css → hi-chrome.css
+      → components/booking-section.css → _pages/<page>.css → hi-ds.css
+```
+
+`hi-ds.css` **phải nạp cuối cùng**. Lớp này cố tình ghi đè giá trị lẻ của từng component;
+đưa lên trước CSS của page là nó thua cascade và mọi thứ âm thầm về như cũ.
+
+## build.py
+
+```bash
+python3 build.py                       # bơm _partials vào mọi page
+python3 build.py --check               # chỉ báo page nào lệch, không ghi (dùng cho CI)
+python3 build.py --publish /duong/dan  # bơm rồi rsync sang thư mục khác
+```
+
+Script thay phần giữa 2 mốc trong page:
+
+```html
+<!-- @include header -->
+<!-- /include header -->
+```
+
+Page nào chưa đặt mốc thì script báo và bỏ qua — an toàn khi port dần từng page.
+
+Không dùng JS chèn header lúc chạy: làm vậy thì link header/footer biến mất khỏi HTML gốc,
+mất tín hiệu internal link, và trang bị giật khi tải.
+
+## Trạng thái port
+
+| Page | Đã dùng khung chung |
+|---|---|
+| `index.html` | ✅ |
+| `soon.html` | ✅ |
+| 20 page còn lại | ⏳ vẫn dùng CSS + header riêng của từng file |
+
+## Link: URL thật ↔ file demo
+
+Header/footer trong demo trỏ tới tên file để bấm được trên GitHub Pages. Khi lên WordPress,
+header lấy từ theme nên dùng lại URL thật ở cột trái.
+
+| URL thật (WordPress) | File demo |
+|---|---|
+| `/` | `index.html` |
+| `/about-us` | `about.html` |
+| `/tattoo` | `tattoo.html` |
+| `/tattoo/black-and-grey` | `black-and-grey.html` |
+| `/piercing` | `piercing.html` |
+| `/piercing/ear-piercing` | `ear-piercing-san-antonio.html` |
+| `/tattoo-removal` | `tattoo-removal.html` |
+| `/artists` | `artists.html` |
+| `/awards` | `awards.html` |
+| `/gallery` | `portfolio.html` |
+| `/gallery/tattoo` | `tattoo-gallery.html` |
+| `/gallery/piercing` | `piercing-gallery.html` |
+| `/gallery/tattoo-removal-before-after` | `removal-gallery.html` |
+| `/testimonials`, `/reviews` | `testimonials.html` |
+| `/blog` | `blog.html` |
+| `/promotions` | `deals.html` |
+| `/contact` | `contact.html` |
+
+15 URL còn lại (`/faq`, `/services`, 5 style tattoo, 3 trang aftercare, 3 trang chính sách,
+2 nhánh piercing) chưa có thiết kế → trỏ tạm về `soon.html`, trang này liệt kê những gì đã dựng.
+Bấm vào không rơi vào 404.
+
+## Trang thành phần
+
+`form.html` và `nav.html` không phải page thật — là bản demo riêng của component form đặt lịch
+và header, giữ để đối chiếu chuẩn.
