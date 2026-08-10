@@ -775,8 +775,8 @@
 
     <!-- reviews-style slider: 2-row horizontal grid, 5 cols/page desktop · 3 cols/page mobile, auto-advance (pauses on interaction).
          TODO: chỉ có 10 logo thật — 10 logo sau là BẢN NHÂN ĐÔI placeholder để demo slider, thay logo giải thật sau. -->
-    <div class="s-conv-wrap">
-      <div class="s-conv-rail" aria-label="Tattoo convention logos">
+    <div class="s-conv-wrap rv-slider-wrap is-auto">
+      <div class="s-conv-rail rv-slider" aria-label="Tattoo convention logos">
         <figure class="s-conv-logo"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/P-2-6-300x127.png" alt="Inksane Tattoo Fest logo" loading="lazy"></figure>
         <figure class="s-conv-logo"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/P-9-271x300.png" alt="Tattoo Week logo" loading="lazy"></figure>
         <figure class="s-conv-logo"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/P-3-300x300.png" alt="Villain Arts Tattoo Convention logo" loading="lazy"></figure>
@@ -799,7 +799,7 @@
         <figure class="s-conv-logo"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/P-4-300x114.png" alt="Tattoo convention logo" loading="lazy"></figure>
         <figure class="s-conv-logo"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/P-6-300x90.png" alt="Tattoo convention logo" loading="lazy"></figure>
       </div>
-      <div class="conv-dots" aria-label="Convention logos pagination"></div>
+      <div class="rv-dots" aria-label="Convention logos pagination"></div>
     </div>
 
     <div class="s-conv-copy">
@@ -812,7 +812,7 @@
 <!-- ============ READERS' AWARD · SA Current Best of San Antonio 2026 ============ -->
 <section class="section section--slim s-readers band-a" id="readers-award" aria-label="Readers award">
   <div class="wrap">
-    <header class="section-head">
+    <header class="section-head center">
       <h2>Voted <span class="o">Best Tattoo Shop and Piercing Studio</span> in San Antonio, 2026</h2>
     </header>
     <!-- @include comp-readers-award -->
@@ -1218,9 +1218,6 @@
 
     <header class="section-head center">
       <h2>Visit the <span class="o">Hyper Inkers Studio</span> on Callaghan Road</h2>
-      <input type="checkbox" id="vs-intro" class="lead-cb" aria-label="Expand the visit introduction">
-      <p class="vs-intro has-clamp"><span class="lead-txt">Hyper Inkers tattoo parlor in San Antonio sits at 8045 Callaghan Road in the northwest of the city. Walk-ins are welcome whenever an artist is free, and larger pieces can be booked ahead so your artist has time reserved for you. Hours run until midnight or 1am, far later than most tattoo places in San Antonio, making Hyper Inkers one of the few walk-in tattoo shops in the city open past midnight. If you get off work late, the visit still fits your evening.</span><label for="vs-intro" class="lead-more" aria-label="Expand or collapse the visit introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
-      <noscript><style>.lead-txt{-webkit-line-clamp:unset;line-clamp:unset}.lead-more{display:none}</style></noscript>
     </header>
 
     <!-- Part A — NAP + Google Map -->
@@ -1329,53 +1326,7 @@ document.addEventListener('keydown',function(e){
   if(e.key==='Escape'){var n=document.getElementById('awm-none');if(n&&!n.checked)n.checked=true;}
 });
 </script>
-<script>
-/* Conventions logo slider — dot pagination (centered pill + dots, like the homepage reviews feel B.Long
-   picked) + gentle AUTO-advance one page every 4s (loops), pauses on hover/touch/focus.
-   Dots = one per PAGE (ceil(scrollWidth/clientWidth)); rebuilt on resize since cols/page changes by breakpoint.
-   Auto-advance honours reduced-motion (dots stay clickable). */
-(function(){
-  var rail=document.querySelector('.s-conv-rail'),
-      dots=document.querySelector('.conv-dots');
-  if(!rail||!dots) return;
-  var rm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var pageCount=0;
-  function pages(){ return Math.max(1, Math.ceil(rail.scrollWidth/rail.clientWidth - 0.05)); }
-  function current(){ return Math.max(0, Math.min(pageCount-1, Math.round(rail.scrollLeft/rail.clientWidth))); }
-  function mark(){
-    var c=current(), kids=dots.children;
-    for(var i=0;i<kids.length;i++){ kids[i].classList.toggle('on', i===c); kids[i].setAttribute('aria-current', i===c?'true':'false'); }
-  }
-  function build(){
-    var n=pages();
-    if(n===pageCount){ mark(); return; }         /* page count unchanged -> just refresh active */
-    pageCount=n; dots.textContent='';
-    for(var i=0;i<n;i++){(function(i){
-      var b=document.createElement('button');
-      b.type='button'; b.className='conv-dot';
-      b.setAttribute('aria-label','Go to convention logos page '+(i+1));
-      b.addEventListener('click',function(){ rail.scrollTo({left:i*rail.clientWidth,behavior:rm?'auto':'smooth'}); });
-      dots.appendChild(b);
-    })(i);}
-    mark();
-  }
-  rail.addEventListener('scroll',mark,{passive:true});
-  window.addEventListener('resize',build);
-  build();
 
-  if(!rm){
-    var paused=false;
-    function tick(){
-      if(paused||pageCount<=1) return;
-      var c=current();
-      rail.scrollTo({left:(c>=pageCount-1?0:(c+1)*rail.clientWidth),behavior:'smooth'});
-    }
-    setInterval(tick,4000);
-    ['pointerenter','touchstart','focusin'].forEach(function(ev){rail.addEventListener(ev,function(){paused=true;},{passive:true});});
-    ['pointerleave','touchend','focusout'].forEach(function(ev){rail.addEventListener(ev,function(){paused=false;},{passive:true});});
-  }
-})();
-</script>
 <!-- @include footer -->
 <!-- HYPER INKERS — FOOTER + nút lên đầu trang, dùng chung. NGUỒN DUY NHẤT. -->
 <!-- ======================= FOOTER ======================= -->

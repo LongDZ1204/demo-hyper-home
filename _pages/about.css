@@ -471,6 +471,7 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 .s-conv-wrap{margin-top:clamp(30px,4vw,48px)}
 /* reviews-style slider: 2-row horizontal grid, 5 columns/page (desktop). grid-auto-flow:column → items fill 2 rows then next column */
 .s-conv-rail{--cg:clamp(14px,2vw,26px);display:grid;grid-auto-flow:column;grid-template-rows:repeat(2,1fr);
+  /* ghi đè .rv-slider (flex 1 hàng) — dải logo là lưới 2 hàng cuộn ngang */
   grid-auto-columns:calc((100% - 4*var(--cg))/5);gap:var(--cg);
   overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px}
 .s-conv-rail::-webkit-scrollbar{display:none}
@@ -607,8 +608,8 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
    ngoại lệ có chủ đích của riêng khối founder. */
 @media(max-width:860px){
   .au-founder-split>.split-media{order:1}
-  .au-founder-split>.sec-link--inline{order:2;margin-top:20px}
-  .au-founder-split>.au-quote{order:3}
+  .au-founder-split>.au-quote{order:2}
+  .au-founder-split>.sec-link--inline{order:3;margin-top:20px}
 }
 
 

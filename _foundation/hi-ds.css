@@ -184,7 +184,10 @@
 .sec-link--head{position:absolute;right:0;bottom:0}
 /* Biến thể cho section KHÔNG có .section-head (layout chia đôi chữ|ảnh): link
    đứng ngay dưới đoạn chữ, cùng cột, không neo tuyệt đối vào đâu cả. */
-.sec-link--inline{margin-top:22px}
+.sec-link--inline{margin-top:22px;justify-self:start;width:fit-content}
+/* justify-self:start là bắt buộc: inline-flex vẫn co theo chữ, nhưng khi link là
+   Ô CON của grid/flex thì mặc định nó bị kéo giãn hết chiều ngang cột, và gạch
+   chân chạy dài theo — nhìn như một đường kẻ ngang chứ không phải link. */
 /* chỉ chừa chỗ cho link ở head NÀO CÓ link — nếu không 6 head còn lại bị đội
    thêm 32px vô cớ và gap head→nội dung lại lệch */
 .section-head.center:has(> .sec-link--head){padding-bottom:32px}

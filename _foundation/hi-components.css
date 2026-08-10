@@ -628,3 +628,18 @@
    theo class section (.s-awards đen -> .s-readers xám -> .s-adv ...), About dùng
    .band-a/.band-b nên class dưới đây chỉ là nền mặc định, .band-* đè lên được. */
 .s-readers{background:var(--black)}   /* trang chủ: nối tiếp dải đen của Awards, đúng như khi nó còn nằm trong section đó */
+
+/* Section giải bình chọn đứng riêng: heading nằm ở .section-head căn giữa, nên
+   trong lưới chỉ còn huy hiệu | (đoạn chữ + link).
+   Huy hiệu KHÔNG kéo giãn nữa: khi heading còn nằm trong lưới, khối chữ cao gần
+   bằng huy hiệu nên stretch là đúng; giờ khối chữ thấp hơn, stretch làm hàng phình
+   ra và link bị đẩy tụt xuống đáy. Cho huy hiệu cao cố định và neo lên trên. */
+@media(min-width:880px){
+  /* hàng 3 cỡ 1fr nuốt phần cao dôi của huy hiệu, nhờ vậy đoạn chữ và link vẫn
+     khít nhau ở trên thay vì bị kéo giãn theo chiều cao ảnh */
+  .s-readers .soa-plaque{justify-content:center;align-items:start;grid-template-rows:auto auto 1fr}
+  .s-readers .soa-p-seal{grid-row:1 / span 3;align-self:start;
+    height:clamp(160px,17vw,240px);width:auto;min-height:0}
+  .s-readers .soa-p-txt{grid-row:1}
+  .s-readers .soa-p-link{grid-row:2;justify-self:start;align-self:start;margin-top:4px}
+}
