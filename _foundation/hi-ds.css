@@ -67,9 +67,32 @@
 .lead-cb:checked ~ .has-clamp .lead-more svg{transform:rotate(180deg)}
 .lead-cb:focus-visible ~ .has-clamp .lead-more{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
 .lead-txt b{color:#E9E9E9;font-weight:600}
+/* Đoạn dẫn CĂN TRÁI thì căn đều hai biên. Đo ở 430px: mép phải đang nhấp nhô
+   265-356px, chênh 91px trong cột 356px — mắt đọc ra là lệch chứ không ra là tự
+   nhiên. Dòng cuối vẫn căn trái (`text-align-last`), nếu không thì một dòng cụt
+   3 chữ bị kéo giãn hết cột.
+   Kèm hyphens:auto vì không có nó, dòng ngắn nhất phải giãn 91px (~13px mỗi khe
+   chữ, thành dòng sông trắng chạy dọc đoạn); có nó thì giãn tối đa còn 51px
+   (~7px mỗi khe). Cần `lang="en"` ở thẻ <html> mới chia âm tiết đúng — 22 page
+   đều đã có.
+   KHÔNG áp cho đoạn căn giữa: nó vốn cân sẵn hai bên, justify chỉ phá.
+   Khoá theo .has-clamp (thành phần dùng chung của MỌI đoạn dẫn) rồi trả lại
+   căn giữa cho head .center — không liệt kê tên từng lead, để đoạn dẫn sinh sau
+   tự ăn luật. */
+.has-clamp,.soa-p-txt{text-align:justify;text-align-last:left;hyphens:auto;-webkit-hyphens:auto}
+.section-head.center .has-clamp{text-align:center;text-align-last:center;hyphens:manual}
 /* head căn trái ở mobile chạy hết bề ngang wrap, chừa 34px để "…" + mũi tên không đội ra ngoài
    (nếu không, hàm place() phải bấm phanh mép màn hình và gap co lại còn 2px) */
-@media(max-width:600px){.section-head--editorial .has-clamp{padding-right:34px}}
+/* Đoạn dẫn căn trái ở mobile chạy hết bề ngang cột, chừa 34px để "…" + mũi tên
+   không đội ra ngoài (nếu không, hàm place() phải bấm phanh mép màn hình và gap
+   co lại còn 2px). Từ khi căn đều hai biên thì chỗ chừa này thành BẮT BUỘC: dòng
+   nén được kéo giãn tới sát mép hộp nên mũi tên luôn bị đẩy xa nhất có thể —
+   .sap-yintro của awards đo được 422/430, chỉ còn 8px. Đoạn căn giữa không cần
+   (padding lệch một bên sẽ đẩy chữ ra khỏi trục giữa). */
+@media(max-width:600px){
+  .has-clamp{padding-right:34px}
+  .section-head.center .has-clamp{padding-right:0}
+}
 /* Lead có clamp mà KHÔNG bị cap bề ngang thì chạy sát mép cột, không còn chỗ cho
    "…" + mũi tên (~31px) → hàm đặt mũi tên phải bấm phanh mép màn và gap âm.
    Lead căn giữa đã có --lead-mw chừa sẵn 25px mỗi bên; lead nào chưa có thì cấp. */
@@ -303,8 +326,12 @@
   letter-spacing:-.005em;line-height:1.08}
 .section h2.soa-p-h{font-size:var(--fs-h2)}
 .section h3.soa-p-h{font-size:var(--fs-h3)}
-/* hi-foundation chỉ khai `.section h2 .o` — h3 dùng cụm cam thì mất màu */
-.section h3 .o{color:var(--orange)}
+/* Tô cam CHỈ dành cho h1/h2. Từ h3 trở xuống KHÔNG dùng chữ 2 màu (B.Long chốt
+   10/08) — cỡ chữ đã nhỏ, cắt thêm màu thì mắt phải xử lý hai tín hiệu phân cấp
+   trong một dòng. Khai tường minh để `.o` viết trong h3 cũng không đổi màu, thay
+   vì trông chờ vào việc "không có luật nào bắt" — trước đây chính chỗ này từng
+   khai ngược lại. */
+.section h3 .o,.section h4 .o,.section h5 .o,.section h6 .o{color:inherit}
 .section .faqacc-item--pillar .faqacc-q,
 .section .gd-item-h{font-size:var(--fs-h5)}                                    /* H5 · card nhỏ / FAQ trụ */
 .section .faqacc-item--sat .faqacc-q,
