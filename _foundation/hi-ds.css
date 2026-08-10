@@ -14,7 +14,7 @@
   --sp-section:clamp(60px,7vw,100px);      /* padding-block section thường */
   --sp-section-cta:clamp(74px,9vw,140px);  /* padding-block CTA bán hàng full-bleed */
   --sp-band:clamp(34px,4.4vw,56px);        /* dải mỏng: press bar / logo bar */
-  --gap-head-lead:16px;                    /* H2 → lead */
+  --gap-head-lead:16px; --gap-head-text:18px;                    /* H2 → lead */
   --gap-lead-bridge:14px;                  /* lead → câu dẫn (sec-bridge) */
   --gap-head-body:clamp(26px,2.6vw,34px);  /* khối head → khối nội dung đầu */
   --gap-block:clamp(22px,2.2vw,30px);      /* khối → khối cùng cấp */
@@ -178,6 +178,9 @@
 .section-head.center > .vs-intro,.section-head.center > .svc-intro,
 .section-head.center > .faq-lead,.section-head.center > .gd-lead{margin-inline:auto}
 .sec-link--head{position:absolute;right:0;bottom:0}
+/* Biến thể cho section KHÔNG có .section-head (layout chia đôi chữ|ảnh): link
+   đứng ngay dưới đoạn chữ, cùng cột, không neo tuyệt đối vào đâu cả. */
+.sec-link--inline{margin-top:22px}
 /* chỉ chừa chỗ cho link ở head NÀO CÓ link — nếu không 6 head còn lại bị đội
    thêm 32px vô cớ và gap head→nội dung lại lệch */
 .section-head.center:has(> .sec-link--head){padding-bottom:32px}
@@ -258,3 +261,22 @@
 .hero h1{font-size:var(--fs-h1)}
 .section h2{font-size:var(--fs-h2)}
 .s-cta1 .cta1-h,.s-cta2 .cta2-h{font-size:var(--fs-display)}
+
+/* ============================================================================
+   BREADCRUMB — chuẩn dùng chung (tách khỏi about.css 2026-08-10)
+   Đặt trong hero, ngay trên H1. Dấu phân cách » là ::before của li thứ 2 trở đi,
+   không viết vào HTML — để screen reader không đọc ra "dấu ngoặc kép Pháp".
+   ============================================================================ */
+.crumb ol{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;padding:0;
+  font-family:var(--sub);font-size:var(--fs-xs);letter-spacing:.06em;text-transform:uppercase;color:var(--cream);
+  text-shadow:0 1px 8px rgba(0,0,0,.7)}   /* crumb nằm đè lên ảnh hero */
+.crumb li{display:flex;align-items:center;gap:8px}
+.crumb li+li::before{content:"\00BB";color:var(--orange);opacity:.95}
+.crumb a{opacity:.85;transition:opacity .2s var(--ease)}
+.crumb a:hover{opacity:1;color:#fff}
+.crumb [aria-current]{color:#fff;opacity:1}
+
+/* Tiêu đề → đoạn chữ trong khối văn xuôi. Heading của CARD có class riêng và gap
+   chặt hơn (7-8px) là cố ý, nên luật này chỉ áp cho heading trần + đoạn trần. */
+.section h3:not([class]) + p:not([class]),
+.section h4:not([class]) + p:not([class]){margin-top:var(--gap-head-text)}

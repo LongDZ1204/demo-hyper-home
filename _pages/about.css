@@ -1105,15 +1105,7 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
    ============================================================================ */
 :root{--band-a:var(--black);--band-b:var(--bg)}   /* 2026-08-10: #1A1B20 là tone thứ ba (ngả xanh), lệch với mọi page khác */
 
-/* ---- (1) breadcrumb · over hero image, top-left ---- */
-.crumb ol{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;padding:0;
-  font-family:var(--sub);font-size:12.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--cream);
-  text-shadow:0 1px 8px rgba(0,0,0,.7)}
-.crumb li{display:flex;align-items:center;gap:8px}
-.crumb li+li::before{content:"\00BB";color:var(--orange);opacity:.95}
-.crumb a{opacity:.85;transition:opacity .2s var(--ease)}
-.crumb a:hover{opacity:1;color:#fff}
-.crumb [aria-current]{color:#fff;opacity:1}
+/* breadcrumb: style dùng chung, đã chuyển sang _foundation/hi-ds.css */
 
 /* ---- (2) Ganga hero · full-bleed image, breadcrumb up top, headline pinned bottom-left ---- */
 .hero--ganga{padding:0;min-height:min(100svh,880px)}
