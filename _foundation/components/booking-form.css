@@ -131,6 +131,8 @@ body.modal-open{ overflow:hidden; }
   width:100%; background:var(--hi-orange); color:#fff; padding:17px 24px; border-radius:var(--hi-radius-btn);
   font-family:var(--hi-display); font-weight:700; font-size:19px; text-transform:uppercase; letter-spacing:2px;
   display:inline-flex; align-items:center; justify-content:center; gap:8px; cursor:pointer;
+  border:none;   /* 2026-08-10: nút vẫn ăn viền 2px xám của reset <button> trong hi-foundation
+                    → lệch với .bks-submit của bản nhúng. Tắt tại nguồn thay vì override từng page. */
   transition:opacity .25s, box-shadow .25s, transform .15s, filter .25s;
 }
 .modal__submit:disabled{ opacity:.4; filter:saturate(.55); cursor:not-allowed; box-shadow:none; }
