@@ -67,20 +67,13 @@
 .lead-cb:checked ~ .has-clamp .lead-more svg{transform:rotate(180deg)}
 .lead-cb:focus-visible ~ .has-clamp .lead-more{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
 .lead-txt b{color:#E9E9E9;font-weight:600}
-/* Đoạn dẫn CĂN TRÁI thì căn đều hai biên. Đo ở 430px: mép phải đang nhấp nhô
-   265-356px, chênh 91px trong cột 356px — mắt đọc ra là lệch chứ không ra là tự
-   nhiên. Dòng cuối vẫn căn trái (`text-align-last`), nếu không thì một dòng cụt
-   3 chữ bị kéo giãn hết cột.
-   Kèm hyphens:auto vì không có nó, dòng ngắn nhất phải giãn 91px (~13px mỗi khe
-   chữ, thành dòng sông trắng chạy dọc đoạn); có nó thì giãn tối đa còn 51px
-   (~7px mỗi khe). Cần `lang="en"` ở thẻ <html> mới chia âm tiết đúng — 22 page
-   đều đã có.
-   KHÔNG áp cho đoạn căn giữa: nó vốn cân sẵn hai bên, justify chỉ phá.
-   Khoá theo .has-clamp (thành phần dùng chung của MỌI đoạn dẫn) rồi trả lại
-   căn giữa cho head .center — không liệt kê tên từng lead, để đoạn dẫn sinh sau
-   tự ăn luật. */
-.has-clamp,.soa-p-txt{text-align:justify;text-align-last:left;hyphens:auto;-webkit-hyphens:auto}
-.section-head.center .has-clamp{text-align:center;text-align-last:center;hyphens:manual}
+/* KHÔNG căn đều hai biên (B.Long chốt 10/08). Đã thử và gỡ lại: căn đều chỉ đứng
+   được nếu áp cho MỌI khối chữ, mà trang chủ có 62 khối thì 22 khối là chữ trong
+   thẻ, cột chỉ 150-203px, mỗi dòng 3-4 khe chữ — ép căn đều thì mỗi khe phình
+   9-14px (khe thường ~4px), thành vệt trắng chạy dọc. Căn đều riêng đoạn dẫn thì
+   ra hai kiểu chữ trên cùng một màn.
+   Mép phải chạy hết cột là việc KHÁC, do luật padding bên dưới lo — bỏ căn đều
+   không đụng tới nó. */
 /* head căn trái ở mobile chạy hết bề ngang wrap, chừa 34px để "…" + mũi tên không đội ra ngoài
    (nếu không, hàm place() phải bấm phanh mép màn hình và gap co lại còn 2px) */
 /* Đoạn dẫn căn trái ở mobile chạy hết bề ngang cột, chừa 34px để "…" + mũi tên
@@ -253,11 +246,6 @@
 .section-head--editorial > h2,
 .section-head--editorial > p,
 .s-awards .section-head--editorial > h2{margin-inline:0;text-align:left}
-/* Luật `text-align:left` ngay trên có 2 hạng class nên nó thắng luật căn đều
-   `.has-clamp` (1 hạng) đứng ở đầu file — index và about vì thế vẫn so le trong
-   khi awards đã căn đều. Khai lại với 3 hạng để trả lại căn đều cho đúng những
-   đoạn dẫn NÀY, không đụng đoạn không nén. */
-.section-head--editorial > p.has-clamp{text-align:justify;text-align-last:left}
 /* bottom:14px chứ không phải 0 — link neo vào ĐÁY hộp head, mà đáy hộp cũng là
    nơi khối nội dung bắt đầu, nên để 0 thì gạch chân gần chạm thanh tab bên dưới.
    14px nhấc link lên; padding-bottom phía dưới chừa chỗ để nó không đè lead. */
