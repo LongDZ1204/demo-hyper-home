@@ -641,7 +641,13 @@
 /* Mobile: đọc tên giải TRƯỚC rồi mới thấy huy hiệu — cùng luật "chữ trước, ảnh sau"
    như .split, nhưng .soa-plaque là lưới riêng nên phải khai riêng. */
 @media(max-width:879px){
-  .soa-plaque{display:flex;flex-direction:column}
+  /* align-items BẮT BUỘC: lưới dùng justify-items:start để ảnh không giãn, nhưng
+     flex không hiểu thuộc tính đó — mặc định stretch kéo huy hiệu rộng hết cột
+     trong khi height vẫn cố định, thành ra ảnh bị bóp méo. */
+  .soa-plaque{display:flex;flex-direction:column;align-items:flex-start}
+  /* 12vw ở khổ 430 chỉ ra 52px nên luôn rơi về sàn 96px — huy hiệu bé hơn cả
+     dòng heading. Đổi hệ số theo khổ hẹp để nó cân với chữ. */
+  .soa-p-seal{height:clamp(112px,26vw,150px)}
   .soa-p-h{order:0}
   .soa-p-seal{order:1}
   .soa-p-txt{order:2}
