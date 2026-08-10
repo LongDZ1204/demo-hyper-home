@@ -8,7 +8,8 @@ Xuất bản qua GitHub Pages: <https://longdz1204.github.io/demo-hyper-home/>
 | Muốn đổi | Sửa file |
 |---|---|
 | Màu, khoảng cách, cỡ chữ, nút, mũi tên nén — **toàn site** | `_foundation/hi-ds.css` |
-| **Artists · Services · Awards · Reviews · slider mobile · pill-nav** — component dùng nhiều page | `_foundation/hi-components.css` + `hi-components.js` |
+| **Artists · Services · Awards · Reviews · slider mobile · pill-nav** — *kiểu dáng* | `_foundation/hi-components.css` + `hi-components.js` |
+| **Nội dung thẻ** của 4 component đó (tên artist, chữ trên thẻ dịch vụ, review, giải) | `_partials/comp-*.html` → chạy `python3 build.py` |
 | Header, footer, promo bar, nút lên đầu trang — **kiểu dáng** | `_foundation/hi-chrome.css` |
 | Header, footer — **nội dung / link** | `_partials/header.html`, `_partials/footer.html` → chạy `python3 build.py` |
 | Biến gốc (`--orange`, `--wrap`…), reset | `_foundation/hi-base.css` |
@@ -18,6 +19,11 @@ Xuất bản qua GitHub Pages: <https://longdz1204.github.io/demo-hyper-home/>
 **Trang chủ là bản chuẩn.** Page khác dùng lại component y nguyên, KHÔNG khai lại
 trong `_pages/<page>.css`. Muốn một page khác đi thì thêm class biến thể
 (vd `.awrail--compact`), KHÔNG đè trần lên class gốc — đè trần là cách 2 bản trôi khỏi nhau.
+
+**Chung CSS thôi chưa đủ.** Bài học 2026-08-10: CSS đã giống hệt mà 2 trang vẫn khác nhau,
+vì HTML khác (anchor dài ngắn khác, chip style 1 hay 2 cái, số card). Nên THÂN của
+component nằm ở `_partials/comp-*.html` và bơm bằng `build.py`. Page chỉ tự viết
+`section-head` (H2 + intro + link) — phần thân thì dùng chung, không chép tay.
 
 `_foundation/hi-foundation.css` **đang khoá** — không sửa.
 
