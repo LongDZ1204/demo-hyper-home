@@ -8,11 +8,16 @@ Xuất bản qua GitHub Pages: <https://longdz1204.github.io/demo-hyper-home/>
 | Muốn đổi | Sửa file |
 |---|---|
 | Màu, khoảng cách, cỡ chữ, nút, mũi tên nén — **toàn site** | `_foundation/hi-ds.css` |
+| **Artists · Services · Awards · Reviews · slider mobile · pill-nav** — component dùng nhiều page | `_foundation/hi-components.css` + `hi-components.js` |
 | Header, footer, promo bar, nút lên đầu trang — **kiểu dáng** | `_foundation/hi-chrome.css` |
 | Header, footer — **nội dung / link** | `_partials/header.html`, `_partials/footer.html` → chạy `python3 build.py` |
 | Biến gốc (`--orange`, `--wrap`…), reset | `_foundation/hi-base.css` |
 | Riêng một page | `_pages/<page>.css` |
 | Form đặt lịch | `_foundation/components/booking-section.css` (nhúng) · `booking-form.css` (popup) |
+
+**Trang chủ là bản chuẩn.** Page khác dùng lại component y nguyên, KHÔNG khai lại
+trong `_pages/<page>.css`. Muốn một page khác đi thì thêm class biến thể
+(vd `.awrail--compact`), KHÔNG đè trần lên class gốc — đè trần là cách 2 bản trôi khỏi nhau.
 
 `_foundation/hi-foundation.css` **đang khoá** — không sửa.
 
@@ -20,8 +25,11 @@ Xuất bản qua GitHub Pages: <https://longdz1204.github.io/demo-hyper-home/>
 
 ```html
 fonts → hi-foundation.css → hi-base.css → hi-chrome.css
-      → components/booking-section.css → _pages/<page>.css → hi-ds.css
+      → components/booking-section.css → hi-components.css
+      → _pages/<page>.css → hi-ds.css
 ```
+
+JS: `hi-chrome.js` → `hi-components.js` → `hi-ds.js` (đều `defer`, cuối `<body>`).
 
 `hi-ds.css` **phải nạp cuối cùng**. Lớp này cố tình ghi đè giá trị lẻ của từng component;
 đưa lên trước CSS của page là nó thua cascade và mọi thứ âm thầm về như cũ.
@@ -51,8 +59,20 @@ mất tín hiệu internal link, và trang bị giật khi tải.
 | Page | Đã dùng khung chung |
 |---|---|
 | `index.html` | ✅ |
+| `about.html` | ✅ |
 | `soon.html` | ✅ |
-| 20 page còn lại | ⏳ vẫn dùng CSS + header riêng của từng file |
+| 19 page còn lại | ⏳ vẫn dùng CSS + header riêng của từng file |
+
+## Cách kiểm chứng khi port một page
+
+Chụp dấu vân tay computed-style ở 1440 và 430 → tách CSS → chụp lại → phải **0 khác biệt**.
+Hai cái bẫy đã dính:
+
+- **Cache**: đổi CSS mà browser vẫn giữ bản cũ. Thêm `?v=n` vào URL chỉ nạp lại HTML,
+  file CSS vẫn lấy từ cache. Phải thay `<link>` bằng bản có query mới thì mới chắc.
+- **`margin` shorthand không so được**: Chrome trả `auto` hay số (`25px`) tuỳ thời điểm đọc,
+  nên chênh lệch margin trong bảng vân tay là ảo. So `margin-top/left/right` riêng lẻ,
+  hoặc bỏ `margin` khỏi bộ thuộc tính đo.
 
 ## Link: URL thật ↔ file demo
 

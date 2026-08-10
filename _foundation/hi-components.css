@@ -1,0 +1,628 @@
+/* ============================================================================
+   hi-components.css — COMPONENT DÙNG CHUNG NHIỀU PAGE
+   ----------------------------------------------------------------------------
+   Trích nguyên văn từ _pages/home.css. Trang chủ là bản chuẩn: page khác
+   dùng lại y nguyên, KHÔNG khai lại trong _pages/<page>.css.
+   Muốn 1 page khác đi -> sửa ở đây và chấp nhận mọi page đổi theo, hoặc
+   thêm class biến thể (vd .awrail--compact), KHÔNG đè trần lên class gốc.
+
+   Nạp SAU hi-chrome.css, TRƯỚC _pages/<page>.css.
+   ============================================================================ */
+
+
+/* ==================== REVIEWS · thẻ review, tab, slider ==================== */
+/* ============ SECTION 03 · REVIEWS (2-tab · slider · split · leave-a-review) ============ */
+.reviews{background:var(--bg)}
+
+/* intro clamp 2 lines + CENTERED text, JS-hugged arrow (cloned from awards phiên 2 for parity) */
+.rvi-cb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
+.rvi-intro{position:relative;max-width:600px;margin:16px auto 0;text-align:center;
+  font-size:16.5px;line-height:1.62;color:#C9C9C9}
+.rvi-intro b{color:#fff;font-weight:600}
+
+/* tabs (radio-hack) */
+.rv-tabs{text-align:center}
+.rv-tabs > input[name="rvtab"]{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+/* Radius + nhịp icon lấy đúng số đo đo được trên morethanpanel.com (.mtp-srv-menu / .nav-link):
+   khung 20px · nút 15px · padding khung 10px · padding nút 10px 25px · gap icon-chữ 10px.
+   Icon giữ tỉ lệ so với cỡ chữ như bên đó (20/14 ≈ 1.43 → HI dùng 18/12.5 ≈ 1.44). */
+/* review tab = khung GỌN ôm 3 tab, căn giữa (kiểu cũ, KHÔNG full-width như FAQ/gallery) */
+.rv-tabnav{display:flex;width:fit-content;max-width:100%;gap:10px;margin:0 auto clamp(28px,3vw,38px);padding:10px;border-radius:20px;
+  background:var(--glass-nav);border:1px solid var(--glass-brd);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.rv-tabnav label{display:inline-flex;align-items:center;gap:10px;padding:10px 25px;border-radius:15px;cursor:pointer;
+  font-family:var(--sub);font-weight:600;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--cream);
+  transition:background .2s var(--ease),color .2s var(--ease)}
+.rv-tabnav label svg{width:18px;height:18px;flex-shrink:0}
+.rv-tabnav label:hover{color:#fff}
+#rvtab-video:checked ~ .rv-tabnav label[for="rvtab-video"],
+#rvtab-cust:checked ~ .rv-tabnav label[for="rvtab-cust"],
+#rvtab-plat:checked ~ .rv-tabnav label[for="rvtab-plat"]{background:var(--orange);color:#fff}
+#rvtab-video:focus-visible ~ .rv-tabnav label[for="rvtab-video"],
+#rvtab-cust:focus-visible ~ .rv-tabnav label[for="rvtab-cust"],
+#rvtab-plat:focus-visible ~ .rv-tabnav label[for="rvtab-plat"]{outline:2px solid var(--orange);outline-offset:2px}
+.rv-panel{display:none;text-align:left}
+#rvtab-video:checked ~ .rv-panel-video,
+#rvtab-cust:checked ~ .rv-panel-cust,
+#rvtab-plat:checked ~ .rv-panel-plat{display:block}
+
+/* platform sub-tabs (Google / Facebook) — underline nav, radio-hack lồng trong panel */
+.rv-panel-plat > input[name="rvplat"]{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
+.rv-subnav{display:flex;margin-bottom:clamp(20px,2.2vw,26px);border-bottom:1px solid var(--card-brd)}
+.rv-subnav label{flex:1;display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 14px;
+  margin-bottom:-1px;cursor:pointer;border-bottom:2px solid transparent;
+  font-family:var(--sub);font-weight:600;font-size:13.5px;letter-spacing:.03em;color:var(--muted);
+  transition:color .2s var(--ease),border-color .2s var(--ease)}
+.rv-subnav label svg{width:19px;height:19px;flex-shrink:0}
+.rv-subnav label:hover{color:#fff}
+#rvplat-gg:checked ~ .rv-subnav label[for="rvplat-gg"],
+#rvplat-fb:checked ~ .rv-subnav label[for="rvplat-fb"]{color:#fff;border-bottom-color:var(--orange)}
+#rvplat-gg:focus-visible ~ .rv-subnav label[for="rvplat-gg"],
+#rvplat-fb:focus-visible ~ .rv-subnav label[for="rvplat-fb"]{outline:2px solid var(--orange);outline-offset:2px}
+.rv-sub{display:none}
+#rvplat-gg:checked ~ .rv-sub-gg,
+#rvplat-fb:checked ~ .rv-sub-fb{display:block}
+
+/* rating bar + leave-a-review (Google only) */
+.rv-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;
+  margin-bottom:22px;padding:15px 20px;border-radius:12px;background:var(--glass-surf);border:1px solid var(--glass-brd);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.rv-rate{display:flex;align-items:center;gap:11px;flex-wrap:wrap}
+.rv-rate .rv-stars{color:var(--orange);font-size:15px;letter-spacing:2px}
+.rv-rate b{font-family:var(--head);font-size:22px;color:#fff;line-height:1}
+.rv-rate span{font-size:13.5px;color:var(--muted)}
+.rv-leave{display:inline-flex;align-items:center;gap:9px;padding:12px 20px;border-radius:8px;background:var(--orange);color:#fff;
+  font-family:var(--sub);font-weight:600;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;transition:background .2s var(--ease)}
+.rv-leave:hover{background:var(--orange-hi)}
+.rv-leave svg{width:18px;height:18px;background:#fff;border-radius:50%;padding:2px}
+.rv-leave-ic{display:inline-flex;align-items:center}
+.rv-leave-ic svg{position:relative}
+.rv-leave-ic svg:first-child{z-index:2;box-shadow:0 0 0 2.5px var(--orange)}
+.rv-leave-ic svg:last-child{margin-left:-7px;z-index:1}
+.rv-leave:hover .rv-leave-ic svg:first-child{box-shadow:0 0 0 2.5px var(--orange-hi)}
+
+/* full-width slider (reviews live inside cards now — no separate artwork column) */
+.rv-slider-wrap{position:relative;min-width:0}
+.rv-slider{list-style:none;display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;align-items:stretch;padding:2px 2px 4px}
+.rv-slider::-webkit-scrollbar{display:none}
+
+/* slider foot — nav (‹ ›) + progress only, awards-synced (no CTA by default) */
+.rv-foot{display:flex;align-items:center;gap:16px;margin-top:20px}
+.rv-nav{display:flex;gap:9px;flex-shrink:0}
+.rv-navbtn{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--card-brd);background:rgba(255,255,255,.03);color:var(--cream);cursor:pointer;
+  transition:border-color .2s var(--ease),color .2s var(--ease),opacity .2s var(--ease)}
+.rv-navbtn:hover{border-color:var(--orange);color:#fff}
+.rv-navbtn svg{width:17px;height:17px}
+.rv-track{position:relative;flex:1;min-width:100px;height:3px;border-radius:2px;background:rgba(255,255,255,.12)}
+.rv-prog-thumb{position:absolute;top:0;left:0;height:100%;width:40%;background:var(--orange);border-radius:2px;
+  transition:left .35s var(--ease),width .35s var(--ease)}   /* trượt liền mạch, không nhảy bậc */
+
+/* ---- AUTO-SLIDER MODE ----------------------------------------------------
+   2 chế độ slider, chọn bằng class trên .rv-slider-wrap:
+     · mặc định (không class) = user tự kéo → giữ ‹ › + thanh progress (.rv-foot)
+     · .is-auto               = tự chạy      → dots (.rv-dots), ẩn .rv-foot
+   Dots do JS sinh ra theo số "màn cuộn", không phải số card. Trên mobile
+   nhiều card thì chỉ hiện tối đa 5 dot, 2 dot rìa thu nhỏ, phần còn lại ẩn.
+   -------------------------------------------------------------------------- */
+.rv-dots{display:none;justify-content:center;align-items:center;gap:9px;margin-top:22px;min-height:12px}
+.rv-slider-wrap.is-auto > .rv-foot{display:none}
+.rv-slider-wrap.is-auto > .rv-dots{display:flex}
+.rv-dot{width:9px;height:9px;padding:0;border:0;border-radius:999px;background:rgba(255,255,255,.24);cursor:pointer;
+  flex-shrink:0;transition:width .3s var(--ease),background .25s var(--ease),transform .25s var(--ease)}
+.rv-dot:hover{background:rgba(255,255,255,.45)}
+.rv-dot:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+.rv-dot.is-on{width:34px;background:var(--orange)}
+.rv-dot.is-edge{transform:scale(.66)}
+.rv-dot.is-hide{display:none}
+@media(prefers-reduced-motion:reduce){.rv-dot{transition:none}}
+
+
+/* ==================== MOBILE SLIDER (msl) · lưới desktop → trượt 2-up mobile ==================== */
+/* generic MOBILE-SLIDER nav (‹ › + progress) — for sections that are a grid on desktop but a swipe row on
+   mobile (Services, Artists). Same visual as the reviews .rv-foot for cross-slider consistency. Hidden by
+   default; each section reveals its foot at the breakpoint where its grid turns into a slider. */
+.msl-foot{display:none;align-items:center;gap:16px;margin-top:18px}
+.msl-nav{display:flex;gap:9px;flex-shrink:0}
+.msl-navbtn{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--card-brd);background:rgba(255,255,255,.03);color:var(--cream);cursor:pointer;
+  transition:border-color .2s var(--ease),color .2s var(--ease),opacity .2s var(--ease)}
+.msl-navbtn:hover{border-color:var(--orange);color:#fff}
+.msl-navbtn svg{width:17px;height:17px}
+.msl-track{position:relative;flex:1;min-width:100px;height:4px;border-radius:3px;background:rgba(255,255,255,.14);cursor:pointer;touch-action:none}
+.msl-track::before{content:"";position:absolute;left:0;right:0;top:-9px;bottom:-9px}  /* vùng chạm rộng để kéo dễ */
+/* FILL từ trái (không phải khối trôi) -> liền mạch; user kéo track để tua slider */
+.msl-thumb{position:absolute;top:0;left:0;height:100%;width:20%;background:var(--orange);border-radius:3px;
+  transition:width .25s var(--ease)}
+.msl-track.dragging .msl-thumb{transition:none}
+.msl-track.dragging{background:rgba(255,255,255,.2)}
+/* B.Long batch2: services là 2×2 grid trên mobile → ẩn nav slider cũ */
+@media(max-width:860px){.msl-foot.svc-foot{display:none}}
+@media(max-width:600px){.msl-foot.art-foot{display:flex}}
+
+
+/* ==================== REVIEWS (tiếp) · card ảnh, customer story ==================== */
+/* customer review card (fixed height · scrollable body · icon = permalink) */
+.rv-card{flex:0 0 300px;scroll-snap-align:start;display:flex;flex-direction:column;height:266px;
+  padding:18px;background:var(--glass-surf);border:1px solid var(--glass-brd);border-radius:12px;
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.rv-top{display:flex;align-items:flex-start;gap:12px;margin-bottom:12px}
+.rv-av{width:42px;height:42px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  font-family:var(--sub);font-weight:600;font-size:15px;color:#fff;letter-spacing:.02em}
+.rv-who{display:flex;flex-direction:column;gap:4px;min-width:0;flex:1}
+.rv-name{font-family:var(--sub);font-weight:600;font-size:14.5px;color:#fff;letter-spacing:.01em;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rv-meta{display:flex;align-items:center;gap:9px}
+.rv-stars{color:var(--orange);font-size:11px;letter-spacing:1.5px;flex-shrink:0}
+.rv-date{font-size:11.5px;color:var(--muted)}
+.rv-srclink{flex-shrink:0;width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,.05);border:1px solid var(--card-brd);transition:border-color .2s var(--ease),background .2s var(--ease)}
+.rv-srclink:hover{border-color:var(--orange);background:rgba(255,255,255,.09)}
+.rv-srclink svg{width:15px;height:15px;display:block}
+.rv-body-scroll{flex:1;overflow-y:auto;margin-right:-8px;padding-right:9px;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
+.rv-body-scroll::-webkit-scrollbar{width:4px}
+.rv-body-scroll::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.rv-body{font-size:14px;line-height:1.6;color:#CFCFCF}
+.rv-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+.rv-tag{font-family:var(--sub);font-size:10px;letter-spacing:.05em;text-transform:uppercase;color:var(--cream);
+  background:rgba(255,255,255,.05);border:1px solid var(--card-brd);border-radius:999px;padding:4px 10px}
+
+/* photo review card — review text (left) + customer tattoo photo (right) */
+.rv-card--photo{flex:0 0 clamp(440px,46vw,516px);flex-direction:row;padding:0;overflow:hidden}
+.rv-pc-text{flex:1;min-width:0;min-height:0;display:flex;flex-direction:column;padding:18px}
+.rv-pc-text .rv-body-scroll{flex:1;min-height:0}
+.rv-pc-media{position:relative;flex:0 0 43%;align-self:stretch;overflow:hidden;background:var(--black)}
+.rv-pc-media img{width:100%;height:100%;object-fit:cover;object-position:50% 42%}
+
+/* ---- CUSTOMER STORY CARD -------------------------------------------------
+   Heading = trích nguyên văn 1 mệnh đề trong chính review đó.
+   Đã gỡ 3 chi tiết làm card trông như template dựng sẵn: badge pill "★ 5.0",
+   vệt sáng radial cam, và vòng tròn avatar chữ cái đầu.
+   Thay bằng lớp gạch chéo mờ gợi nét shading của kim xăm — chi tiết gắn với
+   nghề, không phải hiệu ứng chung. (Vạch cam mép trái đã gỡ theo yêu cầu.)
+   -------------------------------------------------------------------------- */
+.rv-scard{flex:0 0 clamp(300px,30vw,364px);scroll-snap-align:start;display:flex;flex-direction:column;
+  height:486px;border-radius:12px;background:var(--surface);
+  border:1px solid var(--border);
+  position:relative;overflow:hidden}
+.rv-scard::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.55;
+  background:repeating-linear-gradient(128deg,rgba(255,255,255,.028) 0 1px,transparent 1px 9px)}
+.rv-scard > *{position:relative}
+.rv-sc-main{flex:1;min-height:0;display:flex;flex-direction:column;padding:24px 24px 22px}
+.rv-sc-top{display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding-bottom:16px;border-bottom:1px solid var(--card-brd)}
+
+/* ---- biến thể CÓ ẢNH ------------------------------------------------------
+   Slider trộn card có ảnh và card chữ, cùng chiều cao. Card có ảnh: băng ảnh
+   trên đầu, dãy sao + ngày ĐÈ LÊN ảnh — dùng lại đúng cách card video đang làm
+   nên 2 tab đọc ra cùng một hệ, và tiết kiệm được ~50px chiều cao.
+   Card chữ không có ảnh thì phần thân dài hơn, tự lấp chỗ trống.
+   ------------------------------------------------------------------------- */
+.rv-sc-media{position:relative;flex:0 0 178px;overflow:hidden;background:var(--black);margin:0}
+.rv-sc-media img{width:100%;height:100%;object-fit:cover;object-position:50% 45%;display:block}
+.rv-sc-media::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.62) 0%,rgba(0,0,0,0) 46%)}
+.rv-sc-top--on{position:absolute;top:0;left:0;right:0;z-index:2;padding:15px 17px;border-bottom:0}
+.rv-sc-top--on .rv-sc-date{color:#E8E2DA}
+.rv-scard--photo .rv-sc-main{padding-top:19px}
+.rv-scard--photo .rv-sc-h{margin-top:0}
+.rv-sc-stars{color:var(--orange);font-size:13px;letter-spacing:2.5px;line-height:1}
+.rv-sc-date{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;color:var(--muted)}
+.rv-sc-date svg{width:13px;height:13px;flex-shrink:0;opacity:.8}
+/* B.Long fix-batch: tiêu đề card = size chữ thường + <strong>, bỏ font display in hoa */
+.rv-sc-h{font-family:var(--sub);font-size:14.5px;font-weight:700;line-height:1.4;color:#fff;
+  margin:14px 0 11px;text-transform:none;letter-spacing:0}
+/* mờ dần dòng cuối: review dài bị cắt ngang chữ ở mép cứng trông như lỗi render,
+   fade làm nó đọc ra "còn nữa, cuộn tiếp" */
+.rv-sc-body{flex:1;min-height:0;overflow-y:auto;margin-right:-8px;padding-right:9px;
+  scrollbar-width:thin;scrollbar-color:var(--border) transparent;
+  -webkit-mask-image:linear-gradient(180deg,#000 82%,transparent 100%);
+  mask-image:linear-gradient(180deg,#000 82%,transparent 100%)}
+.rv-sc-body::-webkit-scrollbar{width:4px}
+.rv-sc-body::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+.rv-sc-body p{font-size:14px;line-height:1.62;color:#CFCFCF}
+.rv-sc-foot{margin-top:18px;padding-top:15px;border-top:1px solid var(--card-brd)}
+.rv-sc-name{display:block;font-family:var(--sub);font-size:14px;font-weight:700;color:#fff;
+  text-transform:none;letter-spacing:0;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rv-sc-role{display:block;font-size:12.5px;font-style:italic;color:var(--cream);margin-top:4px}
+
+/* video review card (portrait · tattoo-work thumb · no avatar) */
+.rv-vcard{flex:0 0 clamp(232px,24vw,300px);scroll-snap-align:start}
+.rv-vlink{position:relative;display:block;aspect-ratio:3/4;border-radius:12px;overflow:hidden;border:1px solid var(--border);background:var(--surface)}
+.rv-vlink img{width:100%;height:100%;object-fit:cover;transition:transform .45s var(--ease)}
+.rv-vlink:hover img{transform:scale(1.05)}
+.rv-vbadge{position:absolute;top:10px;left:10px;z-index:3;display:inline-flex;align-items:center;gap:4px;padding:4px 9px;border-radius:999px;
+  background:var(--card);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);border:1px solid var(--card-brd);
+  font-family:var(--sub);font-size:11px;font-weight:600;color:#fff}
+.rv-vbadge b{color:var(--orange)}
+.rv-vplay{position:absolute;top:44%;left:50%;transform:translate(-50%,-50%);z-index:3;width:52px;height:52px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,.92);box-shadow:0 8px 30px rgba(0,0,0,.45);transition:transform .2s var(--ease)}
+.rv-vlink:hover .rv-vplay{transform:translate(-50%,-50%) scale(1.08)}
+.rv-vplay svg{width:20px;height:20px;color:#111;margin-left:3px}
+.rv-vmeta{position:absolute;left:0;right:0;bottom:0;z-index:3;padding:34px 14px 14px;
+  background:linear-gradient(0deg,rgba(0,0,0,.85),rgba(0,0,0,0))}
+.rv-vmeta b{display:block;font-family:var(--sub);font-weight:600;font-size:14px;color:#fff}
+.rv-vmeta span{display:block;font-size:12px;color:var(--cream);margin-top:2px}
+.rv-vmeta em{display:block;font-size:12.5px;font-style:italic;color:var(--cream);margin-top:3px}
+/* góc trên phải: ngày quay + icon lịch (thay chip thời lượng) — khớp mẫu */
+.rv-vdate{position:absolute;top:10px;right:10px;z-index:4;display:inline-flex;align-items:center;gap:5px;
+  padding:4px 9px;border-radius:6px;background:var(--card);border:1px solid var(--card-brd);
+  backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);
+  font-family:var(--sub);font-weight:600;font-size:11px;color:#fff;letter-spacing:.02em}
+.rv-vdate svg{width:12px;height:12px;flex-shrink:0;opacity:.85}
+
+@media(max-width:760px){.rv-card--photo{flex-basis:clamp(380px,82vw,460px)}}
+@media(max-width:600px){
+  /* 3 tab không đủ chỗ trên 1 hàng → hàng pill cuộn ngang, giữ NGUYÊN nhãn đầy đủ
+     (không rút gọn), scrollbar mảnh chính là vạch chỉ báo "còn tab bên phải" */
+  .rv-tabnav{display:flex;width:100%;overflow-x:auto;justify-content:flex-start;padding:8px;gap:8px;border-radius:16px}
+  .rv-tabnav label{flex:0 0 auto;white-space:nowrap;gap:8px;padding:10px 18px;border-radius:12px;font-size:12px;letter-spacing:.04em}
+  .rv-tabnav label svg{width:16px;height:16px}
+  .rv-subnav{overflow-x:auto;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.25) transparent}
+  .rv-subnav::-webkit-scrollbar{height:4px}
+  .rv-subnav::-webkit-scrollbar-thumb{background:rgba(255,255,255,.25);border-radius:2px}
+  .rv-subnav label{flex:0 0 50%;white-space:nowrap;font-size:13px}
+  .rvi-intro{max-width:340px}
+  /* B.Long batch2/fix: 2 review/slide trên mobile (video + customer + platform).
+     KHOÁ chiều cao đồng nhất — card có ảnh (flex-direction column) nếu không set
+     height sẽ cao hơn card chữ → 2 card lệch nhau, trông "không phải 2 cột". */
+  .rv-card{flex:0 0 48%;min-width:0;height:320px}
+  .rv-card--photo{flex:0 0 48%;min-width:0;flex-direction:column;height:320px;padding:0;overflow:hidden}
+  .rv-pc-media{flex:0 0 96px;width:100%;order:-1}
+  .rv-pc-text{padding:14px 15px;flex:1;min-height:0}
+  /* card platform hẹp 48% → bỏ avatar chữ-cái để "★★★★★ · X months ago" đủ chỗ, không cắt chữ ngày */
+  .rv-panel-plat .rv-av{display:none}
+  .rv-panel-plat .rv-top{gap:8px}
+  .rv-vcard{flex-basis:48%}
+  .rv-scard{flex-basis:48%;height:470px}
+  .rv-sc-main{padding:19px}
+  .rv-sc-media{flex-basis:132px}
+  .rv-sc-date,.rv-date{white-space:nowrap}
+  .rv-sc-h{margin:16px 0 11px}
+  .rv-bar{flex-direction:column;align-items:stretch;text-align:center}
+  .rv-rate{justify-content:center}
+  .rv-leave{justify-content:center}
+}
+
+
+/* ==================== SERVICES · 4 thẻ ==================== */
+/* ============ SECTION 04 · SERVICES (4-card grid · def always-on · hover reveals styles+CTA · mobile 1-row slider) ============ */
+.services{background:var(--black)}
+.svc-icb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
+.svc-intro{position:relative;max-width:640px;margin:14px auto 0;text-align:center;font-size:16px;line-height:1.6;color:#C9C9C9}
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:clamp(28px,3.4vw,42px)}
+.svc-card{position:relative;aspect-ratio:3/4;border-radius:14px;overflow:hidden;border:1px solid var(--border);
+  background:var(--surface);isolation:isolate;transition:border-color .25s var(--ease),transform .25s var(--ease)}
+.svc-card:hover,.svc-card.is-active{border-color:rgba(204,102,0,.45);transform:translateY(-4px)}
+.svc-card:focus-within{border-color:var(--orange)}
+.svc-card > img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;transition:transform .6s var(--ease)}
+.svc-card:hover > img,.svc-card.is-active > img{transform:scale(1.06)}
+.svc-scrim{position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(0deg,rgba(0,0,0,.9) 3%,rgba(0,0,0,.55) 32%,rgba(0,0,0,.1) 62%,rgba(0,0,0,.3) 100%);
+  transition:background .4s var(--ease)}
+.svc-card:hover .svc-scrim,.svc-card.is-active .svc-scrim{background:linear-gradient(0deg,rgba(0,0,0,.93) 6%,rgba(0,0,0,.68) 46%,rgba(0,0,0,.34) 82%)}
+.svc-body{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:20px 18px;display:flex;flex-direction:column;gap:7px;pointer-events:none}
+.svc-name{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:-.01em;line-height:1.02;
+  font-size:clamp(19px,1.5vw,22px);color:#fff}
+/* B.Long: chưa hover chỉ hiện HEADING; hover/tap mới mở mô tả (cả 2 câu) — áp cho cả desktop+mobile */
+.svc-def{font-size:13px;line-height:1.5;color:var(--cream);
+  max-height:0;opacity:0;overflow:hidden;
+  transition:max-height .45s var(--ease),opacity .3s var(--ease),margin-top .45s var(--ease)}
+.svc-card:hover .svc-def,.svc-card:focus-within .svc-def,.svc-card.is-active .svc-def{max-height:160px;opacity:1;margin-top:6px}
+.svc-more{max-height:0;opacity:0;overflow:hidden;display:flex;flex-direction:column;gap:8px;
+  transition:max-height .45s var(--ease),opacity .3s var(--ease),margin-top .45s var(--ease)}
+.svc-card:hover .svc-more,.svc-card:focus-within .svc-more,.svc-card.is-active .svc-more{max-height:240px;opacity:1;margin-top:3px}
+.svc-more-txt{font-size:12.5px;line-height:1.5;color:#C2C2C2}
+/* B.Long: CTA = tên dịch vụ + mũi tên (bỏ chữ "Explore…"), hiện cùng 2 câu khi reveal */
+.svc-explore{display:inline-flex;align-items:center;gap:7px;font-family:var(--sub);font-weight:600;font-size:11.5px;
+  letter-spacing:.05em;text-transform:uppercase;color:var(--orange)}
+.svc-explore svg{width:15px;height:15px;transition:transform .2s var(--ease)}
+.svc-card:hover .svc-explore svg,.svc-card.is-active .svc-explore svg{transform:translateX(3px)}
+.svc-link{position:absolute;inset:0;z-index:3}
+/* mobile: 1-row swipe slider (no hover on touch → styles+CTA shown by default) */
+@media(max-width:860px){
+  /* mobile = 2×2 grid; reveal-on-tap giống desktop (JS is-active).
+     Card 3/4 hẹp → chỉ hiện 1 CÂU (câu def) + CTA, ẩn câu 2 cho khỏi tràn mép trên. */
+  .svc-grid{grid-template-columns:1fr 1fr;gap:14px}
+  .svc-more-txt{display:none}
+}
+@media(max-width:600px){ .svc-intro{max-width:340px} .svc-card{flex-basis:86%} }
+
+/* ==================== ARTISTS · lưới ảnh + panel bio ==================== */
+/* ---------- SECTION 06 · ARTISTS (Ganga grid: photo + style + name; hover/tap panel = full bio) ---------- */
+.artists{background:var(--black)}
+/* intro clamp + JS-hug arrow (cloned from services for section parity) */
+.arti-icb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
+.arti-intro{position:relative;max-width:660px;margin:14px auto 0;text-align:center;font-size:16px;line-height:1.6;color:#C9C9C9}
+/* grid */
+.art-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.5vw,20px);margin-top:clamp(30px,4vw,46px)}
+.art-card{position:relative}
+.art-photo{position:relative;aspect-ratio:3/4;border-radius:14px;overflow:hidden;background:linear-gradient(160deg,#1e1e1e,#0b0b0b);border:1px solid rgba(255,255,255,.07);transition:border-color .3s var(--ease),transform .3s var(--ease)}
+.art-card:hover .art-photo{border-color:rgba(204,102,0,.5);transform:translateY(-4px)}
+.art-photo>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 18%;transition:transform .6s var(--ease)}
+.art-card:hover .art-photo>img{transform:scale(1.06)}
+.art-scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,0) 45%,rgba(0,0,0,.5) 100%);transition:opacity .3s var(--ease)}
+/* hover/tap panel — full bio + styles (text lives in DOM for SEO) */
+.art-panel{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:flex-end;gap:9px;padding:20px 17px;
+  /* B.Long fix: nền tối gần-đặc để ảnh artist mờ đều, chữ bio đọc rõ (không lem lên mặt) */
+  background:linear-gradient(180deg,rgba(9,9,9,.78) 0%,rgba(9,9,9,.9) 45%,rgba(6,6,6,.96) 100%);
+  opacity:0;transition:opacity .32s var(--ease);pointer-events:none}
+.art-card:hover .art-panel,.art-card.is-active .art-panel{opacity:1}
+.art-card:hover .art-scrim,.art-card.is-active .art-scrim{opacity:0}
+.art-meta{font-family:var(--sub);font-size:11px;letter-spacing:.05em;text-transform:uppercase;color:var(--orange-hi)}
+.art-styles{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0}
+.art-styles li{font-family:var(--sub);font-size:10.5px;letter-spacing:.03em;text-transform:uppercase;color:#EDEDED;border:1px solid rgba(255,255,255,.24);border-radius:999px;padding:3px 9px}
+/* NGUYÊN TẮC bio card: full text nằm trong DOM (SEO + trang chi tiết); card chỉ HIỂN THỊ
+   tối đa 6 DÒNG (line-clamp), phần dư ẩn sau "…". Số dòng cố định → số CHỮ co theo bề rộng màn. */
+.art-bio{font-size:12.7px;line-height:1.5;color:#D2D2D2;margin:0;
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:6;line-clamp:6;overflow:hidden}
+.art-view{display:inline-flex;align-items:center;gap:7px;font-family:var(--sub);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#fff;margin-top:2px}
+.art-view svg{width:15px;height:15px;fill:none;stroke:var(--orange);stroke-width:2;transition:transform .25s var(--ease)}
+.art-card:hover .art-view svg{transform:translateX(3px)}
+/* monogram placeholder — piercers pending real photo (never fake a real face) */
+.art-photo--mono{background:radial-gradient(120% 90% at 50% 12%,#242424,#090909)}
+.art-mono{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--head);font-weight:700;font-size:clamp(64px,7vw,104px);color:rgba(220,219,190,.15);letter-spacing:.02em}
+.art-monotag{position:absolute;top:11px;left:11px;z-index:3;font-family:var(--sub);font-size:9px;letter-spacing:.09em;text-transform:uppercase;color:#8f8f8f;border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:3px 8px;transition:opacity .3s var(--ease)}
+.art-card:hover .art-monotag{opacity:0}
+/* caption (always visible under photo) */
+.art-cap{padding:13px 3px 0;text-align:center}
+.art-style{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;font-family:var(--sub);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:#A6A6A6;min-height:16px}
+.art-badge{position:relative;z-index:6;font-size:10px;letter-spacing:.01em;color:#e8e8e8;background:rgba(255,255,255,.14);border-radius:999px;padding:2px 8px;line-height:1.3;cursor:default}
+.art-tip{position:absolute;bottom:calc(100% + 9px);left:50%;transform:translateX(-50%) translateY(4px);display:flex;flex-direction:column;gap:1px;padding:8px 12px;background:rgba(22,22,22,.98);border:1px solid rgba(255,255,255,.1);border-radius:8px;font-size:10.5px;letter-spacing:.04em;color:#EDEDED;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s var(--ease),transform .2s var(--ease);box-shadow:0 10px 26px rgba(0,0,0,.55)}
+.art-tip::after{content:"";position:absolute;top:100%;left:50%;transform:translateX(-50%);border:5px solid transparent;border-top-color:rgba(22,22,22,.98)}
+.art-badge:hover .art-tip,.art-badge:focus-visible .art-tip{opacity:1;transform:translateX(-50%) translateY(0)}
+.art-card .art-name{font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:clamp(19px,1.9vw,25px);line-height:1;color:#fff;margin-top:6px;letter-spacing:.006em}
+.art-link{position:absolute;inset:0;z-index:5}
+/* responsive */
+@media(max-width:900px){.art-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){
+  .arti-intro{max-width:340px}
+  .art-grid{display:flex;grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;gap:13px;padding-bottom:4px}
+  .art-grid::-webkit-scrollbar{display:none}
+  /* B.Long batch2: 2 artist/slide trên mobile */
+  .art-card{flex:0 0 48%;scroll-snap-align:start}
+  .art-panel{padding:16px 14px;gap:8px}
+}
+
+
+/* ==================== AWARDS · trophy rail + modal ==================== */
+/* ============================================================================
+   SECTION 10 — AWARDS  ·  "Trophy Rail" (Koray / MoreThanPanel compact)
+   Centered head + clamped intro (arrow icon) · ONE horizontal card rail
+   (‹ › + progress) · card = placement / convention / location·year / Won by
+   · click a card → modal (trophy + evidence slots + story).
+   Cups are transparent PNGs (bg cut) floating on the dark card. No eyebrow.
+   Real plate-verified cups only. Local layout; tokens = foundation.
+   ============================================================================ */
+.s-awards{background:var(--black)}
+.s-awards .wrap{position:relative;z-index:2}
+/* decorative smoke wash (Ganga color-blur.webp) — used ONLY on this proof/statement
+   section, drifting in from the top-left and clipped by .section{overflow:clip}
+   (= Ganga "kind a": opacity .5, no blend, alpha does the work, sits BEHIND content
+   at z:0 → under the .04 grain + the z:2 wrap, so the white heading stays legible).
+   Rare on purpose: one instance, statement section only. Desktop only. */
+/* ---------- centered head + clamped intro ---------- */
+.s-awards .section-head{max-width:680px}
+/* Centered intro (MoreThanPanel style): full text stays in the DOM, clamped to 2 lines
+   via -webkit-line-clamp; the orange arrow is JS-positioned to hug the end of the last
+   visible line so it never drifts far from the text. Content is never removed = SEO-safe. */
+.aw-intro{position:relative;max-width:600px;margin:16px auto 0;text-align:center;text-shadow:none;
+  font-size:16.5px;line-height:1.62;color:#E4E4E4}
+
+/* ---------- the rail ---------- */
+.awrail-wrap{margin-top:clamp(28px,3.6vw,40px)}
+.awrail{list-style:none;display:flex;gap:clamp(12px,1.5vw,20px);overflow-x:auto;overflow-anchor:none;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none;align-items:center;padding:34px 2px 22px}
+.awrail::-webkit-scrollbar{display:none}
+/* slider VÔ CỰC (JS nhân 3 bản): luôn có cúp thật 2 bên tâm → không cần spacer, không giật khi lặp */
+.awrail::before,.awrail::after{display:none}
+
+/* transparent — bỏ khung card, trophy nổi trên nền section; center-focus: ô vào giữa TO hơn */
+.awrail-card{position:relative;flex:0 0 clamp(178px,17vw,210px);
+  background:transparent;border:none;border-radius:0;overflow:visible;
+  transform:scale(.9);opacity:.58;transform-origin:center 58%;
+  transition:transform .4s var(--ease),opacity .4s var(--ease)}
+.awrail-card.is-center{transform:scale(1.1);opacity:1;z-index:2}
+.awrail-card:hover{opacity:.85}
+.awrail-card.is-center:hover{opacity:1}
+.aw-cardlink{position:absolute;inset:0;z-index:5;cursor:pointer}
+.awrail-card:focus-within{border-color:var(--orange)}
+.aw-open-cb:focus-visible ~ .awrail-wrap{outline:2px solid var(--orange);outline-offset:6px;border-radius:8px}
+
+/* vitrine = transparent cup floating on the dark card, soft warm halo + shadow */
+.aw-vitrine{--ar:4/3;border:none;border-radius:0;box-shadow:none;
+  background:radial-gradient(72% 62% at 50% 42%, rgba(255,255,255,.07), rgba(255,255,255,0) 72%)}
+.aw-vitrine>img{object-fit:contain;object-position:50% 50%;padding:16px 16px 12px;
+  filter:drop-shadow(0 13px 22px rgba(0,0,0,.55))}
+.aw-open{position:absolute;top:11px;right:11px;z-index:4;display:grid;place-items:center;width:30px;height:30px;
+  border-radius:8px;background:rgba(0,0,0,.5);border:1px solid var(--card-brd);color:#fff;backdrop-filter:blur(3px);
+  pointer-events:none;transition:background .2s var(--ease)}
+.aw-open svg{width:15px;height:15px}
+.awrail-card:hover .aw-open{background:var(--orange);border-color:transparent}
+
+.aw-body{padding:14px 8px 4px;text-align:center}
+.aw-body .aw-place{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:1.0;letter-spacing:-0.005em;
+  font-size:20px;color:var(--orange)}
+.aw-conv{margin-top:8px;font-family:var(--sub);font-weight:600;font-size:14.5px;line-height:1.3;color:#fff}
+.aw-loc{margin-top:4px;font-size:13.5px;color:var(--muted)}
+.aw-by{margin-top:12px;font-family:var(--sub);font-size:11px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.aw-by b{color:var(--orange);font-weight:600}
+
+/* ---------- rail foot: dots (auto slider) + cta ---------- */
+.awrail-foot{display:flex;flex-direction:column;align-items:center;gap:20px;margin-top:22px}
+.awrail-dots{display:flex;justify-content:center;align-items:center;gap:9px;flex-wrap:wrap}
+.awrail-dot{width:9px;height:9px;padding:0;border:none;border-radius:50%;cursor:pointer;
+  background:rgba(255,255,255,.24);transition:background .25s var(--ease),width .25s var(--ease)}
+.awrail-dot:hover{background:rgba(255,255,255,.45)}
+.awrail-dot.is-active{background:var(--orange);width:26px;border-radius:5px}
+.awrail-cta{min-height:44px;padding:12px 20px}
+.awrail-cta svg{width:16px;height:16px;transition:transform .2s var(--ease)}
+.awrail-cta:hover svg{transform:translateX(3px)}
+/* READERS' AWARD PLAQUE — closes the awards section. The 7 trophies above are
+   juried; this one is a city-wide reader vote, so it gets its own heading rather
+   than an 8th rail card, and the intro's "these are juried awards, not
+   popularity votes" line keeps scoping only to the rail.
+   Deliberately NOT a bordered card. The section background is --black and
+   --card is rgba(0,0,0,.5), so a fill here paints black on black and does
+   nothing — the 1px border was the only thing making it read as a box, and a
+   full-width bordered box next to seven bordered rail cards is one frame too
+   many. Same conclusion .statband reached: drop the border, mark the block with
+   a single hairline instead. That also fixes the dead space on the right; it
+   only looked like a defect because a border was drawn around it.
+   DOM order is seal -> heading -> paragraph -> link. On desktop the grid lifts
+   the seal into a left column spanning all three rows, the same technique
+   .hero-grid uses for .award-card. No `order`, so visual order, tab order and
+   screen-reader order stay identical. */
+.soa-plaque{margin-top:clamp(28px,3.4vw,46px);
+  padding-top:clamp(26px,3vw,40px);
+  border-top:1px solid rgba(255,255,255,.09);
+  display:grid;gap:14px;justify-items:start}
+.soa-p-seal{width:auto;height:clamp(96px,12vw,160px);
+  filter:drop-shadow(0 4px 14px rgba(0,0,0,.6))}
+/* Heading and body deliberately inherit `.section h3` / `.section p` from
+   hi-foundation.css — those are (0,1,1) selectors and outrank a plain class, so
+   anything restated here would be dead code. Only two intentional overrides,
+   both scoped tightly enough to actually win:
+   - letter-spacing: the foundation .04em is tuned for short uppercase labels
+     ("Best of Show"); this heading is 62 characters, where that tracking costs
+     a whole extra line on a phone.
+   - font-size floor on narrow screens, same reason. */
+.soa-p-h{margin:0;max-width:640px}
+.soa-plaque h3{letter-spacing:.02em}
+@media(max-width:430px){ .soa-plaque h3{font-size:16.5px;line-height:1.2} }
+.soa-p-txt{margin:0;font-size:clamp(15px,1.15vw,16.5px);max-width:68ch}
+.soa-p-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;
+  font-family:var(--sub);font-weight:600;font-size:13px;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--orange);text-decoration:none}
+.soa-p-link svg{width:16px;height:16px;transition:transform .2s var(--ease)}
+.soa-p-link:hover{color:var(--orange-hi)}
+.soa-p-link:hover svg{transform:translateX(3px)}
+.soa-p-link:focus-visible{outline:2px solid var(--orange-hi);outline-offset:4px;border-radius:4px}
+/* The text track is capped rather than each element, so heading, paragraph and
+   link all share one measure. Left to 1fr the heading ran ~1050px on a 1440
+   screen — an unreadable line length, and the giveaway look of text stretched
+   to fill a container. */
+@media(min-width:821px){
+  /* justify-content:start is load-bearing. Left at its default the `auto` track
+     stretches to absorb the row's leftover width — the text track is capped at
+     640px so it cannot take any — which blows the seal column out to ~490px and
+     leaves a hole between the seal and the text. Packing the tracks at the
+     start keeps that leftover space at the far right, where it belongs. */
+  .soa-plaque{grid-template-columns:fit-content(220px) minmax(0,1fr);
+    justify-content:start;
+    column-gap:clamp(26px,3vw,44px);row-gap:14px}
+  /* The seal is stretched to the text block's height rather than given one, so
+     its top sits on the heading's top and its bottom on the link's bottom, at
+     any width. Three parts make that work and none can be dropped:
+       min-height:0    - without it the image's intrinsic 400px height feeds
+                         back into row sizing and inflates the TEXT to 400px,
+                         i.e. the seal starts driving the layout instead of
+                         following it. Measured: text block jumped 246 -> 400px.
+       object-fit      - the box is stretched, the artwork is not, so it scales
+                         inside the box and keeps its true 358:400 ratio.
+       fit-content(220px) - the column cannot be content-sized: grid resolves
+                         columns before rows, so a content-sized track would ask
+                         the image how wide it is before its height exists, and
+                         get the intrinsic 358px. 220px is solved, not guessed:
+                         it is the width at which 220/246 matches the artwork's
+                         ratio, so `contain` fills the box exactly with no
+                         letterboxing from 880px up. */
+  .soa-p-seal{grid-column:1;grid-row:1 / span 3;
+    align-self:stretch;height:100%;width:100%;min-height:0;
+    object-fit:contain;object-position:left center}
+  .soa-p-h,.soa-p-txt,.soa-p-link{grid-column:2}
+  /* text runs the full track on desktop; the caps above only govern the
+     stacked layout, where the viewport is the limit anyway */
+  .soa-p-h,.soa-p-txt{max-width:none}
+  /* CTA breaks to the opposite edge, so the block is anchored at both ends
+     instead of trailing off to the right */
+  .soa-p-link{justify-self:end}
+}
+/* 821-879px only: the heading takes one more line here, so the text block grows
+   to 259px and 220px no longer matches the ratio. 232px does. */
+@media(min-width:821px) and (max-width:879px){
+  .soa-plaque{grid-template-columns:fit-content(232px) minmax(0,1fr)}
+}
+
+/* ============================================================================
+   MODAL (radio-hack · content in DOM · one shared shell, 7 panels)
+   ============================================================================ */
+.aw-cb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
+.aw-modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:22px}
+.aw-open-cb:checked ~ .aw-modal{display:flex}
+.aw-modal-bd{position:absolute;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);cursor:pointer}
+.aw-modal-card{position:relative;z-index:2;width:min(660px,100%);max-height:88vh;overflow-y:auto;
+  background:var(--surface);border:1px solid var(--border);border-radius:15px;padding:clamp(22px,3.2vw,34px);
+  box-shadow:0 44px 120px rgba(0,0,0,.72)}
+.aw-modal-x{position:absolute;top:13px;right:14px;z-index:3;display:grid;place-items:center;width:34px;height:34px;border-radius:50%;
+  border:1px solid var(--card-brd);background:rgba(255,255,255,.05);color:#fff;font-size:19px;line-height:1;cursor:pointer;
+  transition:border-color .2s var(--ease),color .2s var(--ease)}
+.aw-modal-x:hover{border-color:var(--orange);color:var(--orange)}
+
+.aw-panel{display:none}
+#awm-1:checked ~ .aw-modal .aw-panel[data-i="1"],
+#awm-2:checked ~ .aw-modal .aw-panel[data-i="2"],
+#awm-3:checked ~ .aw-modal .aw-panel[data-i="3"],
+#awm-4:checked ~ .aw-modal .aw-panel[data-i="4"],
+#awm-5:checked ~ .aw-modal .aw-panel[data-i="5"],
+#awm-6:checked ~ .aw-modal .aw-panel[data-i="6"],
+#awm-7:checked ~ .aw-modal .aw-panel[data-i="7"]{display:block}
+
+.aw-panel .aw-panel-h{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:-0.005em;line-height:1.02;
+  font-size:clamp(22px,2.6vw,30px);color:#fff;padding-right:34px}
+.aw-panel-meta{margin-top:9px;font-family:var(--sub);font-size:13.5px;letter-spacing:.02em;color:var(--cream)}
+.aw-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:11px;margin-top:20px}
+.aw-slot{border:1px solid var(--border);border-radius:9px;overflow:hidden;aspect-ratio:1/1;display:grid;place-items:center;
+  background:radial-gradient(70% 60% at 50% 42%, rgba(255,255,255,.05), rgba(255,255,255,0) 72%), #131313}
+.aw-slot>img{width:100%;height:100%;object-fit:contain;padding:12px;filter:drop-shadow(0 8px 14px rgba(0,0,0,.5))}
+.aw-slot--soon{background:repeating-linear-gradient(135deg,#141414,#141414 9px,#181818 9px,#181818 18px);border-style:dashed;border-color:#333}
+.aw-slot--soon span{font-family:var(--sub);font-size:9.5px;letter-spacing:.09em;text-transform:uppercase;color:#9a9a9a;text-align:center;line-height:1.5;padding:6px}
+.aw-panel-story{margin-top:19px;font-size:15px;line-height:1.62;color:#C9C9C9}
+.aw-panel-by{margin-top:16px;padding-top:15px;border-top:1px solid var(--hair);
+  font-family:var(--sub);font-size:11.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.aw-panel-by b{color:var(--orange);font-weight:600}
+
+@media(max-width:980px){.awrail-card{flex:0 0 clamp(200px,30vw,258px)}}
+/* B.Long fix-batch: mobile awards = GIỮ slider (rail cuộn) nhưng hiển thị 2 card/khung */
+@media(max-width:640px){
+  .awrail{gap:12px;padding:12px 2px}
+  .awrail::before,.awrail::after{display:none}
+  /* card = (100% - 1 gap)/2 → đúng 2 cột lấp kín khung, không hé cột thứ 3 */
+  .awrail-card,.awrail-card.is-center{flex:0 0 calc((100% - 12px)/2);transform:none;opacity:1}
+  .awrail-foot{display:flex}
+}
+@media(max-width:560px){
+  .awrail-btn{width:40px;height:40px}
+  .awrail-cta{width:100%}
+  /* narrow the intro on mobile so the trailing arrow clears the "…" and never hugs the screen edge */
+  .aw-intro{max-width:320px}
+  /* modal goes near-fullscreen so the trophy + content read large */
+  .aw-modal{align-items:flex-start;padding:12px 10px}
+  .aw-modal-card{width:100%;max-height:94vh;padding:22px 16px 24px;border-radius:14px}
+  /* evidence images become a swipe slider: one big image per view, scroll-snap, next slide peeks */
+  .aw-slots{grid-template-columns:none;display:flex;align-items:flex-start;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;padding-bottom:6px;margin-inline:-2px;scrollbar-width:none}
+  .aw-slots::-webkit-scrollbar{display:none}
+  .aw-slots>.aw-slot{flex:0 0 88%;scroll-snap-align:center;aspect-ratio:3/4}
+}
+
+/* ==================== PILL-NAV · thanh kéo dùng chung (review · gallery · FAQ) ==================== */
+/* Thanh pill cuộn ngang (Reviews/FAQ/Gallery): scrollbar mảnh 4px = chỉ báo "còn tab bên phải", không dày */
+.rv-tabnav,.faqtab-nav,.galf{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.22) transparent}
+.rv-tabnav::-webkit-scrollbar,.faqtab-nav::-webkit-scrollbar,.galf::-webkit-scrollbar{height:4px}
+.rv-tabnav::-webkit-scrollbar-thumb,.faqtab-nav::-webkit-scrollbar-thumb,.galf::-webkit-scrollbar-thumb{background:rgba(255,255,255,.22);border:0;border-radius:2px}
+.rv-tabnav::-webkit-scrollbar-track,.faqtab-nav::-webkit-scrollbar-track,.galf::-webkit-scrollbar-track{background:transparent}
+
+/* ===== Thanh kéo pill-nav — CHUNG cho mọi section dùng pill (review · gallery · FAQ).
+   JS (cuối trang) tách hàng pill vào .pillrow con + chèn .pillbar → thanh kéo NẰM TRONG khung nav,
+   ngay dưới hàng pill (như mẫu). Custom (không native) nên hiện cố định mọi OS, kéo được. Sửa 1 chỗ = cả site. */
+.rv-tabnav.has-pillbar,.galf.has-pillbar,.faqtab-nav.has-pillbar{flex-direction:column;align-items:stretch;gap:9px;overflow:visible}
+.pillrow{display:flex;flex-wrap:nowrap;gap:10px;max-width:100%;justify-content:space-between;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch}
+.pillrow::-webkit-scrollbar{display:none}
+/* track trong suốt → chỉ còn thumb (vạch kéo) như mẫu, không đọc thành "thanh tiến độ" */
+.pillbar{height:6px;border-radius:10px;background:transparent;margin:0;position:relative;cursor:pointer;touch-action:none}
+.pillbar-th{position:absolute;top:0;left:0;height:100%;min-width:32px;border-radius:10px;background:rgba(255,255,255,.42);transition:background .2s var(--ease)}
+.pillbar:hover .pillbar-th,.pillbar-th:active{background:rgba(255,255,255,.6)}
+@media(max-width:640px){.pillrow{gap:8px}}

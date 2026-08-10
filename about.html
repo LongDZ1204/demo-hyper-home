@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="_foundation/hi-base.css">
 <link rel="stylesheet" href="_foundation/hi-chrome.css">
 <link rel="stylesheet" href="_foundation/components/booking-section.css">
+<link rel="stylesheet" href="_foundation/hi-components.css">
 <link rel="stylesheet" href="_pages/about.css">
 <!-- hi-ds.css NẠP CUỐI: lớp design-system cố tình thắng cascade so với CSS lẻ của page -->
 <link rel="stylesheet" href="_foundation/hi-ds.css">
@@ -277,6 +278,21 @@
     </div>
 
     <div class="art-grid msl-row">
+      <article class="art-card">
+        <div class="art-photo">
+          <img src="https://hyperinkers.com/wp-content/uploads/2026/02/minh-pham-san-antonio-tattoo-artist-768x1075.jpg" alt="Minh Pham, founder and lead tattoo artist at Hyper Inkers in San Antonio." loading="lazy">
+          <span class="art-scrim" aria-hidden="true"></span>
+          <div class="art-panel">
+            <p class="art-bio">Minh Pham is the founder and lead artist at Hyper Inkers, working in color, black and grey, and realism. Known for lifelike portraits, Minh sets the studio's artistic direction and mentors every artist on the team. His portraits have brought home multiple Best of Show trophies.</p>
+            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          </div>
+        </div>
+        <div class="art-cap">
+          <span class="art-style">Realism, Color <span class="art-badge">+1<span class="art-tip"><span>Black &amp; Grey</span></span></span></span>
+          <h3 class="art-name">Minh</h3>
+        </div>
+        <a class="art-link" href="/tattoo-artist/minh" aria-label="View Minh's profile"></a>
+      </article>
 
       <!-- 1 · Tai Hoa -->
       <article class="art-card">
@@ -541,7 +557,7 @@
             <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
           </figure>
           <div class="aw-body">
-            <h3 class="aw-place">Best of Show</h3>
+            <p class="aw-place">Best of Show</p>
             <p class="aw-conv">San Antonio Tattoo Arts Festival</p>
             <p class="aw-loc">San Antonio, TX · 2025</p>
           </div>
@@ -554,7 +570,7 @@
             <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
           </figure>
           <div class="aw-body">
-            <h3 class="aw-place">Best of the Best</h3>
+            <p class="aw-place">Best of the Best</p>
             <p class="aw-conv">Sinners Tattoo Expo</p>
             <p class="aw-loc">Dallas, TX · 2025</p>
           </div>
@@ -567,7 +583,7 @@
             <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
           </figure>
           <div class="aw-body">
-            <h3 class="aw-place">Best of Show</h3>
+            <p class="aw-place">Best of Show</p>
             <p class="aw-conv">Golden State Tattoo Expo 2025</p>
             <p class="aw-loc">California · 2025</p>
           </div>
@@ -580,7 +596,7 @@
             <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
           </figure>
           <div class="aw-body">
-            <h3 class="aw-place">Best of Show</h3>
+            <p class="aw-place">Best of Show</p>
             <p class="aw-conv">New York Empire State Tattoo Expo</p>
             <p class="aw-loc">New York · 2026</p>
           </div>
@@ -593,7 +609,7 @@
             <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
           </figure>
           <div class="aw-body">
-            <h3 class="aw-place">Best of Show</h3>
+            <p class="aw-place">Best of Show</p>
             <p class="aw-conv">Caserta Tattoo Convention</p>
             <p class="aw-loc">Italy · 2025</p>
           </div>
@@ -606,7 +622,7 @@
             <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
           </figure>
           <div class="aw-body">
-            <h3 class="aw-place">1st Place · Medium Black and Grey</h3>
+            <p class="aw-place">1st Place · Medium Black and Grey</p>
             <p class="aw-conv">San Antonio Tattoo Arts Festival</p>
             <p class="aw-loc">San Antonio, TX · 2025</p>
           </div>
@@ -619,7 +635,7 @@
             <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
           </figure>
           <div class="aw-body">
-            <h3 class="aw-place">3rd Place · Small Black and Grey</h3>
+            <p class="aw-place">3rd Place · Small Black and Grey</p>
             <p class="aw-conv">Houston Tattoo Arts Festival</p>
             <p class="aw-loc">Houston, TX · 2025</p>
           </div>
@@ -628,11 +644,15 @@
       </ul>
 
       <div class="awrail-foot">
-        <div class="awrail-nav">
-          <button type="button" class="awrail-btn awrail-prev" aria-label="Previous awards">&lsaquo;</button>
-          <button type="button" class="awrail-btn awrail-next" aria-label="Next awards">&rsaquo;</button>
+        <div class="awrail-dots" role="tablist" aria-label="Awards slider">
+          <button type="button" class="awrail-dot" aria-label="Award 1"></button>
+          <button type="button" class="awrail-dot" aria-label="Award 2"></button>
+          <button type="button" class="awrail-dot" aria-label="Award 3"></button>
+          <button type="button" class="awrail-dot" aria-label="Award 4"></button>
+          <button type="button" class="awrail-dot" aria-label="Award 5"></button>
+          <button type="button" class="awrail-dot" aria-label="Award 6"></button>
+          <button type="button" class="awrail-dot" aria-label="Award 7"></button>
         </div>
-        <div class="awrail-track" aria-hidden="true"><span class="stat-thumb"></span></div>
         
       </div>
     </div>
@@ -732,31 +752,6 @@
 
   </div>
 
-  <script>
-  (function(){
-    var rail=document.querySelector('.awrail');
-    if(!rail) return;
-    var thumb=document.querySelector('.awrail-track .stat-thumb'),
-        prev=document.querySelector('.awrail-prev'),
-        next=document.querySelector('.awrail-next'),
-        rm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-    function upd(){
-      var vis=rail.clientWidth/rail.scrollWidth,
-          max=rail.scrollWidth-rail.clientWidth,
-          p=max>0?rail.scrollLeft/max:0;
-      if(thumb){thumb.style.width=(vis*100)+'%';thumb.style.left=(p*(1-vis)*100)+'%';}
-      if(prev)prev.style.opacity=rail.scrollLeft<=1?'.35':'1';
-      if(next)next.style.opacity=(rail.scrollLeft+rail.clientWidth>=rail.scrollWidth-1)?'.35':'1';
-    }
-    function step(d){rail.scrollBy({left:d*0.85*rail.clientWidth,behavior:rm?'auto':'smooth'});}
-    rail.addEventListener('scroll',upd,{passive:true});
-    window.addEventListener('resize',upd);
-    if(prev)prev.addEventListener('click',function(){step(-1);});
-    if(next)next.addEventListener('click',function(){step(1);});
-    upd();
-  })();
-
-  </script>
 
 </section>
 
@@ -1392,6 +1387,7 @@ document.addEventListener('keydown',function(e){
 <!-- /include footer -->
 <script src="_foundation/components/booking-section.js" defer></script>
 <script src="_foundation/hi-chrome.js" defer></script>
+<script src="_foundation/hi-components.js" defer></script>
 <script src="_foundation/hi-ds.js" defer></script>
 </body>
 </html>

@@ -280,3 +280,14 @@
    chặt hơn (7-8px) là cố ý, nên luật này chỉ áp cho heading trần + đoạn trần. */
 .section h3:not([class]) + p:not([class]),
 .section h4:not([class]) + p:not([class]){margin-top:var(--gap-head-text)}
+
+/* ============================================================================
+   MOBILE: ẢNH LUÔN XUỐNG DƯỚI CÙNG (chốt 2026-08-10, B.Long)
+   Khối 2 cột chữ|ảnh khi xếp dọc thì ĐỌC trước, NHÌN sau: người dùng cần biết
+   mục này nói gì rồi mới xem ảnh minh hoạ. Ảnh đứng trên đẩy heading khỏi màn
+   đầu, phải cuộn mới thấy mục nói về cái gì.
+   Áp cho mọi .split dù DOM để ảnh trước (desktop cần ảnh trái nên DOM phải vậy).
+   ============================================================================ */
+@media(max-width:860px){
+  .split > .split-media{order:2}
+}
