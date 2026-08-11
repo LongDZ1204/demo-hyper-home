@@ -448,9 +448,10 @@ document.addEventListener('DOMContentLoaded',function(){
     list.slice(n).forEach(function(a){
       if(isAll) a.classList.add('is-clamped'); else a.hidden=true;
     });
-    var left=list.length-n;
-    btn.hidden=!isAll||left<=0;
-    if(!btn.hidden) btn.textContent='Load more ('+left+')';
+    /* Nhãn nút để cố định "Load more", KHÔNG kèm số còn lại (B.Long chốt 11/08).
+       Nhãn đứng yên nên JS chỉ bật/tắt nút, không viết lại chữ — chữ nằm trong
+       HTML, một nguồn duy nhất. */
+    btn.hidden=!isAll||list.length-n<=0;
     /* đưa focus tới ô vừa mở để người dùng bàn phím không rơi về đầu trang;
        preventScroll để chuột không bị giật màn hình */
     if(focusFrom!=null&&list[focusFrom]) list[focusFrom].focus({preventScroll:true});
