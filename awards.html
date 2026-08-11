@@ -187,8 +187,8 @@
     </div>
   </div>
 
-  <input type="checkbox" id="awload-2025" class="aw-load-cb" aria-label="Show all 2025 awards">
-  <input type="checkbox" id="awload-2024" class="aw-load-cb" aria-label="Show all 2024 awards">
+  <input type="checkbox" id="awload-2025" class="aw-load-cb" tabindex="-1" aria-label="Show all 2025 awards">
+  <input type="checkbox" id="awload-2024" class="aw-load-cb" tabindex="-1" aria-label="Show all 2024 awards">
 
   <!-- ============ 2026 (flagship) ============ -->
   <section class="section sap-year" id="y2026" aria-labelledby="h2026">
@@ -327,8 +327,8 @@
         </li>
 
       </ul>
-      <label class="aw-loadmore" for="awload-2025">
-        <span class="more">Load more 2025 awards</span><span class="less">Show fewer 2025 awards</span>
+      <label class="aw-loadmore loadmore-btn" for="awload-2025" role="button" tabindex="0" data-aw-loadmore aria-controls="y2025" aria-expanded="false" aria-label="Load more 2025 awards">
+        <span class="more">Load more</span><span class="less">Show less</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
       </label>
     </div>
@@ -456,8 +456,8 @@
         </li>
 
       </ul>
-      <label class="aw-loadmore" for="awload-2024">
-        <span class="more">Load more 2024 awards</span><span class="less">Show fewer 2024 awards</span>
+      <label class="aw-loadmore loadmore-btn" for="awload-2024" role="button" tabindex="0" data-aw-loadmore aria-controls="y2024" aria-expanded="false" aria-label="Load more 2024 awards">
+        <span class="more">Load more</span><span class="less">Show less</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
       </label>
     </div>

@@ -111,6 +111,22 @@
   window.addEventListener('load', function(){ setTimeout(function(){ window.dispatchEvent(new Event('resize')); }, 300); });
 })();
 
+/* ============================================================================
+   LOAD MORE BẰNG LABEL/CHECKBOX — keyboard + aria-expanded cho trang Awards.
+   Chuột vẫn hoạt động bằng liên kết for="..." kể cả khi JS chưa chạy. */
+(function(){
+  [].slice.call(document.querySelectorAll('[data-aw-loadmore]')).forEach(function(label){
+    var id=label.getAttribute('for'), cb=id&&document.getElementById(id);
+    if(!cb) return;
+    function sync(){label.setAttribute('aria-expanded',cb.checked?'true':'false');}
+    label.addEventListener('keydown',function(e){
+      if(e.key!=='Enter'&&e.key!==' ') return;
+      e.preventDefault(); cb.checked=!cb.checked; sync();
+    });
+    cb.addEventListener('change',sync); sync();
+  });
+})();
+
 /* ---------- YouTube facade (poster -> nhúng thật) ---------- */
 
 /* Section 05 · Near-Me — YouTube facade: click poster -> load real embed (nocookie) */

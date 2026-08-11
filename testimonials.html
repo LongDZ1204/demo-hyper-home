@@ -440,8 +440,8 @@
           </div>
 
           <div class="rv-morewrap">
-            <button class="rv-morebtn" type="button" data-more-for="googleGrid" aria-expanded="false">
-              <span data-more-label>Show 6 more Google reviews</span>
+            <button class="rv-morebtn loadmore-btn" type="button" data-more-for="googleGrid" aria-controls="googleGrid" aria-label="Load more Google reviews" aria-expanded="false">
+              <span data-more-label>Load more</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
             </button>
           </div>
@@ -578,8 +578,8 @@
           </div>
 
           <div class="rv-morewrap">
-            <button class="rv-morebtn" type="button" data-more-for="fbGrid" aria-expanded="false">
-              <span data-more-label>Show 6 more Facebook reviews</span>
+            <button class="rv-morebtn loadmore-btn" type="button" data-more-for="fbGrid" aria-controls="fbGrid" aria-label="Load more Facebook reviews" aria-expanded="false">
+              <span data-more-label>Load more</span>
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
             </button>
           </div>
@@ -700,8 +700,6 @@
    .rv-sc-body (cùng section), và toàn bộ phần nút gọi nổi. */
 (function () {
   var MOBILE_Q = window.matchMedia('(max-width: 600px)');
-  var NOUNS = { googleGrid: 'Google reviews', fbGrid: 'Facebook reviews' };
-
   function applyInitial(grid) {
     var cards = Array.prototype.slice.call(grid.children);
     var dShow = parseInt(grid.dataset.showDesktop || '6', 10);
@@ -715,21 +713,20 @@
     var grid = document.getElementById(btn.dataset.moreFor);
     if (!grid) return;
     var label = btn.querySelector('[data-more-label]');
-    var noun = NOUNS[grid.id] || 'reviews';
-
     function sync() {
       if (btn.getAttribute('aria-expanded') === 'true') return;
       var hidden = applyInitial(grid);
       btn.closest('.rv-morewrap').style.display = hidden > 0 ? 'flex' : 'none';
-      if (label) label.textContent = 'Show ' + hidden + ' more ' + noun;
+      if (label) label.textContent = 'Load more';
     }
 
     btn.addEventListener('click', function () {
       var open = grid.classList.toggle('is-open');
       btn.setAttribute('aria-expanded', open ? 'true' : 'false');
       if (!label) return;
-      if (open) { label.textContent = 'Show fewer'; return; }
-      label.textContent = 'Show ' + applyInitial(grid) + ' more ' + noun;
+      if (open) { label.textContent = 'Show less'; return; }
+      applyInitial(grid);
+      label.textContent = 'Load more';
       grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 

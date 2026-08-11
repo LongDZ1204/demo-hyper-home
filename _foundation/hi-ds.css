@@ -357,6 +357,24 @@
 /* C: text link CTA */
 .cta1-call,.cta2-call{font-size:var(--fs-body);letter-spacing:.03em}
 
+/* B3 · MỞ RỘNG NỘI DUNG — không phải CTA bán hàng.
+   Một kiểu dùng chung cho gallery, reviews, styles, awards và artist projects.
+   Chữ hiển thị không kèm số; context cụ thể nằm trong aria-label/aria-controls. */
+.loadmore-btn{
+  align-items:center;justify-content:center;gap:10px;width:max-content;max-width:100%;
+  min-height:var(--btn-h);padding:15px 30px;
+  border:1px solid rgba(255,255,255,.28);border-radius:var(--btn-r);
+  background:transparent;color:var(--cream);box-shadow:none;transform:none;
+  font-family:var(--sub);font-weight:600;font-size:var(--fs-xs);
+  letter-spacing:var(--btn-ls);text-transform:uppercase;cursor:pointer;
+  transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease)
+}
+.loadmore-btn:hover{border-color:var(--orange);background:rgba(204,102,0,.12);color:#fff;box-shadow:none;transform:none}
+.loadmore-btn:focus-visible{border-color:var(--orange);background:rgba(204,102,0,.12);color:#fff;
+  outline:2px solid var(--orange);outline-offset:3px;box-shadow:none}
+.loadmore-btn svg{width:16px;height:16px;flex:0 0 auto;transition:transform .25s var(--ease)}
+.loadmore-btn[aria-expanded="true"] svg{transform:rotate(180deg)}
+
 /* ============================================================================
    THANG HEADING dưới H2 — trước chuẩn hoá có 6 cỡ (30·25·23·19·17·15) mà 23 và
    17 không mang vai trò riêng nào, chỉ là số lẻ. Gom về 4 nấc, mỗi nấc = 1 VAI TRÒ.
