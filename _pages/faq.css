@@ -55,13 +55,42 @@
 .faq-hero__lead{max-width:var(--lead-mw);margin:14px auto 0;font-size:var(--fs-lead);
   line-height:1.62;color:#C9C9C9;text-shadow:0 2px 12px rgba(0,0,0,.8)}
 
-/* === TÁCH HERO VỚI SECTION NGAY DƯỚI (B.Long 11/08) =========================
-   Trên mockup hero #000 và s-faq cũng #000, không viền — B.Long nhìn ra ngay là
-   "chưa phân biệt được hero với section bên dưới". Chữa bằng đúng hai thứ đã
-   chốt: lệch nền một bậc + vạch tóc, giống contact và deals.
-   Vạch đặt lên section DƯỚI: hero có vignette đen phủ đáy, vẽ viền ở mép hero
-   là viền chìm mất. */
-.faq-page .s-faq{background:var(--bg);border-top:1px solid var(--hair)}
+/* === HERO NỐI LIỀN MẠCH VỚI KHỐI CÂU HỎI (B.Long 11/08, lượt 2) =============
+   Lượt trước em tách hero khỏi section dưới bằng vạch tóc + lệch nền, áp đều
+   cho cả 3 page. B.Long xem lại và ĐẢO Ý RIÊNG CHO FAQ: trang này không cần
+   tách, phải liền mạch.
+   Lý do đứng được: contact và deals có một khối NỘI DUNG KHÁC ngay dưới hero
+   (bảng NAP, thẻ khuyến mãi) nên cần đường ranh. FAQ thì thứ ngay dưới hero là
+   thanh chọn chủ đề — nó là phần điều hướng CỦA hero, tách ra thành hai khối
+   là đọc sai quan hệ. Cùng lối xử lý đã chốt ở portfolio và tattoo-gallery:
+   thanh lọc nối liền chữ lead của hero.
+   Nên: bỏ vạch tóc, bỏ lệch nền (để .s-faq lấy #000 của tầng chung = trùng nền
+   hero), và cắt padding-TRÊN để hai khối dính vào nhau. Khoảng hở còn lại chỉ
+   là padding-đáy của hero.
+   Phải viết .section.s-faq (0,2,0) chứ không .s-faq (0,1,0): hi-ds.css nạp CUỐI
+   và khai .section{padding-block:...}, một class ở file page là thua cascade. */
+.section.s-faq{padding-top:0}
+
+/* === THANH CHỌN CHỦ ĐỀ — 3 pill CHIA ĐỀU bề ngang (B.Long 11/08, lượt 2) ====
+   Mặc định tầng chung để .faqtab{flex:0 0 auto}: pill chỉ rộng bằng chữ của nó,
+   rồi .pillrow dàn đều khoảng cách (space-between). Cách đó hợp với trang chủ
+   và các trang dịch vụ — 4 đến 8 pill thì tổng bề rộng chữ đã gần lấp kín thanh.
+   FAQ chỉ có 3 pill nên chữ chiếm chưa tới nửa thanh 840px, phần còn lại thành
+   3 khoảng trống to; đọc ra là 3 nút nhỏ trôi nổi chứ không phải một bộ chọn.
+   Bản mockup xử lý đúng chỗ này: `.tab-list > li{flex:1 1 0}` cho mỗi pill đúng
+   một phần ba. Bê lại ý đó, đặt thẳng lên .faqtab vì bản port không còn thẻ <li>.
+
+   Dưới 768px trả về co-theo-chữ + cuộn ngang — cũng là quyết định ghi trong
+   mockup: chia đều ở khổ hẹp thì ô thứ ba chỉ còn ~100px, "TATTOO REMOVAL" phải
+   xuống 2 dòng.
+
+   Kèm justify-content:center. Tầng chung không khai vì pill vốn chỉ rộng bằng
+   chữ, căn kiểu gì cũng như nhau; vừa cho nó nở ra 266px là chữ dính mép trái
+   ngay — chỉ thấy được khi NHÌN ẢNH, số đo bề rộng pill vẫn đẹp như thường. */
+.faq-page .faqtab{flex:1 1 0;justify-content:center}
+@media(max-width:767px){
+  .faq-page .faqtab{flex:0 0 auto}
+}
 
 /* === CỠ CÂU HỎI (B.Long 11/08) =============================================
    Câu hỏi được đánh dấu là <h3>, nên lấy đúng --fs-h3 của thang type, không
