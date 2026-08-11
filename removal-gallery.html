@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>Tattoo Removal Before &amp; After | Hyper Inkers San Antonio</title>
 <meta name="description" content="See tattoo removal before-and-after examples and treatment photos from Hyper Inkers in San Antonio, TX. Compare fading, cover-up prep, and PicoStar sessions.">
 <link rel="canonical" href="https://hyperinkers.com/portfolio/removal">
@@ -18,176 +19,272 @@
   {"@type":"ListItem","position":3,"name":"Tattoo Removal Gallery","item":"https://hyperinkers.com/portfolio/removal"}
 ]}
 </script>
+<link rel="stylesheet" href="_foundation/hi-base.css">
+<link rel="stylesheet" href="_foundation/hi-chrome.css">
+<link rel="stylesheet" href="_foundation/components/booking-section.css">
+<link rel="stylesheet" href="_foundation/hi-components.css">
 <link rel="stylesheet" href="_pages/gallery.css">
+<!-- hi-ds.css NẠP CUỐI: lớp design-system cố tình thắng cascade so với CSS lẻ của page -->
+<link rel="stylesheet" href="_foundation/hi-ds.css">
 </head>
 <body class="portfolio-page">
 <a class="skip" href="#gallery">Skip to gallery</a>
 
-<header class="hdr gallery-hdr">
+<!-- ==== HEADER (shared foundation .hdr + CSS-only drawer) ==== -->
+<!-- @include header -->
+<!-- HYPER INKERS — HEADER dùng chung. NGUỒN DUY NHẤT.
+     Sửa file này rồi chạy `python3 build.py` là 21 page cập nhật theo.
+     CSS ở _foundation/hi-chrome.css · JS ở _foundation/hi-chrome.js -->
+<!-- ======================= PROMO BAR ======================= -->
+<div class="promobar" id="promobar">
   <div class="wrap">
-    <input id="navtog" class="nav-toggle" type="checkbox" aria-label="Toggle navigation">
-    <a class="logo" href="/" aria-label="Hyper Inkers home">
-      <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers">
+    <a class="promo-msg" href="deals.html">See Hyper Inkers deals for you <span class="arw">→</span></a>
+    <button class="promo-x" id="promoX" aria-label="Dismiss promotion">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
+<header class="hdr">
+  <div class="wrap">
+    <input type="checkbox" id="navtog" class="nav-toggle" aria-label="Open navigation menu">
+
+    <a class="logo" href="index.html" aria-label="Hyper Inkers home">
+      <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers" width="1024" height="192">
     </a>
-    <nav class="nav" aria-label="Primary navigation">
-      <a href="/">Home</a>
-      <a href="/about-us">About Us</a>
-      <a href="/tattoo-artists">Artists</a>
-      <a href="/tattoo">Tattoo</a>
-      <a href="/piercing">Piercing</a>
-      <a href="/tattoo-removal">Removal</a>
-      <a href="/portfolio/removal" aria-current="page">Gallery</a>
-      <a href="tel:+12109979737" class="nav-book">Call Now</a>
+
+    <nav class="nav" aria-label="Primary">
+      <ul>
+        <li class="has-drop">
+          <a class="navlink" href="soon.html" aria-haspopup="true">Services
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="drop menu" role="menu">
+            <ul class="lvl1">
+              <li class="has-sub">
+                <a href="tattoo.html">Custom Tattoo
+                  <svg class="caret-r" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                </a>
+                <div class="fly" role="menu">
+                  <a href="black-and-grey.html">Black &amp; Grey</a>
+                  <a href="soon.html">Realism</a>
+                  <a href="soon.html">Fine Line</a>
+                  <a href="soon.html">Japanese</a>
+                  <a href="soon.html">Traditional</a>
+                </div>
+              </li>
+              <li><a href="soon.html">Cover-Up Tattoo</a></li>
+              <li class="has-sub">
+                <a href="piercing.html">Piercing
+                  <svg class="caret-r" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                </a>
+                <div class="fly" role="menu">
+                  <a href="ear-piercing-san-antonio.html">Ear Piercing</a>
+                  <a href="soon.html">Face Piercing</a>
+                  <a href="soon.html">Body Piercing</a>
+                </div>
+              </li>
+              <li><a href="tattoo-removal.html">Tattoo Removal</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li><a class="navlink" href="artists.html">Artists</a></li>
+
+        <li class="has-drop">
+          <a class="navlink" href="portfolio.html" aria-haspopup="true">Gallery
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="drop menu simple" role="menu">
+            <ul class="lvl1">
+              <li><a href="tattoo-gallery.html">Tattoo Gallery</a></li>
+              <li><a href="piercing-gallery.html">Piercing Gallery</a></li>
+              <li><a href="removal-gallery.html">Removal Before &amp; After</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="has-drop">
+          <a class="navlink" href="about.html" aria-haspopup="true">About Us
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="drop menu simple" role="menu">
+            <ul class="lvl1">
+              <li><a href="soon.html">FAQ</a></li>
+              <li><a href="testimonials.html">Testimonials</a></li>
+              <li><a href="awards.html">Awards</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li><a class="navlink" href="blog.html">Blog</a></li>
+        <li><a class="navlink" href="contact.html">Contact Us</a></li>
+      </ul>
+
+      <div class="clock" id="hiClock" aria-label="Current time in San Antonio and open status">
+        <span class="t">—</span><span class="sep">·</span><span>SA</span><span class="sep">·</span>
+        <span class="dot"></span><span class="st">—</span>
+      </div>
+
+      <div class="m-clock" id="hiClockM" aria-hidden="true">
+        <span class="t">—</span><span class="sep">·</span><span>SA</span><span class="sep">·</span>
+        <span class="dot"></span><span class="st">—</span>
+      </div>
+      <a class="m-book" href="#book">Book Now</a>
     </nav>
-    <a class="book hdr-book" href="tel:+12109979737">Call Now</a>
-    <label class="nav-burger" for="navtog" aria-label="Open or close navigation">
+
+    <div class="hdr-right">
+      <a class="book" href="#book">Book Now</a>
+    </div>
+
+    <label for="navtog" class="nav-burger" aria-label="Open menu">
       <svg class="ico-bars" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       <svg class="ico-x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </label>
   </div>
 </header>
+<!-- /include header -->
 
 <main id="main">
   <section class="section portfolio-main" id="gallery" aria-labelledby="gallery-title">
     <div class="wrap">
       <div class="gallery-head">
-        <nav class="portfolio-breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Home</a>
-          <span>/</span>
-          <a href="/portfolio">Portfolio</a>
-          <span>/</span>
-          <span>Removal Gallery</span>
+        <nav class="crumb" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li aria-current="page">Removal Gallery</li>
+          </ol>
         </nav>
         <h1 id="gallery-title">Tattoo Removal <span class="o">Gallery</span></h1>
         <p>Filter by result type, then click any photo to view the removal image full size.</p>
       </div>
-      <div class="portfolio-filter" data-gallery-filter role="toolbar" aria-label="Filter by removal type">
-        <button class="filter-pill is-active" type="button" data-filter="full-removal" aria-pressed="true">Full Removal</button>
-        <button class="filter-pill" type="button" data-filter="cover-up-prep" aria-pressed="false">Cover-Up Prep</button>
-        <button class="filter-pill" type="button" data-filter="fading" aria-pressed="false">Fading</button>
-        <button class="filter-pill" type="button" data-filter="treatment" aria-pressed="false">Treatment</button>
+      <div class="galf stickybar" data-gallery-filter role="toolbar" aria-label="Filter by removal type">
+        <button class="galf-pill is-active" type="button" data-filter="full-removal" aria-pressed="true">Full Removal</button>
+        <button class="galf-pill" type="button" data-filter="cover-up-prep" aria-pressed="false">Cover-Up Prep</button>
+        <button class="galf-pill" type="button" data-filter="fading" aria-pressed="false">Fading</button>
+        <button class="galf-pill" type="button" data-filter="treatment" aria-pressed="false">Treatment</button>
       </div>
-      <div class="portfolio-grid">
-        <a class="portfolio-tile" href="_hero-assets/removal/removal-results-1.jpg" data-tags="fading full-removal" aria-label="View full-size tattoo removal fading result"><img src="_hero-assets/removal/removal-results-1.jpg" alt="Tattoo removal before and after fading result at Hyper Inkers." loading="eager" decoding="async"></a>
-        <a class="portfolio-tile" href="_hero-assets/removal/removal-results-2.jpg" data-tags="cover-up-prep fading" aria-label="View full-size tattoo removal progress photo"><img src="_hero-assets/removal/removal-results-2.jpg" alt="Before and after tattoo removal progress for cover-up preparation." loading="eager" decoding="async"></a>
-        <a class="portfolio-tile" href="_hero-assets/removal/removal-results-3.jpg" data-tags="full-removal fading" aria-label="View full-size tattoo removal result photo"><img src="_hero-assets/removal/removal-results-3.jpg" alt="Tattoo removal result after multiple PicoStar sessions." loading="eager" decoding="async"></a>
-        <a class="portfolio-tile" href="_hero-assets/removal/removal-picostar-treatment.jpg" data-tags="treatment" aria-label="View full-size PicoStar laser treatment photo"><img src="_hero-assets/removal/removal-picostar-treatment.jpg" alt="PicoStar laser handpiece during a tattoo removal session at Hyper Inkers." loading="eager" decoding="async"></a>
-        <a class="portfolio-tile" href="_hero-assets/removal/removal-founder-session.jpg" data-tags="treatment cover-up-prep" aria-label="View full-size laser tattoo removal specialist photo"><img src="_hero-assets/removal/removal-founder-session.jpg" alt="Hyper Inkers specialist treating a client during laser tattoo removal." loading="lazy" decoding="async"></a>
+      <div class="galp-grid" data-gallery-grid>
+        <a class="galp-tile" href="_hero-assets/removal/removal-results-1.jpg" data-tags="fading full-removal" aria-label="View full-size tattoo removal fading result"><img src="_hero-assets/removal/removal-results-1.jpg" alt="Tattoo removal before and after fading result at Hyper Inkers." loading="eager" decoding="async"></a>
+        <a class="galp-tile" href="_hero-assets/removal/removal-results-2.jpg" data-tags="cover-up-prep fading" aria-label="View full-size tattoo removal progress photo"><img src="_hero-assets/removal/removal-results-2.jpg" alt="Before and after tattoo removal progress for cover-up preparation." loading="eager" decoding="async"></a>
+        <a class="galp-tile" href="_hero-assets/removal/removal-results-3.jpg" data-tags="full-removal fading" aria-label="View full-size tattoo removal result photo"><img src="_hero-assets/removal/removal-results-3.jpg" alt="Tattoo removal result after multiple PicoStar sessions." loading="eager" decoding="async"></a>
+        <a class="galp-tile" href="_hero-assets/removal/removal-picostar-treatment.jpg" data-tags="treatment" aria-label="View full-size PicoStar laser treatment photo"><img src="_hero-assets/removal/removal-picostar-treatment.jpg" alt="PicoStar laser handpiece during a tattoo removal session at Hyper Inkers." loading="eager" decoding="async"></a>
+        <a class="galp-tile" href="_hero-assets/removal/removal-founder-session.jpg" data-tags="treatment cover-up-prep" aria-label="View full-size laser tattoo removal specialist photo"><img src="_hero-assets/removal/removal-founder-session.jpg" alt="Hyper Inkers specialist treating a client during laser tattoo removal." loading="lazy" decoding="async"></a>
       </div>
     </div>
   </section>
 
-  <section class="portfolio-final-cta" aria-label="Call Hyper Inkers about tattoo removal">
-    <img class="cta-splat" src="_hero-assets/cta-splatter-orange.png" alt="" aria-hidden="true" loading="lazy">
+  <section class="section s-cta1" aria-label="Call Hyper Inkers about tattoo removal">
+    <img class="cta-smoke cta1-smoke" src="_hero-assets/color-blur.webp" alt="" aria-hidden="true">
     <div class="wrap">
-      <h2>Want to know how much your tattoo can fade?</h2>
-      <p>Call Hyper Inkers for a first read. We will talk through ink color, age, placement, and whether removal is for full clearing or cover-up prep.</p>
-      <div class="portfolio-cta-actions">
-        <a class="btn btn-primary" href="tel:+12109979737">Call (210) 997-9737</a>
+      <p class="cta1-h">Want to know how much your tattoo can fade?</p>
+      <p class="cta1-sub">Call Hyper Inkers for a first read. We will talk through ink color, age, placement, and whether removal is for full clearing or cover-up prep.</p>
+      <div class="cta1-act">
+        <a class="btn btn-primary cta1-btn" href="contact.html#booking">Book a Consultation</a>
+        <a class="cta1-call" href="tel:+12109979737"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .7-.2 1l-2.3 2.2z"/></svg>Call (210) 997-9737</a>
       </div>
     </div>
   </section>
 </main>
 
-<div class="portfolio-lightbox" data-gallery-lightbox role="dialog" aria-modal="true" aria-label="Full-size gallery image" hidden>
-  <div class="portfolio-lightbox__panel">
-    <button class="portfolio-lightbox__close" type="button" data-lightbox-close aria-label="Close full-size image">&times;</button>
-    <img alt="" data-lightbox-image>
-  </div>
+<div class="galp-lb" data-gallery-lightbox role="dialog" aria-modal="true" aria-label="Full-size gallery image">
+  <button class="galp-lb__close" type="button" data-lightbox-close aria-label="Close">&times;</button>
+  <img alt="" data-lightbox-image>
 </div>
 
-<footer class="footer-mini" aria-label="Footer">
+<!-- @include footer -->
+<!-- HYPER INKERS — FOOTER + nút lên đầu trang, dùng chung. NGUỒN DUY NHẤT. -->
+<!-- ======================= FOOTER ======================= -->
+<footer class="ft">
   <div class="wrap">
-    <div class="footer-mini__grid">
-      <div>
-        <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers">
-        <p>8045 Callaghan Rd, San Antonio, TX 78230</p>
-        <p><a href="tel:+12109979737">(210) 997-9737</a></p>
+    <div class="ft-top">
+      <img class="ft-logo" src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png" alt="Hyper Inkers" width="1024" height="192">
+      <div class="ft-tag">Tattoo Parlor in San Antonio</div>
+      <div class="ft-social">
+        <a href="https://www.tiktok.com/@hyperinkers" target="_blank" rel="noopener" aria-label="Hyper Inkers on TikTok"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/i-9.png" alt="" loading="lazy"></a>
+        <a href="https://www.instagram.com/hyperinkers/" target="_blank" rel="noopener" aria-label="Hyper Inkers on Instagram"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/i-11.png" alt="" loading="lazy"></a>
+        <a href="https://www.youtube.com/@hyperinkers" target="_blank" rel="noopener" aria-label="Hyper Inkers on YouTube"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/i-10.png" alt="" loading="lazy"></a>
+        <a href="https://www.facebook.com/hyperinkers" target="_blank" rel="noopener" aria-label="Hyper Inkers on Facebook"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/i-12.png" alt="" loading="lazy"></a>
       </div>
-      <div><h3>Studio</h3><a href="/about-us">About Us</a><a href="/tattoo-artists">Artists</a><a href="/awards">Awards</a></div>
-      <div><h3>Services</h3><a href="/tattoo">Tattoo</a><a href="/piercing">Piercing</a><a href="/tattoo-removal">Removal</a></div>
-      <div><h3>Gallery</h3><a href="/portfolio/tattoo">Tattoo Gallery</a><a href="/portfolio/piercing">Piercing Gallery</a><a href="/portfolio/removal">Removal Gallery</a></div>
     </div>
-    <div class="footer-bottom">&copy; 2026 Hyper Inkers Studio. All rights reserved.</div>
+
+    <div class="ft-cols">
+      <div class="ft-col">
+        <p class="ft-col-t">Services</p>
+        <ul>
+          <li><a href="tattoo.html">Custom Tattoo</a></li>
+          <li><a href="piercing.html">Piercing</a></li>
+          <li><a href="soon.html">Cover-Up</a></li>
+          <li><a href="tattoo-removal.html">Removal</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <p class="ft-col-t">Explore</p>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="artists.html">Artists</a></li>
+          <li><a href="awards.html">Awards</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="soon.html">FAQ</a></li>
+          <li><a href="testimonials.html">Reviews</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <p class="ft-col-t">Resources</p>
+        <ul>
+          <li><a href="portfolio.html">Gallery</a></li>
+          <li><a href="soon.html">Tattoo Aftercare</a></li>
+          <li><a href="soon.html">Piercing Aftercare</a></li>
+          <li><a href="soon.html">Removal Aftercare</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <p class="ft-col-t">Visit Us</p>
+        <div class="ft-hours">
+          <p>Mon–Thu: 10am – 12am</p>
+          <p>Fri–Sat: 10am – 1am</p>
+          <p>Sun: 11am – 1am</p>
+        </div>
+        <div class="ft-vdiv"></div>
+        <div class="ft-nap">
+          <p>Tel: <a href="tel:+12109979737">(210) 997-9737</a></p>
+          <p>Mail: <a href="mailto:hyperinkers1@gmail.com">hyperinkers1@gmail.com</a></p>
+          <p>8045 Callaghan Rd,<br>San Antonio, TX 78230</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ft-strip">
+      <div class="ft-legal">
+        <a href="soon.html">Privacy Policy</a><span class="sep">·</span>
+        <a href="soon.html">Terms &amp; Conditions</a><span class="sep">·</span>
+        <a href="soon.html">Deposit Policy</a><span class="sep">·</span>
+        <a class="ft-dmca" href="//www.dmca.com/Protection/Status.aspx?ID=a96c1ca9-ca35-470f-8c2f-31640fe42845" target="_blank" rel="noopener"><img src="https://images.dmca.com/Badges/dmca-badge-w100-5x1-04.png?ID=a96c1ca9-ca35-470f-8c2f-31640fe42845" alt="DMCA Protected" loading="lazy"></a>
+      </div>
+      <div class="ft-pay">
+        <span class="lbl">We accept</span>
+        <span class="pm pm-pp" aria-label="PayPal">PayPal</span>
+        <span class="pm pm-visa" aria-label="Visa">VISA</span>
+        <span class="pm pm-mc" aria-label="Mastercard"><svg viewBox="0 0 38 22" aria-hidden="true"><circle cx="15" cy="11" r="8" fill="currentColor" fill-opacity=".95"/><circle cx="23" cy="11" r="8" fill="currentColor" fill-opacity=".45"/></svg></span>
+        <span class="pm pm-cash" aria-label="Cash">$</span>
+        <span class="pm pm-afterpay" aria-label="Afterpay">Afterpay</span>
+      </div>
+    </div>
+
+    <div class="ft-copy">© 2026 Hyper Inkers. All rights reserved.</div>
   </div>
 </footer>
 
-<script>
-(function(){
-  var root=document.querySelector('[data-gallery-filter]');
-  var tiles=[].slice.call(document.querySelectorAll('.portfolio-tile'));
-  var lightbox=document.querySelector('[data-gallery-lightbox]');
-  var lightboxImage=document.querySelector('[data-lightbox-image]');
-  var lastTrigger=null;
+<!-- ======================== BACK TO TOP ======================== -->
+<button type="button" class="to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+<!-- /include footer -->
 
-  if(root&&tiles.length){
-    function applyFilter(filter){
-      tiles.forEach(function(tile){
-        var tags=(tile.getAttribute('data-tags')||'').split(/\s+/);
-        tile.hidden=tags.indexOf(filter)===-1;
-      });
-    }
-
-    root.addEventListener('click',function(event){
-      var button=event.target.closest('.filter-pill');
-      if(!button) return;
-      var filter=button.getAttribute('data-filter');
-      root.querySelectorAll('.filter-pill').forEach(function(pill){
-        var active=pill===button;
-        pill.classList.toggle('is-active',active);
-        pill.setAttribute('aria-pressed',active?'true':'false');
-      });
-      applyFilter(filter);
-    });
-
-    var activeButton=root.querySelector('.filter-pill.is-active')||root.querySelector('.filter-pill');
-    if(activeButton){
-      root.querySelectorAll('.filter-pill').forEach(function(pill){
-        var active=pill===activeButton;
-        pill.classList.toggle('is-active',active);
-        pill.setAttribute('aria-pressed',active?'true':'false');
-      });
-      applyFilter(activeButton.getAttribute('data-filter'));
-    }
-  }
-
-  function closeLightbox(){
-    if(!lightbox) return;
-    lightbox.classList.remove('is-open');
-    lightbox.setAttribute('hidden','');
-    document.body.style.overflow='';
-    if(lightboxImage) lightboxImage.removeAttribute('src');
-    if(lastTrigger) lastTrigger.focus();
-  }
-
-  function openLightbox(tile){
-    if(!lightbox||!lightboxImage) return;
-    var img=tile.querySelector('img');
-    lastTrigger=tile;
-    lightboxImage.src=tile.getAttribute('href');
-    lightboxImage.alt=img ? img.alt : '';
-    lightbox.removeAttribute('hidden');
-    lightbox.classList.add('is-open');
-    document.body.style.overflow='hidden';
-    var closeButton=lightbox.querySelector('[data-lightbox-close]');
-    if(closeButton) closeButton.focus();
-  }
-
-  if(lightbox&&lightboxImage&&tiles.length){
-    tiles.forEach(function(tile){
-      tile.addEventListener('click',function(event){
-        event.preventDefault();
-        openLightbox(tile);
-      });
-    });
-    lightbox.addEventListener('click',function(event){
-      if(event.target===lightbox||event.target.closest('[data-lightbox-close]')) closeLightbox();
-    });
-    document.addEventListener('keydown',function(event){
-      if(event.key==='Escape'&&lightbox.classList.contains('is-open')) closeLightbox();
-    });
-  }
-})();
-</script>
+<script src="_foundation/hi-chrome.js" defer></script>
+<script src="_foundation/hi-components.js" defer></script>
+<script src="_foundation/hi-ds.js" defer></script>
 </body>
 </html>
