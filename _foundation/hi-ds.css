@@ -417,3 +417,41 @@
 @media(max-width:860px){
   .split > .split-media{order:2}
 }
+
+/* ============================================================================
+   THEME GIẤY — bảng màu nền SÁNG cho vùng blog (B.Long chốt 11/08)
+   ============================================================================
+   19/21 page của site nền tối #0F0F0F; riêng blog.html và blog-detail.html nền
+   kem. B.Long chốt GIỮ khác biệt đó — vùng đọc bài dài thì nền giấy dễ đọc hơn —
+   nhưng phải là một THEME có tên, không phải hai page tự khai màu.
+
+   Trước khi gộp, hai page có HAI bộ tên cho CÙNG một bảng:
+     hub    --blog-page/-paper/-soft/-ink/-muted/-line/-shadow
+     detail --detail-page/-paper/-soft/-ink/-body/-muted/-line/-shadow/-shadow-strong
+   Giá trị trùng khít, TRỪ một chỗ đã trôi: --blog-muted #5D5A53 vs
+   --detail-muted #68635A. Lấy #5D5A53 (tương phản 6,31:1 so với 5,47:1 — cả hai
+   đều đạt AA, chọn cái dày dặn hơn vì chữ phụ thường nhỏ).
+
+   CAM PHẢI ĐỔI SẮC, đây là chỗ dễ bỏ sót nhất khi bê một component từ nền tối
+   sang nền giấy. Đo trên #F8F5EC:
+     #CC6600 (cam brand)  3,52:1  -> KHÔNG đạt AA cho chữ thường (cần 4,5)
+     #A85300 (cam giấy)   4,94:1  -> đạt
+   Ngược lại #A85300 trên nền tối chỉ còn 3,89:1, nên KHÔNG dùng chung một sắc
+   cho hai theme. Chữ LỚN (heading ≥24px, hoặc ≥18,66px in đậm) chỉ cần 3:1 nên
+   vẫn để cam brand — giữ nhận diện ở chỗ đập vào mắt, đổi sắc ở chỗ chữ nhỏ.
+   ============================================================================ */
+:root{
+  --paper-page:#F8F5EC;                      /* nền trang */
+  --paper-card:#FFFFFF;                      /* thẻ, khối nổi */
+  --paper-soft:#F1EDE3;                      /* dải nền phụ, xen kẽ với --paper-page */
+  --paper-ink:#11110F;                       /* chữ chính + heading */
+  --paper-body:#2E2B27;                      /* chữ thân bài dài */
+  --paper-muted:#5D5A53;                     /* chữ phụ: ngày, mô tả ngắn, chú thích */
+  --paper-line:rgba(17,17,15,.12);           /* vạch ngăn */
+  --paper-orange:#A85300;                    /* cam cho chữ NHỎ trên nền giấy */
+  --paper-shadow:0 18px 46px rgba(22,18,12,.13);
+  --paper-shadow-lg:0 26px 64px rgba(22,18,12,.19);
+}
+/* Trang nào mang .paper-page thì đảo nền + màu chữ mặc định. Khoá theo body chứ
+   không đặt vào :root: 19 page kia phải giữ nguyên nền tối. */
+body.paper-page{background:var(--paper-page);color:var(--paper-ink)}
