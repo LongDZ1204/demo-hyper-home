@@ -58,7 +58,18 @@
        thì gộp hết về bộ .lead-cb / .lead-txt / .lead-more này. --- */
 .lead-cb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
 .has-clamp{position:relative}
-.lead-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+/* SỐ DÒNG NÉN — cố định theo bề ngang, giống nhau ở MỌI section (mẫu Koray /
+   MoreThanPanel, B.Long chốt 11/08): desktop 2 dòng · mobile 4 dòng.
+   Vì sao mobile gấp đôi: mục tiêu là LƯỢNG CHỮ thấy được như nhau, không phải
+   số dòng như nhau. Cột desktop 660px ở 16,5px chứa ~78 ký tự/dòng → 2 dòng
+   ≈ 156 ký tự. Cột mobile 390px chỉ ~40 ký tự/dòng → phải 4 dòng mới ≈ 160.
+   Giữ 2 dòng ở mobile thì đoạn dẫn chỉ còn một nửa nội dung so với desktop.
+   Khai qua biến để JS đặt mũi tên đọc được đúng số dòng ở mỗi bề ngang —
+   trước đây JS ghi cứng số 2 nên đổi clamp là mũi tên đứng sai dòng. */
+:root{--lead-lines:2}
+@media(max-width:600px){:root{--lead-lines:4}}
+.lead-txt{display:-webkit-box;-webkit-box-orient:vertical;
+  -webkit-line-clamp:var(--lead-lines);line-clamp:var(--lead-lines);overflow:hidden}
 .lead-cb:checked ~ .has-clamp .lead-txt{-webkit-line-clamp:40;line-clamp:40}
 .lead-more{position:absolute;left:0;top:0;width:22px;height:22px;display:grid;place-items:center;
   color:var(--orange);cursor:pointer;opacity:0;transform:translateY(-50%);transition:color .2s var(--ease)}
@@ -86,8 +97,8 @@
   .has-clamp{padding-right:34px}
   .section-head.center .has-clamp{padding-right:0}
   /* MỞ ra thì trả lại đủ bề ngang: lúc đó mũi tên bám đuôi dòng CUỐI — dòng cuối
-     bao giờ cũng ngắn nên tự có chỗ, không cần chừa. Chỉ 2 dòng lúc NÉN mới phải
-     chừa, vì dấu "…" luôn lấp đầy dòng bị cắt.
+     bao giờ cũng ngắn nên tự có chỗ, không cần chừa. Chỉ lúc NÉN mới phải chừa,
+     vì dấu "…" luôn lấp đầy dòng bị cắt.
      Đã thử 4 cách để dòng nén cũng chạy đủ (float ::before chặn riêng dòng 2 ·
      shape-outside · line-clamp trên display:block) — đều không được: trong
      `display:-webkit-box` (bắt buộc để có line-clamp) float bỏ qua margin-top nên

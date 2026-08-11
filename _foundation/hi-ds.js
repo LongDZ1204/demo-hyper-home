@@ -17,14 +17,18 @@
        Blink đặt "…" ở cuối dòng bị cắt — còn chỗ thì nối ngay sau chữ, hết chỗ thì ăn bớt chữ
        rồi dừng đúng mép hộp. Vì vậy mép phải THẬT của "…" = min(cuối dòng + bề rộng "…", mép hộp).
        Thiếu vế min() thì gap thật chạy 2px→18px tuỳ dòng dài ngắn (đo 10 lead, 08/2026). */
+    /* Số dòng nén đọc từ biến CSS --lead-lines, KHÔNG ghi cứng: desktop 2 · mobile 4.
+       Đọc lại mỗi lần đặt lại vị trí nên xoay ngang màn hình cũng đúng. */
+    function lines(){return parseInt(getComputedStyle(document.documentElement).getPropertyValue('--lead-lines'),10)||2;}
     function place(){var rng=document.createRange();rng.selectNodeContents(txt);var rects=rng.getClientRects();
       if(!rects.length){more.style.opacity='0';return;}
-      var open=cb.checked,clamped=(!open&&rects.length>2),
-          line=rects[open?rects.length-1:Math.min(1,rects.length-1)],br=box.getBoundingClientRect(),
+      var N=lines(),
+          open=cb.checked,clamped=(!open&&rects.length>N),
+          line=rects[open?rects.length-1:Math.min(N-1,rects.length-1)],br=box.getBoundingClientRect(),
           inset=more.querySelector('path').getBoundingClientRect().left-more.getBoundingClientRect().left,
           tail=clamped?Math.min(line.right+ellipsisW(),txt.getBoundingClientRect().right):line.right,
           x=Math.min(tail-br.left+GAP-inset,window.innerWidth-br.left-30),y=line.top-br.top+line.height/2;
-      more.style.left=x+'px';more.style.top=y+'px';more.style.opacity=(rects.length>2||open)?'1':'0';}
+      more.style.left=x+'px';more.style.top=y+'px';more.style.opacity=(rects.length>N||open)?'1':'0';}
     var raf=function(){requestAnimationFrame(place);};
     cb.addEventListener('change',raf);
     window.addEventListener('resize',function(){clearTimeout(place._t);place._t=setTimeout(place,120);});

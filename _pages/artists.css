@@ -55,7 +55,8 @@ html{scroll-padding-top:88px}
 .artists-hub-list .wrap{position:relative;z-index:2}
 .hub-smoke--grid-a{top:2%;right:-18%;width:min(74vw,1040px);opacity:.34;transform:scaleX(-1) rotate(4deg)}
 .hub-smoke--grid-b{top:44%;left:-24%;width:min(76vw,1060px);opacity:.24;transform:rotate(-5deg)}
-.artists-hub-list .section-head{margin-bottom:clamp(30px,4vw,46px)}
+/* (đã bỏ margin-bottom riêng 30-46px — khe head→nội dung chỉ do --gap-head-body
+   quyết, luật A6. Không có lý do nào ghi lại cho con số 46px này.) */
 .artists-hub-list .section-intro{max-width:760px}
 .hub-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(18px,2vw,24px) clamp(14px,1.5vw,20px)}
 .hub-artist-card{position:relative;min-width:0}
@@ -129,7 +130,6 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
   .hero{min-height:min(92svh,760px)}
   .hero-stack{padding-block:88px 40px}
   .hero h1{overflow-wrap:break-word}   /* cỡ chữ do token --fs-h1 lo */
-  .artists-hub-list .section-head{margin-bottom:30px}
   .hub-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 13px}
   .hub-artist-card{padding-bottom:0;border-bottom:0}
   .hub-artist-media{border-radius:12px;transform:none}
