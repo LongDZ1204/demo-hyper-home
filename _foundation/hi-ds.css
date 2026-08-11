@@ -277,22 +277,23 @@
 .section-head--editorial > h2,
 .section-head--editorial > p,
 .s-awards .section-head--editorial > h2{margin-inline:0;text-align:left}
-/* Thử nghiệm đã duyệt theo từng section: căn GIỮA cả cột editorial nhưng chữ
-   bên trong vẫn căn trái. Dùng modifier để không làm đổi các head chữ|ảnh thật. */
-.section-head--editorial-centered{
-  width:100%;max-width:660px;margin-inline:auto;padding-right:0
-}
-.section .section-head--editorial-centered > h2,
-.section-head--editorial-centered > p{
-  width:100%;max-width:none;margin-inline:0;text-align:left
-}
-.section-head--editorial-centered > .sec-link--head{
-  position:static;margin-top:18px
-}
-/* Mobile, lúc nén: khuôn cũ chừa 34px chỉ ở bên phải cho mũi tên nên phần chữ
-   nhìn lệch trái 17px. Giữ nguyên bề rộng đọc 316px nhưng đặt nó vào giữa;
-   khi mở thì trả lại 100% như trước. */
+/* Thử nghiệm đã duyệt RIÊNG CHO MOBILE: căn giữa cả cột editorial nhưng chữ
+   bên trong vẫn căn trái. Không để modifier rò lên desktop — desktop phải giữ
+   layout editorial gốc: content bên trái, link neo ở mép phải. */
 @media(max-width:600px){
+  .section-head--editorial-centered{
+    width:100%;max-width:660px;margin-inline:auto;padding-right:0
+  }
+  .section .section-head--editorial-centered > h2,
+  .section-head--editorial-centered > p{
+    width:100%;max-width:none;margin-inline:0;text-align:left
+  }
+  .section-head--editorial-centered > .sec-link--head{
+    position:static;margin-top:18px
+  }
+  /* Lúc nén, khuôn cũ chừa 34px chỉ ở bên phải cho mũi tên nên phần chữ nhìn
+     lệch trái 17px. Giữ nguyên bề rộng đọc nhưng đặt nó vào giữa; khi mở thì
+     trả lại 100% như trước. */
   .section-head--editorial-centered .has-clamp{padding-right:0}
   .section-head--editorial-centered .lead-txt{width:calc(100% - 34px);margin-inline:auto}
   .section-head--editorial-centered .lead-cb:checked ~ .has-clamp .lead-txt{width:100%;margin-inline:0}
