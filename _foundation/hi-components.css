@@ -1204,3 +1204,80 @@ body.galp-lock{overflow:hidden}
   transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease)}
 .gal-loadmore:hover,.gal-loadmore:focus-visible{border-color:var(--orange);color:#fff;
   background:rgba(204,102,0,.12);outline:none}
+
+/* ---- Vỏ HERO + khối chung của section (nâng từ _pages/home.css 2026-08-11) ----
+   Lần nâng trước sót mấy họ này vì bộ lọc của tôi hỏi "tên class có trong _foundation
+   không" — hi-ds.css có nhắc .hero trong selector GHÉP (.hero .stat) nên bị tính là
+   "đã có", trong khi luật GỐC ".hero{...overflow:clip...}" chỉ nằm ở home.css.
+   Hậu quả đo được: /piercing mất overflow:clip, ảnh ken-burns phóng 1.12 tràn 93px
+   ra ngoài khung. Máy gác bắt bằng H1.
+   Luật đúng: hỏi có LUẬT GỐC ".x{" không, đừng hỏi có TÊN .x không. */
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:min(100svh,900px);display:flex;flex-direction:column;justify-content:center;overflow:clip;background:var(--black);padding:96px 0 44px}
+
+.hero-body{position:relative;z-index:5;padding:0}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,0.9fr);gap:46px;align-items:center;width:100%}
+/* desktop: CTA sits under the text (col1 row2); award image spans right, centered */
+@media(min-width:821px){
+
+  .hero-grid{grid-template-rows:auto auto;align-items:start;column-gap:46px;row-gap:0}
+  .award-card{grid-column:2;grid-row:1 / span 2;align-self:center;margin-left:auto}}
+
+
+/* award proof card (LANDSCAPE 4:3) */
+.award-card{position:relative;aspect-ratio:4/3;max-height:462px;width:100%;
+  border:1px solid rgba(255,255,255,.14);border-radius:5px;overflow:hidden;box-shadow:0 26px 74px rgba(0,0,0,.55)}
+.award-card>img{width:100%;height:100%;object-fit:cover;object-position:50% 42%}
+
+
+/* ---------- RESPONSIVE HERO ---------- */
+@media(max-width:820px){
+
+  /* header fixed cao 36+76=112px mà hero chỉ chừa 84px -> badge rating chui
+     xuống dưới logo/BOOK NOW. Chừa đúng chiều cao thật + 18px thở. */
+  .hero{padding:calc(var(--promo-h) + var(--hh) + 18px) 0 30px}
+  .hero-grid{grid-template-columns:1fr;gap:26px}
+  .award-card{max-width:520px;max-height:none;margin-inline:0}}
+
+@media(max-width:560px){
+.hero-body .lead{font-size:16px}}
+
+@media(max-width:560px){
+
+  .hero-body .lead{width:min(100%,34ch);max-width:34ch;overflow-wrap:normal;word-break:normal}}
+
+.s-adv    .smoke{top:-2%;right:-1%;left:auto;bottom:auto;width:50%;opacity:.6;transform:none}
+/* Gallery: BỎ khói (img đã gỡ khỏi markup) */
+/* Mobile: to & tản tự nhiên (opacity thấp + mask mềm), căn giữa sau heading */
+@media(max-width:760px){
+
+  .services .smoke,.s-adv .smoke{top:2%;left:50%;right:auto;transform:translateX(-50%);width:108%;opacity:.42}}
+
+
+
+
+/* ============================================================================
+   SECTION 11 — THE ADVANTAGES OF CHOOSING HYPER INKERS  (merged into this file)
+   Centered head + clamped lead (same arrow pattern as §10). Below: a tab block —
+   image panel on the LEFT swaps per active tab; 4 tab headers on the RIGHT, first
+   auto-open, click expands its description (accordion) + crossfades its image.
+   CSS-only radio-hack. Tab images 01–03 are TEMPORARY placeholders; 04 = real team.
+   ============================================================================ */
+.s-adv{background:var(--bg)}
+.s-adv .wrap{position:relative;z-index:2}
+.s-adv h2 .o{color:var(--orange)}
+
+
+
+
+/* ========== §15 FAQ ========== */
+/* chỉ còn nền — tab + accordion đã chuyển sang _foundation/hi-components.css để page khác dùng chung */
+.s-faq{background:var(--black)}
+.s-faq h2 .o{color:var(--orange)}
+/* ===== Guides carousel kiểu Chân Long: featured trái + list dọc phải, dots→thanh kéo ===== */
+/* carousel = grid [featured CỐ ĐỊNH | cột phải kéo được]. Chỉ list phải cuộn, featured đứng yên. */
+.gd-carousel{margin-top:clamp(30px,3.4vw,44px);display:grid;grid-template-columns:0.92fr 1.08fr;gap:clamp(20px,2.6vw,34px);align-items:start}
+@media(max-width:860px){
+
+.gd-carousel{grid-template-columns:1fr;gap:24px}}
