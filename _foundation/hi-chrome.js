@@ -80,12 +80,21 @@
   });
 })();
 
-/* Mobile accordion: 2 levels (desktop keeps hover flyout) */
+/* Mobile accordion: 2 levels (desktop keeps hover flyout)
+   ---------------------------------------------------------------------------
+   Mỗi hàng có mũi tên là HAI vùng bấm: chữ đi tới trang hub, mũi tên mở/đóng
+   nhánh con. Bản cũ chặn preventDefault cho CẢ hàng nên trên điện thoại 5 trang
+   hub không còn đường vào nào: Services · Custom Tattoo · Piercing · Gallery ·
+   About Us (B.Long bắt 11/08 ở Custom Tattoo).
+   Không tách được thành 2 thẻ vì <button> không được nằm trong <a> — nên phân
+   luồng theo ĐIỂM CHẠM, còn vùng bấm của mũi tên thì nới ra cỡ ngón tay bằng
+   padding + margin âm ở hi-chrome.css. */
 (function(){
   var mq=window.matchMedia('(max-width:940px)');
+  function laMuiTen(e){ return !!(e.target.closest && e.target.closest('.caret,.caret-r')); }
   document.querySelectorAll('.has-drop > .navlink').forEach(function(a){
     a.addEventListener('click',function(e){
-      if(!mq.matches) return;
+      if(!mq.matches || !laMuiTen(e)) return;   /* chạm vào chữ -> để link chạy */
       e.preventDefault();
       var li=a.parentElement, was=li.classList.contains('open');
       document.querySelectorAll('.has-drop.open').forEach(function(o){if(o!==li)o.classList.remove('open');});
@@ -94,7 +103,7 @@
   });
   document.querySelectorAll('.has-sub > a').forEach(function(a){
     a.addEventListener('click',function(e){
-      if(!mq.matches) return;
+      if(!mq.matches || !laMuiTen(e)) return;
       e.preventDefault();
       a.parentElement.classList.toggle('open');
     });

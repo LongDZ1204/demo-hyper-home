@@ -140,7 +140,15 @@ html:not(.chrome-off) .stickybar.is-stuck{transform:translateY(-100%);opacity:0;
   .nav li{border-bottom:1px solid var(--hair)}
   .navlink{justify-content:space-between;width:100%;font-size:16px;letter-spacing:.04em;padding:16px 2px;opacity:1}
   .navlink::after{display:none}
+  /* Vùng bấm của mũi tên nới ra cỡ ngón tay: chữ đi tới trang hub, mũi tên
+     mở/đóng nhánh con (phân luồng ở hi-chrome.js). Vẽ vẫn 14px, chỉ nở HỘP BẤM
+     bằng padding rồi kéo về bằng margin âm — không đụng chiều cao hàng.
+     margin viết TỪNG VẾ, không dùng lối viết gộp: .caret-r đang sống nhờ
+     margin-left:auto để dạt sang mép phải, viết gộp là xoá mất. */
   .caret{width:14px;height:14px}
+  .navlink .caret,.has-sub > a .caret-r{
+    box-sizing:content-box;padding:16px 14px;
+    margin-top:-16px;margin-bottom:-16px;margin-right:-14px}
   .has-drop:hover .caret,.has-drop:focus-within .caret{transform:none}
   .has-drop.open > .navlink .caret{transform:rotate(180deg)}
   .drop{position:static;opacity:1;visibility:visible;transform:none;transition:none;display:none}
