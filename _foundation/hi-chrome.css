@@ -222,8 +222,8 @@ html:not(.chrome-off) .stickybar.is-stuck{transform:translateY(-100%);opacity:0;
   .m-quick-cta__book small{margin-top:4px;font-family:var(--body);font-size:11px;line-height:1;color:rgba(255,255,255,.88);white-space:nowrap}
   .m-quick-cta a:focus-visible{outline:2px solid #fff;outline-offset:3px}
   html:has(#navtog:checked) .m-quick-cta,body.modal-open .m-quick-cta{opacity:0;pointer-events:none;transform:translateY(110%)}
-  .to-top{display:none}
-  .ft{padding-bottom:calc(104px + env(safe-area-inset-bottom))}
+  .to-top{display:flex;width:46px;height:46px;right:14px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:89}
+  html:has(#navtog:checked) .to-top,body.modal-open .to-top{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(12px)}
 }
 @media(max-width:360px){
   .m-quick-cta{grid-template-columns:46px minmax(0,1fr) 46px;gap:8px;padding-inline:10px}
@@ -287,3 +287,6 @@ html:not(.chrome-off) .stickybar.is-stuck{transform:translateY(-100%);opacity:0;
     font-size:16px;line-height:1.15;letter-spacing:.04em}
   .ft-pay .pm{width:100%;padding-inline:5px}
 }
+/* Must sit after the footer shorthand above; otherwise `padding:62px 0 26px`
+   wins in the cascade and the fixed mobile CTA covers payment/copyright rows. */
+@media(max-width:640px){.ft{padding-bottom:calc(104px + env(safe-area-inset-bottom))}}
