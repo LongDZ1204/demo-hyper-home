@@ -24,6 +24,11 @@ html{scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.18) transparent}
 ::-webkit-scrollbar{width:9px;height:9px}
 ::-webkit-scrollbar-thumb{background:rgba(255,255,255,.18);border-radius:6px;border:2px solid transparent;background-clip:padding-box}
 ::-webkit-scrollbar-track{background:transparent}
-img{display:block;max-width:100%}
+/* `height:auto` là BẮT BUỘC đi kèm `max-width:100%`, không phải tuỳ chọn: ảnh nào
+   có thuộc tính width/height trong HTML thì cái height đó là gợi ý trình bày và
+   nó ĐÈ tỉ lệ khung. Đo được ở blog-detail: ảnh gốc 2000x2500 nở thành 338x2500
+   thay vì 338x423 — cột phải dài gấp 6 lần thân bài, mà không phép đo nào báo
+   ngoài chiều cao. hi-foundation (file KHOÁ) cũng thiếu, nên vá ở đây. */
+img{display:block;max-width:100%;height:auto}
 a{color:inherit;text-decoration:none}
 .wrap{max-width:var(--wrap);margin-inline:auto;padding-inline:32px}
