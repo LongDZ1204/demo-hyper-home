@@ -20,7 +20,21 @@
     /* Số dòng nén đọc từ biến CSS --lead-lines, KHÔNG ghi cứng: desktop 2 · mobile 4.
        Đọc lại mỗi lần đặt lại vị trí nên xoay ngang màn hình cũng đúng. */
     function lines(){return parseInt(getComputedStyle(document.documentElement).getPropertyValue('--lead-lines'),10)||2;}
-    function place(){var rng=document.createRange();rng.selectNodeContents(txt);var rects=rng.getClientRects();
+    /* MỘT DÒNG = một mức `top`, không phải một ô rects.
+       Range trả một ô cho mỗi đoạn text/thẻ con, nên một dòng có <b> cắt ngang là ra
+       2-3 ô, và mép đoạn còn sinh ô rộng 0. Bản cũ đếm thẳng rects.length nên đoạn dẫn
+       vừa khít mức nén vẫn bị tính là tràn → mũi tên hiện trên đoạn không có gì để mở.
+       Đo được ở /piercing mục Guides: 4 dòng thật, rects trả 5. */
+    function docDong(){
+      var rng=document.createRange();rng.selectNodeContents(txt);
+      var rs=[].slice.call(rng.getClientRects()).filter(function(z){return z.width>1;});
+      var hang=[],chiSo={};
+      rs.forEach(function(z){var k=Math.round(z.top);
+        if(chiSo[k]===undefined){chiSo[k]=hang.length;hang.push({top:z.top,right:z.right,height:z.height});}
+        else{var h=hang[chiSo[k]];h.right=Math.max(h.right,z.right);h.height=Math.max(h.height,z.height);}});
+      return hang;
+    }
+    function place(){var rects=docDong();
       if(!rects.length){more.style.opacity='0';return;}
       var N=lines(),
           open=cb.checked,clamped=(!open&&rects.length>N),
@@ -31,7 +45,14 @@
       more.style.left=x+'px';more.style.top=y+'px';more.style.opacity=(rects.length>N||open)?'1':'0';}
     var raf=function(){requestAnimationFrame(place);};
     cb.addEventListener('change',raf);
-    window.addEventListener('resize',function(){clearTimeout(place._t);place._t=setTimeout(place,120);});
+    /* Bám THAY ĐỔI KÍCH THƯỚC CỦA CHÍNH HỘP CHỮ, không bám sự kiện resize cửa sổ.
+       Bản cũ hoãn 120ms sau resize: đổi bề ngang xong mà đo sớm hơn ngần ấy thì
+       mũi tên còn giữ trạng thái của bề ngang cũ. Đo được ở /piercing: đoạn dẫn
+       mục Guides vừa đúng 4 dòng ở 430px (= mức nén, lẽ ra phải ẩn mũi tên) mà
+       mũi tên vẫn hiện, vì lần đặt cuối là hồi còn 1440px. ResizeObserver bắn
+       ngay khi hộp đổi cỡ nên không còn khe hở đó. */
+    if(window.ResizeObserver){ new ResizeObserver(raf).observe(txt); }
+    else window.addEventListener('resize',function(){clearTimeout(place._t);place._t=setTimeout(place,120);});
     window.addEventListener('load',raf);
     if(document.fonts){document.fonts.ready.then(raf);}
     [90,260,650,1400].forEach(function(ms){setTimeout(place,ms);});place();

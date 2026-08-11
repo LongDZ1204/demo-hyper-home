@@ -66,9 +66,16 @@ async function scan(path, W){
     const r = d.createRange(); r.selectNodeContents(el);
     const rs = [...r.getClientRects()].filter(z => z.width > 1);
     if (!rs.length) return null;
+    /* Kẹp mép đo vào đúng HỘP của chữ. Dấu cách cuối dòng và mép giữa hai thẻ con
+       sinh ô rộng 4-9px nằm NGOÀI hộp; hộp có -webkit-box nên chúng bị cắt, mắt
+       không thấy, nhưng cộng vào biên phải thì tâm chữ lệch 4px và D3 báo nhầm.
+       Án lệ: /piercing #advantages 11/08 — hộp căn giữa hoàn hảo (tâm 215/215) mà
+       vẫn FAIL. Tràn THẬT đã có H1 lo, ở đây chỉ cần biết chữ nằm lệch hay không. */
+    const bb = el.getBoundingClientRect();
+    const kep = (v) => Math.min(Math.max(v, bb.left), bb.right);
     return { n: new Set(rs.map(z => Math.round(z.top))).size,
-             L: Math.round(Math.min(...rs.map(z => z.left))),
-             R: Math.round(Math.max(...rs.map(z => z.right))) };
+             L: Math.round(Math.min(...rs.map(z => kep(z.left)))),
+             R: Math.round(Math.max(...rs.map(z => kep(z.right)))) };
   };
 
   const heads = [...d.querySelectorAll('.section-head,.section-head--editorial')].filter(vis);

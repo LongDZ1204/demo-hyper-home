@@ -38,39 +38,10 @@
    promobar + header (cả hai đều fixed nên không chiếm chỗ trong luồng). Viết số cứng
    là xoá mất phép tính đó, header đè lên chữ ở cửa sổ thấp. */
 
-/* ========== SECTION 8 · Process — thanh dọc 5 bước chạy theo cuộn ========== */
+/* Khối .pc-* (thanh dọc 5 bước) đã chuyển sang _foundation/hi-components.css
+   ngày 2026-08-11 — /tattoo và /black-and-grey cũng dùng, 3 trang chung một bản.
+   Riêng NỀN section giữ lại đây vì nhịp so-le đen/xám là của từng trang. */
 .s-process{background:var(--bg)}
-.s-process .wrap{position:relative;z-index:2}
-.pc-rail-wrap{position:relative;max-width:660px;margin:var(--gap-head-body) auto 0}
-.pc-steps{list-style:none;counter-reset:pc;margin:0;padding:0}
-.pc-step{position:relative;counter-increment:pc;display:grid;grid-template-columns:48px 1fr;
-  gap:22px;align-items:start;padding-bottom:clamp(24px,3vw,36px)}
-.pc-step:last-child{padding-bottom:0}
-.pc-rail-line{position:absolute;left:23px;top:24px;width:2px;height:0;background:var(--orange);opacity:.22;z-index:0}
-/* thanh nối chạy khi cuộn: gradient cam → cam đỏ NEO theo trọn chiều dài thanh
-   (JS đặt background-size), nên màu đổi theo tiến trình chứ không theo chiều cao
-   phần đã tô — bản đầu neo theo chiều cao nên màu nhảy giật mỗi lần cuộn. */
-.pc-rail-fill{position:absolute;left:23px;top:24px;width:2px;height:0;z-index:0;
-  background:linear-gradient(180deg,#E67500 0%,#CC6600 46%,#9E3617 100%) no-repeat top left;
-  background-size:100% 320px;box-shadow:0 0 8px rgba(204,102,0,.5)}
-.pc-rail-fill::after{content:"";position:absolute;left:50%;bottom:-3px;transform:translateX(-50%);
-  width:9px;height:9px;border-radius:50%;background:var(--orange-hi);box-shadow:0 0 10px 2px rgba(230,117,0,.55)}
-.pc-node{position:relative;z-index:1;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
-  background:var(--surface);border:1.5px solid var(--orange);
-  font-family:var(--head);font-weight:700;font-size:20px;line-height:1;color:#fff;
-  transition:background .25s var(--ease),border-color .25s var(--ease),box-shadow .25s var(--ease)}
-.pc-node.is-passed{background:var(--orange);border-color:var(--orange-hi);box-shadow:0 0 0 4px rgba(204,102,0,.16)}
-.pc-node::before{content:counter(pc)}
-.pc-body{padding-top:5px}
-.pc-body h3{font-family:var(--sub);font-weight:600;text-transform:uppercase;letter-spacing:.03em;
-  font-size:var(--fs-h5);color:#fff;margin-bottom:6px;line-height:1.2}
-.pc-body p{font-size:15px;line-height:1.6;color:var(--muted);margin:0}
-@media(max-width:560px){
-  .pc-rail-wrap{margin-top:30px}
-  .pc-step{grid-template-columns:40px 1fr;gap:15px}
-  .pc-rail-line,.pc-rail-fill{left:19px;top:20px}
-  .pc-node{width:40px;height:40px;font-size:17px}
-}
 
 /* ========== Khối chia đôi (ảnh TRÁI · chữ PHẢI) — Age/ID + Jewelry dùng chung ========== */
 .s-split .wrap{position:relative;z-index:2}
@@ -100,9 +71,9 @@
 /* Mục con "How to Choose Your Piercing Jewelry" — nằm DƯỚI khối chia đôi, khổ 840px
    căn giữa, cùng khổ với .wrap > .faqacc để hàng tab không rộng hơn khối chữ nó thuộc về. */
 .s-jewelry .jw-choose{max-width:840px;margin:var(--gap-subsec) auto 0;text-align:center}
-.s-jewelry .jw-h3{margin:0;font-size:var(--fs-h3);
-  font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:1.06;color:#fff}
-.s-jewelry .jw-acc{margin-top:var(--gap-head-body);text-align:left}
+/* Tiêu đề mục con giờ là nhãn của chính hàng tab (.faqacc-q), không còn H3 rời,
+   nên khối này chỉ cần khổ và khoảng cách. */
+.s-jewelry .jw-acc{text-align:left}
 .s-jewelry .jw-choose .sec-link--inline{margin-inline:auto;justify-self:center}
 
 /* ========== SECTION 12 · Prices ========== */

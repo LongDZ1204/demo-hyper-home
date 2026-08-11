@@ -1281,3 +1281,60 @@ body.galp-lock{overflow:hidden}
 @media(max-width:860px){
 
 .gd-carousel{grid-template-columns:1fr;gap:24px}}
+
+/* ---- Biến thể .faqacc--plus: dấu + / − thay mũi tên (B.Long chốt 11/08) ----
+   Chỉ dùng cho mấy khối tab CHÈN THÊM vào giữa section (như "How to Choose Your
+   Piercing Jewelry"), không đổi FAQ cũ — FAQ giữ mũi tên như trang chủ.
+   Số đo lấy từ .wi-icon của /black-and-grey, đúng cái B.Long chụp gửi. */
+.faqacc--plus .faqacc-icon{flex:0 0 20px;width:20px;height:20px}
+.faqacc--plus .faqacc-icon::before,
+.faqacc--plus .faqacc-icon::after{content:"";position:absolute;left:50%;top:50%;
+  border:0;background:var(--orange);
+  transition:transform .25s var(--ease),background .2s var(--ease)}
+.faqacc--plus .faqacc-icon::before{width:14px;height:2px;transform:translate(-50%,-50%)}
+.faqacc--plus .faqacc-icon::after{width:2px;height:14px;transform:translate(-50%,-50%)}
+/* mở ra thì gạch dọc co về 0 → dấu + thành dấu −. Gạch ngang phải khai lại ở trạng
+   thái checked, nếu không luật xoay mũi tên của bản gốc thắng và nó quay 135 độ. */
+.faqacc--plus .faqacc-cb:checked ~ .faqacc-head .faqacc-icon::before{transform:translate(-50%,-50%)}
+.faqacc--plus .faqacc-cb:checked ~ .faqacc-head .faqacc-icon::after{transform:translate(-50%,-50%) scaleY(0)}
+.faqacc--plus .faqacc-head:hover .faqacc-icon::before,
+.faqacc--plus .faqacc-head:hover .faqacc-icon::after{background:var(--orange-hi)}
+
+/* ---- Thanh dọc 5 bước (.pc-*) — nâng từ _pages/piercing.css 2026-08-11.
+   /piercing · /tattoo · /black-and-grey cùng dùng khối này (10 · 10 · 4 mốc).
+   JS ở cuối hi-components.js. ---- */
+/* Vỏ section giữ ở CSS riêng của từng trang (nền so-le khác nhau). */
+/* nền của section KHÔNG khai ở đây: mỗi trang so-le tông đen/xám theo thứ tự
+   section của riêng nó, nên để ở _pages/<page>.css. */
+.s-process .wrap{position:relative;z-index:2}
+.pc-rail-wrap{position:relative;max-width:660px;margin:var(--gap-head-body) auto 0}
+.pc-steps{list-style:none;counter-reset:pc;margin:0;padding:0}
+.pc-step{position:relative;counter-increment:pc;display:grid;grid-template-columns:48px 1fr;
+  gap:22px;align-items:start;padding-bottom:clamp(24px,3vw,36px)}
+.pc-step:last-child{padding-bottom:0}
+.pc-rail-line{position:absolute;left:23px;top:24px;width:2px;height:0;background:var(--orange);opacity:.22;z-index:0}
+/* thanh nối chạy khi cuộn: gradient cam → cam đỏ NEO theo trọn chiều dài thanh
+   (JS đặt background-size), nên màu đổi theo tiến trình chứ không theo chiều cao
+   phần đã tô — bản đầu neo theo chiều cao nên màu nhảy giật mỗi lần cuộn. */
+.pc-rail-fill{position:absolute;left:23px;top:24px;width:2px;height:0;z-index:0;
+  background:linear-gradient(180deg,#E67500 0%,#CC6600 46%,#9E3617 100%) no-repeat top left;
+  background-size:100% 320px;box-shadow:0 0 8px rgba(204,102,0,.5)}
+.pc-rail-fill::after{content:"";position:absolute;left:50%;bottom:-3px;transform:translateX(-50%);
+  width:9px;height:9px;border-radius:50%;background:var(--orange-hi);box-shadow:0 0 10px 2px rgba(230,117,0,.55)}
+.pc-node{position:relative;z-index:1;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;
+  background:var(--surface);border:1.5px solid var(--orange);
+  font-family:var(--head);font-weight:700;font-size:20px;line-height:1;color:#fff;
+  transition:background .25s var(--ease),border-color .25s var(--ease),box-shadow .25s var(--ease)}
+.pc-node.is-passed{background:var(--orange);border-color:var(--orange-hi);box-shadow:0 0 0 4px rgba(204,102,0,.16)}
+.pc-node::before{content:counter(pc)}
+.pc-body{padding-top:5px}
+.pc-body h3{font-family:var(--sub);font-weight:600;text-transform:uppercase;letter-spacing:.03em;
+  font-size:var(--fs-h5);color:#fff;margin-bottom:6px;line-height:1.2}
+.pc-body p{font-size:15px;line-height:1.6;color:var(--muted);margin:0}
+@media(max-width:560px){
+  .pc-rail-wrap{margin-top:30px}
+  .pc-step{grid-template-columns:40px 1fr;gap:15px}
+  .pc-rail-line,.pc-rail-fill{left:19px;top:20px}
+  .pc-node{width:40px;height:40px;font-size:17px}
+}
+

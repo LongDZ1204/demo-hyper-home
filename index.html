@@ -1338,9 +1338,6 @@
 
   </div>
 
-  <script>
-  </script>
-
 </section>
 
 <!-- ======================== SECTION 12 · PRICING ======================== -->
@@ -1390,9 +1387,6 @@
 
 
   </div>
-
-  <script>
-  </script>
 
 </section>
 
@@ -1474,9 +1468,6 @@
     </div>
 
   </div>
-
-  <script>
-  </script>
 
 </section>
 
@@ -1765,49 +1756,8 @@
 
   </div>
 
-  <script>
-  /* §17 guides — list bài con CUỘN DỌC trong chiều cao featured; thanh kéo DỌC bên phải. Featured đứng yên. */
-  (function(){
-    var wrap=document.querySelector('[data-gd-carousel]'); if(!wrap) return;
-    var feat=wrap.querySelector('.gd-feat'), sc=wrap.querySelector('.gd-scroller'),
-        bar=wrap.querySelector('.gd-vbar'), th=bar.querySelector('.gd-vbar-th');
-    function measure(){
-      // desktop (>860): list cao = featured. mobile: nén còn 3 bài, kéo xuống xem còn lại.
-      if(window.innerWidth<=860){
-        var items=sc.querySelectorAll('.gd-item');
-        if(items.length>3){
-          sc.style.maxHeight='none';
-          var r0=items[0].getBoundingClientRect(), r2=items[2].getBoundingClientRect();
-          sc.style.maxHeight=Math.round(r2.bottom-r0.top)+'px';
-        } else { sc.style.maxHeight=''; }
-      } else {
-        sc.style.maxHeight=feat.offsetHeight+'px';
-      }
-      sync();
-    }
-    function sync(){
-      var sh=sc.scrollHeight, ch=sc.clientHeight;
-      if(sh<=ch+2){ bar.style.visibility='hidden'; return; }
-      bar.style.visibility='visible';
-      var ratio=ch/sh, max=sh-ch, free=1-ratio;
-      th.style.height=(ratio*100)+'%';
-      th.style.top=(max? (sc.scrollTop/max)*free*100 : 0)+'%';
-    }
-    sc.addEventListener('scroll',sync,{passive:true});
-    window.addEventListener('resize',function(){clearTimeout(measure._t);measure._t=setTimeout(measure,80);});
-    var drag=false,sy=0,st=0;
-    function pt(e){return e.touches?e.touches[0].clientY:e.clientY;}
-    function down(e){drag=true;sy=pt(e);st=sc.scrollTop;e.preventDefault();}
-    function move(e){if(!drag)return;var sh=sc.scrollHeight,ch=sc.clientHeight;var travel=bar.clientHeight*(1-ch/sh);var scale=travel?(sh-ch)/travel:0;sc.scrollTop=st+(pt(e)-sy)*scale;}
-    function up(){drag=false;}
-    th.addEventListener('mousedown',down); th.addEventListener('touchstart',down,{passive:false});
-    window.addEventListener('mousemove',move); window.addEventListener('touchmove',move,{passive:false});
-    window.addEventListener('mouseup',up); window.addEventListener('touchend',up);
-    bar.addEventListener('mousedown',function(e){if(e.target===th)return;var r=bar.getBoundingClientRect();sc.scrollTop=((e.clientY-r.top)/r.height)*(sc.scrollHeight-sc.clientHeight);});
-    window.addEventListener('load',function(){ measure(); setTimeout(measure,300); });
-    measure();
-  })();
-  </script>
+  <!-- JS băng bài viết đã chuyển vào _foundation/hi-components.js ngày 2026-08-11
+       (/piercing dùng lại nguyên khối này). -->
 </section>
 
 <!-- @include footer -->

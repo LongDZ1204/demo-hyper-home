@@ -509,3 +509,94 @@
     x0=y0=null;
   },{passive:true});
 })();
+
+/* ============================================================================
+   THANH DỌC 5 BƯỚC (.pc-*) — vệt cam chạy theo cuộn, mỗi mốc sáng lên khi vệt đi qua.
+   Nâng lên tầng chung 2026-08-11: /piercing · /tattoo · /black-and-grey đều có khối
+   này, để mỗi trang một bản là lại chép.
+   ============================================================================ */
+(function(){
+  var wrap=document.querySelector('.pc-rail-wrap'); if(!wrap) return;
+  var lineEl=wrap.querySelector('.pc-rail-line'),
+      fill=wrap.querySelector('.pc-rail-fill'),
+      nodes=[].slice.call(wrap.querySelectorAll('.pc-node'));
+  if(!lineEl||!fill||nodes.length<2) return;
+  function update(){
+    var vh=window.innerHeight,
+        sy=window.scrollY||document.documentElement.scrollTop,
+        maxScroll=Math.max(0,(document.documentElement.scrollHeight||document.body.scrollHeight)-vh),
+        n1=nodes[0].getBoundingClientRect(), nN=nodes[nodes.length-1].getBoundingClientRect(),
+        topVp=n1.top+n1.height/2, botVp=nN.top+nN.height/2, len=botVp-topVp;
+    if(len<=0){lineEl.style.height='0';fill.style.height='0';return;}
+    lineEl.style.height=len+'px';
+    /* Mốc đọc đặt ở 55% chiều cao màn: vệt đầy đúng lúc mốc cuối tới tầm mắt,
+       không phải lúc nó chạm đáy màn. */
+    var refY=vh*0.55,
+        startS=(topVp+sy)-refY,
+        endS=Math.min((botVp+sy)-refY, maxScroll),
+        prog=endS>startS ? (sy-startS)/(endS-startS) : (sy>=startS?1:0);
+    prog=Math.max(0,Math.min(1,prog));
+    fill.style.height=(prog*len)+'px';
+    var fillY=topVp+prog*len;
+    nodes.forEach(function(n){var r=n.getBoundingClientRect();
+      n.classList.toggle('is-passed',(r.top+r.height/2)<=fillY+1);});
+  }
+  var ticking=false;
+  function onScroll(){ if(!ticking){ticking=true;requestAnimationFrame(function(){update();ticking=false;});} }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  window.addEventListener('resize',onScroll);
+  window.addEventListener('load',update);
+  update();
+})();
+
+/* ============================================================================
+   BĂNG BÀI VIẾT (.gd-carousel) — bài chính đứng yên bên trái, danh sách bài con
+   CUỘN DỌC bên phải trong đúng chiều cao bài chính, thanh kéo dọc thay dots.
+   Nâng từ <script> viết thẳng trong index.html lên đây 2026-08-11 vì /piercing
+   dùng lại nguyên khối này (CSS .gd-* đã lên tầng chung cùng ngày).
+   ============================================================================ */
+(function(){
+  var wrap=document.querySelector('[data-gd-carousel]'); if(!wrap) return;
+  var feat=wrap.querySelector('.gd-feat'), sc=wrap.querySelector('.gd-scroller'),
+      bar=wrap.querySelector('.gd-vbar'), th=bar&&bar.querySelector('.gd-vbar-th');
+  if(!feat||!sc||!bar||!th) return;
+  function measure(){
+    /* desktop (>860): danh sách cao bằng bài chính. mobile: nén còn 3 bài, kéo xem tiếp. */
+    if(window.innerWidth<=860){
+      var items=sc.querySelectorAll('.gd-item');
+      if(items.length>3){
+        sc.style.maxHeight='none';
+        var r0=items[0].getBoundingClientRect(), r2=items[2].getBoundingClientRect();
+        sc.style.maxHeight=Math.round(r2.bottom-r0.top)+'px';
+      } else { sc.style.maxHeight=''; }
+    } else {
+      sc.style.maxHeight=feat.offsetHeight+'px';
+    }
+    sync();
+  }
+  function sync(){
+    var sh=sc.scrollHeight, ch=sc.clientHeight;
+    if(sh<=ch+2){ bar.style.visibility='hidden'; return; }
+    bar.style.visibility='visible';
+    var ratio=ch/sh, max=sh-ch, free=1-ratio;
+    th.style.height=(ratio*100)+'%';
+    th.style.top=(max? (sc.scrollTop/max)*free*100 : 0)+'%';
+  }
+  sc.addEventListener('scroll',sync,{passive:true});
+  window.addEventListener('resize',function(){clearTimeout(measure._t);measure._t=setTimeout(measure,80);});
+  var drag=false,sy=0,st=0;
+  function pt(e){return e.touches?e.touches[0].clientY:e.clientY;}
+  function down(e){drag=true;sy=pt(e);st=sc.scrollTop;e.preventDefault();}
+  function move(e){if(!drag)return;var sh=sc.scrollHeight,ch=sc.clientHeight;
+    var travel=bar.clientHeight*(1-ch/sh);var scale=travel?(sh-ch)/travel:0;
+    sc.scrollTop=st+(pt(e)-sy)*scale;}
+  function up(){drag=false;}
+  th.addEventListener('mousedown',down); th.addEventListener('touchstart',down,{passive:false});
+  window.addEventListener('mousemove',move); window.addEventListener('touchmove',move,{passive:false});
+  window.addEventListener('mouseup',up); window.addEventListener('touchend',up);
+  bar.addEventListener('mousedown',function(e){if(e.target===th)return;
+    var r=bar.getBoundingClientRect();
+    sc.scrollTop=((e.clientY-r.top)/r.height)*(sc.scrollHeight-sc.clientHeight);});
+  window.addEventListener('load',function(){ measure(); setTimeout(measure,300); });
+  measure();
+})();
