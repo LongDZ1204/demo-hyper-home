@@ -60,15 +60,8 @@
   .ei-benefits{grid-template-columns:1fr;justify-items:start;gap:13px;max-width:300px;margin-inline:auto}
 }
 
-/* Nút xem ảnh hero cỡ thật. Là một NÚT RIÊNG chứ không phủ vùng bấm lên cả hero —
-   phủ lên là nuốt luôn cú bấm vào 2 nút CTA nằm ngay trên nó. */
-.eph-viewshot{display:inline-flex;align-items:center;gap:8px;margin-top:clamp(22px,2.6vw,30px);
-  padding:9px 16px;border:1px solid rgba(255,255,255,.24);border-radius:999px;
-  font-family:var(--sub);font-size:12px;letter-spacing:.05em;text-transform:uppercase;
-  color:var(--cream);background:rgba(0,0,0,.34);backdrop-filter:blur(3px);
-  transition:border-color .2s var(--ease),color .2s var(--ease)}
-.eph-viewshot:hover{border-color:var(--orange);color:#fff}
-.eph-viewshot svg{width:14px;height:14px}
+/* Nút "View full size" đã BỎ 11/08: chỗ đó nay là băng ảnh .hstrip dùng chung với
+   /black-and-grey — mỗi ảnh trong băng đã bấm xem được nên nút thành thừa. */
 
 /* ========== Nhịp nền so-le — KHÔNG mục nào trùng nền mục liền kề ==========
    Đo bằng script duyệt <section> theo thứ tự DOM rồi so màu nền mục i với i-1.
