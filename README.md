@@ -97,7 +97,8 @@ mất tín hiệu internal link, và trang bị giật khi tải.
 | `artists.html` · `artist-detail.html` · `piercing.html` | ✅ |
 | `portfolio.html` · `tattoo-gallery.html` | ✅ |
 | `contact.html` · `deals.html` · `faq.html` | ✅ (11/08) |
-| 9 page còn lại | ⏳ vẫn dùng CSS + header riêng của từng file |
+| `blog.html` · `blog-detail.html` | ✅ (11/08) — theme nền giấy, xem dưới |
+| 7 page còn lại | ⏳ vẫn dùng CSS + header riêng của từng file |
 
 **`faq.html` là trang MỚI (11/08)**, dựng từ `outputs/onpage-design/2026-05-26_faq-page-mockup-v2.html`.
 Mục FAQ ở menu header và cột Explore của footer trước đây trỏ `soon.html`, nay trỏ trang thật.
@@ -105,6 +106,28 @@ Mockup dùng tab `<button>` + JS và accordion `<button>` + JS; bản port đổ
 `.faqtab` + `.faqacc` của tầng chung — chính comment trong mockup ghi nó nhắm vào bộ đó.
 Thứ duy nhất phải viết thêm là 12 dòng JS nối `#tattoo` / `#piercing` / `#removal` với radio, vì
 radio thuần CSS không biết gì về URL mà B.Long đang dùng link có neo để gửi thẳng tới một chủ đề.
+
+**`blog.html` + `blog-detail.html` là hai page NỀN GIẤY duy nhất (11/08).** 19 page kia nền
+`#0F0F0F`; hai page này nền kem `#F8F5EC`. Không phải lỗi tải CSS — hai mockup cố ý đặt vậy.
+B.Long chốt giữ nền sáng, nên nó thành một **theme** thật: bộ `--paper-*` ở `hi-ds.css`, bật bằng
+`body class="paper-page"`. Hai bộ tên cũ `--blog-*` và `--detail-*` (cùng vai trò, đã bắt đầu trôi
+màu: chữ phụ `#5D5A53` vs `#68635A`) gộp làm một.
+
+Ba cái bẫy của theme này, ai đụng vào sau nhớ:
+
+1. **Cam brand `#CC6600` KHÔNG đạt tương phản trên nền giấy** — 3,52:1, dưới ngưỡng AA 4,5:1 cho
+   chữ thường. Nên có `--paper-orange:#A85300` (4,94:1) dành riêng cho **chữ nhỏ**: link thân bài,
+   nhãn, chữ phụ. Heading lớn vẫn giữ cam brand vì chữ ≥24px chỉ cần 3:1. Hai sắc không đổi chỗ
+   được cho nhau: `#A85300` trên nền tối chỉ đạt 3,89:1.
+2. **Component của tầng chung tô cho nền ĐEN.** `.crumb` chữ cream + bóng đen, `.msl-navbtn` chữ
+   cream nền trắng 3%, `.msl-track` ray trắng 14% — đặt nguyên lên nền kem là tàng hình. Lớp da đảo
+   màu nằm trong khối `.paper-page ...` ở cuối `hi-ds.css`, KHÔNG để ở `_pages/` (máy gác
+   `port-check.js` luật [E1] cấm page khai đè lên component chung).
+3. **Bộ reset chung thiếu `height:auto`** — chỉ có `img{display:block;max-width:100%}`. Ảnh nào có
+   thuộc tính `width`/`height` trong HTML thì thuộc tính `height` thành gợi ý trình bày và đè luôn
+   `aspect-ratio`. Đo thật: ảnh khuyến mãi 2000x2500 nở ra `338x2500` thay vì `338x423`, đẩy cột
+   phải dài gấp sáu lần bài viết. Không số đo nào báo ngoài chiều cao — chỉ lộ khi NHÌN ảnh chụp.
+   Mọi ảnh có `width`/`height` phải tự khai `height:auto`.
 
 **`piercing-gallery.html` và `removal-gallery.html` đã gỡ khỏi demo ngày 11/08** (B.Long chốt).
 Layout của chúng không khác `tattoo-gallery.html` một điểm nào, nên khi cần dựng lại thì **chép từ
