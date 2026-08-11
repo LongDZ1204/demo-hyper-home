@@ -1,0 +1,154 @@
+/* ============================================================================
+   BLOG HUB — CSS riêng của trang.
+   Mockup nguồn: outputs/onpage-design/2026-07-09_blog-hub-v3-hi-foundation.html
+
+   193 dòng <style> của mockup còn lại chừng 40 luật ở đây. Đi đâu hết:
+     :root --blog-*        -> hi-ds.css, gộp với --detail-* thành một bộ --paper-*
+     body / main nền       -> hi-ds.css, khoá theo body.paper-page
+     .crumb ol ...         -> hi-ds.css (bản chung) + lớp đảo màu cho nền giấy
+     .gd-* (25 luật base)  -> hi-components.css, cả CSS lẫn JS, hook data-gd-carousel
+     .section-title-row    -> hi-ds.css (cả hai page blog dùng)
+     .blog-cta (12 luật)   -> BỎ HẲN, dùng .s-cta1 khói dùng chung (luật B2)
+     .pf / .pf-in / .pf-*  -> _partials/footer.html mang CSS riêng
+     .hdr{position:sticky} -> BỎ HẲN, xem ghi chú ngay dưới
+
+   BỎ .hdr{position:sticky;top:0;...}: mockup tự dựng header rời nên phải tự khai
+   cách ghim. Header thật của site là .hdr position:FIXED + thanh khuyến mãi phía
+   trên, cả bộ đã nằm trong hi-chrome.css. Bê luật sticky vào là header rơi lại
+   vào luồng, chiếm chỗ hai lần và thanh khuyến mãi trượt mất.
+   ========================================================================== */
+
+/* === HERO — nền TỐI + khói, trục đọc căn TRÁI ================================
+   Chốt B.Long 2026-08-10: crumb → H1 → lead → hàng chip cùng MỘT cột bên trái.
+   Quầng cam đặt ở 30% chứ không 50%: khối chữ căn trái nên tâm sáng phải nằm
+   sau chữ, để giữa thì H1 rơi đúng vùng tối nhất.
+
+   padding-TRÊN = --chrome-h + khe thở, KHÔNG số cứng. Mockup ghi
+   `clamp(96px,9vw,116px)` — chạy được ở đó vì header mockup là sticky nên tự
+   chiếm chỗ; header thật fixed, không chiếm chỗ, nên 96px ở khổ hẹp là NHỎ HƠN
+   112px chrome, crumb chui thẳng xuống dưới header. Đúng lỗi B.Long bắt ở
+   portfolio và tattoo-gallery hôm nay.
+   Khe thở lấy đúng bộ số của .port-hero / .faq-hero / .contact-hero để 5 hero
+   vào bằng cùng một nhịp; tắt thanh khuyến mãi thì cả 5 tự thu 36px. */
+.blog-hero{position:relative;isolation:isolate;overflow:clip;background:var(--black);
+  padding:calc(var(--chrome-h) + clamp(26px,3.4vw,52px)) 0 clamp(34px,3.8vw,48px)}
+.hero-smoke{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;
+  opacity:.5;filter:contrast(1.22) brightness(1.06) saturate(1.16);
+  -webkit-mask-image:radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
+          mask-image:radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
+  pointer-events:none;user-select:none;z-index:0}
+.blog-hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(52% 66% at 30% 60%,rgba(204,102,0,.16),rgba(204,102,0,0) 74%)}
+.blog-hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(to bottom,var(--black) 0%,rgba(0,0,0,0) 26%,rgba(0,0,0,0) 74%,var(--black) 100%),
+    radial-gradient(82% 64% at 34% 50%,rgba(0,0,0,.86),rgba(0,0,0,0) 90%)}
+.blog-hero .grain{opacity:.045;z-index:1;mix-blend-mode:normal}
+.blog-hero .wrap{position:relative;z-index:2}
+/* hero này nằm trên nền TỐI nên crumb giữ bản gốc của hi-ds, không lấy lớp đảo
+   màu giấy. Ghi đè ngược lại phần .paper-page đã đảo ở hi-ds. */
+.paper-page .blog-hero .crumb ol{color:var(--cream);text-shadow:0 1px 8px rgba(0,0,0,.7)}
+.paper-page .blog-hero .crumb a{color:var(--cream)}
+.paper-page .blog-hero .crumb a:hover,
+.paper-page .blog-hero .crumb [aria-current]{color:#fff}
+/* H1 tô CAM TRỌN (chốt B.Long 2026-08-10) — không tách hai màu. Luật "chừa ≥1 từ
+   trắng" của DS dựng cho H2 nhiều từ; H1 đây hai từ, chừa một từ trông như lỗi. */
+.blog-hero h1{max-width:900px;margin:14px 0 0;color:var(--orange);text-shadow:0 2px 34px rgba(0,0,0,.55)}
+.blog-lead{max-width:680px;margin:16px 0 0;font-size:16.5px;line-height:1.62;color:#D5D5D5;
+  text-shadow:0 2px 12px rgba(0,0,0,.8)}
+
+/* hàng chip CĂN TRÁI thẳng cột với H1 + lead. Nền tối nên chip là viền mảnh
+   trong suốt — cùng kiểu chip lọc ở /piercing. */
+.blog-tabs{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:10px;margin-top:clamp(26px,3vw,34px)}
+.blog-tab{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;
+  padding:10px 22px;border:1px solid var(--card-brd);border-radius:999px;background:transparent;
+  color:var(--cream);font-family:var(--sub);font-size:12.5px;font-weight:600;letter-spacing:.05em;
+  text-transform:uppercase;white-space:nowrap;text-decoration:none;cursor:pointer;
+  transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease)}
+.blog-tab:hover{border-color:var(--orange);color:#fff;transform:none;box-shadow:none}
+/* Trạng thái bật đọc từ aria-pressed chứ không từ class .is-active: một nguồn sự
+   thật cho cả mắt nhìn lẫn trình đọc màn hình, không thể lệch nhau. */
+.blog-tab[aria-pressed="true"]{background:var(--orange);border-color:var(--orange);color:#fff}
+.blog-tab:focus-visible,.post-card:focus-visible,.pagination a:focus-visible,
+.pagination .current:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+
+/* === THÂN TRANG NỀN GIẤY ==================================================== */
+.section-blog{background:var(--paper-page);color:var(--paper-ink)}
+.section-blog h2,.section-blog h3{color:var(--paper-ink);text-shadow:none}
+.section-blog p{color:var(--paper-muted)}
+.section-blog.alt{background:var(--paper-soft)}
+/* Hai class nên (0,2,0) — thắng .section{padding-block} của hi-ds. Hero đã có
+   padding-đáy riêng nên section ngay dưới chỉ cần khe nhỏ. */
+.blog-hero + .section-blog{padding-top:clamp(28px,3vw,40px)}
+
+/* === BĂNG BÀI NỔI BẬT — lớp sáng cho họ .gd-* ================================
+   Base .gd-* nằm ở hi-components.css, viết cho nền đen của trang chủ. Ở đây chỉ
+   đảo màu chữ, nền chỗ ảnh chưa tải, và thanh kéo. Không đụng tới bố cục. */
+.gd-feat-media,.gd-item-media{background:#E7E1D6;position:relative}
+.gd-date{color:var(--paper-muted)}
+.gd-feat .gd-feat-h,.gd-item .gd-item-h{color:var(--paper-ink)}
+.gd-feat:hover .gd-feat-h,.gd-item:hover .gd-item-h{color:var(--orange)}
+.gd-feat p,.gd-item p{color:var(--paper-muted)}
+.gd-vbar{background:rgba(17,17,15,.12)}
+.gd-vbar-th{background:rgba(17,17,15,.34)}
+.gd-vbar:hover .gd-vbar-th,.gd-vbar-th:active{background:rgba(17,17,15,.52)}
+.gd-feat:focus-visible,.gd-item:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+.badge-hot{position:absolute;top:14px;left:14px;z-index:2;display:inline-flex;align-items:center;
+  min-height:32px;padding:7px 13px;border-radius:4px;background:var(--orange);color:#fff;
+  font-family:var(--sub);font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+  box-shadow:0 14px 32px rgba(0,0,0,.38)}
+
+/* === LATEST POSTS — thẻ TRẦN ================================================
+   Chốt B.Long 2026-08-10: đúng giải phẫu thẻ ở trang chủ (ảnh bo góc + ngày +
+   tiêu đề + 2 dòng mô tả). KHÔNG hộp trắng, KHÔNG nút CTA riêng, cả thẻ là một
+   link — thẻ có nút bên trong thì có hai đích bấm lồng nhau. */
+.posts-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(20px,2.4vw,32px)}
+.post-card{display:flex;flex-direction:column;text-decoration:none;background:none;border:0;
+  border-radius:0;box-shadow:none;padding:0}
+.post-card:hover{transform:none;box-shadow:none}
+.post-media{aspect-ratio:4/3;border-radius:14px;overflow:hidden;background:#E7E1D6;margin-bottom:14px}
+.post-media img{width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .6s var(--ease);color:transparent;font-size:0}
+.post-card:hover .post-media img{transform:scale(1.05)}
+.post-card h3{margin:9px 0 0;font-family:var(--sub);font-weight:700;text-transform:none;letter-spacing:0;
+  font-size:clamp(15px,1.5vw,17px);line-height:1.34;color:var(--paper-ink);
+  transition:color .2s var(--ease);
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+.post-card:hover h3{color:var(--orange)}
+.post-card p{margin:8px 0 0;font-size:13.5px;line-height:1.55;color:var(--paper-muted);
+  display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+
+.pagination{display:flex;justify-content:center;gap:8px;list-style:none;margin-top:36px;padding:0}
+.pagination a,.pagination span{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;
+  border:1px solid var(--paper-line);font-family:var(--sub);font-size:13px;color:var(--paper-ink);
+  background:var(--paper-card);text-decoration:none}
+.pagination .current{background:var(--orange);border-color:var(--orange);color:#fff}
+.pagination a:hover{border-color:var(--orange);color:var(--paper-orange)}
+
+@media(max-width:1020px){
+  .posts-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:700px){
+  /* Chỉ hạ đáy. KHÔNG viết lại `padding` shorthand: shorthand đặt lại cả 4 cạnh
+     nên xoá luôn calc(--chrome-h) ở trên — mockup ghi `padding:92px 0 30px`,
+     bê nguyên là crumb nằm dưới header đúng 20px. */
+  .blog-hero{padding-bottom:30px}
+  .blog-lead{font-size:15.5px}
+  .blog-tabs{gap:8px}
+  .blog-tab{padding:9px 15px;font-size:11.5px;letter-spacing:.035em;min-height:42px}
+  .posts-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  .post-card h3{font-size:13.5px;-webkit-line-clamp:3;line-clamp:3}
+  .post-card p{font-size:12px;line-height:1.45}
+  .post-media{border-radius:12px;margin-bottom:11px}
+  .pagination{margin-top:28px}
+}
+@media(max-width:430px){
+  .blog-hero h1{font-size:clamp(34px,12vw,48px)}
+  .blog-tab{padding:9px 12px;font-size:10.5px;gap:5px}
+  .post-card h3{font-size:12.5px}
+  .post-card p{font-size:11.5px}
+}
+@media(max-width:374px){
+  .blog-tab{font-size:10px;padding-inline:9px}
+  .posts-grid{gap:10px}
+}
