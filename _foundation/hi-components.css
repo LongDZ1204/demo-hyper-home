@@ -881,7 +881,10 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 .faqacc{display:flex;flex-direction:column;gap:0}
 /* Page ít câu hỏi thì bỏ thanh tab, .faqacc nằm thẳng trong .wrap. Lúc đó nó mất khổ 840px
    và khoảng cách mà .faqtab-panel đang gánh, nên list sẽ rộng bằng cả wrap và dính sát heading. */
-.wrap > .faqacc{max-width:840px;margin:clamp(26px,3.2vw,38px) auto 0}
+/* margin-top bỏ: khe head→nội dung do --gap-head-body của .section-head
+   quyết (luật A6). Rule cũ cộng thêm 26-38px vào khe của head nên section
+   FAQ hở rộng hơn mọi section khác — máy gác port-check bắt được 11/08. */
+.wrap > .faqacc{max-width:840px;margin:0 auto}
 /* list phân cách (theo mẫu B.Long): bỏ box từng item, chỉ divider mảnh giữa các dòng; item MỞ có gạch cam trên đỉnh */
 .faqacc-item{position:relative;background:transparent;border:0;border-radius:0}
 .faqacc-item + .faqacc-item{border-top:1px solid rgba(255,255,255,.09)}

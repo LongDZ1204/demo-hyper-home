@@ -298,13 +298,10 @@ from{transform:translateX(0)}to{transform:translateX(-50%)}
 
 /* ---------- rail foot: nav + progress + cta ---------- */
 
-.awrail-nav{display:flex;gap:9px}
-.awrail-btn{display:grid;place-items:center;width:44px;height:44px;border-radius:50%;
-  border:1px solid var(--card-brd);background:rgba(255,255,255,.03);color:var(--cream);font-size:19px;line-height:1;
-  cursor:pointer;transition:border-color .2s var(--ease),color .2s var(--ease),opacity .2s var(--ease)}
-.awrail-btn:hover{border-color:var(--orange);color:#fff}
-.awrail-track{position:relative;flex:1;min-width:120px;height:3px;border-radius:2px;background:rgba(255,255,255,.12)}
-.awrail-track .stat-thumb{position:absolute;top:0;left:0;height:100%;width:46%;background:var(--orange);border-radius:2px}
+/* (đã xoá .awrail-nav / .awrail-btn / .awrail-track — CODE CHẾT: không thẻ nào
+   trong about.html mang mấy class này. Sót lại từ bản rail cũ có nút ‹ ›, và
+   nó khai đè lên chính họ .awrail-* của tầng chung. Máy gác port bắt được
+   dưới dạng nguồn "chung+page".) */
 
 
 /* ============================================================================

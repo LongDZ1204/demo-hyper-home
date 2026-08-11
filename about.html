@@ -168,7 +168,13 @@
 <section class="section band-a" id="who" aria-label="Who We Are">
   <div class="wrap">
     <div class="split who-intro">
-      <div class="section-head">
+      <!-- data-gap-ok / data-clamp-off: khai NGOẠI LỆ CÓ CHỦ ĐÍCH cho máy gác
+           port-check.js, để nó khỏi báo lỗi mà mình khỏi phải nhớ giải thích lại
+           mỗi đợt soát. Đây là layout CHIA ĐÔI chữ|video: head không xếp chồng
+           lên khối nội dung nên không có khe head→nội dung để chuẩn hoá, và đoạn
+           dẫn phải hiện đủ vì nó là cột chữ của khối, không phải câu dẫn vào lưới. -->
+      <div class="section-head" data-gap-ok="layout chia đôi chữ|video, head không xếp chồng lên nội dung"
+           data-clamp-off="đoạn dẫn là cột chữ của khối chia đôi, không phải câu dẫn vào lưới">
         <h2><span class="o">Artist-Owned Tattoo Studio</span> in San Antonio</h2>
         <p class="section-intro">Hyper Inkers is a tattoo studio in San Antonio, established in July 2023, built by young hearts full of enthusiasm and creativity. Our artists create custom tattoos, piercings, and tattoo removal, backed by advanced techniques and high-quality equipment. These are the core values that drive us to continuously improve and grow every single day.</p>
       </div>

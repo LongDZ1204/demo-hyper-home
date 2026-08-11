@@ -64,7 +64,8 @@ body{background:var(--bg);overflow-x:clip}
 	/* Shared section treatment */
 	.artist-page h2{font-family:var(--head);font-weight:700;text-transform:uppercase;letter-spacing:-.005em;line-height:.98;color:#fff}
 	.artist-page h2 .o{color:var(--orange)}
-	.section-head{max-width:760px;margin-bottom:clamp(28px,3.6vw,42px)}
+	/* margin-bottom bỏ: khe head→nội dung chỉ do --gap-head-body quyết (luật A6). */
+	.section-head{max-width:760px}
 	.section-head h2{font-size:clamp(28px,3.4vw,44px)}
 .section-head.center{text-align:center;margin-inline:auto}
 
@@ -103,7 +104,9 @@ body{background:var(--bg);overflow-x:clip}
 
 	/* Projects */
 	.projects{background:#090909}
-	.projects .section-head{position:relative;z-index:3;margin-bottom:clamp(22px,3vw,36px)}
+	/* margin-bottom clamp(22,3vw,36) bỏ: (0,2,0) nên nó THẮNG cả token ở hi-ds,
+	   ra khe 36px trong khi 4 section còn lại 34px. Máy gác port bắt được. */
+	.projects .section-head{position:relative;z-index:3}
 	.projects .section-head h2{font-size:clamp(28px,3.4vw,44px);color:#fff;max-width:620px}
 	/* Bỏ masonry (column-count + 4 mức aspect-ratio so le). Masonry xếp ảnh theo CỘT
 	   nên thứ tự đọc nhảy dọc, và mỗi cột kết thúc ở một độ cao khác nhau → đáy lưới
