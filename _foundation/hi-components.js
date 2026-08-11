@@ -322,6 +322,11 @@
         next=foot.querySelector('.msl-navbtn.next');
     function upd(){
       var vis=row.clientWidth/row.scrollWidth;
+      /* Chân slider hiện/ẩn theo ĐIỀU KIỆN "hàng có tràn không", không theo danh
+         sách tên section trong CSS. Bản cũ chỉ bật cho .art-foot nên bảng giá
+         tràn 1098/366 ở mobile mà vẫn không có thanh kéo (B.Long bắt 11/08) —
+         lần thứ 6 một bộ lọc theo tên để lọt khối mới. */
+      foot.classList.toggle('is-scrollable', isFinite(vis) && vis < 0.999);
       if(th){
         if(!isFinite(vis)||vis>=1){th.style.width='100%';}
         else{var max=row.scrollWidth-row.clientWidth,p=max>0?row.scrollLeft/max:0;
@@ -346,6 +351,9 @@
     }
     row.addEventListener('scroll',upd,{passive:true});
     window.addEventListener('resize',upd);
+    /* Ảnh trong hàng tải xong là scrollWidth đổi — đo một lần lúc tải thì chân
+       slider có thể đứng ở kết luận "không tràn" và không bao giờ hiện lại. */
+    if(window.ResizeObserver) new ResizeObserver(upd).observe(row);
     upd();
   });
 })();

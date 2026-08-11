@@ -142,9 +142,14 @@
    rail của trang chi tiết artist (styles · other artists). Khoá theo điều kiện
    "rail cuộn ở mọi bề ngang", không phải theo tên từng section. */
 .msl-foot--always{display:flex}
-/* B.Long batch2: services là 2×2 grid trên mobile → ẩn nav slider cũ */
-@media(max-width:860px){.msl-foot.svc-foot{display:none}}
-@media(max-width:600px){.msl-foot.art-foot{display:flex}}
+/* Chân slider hiện khi HÀNG THẬT SỰ TRÀN. Lớp .is-scrollable do hi-components.js
+   gắn sau khi đo clientWidth/scrollWidth, nên luật này tự đúng với mọi khối thêm
+   sau — kể cả khối chưa tồn tại lúc viết luật.
+   Bản cũ là hai dòng liệt kê TÊN (.svc-foot ẩn · .art-foot hiện): bảng giá
+   /piercing tràn 1098/366 ở mobile mà chân slider vẫn ẩn vì nó không mang tên
+   nào trong hai tên đó (B.Long bắt 11/08). Services thì tự ẩn đúng, vì lưới 2 cột
+   của nó không tràn — cùng một luật lo được cả hai chiều. */
+.msl-foot.is-scrollable{display:flex}
 
 
 /* ==================== REVIEWS (tiếp) · card ảnh, customer story ==================== */
