@@ -291,12 +291,9 @@
   .section-head--editorial-centered > .sec-link--head{
     position:static;margin-top:18px
   }
-  /* Lúc nén, khuôn cũ chừa 34px chỉ ở bên phải cho mũi tên nên phần chữ nhìn
-     lệch trái 17px. Giữ nguyên bề rộng đọc nhưng đặt nó vào giữa; khi mở thì
-     trả lại 100% như trước. */
+  /* Heading, đoạn dẫn và link phải chung một trục trái. Bỏ khoảng chừa 34px
+     của khuôn mobile chung; mũi tên vẫn được JS đặt sau dấu ba chấm. */
   .section-head--editorial-centered .has-clamp{padding-right:0}
-  .section-head--editorial-centered .lead-txt{width:calc(100% - 34px);margin-inline:auto}
-  .section-head--editorial-centered .lead-cb:checked ~ .has-clamp .lead-txt{width:100%;margin-inline:0}
 }
 /* bottom:14px chứ không phải 0 — link neo vào ĐÁY hộp head, mà đáy hộp cũng là
    nơi khối nội dung bắt đầu, nên để 0 thì gạch chân gần chạm thanh tab bên dưới.
