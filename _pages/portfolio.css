@@ -1,7 +1,6 @@
 body{background:var(--bg);color:var(--text)}
 main{overflow:clip}
 
-
 /* === HERO — nền KHÓI, full-bleed, breadcrumb căn giữa trên H1 (2026-08-10) =====
    Trước: nền gradient đen trơn, chữ căn TRÁI, breadcrumb nằm trên cùng bên trái,
    cao 126px padding trên + 2 nút. Nay đồng bộ với hero trang FAQ: dùng asset khói
@@ -60,29 +59,7 @@ main{overflow:clip}
 .section-gallery h2{margin:0;text-align:center}
 .section-gallery h2 .o{color:var(--orange)}
 .gal-lead{max-width:var(--lead-mw);margin:var(--gap-head-lead) auto 0;text-align:center;
-  font-size:var(--fs-lead);line-height:1.62;color:#C9C9C9}/* Thanh lọc DÍNH đỉnh màn khi cuộn qua lưới ảnh (B.Long 10/08). Header trang là
-   position:absolute nên nó cuộn đi mất — không phải trừ chiều cao header, top:0 là đủ.
-   .section cha có overflow:clip: clip KHÔNG tạo scroll container (khác overflow:hidden)
-   nên sticky vẫn chạy, và phần clip lại đúng ý — ra khỏi section là thanh biến mất.
-   Nền đục + blur là bắt buộc: thiếu nó thì ảnh cuộn xuyên qua sau chip. */
-.gal-filterbar{position:sticky;top:0;z-index:6;
-  margin-top:clamp(18px,2.2vw,24px);padding-block:12px;
-  background:rgba(0,0,0,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
-  box-shadow:0 1px 0 rgba(255,255,255,.07)}
-/* .gal-filters + .gal-chip = bộ số .portfolio-filter + .filter-pill của trang
-   gallery con, không đổi một con số nào. Khác duy nhất: trạng thái active ở đó do JS
-   gắn class .is-active, ở đây do radio :checked — nên selector khác, kết quả như nhau. */
-.gal-filters{display:flex;flex-wrap:wrap;align-items:center;gap:9px 10px;max-width:860px}/* Ô ảnh là <a href="ảnh gốc"> chứ không phải <figure>: không có JS thì bấm vẫn mở
-   được ảnh gốc, và ô tự vào được bằng phím Tab. Giống hệt .portfolio-tile ở 3 trang
-   gallery con. <a> mặc định inline nên phải khai display:block. */
-.gal-item{display:block;position:relative;min-width:0;margin:0;aspect-ratio:4/5;overflow:hidden;border-radius:14px;
-  background:#151515;border:1px solid rgba(255,255,255,.07);box-shadow:0 22px 54px rgba(0,0,0,.32);
-  transition:transform .3s var(--ease),border-color .3s var(--ease)}/* 3 ảnh before/after là 1080x677 = ĐÚNG 8/5 NGANG, trong khi ô lưới là 4/5 DỌC.
-   Ép vào ô dọc thì object-fit:cover cắt mất 25% mỗi bên — nghĩa là cụt một phần
-   nửa "before" và nửa "after", đúng thứ mà tấm ảnh sinh ra để so sánh; nhãn B/A
-   in sẵn trong ảnh cũng bị cắt cụt ở đáy. Cho nhóm này chiếm 2 cột và khai đúng
-   8/5 thì cover không phải cắt gì, ảnh hiện trọn cả 2 nửa lẫn nhãn gốc. */
-.gal-item--ba{grid-column:span 2;aspect-ratio:1080/677}   /* đúng kích thước file gốc, không phải 8/5 làm tròn */
+  font-size:var(--fs-lead);line-height:1.62;color:#C9C9C9}/* đúng kích thước file gốc, không phải 8/5 làm tròn */
 
 /* lọc theo nhánh — vẫn thuần CSS, không cần JS */
 #gf-tattoo:checked   ~ .gal-grid .gal-item:not(.is-tattoo){display:none}#gf-removal:checked  ~ .gal-grid .gal-item:not(.is-removal){display:none}
@@ -113,29 +90,12 @@ main{overflow:clip}
   transition:background .2s var(--ease)}
 .gal-golink:hover{background:var(--orange-hi)}
 .gal-golink svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-#gf-tattoo:checked   ~ .galwork-more .gal-golink--tattoo{display:inline-flex}#gf-removal:checked  ~ .galwork-more .gal-golink--removal{display:inline-flex}
-
-/* === CTA — nền KHÓI (2026-08-10) =============================================
-   Trước dùng _hero-assets/cta-splatter-orange.png (vệt sơn cam). Nay đổi sang chính
-   asset khói của studio theo 2026-08-06_cta-smoke-section.html, nhánh CTA 2 (bản
-   lật ngang, tương phản cao hơn CTA 1) để không trùng với hero cùng trang.
-   object-fit:contain giữ trọn vệt khói trong section, mask radial làm rìa tan vào nền
-   nên overflow:clip không cắt thành đường thẳng.
-   ============================================================================ */
-.portfolio-cta{position:relative;overflow:hidden;text-align:center;background:var(--bg);border-top:1px solid var(--hair);padding-block:clamp(76px,10vw,138px)}
-.cta-smoke{position:absolute;top:5%;left:3.5%;width:93%;height:90%;
+#gf-tattoo:checked   ~ .galwork-more .gal-golink--tattoo{display:inline-flex}#gf-removal:checked  ~ .galwork-more .gal-golink--removal{display:inline-flex}.cta-smoke{position:absolute;top:5%;left:3.5%;width:93%;height:90%;
   object-fit:contain;object-position:center;max-width:none;
   transform:scaleX(-1);opacity:.62;filter:contrast(1.32) brightness(1.12) saturate(1.02);
   -webkit-mask-image:radial-gradient(126% 114% at 50% 50%,#000 62%,transparent 94%);
           mask-image:radial-gradient(126% 114% at 50% 50%,#000 62%,transparent 94%);
-  pointer-events:none;user-select:none;z-index:0}
-/* File mẫu để opacity .86 vì ở đó chữ CTA là cỡ display 74px, đọc xuyên khói được.
-   Ở đây dòng lead chỉ 17px nên đo thấy khói cắt ngang chữ → hạ .86→.62 và kéo vignette
-   rộng ra 74% (bằng bề ngang thật của khối chữ) với alpha .8. */
-.portfolio-cta::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:
-  linear-gradient(to bottom,var(--bg) 0%,rgba(15,15,15,0) 20%,rgba(15,15,15,0) 80%,var(--bg) 100%),
-  radial-gradient(74% 66% at 50% 50%,rgba(0,0,0,.8),rgba(0,0,0,0) 84%)}
-/* === NAP cuối trang — chép từ .s-visit của site/_pages/home.css (phần NAP + map) === */
+  pointer-events:none;user-select:none;z-index:0}/* === NAP cuối trang — chép từ .s-visit của site/_pages/home.css (phần NAP + map) === */
 .s-visit{position:relative;background:var(--black);border-top:1px solid var(--hair)}
 .s-visit .wrap{position:relative;z-index:2}
 .s-visit .section-title-row{justify-content:center}
@@ -213,3 +173,42 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 .section-gallery:has(.galf-pill[data-filter="tattoo"].is-active) .gal-golink--tattoo,
 .section-gallery:has(.galf-pill[data-filter="piercing"].is-active) .gal-golink--piercing,
 .section-gallery:has(.galf-pill[data-filter="removal"].is-active) .gal-golink--removal{display:inline-flex}
+
+/* ============================================================================
+   SỬA ĐỢT 2 (11/08) — spacing khối head + trả lại nút Load more
+   ============================================================================ */
+
+/* Nhịp head: h2 -> đoạn dẫn -> hàng chip -> lưới.
+   .galf bị một lớp nạp SAU page CSS đặt margin-top:0, nên đo ra khe 0px giữa
+   đoạn dẫn và hàng chip. Phải nâng độ cụ thể lên (0,3,0) mới thắng được, chứ
+   khai .galf{margin-top} trong file này thì thua cascade. */
+.section-gallery .galf.galf--center{margin-top:26px}
+.section-gallery .galp-grid{margin-top:var(--gap-head-body)}
+.section-gallery .galwork-more{margin-top:var(--gap-head-body)}
+
+/* Giới hạn số ô hiện ra. HAI kiểu giấu khác nhau, cố ý tách 2 class dù cùng ra
+   ẩn — vì đèn xem ảnh đối xử khác nhau:
+
+   .is-clamped  tab All: giấu TẠM, bấm Load more là mở. Đèn VẪN lướt qua, nên
+                bấm ô thứ 8 rồi ấn mũi tên là đi tiếp được. Giấu bằng CLASS chứ
+                không bằng thuộc tính hidden — engine chung lấy "danh sách để
+                lướt" = ô không có hidden, đặt hidden là đèn bỏ qua luôn.
+   .is-capped   3 tab nhánh: cắt cứng 8 ô, không có nút mở thêm; đi tiếp thì bấm
+                nút sang gallery đầy đủ. Cái này ĐẶT hidden, cố ý — để đèn không
+                báo "1 / 12" trong khi trên trang chỉ có 8 ô và không cách nào
+                tới 4 ô kia.
+
+   Không làm bằng CSS được: cần "8 ô đầu CỦA TẬP ĐANG LỌC", mà :nth-child vẫn
+   đếm cả ô đã bị lọc bỏ nên sai ngay khi đổi tab. Không có JS thì không ô nào
+   bị giấu, trang hiện đủ ảnh, vẫn dùng được. */
+.galp-tile.is-clamped{display:none}
+
+/* Nút Load more: giữ nguyên hình dáng bản mockup, chỉ kéo 48px -> 52px cho khớp
+   luật H3 (toàn site chỉ 2 cỡ nút: L 52px · S 44px). */
+.gal-loadmore{display:inline-flex;align-items:center;justify-content:center;min-height:52px;
+  padding:15px 30px;border:1px solid rgba(255,255,255,.28);border-radius:4px;
+  background:transparent;color:var(--cream);cursor:pointer;
+  font-family:var(--sub);font-weight:600;font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;
+  transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease)}
+.gal-loadmore:hover,.gal-loadmore:focus-visible{border-color:var(--orange);color:#fff;
+  background:rgba(204,102,0,.12);outline:none}
