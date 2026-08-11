@@ -1,0 +1,28 @@
+/* ============================================================================
+   /tattoo-cover-up-san-antonio
+   Chỉ chứa các khác biệt thật sự của page cover-up. Mọi component còn lại dùng
+   nguyên hệ /tattoo + hi-components + hi-ds để không tạo một style fork mới.
+   ============================================================================ */
+
+.cover-gallery{background:var(--black)}
+.cover-gallery .wrap{position:relative;z-index:2}
+.cover-gallery .galp-grid{margin-top:0}
+
+/* Giữ page tự đủ style khi publish riêng, không phụ thuộc các chỉnh sửa global
+   đang được làm song song trong hi-components.css. */
+@media(min-width:821px){
+  .cover-up-page .award-card--portrait{aspect-ratio:2/3;height:490px;max-height:none;width:auto;margin-left:auto}
+}
+@media(max-width:820px){
+  .cover-up-page .award-card--portrait{aspect-ratio:3/4;max-width:366px}
+}
+.cover-up-page .award-card--portrait>img{object-position:50% 42%}
+.cover-up-page .split-list{list-style:none;margin:clamp(16px,1.9vw,22px) 0 0;padding:0}
+.cover-up-page .split-list li{position:relative;padding-left:24px;font-size:15px;line-height:1.58;color:#D2D2D2;margin-top:12px}
+.cover-up-page .split-list li:first-child{margin-top:0}
+.cover-up-page .split-list li::before{content:"";position:absolute;left:2px;top:8px;width:7px;height:7px;border-radius:50%;background:var(--orange)}
+.cover-up-page .split-list li b{color:#fff;font-weight:600}
+
+@media(min-width:861px){
+  .artists .art-grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:920px;margin-inline:auto}
+}
