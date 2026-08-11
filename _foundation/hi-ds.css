@@ -100,6 +100,16 @@
    Lead căn giữa đã có --lead-mw chừa sẵn 25px mỗi bên; lead nào chưa có thì cấp. */
 .section-intro.has-clamp{max-width:var(--lead-mw)}
 
+/* --- Head căn giữa thì HỘP đoạn dẫn cũng căn giữa -----------------------------
+   hi-foundation (khoá) đặt .section-intro{max-width:640px} mà KHÔNG kèm
+   margin-inline:auto → chữ căn giữa bên trong một cái hộp dính mép trái. Nhìn ra
+   là cả đoạn lệch trái, không phải hụt đều hai bên.
+   Trước đây mỗi page tự vá bằng tên riêng của mình (.au-story .section-intro ·
+   .section-head.center .section-copy) nên page nào quên thì lệch: artists.html
+   lệch trái 208px ở 1440.
+   Khoá theo ĐIỀU KIỆN "head mang .center" — page mới không phải nhớ vá. */
+.section-head.center > p{margin-inline:auto}
+
 /* --- Cap bề ngang ở mobile: CHỈ áp cho chữ căn giữa ---------------------------
    Chữ căn giữa mà hộp hẹp hơn cột thì hụt ĐỀU hai bên → đọc ra là có chủ ý, và
    25px lề đó chính là chỗ cho mũi tên nén đứng (contentRight+31 vẫn trong màn).

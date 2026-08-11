@@ -106,8 +106,6 @@ body{background:var(--bg);overflow-x:clip}
 	.projects{background:#090909}
 	.projects .section-head{position:relative;z-index:3;margin-bottom:clamp(22px,3vw,36px)}
 	.projects .section-head h2{font-size:clamp(28px,3.4vw,44px);color:#fff;max-width:620px}
-	.project-top{display:block;margin-top:-6px;margin-bottom:24px}
-	.project-note{font-size:15px;line-height:1.62;color:var(--muted);max-width:620px}
 	/* Bỏ masonry (column-count + 4 mức aspect-ratio so le). Masonry xếp ảnh theo CỘT
 	   nên thứ tự đọc nhảy dọc, và mỗi cột kết thúc ở một độ cao khác nhau → đáy lưới
 	   răng cưa, hàng cuối hụt. Đổi sang grid 3 cột đều, mọi ô cùng tỉ lệ 3/4. */
@@ -335,7 +333,6 @@ body{background:var(--bg);overflow-x:clip}
 	  .section-head.center .section-copy{margin-inline:0}
 	  .projects .section-head{position:relative;top:auto}
   .projects .section-head h2{font-size:clamp(26px,7.2vw,34px)}
-  .project-top{align-items:flex-start;flex-direction:column}
   .project-grid{grid-template-columns:repeat(2,1fr);gap:10px}
   .award-card{flex-basis:84%}
   .award-foot{align-items:stretch;flex-direction:column}
