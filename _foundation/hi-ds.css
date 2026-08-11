@@ -277,6 +277,18 @@
 .section-head--editorial > h2,
 .section-head--editorial > p,
 .s-awards .section-head--editorial > h2{margin-inline:0;text-align:left}
+/* Thử nghiệm đã duyệt theo từng section: căn GIỮA cả cột editorial nhưng chữ
+   bên trong vẫn căn trái. Dùng modifier để không làm đổi các head chữ|ảnh thật. */
+.section-head--editorial-centered{
+  width:100%;max-width:660px;margin-inline:auto;padding-right:0
+}
+.section .section-head--editorial-centered > h2,
+.section-head--editorial-centered > p{
+  width:100%;max-width:none;margin-inline:0;text-align:left
+}
+.section-head--editorial-centered > .sec-link--head{
+  position:static;margin-top:18px
+}
 /* bottom:14px chứ không phải 0 — link neo vào ĐÁY hộp head, mà đáy hộp cũng là
    nơi khối nội dung bắt đầu, nên để 0 thì gạch chân gần chạm thanh tab bên dưới.
    14px nhấc link lên; padding-bottom phía dưới chừa chỗ để nó không đè lead. */
