@@ -1039,3 +1039,143 @@ body.galp-lock{overflow:hidden}
    thành hai tấm ảnh chồng vai trò nhau trong cùng một khối. */
 .adv-tabs--no-media .adv-media{display:none}
 .adv-tabs--no-media .adv-grid{grid-template-columns:1fr}
+
+/* ============================================================================
+   KHỐI SECTION DÙNG CHUNG — nâng từ _pages/home.css lên đây 2026-08-11.
+   Lý do: /piercing (và tattoo · black-and-grey · removal · ear-piercing sắp port)
+   dùng lại nguyên mấy khối này của trang chủ. Để ở home.css thì mỗi page phải
+   chép lại một bản — đúng vết 14/16 lỗi của artists + artist-detail.
+   Số đo lấy theo TRANG CHỦ; bản trong mockup piercing lệch vài giá trị
+   (.s-price nền bg thay vì black · .pr-feat line-height 1,5 · .gd-date 11,5px)
+   thì bỏ, trang chủ là bản chuẩn.
+   Họ: hero-media/scrim/col · badge-col/r1/num/cnt · trustbar · tb-div · soa-shield
+        · near-frame/poster/scrim/play/vcap · gallery · s-price · pr-feat
+        · s-guides · gd-* (feat · item · scroller · vbar · list · date · right)
+   ============================================================================ */
+
+.hero-media{position:absolute;inset:0;z-index:0}
+.hero-media img{width:100%;height:100%;object-fit:cover;object-position:46% 40%;
+  animation:kenburns 30s var(--ease) infinite alternate;transform-origin:46% 40%}
+/* stronger scrim — lead must read over the busy skull image */
+.hero-scrim{position:absolute;inset:0;z-index:1;
+  background:
+    linear-gradient(90deg, rgba(13,13,13,0.97) 0%, rgba(13,13,13,0.9) 34%, rgba(13,13,13,0.58) 56%, rgba(13,13,13,0.4) 100%),
+    linear-gradient(0deg, rgba(13,13,13,0.75) 0%, rgba(13,13,13,0) 42%);}
+.badge-col{display:flex;flex-direction:column;gap:2px}
+.badge-r1{display:flex;align-items:center;gap:9px}
+.badge-num{font-family:var(--head);font-weight:700;font-size:clamp(20px,4.4vw,25px);line-height:1;color:#fff;letter-spacing:.01em}
+.badge-cnt{font-family:var(--sub);font-size:13px;letter-spacing:.01em;color:#D6D6D6}
+.badge-cnt b{color:#fff;font-weight:700}
+/* trust row — Google rating badge + SA Current "Best of San Antonio 2026" seal.
+   The seal is a bare image: no link, no label. With no text competing for width
+   the row never wraps, so the Google badge keeps its original sizing untouched
+   and only the seal height steps down. Award details live in the img alt. */
+.trustbar{display:flex;flex-wrap:nowrap;align-items:center;gap:18px;margin-bottom:24px;max-width:100%}
+.trustbar .badge{margin-bottom:0;flex:0 0 auto}
+.badge-r1,.badge-cnt{white-space:nowrap}
+.tb-div{flex:0 0 1px;align-self:stretch;min-height:36px;background:var(--card-brd)}
+.soa-shield{height:60px;width:auto;flex:0 0 auto;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
+@media(max-width:560px){
+
+  .trustbar{gap:13px}
+  .soa-shield{height:52px}}
+
+@media(max-width:410px){
+
+  .trustbar{gap:10px}
+  .tb-div{min-height:30px}
+  .soa-shield{height:44px}}
+
+@media(max-width:355px){
+
+  .trustbar{gap:9px}
+  .soa-shield{height:40px}}
+
+
+@media(prefers-reduced-motion:reduce){
+
+  .hero-media img{animation:none;transform:scale(1.05)}}
+
+@media(max-width:560px){
+
+  .hero-col{min-width:0}}
+
+.artists .sec-bridge,.gallery .sec-bridge{margin-left:0;text-align:left}   /* editorial: bridge left too */
+.artists>.wrap,.gallery>.wrap,.services>.wrap{position:relative;z-index:1}
+.near-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:transform .6s var(--ease)}
+.near-media:hover .near-poster{transform:scale(1.04)}
+.near-scrim{position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.14) 0%,rgba(0,0,0,0) 32%,rgba(0,0,0,.64) 100%)}
+.near-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:76px;height:76px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(0,0,0,.42);backdrop-filter:blur(3px);-webkit-backdrop-filter:blur(3px);border:1.5px solid rgba(255,255,255,.55);
+  transition:transform .25s var(--ease),background .25s var(--ease),border-color .25s var(--ease)}
+.near-media:hover .near-play{transform:translate(-50%,-50%) scale(1.08);background:var(--orange);border-color:var(--orange)}
+.near-play svg{width:26px;height:26px;fill:#fff;margin-left:4px}
+.near-play{padding:0;cursor:pointer;appearance:none;-webkit-appearance:none}
+.near-frame{position:absolute;inset:0;width:100%;height:100%;border:0;z-index:6}
+.near-media.is-playing .near-scrim,.near-media.is-playing .near-play,.near-media.is-playing .near-vcap{opacity:0;pointer-events:none;transition:opacity .3s var(--ease)}
+.near-vcap{position:absolute;left:20px;right:20px;bottom:16px;z-index:2;display:inline-flex;align-items:center;gap:9px;
+  font-family:var(--sub);font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:#fff}
+.near-vcap::before{content:"";width:22px;height:1px;background:var(--orange);flex-shrink:0}
+@media(max-width:600px){
+
+  .near-play{width:64px;height:64px}
+  .near-play svg{width:22px;height:22px}
+  .near-vcap{font-size:11px;left:16px;bottom:13px}}
+
+
+/* ---------- SECTION 07 · GALLERY (Our Work — category cards + popup, mirror live) ---------- */
+.gallery{background:var(--bg)}
+
+/* ============================================================================
+   SECTION 12 — PRICING  ·  "Tattoo Pricing in San Antonio" (real content, 3 tiers)
+   Content = content/05-humanized/2026-06-30_homepage-humanized.md §Pricing, VERBATIM
+   (B.Long-approved): $80 min / $150 hr / $200 hr + Ways to save. Centered head +
+   clamped lead (twin arrow). Three tiers, middle highlighted for rhythm (mirrors
+   B.Long's 3-card ref, re-skinned to dark editorial). NO inline CTA by design —
+   CTA 2 (Get a Free Quote) is its own §13; the humanized CTA map removed it here.
+   ============================================================================ */
+.s-price{background:var(--black)}
+.s-price .wrap{position:relative;z-index:2}
+.s-price h2 .o{color:var(--orange)}
+.pr-feat{display:flex;align-items:flex-start;gap:10px;padding:7px 0;font-size:14.5px;line-height:1.45;color:#D3D3D3}
+.pr-feat svg{width:16px;height:16px;flex-shrink:0;margin-top:2px;color:var(--orange)}
+/* khối "glass override" đã gỡ 2026-08-10: shorthand `background` của nó ghi đè cả
+   background-image nên select mất mũi tên, và field tối hơn card làm ô nhập gần như tàng hình.
+   Tông thật của form nay bám booking-form.css v7 — xem khối §FORM BOOK ở cuối file. */
+
+/* ========== §17 GUIDES ========== */
+.s-guides{background:var(--bg)}
+.s-guides h2 .o{color:var(--orange)}
+.gd-right{min-width:0;display:grid;grid-template-columns:minmax(0,1fr) 6px;gap:16px;align-items:stretch}
+.gd-scroller{min-width:0;display:flex;flex-direction:column;gap:clamp(16px,1.9vw,22px);overflow-y:auto;overflow-x:hidden;scrollbar-width:none;-ms-overflow-style:none;-webkit-overflow-scrolling:touch;padding-right:2px}
+.gd-scroller::-webkit-scrollbar{display:none}
+/* featured */
+.gd-feat{display:flex;flex-direction:column;text-decoration:none}
+.gd-feat-media{aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:linear-gradient(135deg,#1c1c1c,#0d0d0d);margin-bottom:18px}
+.gd-feat-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease);color:transparent;font-size:0}
+.gd-feat:hover .gd-feat-media img{transform:scale(1.04)}
+.gd-date{display:inline-flex;align-items:center;gap:7px;font-family:var(--sub);font-size:12px;font-weight:600;letter-spacing:.02em;color:#8A8A8A}
+.gd-date svg{width:14px;height:14px;opacity:.85}
+.gd-feat .gd-feat-h{margin:11px 0 10px;font-family:var(--sub);font-weight:700;font-size:clamp(19px,1.9vw,23px);line-height:1.32;color:#fff;transition:color .2s var(--ease)}
+.gd-feat:hover .gd-feat-h{color:var(--orange)}
+.gd-feat p{margin:0 0 16px;font-size:14.5px;line-height:1.62;color:var(--muted)}
+/* list phải */
+.gd-list{display:flex;flex-direction:column;gap:clamp(16px,1.9vw,22px)}
+.gd-item{display:grid;grid-template-columns:clamp(140px,15vw,188px) 1fr;gap:clamp(14px,1.5vw,18px);text-decoration:none;align-items:center}
+.gd-item-media{aspect-ratio:4/3;border-radius:12px;overflow:hidden;background:linear-gradient(135deg,#1c1c1c,#0d0d0d)}
+.gd-item-media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease);color:transparent;font-size:0}
+.gd-item:hover .gd-item-media img{transform:scale(1.05)}
+.gd-item-body{display:flex;flex-direction:column;gap:7px;min-width:0}
+.gd-item .gd-item-h{margin:1px 0 0;font-family:var(--sub);font-weight:700;font-size:clamp(15px,1.5vw,17px);line-height:1.34;color:#fff;transition:color .2s var(--ease)}
+.gd-item:hover .gd-item-h{color:var(--orange)}
+.gd-item p{margin:0;font-size:13px;line-height:1.55;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+/* thanh kéo (thay dots) — style đồng bộ pill drag-bar: track trong suốt, thumb kéo được */
+/* thanh kéo DỌC sát bên phải list — cuộn dọc list bài con, featured đứng yên */
+.gd-vbar{width:6px;border-radius:10px;background:rgba(255,255,255,.08);position:relative;cursor:pointer;touch-action:none;align-self:stretch}
+.gd-vbar-th{position:absolute;left:0;top:0;width:100%;min-height:44px;border-radius:10px;background:rgba(255,255,255,.42);transition:background .2s var(--ease)}
+.gd-vbar:hover .gd-vbar-th,.gd-vbar-th:active{background:rgba(255,255,255,.62)}
+@media(max-width:860px){
+.gd-feat-media{aspect-ratio:16/9}}
+
+@media(max-width:600px){
+.gd-item{grid-template-columns:118px 1fr;gap:13px}}
