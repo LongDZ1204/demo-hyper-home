@@ -204,17 +204,33 @@ biến thể theo khổ màn không".
    này chỉ 244 ký tự. **Nén là để trị đoạn dẫn dài, không phải mặc định.**
    Cách soát: `el.scrollHeight > el.clientHeight` trên mọi `.lead`/`.lead-txt` ở 430 và 360.
 
-**Nút `.rv-leave` gãy 2 dòng — chữa trong `.s-plat`, chưa nâng lên tầng chung.** Ở ≤820 bản chung
+**Nút `.rv-leave` gãy 2 dòng — đã nâng lên `hi-components.css` (commit `4937b13`).** Ở ≤820 bản chung
 đổi `.rv-bar` sang cột + stretch nên nút giãn hết bề ngang thẻ; "Read our Facebook reviews" dài hơn
 "Read our Google reviews" đúng 2 ký tự và vượt hộp chữ → 64px cạnh 44px. Cách chữa **không dùng**
 `white-space:nowrap`: nowrap ép hộp phình theo chữ, đo ở 360px tràn 46px ra ngoài thẻ, tức đổi một
 lỗi nhìn thấy lấy một lỗi nặng hơn (tràn ngang kéo cả trang trượt). Thay vào đó bóp cho chữ VỪA
 hộp — nhả padding nút/thanh, gap, khe chữ, rồi cho cỡ chữ trôi theo `clamp(10.5px,2.85vw,12.5px)`.
 Nếu có khổ máy nào chưa lường thì nó tự xuống dòng như cũ, không bao giờ tràn.
-**Còn 5 page nữa gãy y hệt** — `index` · `about` · `piercing` · `tattoo` ·
-`tattoo-cover-up-san-antonio` (đo bằng `grep -l "Read our Facebook reviews" *.html`).
-Luật gốc `.rv-leave` nằm ở `hi-components`;
-chưa nâng lên đó vì mấy page kia đang có người khác làm dở.
+**5 page nữa gãy y hệt** — `index` · `about` · `piercing` · `tattoo` ·
+`tattoo-cover-up-san-antonio` (đo bằng `grep -l "Read our Facebook reviews" *.html`) — nên luật
+đã lên tầng chung, bản `.s-plat` trong `_pages/testimonials.css` gỡ bỏ. Giữ hai bản song song thì
+chúng trôi khỏi nhau.
+
+**Hero căn lại 11/08 (đợt 2, B.Long soi tiếp).** Hai chỗ lệch, hai nguyên nhân khác nhau:
+
+- **Thẻ chip treo cao hơn H1.** Bản chung để `align-items:start` ở ≥821 nên thẻ dính mép trên cột
+  trái — mà mép đó là *breadcrumb*, không phải H1. Đo ở 1440: thẻ mở ở 295 trong khi H1 mở ở 329,
+  đóng ở 580 trong khi đoạn dẫn đóng ở 657. Chữa bằng `align-self:center` (chia đều 38px mỗi đầu,
+  mép trên thẻ rơi trúng H1 lệch 4px) — cùng cách `.award-card` của `/piercing` và `/tattoo` neo
+  cột phải. **Không** kéo giãn cho bằng mép hai đầu: thẻ cao 285 kéo lên 362 là bơm 77px trống vào
+  giữa lời trích và hàng chip.
+- **4 chip xếp so le.** Nhãn dài ngắn khác nhau (154 · 175 · 178 · 119px) nên flex xếp 1/1/2 ở khổ
+  430, 3 hàng lệch nhau. Đổi sang grid `1fr` — mọi chip bằng nhau bất kể nhãn. **Số cột thì phải
+  bám LÒNG THẺ, không bám bề ngang màn**: từ 821 xuống 820 lòng thẻ nhảy 270 → 570 vì thẻ thôi làm
+  cột phải và chiếm trọn hàng, tức màn nhỏ hơn lại rộng hơn. Bảng đo cả dải nằm trong
+  `_pages/testimonials.css`; kết quả 2 cột ở ≥1150 và 480–820, 1 cột ở 821–1149 và <480.
+  Bản thử đầu ép 2 cột từ 430 bằng cách bó chip + `clamp` cỡ chữ theo vw — chạy được nhưng chữ tụt
+  còn 9,89px; đổi 4 dòng CSS và 1,1px chữ in hoa lấy thẻ thấp hơn 86px thì không đáng, đã bỏ.
 
 **`piercing-gallery.html` và `removal-gallery.html` đã gỡ khỏi demo ngày 11/08** (B.Long chốt).
 Layout của chúng không khác `tattoo-gallery.html` một điểm nào, nên khi cần dựng lại thì **chép từ

@@ -55,6 +55,17 @@
    biến thể theo khổ màn của nó, hoặc tự khoá mình vào đúng khổ cần sửa. */
 @media(min-width:821px){
   .tm-hero .hero-grid{grid-template-columns:minmax(0,1fr) minmax(320px,.72fr)}
+  /* Căn khối chip theo TÂM cột chữ, không dính mép trên.
+     Bản chung để align-items:start ở >=821, nên thẻ dính mép trên của cột trái —
+     mà mép đó là breadcrumb chứ không phải H1. Đo ở 1440: thẻ mở ở 295 trong khi
+     H1 mở ở 329, đóng ở 580 trong khi đoạn dẫn đóng ở 657. Lệch đầu 34px, hụt
+     đuôi 77px — nhìn ra thẻ bị treo lên cao và thừa một mảng trống dưới.
+     align-self:center chia đều 38px mỗi đầu, mép trên thẻ rơi vào 333 tức lệch
+     H1 đúng 4px. Đây cũng là cách .award-card của /piercing và /tattoo neo cột
+     phải — cùng một vỏ .hero-grid thì neo cùng một kiểu.
+     KHÔNG kéo giãn (stretch) cho bằng mép hai đầu: thẻ chỉ cao 285, kéo lên 362
+     là bơm 77px trống vào giữa lời trích và hàng chip. */
+  .hero-proof{align-self:center}
 }
 
 /* Đoạn dẫn hero: gỡ nén.
@@ -72,7 +83,9 @@
   background:rgba(12,12,12,.64);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   padding:24px;box-shadow:0 26px 74px rgba(0,0,0,.48)}
 .proof-quote{margin:0;font-size:clamp(20px,2vw,28px);line-height:1.24;font-weight:700;color:#fff}
-.mention-list{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+/* 4 chip: cột 1fr nên MỌI chip rộng bằng nhau bất kể nhãn dài ngắn. Xem khối
+   "SỐ CỘT CHIP" cuối file để biết vì sao mặc định là 1 cột. */
+.mention-list{display:grid;grid-template-columns:1fr;gap:9px;margin-top:20px}
 .mention-list span{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--border);
   border-radius:999px;padding:7px 11px;color:#eee;font-family:var(--sub);font-size:11px;
   letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.04)}
@@ -140,37 +153,45 @@ h3.platform-h{margin:0 0 18px;font-family:var(--head);font-size:clamp(21px,2.2vw
    MÀU có bản quyền, đặt thẳng lên nền #0F0F0F là mất nét xanh và đỏ. */
 h3.platform-h svg{width:26px;height:26px;background:#fff;border-radius:50%;padding:3px;flex-shrink:0}
 
-/* ==== NÚT "READ OUR … REVIEWS" — ép về MỘT dòng trên điện thoại ============
-   Ở khổ <=820 bản chung đổi .rv-bar sang cột + stretch, nên nút giãn hết bề
-   ngang thẻ. Đo ở 430px: thẻ rộng 324px, nút Google cao 44px (1 dòng) còn nút
-   Facebook cao 64px — "Facebook reviews" dài hơn "Google reviews" đúng 2 ký tự
-   và vượt hộp chữ 284px, gãy thành 2 dòng. Hai nút cạnh nhau lệch chiều cao 20px.
+/* ==== SỐ CỘT CHIP — bám theo LÒNG THẺ, không bám theo bề ngang màn ==========
+   Cũ dùng flex nên chip ôm sát chữ, mà 4 nhãn dài ngắn khác nhau: 154 · 175 ·
+   178 · 119 px ở cỡ 11px. Trong lòng thẻ 318px ở khổ 430, hàng đầu cần
+   154+9+175=338 nên tràn — đo ra 3 hàng lệch nhau: chip 1 đứng một mình, chip 2
+   đứng một mình, chip 3 và 4 mới chung hàng. Nhìn ra như xếp lỗi.
 
-   KHÔNG dùng white-space:nowrap. Nowrap ép hộp phình theo chữ: đo ở 360px nút
-   tràn 46px ra ngoài thẻ, mà tràn ngang thì kéo cả trang trượt — đổi một lỗi
-   nhìn thấy lấy một lỗi nặng hơn. Cách ở đây là bóp cho chữ VỪA hộp, nên nếu có
-   khổ máy nào tôi chưa lường thì nó tự xuống dòng như cũ, không bao giờ tràn.
+   Grid với cột 1fr cho mọi chip rộng bằng nhau. Nhưng số cột thì KHÔNG suy được
+   từ bề ngang màn, vì lòng thẻ không tỉ lệ với màn — đo cả dải mới thấy:
 
-   Nhả 4 chỗ ăn bề ngang cùng lúc: padding nút 20->14, padding thanh 20->14,
-   gap 9->7, khe chữ .05em->.03em, rồi cho cỡ chữ trôi theo bề ngang màn.
+     màn   1440  1200  1150  1100  1024   960   900   821 | 820   600   430
+     lòng   423   406   385   364   333   306   281   270 | 570   488   318
+     nửa    207   199   188   178   162   149   136   131 | 281   239   154
 
-   PHẠM VI: khoá trong .s-plat. Luật gốc .rv-leave nằm ở hi-components và 5 page
-   khác cũng đang gãy 2 dòng y hệt — sửa ở tầng chung là chạm vào page người khác
-   đang làm dở. Đã báo B.Long tách việc. */
-@media(max-width:820px){
-  .s-plat .rv-bar{padding-inline:14px}
-  .s-plat .rv-leave{padding-inline:14px;gap:7px;
-    letter-spacing:.03em;font-size:clamp(10.5px,2.85vw,12.5px)}
-  .s-plat .rv-leave svg{width:17px;height:17px}
+   Chỗ 821 -> 820 lòng thẻ NHẢY từ 270 lên 570: trên 821 thẻ là cột phải của
+   hero, dưới đó nó chiếm trọn bề ngang. Nên khổ màn nhỏ hơn lại rộng hơn.
+
+   Nhãn dài nhất "CUSTOM DESIGNS" cần 178px ở cỡ 11px. Đối chiếu hàng "nửa":
+     >=1150  nửa 188+  -> 2 cột, giữ nguyên cỡ 11px
+     821-1149 nửa 131-178 -> 1 cột. Ép 2 cột ở đây phải hạ cỡ chữ xuống 8,3px
+                             mới vừa, không đọc được. Thà 4 hàng đều nhau.
+     480-820  nửa 187+   -> 2 cột, giữ nguyên cỡ 11px
+     <480     nửa 187-   -> 1 cột
+
+   Sàn 480 chứ không phải 430. Bản thử đầu để 430 và bù bằng cách bó chip
+   (padding 11->8, khe chữ .06->.02em, cỡ chữ clamp theo vw): chạy được, 2 cột
+   ở khổ 430, nhưng cỡ chữ tụt còn 9,89px. Đổi 4 dòng CSS và 1,1px chữ in hoa
+   lấy một thẻ thấp hơn 86px thì không đáng — chip là nhãn phụ, đọc được quan
+   trọng hơn gọn. Bỏ luôn cả nhánh bó, giờ chip giữ 11px ở MỌI khổ.
+   Đổi padding thẻ hay thêm chip thứ 5 thì phải đo lại bảng này. */
+@media(min-width:1150px){
+  .mention-list{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
-/* Android phổ biến nhất là khổ 360px CSS. Ở đó nút Facebook còn thiếu đúng 4px
-   là đủ một dòng, trong khi nút Google đã một dòng — lại lệch cao đúng cái lỗi
-   ban đầu. Không hạ cỡ chữ nữa (10,5px in hoa đã là đáy đọc được), nhả nốt
-   padding/gap/icon để lấy 6px. */
-@media(max-width:374px){
-  .s-plat .rv-leave{padding-inline:12px;gap:6px}
-  .s-plat .rv-leave svg{width:16px;height:16px}
+@media(min-width:480px) and (max-width:820px){
+  .mention-list{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
+
+/* Nút "Read our … reviews" gãy 2 dòng ở điện thoại: luật đã NÂNG LÊN
+   hi-components.css (commit 4937b13) vì 6 trang cùng khai .rv-leave. Bản
+   .s-plat ở đây đã gỡ — giữ hai bản song song thì chúng sẽ trôi khỏi nhau. */
 
 @media(max-width:1100px){
   .rv-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
