@@ -1,51 +1,133 @@
-/* ============================================================================
-   TRANG LƯỚI ẢNH — tattoo-gallery · piercing-gallery · removal-gallery
-   ============================================================================
-   Ba trang này dùng CHUNG một file, không mỗi trang một bản. Khối <style> gốc
-   của chúng giống nhau từng byte, mà ba bản sao chính là cách chúng trôi khỏi
-   nhau (bài học 10/08 ghi ở README).
-
-   Ở đây chỉ còn phần RIÊNG của dải hero. Bốn thứ dưới đây đã về lớp chung khi
-   port, đừng khai lại:
-     pill lọc        .galf · .galf-pill        -> hi-components.css
-     lưới ảnh        .galp-grid · .galp-tile   -> hi-components.css
-     đèn xem ảnh     .galp-lb                  -> hi-components.css + .js
-     khối CTA cuối   .s-cta1 · .cta-smoke      -> hi-components.css
-     breadcrumb      .crumb                    -> hi-ds.css
-   ============================================================================ */
-
 body.portfolio-page{background:var(--bg);color:#fff}
-html{scroll-padding-top:88px}
 
-/* ---- dải hero ---- */
-/* overflow:clip chứ KHÔNG phải hidden. Thanh pill .galf nằm trong section này và
-   dùng position:sticky; hidden tạo khung cuộn nên giết sticky, mà giết rất êm —
-   class .is-stuck vẫn bật đúng (mốc IntersectionObserver không liên quan), chỉ có
-   thanh là trôi mất. clip cắt gọn y hệt mà không tạo khung cuộn. */
-.portfolio-main{position:relative;overflow:clip;background:linear-gradient(180deg,#030303 0%,#090909 38%,#101010 100%);padding:clamp(112px,10vw,140px) 0 clamp(68px,8vw,104px)}
+/* neo cuộn = header + thanh lọc dính, để link "Skip to gallery" không nhảy vào
+   vùng đã bị 2 thanh đó che */
+html{scroll-padding-top:88px}
+/* === HERO — nền KHÓI, full-bleed, breadcrumb căn giữa trên H1 (2026-08-10) =====
+   Trước: breadcrumb + H1 + lead nằm CHUNG trong section lưới ảnh, căn trái, nền
+   gradient đen trơn. Nay tách thành section hero riêng theo đúng bản của portfolio
+   hub và trang FAQ: asset khói thật của studio, breadcrumb căn giữa ngay trên H1.
+   ============================================================================ */
+.port-hero{position:relative;isolation:isolate;overflow:clip;background:var(--black);
+  min-height:clamp(190px,21vw,280px);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:clamp(96px,9vw,116px) 0 clamp(22px,2.4vw,32px)}
+.hero-smoke{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;
+  opacity:.5;filter:contrast(1.22) brightness(1.06) saturate(1.16);
+  -webkit-mask-image:radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
+          mask-image:radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
+  pointer-events:none;user-select:none;z-index:0}
+.port-hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(48% 62% at 50% 62%,rgba(204,102,0,.15),rgba(204,102,0,0) 72%)}
+/* Bán kính ngang 78%: hero full-bleed mà H1 chiếm ~75% bề ngang, vignette hẹp hơn
+   thì 2 đầu chữ vẫn dính khói. */
+.port-hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(to bottom,var(--black) 0%,rgba(0,0,0,0) 26%,rgba(0,0,0,0) 74%,var(--black) 100%),
+    radial-gradient(78% 62% at 50% 50%,rgba(0,0,0,.88),rgba(0,0,0,0) 88%)}
+.port-hero .grain{opacity:.045;z-index:1}
+.port-hero .wrap{position:relative;z-index:2}
+/* .crumb là component chung ở hi-ds.css; hero này chỉ cần căn giữa thêm. */
+.port-hero .crumb ol{justify-content:center}
+/* KHÔNG khai font-size ở đây. Bản cũ để clamp(34px,4.8vw,66px) — thừa 6px so với
+   --fs-h1 (60px). Bỏ hẳn thì h1 rơi về đúng luật của hi-foundation.css, vốn đã là
+   clamp(34px,4.6vw,60px) = đúng token. Khai lại chỉ tạo thêm một nguồn sự thật nữa. */
+.port-hero h1{max-width:900px;margin:12px auto 0;text-wrap:balance}
+.port-hero h1 .o{color:var(--orange)}
+.hero-lead{max-width:var(--lead-mw);margin:14px auto 0;font-size:var(--fs-lead);line-height:1.62;
+  color:#D5D5D5;text-shadow:0 2px 12px rgba(0,0,0,.8)}
+
+/* overflow:CLIP chứ không hidden. hidden biến section thành scroll container, mà
+   sticky lại bám theo scroll container gần nhất — thanh lọc sẽ đứng im tại chỗ thay
+   vì dính đỉnh màn. clip cắt hình y hệt nhưng không tạo scroll container. */
+/* padding-TRÊN = 0 (B.Long 10/08): thanh lọc phải nối liền mạch với chữ lead của
+   hero chứ không tách thành khối riêng. Khoảng hở giờ chỉ còn padding-đáy của hero
+   (32px), thay vì 32 + 72 = 104px như trước. Hai section cùng tone gần-đen nên chỗ
+   nối không lộ đường cắt. */
+.portfolio-main{position:relative;overflow:clip;background:linear-gradient(180deg,#030303 0%,#090909 38%,#101010 100%);padding:0 0 clamp(68px,8vw,104px)}
 .portfolio-main::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,0) 24%,rgba(0,0,0,.28) 100%)}
 .portfolio-main .wrap{position:relative;z-index:2}
-
-/* Khối head không có link điều hướng riêng -> căn giữa, theo đúng about ·
-   awards · artists. Breadcrumb không tính là link của head (luật C1 siết lại
-   ngày 11/08: chỉ .sec-link mới lật head sang căn trái). */
-.gallery-head{max-width:820px;margin:0 auto clamp(18px,2.4vw,28px);text-align:center}
-.gallery-head .crumb{margin-bottom:clamp(12px,1.8vw,18px)}
-.gallery-head .crumb ol{justify-content:center}
-/* Cỡ chữ lấy từ token, không đặt số lẻ (luật C2). Bản cũ để 66px, lệch thang. */
-.gallery-head h1{font-size:var(--fs-h1);line-height:.96;text-wrap:balance}
-/* foundation đặt h1 .o{display:block} — giữ nguyên, hero này cố ý xuống 2 dòng */
-.gallery-head h1 .o{color:var(--orange)}
-.gallery-head p{max-width:680px;margin:10px auto 0;color:#d8d8d8;font-size:clamp(14px,1.25vw,17px);line-height:1.55}
-
-@media(max-width:900px){
-  html{scroll-padding-top:78px}
+/* Link sang trang dịch vụ của style đang lọc (B.Long 10/08). MỘT thẻ <a> duy nhất,
+   JS đổi href + chữ theo pill đang chọn — không phải 9 thẻ ẩn hiện luân phiên.
+   Lý do: 9 thẻ thì mỗi lần thêm/bớt style phải sửa 2 chỗ và sớm muộn sẽ lệch nhau;
+   ở đây URL nằm ngay trên pill (data-service) nên nguồn sự thật chỉ có một.
+   Không có JS thì thẻ vẫn giữ href mặc định = style đang active sẵn, vẫn bấm được. */
+.style-golink{display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  min-height:52px;padding:15px 32px;border-radius:4px;background:var(--orange);color:#fff;
+  font-family:var(--sub);font-weight:600;font-size:13px;letter-spacing:.09em;text-transform:uppercase;
+  text-decoration:none;transition:background .2s var(--ease)}
+.style-golink:hover,.style-golink:focus-visible{background:var(--orange-hi);outline:none}
+.style-golink svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.style-more{margin-top:clamp(26px,3.2vw,38px);text-align:center}.cta-smoke{position:absolute;top:5%;left:3.5%;width:93%;height:90%;
+  object-fit:contain;object-position:center;max-width:none;
+  transform:scaleX(-1);opacity:.62;filter:contrast(1.32) brightness(1.12) saturate(1.02);
+  -webkit-mask-image:radial-gradient(126% 114% at 50% 50%,#000 62%,transparent 94%);
+          mask-image:radial-gradient(126% 114% at 50% 50%,#000 62%,transparent 94%);
+  pointer-events:none;user-select:none;z-index:0}
+/* === NAP cuối trang — cùng bộ số .s-visit đang dùng ở portfolio hub ===
+   Section mang luôn class .section để ăn `.section h2` của hi-foundation (font
+   --head + IN HOA + --fs-h2). Bản đầu em tự khai font-size 44px ở đây: số thì trùng
+   token nhưng font và chữ hoa thì KHÔNG kế thừa được, nên heading ra font body
+   thường — lệch hẳn khỏi mọi H2 khác của site. Lấy nguyên luật chung vẫn hơn. */
+.section-title-row{display:flex;align-items:center;justify-content:center;gap:20px;text-align:center}
+.section-title-row h2{margin:0}
+.s-visit{position:relative;background:var(--black);border-top:1px solid var(--hair)}
+.s-visit .wrap{position:relative;z-index:2}
+.vs-intro{max-width:var(--lead-mw);margin:var(--gap-head-lead) auto 0;text-align:center;
+  font-size:var(--fs-lead);line-height:1.62;color:#C9C9C9}
+.vs-nap{display:grid;grid-template-columns:0.86fr 1.14fr;gap:clamp(24px,3.4vw,48px);
+  align-items:stretch;margin-top:var(--gap-head-body)}
+.vs-contact{list-style:none;align-self:center;margin:0;padding:0}
+.vs-ci{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--hair)}
+.vs-ci:first-child{border-top:0;padding-top:0}
+.vs-ci:last-child{padding-bottom:0}
+.vs-ci-ic{flex:0 0 auto;width:24px;height:24px;color:var(--orange);margin-top:2px}
+.vs-ci-ic svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.vs-ci-lab{display:block;font-family:var(--sub);font-size:16px;font-weight:600;letter-spacing:.02em;color:var(--orange);margin-bottom:5px}
+.vs-ci-val{display:block;font-size:15px;line-height:1.55;color:#DEDEDE;text-decoration:none;margin:0}
+a.vs-ci-val:hover{color:var(--orange-hi)}
+.vs-hours span{display:block}
+.vs-map{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--card-brd);min-height:360px;background:#111}
+.vs-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}@media(max-width:1040px){
+  .vs-nap{grid-template-columns:1fr;gap:26px}
+  .vs-map{min-height:300px}
+}
+@media(max-width:760px){
+  /* 106px chứ không 92px như hub: header trang này là fixed + nền đục, để 92px thì
+     breadcrumb chỉ cách mép header 14px, nhìn dính. Hub header trong suốt nên không
+     lộ ra khoảng đó. */
+  .port-hero{padding:106px 0 24px;min-height:clamp(170px,42vw,230px)}
+  /* cover phóng ảnh to mà hero lại thấp → vệt khói chạm mép chữ. Nhạt thêm +
+     vignette phủ rộng gần kín, chỉ chừa rìa cho khói. */
+  .hero-smoke{opacity:.4}
+  .port-hero::after{background:
+    linear-gradient(to bottom,var(--black) 0%,rgba(0,0,0,0) 20%,rgba(0,0,0,0) 80%,var(--black) 100%),
+    radial-gradient(88% 70% at 50% 50%,rgba(0,0,0,.9),rgba(0,0,0,.3) 88%)}
+  /* bỏ .hero-lead{font-size:15.8px} của bản port từ hub: một con số viết cứng
+     chen ngang thang lead, làm --fs-lead (16.5 / 15.5 dưới 600px) mất tác dụng. */
+  .section-title-row h2{white-space:normal}
 }
 @media(max-width:640px){
-  .portfolio-main{padding:96px 0 64px}
-  .gallery-head{margin-bottom:17px}
-  .gallery-head .crumb{margin-bottom:12px}
-  /* cỡ chữ h1 do token --fs-h1 lo, ở đây chỉ chặn từ dài phá cột */
-  .gallery-head h1{overflow-wrap:break-word}
-  .gallery-head p{margin-top:8px;font-size:14px;line-height:1.5}
+  .portfolio-main{padding:0 0 64px}}
+@media(max-width:430px){
+  .port-hero h1{font-size:clamp(30px,10vw,44px)}
+  .cta-smoke{top:1.5%;left:0;width:100%;height:97%;object-fit:cover;opacity:.54}
 }
+
+/* Khe đoạn dẫn -> khối NAP trong section Visit. .section-title-row mang
+   margin-bottom lớn (dành cho head đi thẳng xuống nội dung), còn .vs-intro
+   không khai margin dưới nên rơi về 0 — bản đồ leo lên đè dòng thứ hai của
+   đoạn dẫn. Cùng lỗi đã gặp ở portfolio.html, cùng cách chữa: trả về cặp token
+   chung 16 / 34. Luật chung ở hi-ds khoá theo .section-head nên không với tới
+   head đặt tên riêng của page. */
+.s-visit .section-title-row{margin-bottom:var(--gap-head-lead)}
+.s-visit .vs-intro{margin-bottom:var(--gap-head-body)}
+
+/* padding-TRÊN = 0 (quyết định B.Long 10/08 ghi trong mockup): thanh lọc phải
+   nối liền mạch với chữ lead của hero, không tách thành khối riêng.
+   Phải viết .section.portfolio-main (0,2,0) chứ không .portfolio-main (0,1,0):
+   hi-ds.css nạp CUỐI và khai .section{padding-block:100px}, nên khai một class
+   ở file page là thua cascade — đo được padding-top ra 100px trong khi file page
+   ghi 0. Đây là lần thứ ba cùng một bẫy trên bộ page này (.galf margin,
+   .section-title-row margin, và đây). */
+.section.portfolio-main{padding-top:0}
