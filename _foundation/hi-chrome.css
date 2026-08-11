@@ -205,6 +205,7 @@ html:not(.chrome-off) .stickybar.is-stuck{transform:translateY(-100%);opacity:0;
 .ft-legal .sep{color:rgba(255,255,255,.2);font-size:12px}
 .ft-pay{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .ft-pay .lbl{font-family:var(--sub);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-right:2px}
+.ft-pay .lbl-full{display:none}
 /* payment marks: ghost pill đơn sắc — footer chỉ giữ 1 màu nhấn là cam */
 .ft-pay .pm{height:26px;display:inline-flex;align-items:center;justify-content:center;background:transparent;border:1px solid var(--hair);border-radius:5px;padding:0 10px;font-family:var(--sub);font-weight:700;font-size:11.5px;line-height:1;letter-spacing:.05em;color:var(--muted);transition:color .16s var(--ease),border-color .16s var(--ease)}
 .ft-pay .pm:hover{color:var(--cream);border-color:rgba(220,219,190,.26)}
@@ -217,4 +218,19 @@ html:not(.chrome-off) .stickybar.is-stuck{transform:translateY(-100%);opacity:0;
 .ft-dmca img{height:18px;width:auto;display:block}
 .ft-copy{text-align:center;margin-top:24px;font-size:12px;letter-spacing:.03em;color:var(--muted)}
 @media(max-width:820px){.ft-cols{grid-template-columns:1fr 1fr;gap:30px 24px}.ft-hours p,.ft-nap p{white-space:normal}}
-@media(max-width:480px){.ft-cols{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 18px}.ft-strip{flex-direction:column;align-items:flex-start;gap:16px}}
+@media(max-width:480px){
+  .ft-cols{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 18px}
+  .ft-strip{flex-direction:column;align-items:stretch;gap:30px}
+  .ft-legal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px 18px;width:100%;align-items:start}
+  .ft-legal .sep{display:none}
+  .ft-legal>a:nth-of-type(1){grid-column:1;grid-row:1}
+  .ft-legal>a:nth-of-type(2){grid-column:2;grid-row:1}
+  .ft-legal>a:nth-of-type(3){grid-column:1;grid-row:2}
+  .ft-legal>a:nth-of-type(4){grid-column:2;grid-row:2}
+  .ft-pay{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:9px;width:100%}
+  .ft-pay .lbl{grid-column:1/-1;justify-self:center;max-width:320px;margin:0;text-align:center;color:var(--orange);
+    font-size:16px;line-height:1.15;letter-spacing:.04em}
+  .ft-pay .lbl-short{display:none}
+  .ft-pay .lbl-full{display:inline}
+  .ft-pay .pm{width:100%;padding-inline:5px}
+}
