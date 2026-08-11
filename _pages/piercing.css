@@ -25,7 +25,12 @@
   .award-card{grid-row:1 / span 3}
   .hero-micro{grid-column:1;grid-row:3}
 }
-.hero-micro{margin-top:14px;font-family:var(--sub);font-size:12.5px;letter-spacing:.03em;color:var(--muted)}
+/* Đo được 2 khe 0px trong hero: breadcrumb dính đáy vào hàng badge, và dòng chữ nhỏ
+   dính đáy vào dải số. Trang chủ không có hai khối này nên thang nhịp chung chưa
+   từng phải lo tới chúng. */
+.hero .crumb{margin-bottom:12px}
+.hero-micro{margin-top:14px;margin-bottom:clamp(16px,1.8vw,22px);
+  font-family:var(--sub);font-size:12.5px;letter-spacing:.03em;color:var(--muted)}
 
 /* danh sách lợi ích trong hero — chấm tròn cam, KHÔNG dùng tick như .ac-list
    (hero là chỗ lướt mắt, tick đọc nặng hơn chấm) */
@@ -165,6 +170,11 @@
 .ac-split{display:grid;grid-template-columns:1.05fr 0.95fr;gap:clamp(28px,4.2vw,58px);align-items:center}
 .ac-text h2{text-align:left;margin:0}
 .ac-text h2 .o{color:var(--orange)}
+/* Khối chữ này KHÔNG nằm trong .section-head (nó là một cột của lưới chia đôi) nên
+   thang nhịp chung không với tới: đo được h2 → đoạn dẫn 0px và đoạn dẫn → danh sách
+   0px, chữ dính liền thành một mảng. Trả về đúng cặp token của khối head. */
+.ac-lead{margin-top:var(--gap-head-lead);font-size:var(--fs-lead);line-height:1.65;color:#C9C9C9}
+.ac-text .ac-list{margin-top:var(--gap-head-body)}
 /* danh sách tick tròn — dùng ở Aftercare, và biến thể chấm ở Jewelry */
 .ac-list{list-style:none;margin:0;padding:0;display:grid;gap:14px}
 .ac-list li{position:relative;padding-left:34px;font-size:15.5px;line-height:1.62;color:#D3D3D3}

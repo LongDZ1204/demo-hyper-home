@@ -801,12 +801,12 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 .s-cta1 .wrap{position:relative;z-index:2}
 .s-cta1 .cta1-h{margin:0 auto;max-width:min(1280px,94vw);font-family:var(--head);font-weight:700;text-transform:uppercase;
   line-height:1.0;letter-spacing:-.005em;font-size:clamp(38px,5.6vw,74px);color:var(--cream);
-  text-shadow:0 3px 28px rgba(0,0,0,.55);text-wrap:balance}
+  text-shadow:0 2px 12px rgba(0,0,0,.9),0 3px 30px rgba(0,0,0,.55);text-wrap:balance}
 /* .cta1-h là <p> nên KHÔNG dính luật `.section h2 .o` ở hi-foundation — phải khai riêng,
    nếu không mấy chữ tô cam trong tiêu đề CTA (trang awards) sẽ về màu kem */
 .s-cta1 .cta1-h .o,.s-cta2 .cta2-h .o{color:var(--orange)}
 .s-cta1 .cta1-sub{margin:clamp(16px,2vw,22px) auto 0;max-width:46ch;font-family:var(--sub);
-  font-size:clamp(14px,1.4vw,17px);letter-spacing:.02em;color:#C9C9C9;line-height:1.55}
+  font-size:clamp(14px,1.4vw,17px);letter-spacing:.02em;color:#D4D4D4;text-shadow:0 1px 10px rgba(0,0,0,.8);line-height:1.55}
 .cta1-act{margin-top:clamp(24px,3vw,36px);display:flex;flex-direction:column;align-items:center;gap:15px}
 .cta1-btn{min-height:52px;padding:15px 36px;letter-spacing:.09em;font-size:12.5px;
   box-shadow:0 14px 34px rgba(204,102,0,.34)}
@@ -1338,3 +1338,19 @@ body.galp-lock{overflow:hidden}
   .pc-node{width:40px;height:40px;font-size:17px}
 }
 
+
+/* ---- Cách xếp hàng pill trong thanh lọc ----
+   Mặc định .pillrow dàn đều (space-between). Cách đó chỉ ĐẸP KHI số pill vừa đủ
+   lấp bề ngang — trang chủ 8 pill nên nhìn như xếp sát. /piercing 6 pill thì mỗi
+   khe phình ra 126px, thành hàng nút rời rạc. Nên phải khai rõ ý đồ:
+     .galf--center  xếp sát, căn GIỮA — dùng khi head căn giữa
+     .galf--start   xếp sát, căn TRÁI  — dùng khi head căn trái (có anchor text)
+   Phải căn ở .pillrow chứ không phải .galf: hi-components.js bọc các pill vào
+   .pillrow rồi thêm .pillbar (thanh kéo) làm con thứ hai; căn ở .galf là căn
+   nhầm hai đứa con đó, không phải mấy cái pill. */
+.galf--center .pillrow{justify-content:center}
+.galf--start  .pillrow{justify-content:flex-start}
+@media(max-width:640px){.galf--center .pillrow{justify-content:flex-start}}
+
+/* ---- Hàng chứa nút "Load more" — luôn căn giữa dưới lưới ảnh ---- */
+.gal-more-row{display:flex;justify-content:center;margin-top:var(--gap-head-body)}

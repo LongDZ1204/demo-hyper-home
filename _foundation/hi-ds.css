@@ -171,9 +171,15 @@
    thành 3 dòng và chừa 172px trống. Heading trong accordion không cần cap. */
 .section .faqacc-q{max-width:none}
 
-/* --- áp thang: khối head (H2 → lead → câu dẫn) --- */
-.rvi-intro,.svc-intro,.arti-intro,.gali-intro,.aw-intro,.adv-intro,
-.pr-intro,.vs-intro,.faq-lead,.gd-lead,.near-lead{
+/* --- áp thang: khối head (H2 → lead → câu dẫn) ---
+   KHOÁ THEO ĐIỀU KIỆN "<p> nằm ngay trong .section-head", KHÔNG theo danh sách tên.
+   Bản cũ liệt kê 11 tên class; /piercing có .pc-intro và .pl-intro không nằm trong
+   danh sách nên khi CSS riêng của trang bị gỡ, hai đoạn dẫn đó bung ra 1176px thay
+   vì 660px, chữ chạy hết bề ngang section. Đây là lần thứ NĂM một bộ lọc theo tên
+   class để lọt section mới — xem [[feedback_css_carveout_by_condition_not_namelist]]. */
+.section-head > p,
+.section-head--editorial > p,
+.near-lead{
   margin-top:var(--gap-head-lead);font-size:var(--fs-lead);max-width:var(--lead-mw)}
 .sec-bridge{margin-top:var(--gap-lead-bridge);margin-bottom:0}
 

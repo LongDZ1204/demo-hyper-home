@@ -79,7 +79,7 @@ async function scan(path, W){
   };
 
   const heads = [...d.querySelectorAll('.section-head,.section-head--editorial')].filter(vis);
-  const out = { path, W, head: [], lead: [] };
+  const out = { path, W, head: [], lead: [], dinh: [] };
   out.cssSanSang = out_cssSanSang;
 
   heads.forEach(h => {
@@ -117,13 +117,26 @@ async function scan(path, W){
         soDongThat: li ? li.n : null,
         lechLead: lech(li),
         muiTen: m ? cs(m,'opacity') : null,
-        coNoiDungDuoi: !!nx
+        coNoiDungDuoi: !!nx,
+        rongLead: Math.round(B(p).width)
       });
+    }
+
+    /* D5 · hai khối chữ liền nhau trong head DÍNH SÁT.
+       Án lệ /piercing 11/08: khối Aftercare nằm ngoài .section-head nên thang nhịp
+       chung không với tới — h2 → đoạn dẫn 0px, đoạn dẫn → danh sách 0px, ba khối
+       chữ dán liền thành một mảng, nhìn như chữ đè lên nhau. */
+    const con = [...h.children].filter(e => /^(H[1-6]|P|UL|OL|DIV)$/.test(e.tagName) && vis(e));
+    for (let i = 1; i < con.length; i++){
+      const khe = Math.round(B(con[i]).top - B(con[i-1]).bottom);
+      if (khe < 4 && khe > -400)
+        out.dinh.push(`#${id} ${con[i-1].tagName}→${con[i].tagName} khe ${khe}px`);
     }
   });
 
   /* --- các phép đếm toàn trang --- */
   out.leadLines = parseInt(cs(d.documentElement,'--lead-lines'),10) || null;
+  out.capLead   = Math.round(parseFloat(cs(d.documentElement,'--lead-mw'))) || null;
   out.token = Math.round(parseFloat(cs(d.documentElement,'--gap-head-body'))) || null;
 
   out.phuManHinh = [...d.querySelectorAll('body *')].filter(e => {
@@ -256,7 +269,19 @@ function cham(page, ref){
     }
     if (l.nen && l.muiTen === '1' && l.soDongThat <= (l.soDongCSS || 2))
       add('D1', `#${l.sec} mũi tên hiện mà chữ chỉ ${l.soDongThat} dòng`);
+    /* D4 · cột chữ không được rộng hơn --lead-mw.
+       Án lệ /piercing 11/08: hi-ds.css liệt kê class đoạn dẫn THEO TÊN, thiếu
+       .pc-intro và .pl-intro; gỡ CSS riêng của trang là 2 đoạn bung từ 660 lên
+       1176px, chữ chạy hết bề ngang section. Máy gác lúc đó chỉ đo CĂN LỀ nên
+       vẫn PASS — cột chữ lệch tâm 0px mà rộng gấp đôi. */
+    const hGiua = (page.head.find(x => x.sec === l.sec) || {}).giua;
+    /* Trần 340px ở ≤600px CHỈ dành cho đoạn dẫn CĂN GIỮA (luật D3); head căn trái
+       thì đoạn dẫn chạy hết cột, 366-390px là ĐÚNG. Không tách ra thì check này
+       báo nhầm about #who và artist-detail #awards. */
+    if (page.capLead && l.rongLead > page.capLead + 8 && (page.W > 600 || hGiua))
+      add('D4', `#${l.sec} cột chữ rộng ${l.rongLead}px, trần --lead-mw là ${page.capLead}px`);
   });
+  page.dinh.forEach(x => add('D5', x + ' — hai khối chữ dán liền, đọc thành một mảng'));
 
   /* E · họ chân slider — nhiều hơn trang chủ = đã tự vẽ lại */
   if (!page.cssSanSang) add('A0', 'CSS chưa nạp xong khi đo — kết quả KHÔNG tin được, chạy lại');

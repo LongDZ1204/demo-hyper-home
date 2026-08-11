@@ -163,13 +163,7 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 /* Hàng chip lọc căn giữa theo heading — B.Long: "heading không có link thì căn
    giữa, tab và text căn theo". .galf gốc là thanh full width căn trái vì trang
    chủ dùng nó dưới head căn trái. */
-/* Phải căn ở .pillrow chứ không phải .galf: hi-components.js bọc các pill vào
-   .pillrow rồi thêm .pillbar (thanh kéo tuỳ biến) làm con thứ hai. Căn ở .galf
-   chỉ căn hai cái bọc đó, các pill bên trong vẫn giãn hết cột — đo được: 4 pill
-   nằm ở 132 · 433 · 770 · 1129 trên thanh rộng 1176. */
-.galf--center .pillrow{justify-content:center}
-/* Hẹp thì trả về cuộn ngang tự nhiên, căn giữa lúc tràn sẽ cắt mất pill đầu. */
-@media(max-width:640px){.galf--center .pillrow{justify-content:flex-start}}
+/* .galf--center / .galf--start đã chuyển sang _foundation/hi-components.css 11/08 */
 
 /* Ô before/after rộng gấp đôi, tỉ lệ đúng file gốc 1080x677 — không phải 8/5
    làm tròn. .galp-tile chung khoá 4/5 nên phải ghi đè đúng 2 thuộc tính này. */
