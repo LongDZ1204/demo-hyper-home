@@ -98,15 +98,21 @@
   .bgh-slide{width:128px;height:172px;margin-right:9px}
 }
 
-/* ========== Nhịp nền so-le — của riêng từng trang, KHÔNG lên tầng chung ========== */
+/* ========== Nhịp nền so-le — của riêng từng trang, KHÔNG lên tầng chung ==========
+   ĐỔI MÀU LIÊN TỤC, không mục nào trùng nền với mục liền kề. Trước đây 3 cặp bị
+   dính (gallery-adv, adv-whatis, whatis-faq, và visit-book) vì mỗi luật viết một
+   nơi mà không ai đo cả dãy: .s-adv lấy nền xám từ hi-components, .s-visit không
+   khai gì nên rơi về nền đen mặc định của .section — hai mục cạnh nhau cùng đen
+   trong khi em tưởng đã tách (B.Long bắt 11/08).
+   Dãy chốt:  reviews xám · artists đen · gallery xám · adv ĐEN · whatis xám ·
+              faq ĐEN · visit XÁM · book đen · related xám. */
 .s-gallery{background:var(--bg)}
 .s-gallery .wrap{position:relative;z-index:2}
+.s-adv{background:var(--black)}
 .s-whatis{background:var(--bg);padding-top:clamp(22px,2.6vw,34px);padding-bottom:clamp(40px,4.8vw,64px)}
 .s-whatis .wrap{position:relative;z-index:2}
-.s-faq{background:var(--bg)}
-/* B.Long 11/08 "section booking và visit cần tách màu nền": Visit giữ nền xám
-   của .section, Book đổ đen. Hai mục đứng liền nhau nên phải khác nền mới đọc ra
-   là hai việc khác nhau (xem đường · đặt lịch). */
+.s-faq{background:var(--black)}
+.s-visit{background:var(--bg)}
 .s-book{background:var(--black)}
 /* .vs-nap KHÔNG tự khai margin-top ở đây: khe head->khối sống ở đúng một chỗ là
    margin-bottom của .section-head. Mockup khai 46px nên khe cộng dồn — máy gác
