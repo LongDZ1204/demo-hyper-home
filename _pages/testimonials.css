@@ -1,0 +1,135 @@
+/* ============================================================================
+   TESTIMONIALS — CSS riêng của trang.
+   Mockup nguồn: outputs/onpage-design/2026-07-27_testimonials-3section-v2.html
+
+   188 luật <style> của mockup còn lại 22 luật ở đây. Con số từ script so từng
+   KHAI BÁO, không so tên selector:
+     90 trùng khít tầng chung          -> bỏ
+     56 tầng chung chưa có             -> giữ, trừ phần thuộc section đã xoá
+     39 cùng tên khác giá trị          -> đọc từng cái, xử lý ghi dưới
+
+   39 luật "cùng tên khác giá trị" đi đâu:
+     :root · html · body · .nav · .btn · .lead · h1 · .cta · .wrap
+        -> BỎ. Đây là bản chép foundation của mockup. Nguồn sự thật là
+           hi-foundation.css. Riêng --head/--sub: mockup trỏ qua bí danh
+           --hi-font-*, site khai thẳng tên phông — giữ bản site.
+     .hero{padding:114px 0 42px}
+        -> BỎ, dùng bản chung 96px. Hero này min-height min(100svh,900px) +
+           căn giữa theo chiều dọc, nên padding KHÔNG phải cơ chế chừa chỗ cho
+           header; đo thật crumb cách đáy header 300px+.
+     .hero-scrim · .hero-grid  -> GIỮ, khoá dưới .tm-hero (xem ngay dưới).
+     .grain{z-index:2}         -> BỎ, chênh 1 bậc với bản chung, không thấy được.
+     .section-head{text-align:center}
+        -> BỎ, đổi markup sang <header class="section-head center">.
+     .rv-scard · .rv-sc-*      -> BỎ theo section Customer Stories (B.Long 11/08).
+     .rv-bar · .rv-card{background:var(--surface)}
+        -> BỎ, bản chung đã đổi sang --glass-surf/--glass-brd (lớp kính). Bản
+           mockup viết trước lần đổi đó.
+     .rv-body{flex:1;overflow-y:auto} · .rv-tags{flex-shrink:0}
+        -> BỎ, đổi markup: bọc <p class="rv-body"> trong <div class="rv-body-scroll">
+           đúng như trang chủ. Cùng một ý, bản chung tách riêng phần cuộn.
+     .s-cta2::after · .cta2-h  -> BỎ, dùng bản chung.
+   ========================================================================== */
+
+/* === HERO — dùng nguyên họ .hero của tầng chung ==============================
+   Ảnh full-bleed + ken-burns + scrim + lưới 2 cột: 5/7 luật hero của mockup
+   TRÙNG KHÍT hi-components, vốn là cùng một bản. Chỉ còn 2 chỗ khác thật. */
+
+/* Ảnh nền là ảnh chụp studio lấy từ Google, sáng hơn hẳn ảnh hero của các page
+   khác. Scrim chuẩn (2 lớp gradient) để nguyên thì chữ trắng bơi trong vùng
+   sáng, nên phủ thêm một lớp wash phẳng .42 trước hai lớp kia. */
+.tm-hero .hero-scrim{background:
+  linear-gradient(rgba(13,13,13,.42),rgba(13,13,13,.42)),
+  linear-gradient(90deg,rgba(13,13,13,.97) 0%,rgba(13,13,13,.9) 34%,rgba(13,13,13,.58) 56%,rgba(13,13,13,.4) 100%),
+  linear-gradient(0deg,rgba(13,13,13,.75) 0%,rgba(13,13,13,0) 42%)}
+/* Cột phải của hero chứa khối "review themes" có 4 chip. Bản chung để
+   minmax(0,0.9fr) — co được về 0 nên ở khổ 1024 chip vỡ thành 4 dòng. Khoá sàn
+   320px cho nó. */
+.tm-hero .hero-grid{grid-template-columns:minmax(0,1fr) minmax(320px,.72fr)}
+
+.hero-proof{position:relative;border:1px solid var(--border);border-radius:8px;
+  background:rgba(12,12,12,.64);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  padding:24px;box-shadow:0 26px 74px rgba(0,0,0,.48)}
+.proof-quote{margin:0;font-size:clamp(20px,2vw,28px);line-height:1.24;font-weight:700;color:#fff}
+.mention-list{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px}
+.mention-list span{display:inline-flex;align-items:center;gap:7px;border:1px solid var(--border);
+  border-radius:999px;padding:7px 11px;color:#eee;font-family:var(--sub);font-size:11px;
+  letter-spacing:.06em;text-transform:uppercase;background:rgba(255,255,255,.04)}
+/* Dấu tick vẽ bằng clip-path chứ không phải ký tự ✓ hay file SVG: một hình
+   đúng-một-màu, không tốn request, và không bị trình đọc màn hình đọc thành chữ. */
+.mention-list span::before{content:"";width:11px;height:11px;flex:0 0 11px;background:var(--orange);
+  clip-path:polygon(14% 52%,31% 38%,44% 55%,78% 18%,94% 33%,45% 84%)}
+
+/* ==== NHỊP TONE NỀN =========================================================
+   Bỏ Customer Stories (nền #0a0a0a) xong thì hai section còn lại cùng một nền,
+   cả thân trang thành một mảng phẳng. So le lại theo Design Tokens v1:
+
+     hero      #000 + ảnh studio
+     video     #0F0F0F
+     platform  #000
+     CTA quote #0F0F0F   (mặc định của .s-cta2)
+     footer    #000
+
+   Tone là VỊ TRÍ trong chuỗi, không phải thuộc tính của section. Đổi thứ tự
+   section thì phải soát lại cả chuỗi. */
+.s-video{background:var(--bg)}
+.s-plat{background:var(--black)}
+
+/* ==== NÚT CTA ĐÓNG TRANG: A1 chứ không phải B1 ==============================
+   Mockup để .btn-ghost — theo hệ CTA 4 lớp ở hi-ds thì đó là lớp B1 "điều
+   hướng, không bán gì". Nhưng "Get a Free Quote" chính là hành động bán của cả
+   trang. Để nó cùng lớp với một link đọc tiếp là hạ cấp đúng thứ mình muốn
+   người ta bấm.
+   Chọn A1 .btn-primary (nền cam đặc) chứ không A2 .btn-sell (viền cam) vì trang
+   này chỉ có MỘT dải CTA. Trang chủ để s-cta2 dùng A2 là đúng, vì ở đó đã có
+   s-cta1 mang A1 trước rồi — hai dải thì dải sau phải nhẹ hơn.
+   Luật "tối đa 1 A1 mỗi section" vẫn giữ: 2 nút cam .rv-leave nằm ở section
+   Platform, nút này ở section riêng. */
+
+/* === LƯỚI REVIEW THEO NỀN TẢNG ==============================================
+   B.Long chốt 11/08: GIỮ lưới + nút "Show more", KHÔNG đổi sang slider như
+   trang chủ. Lý do: đây là trang CHUYÊN về review — lưới cho đọc nhiều cùng
+   lúc, slider mỗi màn chỉ 3 thẻ và phải chờ nó chạy. Trang chủ dùng slider vì
+   ở đó review chỉ là một section phụ.
+   Thẻ .rv-card là của tầng chung; trong lưới thì thuộc tính flex của nó bị bỏ
+   qua (grid item không đọc flex), nên không cần gỡ gì. */
+.rv-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
+.rv-grid > .is-more{display:none}
+.rv-grid.is-open > .is-more{display:flex}
+
+.rv-morewrap{display:flex;justify-content:center;margin-top:26px}
+.rv-morebtn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:13px 26px;
+  border-radius:999px;border:1px solid var(--card-brd);background:rgba(255,255,255,.03);
+  color:var(--cream);cursor:pointer;font-family:var(--sub);font-weight:600;font-size:12px;
+  letter-spacing:.07em;text-transform:uppercase;
+  transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease)}
+.rv-morebtn:hover{border-color:var(--orange);color:#fff;background:rgba(204,102,0,.12)}
+.rv-morebtn svg{width:15px;height:15px;transition:transform .25s var(--ease)}
+.rv-morebtn[aria-expanded="true"] svg{transform:rotate(180deg)}
+
+/* Khe giữa hai khối nền tảng: dùng token --sp-band (34-56px) thay số riêng
+   clamp(48,5.5vw,76) của mockup. Bộ chuẩn coi khe TRONG một section vượt 60px
+   là đứt mạch — đọc ra thành hai section chứ không phải hai khối cùng cấp; máy
+   soát bắt đúng con số 76px đó. Google và Facebook vẫn tách bạch nhờ mỗi khối
+   có H3 + thanh điểm riêng, không cần thêm khoảng trống. */
+.platform-block + .platform-block{margin-top:var(--sp-band)}
+h3.platform-h{margin:0 0 18px;font-family:var(--head);font-size:clamp(21px,2.2vw,28px);line-height:1;
+  text-transform:uppercase;letter-spacing:0;color:#fff;display:flex;align-items:center;gap:12px}
+/* Nền trắng + bo tròn cho icon nền tảng: logo Google và Facebook là logo NHIỀU
+   MÀU có bản quyền, đặt thẳng lên nền #0F0F0F là mất nét xanh và đỏ. */
+h3.platform-h svg{width:26px;height:26px;background:#fff;border-radius:50%;padding:3px;flex-shrink:0}
+
+@media(max-width:1100px){
+  .rv-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:900px){
+  .hero-proof{max-width:620px}
+}
+@media(max-width:600px){
+  .rv-grid{gap:12px}
+  .rv-grid--plat .rv-card{height:296px;padding:14px}
+  .rv-grid--plat .rv-av{width:32px;height:32px;font-size:12.5px}
+  .rv-grid--plat .rv-meta{flex-direction:column;align-items:flex-start;gap:3px}
+  .rv-grid--plat .rv-date{white-space:nowrap}
+  .rv-grid--plat .rv-body{font-size:13px}
+}

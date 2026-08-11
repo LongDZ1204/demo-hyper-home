@@ -98,7 +98,8 @@ mất tín hiệu internal link, và trang bị giật khi tải.
 | `portfolio.html` · `tattoo-gallery.html` | ✅ |
 | `contact.html` · `deals.html` · `faq.html` | ✅ (11/08) |
 | `blog.html` · `blog-detail.html` | ✅ (11/08) — theme nền giấy, xem dưới |
-| 7 page còn lại | ⏳ vẫn dùng CSS + header riêng của từng file |
+| `testimonials.html` | ✅ (11/08) — bỏ section Customer Stories, xem dưới |
+| các page còn lại | ⏳ vẫn dùng CSS + header riêng của từng file |
 
 **`faq.html` là trang MỚI (11/08)**, dựng từ `outputs/onpage-design/2026-05-26_faq-page-mockup-v2.html`.
 Mục FAQ ở menu header và cột Explore của footer trước đây trỏ `soon.html`, nay trỏ trang thật.
@@ -150,6 +151,30 @@ bên detail.
 gạch chân LUÔN hiện (màu không được là dấu hiệu duy nhất) và rê chuột thì dày gạch lên chứ không
 đổi màu. Bullet một kiểu duy nhất: chấm tròn cam 7px, dùng chung cho `.key-facts` và `<ul>` thường;
 `<ol>` giữ số, chỉ tô cam phần số.
+
+**`testimonials.html` port 11/08 — bỏ hẳn section "Customer Stories" (B.Long chốt).** Trang từ 3
+section còn 2: Video Reviews + Reviews by Platform. 6 review dài trong section đã bỏ cũng bỏ theo —
+B.Long biết và đồng ý; chúng cố ý không lặp ở section Platform nên không còn ở đâu trên trang nữa.
+
+Con số của lần port này, để lần sau ước lượng công: **188 luật `<style>` của mockup còn 22 luật**
+trong `_pages/testimonials.css`. Đo bằng script so từng KHAI BÁO chứ không so tên selector — 90
+luật trùng khít tầng chung, 56 tầng chung chưa có, 39 cùng tên khác giá trị phải đọc từng cái.
+Trong 39 luật đó, đa số là bản chép `hi-foundation` của mockup (`:root` · `html` · `.btn` · `h1` ·
+`.lead` · `.wrap`): bỏ hết, nguồn sự thật là foundation.
+
+Hai chỗ đổi khác mockup, ghi lại vì là **luật chung chứ không phải chuyện riêng trang này**:
+
+1. **Nút CTA đóng trang: `.btn-ghost` → `.btn-primary`.** Theo hệ CTA 4 lớp ở `hi-ds.css`,
+   `.btn-ghost` là lớp B1 "điều hướng, không bán gì". "Get a Free Quote" là hành động bán của cả
+   trang — để nó cùng lớp với một link đọc tiếp là tự hạ cấp thứ mình muốn người ta bấm. Chọn A1
+   (`.btn-primary`, nền cam đặc) chứ không A2 (`.btn-sell`, viền cam) vì trang này chỉ có MỘT dải
+   CTA; trang chủ để `s-cta2` dùng A2 là đúng, vì ở đó đã có `s-cta1` mang A1 trước rồi.
+2. **Khe giữa hai khối nền tảng: `clamp(48px,5.5vw,76px)` → `var(--sp-band)` (34–56px).** Bộ chuẩn
+   coi khe TRONG một section vượt 60px là đứt mạch — đọc ra thành hai section chứ không phải hai
+   khối cùng cấp. Google và Facebook vẫn tách bạch nhờ mỗi khối có H3 + thanh điểm riêng.
+
+Bỏ luôn `.phone-fab` (nút gọi nổi góc phải) của mockup: footer dùng chung đã có nút lên đầu trang
+neo đúng góc đó, hai nút nổi chồng nhau. Không page nào đã port có `.phone-fab`.
 
 **`piercing-gallery.html` và `removal-gallery.html` đã gỡ khỏi demo ngày 11/08** (B.Long chốt).
 Layout của chúng không khác `tattoo-gallery.html` một điểm nào, nên khi cần dựng lại thì **chép từ
