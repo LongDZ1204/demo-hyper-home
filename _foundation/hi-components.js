@@ -608,3 +608,46 @@
   window.addEventListener('load',function(){ measure(); setTimeout(measure,300); });
   measure();
 })();
+
+/* ============================================================================
+   DẢI THẺ PHONG CÁCH (.st-*) — nâng từ mockup /tattoo ngày 2026-08-11.
+   Hai việc: (1) mỗi thẻ có slider ảnh riêng, (2) nút Load more mở phần thẻ ẩn.
+   Khoá bằng `.st-media[data-slider]` / `.st-morebtn` nên trang không có khối này
+   thì thoát ngay, không nạp thừa.
+   ============================================================================ */
+(function(){
+  /* --- slider ảnh TRONG từng thẻ ---
+     Mũi tên và chấm là ANH EM của thẻ link, không nằm trong nó, nên bấm vào
+     chúng phải chặn sự kiện lại, nếu không trình duyệt điều hướng luôn. */
+  [].slice.call(document.querySelectorAll('.st-media[data-slider]')).forEach(function(media){
+    var track=media.querySelector('.st-slides'); if(!track) return;
+    var count=track.children.length; if(count<2) return;
+    var dots=[].slice.call(media.querySelectorAll('.st-dot')),
+        prev=media.querySelector('.st-iprev'),
+        next=media.querySelector('.st-inext'), i=0;
+    function go(n){
+      i=(n%count+count)%count;
+      track.style.transform='translateX('+(-i*100)+'%)';
+      dots.forEach(function(d,k){d.classList.toggle('is-on',k===i);});
+    }
+    function bind(el,d){ if(!el) return;
+      el.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();go(i+d);}); }
+    bind(prev,-1); bind(next,1);
+    dots.forEach(function(d,k){d.addEventListener('click',function(e){
+      e.preventDefault();e.stopPropagation();go(k);});});
+  });
+
+  /* --- Load more: mở/đóng phần thẻ ẩn của dải --- */
+  var btn=document.querySelector('.st-morebtn'),
+      rail=document.querySelector('.st-rail');
+  if(!btn||!rail) return;
+  var lbl=btn.querySelector('[data-lm]');
+  btn.addEventListener('click',function(){
+    var open=rail.classList.toggle('is-open');
+    btn.setAttribute('aria-expanded',open?'true':'false');
+    if(lbl) lbl.textContent=open?'Show less':'Load more';
+    /* Đóng lại thì kéo về đầu dải, nếu không người đọc đang ở giữa danh sách
+       bị hụt chân và rơi xuống section sau. */
+    if(!open) rail.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+})();

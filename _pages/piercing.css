@@ -190,28 +190,9 @@
 }
 
 /* ========== SECTION 14 · Aftercare ========== */
+/* Khối .ac-* đã chuyển sang _foundation/hi-components.css ngày 2026-08-11 —
+   /tattoo dùng chung. Ở đây chỉ còn nền so-le của riêng trang này. */
 .s-aftercare{background:var(--bg)}
-.s-aftercare .wrap{position:relative;z-index:2}
-.ac-split{display:grid;grid-template-columns:1.05fr 0.95fr;gap:clamp(28px,4.2vw,58px);align-items:center}
-.ac-text h2{text-align:left;margin:0}
-.ac-text h2 .o{color:var(--orange)}
-/* Khối chữ này KHÔNG nằm trong .section-head (nó là một cột của lưới chia đôi) nên
-   thang nhịp chung không với tới: đo được h2 → đoạn dẫn 0px và đoạn dẫn → danh sách
-   0px, chữ dính liền thành một mảng. Trả về đúng cặp token của khối head. */
-.ac-lead{margin-top:var(--gap-head-lead);font-size:var(--fs-lead);line-height:1.65;color:#C9C9C9}
-/* Danh sách dùng chấm tròn .split-list như Age/ID và Jewelry — tick tròn riêng của
-   khối này đã bỏ 11/08 (một trang chỉ một kiểu danh sách). Ở đây chỉ còn nhịp trên
-   dưới, vì .split-list là khối trong lưới chia đôi nên không tự biết khe của head. */
-.ac-text .ac-list{margin-top:var(--gap-head-body)}
-/* Link chữ dùng .sec-link--inline như 3 link còn lại của trang. Bản cam-14.5px
-   riêng của khối này đã bỏ 11/08. Chỉ giữ khe trên, .sec-link không mang margin. */
-.ac-text .ac-link{margin-top:clamp(20px,2.4vw,28px)}
-.ac-media{position:relative;margin:0;border-radius:14px;overflow:hidden;aspect-ratio:4/5;border:1px solid var(--border);box-shadow:0 24px 60px rgba(0,0,0,.45)}
-.ac-media img{width:100%;height:100%;object-fit:cover;object-position:50% 45%;display:block}
-@media(max-width:820px){
-  .ac-split{grid-template-columns:1fr;gap:24px}
-  .ac-media{aspect-ratio:16/10;max-height:340px}
-}
 
 /* ========== SECTION 15.5 · Closing CTA ==========
    Dùng CHUNG khuôn .s-cta1 (đã có trong class của section) nên ở đây chỉ khai
