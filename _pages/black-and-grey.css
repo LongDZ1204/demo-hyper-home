@@ -1,0 +1,128 @@
+/* ============================================================================
+   /black-and-grey — CSS RIÊNG của trang.
+   Port từ mockup 2026-07-05_black-and-grey-page.html ngày 2026-08-11.
+
+   Mockup có 944 luật inline. Bộ lọc 3 rổ (xem
+   [[feedback_css_carveout_by_condition_not_namelist]]):
+     125 luật  tầng chung đã có, THÂN GIỐNG HỆT      -> bỏ
+      34 luật  tầng chung đã có, thân khác            -> bỏ, lấy bản chuẩn
+     728 luật  nhắm class không còn trong markup      -> CSS chết, bỏ
+   Còn lại đúng thứ chỉ trang này có: hero căn giữa (.bgh-*) và thẻ trong băng
+   "Tattoo Styles Related" (.rel-*).
+
+   SOÁT TAY sau bộ lọc — 7 luật nữa bị gỡ vì bộ lọc không thấy:
+     .adv-intro · .gft-intro (+2 nhánh media)  đoạn dẫn nay dùng bộ nén chung,
+       luật gốc là `.section-head > p` ở hi-ds (khoá theo ĐIỀU KIỆN nên tên class
+       nào cũng trúng, bộ lọc so theo TÊN thì không khớp)
+     #adv-tN:checked ... .adv-head   bản CŨ của tab (viền trái + nền #1b1b1b);
+       bản chuẩn dùng ::before + nền trong suốt
+     @media(max-width:900px){.art-card}  ép 3 cột, đè nhịp cột chung của thẻ nghệ sĩ
+     @media(max-width:560px){.awrail-card}  băng tự chạy đã có nhịp mobile riêng
+     @media(min-width:821px){.cta{grid-column/grid-row}}  hero trang này căn giữa
+       bằng flex, không phải lưới 2 cột như /tattoo
+   ============================================================================ */
+
+/* Ken Burns của ảnh hero — .hero-media/.hero-scrim ở tầng chung, riêng keyframes
+   phải khai cùng chỗ với trang dùng nó. */
+@keyframes kenburns{from{transform:scale(1.05)}to{transform:scale(1.12)}}
+
+/* Đoạn dẫn hero nén theo bề ngang — 4 dòng desktop (luật gốc ở _pages/home.css
+   là bản chuẩn), 3 dòng tablet, 2 dòng điện thoại. */
+@media(min-width:561px) and (max-width:820px){ .lead{-webkit-line-clamp:3;line-clamp:3} }
+@media(max-width:560px){ .lead{-webkit-line-clamp:2;line-clamp:2} }
+
+/* ========== HERO CĂN GIỮA — chỉ trang này dùng ==========
+   Khác /tattoo (lưới 2 cột chữ|ảnh): ở đây chữ nằm giữa, ảnh nền phủ toàn khung,
+   và dưới cùng là một băng ảnh tự trôi. */
+.bgh-scrim{position:absolute;inset:0;z-index:1;
+  background:
+    radial-gradient(62% 82% at 50% 50%, rgba(13,13,13,.72) 0%, rgba(13,13,13,.5) 46%, rgba(13,13,13,.22) 72%, rgba(13,13,13,0) 100%),
+    linear-gradient(180deg, rgba(13,13,13,.8) 0%, rgba(13,13,13,.18) 26%, rgba(13,13,13,.2) 66%, rgba(13,13,13,.86) 100%)}
+.bgh-center{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center}
+.bgh-center .crumb ol{justify-content:center}
+.bgh-center .trustbar{justify-content:center}
+.bgh-center h1{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:0.98;
+  letter-spacing:-0.005em;font-size:clamp(33px,5.4vw,60px);color:#fff;text-shadow:0 2px 22px rgba(0,0,0,.55)}
+.bgh-center h1 .o{color:var(--orange)}
+.bgh-center .lead{margin:20px auto 0;max-width:660px;text-align:center}
+.bgh-center .more-btn{margin:12px auto 0}
+.bgh-center .cta{justify-content:center;margin-top:34px}
+
+/* Dải điểm mạnh trong hero — chip có tick + chấm ⓘ. Bản chuẩn của thanh này ở
+   [[reference_benefit_bar_why_choose_standard]]: fact nằm ở NHÃN, tooltip là câu
+   trọn nghĩa. */
+/* 2x2 chứ KHÔNG để tự xuống dòng: 4 chip dài không đều nhau nên flex-wrap cho ra
+   3 chip hàng trên + 1 chip lạc lõng hàng dưới. Chốt cứng 2 cột thì hai hàng luôn
+   cân. (Cùng bài học phiên bên cạnh đo ở hero /testimonials: số cột phải chốt
+   theo lòng hộp, không thả cho bề ngang màn quyết định.) */
+.bgh-benefits{display:grid;grid-template-columns:repeat(2,auto);justify-content:center;
+  gap:15px 34px;margin-top:32px;max-width:1080px}
+.bgh-chip{display:inline-flex;align-items:center;gap:9px;font-family:var(--sub);font-size:13px;
+  letter-spacing:.03em;text-transform:uppercase;color:var(--cream);white-space:nowrap}
+.bgh-tick{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;
+  background:#1E5761;flex-shrink:0;box-shadow:0 0 0 1px rgba(120,193,205,.4),0 2px 8px rgba(0,0,0,.4)}
+.bgh-tick svg{width:12px;height:12px;fill:none;stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.bgh-chip .info{width:15px;height:15px;font-size:9.5px}
+
+/* Băng ảnh tự trôi dưới hero. Mỗi ảnh bấm được: mở đúng khung xem ảnh dùng chung
+   với trang chủ (.galp-tile + [data-gallery-lightbox]) — B.Long 11/08. */
+.bgh-strip{position:relative;z-index:5;width:100%;overflow:hidden;flex:0 0 auto;margin-top:40px;padding-bottom:26px;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%)}
+.bgh-belt{display:flex;width:max-content;animation:bgh-marq 52s linear infinite;will-change:transform}
+.bgh-strip:hover .bgh-belt{animation-play-state:paused}
+@keyframes bgh-marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.bgh-slide{display:block;flex:0 0 auto;width:clamp(150px,13vw,196px);height:clamp(202px,17vw,262px);margin-right:12px;
+  border-radius:8px;overflow:hidden;border:1px solid rgba(255,255,255,.09);background:#141414;transition:border-color .25s var(--ease)}
+.bgh-slide:hover{border-color:var(--orange)}
+.bgh-slide img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s var(--ease)}
+.bgh-slide:hover img{transform:scale(1.06)}
+@media(prefers-reduced-motion:reduce){ .bgh-belt{animation:none} }
+@media(max-width:820px){
+  .bgh-center h1{font-size:clamp(30px,8vw,42px)}
+  .bgh-center .lead{text-align:left}
+  .bgh-benefits{grid-template-columns:1fr;justify-items:start;gap:13px;max-width:300px;margin-inline:auto}
+  .bgh-strip{margin-top:30px;padding-bottom:22px}
+  .bgh-slide{width:128px;height:172px;margin-right:9px}
+}
+
+/* ========== Nhịp nền so-le — của riêng từng trang, KHÔNG lên tầng chung ========== */
+.s-gallery{background:var(--bg)}
+.s-gallery .wrap{position:relative;z-index:2}
+.s-whatis{background:var(--bg);padding-top:clamp(22px,2.6vw,34px);padding-bottom:clamp(40px,4.8vw,64px)}
+.s-whatis .wrap{position:relative;z-index:2}
+.s-faq{background:var(--bg)}
+/* B.Long 11/08 "section booking và visit cần tách màu nền": Visit giữ nền xám
+   của .section, Book đổ đen. Hai mục đứng liền nhau nên phải khác nền mới đọc ra
+   là hai việc khác nhau (xem đường · đặt lịch). */
+.s-book{background:var(--black)}
+/* .vs-nap KHÔNG tự khai margin-top ở đây: khe head->khối sống ở đúng một chỗ là
+   margin-bottom của .section-head. Mockup khai 46px nên khe cộng dồn — máy gác
+   A6 bắt ở cả 3 khổ màn. */
+.s-visit .vs-nap{margin-bottom:0}
+.s-visit .vs-map{min-height:330px}
+.s-related{background:var(--bg)}
+.s-related .wrap{position:relative;z-index:2}
+
+/* ========== Thẻ trong băng "Tattoo Styles Related" ==========
+   Băng dùng lại engine .awrail (tự chạy 4 giây, dừng khi rê chuột, vòng vô tận)
+   — xem biến thể .awrail--4 ở hi-components.css. Đây chỉ là RUỘT của thẻ. */
+.rel-link{display:block;text-decoration:none}
+.rel-shot{position:relative;display:block;aspect-ratio:3/4;overflow:hidden;background:#0c0c0c;
+  border-radius:14px;border:1px solid var(--card-brd);box-shadow:0 24px 58px rgba(0,0,0,.42)}
+.rel-shot img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease);filter:grayscale(.12)}
+.rel-card:hover .rel-shot img{transform:scale(1.06)}
+/* Mockup để thẻ CHỈ có ảnh, không chữ — người xem không biết đó là kiểu xăm gì và
+   Google cũng không đọc được gì ngoài alt. Thêm tên kiểu xăm hiện rõ. */
+.rel-name{display:block;margin-top:12px;font-family:var(--sub);font-weight:600;font-size:14px;
+  letter-spacing:.03em;text-transform:uppercase;color:#E9E9E9;transition:color .2s var(--ease)}
+.rel-card:hover .rel-name{color:var(--orange-hi)}
+
+/* Thẻ nghệ sĩ: tên dưới ảnh — mockup dựng riêng, tầng chung chưa có. */
+.art-name{font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:clamp(19px,1.9vw,25px);
+  line-height:1;color:#fff;margin-top:6px;letter-spacing:.006em}
+.art-grid::-webkit-scrollbar{display:none}
+
+/* Ánh cam phủ lên ảnh của tab Why-Choose. */
+.adv-media::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(155deg,rgba(204,102,0,.16),transparent 52%)}

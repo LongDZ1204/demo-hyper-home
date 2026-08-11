@@ -21,7 +21,13 @@
     for(var k=0;k<2;k++){ orig.forEach(function(c){ var cl=c.cloneNode(true); cl.setAttribute('aria-hidden','true');
       var im=cl.querySelector('img'); if(im){ im.removeAttribute('loading'); }   // clone: bỏ lazy → tải ngay, tránh card mép trắng khi lướt tới
       rail.appendChild(cl); all.push(cl); }); }
-    function big(){ return window.innerWidth>640; }
+    /* data-align="start": căn thẻ về MÉP TRÁI ở mọi khổ, thay vì soi đèn vào thẻ
+       giữa. Băng cúp cần kiểu soi đèn (1 cúp to ở giữa); băng "Tattoo Styles
+       Related" của /black-and-grey thì B.Long chốt 4 CỘT ĐỀU — mà căn giữa một
+       thẻ thì hai mép luôn hở nửa thẻ, không bao giờ ra số cột tròn. Nhánh mobile
+       sẵn có đã căn mép trái đúng như vậy nên chỉ cần cho phép bật nó ở desktop. */
+    var startAlign = rail.getAttribute('data-align')==='start';
+    function big(){ return !startAlign && window.innerWidth>640; }
     /* cúp gần TÂM rail nhất (desktop) / trái nhất (mobile) trong toàn bộ 3N cúp */
     /* desktop: cúp gần TÂM rail; mobile: cúp có mép trái gần mép rail (căn theo biên card → 2 cột lấp đầy) */
     function nearest(){
@@ -510,6 +516,18 @@
   grid.addEventListener('click',function(e){
     var t=e.target.closest('.galp-tile'); if(!t||!grid.contains(t)) return;
     e.preventDefault(); open(t);
+  });
+  /* Ảnh nằm NGOÀI lưới (dải ảnh trong hero /black-and-grey) cũng mở được đèn:
+     tìm ô cùng href trong lưới rồi mở ô đó. KHÔNG nhân bản engine — một trang chỉ
+     có một đèn, nên mọi ô đều đi qua đúng một danh sách qua/lại, bấm ‹ › từ ảnh
+     hero là lướt tiếp cả bộ ảnh của mục Gallery.
+     Không tìm được ô tương ứng thì để nguyên hành vi link (mở ảnh gốc). */
+  document.addEventListener('click',function(e){
+    var t=e.target.closest('.galp-tile[data-lb]'); if(!t||grid.contains(t)) return;
+    var href=t.getAttribute('href'); if(!href) return;
+    var twin=tiles().filter(function(g){ return g.getAttribute('href')===href; })[0];
+    if(!twin) return;
+    e.preventDefault(); open(twin);
   });
   prev.addEventListener('click',function(e){ e.stopPropagation(); step(-1); });
   next.addEventListener('click',function(e){ e.stopPropagation(); step(1); });
