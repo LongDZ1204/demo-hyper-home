@@ -1179,3 +1179,28 @@ body.galp-lock{overflow:hidden}
 
 @media(max-width:600px){
 .gd-item{grid-template-columns:118px 1fr;gap:13px}}
+
+/* ---- Giới hạn số ô hiện ra (bật bằng data-gallery-page trên lưới) ----
+   Nâng từ _pages/portfolio.css lên đây 2026-08-11 — /piercing dùng chung.
+
+   .is-clamped  tab All: giấu TẠM, bấm Load more là mở. Đèn xem ảnh VẪN lướt qua,
+                nên bấm ô cuối lô rồi ấn mũi tên là đi tiếp được. Giấu bằng CLASS
+                chứ không bằng thuộc tính hidden — engine lấy "danh sách để lướt"
+                = ô không có hidden, đặt hidden là đèn bỏ qua luôn.
+   hidden       tab nhánh: cắt cứng, không có nút mở thêm; đi tiếp thì bấm link
+                sang gallery đầy đủ. Cố ý ĐẶT hidden để đèn không báo "1 / 12"
+                trong khi trên trang chỉ có 8 ô và không cách nào tới 4 ô kia.
+
+   Không làm bằng CSS được: cần "N ô đầu CỦA TẬP ĐANG LỌC", mà :nth-child vẫn đếm
+   cả ô đã bị lọc bỏ nên sai ngay khi đổi tab. Không có JS thì không ô nào bị
+   giấu, trang hiện đủ ảnh, vẫn dùng được. */
+.galp-tile.is-clamped{display:none}
+
+/* Nút Load more — cỡ L theo luật H3 (toàn site chỉ 2 cỡ nút: L 52px · S 44px). */
+.gal-loadmore{display:inline-flex;align-items:center;justify-content:center;min-height:52px;
+  padding:15px 30px;border:1px solid rgba(255,255,255,.28);border-radius:4px;
+  background:transparent;color:var(--cream);cursor:pointer;
+  font-family:var(--sub);font-weight:600;font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;
+  transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease)}
+.gal-loadmore:hover,.gal-loadmore:focus-visible{border-color:var(--orange);color:#fff;
+  background:rgba(204,102,0,.12);outline:none}

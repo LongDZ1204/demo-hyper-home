@@ -228,7 +228,7 @@
         <button class="galf-pill" type="button" data-filter="removal" aria-pressed="false">Laser Removal</button>
       </div>
 
-      <div class="galp-grid" data-gallery-grid>
+      <div class="galp-grid" data-gallery-grid data-gallery-page="8">
         <a class="galp-tile" data-tags="tattoo" href="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-1-scaled.jpg" aria-label="View full size: Black and grey realism tattoo at Hyper Inkers in San Antonio"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-1-scaled.jpg" alt="Black and grey realism tattoo at Hyper Inkers in San Antonio" loading="eager" decoding="async" fetchpriority="high"></a>
         <a class="galp-tile" data-tags="tattoo" href="https://hyperinkers.com/wp-content/uploads/2024/10/1-4-2-819x1024.jpg" aria-label="View full size: Color realism tattoo at Hyper Inkers in San Antonio"><img src="https://hyperinkers.com/wp-content/uploads/2024/10/1-4-2-819x1024.jpg" alt="Color realism tattoo at Hyper Inkers in San Antonio" loading="eager" decoding="async"></a>
         <a class="galp-tile" data-tags="piercing" href="https://hyperinkers.com/wp-content/uploads/2024/05/ears-1-2.png.webp" aria-label="View full size: Ear piercing at Hyper Inkers in San Antonio"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/ears-1-2.png.webp" alt="Ear piercing at Hyper Inkers in San Antonio" loading="eager" decoding="async"></a>
@@ -402,65 +402,7 @@
 <script src="_foundation/hi-chrome.js" defer></script>
 <script src="_foundation/hi-components.js" defer></script>
 <script src="_foundation/hi-ds.js" defer></script>
-<script defer>
-/* Giới hạn số ô hiện ra — port từ mockup hub v4, đấu nối vào engine lọc dùng chung.
-   Luật (B.Long chốt 10/08):
-     tab All     đổ hết 29 ảnh nhưng mở dần theo lô 8 ô bằng nút "Load more".
-     3 tab nhánh cố định 8 ô đại diện, KHÔNG có nút mở thêm; xem tiếp thì bấm nút
-                 sang gallery đầy đủ của nhánh đó.
-
-   Hai kiểu giấu, cố ý khác nhau vì đèn xem ảnh đối xử khác nhau:
-     is-clamped  giấu bằng CLASS -> engine vẫn tính vào danh sách lướt, nên bấm ô
-                 thứ 8 rồi ấn mũi tên là đi tiếp được.
-     hidden      cắt cứng ở tab nhánh -> engine bỏ qua, đèn báo "1 / 8" đúng số ô
-                 đang có trên trang, không báo "1 / 12" rồi tắc ở ô thứ 8.
-
-   PHẢI CHẠY SAU ENGINE, và phải bọc trong DOMContentLoaded mới chắc. `defer`
-   KHÔNG có tác dụng với script viết thẳng trong trang — nó chỉ áp cho script có
-   src. Để trần thì khối này chạy ngay lúc trình duyệt đọc tới, tức TRƯỚC
-   hi-components.js: listener của nó đăng ký trước nên chạy trước, rồi engine
-   chạy sau đặt lại hidden=false cho mọi ô khớp bộ lọc, xoá sạch lô vừa cắt.
-   Triệu chứng đã đo: tab nhánh ra 12 và 5 ô thay vì 8.
-   Script defer luôn chạy xong TRƯỚC DOMContentLoaded, nên bọc vào đó là thứ tự
-   được bảo đảm, không phải đoán theo vị trí thẻ script. */
-document.addEventListener('DOMContentLoaded',function(){
-  var STEP=8;
-  var grid=document.querySelector('[data-gallery-grid]');
-  var bar=document.querySelector('[data-gallery-filter]');
-  var btn=document.querySelector('.gal-loadmore');
-  if(!grid||!bar||!btn) return;
-  var items=[].slice.call(grid.children);
-  var shownAll=STEP;
-
-  function activeFilter(){
-    var p=bar.querySelector('.galf-pill.is-active');
-    return p?p.getAttribute('data-filter'):'all';
-  }
-  function setOf(f){
-    if(f==='all') return items.slice();
-    return items.filter(function(a){
-      return (a.getAttribute('data-tags')||'').split(/\s+/).indexOf(f)>-1;
-    });
-  }
-  function render(focusFrom){
-    var f=activeFilter(), isAll=f==='all', list=setOf(f), n=isAll?shownAll:STEP;
-    items.forEach(function(a){ a.classList.remove('is-clamped'); });
-    list.slice(n).forEach(function(a){
-      if(isAll) a.classList.add('is-clamped'); else a.hidden=true;
-    });
-    /* Nhãn nút để cố định "Load more", KHÔNG kèm số còn lại (B.Long chốt 11/08).
-       Nhãn đứng yên nên JS chỉ bật/tắt nút, không viết lại chữ — chữ nằm trong
-       HTML, một nguồn duy nhất. */
-    btn.hidden=!isAll||list.length-n<=0;
-    /* đưa focus tới ô vừa mở để người dùng bàn phím không rơi về đầu trang;
-       preventScroll để chuột không bị giật màn hình */
-    if(focusFrom!=null&&list[focusFrom]) list[focusFrom].focus({preventScroll:true});
-  }
-
-  btn.addEventListener('click',function(){ var from=shownAll; shownAll+=STEP; render(from); });
-  bar.addEventListener('click',function(e){ if(e.target.closest('.galf-pill')) render(null); });
-  render(null);
-});
-</script>
+<!-- Bộ đếm-lô + nút Load more đã chuyển vào _foundation/hi-components.js
+     ngày 2026-08-11, bật bằng data-gallery-page="8" trên lưới. -->
 </body>
 </html>

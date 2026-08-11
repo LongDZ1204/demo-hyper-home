@@ -370,13 +370,48 @@
   function tiles(){ return [].slice.call(grid.querySelectorAll('.galp-tile')); }
   if(!tiles().length && !grid.hasAttribute('data-gallery-dynamic')) return;
 
+  /* ---- giới hạn số ô hiện ra (tuỳ chọn) ----
+     Bật bằng `data-gallery-page="8"` trên lưới + một nút `.gal-loadmore` trong trang.
+     Nâng lên đây 2026-08-11 từ <script> riêng của portfolio.html, vì /piercing cần
+     đúng hành vi đó. Để mỗi trang một bản là lại chép — đúng vết 14/16 lỗi cũ.
+
+     Luật (B.Long chốt 10/08):
+       tab All    đổ hết ảnh nhưng mở dần theo lô, nút "Load more".
+       tab nhánh  cố định 1 lô đại diện, KHÔNG có nút mở thêm; xem tiếp thì bấm
+                  link sang gallery đầy đủ của nhánh đó.
+
+     HAI kiểu giấu, cố ý khác nhau vì đèn xem ảnh đối xử khác nhau:
+       .is-clamped  tab All: giấu bằng CLASS -> đèn VẪN tính vào danh sách lướt,
+                    nên bấm ô cuối lô rồi ấn mũi tên là đi tiếp được.
+       hidden       tab nhánh: cắt cứng -> đèn bỏ qua, báo "1 / 8" đúng số ô đang
+                    có trên trang, không báo "1 / 12" rồi tắc ở ô thứ 8. */
+  var STEP=parseInt(grid.getAttribute('data-gallery-page'),10)||0;
+  var moreBtn=STEP?document.querySelector('.gal-loadmore'):null;
+  var shownAll=STEP;
+  function curFilter(){
+    var p=root&&root.querySelector('.galf-pill.is-active');
+    return p?p.getAttribute('data-filter'):'all';
+  }
+
   /* ---- bộ lọc pill ---- */
-  function applyFilter(f){
+  function applyFilter(f,focusFrom){
+    var list=[];
     tiles().forEach(function(t){
-      if(f==='all'){t.hidden=false;return;}
+      t.classList.remove('is-clamped');
+      if(f==='all'){t.hidden=false;list.push(t);return;}
       var tags=(t.getAttribute('data-tags')||'').split(/\s+/);
       t.hidden=tags.indexOf(f)===-1;
+      if(!t.hidden) list.push(t);
     });
+    if(!STEP||!moreBtn) return;
+    var isAll=(f==='all'), n=isAll?shownAll:STEP;
+    list.slice(n).forEach(function(t){ if(isAll) t.classList.add('is-clamped'); else t.hidden=true; });
+    /* Nhãn nút cố định "Load more", KHÔNG kèm số còn lại (B.Long chốt 11/08) —
+       chữ nằm trong HTML, JS chỉ bật/tắt nút. */
+    moreBtn.hidden=!isAll||list.length-n<=0;
+    /* đưa focus tới ô vừa mở để người dùng bàn phím không rơi về đầu trang;
+       preventScroll để chuột không bị giật màn hình */
+    if(focusFrom!=null&&list[focusFrom]) list[focusFrom].focus({preventScroll:true});
   }
   if(root){
     root.addEventListener('click',function(e){
@@ -388,6 +423,13 @@
     });
     var initPill=root.querySelector('.galf-pill.is-active')||root.querySelector('.galf-pill');
     if(initPill) applyFilter(initPill.getAttribute('data-filter'));
+  }else if(STEP){
+    applyFilter('all');            /* lưới có nút mở thêm nhưng không có thanh lọc */
+  }
+  if(moreBtn){
+    moreBtn.addEventListener('click',function(){
+      var from=shownAll; shownAll+=STEP; applyFilter(curFilter(),from);
+    });
   }
 
   /* ---- đèn xem ảnh ---- */

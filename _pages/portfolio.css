@@ -200,32 +200,8 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 .section-gallery .galp-grid{margin-top:var(--gap-head-body)}
 .section-gallery .galwork-more{margin-top:var(--gap-head-body)}
 
-/* Giới hạn số ô hiện ra. HAI kiểu giấu khác nhau, cố ý tách 2 class dù cùng ra
-   ẩn — vì đèn xem ảnh đối xử khác nhau:
-
-   .is-clamped  tab All: giấu TẠM, bấm Load more là mở. Đèn VẪN lướt qua, nên
-                bấm ô thứ 8 rồi ấn mũi tên là đi tiếp được. Giấu bằng CLASS chứ
-                không bằng thuộc tính hidden — engine chung lấy "danh sách để
-                lướt" = ô không có hidden, đặt hidden là đèn bỏ qua luôn.
-   .is-capped   3 tab nhánh: cắt cứng 8 ô, không có nút mở thêm; đi tiếp thì bấm
-                nút sang gallery đầy đủ. Cái này ĐẶT hidden, cố ý — để đèn không
-                báo "1 / 12" trong khi trên trang chỉ có 8 ô và không cách nào
-                tới 4 ô kia.
-
-   Không làm bằng CSS được: cần "8 ô đầu CỦA TẬP ĐANG LỌC", mà :nth-child vẫn
-   đếm cả ô đã bị lọc bỏ nên sai ngay khi đổi tab. Không có JS thì không ô nào
-   bị giấu, trang hiện đủ ảnh, vẫn dùng được. */
-.galp-tile.is-clamped{display:none}
-
-/* Nút Load more: giữ nguyên hình dáng bản mockup, chỉ kéo 48px -> 52px cho khớp
-   luật H3 (toàn site chỉ 2 cỡ nút: L 52px · S 44px). */
-.gal-loadmore{display:inline-flex;align-items:center;justify-content:center;min-height:52px;
-  padding:15px 30px;border:1px solid rgba(255,255,255,.28);border-radius:4px;
-  background:transparent;color:var(--cream);cursor:pointer;
-  font-family:var(--sub);font-weight:600;font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;
-  transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease)}
-.gal-loadmore:hover,.gal-loadmore:focus-visible{border-color:var(--orange);color:#fff;
-  background:rgba(204,102,0,.12);outline:none}
+/* .galp-tile.is-clamped + .gal-loadmore đã chuyển sang _foundation/hi-components.css
+   ngày 2026-08-11 — /piercing dùng chung bộ đếm-lô này. */
 /* --- Nhịp trong section Visit --------------------------------------------
    Đo được: h2 -> đoạn dẫn 46px (quá rộng) · đoạn dẫn -> khối NAP 0px (dính sát,
    bản đồ đè lên dòng thứ hai của đoạn dẫn).
