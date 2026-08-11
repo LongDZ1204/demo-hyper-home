@@ -89,18 +89,29 @@ mất tín hiệu internal link, và trang bị giật khi tải.
 
 ## Trạng thái port
 
+Đo bằng `python3 build.py --check`: page nào đã đặt mốc `@include` là đã vào khung.
+
 | Page | Đã dùng khung chung |
 |---|---|
-| `index.html` | ✅ |
-| `about.html` | ✅ |
-| `awards.html` | ✅ |
-| `soon.html` | ✅ |
-| 18 page còn lại | ⏳ vẫn dùng CSS + header riêng của từng file |
+| `index.html` · `about.html` · `awards.html` · `soon.html` | ✅ |
+| `artists.html` · `artist-detail.html` | ✅ |
+| `portfolio.html` · `tattoo-gallery.html` · `piercing-gallery.html` · `removal-gallery.html` | ✅ |
+| 12 page còn lại | ⏳ vẫn dùng CSS + header riêng của từng file |
+
+Ba trang lưới ảnh dùng **chung một** `_pages/gallery.css` chứ không mỗi trang một file: khối
+`<style>` gốc của chúng giống nhau từng byte, mà ba bản sao chính là cách chúng trôi khỏi nhau.
 
 **FAQ có 2 tầng dùng chung**: `.faqtab-nav` (thanh chủ đề) + `.faqacc` (accordion). Page ít câu
 hỏi thì bỏ tab, dùng thẳng `.faqacc` trong `.wrap` — vẫn ăn đúng khổ 840px và cỡ chữ.
-6 page chưa port (`tattoo`, `piercing`, `portfolio`, `black-and-grey`, `ear-piercing`,
-`tattoo-removal`) còn dùng accordion `.faq-*` đời cũ, đổi sang `.faqacc` khi port.
+5 page chưa port (`tattoo`, `piercing`, `black-and-grey`, `ear-piercing`, `tattoo-removal`)
+còn dùng accordion `.faq-*` đời cũ, đổi sang `.faqacc` khi port.
+
+**Section chứa `.stickybar` không được để `overflow:hidden`.** Nó giết `position:sticky` mà giết
+rất êm: class `.is-stuck` vẫn bật đúng (mốc `IntersectionObserver` không liên quan tới overflow),
+chỉ có thanh là trôi mất. Đo trên `tattoo-gallery`, cuộn tới giữa vùng thẻ cha:
+`hidden` → `top -450px` · `clip` → `top 0` · `visible` → `top 0`. Dùng `clip` — cắt gọn mà không
+tạo khung cuộn. Hệ quả cho người soát: **luật F1 phải đo `getBoundingClientRect().top` của thanh**,
+đo bằng `classList.contains('is-stuck')` thì page hỏng vẫn báo đạt.
 
 ## Cách kiểm chứng khi port một page
 
