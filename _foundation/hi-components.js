@@ -76,47 +76,6 @@
 
 
 
-/* ---------- PILL-NAV · thanh kéo tuỳ biến (review · gallery · FAQ) ---------- */
-/* Thanh kéo custom cho pill-nav (review · gallery · FAQ) — hiện cố định mọi OS, kéo + click-jump.
-   Ẩn scrollbar native ở CSS; bar tự ẩn khi hàng pill KHÔNG tràn (đủ chỗ 1 hàng). */
-(function(){
-  function initBar(nav){
-    if(nav.dataset.pillbar) return; nav.dataset.pillbar='1';
-    // tách các pill hiện có vào 1 hàng cuộn .pillrow (giữ nav là anh em radio → chuỗi ~ CSS còn nguyên)
-    var row=document.createElement('div'); row.className='pillrow';
-    while(nav.firstChild) row.appendChild(nav.firstChild);
-    nav.appendChild(row);
-    var bar=document.createElement('div'); bar.className='pillbar';
-    var th=document.createElement('div'); th.className='pillbar-th'; bar.appendChild(th);
-    nav.appendChild(bar);
-    nav.classList.add('has-pillbar');
-    function sync(){
-      var sw=row.scrollWidth, cw=row.clientWidth;
-      if(sw<=cw+2){ bar.style.display='none'; return; }
-      bar.style.display='block';
-      var ratio=cw/sw, maxScroll=sw-cw, free=1-ratio;
-      th.style.width=(ratio*100)+'%';
-      th.style.left=(maxScroll? (row.scrollLeft/maxScroll)*free*100 : 0)+'%';
-    }
-    row.addEventListener('scroll', sync, {passive:true});
-    window.addEventListener('resize', sync);
-    var drag=false, sx=0, sl=0;
-    function pt(e){ return e.touches? e.touches[0].clientX : e.clientX; }
-    function down(e){ drag=true; sx=pt(e); sl=row.scrollLeft; e.preventDefault(); }
-    function move(e){ if(!drag)return; var sw=row.scrollWidth, cw=row.clientWidth; var travel=bar.clientWidth*(1-cw/sw); var scale=travel? (sw-cw)/travel : 0; row.scrollLeft=sl+(pt(e)-sx)*scale; }
-    function up(){ drag=false; }
-    th.addEventListener('mousedown',down); th.addEventListener('touchstart',down,{passive:false});
-    window.addEventListener('mousemove',move); window.addEventListener('touchmove',move,{passive:false});
-    window.addEventListener('mouseup',up); window.addEventListener('touchend',up);
-    bar.addEventListener('mousedown',function(e){ if(e.target===th)return; var r=bar.getBoundingClientRect(); row.scrollLeft=((e.clientX-r.left)/r.width)*(row.scrollWidth-row.clientWidth); });
-    sync();
-  }
-  function initAll(){ document.querySelectorAll('.rv-tabnav,.galf,.faqtab-nav').forEach(initBar); }
-  window.addEventListener('load', initAll);
-  // sync lại khi đổi tab review/FAQ (đổi số pill hiển thị không đổi, nhưng width có thể đổi)
-  window.addEventListener('load', function(){ setTimeout(function(){ window.dispatchEvent(new Event('resize')); }, 300); });
-})();
-
 /* ============================================================================
    LOAD MORE BẰNG LABEL/CHECKBOX — keyboard + aria-expanded cho trang Awards.
    Chuột vẫn hoạt động bằng liên kết for="..." kể cả khi JS chưa chạy. */
