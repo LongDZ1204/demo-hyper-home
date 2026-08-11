@@ -306,6 +306,22 @@
   .rv-bar{flex-direction:column;align-items:stretch;text-align:center}
   .rv-rate{justify-content:center}
   .rv-leave{justify-content:center}
+  /* Từ đây nút giãn hết bề ngang thẻ, nên chữ dài nhất quyết định chiều cao:
+     "Read our Facebook reviews" hơn "Read our Google reviews" đúng 2 ký tự mà
+     vượt hộp 284px -> gãy 2 dòng, cao 64px cạnh nút Google 44px (đo /tattoo ở
+     430px). Bóp đệm/khe/cỡ chữ cho vừa hộp — KHÔNG dùng white-space:nowrap:
+     nowrap ép hộp phình theo chữ, phiên bên cạnh đo ở 360px thấy nút tràn 46px
+     ra ngoài thẻ, đổi một lỗi nhìn thấy lấy một lỗi nặng hơn.
+     Bản gốc do phiên blog dựng và đo 8 khổ 1440->360; ở đây nâng lên tầng chung
+     vì 6 trang cùng khai .rv-leave (index · about · piercing · tattoo ·
+     tattoo-cover-up · testimonials). */
+  .rv-bar{padding-inline:14px}
+  .rv-leave{padding-inline:14px;gap:7px;letter-spacing:.03em;font-size:clamp(10.5px,2.85vw,12.5px)}
+  .rv-leave svg{width:17px;height:17px}
+}
+@media(max-width:374px){
+  .rv-leave{padding-inline:12px;gap:6px}
+  .rv-leave svg{width:16px;height:16px}
 }
 
 
