@@ -83,6 +83,10 @@
     }
 .contact-hero .grain { opacity: .045; z-index: 1; }
 .contact-hero__body { position: relative; z-index: 2; }
+/* .crumb ol là flex, mà flex bỏ qua text-align của cha — hero căn giữa nhưng
+   crumb vẫn dính trái. Phải căn ngay trên chính cái ol. Cùng dòng này đã có ở
+   .port-hero và .faq-hero; contact sót nên B.Long bắt được (11/08). */
+.contact-hero .crumb ol { justify-content: center; }
     /* KHÔNG khai font-size cho h1: hi-foundation.css đã có clamp(34px,4.6vw,60px)
        = đúng token --fs-h1. Bản cũ ghi cứng 60px + 2 media query 42/36px, tức 3
        nguồn sự thật cho một con số. */

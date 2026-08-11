@@ -97,33 +97,17 @@
 .vs-intro b{color:#E9E9E9;font-weight:600}
 @media(max-width:900px){.vs-nap{grid-template-columns:1fr;gap:26px}}
 @media(max-width:900px){.vs-map{min-height:300px}}
-/* ---- CLOSING CTA · nền KHÓI (B.Long 10/08: "làm nổi bật hơn cụm này") -------
-   Trước chỉ là 1 dòng chữ 22px + 2 nút trên nền đen phẳng, trùng tone với section
-   Visit ngay trên → đọc lướt là trôi qua, không ra dáng điểm kết của trang.
-   Nay nâng thành khối CTA đúng chuẩn 2 trang portfolio: câu hỏi tách thành H2 cỡ
-   --fs-display, nền khói bản lật ngang, padding dày gấp rưỡi section thường.
-   Bộ số .cta-smoke bê nguyên từ portfolio hub, không chỉnh lại con số nào. */
-.s-close{position:relative;overflow:hidden;text-align:center;background:var(--black);
-  border-top:1px solid var(--hair);padding-block:clamp(76px,10vw,138px)}
-.s-close::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:
-  linear-gradient(to bottom,var(--black) 0%,rgba(0,0,0,0) 20%,rgba(0,0,0,0) 80%,var(--black) 100%),
-  radial-gradient(74% 66% at 50% 50%,rgba(0,0,0,.8),rgba(0,0,0,0) 84%)}
-.s-close .wrap{position:relative;z-index:2}
-.s-close h2{max-width:min(1100px,94vw);margin:0 auto;font-size:var(--fs-display);
-  color:var(--cream);text-shadow:0 3px 28px rgba(0,0,0,.55);text-wrap:balance}
-.sc-txt{font-family:var(--body);font-size:16.5px;line-height:1.62;color:#C9C9C9;
-  max-width:52ch;margin:clamp(16px,2vw,22px) auto 0}
-.sc-txt b{color:#fff}
-.s-close .cta{justify-content:center;margin-top:clamp(24px,3vw,36px)}
-.s-close .btn-primary{min-height:52px;padding:15px 36px;letter-spacing:.09em;font-size:12.5px;
-  box-shadow:0 14px 34px rgba(204,102,0,.3)}
-@media(max-width:430px){
-  /* opacity .46 chứ không .54 như CTA của 2 trang portfolio: khối này ít chữ và
-     padding mỏng hơn, nên cùng một object-fit:cover lại phóng khói đậm hơn trên
-     mỗi đơn vị diện tích — đo thấy vệt sáng cắt ngang dòng lead. Kèm kéo vignette
-     rộng gần kín, chỉ chừa rìa cho khói. */
-  .cta-smoke{top:1.5%;left:0;width:100%;height:97%;object-fit:cover;opacity:.46}
-  .s-close::after{background:
-    linear-gradient(to bottom,var(--black) 0%,rgba(0,0,0,0) 16%,rgba(0,0,0,0) 84%,var(--black) 100%),
-    radial-gradient(94% 74% at 50% 50%,rgba(0,0,0,.88),rgba(0,0,0,.25) 92%)}
-}
+/* ---- CTA ĐÓNG TRANG (B.Long 11/08: "chỉnh cho chuẩn lại" theo mẫu
+       outputs/onpage-design/2026-08-06_cta-smoke-section.html) -----------------
+   Bản trước là .s-close — một bản CHÉP TAY của CTA khói, sống riêng trong file
+   này: 20 luật tự khai lại nền, vignette, cỡ chữ, nút. Mẫu chuẩn mà B.Long chỉ
+   chính là .s-cta1, đã nằm ở hi-components.css và index / portfolio /
+   tattoo-gallery / contact đang dùng. Nên đổi TÊN LỚP, xoá 20 luật ở đây.
+   Ba chỗ đổi thấy được so với bản chép tay:
+     tiêu đề là <p class="cta1-h"> chứ không <h2> — mẫu để <p> vì đây là lời mời
+       hành động, không phải một mục nội dung; trang cũng khỏi có h2 thứ sáu.
+     nút phụ về TEXT-LINK (.cta1-call) thay vì nút viền .btn-ghost — mẫu ghi rõ
+       "text link, không khung": hai nút cùng khung thì không còn nút nào là chính.
+     thêm lớp hạt nhiễu .grain, mẫu có, bản chép tay bỏ sót.
+   Chỉ còn lại đúng một dòng: tone nền. */
+.deals-page .s-cta1{background:var(--black)}
