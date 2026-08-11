@@ -44,8 +44,29 @@
   linear-gradient(0deg,rgba(13,13,13,.75) 0%,rgba(13,13,13,0) 42%)}
 /* Cột phải của hero chứa khối "review themes" có 4 chip. Bản chung để
    minmax(0,0.9fr) — co được về 0 nên ở khổ 1024 chip vỡ thành 4 dòng. Khoá sàn
-   320px cho nó. */
-.tm-hero .hero-grid{grid-template-columns:minmax(0,1fr) minmax(320px,.72fr)}
+   320px cho nó.
+
+   PHẢI bọc trong @media(min-width:821px). Bản chung xếp 1 cột ở mobile bằng
+   @media(max-width:820px){.hero-grid{grid-template-columns:1fr}} — độ ưu tiên
+   (0,1,0). Câu ở đây là (0,2,0), viết trần thì THẮNG luôn cả trong media query
+   đó: đo ở 430px ra "20px 320px", cột chữ còn 20px, H1 nát thành một sợi dọc và
+   khối chip đè lên. Media query KHÔNG cộng thêm độ ưu tiên — nó chỉ bật/tắt.
+   Luật: ghi đè một luật gốc bằng selector nặng hơn thì phải ghi đè luôn mọi
+   biến thể theo khổ màn của nó, hoặc tự khoá mình vào đúng khổ cần sửa. */
+@media(min-width:821px){
+  .tm-hero .hero-grid{grid-template-columns:minmax(0,1fr) minmax(320px,.72fr)}
+}
+
+/* Đoạn dẫn hero: gỡ nén.
+   .lead của hi-foundation nén sẵn 4 dòng, và bộ đó đi kèm một cặp
+   <input class="more-cb"> + <label class="more-btn"> để bung ra. 7 page kia đều
+   có cặp đó vì đoạn dẫn của họ dài 1.200 ký tự. Trang này port từ mockup, mockup
+   dùng bản .lead KHÔNG nén nên không có nút — thành ra ở 430px câu cuối bị cắt
+   cụt thành "…on Google o…" và không có cách nào đọc tiếp. Máy soát không bắt
+   được: DOM đủ chữ, chỉ có overflow:hidden nuốt.
+   Đoạn này 244 ký tự, dài nhất 5 dòng ở 360px — gỡ nén rẻ hơn là gắn nút
+   "Read more" cho 6 chữ. Nén là để trị đoạn dẫn dài, không phải mặc định. */
+.tm-hero .lead{display:block;-webkit-line-clamp:none;line-clamp:none;overflow:visible}
 
 .hero-proof{position:relative;border:1px solid var(--border);border-radius:8px;
   background:rgba(12,12,12,.64);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
@@ -118,6 +139,38 @@ h3.platform-h{margin:0 0 18px;font-family:var(--head);font-size:clamp(21px,2.2vw
 /* Nền trắng + bo tròn cho icon nền tảng: logo Google và Facebook là logo NHIỀU
    MÀU có bản quyền, đặt thẳng lên nền #0F0F0F là mất nét xanh và đỏ. */
 h3.platform-h svg{width:26px;height:26px;background:#fff;border-radius:50%;padding:3px;flex-shrink:0}
+
+/* ==== NÚT "READ OUR … REVIEWS" — ép về MỘT dòng trên điện thoại ============
+   Ở khổ <=820 bản chung đổi .rv-bar sang cột + stretch, nên nút giãn hết bề
+   ngang thẻ. Đo ở 430px: thẻ rộng 324px, nút Google cao 44px (1 dòng) còn nút
+   Facebook cao 64px — "Facebook reviews" dài hơn "Google reviews" đúng 2 ký tự
+   và vượt hộp chữ 284px, gãy thành 2 dòng. Hai nút cạnh nhau lệch chiều cao 20px.
+
+   KHÔNG dùng white-space:nowrap. Nowrap ép hộp phình theo chữ: đo ở 360px nút
+   tràn 46px ra ngoài thẻ, mà tràn ngang thì kéo cả trang trượt — đổi một lỗi
+   nhìn thấy lấy một lỗi nặng hơn. Cách ở đây là bóp cho chữ VỪA hộp, nên nếu có
+   khổ máy nào tôi chưa lường thì nó tự xuống dòng như cũ, không bao giờ tràn.
+
+   Nhả 4 chỗ ăn bề ngang cùng lúc: padding nút 20->14, padding thanh 20->14,
+   gap 9->7, khe chữ .05em->.03em, rồi cho cỡ chữ trôi theo bề ngang màn.
+
+   PHẠM VI: khoá trong .s-plat. Luật gốc .rv-leave nằm ở hi-components và 5 page
+   khác cũng đang gãy 2 dòng y hệt — sửa ở tầng chung là chạm vào page người khác
+   đang làm dở. Đã báo B.Long tách việc. */
+@media(max-width:820px){
+  .s-plat .rv-bar{padding-inline:14px}
+  .s-plat .rv-leave{padding-inline:14px;gap:7px;
+    letter-spacing:.03em;font-size:clamp(10.5px,2.85vw,12.5px)}
+  .s-plat .rv-leave svg{width:17px;height:17px}
+}
+/* Android phổ biến nhất là khổ 360px CSS. Ở đó nút Facebook còn thiếu đúng 4px
+   là đủ một dòng, trong khi nút Google đã một dòng — lại lệch cao đúng cái lỗi
+   ban đầu. Không hạ cỡ chữ nữa (10,5px in hoa đã là đáy đọc được), nhả nốt
+   padding/gap/icon để lấy 6px. */
+@media(max-width:374px){
+  .s-plat .rv-leave{padding-inline:12px;gap:6px}
+  .s-plat .rv-leave svg{width:16px;height:16px}
+}
 
 @media(max-width:1100px){
   .rv-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
