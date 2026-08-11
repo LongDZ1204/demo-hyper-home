@@ -1,0 +1,348 @@
+/* === NHỊP TONE NỀN ========================================================
+       Trước: <main> phủ MỘT gradient chạy suốt trang, nên ranh giới giữa các chủ
+       đề không đọc được — chỉ thấy một mảng tối chuyển màu. Nay mỗi section tự
+       giữ tone và so le --black #000 ↔ --bg #0F0F0F đúng luật Design Tokens v1:
+
+         hero      #000 + khói
+         visit/NAP #0F0F0F
+         book      #000
+         payment   #0F0F0F
+         CTA close #000 + khói
+         footer    #0A0A0A + hairline  (sát #000 nên phải có đường kẻ tách)
+
+       Tone là VỊ TRÍ trong chuỗi, không phải thuộc tính của component. Đổi thứ tự
+       section thì phải soát lại cả chuỗi — và lần đảo NAP lên trước form (B.Long
+       10/08) chính là ví dụ: hai section chỉ đổi chỗ cho nhau, nhưng nếu bê nguyên
+       màu cũ theo thì NAP #000 sẽ dính liền hero #000, còn form #0F0F0F dính liền
+       payment #0F0F0F — hỏng 2 mối cùng lúc. Nên phải HOÁN màu của hai section
+       này, không phải chuyển màu theo chúng. */
+    
+.contact-card { background: var(--bg) }
+.contact-form-section { background: var(--black) }
+.accept-section { background: var(--bg) }
+/* CTA đóng trang dùng component chung .s-cta1, mà mặc định của nó là --bg
+   (#0F0F0F) vì ở trang chủ nó đứng sau một section #000. Ở đây nó đứng sau
+   section payment vốn đã là #0F0F0F, nên phải hoán về #000 — đúng câu ghi
+   trong nhịp tone bên trên: tone là VỊ TRÍ trong chuỗi, không phải thuộc tính
+   của component. Hai class (.contact-page .s-cta1) để thắng hi-components. */
+.contact-page .s-cta1 { background: var(--black) }
+
+/* === TÁCH HERO VỚI SECTION NGAY DƯỚI (B.Long 11/08) =======================
+   Nhịp tone đã cho hero #000 và NAP #0F0F0F, nhưng lệch 15/255 trên nền tối
+   thì mắt gần như không đọc ra — B.Long nhìn bản mockup và bảo "chưa phân biệt
+   được hero với section bên dưới". Thêm vạch tóc, đúng thứ site đang dùng sẵn
+   ở .s-visit và .section-gallery, không đẻ ngôn ngữ mới.
+   Vạch đặt lên section DƯỚI chứ không phải mép dưới hero: hero có vignette đen
+   phủ đáy (::after), vẽ viền ở đó là viền chìm mất. */
+.contact-card { border-top: 1px solid var(--hair) }
+    /* === HERO — nền KHÓI, breadcrumb căn giữa trên H1 (2026-08-10) ============
+       Trước: ảnh chụp studio 560px + 2 lớp scrim quét chéo, chữ dồn góc trái, rồi
+       khối NAP thò lên đè mép dưới bằng margin âm. Ba trang kia (portfolio hub,
+       tattoo gallery, deals) đã thống nhất một hero khác: asset khói thật của
+       studio + breadcrumb căn giữa ngay trên H1, cao vừa phải để nội dung lên
+       sớm. Bê nguyên bộ số đó sang đây, không chỉnh lại con số nào.
+       ======================================================================== */
+    
+.contact-hero {
+      position: relative;
+      isolation: isolate;
+      overflow: clip;
+      background: var(--black);
+      min-height: clamp(190px,21vw,280px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      /* Chừa chỗ cho chrome bằng --chrome-h, KHÔNG bằng số cứng: promo bar và
+         .hdr đều position:fixed nên không chiếm chỗ trong luồng, và chrome cao
+         112px ở MỌI khổ. Bản mockup ghi clamp(96px,9vw,116px) — ở 430 rơi về 96
+         < 112 nên breadcrumb chui xuống dưới header, đúng lỗi đã đo được trên
+         portfolio (-20px) và tattoo-gallery (-6px). Dùng chung một bộ số với 2
+         trang đó để 4 hero vào bằng cùng một nhịp. */
+      padding: calc(var(--chrome-h) + clamp(26px,3.4vw,52px)) 0 clamp(30px,3.2vw,42px);
+    }
+.hero-smoke {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      opacity: .5;
+      filter: contrast(1.22) brightness(1.06) saturate(1.16);
+      -webkit-mask-image: radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
+              mask-image: radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
+      pointer-events: none; user-select: none; z-index: 0;
+    }
+.contact-hero::before {
+      content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background: radial-gradient(48% 62% at 50% 62%,rgba(204,102,0,.15),rgba(204,102,0,0) 72%);
+    }
+.contact-hero::after {
+      content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background:
+        linear-gradient(to bottom,var(--black) 0%,rgba(0,0,0,0) 26%,rgba(0,0,0,0) 74%,var(--black) 100%),
+        radial-gradient(78% 62% at 50% 50%,rgba(0,0,0,.88),rgba(0,0,0,0) 88%);
+    }
+.contact-hero .grain { opacity: .045; z-index: 1; }
+.contact-hero__body { position: relative; z-index: 2; }
+    /* KHÔNG khai font-size cho h1: hi-foundation.css đã có clamp(34px,4.6vw,60px)
+       = đúng token --fs-h1. Bản cũ ghi cứng 60px + 2 media query 42/36px, tức 3
+       nguồn sự thật cho một con số. */
+    
+.contact-hero h1 { max-width: 900px; margin: 12px auto 0; text-wrap: balance; }
+    /* .o mặc định của hi-foundation là display:block — hợp với H1 hai từ dài như
+       "Tattoo / Gallery". H1 ở đây chỉ có 2 từ ngắn, tách dòng thì mỗi dòng một
+       từ, đọc ra như bị vỡ chữ. Kéo về inline để thành một dòng "CONTACT US". */
+    
+.contact-hero h1 .o { display: inline; color: var(--orange); }
+.contact-hero__lead {
+      max-width: var(--lead-mw);
+      margin: 14px auto 0;
+      color: #D5D5D5;
+      font-size: var(--fs-lead);
+      line-height: 1.62;
+      text-shadow: 0 2px 12px rgba(0,0,0,.8);
+    }
+    /* === NAP — KHÔNG khung (B.Long 10/08, theo bản Figma) =====================
+       Trước: cả cụm nằm trong một thẻ nổi — viền 1px, bo 8px, nền mờ + blur, bóng
+       đổ 74px, thanh cam 2px chạy ngang mép trên, lại còn margin âm 44px để thò
+       lên đè hero. Bản Figma bỏ hết lớp vỏ đó: thông tin nằm thẳng trên nền
+       section, chỉ còn hairline ngăn giữa các dòng.
+       Bỏ margin âm là bắt buộc chứ không phải cho gọn: không còn khung thì mép
+       trên của cụm chữ sẽ chạm thẳng vào vignette đáy hero, đọc ra như lỗi tràn.
+       ======================================================================== */
+    
+.contact-card { overflow: visible; }
+.contact-card .wrap { position: relative; z-index: 7; }
+.contact-card__inner { position: relative; }
+.contact-card__grid {
+      display: grid;
+      grid-template-columns: minmax(280px,.86fr) minmax(420px,1.14fr);
+      gap: 48px;
+      align-items: stretch;
+    }
+.info-list {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      list-style: none;
+    }
+.info-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 19px 0;
+      border-top: 1px solid var(--hair);
+      transition: border-color .2s var(--ease);
+    }
+.info-item:first-child { border-top: 0; padding-top: 0; }
+.info-item:last-child { padding-bottom: 0; }
+.info-item:hover { border-color: rgba(204,102,0,.38); }
+.info-item__icon {
+      width: 25px;
+      height: 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      margin-top: 2px;
+      color: var(--orange);
+    }
+.info-item__icon svg {
+      width: 24px;
+      height: 24px;
+      fill: currentColor;
+      display: block;
+    }
+.info-item__body { flex: 1; }
+.info-item__label {
+      display: block;
+      margin-bottom: 5px;
+      font-family: var(--sub);
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+.info-item__value,
+    .info-item__hours {
+      display: block;
+      color: #DEDEDE;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+.info-item__value a { color: #DEDEDE; }
+.info-item__value a:hover { color: var(--orange-hi); }
+.info-item__hours strong {
+      display: inline-block;
+      min-width: 86px;
+      color: var(--cream);
+      font-weight: 600;
+    }
+.map-wrap {
+      position: relative;
+      min-height: 380px;
+      overflow: hidden;
+      border-radius: 8px;
+      background: #111;
+    }
+.map-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+.card-divider {
+      height: 1px;
+      margin: 36px 0 28px;
+      background: linear-gradient(90deg, transparent, var(--hair) 24%, rgba(204,102,0,.38) 50%, var(--hair) 76%, transparent);
+    }
+    /* Feedback: Follow Us icons are solid orange */
+    
+.social-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+.social-footer__label {
+      font-family: var(--sub);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0;
+      text-transform: uppercase;
+      color: var(--cream);
+    }
+.social-row { display: flex; gap: 10px; }
+.social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 4px;
+      border: 1px solid var(--orange);
+      background: var(--orange);
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: background .2s var(--ease), border-color .2s var(--ease), transform .2s var(--ease);
+    }
+.social-link:hover,
+    .social-link:focus-visible {
+      background: var(--orange-hi);
+      border-color: var(--orange-hi);
+      transform: translateY(-2px);
+    }
+.social-link svg {
+      width: 19px;
+      height: 19px;
+      fill: currentColor;
+      display: block;
+    }
+    /* Tông: ô nhập SÁNG HƠN card một bậc, không tối hơn — nếu không ô nhập gần như
+       tàng hình trên nền card đen. Dùng background-COLOR chứ không phải shorthand
+       `background`: shorthand xoá luôn background-image, tức là mũi tên của select. */
+    /* Trang chủ để card = --black vì section của nó là #0F0F0F. Ở đây section đã
+       phải đổi sang #000 để giữ nhịp so le, nên card bê nguyên màu đó là card tàng
+       hình — chỉ còn cái viền 1px nổi giữa nền. Lật ngược quan hệ, giữ nguyên
+       KHOẢNG CÁCH 15 đơn vị giữa nền và card, và bậc thang vẫn tăng dần đúng chiều:
+       section #000 < card #0F0F0F < ô nhập #161616. */
+    
+.s-book .bks-card { background-color: var(--bg); border: 1px solid var(--border); border-radius: 16px; }
+.bks-success .bks-success-h { font-family: var(--sub); font-size: 20px; font-weight: 800; color: #fff; margin: 0 0 8px; }
+    /* === PAYMENT — hàng tin phụ, không phải một section chính (B.Long 10/08) ===
+       Trước: chữ 26px + 4 ô rộng tới 172px trên nền cam .28, tổng khối cao hơn cả
+       cụm NAP ngay trên. Nó chỉ là dòng trấn an "thanh toán kiểu gì cũng được",
+       mà lại đang to ngang một section bán hàng.
+       Hạ cả 3 trục cùng lúc — cỡ chữ về thang nhãn (15px, đứng cùng bậc với FOLLOW
+       US 14px và HOTLINE 16px), ô logo còn 104px, và giảm độ đậm nền cam: 4 mảng
+       cam lớn cạnh nhau là thứ hút mắt nhất trang dù nội dung nhẹ nhất.
+       ======================================================================== */
+    
+.accept-section { text-align: center; }
+.accept-section__heading {
+      margin-bottom: 20px;
+      font-family: var(--sub);
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--orange);
+    }
+.accept-logos {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 104px));
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+.accept-logo {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 952 / 560;
+      border-radius: 4px;
+      border: 1px solid rgba(204,102,0,.26);
+      display: block;
+      background: rgba(204,102,0,.14);
+      overflow: hidden;
+    }
+.accept-logo img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+a:focus-visible,
+    button:focus-visible,
+    label:focus-visible {
+      outline: 2px solid var(--orange);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+@media (max-width: 900px) {
+      .contact-card__grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+      }
+      .map-wrap { min-height: 320px; }
+    }
+@media (max-width: 640px) {
+      .wrap { padding-inline: 20px; }
+      /* hero: bớt đệm trên vì header mobile thấp hơn, KHÔNG chạm cỡ chữ — h1 và
+         lead đã co theo clamp của token, ghi đè lần nữa là tự phá thang. */
+      /* Chỉ hạ đáy + chiều cao tối thiểu. KHÔNG viết lại `padding` shorthand:
+         shorthand đặt lại cả 4 cạnh nên nó xoá luôn calc(--chrome-h) ở trên. */
+      .contact-hero { padding-bottom: 26px; min-height: clamp(170px,42vw,230px); }
+      .hero-smoke { opacity: .4; }
+      .social-footer { justify-content: center; text-align: center; }
+      .social-footer__label { flex-basis: 100%; }
+      .accept-section__heading { font-size: 14px; line-height: 1.35; }
+      /* Giữ 4 ô một hàng chứ không xuống 2x2 như bản cũ: ô đã nhỏ còn 104px nên 4
+         cái vẫn lọt bề ngang máy, mà một hàng thì đọc ra "một dòng tin", còn 2x2
+         lại thành một lưới — tức lại to lên đúng thứ vừa bị yêu cầu thu nhỏ. */
+      .accept-logos {
+        grid-template-columns: repeat(4, minmax(0,1fr));
+        gap: 10px;
+      }
+      .floating-phone { display: none; }
+      .site-footer__services {
+        max-width: 360px;
+        margin-inline: auto;
+        font-size: 12px;
+        line-height: 1.55;
+      }
+    }
+@media (max-width: 560px) {
+      /* section mobile cao và hẹp: object-fit:contain sẽ ép dải khói ngang thành
+         một vệt mỏng giữa khung, nên đổi sang cover cho đầy hộp — mask tan rìa vẫn
+         giữ mép mềm. Bê nguyên cách xử lý của file mẫu CTA khói. */
+      .cta-smoke { top: 1.5%; left: 0; width: 100%; height: 97%; object-fit: cover; opacity: .48; }
+      .s-cta .cta-h { max-width: 94vw; }
+    }
+@media (max-width: 420px) {
+      .social-link { width: 38px; height: 38px; }
+      .info-item__hours strong { min-width: 82px; }
+      .accept-logos { gap: 10px; }
+    }

@@ -1,0 +1,98 @@
+/* ============================================================================
+   FAQ — CSS riêng của trang. Chỉ còn thứ tầng chung KHÔNG lo.
+   Mockup nguồn: outputs/onpage-design/2026-05-26_faq-page-mockup-v2.html
+   730 dòng <style> của mockup còn lại 24 luật ở đây; 97 luật kia đã có ở
+   _foundation (tab .faqtab · accordion .faqacc · .s-visit · .s-book · nén đoạn
+   dẫn .lead-* · reset · .crumb), và cả một mảng nữa là header/footer/nút gọi nổi
+   riêng của bản mockup mà site không dùng.
+
+   ĐỔI TÊN .hero -> .faq-hero. Tầng chung vừa nhận nguyên họ .hero của TRANG CHỦ
+   (hero toàn màn, ảnh ken-burns). Hero FAQ là dải khói thấp, hoàn toàn khác —
+   để trùng tên là hai bộ luật đè nhau. Cùng lối đặt tên với .port-hero /
+   .contact-hero / .dl-hero.
+
+   BỎ khối `<noscript><style>` khi tách: bộ tách gom mọi thẻ <style> nên hai luật
+   `.lead-txt{line-clamp:unset}` + `.lead-more{display:none}` của noscript suýt
+   nằm luôn trong file này — tức là NÉN ĐOẠN DẪN TẮT VĨNH VIỄN, kể cả khi có JS.
+   Chúng phải ở nguyên trong thẻ <noscript> của HTML, và đang ở đó.
+   ========================================================================== */
+
+/* === HERO — nền KHÓI, full-bleed, breadcrumb căn giữa trên H1 ===============
+   Công thức lấy đúng của .port-hero / .contact-hero: ảnh khói thật của studio +
+   mask radial cho rìa tan, ::before hắt cam giữ dây brand, ::after hai lớp
+   vignette để H1 không bị vệt khói cắt ngang.
+   Bán kính ngang vignette 78%: hero chạy hết bề ngang 1440 mà H1 chiếm ~75%,
+   để 56% thì hai đầu chữ vẫn dính khói.
+
+   padding-TRÊN = --chrome-h + khe thở, KHÔNG số cứng. Bản mockup để
+   `padding: clamp(26px,3.4vw,44px) 0` — nó chạy được trong mockup vì header ở
+   đó là `position:absolute` tự chiếm chỗ; header thật của site là fixed, không
+   chiếm chỗ, nên bê nguyên là H1 nằm hẳn dưới header. Dùng chung bộ số với 3
+   hero kia để 4 trang vào bằng cùng một nhịp. */
+.faq-hero{position:relative;isolation:isolate;overflow:clip;background:var(--black);
+  min-height:clamp(190px,21vw,280px);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:calc(var(--chrome-h) + clamp(26px,3.4vw,52px)) 0 clamp(30px,3.4vw,44px)}
+.hero-smoke{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;
+  opacity:.5;filter:contrast(1.22) brightness(1.06) saturate(1.16);
+  -webkit-mask-image:radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
+          mask-image:radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
+  pointer-events:none;user-select:none;z-index:0}
+.faq-hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(48% 62% at 50% 62%,rgba(204,102,0,.15),rgba(204,102,0,0) 72%)}
+.faq-hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(to bottom,var(--black) 0%,rgba(0,0,0,0) 26%,rgba(0,0,0,0) 74%,var(--black) 100%),
+    radial-gradient(78% 62% at 50% 50%,rgba(0,0,0,.88),rgba(0,0,0,0) 88%)}
+.faq-hero .grain{opacity:.045;z-index:1}
+.faq-hero__body{position:relative;z-index:2;width:100%}
+/* .crumb là component chung; hero này chỉ cần căn giữa thêm. */
+.faq-hero .crumb ol{justify-content:center}
+/* KHÔNG khai font-size cho h1 — hi-foundation.css đã đặt clamp(34px,4.6vw,60px)
+   = đúng --fs-h1. Bản mockup khai lại cỡ chữ ở đây là nguồn sự thật thứ hai. */
+.faq-hero h1{max-width:900px;margin:12px auto 0;text-wrap:balance;
+  text-shadow:0 2px 34px rgba(0,0,0,.55)}
+.faq-hero__lead{max-width:var(--lead-mw);margin:14px auto 0;font-size:var(--fs-lead);
+  line-height:1.62;color:#C9C9C9;text-shadow:0 2px 12px rgba(0,0,0,.8)}
+
+/* === TÁCH HERO VỚI SECTION NGAY DƯỚI (B.Long 11/08) =========================
+   Trên mockup hero #000 và s-faq cũng #000, không viền — B.Long nhìn ra ngay là
+   "chưa phân biệt được hero với section bên dưới". Chữa bằng đúng hai thứ đã
+   chốt: lệch nền một bậc + vạch tóc, giống contact và deals.
+   Vạch đặt lên section DƯỚI: hero có vignette đen phủ đáy, vẽ viền ở mép hero
+   là viền chìm mất. */
+.faq-page .s-faq{background:var(--bg);border-top:1px solid var(--hair)}
+
+/* Nén đoạn dẫn của section Visit về 2 dòng. Bộ .lead-* là của tầng chung, ở đây
+   chỉ chọn SỐ DÒNG — mỗi trang một con số tuỳ độ dài đoạn dẫn. */
+.lead-txt{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
+
+/* Nhịp dọc trong section Visit: head → đoạn dẫn → khối NAP theo cặp token chung
+   16/34. Luật chung ở hi-ds khoá theo .section-head nên không với tới .vs-intro. */
+.vs-intro{position:relative;max-width:var(--lead-mw);margin:var(--gap-head-lead) auto 0;
+  text-align:center;font-size:var(--fs-lead);line-height:1.62;color:#C9C9C9}
+.vs-nap{margin-top:0}
+
+/* Form đặt lịch — khung và ô nhập nạp từ components/booking-section.css, ở đây
+   chỉ đặt tone theo VỊ TRÍ của section trong chuỗi nền: s-faq #0F0F0F ->
+   s-visit #000 -> s-book #0F0F0F, nên card phải là #000 mới nổi lên khỏi nền. */
+.s-book{background:var(--bg)}
+.bks-success .bks-success-h{font-family:var(--sub);font-size:20px;font-weight:800;color:#fff;margin:0 0 8px}
+
+@media(max-width:860px){
+  .vs-nap{grid-template-columns:1fr;gap:26px}
+  .vs-map{min-height:300px}
+}
+@media(max-width:767px){
+  /* Chỉ hạ đáy + chiều cao tối thiểu. KHÔNG viết lại `padding` shorthand:
+     shorthand đặt lại cả 4 cạnh nên xoá luôn calc(--chrome-h) ở trên. */
+  .faq-hero{padding-bottom:26px;min-height:clamp(180px,44vw,230px)}
+  /* cover phóng ảnh to mà hero lại thấp → vệt khói chạm mép chữ H1. Nhạt thêm +
+     vignette phủ rộng gần kín, chỉ chừa rìa cho khói. */
+  .hero-smoke{opacity:.4}
+  .faq-hero::after{background:
+    linear-gradient(to bottom,var(--black) 0%,rgba(0,0,0,0) 20%,rgba(0,0,0,0) 80%,var(--black) 100%),
+    radial-gradient(88% 70% at 50% 50%,rgba(0,0,0,.9),rgba(0,0,0,.3) 88%)}
+  .faq-hero h1{margin-top:10px}
+  .faq-hero__lead{margin-top:12px}
+}

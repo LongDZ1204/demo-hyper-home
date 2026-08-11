@@ -3,8 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
 <title>Tattoo &amp; Piercing Deals | Hyper Inkers San Antonio TX</title>
 <meta name="description" content="Ongoing deals at Hyper Inkers, San Antonio TX: Happy Hour piercing prices from $15, Portfolio Project tattoos 30-50% off, and 10% off for military and veterans.">
+<link rel="canonical" href="https://hyperinkers.com/deals">
 
 <link rel="stylesheet" href="fonts-hyperinkers-2026-07-04/hyperinkers-fonts.css">
 <link rel="stylesheet" href="_foundation/hi-foundation.css">
@@ -47,129 +49,166 @@
   ]
 }
 </script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
+  {"@type":"ListItem","position":1,"name":"Home","item":"https://hyperinkers.com"},
+  {"@type":"ListItem","position":2,"name":"Deals","item":"https://hyperinkers.com/deals"}
+]}
+</script>
 
-<style>
-/* ==== DEALS PAGE · section components (foundation tokens only) ==== */
-
-/* footer (ported verbatim from live) */
-.pf{border-top:1px solid var(--border);padding:40px 0;background:var(--black)}
-.pf-in{display:flex;flex-direction:column;gap:8px;text-align:center}
-.pf-nap{font-size:13.5px;color:var(--muted);line-height:1.6}
-.pf-nap a{color:var(--cream)}
-.pf-copy{font-size:12px;color:#777;letter-spacing:.03em}
-
-/* ---- compact HERO (editorial split) ---- */
-.dl-hero{padding-top:clamp(112px,13vh,140px)}     /* clears the absolute header */
-.dl-hero .wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(24px,4vw,56px);flex-wrap:wrap}
-.dl-hero h1 .o{color:var(--orange);display:block}
-.dl-hero__brief{font-family:var(--body);font-size:15.5px;line-height:1.6;color:#C9C9C9;max-width:340px}
-.dl-hero__brief b{color:#fff;font-weight:600}
-
-/* ---- PORTFOLIO · editorial asymmetric feature ---- */
-.feat{display:grid;grid-template-columns:0.82fr 1.18fr;gap:clamp(28px,4vw,60px);align-items:center}
-@media(max-width:860px){.feat{grid-template-columns:1fr;gap:24px}}
-.feat__media{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--card-brd);aspect-ratio:4/5;background:#111}
-.feat__media img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
-.feat:hover .feat__media img{transform:scale(1.03)}
-.feat__num{font-family:var(--head);font-weight:700;color:var(--orange);line-height:.86;letter-spacing:-.01em;
-  font-size:clamp(52px,7vw,84px);display:flex;align-items:baseline;gap:12px;margin-bottom:18px}
-.feat__num span{font-family:var(--sub);font-size:16px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--cream)}
-.feat__body h3{margin-bottom:14px}
-.feat__body p{margin-bottom:14px;max-width:56ch}
-.feat__note{color:var(--muted);font-size:14px}
-.feat__body .cta{margin-top:22px}
-
-/* ---- MILITARY · horizontal band (different family) ---- */
-.mil{background:var(--card);border:1px solid var(--card-brd);border-radius:14px;padding:clamp(24px,3vw,40px);
-  display:grid;grid-template-columns:auto 1fr auto;gap:clamp(24px,3.4vw,48px);align-items:center}
-@media(max-width:820px){.mil{grid-template-columns:1fr;gap:20px}}
-.mil__num{font-family:var(--head);font-weight:700;color:var(--orange);line-height:.86;
-  font-size:clamp(48px,6vw,72px);display:flex;align-items:baseline;gap:8px;white-space:nowrap}
-.mil__num span{font-family:var(--sub);font-size:14px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--cream)}
-.mil__body h3{margin-bottom:8px}
-.mil__body p{max-width:62ch}
-
-/* ---- HAPPY HOUR · framed pricing print ---- */
-.hh-figure{max-width:820px;margin:clamp(28px,3.4vw,44px) auto 0;padding:clamp(12px,1.6vw,20px);
-  background:var(--surface);border:1px solid var(--card-brd);border-radius:14px}
-.hh-figure img{width:100%;height:auto;display:block;border-radius:6px}
-.pm-hint{font-family:var(--body);font-size:13.5px;color:var(--muted);text-align:center;max-width:640px;margin:22px auto 0}
-.pm-hint b{color:var(--cream);font-weight:600}
-.pm-hint a{color:var(--cream)}
-
-/* ---- Visit / NAP + Map (ported verbatim from live piercing hub) ---- */
-.s-visit{background:var(--black)}
-.s-visit .wrap{position:relative;z-index:2}
-.s-visit h2 .o{color:var(--orange)}
-.vs-intro{position:relative;max-width:720px;margin:16px auto 0;text-align:center;font-size:16.5px;line-height:1.62;color:#C9C9C9}
-.vs-intro b{color:#E9E9E9;font-weight:600}
-.vs-nap{display:grid;grid-template-columns:0.86fr 1.14fr;gap:clamp(24px,3.4vw,48px);align-items:stretch;margin-top:clamp(34px,4vw,50px)}
-@media(max-width:900px){.vs-nap{grid-template-columns:1fr;gap:26px}}
-.vs-contact{list-style:none;align-self:center}
-.vs-ci{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--hair)}
-.vs-ci:first-child{border-top:0;padding-top:0}
-.vs-ci:last-child{padding-bottom:0}
-.vs-ci-ic{flex:0 0 auto;width:24px;height:24px;color:var(--orange);margin-top:2px}
-.vs-ci-ic svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.vs-ci-lab{display:block;font-family:var(--sub);font-size:16px;font-weight:600;letter-spacing:.02em;color:var(--orange);margin-bottom:5px}
-.vs-ci-val{display:block;font-size:15px;line-height:1.55;color:#DEDEDE;text-decoration:none}
-a.vs-ci-val:hover{color:var(--orange-hi)}
-.vs-hours span{display:block}
-.vs-map{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--card-brd);min-height:360px;background:#111}
-@media(max-width:900px){.vs-map{min-height:300px}}
-.vs-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-
-/* closing CTA */
-.s-close{background:var(--black);text-align:center}
-.sc-txt{font-family:var(--body);font-size:clamp(18px,2vw,22px);color:#E9E9E9;max-width:560px;margin:0 auto 22px}
-.sc-txt b{color:#fff}
-.s-close .cta{justify-content:center}
-</style>
+<link rel="stylesheet" href="_foundation/hi-base.css">
+<link rel="stylesheet" href="_foundation/hi-chrome.css">
+<link rel="stylesheet" href="_foundation/components/booking-section.css">
+<link rel="stylesheet" href="_foundation/hi-components.css">
+<link rel="stylesheet" href="_pages/deals.css">
+<!-- hi-ds.css NẠP CUỐI: lớp design-system cố tình thắng cascade so với CSS lẻ của page -->
+<link rel="stylesheet" href="_foundation/hi-ds.css">
 </head>
-<body>
+<body class="deals-page">
 <a class="skip" href="#main">Skip to content</a>
 
-<!-- ==== SHARED HEADER (ported verbatim) ==== -->
+<!-- ==== HEADER (shared foundation .hdr + CSS-only drawer) ==== -->
+<!-- @include header -->
+<!-- HYPER INKERS — HEADER dùng chung. NGUỒN DUY NHẤT.
+     Sửa file này rồi chạy `python3 build.py` là 21 page cập nhật theo.
+     CSS ở _foundation/hi-chrome.css · JS ở _foundation/hi-chrome.js -->
+<!-- ======================= PROMO BAR ======================= -->
+<div class="promobar" id="promobar">
+  <div class="wrap">
+    <a class="promo-msg" href="deals.html">See Hyper Inkers deals for you <span class="arw">→</span></a>
+    <button class="promo-x" id="promoX" aria-label="Dismiss promotion">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+    </button>
+  </div>
+</div>
+
+<!-- ======================= HEADER ======================= -->
 <header class="hdr">
   <div class="wrap">
     <input type="checkbox" id="navtog" class="nav-toggle" aria-label="Open navigation menu">
-    <a class="logo" href="/" aria-label="Hyper Inkers home">
-      <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers">
+
+    <a class="logo" href="index.html" aria-label="Hyper Inkers home">
+      <img src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png.webp" alt="Hyper Inkers" width="1024" height="192">
     </a>
+
     <nav class="nav" aria-label="Primary">
-      <a href="/tattoo">Tattoo</a>
-      <a href="/piercing">Piercing</a>
-      <a href="/tattoo-removal">Removal</a>
-      <a href="/artists">Artists</a>
-      <a href="/deals" aria-current="page">Deals</a>
-      <a href="#visit">Visit</a>
-      <a href="tel:+12109979737" class="nav-book">Call Now</a>
+      <ul>
+        <li class="has-drop">
+          <a class="navlink" href="soon.html" aria-haspopup="true">Services
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="drop menu" role="menu">
+            <ul class="lvl1">
+              <li class="has-sub">
+                <a href="tattoo.html">Custom Tattoo
+                  <svg class="caret-r" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                </a>
+                <div class="fly" role="menu">
+                  <a href="black-and-grey.html">Black &amp; Grey</a>
+                  <a href="soon.html">Realism</a>
+                  <a href="soon.html">Fine Line</a>
+                  <a href="soon.html">Japanese</a>
+                  <a href="soon.html">Traditional</a>
+                </div>
+              </li>
+              <li><a href="soon.html">Cover-Up Tattoo</a></li>
+              <li class="has-sub">
+                <a href="piercing.html">Piercing
+                  <svg class="caret-r" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                </a>
+                <div class="fly" role="menu">
+                  <a href="ear-piercing-san-antonio.html">Ear Piercing</a>
+                  <a href="soon.html">Face Piercing</a>
+                  <a href="soon.html">Body Piercing</a>
+                </div>
+              </li>
+              <li><a href="tattoo-removal.html">Tattoo Removal</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li><a class="navlink" href="artists.html">Artists</a></li>
+
+        <li class="has-drop">
+          <a class="navlink" href="portfolio.html" aria-haspopup="true">Gallery
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="drop menu simple" role="menu">
+            <ul class="lvl1">
+              <li><a href="tattoo-gallery.html">Tattoo Gallery</a></li>
+              <!-- Trang piercing + removal gallery đã gỡ 11/08: layout của chúng không khác
+                   tattoo-gallery, dựng lại từ trang đó khi cần. Trỏ tạm soon.html cho khỏi 404. -->
+              <li><a href="soon.html">Piercing Gallery</a></li>
+              <li><a href="soon.html">Removal Before &amp; After</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="has-drop">
+          <a class="navlink" href="about.html" aria-haspopup="true">About Us
+            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </a>
+          <div class="drop menu simple" role="menu">
+            <ul class="lvl1">
+              <li><a href="faq.html">FAQ</a></li>
+              <li><a href="testimonials.html">Testimonials</a></li>
+              <li><a href="awards.html">Awards</a></li>
+            </ul>
+          </div>
+        </li>
+
+        <li><a class="navlink" href="blog.html">Blog</a></li>
+        <li><a class="navlink" href="contact.html">Contact Us</a></li>
+      </ul>
+
+      <div class="clock" id="hiClock" aria-label="Current time in San Antonio and open status">
+        <span class="t">—</span><span class="sep">·</span><span>SA</span><span class="sep">·</span>
+        <span class="dot"></span><span class="st">—</span>
+      </div>
+
+      <div class="m-clock" id="hiClockM" aria-hidden="true">
+        <span class="t">—</span><span class="sep">·</span><span>SA</span><span class="sep">·</span>
+        <span class="dot"></span><span class="st">—</span>
+      </div>
+      <a class="m-book" href="#book">Book Now</a>
     </nav>
-    <a class="book hdr-book" href="tel:+12109979737">Call Now</a>
+
+    <div class="hdr-right">
+      <a class="book" href="#book">Book Now</a>
+    </div>
+
     <label for="navtog" class="nav-burger" aria-label="Open menu">
       <svg class="ico-bars" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       <svg class="ico-x" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </label>
   </div>
 </header>
+<!-- /include header -->
 
 <main id="main">
 
 <!-- ========== HERO (compact editorial split) ========== -->
 <section class="section section--slim dl-hero">
+  <img class="hero-smoke" src="_hero-assets/color-blur.webp" alt="" aria-hidden="true" decoding="async">
   <div class="wrap">
+    <nav class="crumb dl-crumb" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="index.html">Home</a></li>
+        <li><span aria-current="page">Deals</span></li>
+      </ol>
+    </nav>
     <h1>Pick a deal.<span class="o">Keep the standards.</span></h1>
     <p class="dl-hero__brief">Ongoing tattoo and piercing offers at <b>Hyper Inkers, San Antonio</b>. Same artists, same standards, better price.</p>
   </div>
 </section>
 
 <!-- ========== TATTOO DEALS ========== -->
-<section class="section" id="deals">
+<section class="section s-deals" id="deals">
   <div class="wrap">
-    <div class="section-head section-head--editorial">
+    <header class="section-head center">
       <h2>Tattoo <span class="o">Deals</span></h2>
       <p class="section-intro">Two ongoing ways to save on world-class tattoo work, for bold collectors and for those who served.</p>
-    </div>
+    </header>
 
     <!-- Portfolio · editorial feature -->
     <article class="feat">
@@ -184,12 +223,8 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
         <div class="cta"><a class="btn btn-primary" href="tel:+12109979737">Book a Consultation</a></div>
       </div>
     </article>
-  </div>
-</section>
 
-<!-- ========== MILITARY · horizontal band ========== -->
-<section class="section" style="padding-top:0">
-  <div class="wrap">
+    <!-- Military band — cùng section "Tattoo Deals", không tách thẻ <section> riêng -->
     <div class="mil">
       <div class="mil__num">10%<span>off</span></div>
       <div class="mil__body">
@@ -202,15 +237,15 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 </section>
 
 <!-- ========== HAPPY HOUR · pricing print ========== -->
-<section class="section" id="happy-hour" style="padding-top:0">
+<section class="section s-happy" id="happy-hour">
   <div class="wrap">
-    <div class="section-head section-head--editorial">
+    <header class="section-head center">
       <h2>Happy Hour <span class="o">Piercing Prices</span></h2>
       <p class="section-intro">Walk in during a Happy Hour window for our deepest piercing prices, from $15. Struck prices are the regular rate. Windows run select hours each week based on piercer availability.</p>
-    </div>
+    </header>
 
     <figure class="hh-figure">
-      <img src="assets/happy-hour-pricing.jpg" alt="Hyper Inkers Happy Hour piercing prices: lobe, helix, conch, flat and hidden helix $15 (flat back stud included); nose, tragus, forward helix, rook, daith, eyebrow, medusa, labret, ashley, smiley, tongue, bridge, septum, belly and nipples $20 (basic jewelry included); snake eyes, snakebites, angel fangs and dahlia $25; industrial and dimple $30; dermal piercing $45; anti eyebrow and surface tragus staple bar $55." loading="lazy">
+      <img src="_hero-assets/happy-hour-pricing.jpg" width="2000" height="2500" alt="Hyper Inkers Happy Hour piercing prices: lobe, helix, conch, flat and hidden helix $15 (flat back stud included); nose, tragus, forward helix, rook, daith, eyebrow, medusa, labret, ashley, smiley, tongue, bridge, septum, belly and nipples $20 (basic jewelry included); snake eyes, snakebites, angel fangs and dahlia $25; industrial and dimple $30; dermal piercing $45; anti eyebrow and surface tragus staple bar $55." loading="lazy">
     </figure>
 
     <p class="pm-hint"><b>Piercings are walk-in only.</b> Happy Hour times shift with piercer availability, so call <a href="tel:+12109979737">(210) 997-9737</a> to confirm today's window before you head in.</p>
@@ -240,9 +275,11 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 </section>
 
 <!-- ========== CLOSING CTA ========== -->
-<section class="section s-close" id="cta-close" aria-label="Claim a deal">
+<section class="section s-close" id="cta-close" aria-labelledby="cta-close-title">
+  <img class="cta-smoke" src="_hero-assets/color-blur.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
   <div class="wrap">
-    <p class="sc-txt"><b>Ready to claim a deal?</b> Walk in for a Happy Hour piercing, or call to book a tattoo deal.</p>
+    <h2 id="cta-close-title">Ready to <span class="o">claim a deal?</span></h2>
+    <p class="sc-txt">Walk in for a Happy Hour piercing, or call to book a tattoo deal.</p>
     <div class="cta">
       <a class="btn btn-primary" href="https://www.google.com/maps/dir/?api=1&amp;destination=8045+Callaghan+Rd%2C+San+Antonio%2C+TX+78230" target="_blank" rel="noopener">Get Directions</a>
       <a class="btn btn-ghost" href="tel:+12109979737"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .7-.2 1l-2.3 2.2z"/></svg>Call (210) 997-9737</a>
@@ -250,15 +287,182 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
   </div>
 </section>
 
+<!-- ========== BOOKING FORM (component dùng chung, biến thể FULL) ==========
+     Nạp qua _foundation/components/booking-section.css + .js — KHÔNG chép CSS vào
+     trang. Chọn biến thể "full" vì trang này chào cả tattoo lẫn removal; bản thân
+     component đã sẵn dòng "Piercings are walk-ins only", khớp đúng với luật walk-in
+     mà mục Happy Hour phía trên đang nói. Roster 5 artist trong component cũng đúng
+     danh sách live (Minh · Tai Hoa · Mancha · Navei · Nicole).
+     ====================================================================== -->
+<section class="section s-book" id="book" aria-labelledby="book-title">
+  <div class="wrap">
+    <header class="section-head center">
+      <h2 id="book-title">Book a Free <span class="o">Tattoo Consultation</span></h2>
+    </header>
+    <div class="bks-card">
+      <div data-bks-body>
+        <p class="bks-intro">Tell us which deal you are after and we will confirm it applies before you book. Portfolio Project spots go fast, each artist takes only 1 to 2 a month.</p>
+
+        <form data-bks-form aria-label="Book a free tattoo consultation">
+          <div class="bks-row">
+            <div class="bks-group">
+              <label class="bks-label" for="bks-name">Your Name<span class="req">*</span></label>
+              <input class="bks-input" id="bks-name" type="text" name="your-name" placeholder="Your Name" required>
+            </div>
+            <div class="bks-group">
+              <label class="bks-label" for="bks-phone">Phone Number<span class="req">*</span></label>
+              <input class="bks-input" id="bks-phone" type="tel" name="your-phone" placeholder="Phone Number" required>
+            </div>
+          </div>
+
+          <div class="bks-row">
+            <div class="bks-group">
+              <label class="bks-label" for="bks-email">Email Address<span class="req">*</span></label>
+              <input class="bks-input" id="bks-email" type="email" name="your-email" placeholder="Email Address" required>
+            </div>
+            <div class="bks-group">
+              <label class="bks-label" for="bks-date">Appointment Date<span class="opt">Optional</span></label>
+              <input class="bks-input" id="bks-date" type="date" name="appointment-date">
+            </div>
+          </div>
+
+          <div class="bks-group">
+            <label class="bks-label" for="bks-service">Service<span class="req">*</span></label>
+            <select class="bks-select is-empty" id="bks-service" name="your-service" required>
+              <option value="" disabled selected>Choose a service</option>
+              <option value="Custom Tattoo">Custom Tattoo</option>
+              <option value="Cover-up Tattoo">Cover-up Tattoo</option>
+              <option value="Laser Removal">Laser Removal</option>
+            </select>
+            <p class="bks-note" role="note">Piercings are walk-ins only. Call <a href="tel:+12109979737">(210) 997-9737</a> for questions.</p>
+          </header>
+
+          <div class="bks-group">
+            <label class="bks-label" for="bks-artist">Choose Your Artist<span class="opt">Optional</span></label>
+            <select class="bks-select" id="bks-artist" name="your-artist">
+              <option value="Open to rec." selected>Open to recommendation</option>
+              <option value="Minh Pham">Minh Pham</option>
+              <option value="Tai Hoa">Tai Hoa</option>
+              <option value="Mancha">Mancha</option>
+              <option value="Navei">Navei</option>
+              <option value="Nicole">Nicole</option>
+            </select>
+          </div>
+
+          <div class="bks-group">
+            <label class="bks-label" for="bks-msg">Description<span class="opt">Optional</span></label>
+            <textarea class="bks-textarea" id="bks-msg" name="your-message" placeholder="e.g. Small fine-line rose on forearm, ~3 inches"></textarea>
+          </div>
+
+          <div class="bks-foot">
+            <p class="bks-status" data-bks-status>4 required fields remaining</p>
+            <button type="submit" class="bks-submit" data-bks-submit disabled>Book a Free Consultation</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="bks-success" data-bks-success>
+        <div class="bks-success__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <p class="bks-success-h">Request sent!</p>
+        <p>We'll reply within <strong>24 hours</strong> with available dates, your artist match, and a rough quote.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 </main>
 
-<!-- ==== FOOTER · NAP (ported verbatim) ==== -->
-<footer class="pf">
-  <div class="wrap pf-in">
-    <p class="pf-nap"><b>Hyper Inkers</b> &middot; 8045 Callaghan Rd, San Antonio, TX 78230 &middot; <a href="tel:+12109979737">(210) 997-9737</a> &middot; Mon to Thu 10am to 12am, Fri to Sat 10am to 1am, Sun 11am to 1am</p>
-    <p class="pf-copy">&copy; Hyper Inkers &middot; Tattoo &amp; Piercing Deals in San Antonio</p>
+<!-- @include footer -->
+<!-- HYPER INKERS — FOOTER + nút lên đầu trang, dùng chung. NGUỒN DUY NHẤT. -->
+<!-- ======================= FOOTER ======================= -->
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-top">
+      <img class="ft-logo" src="https://hyperinkers.com/wp-content/uploads/2024/05/Asset-49-1024x192.png" alt="Hyper Inkers" width="1024" height="192">
+      <div class="ft-tag">Tattoo Parlor in San Antonio</div>
+      <div class="ft-social">
+        <a href="https://www.tiktok.com/@hyperinkers" target="_blank" rel="noopener" aria-label="Hyper Inkers on TikTok"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/i-9.png" alt="" width="280" height="276" loading="lazy"></a>
+        <a href="https://www.instagram.com/hyperinkers/" target="_blank" rel="noopener" aria-label="Hyper Inkers on Instagram"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/i-11.png" alt="" width="280" height="276" loading="lazy"></a>
+        <a href="https://www.youtube.com/@hyperinkers" target="_blank" rel="noopener" aria-label="Hyper Inkers on YouTube"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/i-10.png" alt="" width="280" height="276" loading="lazy"></a>
+        <a href="https://www.facebook.com/hyperinkers" target="_blank" rel="noopener" aria-label="Hyper Inkers on Facebook"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/i-12.png" alt="" width="280" height="276" loading="lazy"></a>
+      </div>
+    </div>
+
+    <div class="ft-cols">
+      <div class="ft-col">
+        <p class="ft-col-t">Services</p>
+        <ul>
+          <li><a href="tattoo.html">Custom Tattoo</a></li>
+          <li><a href="piercing.html">Piercing</a></li>
+          <li><a href="soon.html">Cover-Up</a></li>
+          <li><a href="tattoo-removal.html">Removal</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <p class="ft-col-t">Explore</p>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="artists.html">Artists</a></li>
+          <li><a href="awards.html">Awards</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="testimonials.html">Reviews</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <p class="ft-col-t">Resources</p>
+        <ul>
+          <li><a href="portfolio.html">Gallery</a></li>
+          <li><a href="soon.html">Tattoo Aftercare</a></li>
+          <li><a href="soon.html">Piercing Aftercare</a></li>
+          <li><a href="soon.html">Removal Aftercare</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <p class="ft-col-t">Visit Us</p>
+        <div class="ft-hours">
+          <p>Mon–Thu: 10am – 12am</p>
+          <p>Fri–Sat: 10am – 1am</p>
+          <p>Sun: 11am – 1am</p>
+        </div>
+        <div class="ft-vdiv"></div>
+        <div class="ft-nap">
+          <p>Tel: <a href="tel:+12109979737">(210) 997-9737</a></p>
+          <p>Mail: <a href="mailto:hyperinkers1@gmail.com">hyperinkers1@gmail.com</a></p>
+          <p>8045 Callaghan Rd,<br>San Antonio, TX 78230</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="ft-strip">
+      <div class="ft-legal">
+        <a href="soon.html">Privacy Policy</a><span class="sep">·</span>
+        <a href="soon.html">Terms &amp; Conditions</a><span class="sep">·</span>
+        <a href="soon.html">Deposit Policy</a><span class="sep">·</span>
+        <a class="ft-dmca" href="//www.dmca.com/Protection/Status.aspx?ID=a96c1ca9-ca35-470f-8c2f-31640fe42845" target="_blank" rel="noopener"><img src="https://images.dmca.com/Badges/dmca-badge-w100-5x1-04.png?ID=a96c1ca9-ca35-470f-8c2f-31640fe42845" alt="DMCA Protected" width="100" height="20" loading="lazy"></a>
+      </div>
+      <div class="ft-pay">
+        <span class="lbl">We accept</span>
+        <span class="pm pm-pp" aria-label="PayPal">PayPal</span>
+        <span class="pm pm-visa" aria-label="Visa">VISA</span>
+        <span class="pm pm-mc" aria-label="Mastercard"><svg viewBox="0 0 38 22" aria-hidden="true"><circle cx="15" cy="11" r="8" fill="currentColor" fill-opacity=".95"/><circle cx="23" cy="11" r="8" fill="currentColor" fill-opacity=".45"/></svg></span>
+        <span class="pm pm-cash" aria-label="Cash">$</span>
+        <span class="pm pm-afterpay" aria-label="Afterpay">Afterpay</span>
+      </div>
+    </div>
+
+    <div class="ft-copy">© 2026 Hyper Inkers. All rights reserved.</div>
   </div>
 </footer>
 
+<!-- ======================== BACK TO TOP ======================== -->
+<button type="button" class="to-top" aria-label="Back to top">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg>
+</button>
+<!-- /include footer -->
+<script src="_foundation/hi-chrome.js" defer></script>
+<script src="_foundation/hi-components.js" defer></script>
+<script src="_foundation/hi-ds.js" defer></script>
+<script src="_foundation/components/booking-section.js" defer></script>
 </body>
 </html>

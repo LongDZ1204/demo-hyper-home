@@ -94,9 +94,17 @@ mất tín hiệu internal link, và trang bị giật khi tải.
 | Page | Đã dùng khung chung |
 |---|---|
 | `index.html` · `about.html` · `awards.html` · `soon.html` | ✅ |
-| `artists.html` · `artist-detail.html` | ✅ |
-| `portfolio.html` · `tattoo-gallery.html` · `piercing-gallery.html` · `removal-gallery.html` | ✅ |
-| 12 page còn lại | ⏳ vẫn dùng CSS + header riêng của từng file |
+| `artists.html` · `artist-detail.html` · `piercing.html` | ✅ |
+| `portfolio.html` · `tattoo-gallery.html` | ✅ |
+| `contact.html` · `deals.html` · `faq.html` | ✅ (11/08) |
+| 9 page còn lại | ⏳ vẫn dùng CSS + header riêng của từng file |
+
+**`faq.html` là trang MỚI (11/08)**, dựng từ `outputs/onpage-design/2026-05-26_faq-page-mockup-v2.html`.
+Mục FAQ ở menu header và cột Explore của footer trước đây trỏ `soon.html`, nay trỏ trang thật.
+Mockup dùng tab `<button>` + JS và accordion `<button>` + JS; bản port đổi sang bộ radio thuần CSS
+`.faqtab` + `.faqacc` của tầng chung — chính comment trong mockup ghi nó nhắm vào bộ đó.
+Thứ duy nhất phải viết thêm là 12 dòng JS nối `#tattoo` / `#piercing` / `#removal` với radio, vì
+radio thuần CSS không biết gì về URL mà B.Long đang dùng link có neo để gửi thẳng tới một chủ đề.
 
 **`piercing-gallery.html` và `removal-gallery.html` đã gỡ khỏi demo ngày 11/08** (B.Long chốt).
 Layout của chúng không khác `tattoo-gallery.html` một điểm nào, nên khi cần dựng lại thì **chép từ
@@ -126,6 +134,23 @@ Hai cái bẫy đã dính:
 - **`margin` shorthand không so được**: Chrome trả `auto` hay số (`25px`) tuỳ thời điểm đọc,
   nên chênh lệch margin trong bảng vân tay là ảo. So `margin-top/left/right` riêng lẻ,
   hoặc bỏ `margin` khỏi bộ thuộc tính đo.
+- **Tách CSS mockup: cùng selector KHÔNG có nghĩa là cùng luật.** Bộ tách phải chia BA rổ —
+  selector không có ở `_foundation` thì giữ; có mà **thân luật giống hệt** thì bỏ (bản sao thật);
+  có mà **thân luật khác** thì giữ VÀ in ra để soát tay, vì đó vừa có thể là ghi đè cố ý vừa có
+  thể là số đã trôi. Lần đầu chạy, bộ lọc chỉ so tên đã nuốt mất 14 luật `.s-book` của `contact`,
+  trong đó có một cái cố ý: trang chủ để card `--black` vì section của nó `#0F0F0F`, contact
+  section đã là `#000` nên card phải lật màu, không lật là card tàng hình.
+  Bẫy đi kèm: so thân luật phải bóc dấu cách quanh `:` `,` — mockup viết thoáng, tầng chung viết
+  nén, chỉ chuẩn hoá khoảng trắng chung chung thì 13 luật giống hệt vẫn bị chấm là "khác".
+- **Mockup có thể dùng bộ TÊN TOKEN riêng.** `2026-05-26_faq-page-mockup-v2.html` khai một lớp bí
+  danh `--hi-orange: var(--orange)`, `--hi-bg-deep: var(--black)`… rồi dùng bí danh khắp file.
+  Bỏ `:root` khi tách là 65 chỗ dùng thành vô định — luật còn nguyên nhưng giá trị rỗng, hỏng im
+  lặng. Phải thay bí danh bằng giá trị nó trỏ tới TRƯỚC khi tách; làm đúng thứ tự đó thì 40 luật
+  vốn trùng khít tầng chung mới lộ ra là trùng.
+- **`<noscript><style>` KHÔNG được gộp vào file CSS của page.** Bộ tách gom mọi thẻ `<style>` nên
+  hai luật dự phòng của FAQ (`.lead-txt{line-clamp:unset}` + `.lead-more{display:none}`) suýt nằm
+  trong `_pages/faq.css` — tức nén đoạn dẫn tắt vĩnh viễn, kể cả khi có JS. Chúng phải ở nguyên
+  trong thẻ `<noscript>` của HTML.
 - **Hero phải tự chừa chỗ cho chrome**: promo bar và `.hdr` đều `position:fixed`, chúng
   KHÔNG chiếm chỗ trong luồng. Page nào viết `padding-top` bằng một con số cứng là sớm
   muộn cũng đè: chrome cao `--chrome-h` = 112px ở **mọi** khổ, trong khi page hay hạ
