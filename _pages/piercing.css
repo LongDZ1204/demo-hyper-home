@@ -57,11 +57,8 @@
 .split-text h2 .o{color:var(--orange)}
 .split-lead{font-size:15.5px;line-height:1.72;color:#C4C4C4;margin:clamp(16px,2vw,22px) 0 0}
 .split-note{font-size:14px;line-height:1.62;color:var(--muted);margin:clamp(14px,1.7vw,18px) 0 0}
-.split-list{list-style:none;margin:clamp(16px,1.9vw,22px) 0 0;padding:0}
-.split-list li{position:relative;padding-left:24px;font-size:15px;line-height:1.58;color:#D2D2D2;margin-top:12px}
-.split-list li:first-child{margin-top:0}
-.split-list li::before{content:"";position:absolute;left:2px;top:8px;width:7px;height:7px;border-radius:50%;background:var(--orange)}
-.split-list li b{color:#fff;font-weight:600}
+/* .split-list đã lên _foundation/hi-components.css (11/08) — /tattoo và
+   /tattoo-cover-up cũng khai class này mà không nạp file riêng của /piercing. */
 /* Khung ảnh của khối chia đôi — bê lại từ mockup 05/07 (bo 16px · viền · bóng).
    Lúc port 11/08 tôi xoá nhầm cả khối này vì tưởng tầng chung đã lo; tầng chung
    KHÔNG có bất kỳ luật nào cho .split-media, nên ảnh rơi về kích thước gốc của
