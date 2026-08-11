@@ -126,6 +126,15 @@ Hai cái bẫy đã dính:
 - **`margin` shorthand không so được**: Chrome trả `auto` hay số (`25px`) tuỳ thời điểm đọc,
   nên chênh lệch margin trong bảng vân tay là ảo. So `margin-top/left/right` riêng lẻ,
   hoặc bỏ `margin` khỏi bộ thuộc tính đo.
+- **Hero phải tự chừa chỗ cho chrome**: promo bar và `.hdr` đều `position:fixed`, chúng
+  KHÔNG chiếm chỗ trong luồng. Page nào viết `padding-top` bằng một con số cứng là sớm
+  muộn cũng đè: chrome cao `--chrome-h` = 112px ở **mọi** khổ, trong khi page hay hạ
+  padding xuống ở mobile cho hero đỡ chiếm màn. Viết
+  `padding-top:calc(var(--chrome-h) + clamp(26px,3.4vw,52px))` thì số tự đúng, và khi
+  khách bấm tắt promo bar (`hi-chrome.js` đặt `--promo-h:0`) hero tự thu lại 36px.
+  Ở media query chỉ sửa `padding-bottom`, **đừng viết lại `padding` shorthand** — nó đặt
+  lại cả 4 cạnh nên xoá luôn phần `calc` ở trên. Đã dính ở `portfolio` (−20px) và
+  `tattoo-gallery` (−6px) tại 430.
 
 ## Link: URL thật ↔ file demo
 

@@ -8,10 +8,18 @@ html{scroll-padding-top:88px}
    gradient đen trơn. Nay tách thành section hero riêng theo đúng bản của portfolio
    hub và trang FAQ: asset khói thật của studio, breadcrumb căn giữa ngay trên H1.
    ============================================================================ */
+/* padding-TRÊN = chiều cao chrome + khe thở, KHÔNG phải một con số viết cứng.
+   Promo bar và .hdr đều position:fixed nên chúng KHÔNG chiếm chỗ trong luồng —
+   hero phải tự chừa đúng bằng chiều cao của chúng, phần dôi ra mới là khe thật.
+   Bản cũ viết clamp(96,9vw,116): ở 1440 chrome cao 112 nên khe chỉ còn 4px, ở
+   430 padding rơi về 96 < 112 nên breadcrumb đè lên logo, đo được -6px. Viết
+   theo --chrome-h thì con số tự đúng ở mọi khổ, và khi khách bấm tắt promo bar
+   (hi-chrome.js đặt --promo-h:0) hero tự thu lại 36px. Giữ y hệt portfolio.css
+   để hub và trang con vào bằng cùng một nhịp. */
 .port-hero{position:relative;isolation:isolate;overflow:clip;background:var(--black);
   min-height:clamp(190px,21vw,280px);display:flex;flex-direction:column;
   align-items:center;justify-content:center;text-align:center;
-  padding:clamp(96px,9vw,116px) 0 clamp(22px,2.4vw,32px)}
+  padding:calc(var(--chrome-h) + clamp(26px,3.4vw,52px)) 0 clamp(22px,2.4vw,32px)}
 .hero-smoke{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;
   opacity:.5;filter:contrast(1.22) brightness(1.06) saturate(1.16);
   -webkit-mask-image:radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
@@ -93,10 +101,11 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
   .vs-map{min-height:300px}
 }
 @media(max-width:760px){
-  /* 106px chứ không 92px như hub: header trang này là fixed + nền đục, để 92px thì
-     breadcrumb chỉ cách mép header 14px, nhìn dính. Hub header trong suốt nên không
-     lộ ra khoảng đó. */
-  .port-hero{padding:106px 0 24px;min-height:clamp(170px,42vw,230px)}
+  /* Chỉ hạ đáy + chiều cao tối thiểu. KHÔNG viết lại `padding` shorthand ở đây:
+     shorthand đặt lại cả 4 cạnh nên nó xoá luôn calc(--chrome-h) ở trên.
+     (Chú thích cũ ở đây đoán rằng 106px là đủ vì "header trang này nền đục" —
+     đoán sai: chrome cao 112px ở mọi khổ, nên 106 vẫn đè 6px.) */
+  .port-hero{padding-bottom:24px;min-height:clamp(170px,42vw,230px)}
   /* cover phóng ảnh to mà hero lại thấp → vệt khói chạm mép chữ. Nhạt thêm +
      vignette phủ rộng gần kín, chỉ chừa rìa cho khói. */
   .hero-smoke{opacity:.4}
