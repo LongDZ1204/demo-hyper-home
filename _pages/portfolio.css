@@ -1,87 +1,215 @@
 body{background:var(--bg);color:var(--text)}
 main{overflow:clip}
-.port-hero{position:relative;background:var(--black);padding:clamp(96px,10vw,126px) 0 clamp(34px,4.5vw,54px)}
-.port-hero::before{content:"";position:absolute;inset:0;z-index:0;background:
-  linear-gradient(90deg,rgba(0,0,0,.98) 0%,rgba(0,0,0,.94) 70%,rgba(40,19,5,.14) 100%),
-  linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.9) 100%)}
-.port-hero .grain{opacity:.045}
-.port-hero .wrap{position:relative;z-index:2}
-.crumb{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:34px;font-family:var(--sub);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
-.crumb a{color:var(--cream)}.port-hero h1{max-width:780px;margin:0}
-.port-hero h1 .o{color:var(--orange)}
-.hero-lead{max-width:650px;margin-top:18px;font-size:17px;line-height:1.62;color:#D5D5D5}
-.hero-actions{display:flex;flex-wrap:wrap;gap:14px;margin-top:30px}
-.hero-actions .btn svg,.disc-cta svg,.bridge-link svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
 
-.section-router{position:relative;background:var(--black);border-top:1px solid var(--hair)}
-.section-router .grain{opacity:.035}
-.section-router .wrap{position:relative;z-index:1}
+
+/* === HERO — nền KHÓI, full-bleed, breadcrumb căn giữa trên H1 (2026-08-10) =====
+   Trước: nền gradient đen trơn, chữ căn TRÁI, breadcrumb nằm trên cùng bên trái,
+   cao 126px padding trên + 2 nút. Nay đồng bộ với hero trang FAQ: dùng asset khói
+   thật của studio (_hero-assets/color-blur.webp) theo công thức .cta-smoke của home,
+   breadcrumb căn giữa ngay trên H1, bỏ 2 nút (CTA đã có ở cuối trang), hạ chiều cao.
+   ============================================================================ */
+.port-hero{position:relative;isolation:isolate;overflow:clip;background:var(--black);
+  min-height:clamp(190px,21vw,280px);display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;
+  padding:clamp(96px,9vw,116px) 0 clamp(30px,3.4vw,44px)}
+.hero-smoke{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;
+  opacity:.5;filter:contrast(1.22) brightness(1.06) saturate(1.16);
+  -webkit-mask-image:radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
+          mask-image:radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
+  pointer-events:none;user-select:none;z-index:0}
+.port-hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(48% 62% at 50% 62%,rgba(204,102,0,.15),rgba(204,102,0,0) 72%)}
+/* Bán kính ngang 78%: hero full-bleed 1440px mà H1 chiếm ~75% bề ngang, vignette hẹp
+   hơn thì 2 đầu chữ vẫn dính khói. */
+.port-hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(to bottom,var(--black) 0%,rgba(0,0,0,0) 26%,rgba(0,0,0,0) 74%,var(--black) 100%),
+    radial-gradient(78% 62% at 50% 50%,rgba(0,0,0,.88),rgba(0,0,0,0) 88%)}
+.port-hero .grain{opacity:.045;z-index:1}
+.port-hero .wrap{position:relative;z-index:2}
+/* .crumb là component chung ở hi-ds.css; hero này chỉ cần căn giữa thêm. */
+.port-hero .crumb ol{justify-content:center}
+.port-hero h1{max-width:900px;margin:12px auto 0;text-shadow:0 2px 34px rgba(0,0,0,.55)}
+.port-hero h1 .o{color:var(--orange)}
+.hero-lead{max-width:680px;margin:14px auto 0;font-size:var(--fs-lead);line-height:1.62;color:#D5D5D5;
+  text-shadow:0 2px 12px rgba(0,0,0,.8)}
+
 .section-title-row{display:flex;align-items:center;gap:20px;margin-bottom:clamp(26px,3.8vw,46px)}
 .section-title-row h2{white-space:nowrap}
 .section-title-row::after{content:"";height:1px;flex:0 0 min(12vw,96px);background:var(--orange);opacity:.72}
 .section-title-row.center{justify-content:center;text-align:center}
 .section-title-row.center h2{white-space:normal}
 .section-title-row.center::after{display:none}
-/* Head căn giữa thì HỘP đoạn dẫn dưới nó cũng phải căn giữa — không thì chữ căn
-   giữa nằm trong một hộp hẹp dính mép trái. Khoá theo ĐIỀU KIỆN "head mang
-   .center", không theo tên từng đoạn dẫn: đặt tên thì đoạn dẫn sinh sau luôn lọt
-   sổ. Cùng luật với hi-ds.css, chỉ khác là page này đặt tên head riêng nên luật
-   chung không với tới. */
-.section-title-row.center + p{margin-inline:auto;text-align:center}
-.router-intro{max-width:690px;margin:-20px 0 clamp(28px,4vw,42px);color:#C9C9C9;font-size:16.5px;line-height:1.62}
-.discipline-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(16px,2vw,24px)}
-.disc-card{position:relative;display:flex;flex-direction:column;min-height:100%;overflow:hidden;border:1px solid var(--hair);border-radius:6px;background:#141414;box-shadow:none;transition:border-color .2s var(--ease),background .2s var(--ease)}
-.disc-card:hover{border-color:rgba(255,255,255,.28);background:#171717}
-.disc-media{position:relative;aspect-ratio:16/10;overflow:hidden;background:#111}
-.disc-media img{width:100%;height:100%;object-fit:cover;transition:transform .55s var(--ease),filter .25s var(--ease);filter:saturate(.92) contrast(1.04)}.disc-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.06) 35%,rgba(0,0,0,.7) 100%)}
-.disc-num{position:absolute;left:16px;top:16px;z-index:2;display:inline-flex;align-items:center;min-height:30px;padding:7px 12px;border-radius:3px;background:rgba(0,0,0,.72);font-family:var(--sub);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--orange)}
-.disc-body{display:flex;flex:1;flex-direction:column;padding:clamp(22px,2.4vw,30px)}
-.disc-card h3{margin:0;font-family:var(--head);font-weight:700;font-size:clamp(25px,2.4vw,34px);line-height:1;text-transform:uppercase;letter-spacing:.005em;color:#fff}
-.disc-copy{margin-top:14px;color:#C9C9C9;font-size:15px;line-height:1.62}
-.disc-note{margin:20px 0 0;padding-top:18px;border-top:1px solid var(--hair);font-family:var(--sub);font-size:12px;letter-spacing:.04em;line-height:1.45;text-transform:uppercase;color:#BDBDBD}
-.disc-cta{display:inline-flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:52px;margin-top:auto;padding:14px 18px;border-radius:3px;background:var(--orange);color:#fff;font-family:var(--sub);font-weight:600;font-size:13px;letter-spacing:.07em;text-transform:uppercase;transition:background .2s var(--ease)}
-.disc-cta:hover{background:var(--orange-hi)}
 
-.section-help{background:var(--bg);border-top:1px solid var(--hair);border-bottom:1px solid var(--hair)}
-.section-help .grain{opacity:.04}
-.faq-wrap{max-width:1040px;position:relative;z-index:1}
-.faq-wrap .section-title-row{margin-bottom:18px}
-.faq-intro{max-width:650px;margin:0 auto 32px;text-align:center;color:#C9C9C9}
-.section-bridge{background:var(--bg);padding-block:clamp(44px,5vw,70px)}
-.bridge-card{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:24px 0;border-top:1px solid rgba(255,255,255,.1);border-bottom:1px solid rgba(255,255,255,.1)}
-.bridge-card p{max-width:620px;color:#C9C9C9;font-size:16px}
-.bridge-links{display:flex;flex-wrap:wrap;gap:12px;justify-content:flex-end}
-.bridge-link{display:inline-flex;align-items:center;gap:9px;min-height:44px;padding:11px 16px;border:1px solid var(--border);border-radius:999px;font-family:var(--sub);font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--cream);transition:border-color .2s var(--ease),color .2s var(--ease)}
-.bridge-link:hover{border-color:var(--orange);color:#fff}
-.bridge-link svg{stroke:var(--orange)}@media(max-width:1040px){
-  .discipline-grid{grid-template-columns:1fr}
-  .disc-card{display:grid;grid-template-columns:minmax(230px,.88fr) minmax(0,1.12fr)}
-  .disc-media{height:100%;aspect-ratio:auto;min-height:260px}
+/* === GALLERY TỔNG (2026-08-10, sửa v2 theo B.Long) ============================
+   Thay section "Where do you want to start?" (3 card giới thiệu 3 nhánh) bằng lưới
+   ảnh tổng có bộ lọc.
+   v1 dùng CSS `columns` (masonry) để ảnh giữ nguyên tỉ lệ. Bỏ, vì hai lý do:
+   1) không khớp style đang dùng — 3 trang gallery con (portfolio-tattoo/piercing/
+      removal) đều là lưới ĐỀU 4 cột, ô 4/5, bo 14px;
+   2) `columns` chảy theo CỘT nên thứ tự đọc trái→phải mất, nhìn ra là lộn xộn.
+   v2 bê nguyên bộ số của 2026-05-25_portfolio-tattoo-mockup.html: pill bo 999px +
+   lưới 4 cột + ô 4/5. Đổi ở đó thì đổi luôn ở đây.
+   Lọc + nút "xem gallery đầy đủ" chạy bằng radio + chuỗi `~`, không cần JS.
+   ============================================================================ */
+.section-gallery{position:relative;background:var(--black);border-top:1px solid var(--hair)}
+.section-gallery .grain{opacity:.035}
+.section-gallery .wrap{position:relative;z-index:1}
+/* Head "Explore Our Work" không có link điều hướng riêng -> căn giữa (luật C1),
+   và đoạn dẫn + hàng chip căn theo. B.Long chốt 11/08. */
+.section-gallery h2{margin:0;text-align:center}
+.section-gallery h2 .o{color:var(--orange)}
+.gal-lead{max-width:var(--lead-mw);margin:var(--gap-head-lead) auto 0;text-align:center;
+  font-size:var(--fs-lead);line-height:1.62;color:#C9C9C9}/* Thanh lọc DÍNH đỉnh màn khi cuộn qua lưới ảnh (B.Long 10/08). Header trang là
+   position:absolute nên nó cuộn đi mất — không phải trừ chiều cao header, top:0 là đủ.
+   .section cha có overflow:clip: clip KHÔNG tạo scroll container (khác overflow:hidden)
+   nên sticky vẫn chạy, và phần clip lại đúng ý — ra khỏi section là thanh biến mất.
+   Nền đục + blur là bắt buộc: thiếu nó thì ảnh cuộn xuyên qua sau chip. */
+.gal-filterbar{position:sticky;top:0;z-index:6;
+  margin-top:clamp(18px,2.2vw,24px);padding-block:12px;
+  background:rgba(0,0,0,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:0 1px 0 rgba(255,255,255,.07)}
+/* .gal-filters + .gal-chip = bộ số .portfolio-filter + .filter-pill của trang
+   gallery con, không đổi một con số nào. Khác duy nhất: trạng thái active ở đó do JS
+   gắn class .is-active, ở đây do radio :checked — nên selector khác, kết quả như nhau. */
+.gal-filters{display:flex;flex-wrap:wrap;align-items:center;gap:9px 10px;max-width:860px}/* Ô ảnh là <a href="ảnh gốc"> chứ không phải <figure>: không có JS thì bấm vẫn mở
+   được ảnh gốc, và ô tự vào được bằng phím Tab. Giống hệt .portfolio-tile ở 3 trang
+   gallery con. <a> mặc định inline nên phải khai display:block. */
+.gal-item{display:block;position:relative;min-width:0;margin:0;aspect-ratio:4/5;overflow:hidden;border-radius:14px;
+  background:#151515;border:1px solid rgba(255,255,255,.07);box-shadow:0 22px 54px rgba(0,0,0,.32);
+  transition:transform .3s var(--ease),border-color .3s var(--ease)}/* 3 ảnh before/after là 1080x677 = ĐÚNG 8/5 NGANG, trong khi ô lưới là 4/5 DỌC.
+   Ép vào ô dọc thì object-fit:cover cắt mất 25% mỗi bên — nghĩa là cụt một phần
+   nửa "before" và nửa "after", đúng thứ mà tấm ảnh sinh ra để so sánh; nhãn B/A
+   in sẵn trong ảnh cũng bị cắt cụt ở đáy. Cho nhóm này chiếm 2 cột và khai đúng
+   8/5 thì cover không phải cắt gì, ảnh hiện trọn cả 2 nửa lẫn nhãn gốc. */
+.gal-item--ba{grid-column:span 2;aspect-ratio:1080/677}   /* đúng kích thước file gốc, không phải 8/5 làm tròn */
+
+/* lọc theo nhánh — vẫn thuần CSS, không cần JS */
+#gf-tattoo:checked   ~ .gal-grid .gal-item:not(.is-tattoo){display:none}#gf-removal:checked  ~ .gal-grid .gal-item:not(.is-removal){display:none}
+
+/* Giới hạn số ô hiện ra (B.Long 10/08). Hai kiểu giấu KHÁC NHAU, cố ý tách 2 class
+   dù cùng ra display:none — vì lightbox đối xử với chúng khác nhau:
+
+   .is-clamped — CHỈ ở tab All: giấu tạm, bấm "Load more" là mở ra. Lightbox VẪN
+     tính vào bộ điều hướng, nên bấm ảnh thứ 8 rồi ấn mũi tên là đi tiếp được.
+   .is-capped  — ở 3 tab nhánh: cắt cứng ở 8 ô, không có nút mở thêm. Đi tiếp là
+     bấm nút sang gallery đầy đủ. Lightbox KHÔNG tính vào bộ, nếu tính thì màn ảnh
+     báo "1 / 12" trong khi trên trang chỉ có 8 ô và không cách nào tới 4 ô kia.
+
+   Phải do JS làm, không làm bằng CSS được: cần "8 ô đầu CỦA TẬP ĐANG LỌC", mà
+   :nth-child vẫn đếm cả ô đã bị lọc bỏ nên đếm sai ngay khi đổi tab.
+   Không có JS thì không ô nào bị giấu → trang hiện đủ ảnh, vẫn dùng được.
+   Viết .gal-item.is-* (0,2,0) chứ không .is-* (0,1,0) để chắc chắn thắng
+   .gal-item{display:block} dù thứ tự khai báo có bị đổi về sau. */
+.gal-item.is-clamped,
+.gal-item.is-capped{display:none}
+
+/* nút sang gallery đầy đủ — CHỈ hiện ở 3 tab nhánh. Tab "All" không có nút vì
+   "All" trộn cả 3 nhánh, không có một đích duy nhất để trỏ tới. */
+.galwork-more{margin-top:clamp(20px,2.6vw,30px);text-align:center;
+  display:flex;flex-direction:column;align-items:center;gap:14px}.gal-golink{display:none;align-items:center;justify-content:center;gap:10px;min-height:52px;
+  padding:15px 32px;border-radius:4px;background:var(--orange);color:#fff;
+  font-family:var(--sub);font-weight:600;font-size:13px;letter-spacing:.09em;text-transform:uppercase;
+  transition:background .2s var(--ease)}
+.gal-golink:hover{background:var(--orange-hi)}
+.gal-golink svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+#gf-tattoo:checked   ~ .galwork-more .gal-golink--tattoo{display:inline-flex}#gf-removal:checked  ~ .galwork-more .gal-golink--removal{display:inline-flex}
+
+/* === CTA — nền KHÓI (2026-08-10) =============================================
+   Trước dùng _hero-assets/cta-splatter-orange.png (vệt sơn cam). Nay đổi sang chính
+   asset khói của studio theo 2026-08-06_cta-smoke-section.html, nhánh CTA 2 (bản
+   lật ngang, tương phản cao hơn CTA 1) để không trùng với hero cùng trang.
+   object-fit:contain giữ trọn vệt khói trong section, mask radial làm rìa tan vào nền
+   nên overflow:clip không cắt thành đường thẳng.
+   ============================================================================ */
+.portfolio-cta{position:relative;overflow:hidden;text-align:center;background:var(--bg);border-top:1px solid var(--hair);padding-block:clamp(76px,10vw,138px)}
+.cta-smoke{position:absolute;top:5%;left:3.5%;width:93%;height:90%;
+  object-fit:contain;object-position:center;max-width:none;
+  transform:scaleX(-1);opacity:.62;filter:contrast(1.32) brightness(1.12) saturate(1.02);
+  -webkit-mask-image:radial-gradient(126% 114% at 50% 50%,#000 62%,transparent 94%);
+          mask-image:radial-gradient(126% 114% at 50% 50%,#000 62%,transparent 94%);
+  pointer-events:none;user-select:none;z-index:0}
+/* File mẫu để opacity .86 vì ở đó chữ CTA là cỡ display 74px, đọc xuyên khói được.
+   Ở đây dòng lead chỉ 17px nên đo thấy khói cắt ngang chữ → hạ .86→.62 và kéo vignette
+   rộng ra 74% (bằng bề ngang thật của khối chữ) với alpha .8. */
+.portfolio-cta::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:
+  linear-gradient(to bottom,var(--bg) 0%,rgba(15,15,15,0) 20%,rgba(15,15,15,0) 80%,var(--bg) 100%),
+  radial-gradient(74% 66% at 50% 50%,rgba(0,0,0,.8),rgba(0,0,0,0) 84%)}
+/* === NAP cuối trang — chép từ .s-visit của site/_pages/home.css (phần NAP + map) === */
+.s-visit{position:relative;background:var(--black);border-top:1px solid var(--hair)}
+.s-visit .wrap{position:relative;z-index:2}
+.s-visit .section-title-row{justify-content:center}
+.vs-intro{max-width:var(--lead-mw);margin:var(--gap-head-lead) auto 0;text-align:center;
+  font-size:var(--fs-lead);line-height:1.62;color:#C9C9C9}
+.vs-nap{display:grid;grid-template-columns:0.86fr 1.14fr;gap:clamp(24px,3.4vw,48px);
+  align-items:stretch;margin-top:var(--gap-head-body)}
+.vs-contact{list-style:none;align-self:center}
+.vs-ci{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--hair)}
+.vs-ci:first-child{border-top:0;padding-top:0}
+.vs-ci:last-child{padding-bottom:0}
+.vs-ci-ic{flex:0 0 auto;width:24px;height:24px;color:var(--orange);margin-top:2px}
+.vs-ci-ic svg{width:24px;height:24px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.vs-ci-lab{display:block;font-family:var(--sub);font-size:16px;font-weight:600;letter-spacing:.02em;color:var(--orange);margin-bottom:5px}
+.vs-ci-val{display:block;font-size:15px;line-height:1.55;color:#DEDEDE;text-decoration:none}
+a.vs-ci-val:hover{color:var(--orange-hi)}
+.vs-hours span{display:block}
+.vs-map{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--card-brd);min-height:360px;background:#111}
+.vs-map iframe{position:absolute;inset:0;width:100%;height:100%;border:0}/* Số cột lưới ảnh: cùng 2 mốc 980px và 640px như trang gallery con, để hub và
+   3 trang con gãy cột ở đúng một chỗ. */
+@media(max-width:1040px){
+  .vs-nap{grid-template-columns:1fr;gap:26px}
+  .vs-map{min-height:300px}
 }
 @media(max-width:760px){
-  .port-hero{padding:96px 0 42px}
+  .port-hero{padding:92px 0 38px;min-height:clamp(170px,42vw,230px)}
+  /* cover phóng ảnh to mà hero lại thấp → vệt khói chạm mép chữ. Nhạt thêm +
+     vignette phủ rộng gần kín, chỉ chừa rìa cho khói. */
+  .hero-smoke{opacity:.4}
+  .port-hero::after{background:
+    linear-gradient(to bottom,var(--black) 0%,rgba(0,0,0,0) 20%,rgba(0,0,0,0) 80%,var(--black) 100%),
+    radial-gradient(88% 70% at 50% 50%,rgba(0,0,0,.9),rgba(0,0,0,.3) 88%)}
   .hero-lead{font-size:15.8px}
-  .hero-actions{flex-direction:column}
-  .hero-actions .btn{width:100%}
   .section-title-row{gap:14px}
   .section-title-row h2{white-space:normal}
-  .router-intro{margin-top:-10px}
-  .disc-card{display:flex}
-  .disc-media{min-height:0;aspect-ratio:16/10}
-  .disc-body{padding:20px}
-  .disc-copy{font-size:14.5px}
-  .bridge-card{align-items:flex-start;flex-direction:column}
-  .bridge-links{justify-content:flex-start;width:100%}
-  .bridge-link{width:100%;justify-content:center}
+  .gal-golink{width:100%}
 }
 @media(max-width:430px){
   .wrap{padding-inline:18px}
   .port-hero h1{font-size:clamp(34px,12vw,48px)}
-  .disc-card h3{font-size:clamp(24px,7vw,30px)}
-  .disc-cta{font-size:12px;letter-spacing:.055em}}
+  .cta-smoke{top:1.5%;left:0;width:100%;height:97%;object-fit:cover;opacity:.54}
+}
 @media(max-width:374px){
   .wrap{padding-inline:14px}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
 }
+
+/* ============================================================================
+   PHẦN THÊM KHI ĐỒNG BỘ VÀO KHUNG DỰNG (11/08)
+   ============================================================================ */
+
+/* Hàng chip lọc căn giữa theo heading — B.Long: "heading không có link thì căn
+   giữa, tab và text căn theo". .galf gốc là thanh full width căn trái vì trang
+   chủ dùng nó dưới head căn trái. */
+/* Phải căn ở .pillrow chứ không phải .galf: hi-components.js bọc các pill vào
+   .pillrow rồi thêm .pillbar (thanh kéo tuỳ biến) làm con thứ hai. Căn ở .galf
+   chỉ căn hai cái bọc đó, các pill bên trong vẫn giãn hết cột — đo được: 4 pill
+   nằm ở 132 · 433 · 770 · 1129 trên thanh rộng 1176. */
+.galf--center .pillrow{justify-content:center}
+/* Hẹp thì trả về cuộn ngang tự nhiên, căn giữa lúc tràn sẽ cắt mất pill đầu. */
+@media(max-width:640px){.galf--center .pillrow{justify-content:flex-start}}
+
+/* Ô before/after rộng gấp đôi, tỉ lệ đúng file gốc 1080x677 — không phải 8/5
+   làm tròn. .galp-tile chung khoá 4/5 nên phải ghi đè đúng 2 thuộc tính này. */
+.galp-tile--ba{grid-column:span 2;aspect-ratio:1080/677}
+@media(max-width:640px){.galp-tile--ba{grid-column:span 2}}
+
+/* Nút dưới mỗi tab: hiện đúng nút của tab đang mở. Đọc .is-active mà engine
+   chung đã gắn sẵn lên pill, nên KHÔNG phải thêm JS riêng cho page.
+   :has() đã dùng sẵn trong hi-components.css (.faqacc-item:has(...)) nên không
+   phải kỹ thuật mới ở codebase này. */
+.section-gallery:has(.galf-pill[data-filter="all"].is-active) .gal-golink--tattoo,
+.section-gallery:has(.galf-pill[data-filter="tattoo"].is-active) .gal-golink--tattoo,
+.section-gallery:has(.galf-pill[data-filter="piercing"].is-active) .gal-golink--piercing,
+.section-gallery:has(.galf-pill[data-filter="removal"].is-active) .gal-golink--removal{display:inline-flex}

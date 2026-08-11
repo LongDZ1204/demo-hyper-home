@@ -86,7 +86,9 @@ html{scroll-padding-top:88px}
    Giữ đúng class .vs-* để 2 trang dùng chung 1 component. */
 .s-visit{background:var(--band-a)}
 .s-visit .wrap{position:relative;z-index:2}
-.s-visit .section-head{margin-bottom:0}
+/* (đã bỏ .s-visit .section-head{margin-bottom:0} — luật này đè
+   --gap-head-body của tầng chung, làm heading dính sát khối NAP: khe 0px
+   trong khi 10/10 section ở home là 34px.) */
 .vs-nap{display:grid;grid-template-columns:0.86fr 1.14fr;gap:clamp(24px,3.4vw,48px);align-items:stretch;margin-top:clamp(34px,4vw,50px)}
 .vs-contact{list-style:none;align-self:center}
 .vs-ci{display:flex;gap:16px;align-items:flex-start;padding:20px 0;border-top:1px solid var(--hair)}

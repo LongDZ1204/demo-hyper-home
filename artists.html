@@ -88,8 +88,10 @@
           <div class="drop menu simple" role="menu">
             <ul class="lvl1">
               <li><a href="tattoo-gallery.html">Tattoo Gallery</a></li>
-              <li><a href="piercing-gallery.html">Piercing Gallery</a></li>
-              <li><a href="removal-gallery.html">Removal Before &amp; After</a></li>
+              <!-- Trang piercing + removal gallery đã gỡ 11/08: layout của chúng không khác
+                   tattoo-gallery, dựng lại từ trang đó khi cần. Trỏ tạm soon.html cho khỏi 404. -->
+              <li><a href="soon.html">Piercing Gallery</a></li>
+              <li><a href="soon.html">Removal Before &amp; After</a></li>
             </ul>
           </div>
         </li>
@@ -165,7 +167,9 @@
     <div class="wrap">
       <header class="section-head center">
         <h2>Meet the <span class="o">Artists</span></h2>
-        <p class="section-intro">The top tattoo artists in San Antonio work at Hyper Inkers. Each bio lists the style, training, and fit notes that help you match your idea to the right artist before the consultation.</p>
+        <input type="checkbox" id="arth-intro" class="lead-cb" aria-label="Expand the artists introduction">
+        <p class="section-intro has-clamp"><span class="lead-txt">The top tattoo artists in San Antonio work at Hyper Inkers. Each bio lists the style, training, and fit notes that help you match your idea to the right artist before the consultation.</span><label for="arth-intro" class="lead-more" aria-label="Expand or collapse the artists introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
+        <noscript><style>.lead-txt{-webkit-line-clamp:unset;line-clamp:unset}.lead-more{display:none}</style></noscript>
       </header>
 
       <div class="hub-grid">

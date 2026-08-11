@@ -98,8 +98,11 @@ mất tín hiệu internal link, và trang bị giật khi tải.
 | `portfolio.html` · `tattoo-gallery.html` · `piercing-gallery.html` · `removal-gallery.html` | ✅ |
 | 12 page còn lại | ⏳ vẫn dùng CSS + header riêng của từng file |
 
-Ba trang lưới ảnh dùng **chung một** `_pages/gallery.css` chứ không mỗi trang một file: khối
-`<style>` gốc của chúng giống nhau từng byte, mà ba bản sao chính là cách chúng trôi khỏi nhau.
+**`piercing-gallery.html` và `removal-gallery.html` đã gỡ khỏi demo ngày 11/08** (B.Long chốt).
+Layout của chúng không khác `tattoo-gallery.html` một điểm nào, nên khi cần dựng lại thì **chép từ
+trang tattoo rồi thay ảnh + nhãn pill**, không thiết kế lại. Trong lúc chưa có, mọi link trỏ tới
+chúng — menu Gallery ở header, danh sách trong `soon.html` — đã chuyển về `soon.html`.
+Bản cuối cùng của 2 file nằm trong lịch sử git, commit `f351511`.
 
 **FAQ có 2 tầng dùng chung**: `.faqtab-nav` (thanh chủ đề) + `.faqacc` (accordion). Page ít câu
 hỏi thì bỏ tab, dùng thẳng `.faqacc` trong `.wrap` — vẫn ăn đúng khổ 840px và cỡ chữ.

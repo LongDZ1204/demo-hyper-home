@@ -227,7 +227,9 @@
    ============================================================================ */
 
 
-.s-visit .section-head{margin-bottom:0}
+/* (đã bỏ .s-visit .section-head{margin-bottom:0} — luật này đè
+   --gap-head-body của tầng chung, làm heading dính sát khối NAP: khe 0px
+   trong khi 10/10 section ở home là 34px.) */
 
 
 /* ---------- FOOTER ---------- */
