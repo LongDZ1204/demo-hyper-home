@@ -259,7 +259,12 @@ body{background:var(--bg);overflow-x:clip}
   .crumb ol{justify-content:flex-start}
 	  .hero-book{margin-left:0;margin-right:0;width:100%;max-width:330px}
 	  .artist-summary{min-height:auto}
-	  .section-head.center{text-align:left}
+	  /* (đã bỏ .section-head.center{text-align:left} — luật này lật mọi head căn
+	     giữa thành căn trái ở mobile, trong khi desktop vẫn căn giữa. Hai hệ quả:
+	     head đổi trục giữa hai bề ngang, và heading chạy hết cột 390px trong khi
+	     hộp đoạn dẫn vẫn giữ cap 340px căn giữa → chữ dẫn thụt vào 25px so với
+	     heading và so với mép card. Head không có link thì căn giữa ở MỌI bề
+	     ngang, luật C1.) */
 	  .projects .section-head{position:relative;top:auto}
   .projects .section-head h2{font-size:clamp(26px,7.2vw,34px)}
   .project-grid{grid-template-columns:repeat(2,1fr);gap:10px}
