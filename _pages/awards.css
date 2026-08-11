@@ -188,14 +188,6 @@
    Ported from homepage §10 (.aw-* system), extended to 28 wins.
    ============================================================================ */
 
-/* The modal lives inside .sap so its radio selectors stay crawlable and CSS-only.
-   When active, lift that whole stacking context above shared header + fixed CTAs;
-   otherwise the card's top-right close control sits underneath mobile chrome. */
-.sap:has(.aw-open-cb:checked){z-index:210}
-body:has(.sap .aw-open-cb:checked){overflow:hidden}
-.sap .aw-modal{z-index:220}
-
-
 /* reveal the panel whose modal-open radio is checked (content always in DOM) */
 #awm-1:checked ~ .aw-modal .aw-panel[data-i="1"],#awm-2:checked ~ .aw-modal .aw-panel[data-i="2"],#awm-3:checked ~ .aw-modal .aw-panel[data-i="3"],#awm-4:checked ~ .aw-modal .aw-panel[data-i="4"],#awm-5:checked ~ .aw-modal .aw-panel[data-i="5"],#awm-6:checked ~ .aw-modal .aw-panel[data-i="6"],#awm-7:checked ~ .aw-modal .aw-panel[data-i="7"],#awm-8:checked ~ .aw-modal .aw-panel[data-i="8"],#awm-9:checked ~ .aw-modal .aw-panel[data-i="9"],#awm-10:checked ~ .aw-modal .aw-panel[data-i="10"],#awm-11:checked ~ .aw-modal .aw-panel[data-i="11"],#awm-12:checked ~ .aw-modal .aw-panel[data-i="12"],#awm-13:checked ~ .aw-modal .aw-panel[data-i="13"],#awm-14:checked ~ .aw-modal .aw-panel[data-i="14"],#awm-15:checked ~ .aw-modal .aw-panel[data-i="15"],#awm-16:checked ~ .aw-modal .aw-panel[data-i="16"],#awm-17:checked ~ .aw-modal .aw-panel[data-i="17"],#awm-18:checked ~ .aw-modal .aw-panel[data-i="18"],#awm-19:checked ~ .aw-modal .aw-panel[data-i="19"],#awm-20:checked ~ .aw-modal .aw-panel[data-i="20"],#awm-21:checked ~ .aw-modal .aw-panel[data-i="21"],#awm-22:checked ~ .aw-modal .aw-panel[data-i="22"],#awm-23:checked ~ .aw-modal .aw-panel[data-i="23"],#awm-24:checked ~ .aw-modal .aw-panel[data-i="24"],#awm-25:checked ~ .aw-modal .aw-panel[data-i="25"],#awm-26:checked ~ .aw-modal .aw-panel[data-i="26"],#awm-27:checked ~ .aw-modal .aw-panel[data-i="27"],#awm-28:checked ~ .aw-modal .aw-panel[data-i="28"]{display:block}
 /* tiêu đề panel modal dùng .aw-panel-h chung ở hi-components.css */

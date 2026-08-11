@@ -593,7 +593,13 @@
    MODAL (radio-hack · content in DOM · one shared shell, 7 panels)
    ============================================================================ */
 .aw-cb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
-.aw-modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:22px}
+/* Both homepage (.s-awards) and Awards hub (.sap) keep the radio + modal in the
+   same component for crawlable, CSS-only switching. Lift the active host above
+   shared header/CTAs; homepage must also release .section's overflow clipping. */
+:is(.s-awards,.sap):has(.aw-open-cb:checked){z-index:210}
+.s-awards:has(.aw-open-cb:checked){overflow:visible}
+body:has(.aw-open-cb:checked){overflow:hidden}
+.aw-modal{position:fixed;inset:0;z-index:220;display:none;align-items:center;justify-content:center;padding:22px}
 .aw-open-cb:checked ~ .aw-modal{display:flex}
 .aw-modal-bd{position:absolute;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);cursor:pointer}
 .aw-modal-card{position:relative;z-index:2;width:min(660px,100%);max-height:88vh;overflow-y:auto;
