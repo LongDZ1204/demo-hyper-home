@@ -137,6 +137,11 @@
   transition:width .25s var(--ease)}
 .msl-track.dragging .msl-thumb{transition:none}
 .msl-track.dragging{background:rgba(255,255,255,.2)}
+/* Biến thể LUÔN HIỆN: rail cuộn ngang ở MỌI bề ngang (không phải lưới-desktop
+   → trượt-mobile), nên chân điều khiển phải hiện cả trên desktop. Dùng cho các
+   rail của trang chi tiết artist (styles · other artists). Khoá theo điều kiện
+   "rail cuộn ở mọi bề ngang", không phải theo tên từng section. */
+.msl-foot--always{display:flex}
 /* B.Long batch2: services là 2×2 grid trên mobile → ẩn nav slider cũ */
 @media(max-width:860px){.msl-foot.svc-foot{display:none}}
 @media(max-width:600px){.msl-foot.art-foot{display:flex}}

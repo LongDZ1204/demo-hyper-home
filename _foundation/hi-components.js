@@ -363,12 +363,16 @@
   var root=document.querySelector('[data-gallery-filter]');
   var grid=document.querySelector('[data-gallery-grid]');
   var lb=document.querySelector('[data-gallery-lightbox]');
-  var tiles=grid?[].slice.call(grid.querySelectorAll('.galp-tile')):[];
-  if(!tiles.length) return;
+  if(!grid) return;
+  /* Đọc ô LÚC CẦN chứ không chụp một lần lúc tải: lưới ảnh của trang chi tiết
+     artist có nút "Load more" nạp thêm ô sau, chụp một lần thì đèn xem ảnh chỉ
+     biết 9 ô đầu và bộ đếm ra sai tổng. */
+  function tiles(){ return [].slice.call(grid.querySelectorAll('.galp-tile')); }
+  if(!tiles().length && !grid.hasAttribute('data-gallery-dynamic')) return;
 
   /* ---- bộ lọc pill ---- */
   function applyFilter(f){
-    tiles.forEach(function(t){
+    tiles().forEach(function(t){
       if(f==='all'){t.hidden=false;return;}
       var tags=(t.getAttribute('data-tags')||'').split(/\s+/);
       t.hidden=tags.indexOf(f)===-1;
@@ -415,7 +419,7 @@
     lb.appendChild(count);
   }
 
-  function visible(){ return tiles.filter(function(t){ return !t.hidden; }); }
+  function visible(){ return tiles().filter(function(t){ return !t.hidden; }); }
   function show(i){
     if(i<0||i>=list.length) return;
     idx=i;
@@ -436,7 +440,11 @@
   }
   function step(d){ var i=idx+d; if(i>=0&&i<list.length) show(i); }
 
-  tiles.forEach(function(t){ t.addEventListener('click',function(e){ e.preventDefault(); open(t); }); });
+  /* uỷ quyền trên lưới, không gắn từng ô — ô nạp thêm sau vẫn mở được đèn */
+  grid.addEventListener('click',function(e){
+    var t=e.target.closest('.galp-tile'); if(!t||!grid.contains(t)) return;
+    e.preventDefault(); open(t);
+  });
   prev.addEventListener('click',function(e){ e.stopPropagation(); step(-1); });
   next.addEventListener('click',function(e){ e.stopPropagation(); step(1); });
   lb.addEventListener('click',function(e){

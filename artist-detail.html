@@ -177,7 +177,7 @@
   </section>
 
   <section class="section artist-summary" id="summary">
-    <img class="smoke smoke--drift" src="_hero-assets/color-blur.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
+    <img class="smoke smoke--tr" src="_hero-assets/color-blur.webp" alt="" aria-hidden="true" loading="lazy" decoding="async">
 	    <div class="wrap">
 	      <div class="artist-summary__text">
 	        <h2>A black &amp; grey realism and <span class="o">color realism</span> artist in San Antonio.</h2>
@@ -190,10 +190,10 @@
     <div class="wrap">
 	      <div class="section-head center">
 	        <h2>Tattoo Styles Minh Specializes In</h2>
-	        <p class="section-copy">Minh works across realism-driven black and grey, vivid color realism, and Japanese-inspired tattoos, with deep portfolios in portraits, sleeves, geometric, and cover-up pieces.</p>
+	        <p class="section-intro">Minh works across realism-driven black and grey, vivid color realism, and Japanese-inspired tattoos, with deep portfolios in portraits, sleeves, geometric, and cover-up pieces.</p>
 	      </div>
 	      <div class="style-rail-wrap">
-	        <div class="style-rail" aria-label="Tattoo styles by Minh">
+	        <div class="style-rail msl-row" aria-label="Tattoo styles by Minh">
 	          <a class="style-card" href="black-and-grey.html"><img src="https://hyperinkers.com/wp-content/uploads/2025/08/black-and-white-tattoo-artist-in-san-antonio-scaled.jpg" alt="Black and grey realism tattoo by Minh" loading="eager"><span class="style-card__name"><span class="style-card__line"></span>Black &amp; Grey</span></a>
 	          <a class="style-card" href="soon.html"><img src="https://hyperinkers.com/wp-content/uploads/2025/06/where-to-get-a-portrait-tattoo-in-san-antonio.jpg" alt="Portrait tattoo by Minh" loading="eager"><span class="style-card__name"><span class="style-card__line"></span>Portrait</span></a>
 	          <a class="style-card" href="soon.html"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/realism-tattoo-inspiration-1.png" alt="Realism tattoo by Minh" loading="eager"><span class="style-card__name"><span class="style-card__line"></span>Realism</span></a>
@@ -202,13 +202,13 @@
 	          <a class="style-card" href="soon.html"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/realism-tattoo-art-3.png" alt="Sleeve tattoo by Minh" loading="eager"><span class="style-card__name"><span class="style-card__line"></span>Sleeves</span></a>
 	          <a class="style-card" href="soon.html"><img src="https://hyperinkers.com/wp-content/uploads/2025/07/tattoo-cover-up-san-antonio-scaled.jpg" alt="Cover-up tattoo by Minh" loading="eager"><span class="style-card__name"><span class="style-card__line"></span>Cover-up</span></a>
 	        </div>
-	        <div class="style-foot">
-	          <div class="style-nav">
-	            <button class="style-btn style-prev" type="button" aria-label="Previous style"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-	            <button class="style-btn style-next" type="button" aria-label="Next style"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-	          </div>
-	          <div class="style-track" aria-hidden="true"><span class="style-thumb"></span></div>
-	        </div>
+	        <div class="msl-foot msl-foot--always">
+          <div class="msl-nav">
+            <button class="msl-navbtn prev" type="button" aria-label="Previous style"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="msl-navbtn next" type="button" aria-label="Next style"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+          </div>
+          <div class="msl-track"><span class="msl-thumb"></span></div>
+        </div>
 	      </div>
 	    </div>
 	  </section>
@@ -217,72 +217,123 @@
 	      <div class="wrap">
 	        <div class="section-head center">
 	        <h2>Featured <span class="o">Projects</span></h2>
-	        <p class="section-copy">A rotating selection of Minh's tattoos completed between 2024 and 2026, spanning black and grey realism, color realism, and large-scale custom pieces.</p>
+	        <p class="section-intro">A rotating selection of Minh's tattoos completed between 2024 and 2026, spanning black and grey realism, color realism, and large-scale custom pieces.</p>
 	      </div>
-      <div class="project-grid" id="projectGrid"></div>
+      <div class="project-grid" id="projectGrid" data-gallery-grid data-gallery-dynamic></div>
       <button class="load-more" id="projectMore" type="button">Load more</button>
     </div>
   </section>
 
-  <section class="section awards" id="awards">
-    <img class="award-smoke" src="_hero-assets/color-blur.webp" alt="" aria-hidden="true" loading="lazy">
+  <section class="section s-awards awards" id="awards">
+    <!-- .grain chứ không phải khói: section Awards ở trang chủ dùng đúng lớp hạt
+         này và KHÔNG có khói — khói đặt ở đây thì vệt cam đè lên hàng cúp. -->
+    <span class="grain" aria-hidden="true"></span>
     <div class="wrap">
-	      <div class="section-head center">
-	        <h2>Minh's Tattoo <span class="o">Awards</span> &amp; Convention Wins</h2>
-	        <p class="section-copy">Minh has competed at 15+ international tattoo conventions across 8 countries, earning 25+ awards between 2023 and 2026, including 10 Best of Show titles.</p>
-	      </div>
-      <ul class="award-rail">
-        <li class="award-card">
-          <a class="award-card__link" href="/awards" aria-label="View Best of Show award details"></a>
-          <figure><img src="_hero-assets/award-sanantonio-flagship-cut.png" alt="Best of Show trophy, San Antonio Tattoo Arts Festival 2025, won by Minh Pham" loading="eager"></figure>
-          <span class="award-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-	          <div class="award-card__body"><h3>Best of Show</h3><p><b>San Antonio Tattoo Arts Festival</b><br>San Antonio, TX · 2025</p></div>
-	        </li>
-        <li class="award-card">
-          <a class="award-card__link" href="/awards" aria-label="View Best of the Best award details"></a>
-          <figure><img src="_hero-assets/award-sinners-bestofbest-2025-cut.png" alt="Best of the Best trophy, Sinners Tattoo Expo 2025, won by Minh Pham" loading="eager"></figure>
-          <span class="award-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-	          <div class="award-card__body"><h3>Best of the Best</h3><p><b>Sinners Tattoo Expo</b><br>Dallas, TX · 2025</p></div>
-	        </li>
-        <li class="award-card">
-          <a class="award-card__link" href="/awards" aria-label="View Golden State Best of Show award details"></a>
-          <figure><img src="_hero-assets/award-goldenstate-trophy-2025-cut.png" alt="Best of Show trophy, Golden State Tattoo Expo 2025, won by Minh Pham" loading="eager"></figure>
-          <span class="award-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-	          <div class="award-card__body"><h3>Best of Show</h3><p><b>Golden State Tattoo Expo</b><br>California · 2025</p></div>
-	        </li>
-        <li class="award-card">
-          <a class="award-card__link" href="/awards" aria-label="View SaiGon Best of Show award details"></a>
-          <figure><img src="_hero-assets/award-saigon-bos-2024-cut.png" alt="Best of Show trophy, SaiGon Tattoo Expo 2024, won by Minh Pham" loading="eager"></figure>
-          <span class="award-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-	          <div class="award-card__body"><h3>Best of Show</h3><p><b>SaiGon Tattoo Expo</b><br>Vietnam · 2024</p></div>
-	        </li>
-        <li class="award-card">
-          <a class="award-card__link" href="/awards" aria-label="View Rouen 2nd Best of Show award details"></a>
-          <figure><img src="_hero-assets/award-rouen-2ndbos-2025-cut.png" alt="2nd Best of Show trophy, Rouen Tattoo Festival 2025, won by Minh Pham" loading="eager"></figure>
-          <span class="award-open" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
-	          <div class="award-card__body"><h3>2nd Best of Show</h3><p><b>Rouen Tattoo Festival</b><br>France · 2025</p></div>
-	        </li>
-      </ul>
-      <div class="award-foot">
-        <div class="rail-nav">
-          <button class="rail-btn award-prev" type="button" aria-label="Previous award">‹</button>
-          <button class="rail-btn award-next" type="button" aria-label="Next award">›</button>
+      <!-- Head KIỂU EDITORIAL vì section này CÓ link đi tiếp: link nằm ngay trong
+           head (.sec-link--head) đúng như trang chủ, không nằm dưới chân slider. -->
+      <header class="section-head section-head--editorial">
+        <h2>Minh's Tattoo <span class="o">Awards</span> &amp; Convention Wins</h2>
+        <p class="section-intro">Minh has competed at 15+ international tattoo conventions across 8 countries, earning 25+ awards between 2023 and 2026, including 10 Best of Show titles.</p>
+        <a class="sec-link sec-link--head" href="awards.html">See all 40+ awards
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      </header>
+
+      <!-- Rail dùng component .awrail của trang chủ (cúp trong suốt, ô giữa to
+           hơn, tự chạy + chấm) — KHÔNG dùng lại partial comp-awards.html vì
+           partial đó là 7 cúp của SHOP, trong đó 2 cái của Tai và Navei. Trang
+           này chỉ được kê cúp của Minh. -->
+      <div class="awrail-wrap">
+        <ul class="awrail">
+          <li class="awrail-card">
+            <a class="aw-cardlink" href="awards.html" aria-label="Best of Show, San Antonio Tattoo Arts Festival 2025"></a>
+            <figure class="media-card aw-vitrine" style="--ar:4/3">
+              <img src="_hero-assets/award-sanantonio-flagship-cut.png" alt="Best of Show trophy, San Antonio Tattoo Arts Festival 2025, won by Minh Pham" loading="eager">
+              <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+            </figure>
+            <div class="aw-body">
+              <p class="aw-place">Best of Show</p>
+              <p class="aw-conv">San Antonio Tattoo Arts Festival</p>
+              <p class="aw-loc">San Antonio, TX - 2025</p>
+            </div>
+          </li>
+
+          <li class="awrail-card">
+            <a class="aw-cardlink" href="awards.html" aria-label="Best of the Best, Sinners Tattoo Expo 2025"></a>
+            <figure class="media-card aw-vitrine" style="--ar:4/3">
+              <img src="_hero-assets/award-sinners-bestofbest-2025-cut.png" alt="Best of the Best trophy, Sinners Tattoo Expo 2025, won by Minh Pham" loading="eager">
+              <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+            </figure>
+            <div class="aw-body">
+              <p class="aw-place">Best of the Best</p>
+              <p class="aw-conv">Sinners Tattoo Expo</p>
+              <p class="aw-loc">Dallas, TX - 2025</p>
+            </div>
+          </li>
+
+          <li class="awrail-card">
+            <a class="aw-cardlink" href="awards.html" aria-label="Best of Show, Golden State Tattoo Expo 2025"></a>
+            <figure class="media-card aw-vitrine" style="--ar:4/3">
+              <img src="_hero-assets/award-goldenstate-trophy-2025-cut.png" alt="Best of Show trophy, Golden State Tattoo Expo 2025, won by Minh Pham" loading="eager">
+              <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+            </figure>
+            <div class="aw-body">
+              <p class="aw-place">Best of Show</p>
+              <p class="aw-conv">Golden State Tattoo Expo</p>
+              <p class="aw-loc">California - 2025</p>
+            </div>
+          </li>
+
+          <li class="awrail-card">
+            <a class="aw-cardlink" href="awards.html" aria-label="Best of Show, SaiGon Tattoo Expo 2024"></a>
+            <figure class="media-card aw-vitrine" style="--ar:4/3">
+              <img src="_hero-assets/award-saigon-bos-2024-cut.png" alt="Best of Show trophy, SaiGon Tattoo Expo 2024, won by Minh Pham" loading="eager">
+              <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+            </figure>
+            <div class="aw-body">
+              <p class="aw-place">Best of Show</p>
+              <p class="aw-conv">SaiGon Tattoo Expo</p>
+              <p class="aw-loc">Vietnam - 2024</p>
+            </div>
+          </li>
+
+          <!-- ⚠️ LỆCH DỮ LIỆU VỚI TRANG CHỦ: cùng tấm ảnh cúp
+               award-rouen-2ndbos-2025-cut.png, trang này ghi "Rouen Tattoo
+               Festival, France 2025" còn _partials/comp-awards.html ghi "Best of
+               Show, Caserta Tattoo Convention, Italy 2025". Một trong hai sai —
+               chưa sửa vì chưa có nguồn gốc để chọn. -->
+          <li class="awrail-card">
+            <a class="aw-cardlink" href="awards.html" aria-label="2nd Best of Show, Rouen Tattoo Festival 2025"></a>
+            <figure class="media-card aw-vitrine" style="--ar:4/3">
+              <img src="_hero-assets/award-rouen-2ndbos-2025-cut.png" alt="2nd Best of Show trophy, Rouen Tattoo Festival 2025, won by Minh Pham" loading="eager">
+              <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+            </figure>
+            <div class="aw-body">
+              <p class="aw-place">2nd Best of Show</p>
+              <p class="aw-conv">Rouen Tattoo Festival</p>
+              <p class="aw-loc">France - 2025</p>
+            </div>
+          </li>
+        </ul>
+
+        <div class="awrail-foot">
+          <div class="awrail-dots" role="tablist" aria-label="Awards slider">
+            <button type="button" class="awrail-dot" aria-label="Award 1"></button>
+            <button type="button" class="awrail-dot" aria-label="Award 2"></button>
+            <button type="button" class="awrail-dot" aria-label="Award 3"></button>
+            <button type="button" class="awrail-dot" aria-label="Award 4"></button>
+            <button type="button" class="awrail-dot" aria-label="Award 5"></button>
+          </div>
         </div>
-        <div class="rail-track" aria-hidden="true"><span class="rail-thumb"></span></div>
-	        <a class="award-link" href="/awards">See all 40+ awards <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
-	      </div>
+      </div>
     </div>
   </section>
 
   <section class="section artist-info" id="about">
     <div class="wrap info-grid">
-      <aside class="info-visual">
-        <figure><img src="https://hyperinkers.com/wp-content/uploads/2024/05/minh-7.png.webp" alt="Portrait of Minh Pham, founder and lead artist of Hyper Inkers" loading="eager"></figure>
-        <blockquote class="quote">"If it's visually striking, it captivates me."<cite>Minh</cite></blockquote>
-      </aside>
       <div class="info-content">
         <h2>More About Minh</h2>
-        <p class="section-copy info-intro">Background, working style, and fit notes for clients who want to understand the artist before booking.</p>
+        <p class="section-intro info-intro">Background, working style, and fit notes for clients who want to understand the artist before booking.</p>
 
         <div class="adv-tabs adv-tabs--no-media">
           <input type="radio" name="advtab" id="adv-t1" class="adv-radio" checked aria-label="Background">
@@ -317,6 +368,16 @@
         </div>
 
       </div>
+
+      <!-- Ảnh + câu trích đứng SAU khối chữ trong DOM, để trên mobile nó rơi
+           xuống dưới tab đúng luật "ảnh nằm dưới text". Trên desktop hai khối
+           được chỉ định thẳng vào ô lưới (grid-column/-row) nên aside vẫn ở cột
+           trái — không dùng `order`, thứ tự đọc của trình đọc màn hình giữ
+           nguyên là chữ trước, aside sau ở CẢ hai bề ngang. -->
+      <aside class="info-visual">
+        <figure><img src="https://hyperinkers.com/wp-content/uploads/2024/05/minh-7.png.webp" alt="Portrait of Minh Pham, founder and lead artist of Hyper Inkers" loading="eager"></figure>
+        <blockquote class="quote">"If it's visually striking, it captivates me."<cite>Minh</cite></blockquote>
+      </aside>
     </div>
   </section>
 
@@ -341,7 +402,10 @@
               Muốn hiện "Jul 2025" thì phải mở permalink từng review lấy ngày thật.
            Text review là VERBATIM từ file raw, không sửa chữ. -->
 
-      <ul class="review-rail" aria-label="Client reviews for Minh">
+      <!-- Slider dùng chung .rv-slider-wrap.is-auto — engine ở hi-components.js
+           tự bắt, tự sinh chấm, tự chạy. 4 thẻ/màn desktop, 2 thẻ ≤600px. -->
+      <div class="rv-slider-wrap is-auto">
+      <ul class="rv-slider" aria-label="Client reviews for Minh">
 
         <li class="rv-scard rv-scard--photo">
           <figure class="rv-sc-media">
@@ -429,12 +493,14 @@
 
       </ul>
 
-      <div class="award-foot">
-        <div class="rail-nav">
-          <button class="rail-btn review-prev" type="button" aria-label="Previous review">‹</button>
-          <button class="rail-btn review-next" type="button" aria-label="Next review">›</button>
+        <div class="rv-foot">
+          <div class="rv-nav">
+            <button class="rv-navbtn prev" type="button" aria-label="Previous review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="rv-navbtn next" type="button" aria-label="Next review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+          </div>
+          <div class="rv-track" aria-hidden="true"><span class="rv-prog-thumb"></span></div>
         </div>
-        <div class="rail-track" aria-hidden="true"><span class="rail-thumb review-thumb"></span></div>
+        <div class="rv-dots" role="tablist" aria-label="Review slides"></div>
       </div>
     </div>
   </section>
@@ -460,7 +526,7 @@
            cho 1 người, KHÔNG viết bản thứ hai. Hai trang lệch chữ về cùng một
            artist là lỗi tự mâu thuẫn, và bio này đã qua vòng duyệt ở homepage. -->
 
-      <div class="other-rail">
+      <div class="other-rail msl-row">
 
         <article class="art-card">
           <div class="art-photo">
@@ -576,13 +642,13 @@
 
       </div>
 
-      <div class="award-foot">
-        <div class="rail-nav">
-          <button class="rail-btn other-prev" type="button" aria-label="Previous artists"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
-          <button class="rail-btn other-next" type="button" aria-label="More artists"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+      <div class="msl-foot msl-foot--always">
+          <div class="msl-nav">
+            <button class="msl-navbtn prev" type="button" aria-label="Previous artists"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+            <button class="msl-navbtn next" type="button" aria-label="More artists"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+          </div>
+          <div class="msl-track"><span class="msl-thumb"></span></div>
         </div>
-        <div class="rail-track" aria-hidden="true"><span class="rail-thumb other-thumb"></span></div>
-      </div>
     </div>
   </section>
 </main>
@@ -681,12 +747,9 @@
   <span>Minh · Black &amp; Grey Realism</span>
   <a href="#book">Book</a>
 </div>
-
-<div class="lb" id="lb" aria-hidden="true">
-  <button class="lb-close" id="lbClose" type="button" aria-label="Close">×</button>
-  <button class="lb-prev" id="lbPrev" type="button" aria-label="Previous image">‹</button>
-  <img id="lbImg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" alt="">
-  <button class="lb-next" id="lbNext" type="button" aria-label="Next image">›</button>
+<div class="galp-lb" data-gallery-lightbox role="dialog" aria-modal="true" aria-label="Full-size tattoo photo">
+  <button class="galp-lb__close" type="button" data-lightbox-close aria-label="Close">&times;</button>
+  <img alt="" data-lightbox-image>
 </div>
 
 <script>
@@ -744,12 +807,12 @@ function buildPool(){
 function renderProjects(reset){
   if(reset){projectGrid.innerHTML = ""; shown = 0;}
   pool.slice(shown, shown + PAGE).forEach(function(it){
-    var item = document.createElement("button");
-    item.type = "button";
-    item.className = "project-item";
-    item.dataset.src = it.src;
+    /* Ô là thẻ <a href="ảnh gốc"> mang class .galp-tile — đúng hợp đồng của đèn
+       xem ảnh dùng chung: nó lấy href làm ảnh to và alt của <img> làm mô tả. */
+    var item = document.createElement("a");
+    item.className = "project-item galp-tile";
+    item.href = it.src;
     item.innerHTML = '<img loading="eager" src="' + it.src + '" alt="' + STYLE_LABEL[it.style] + ' tattoo by Minh at Hyper Inkers">';
-    item.addEventListener("click", function(){openLightbox(it.src);});
     projectGrid.appendChild(item);
   });
   shown += PAGE;
@@ -759,78 +822,12 @@ function renderProjects(reset){
 	renderProjects(true);
 	projectMore.addEventListener("click", function(){renderProjects(false);});
 
-var lb = document.getElementById("lb");
-var lbImg = document.getElementById("lbImg");
-var lbIndex = 0;
-function flatList(){return pool.map(function(x){return x.src;});}
-function openLightbox(src){
-  var list = flatList();
-  lbIndex = Math.max(0, list.indexOf(src));
-  lbImg.src = list[lbIndex];
-  lb.classList.add("is-open");
-  lb.setAttribute("aria-hidden","false");
-}
-function stepLightbox(dir){
-  var list = flatList();
-  lbIndex = (lbIndex + dir + list.length) % list.length;
-  lbImg.src = list[lbIndex];
-}
-document.getElementById("lbClose").addEventListener("click", function(){lb.classList.remove("is-open"); lb.setAttribute("aria-hidden","true");});
-document.getElementById("lbPrev").addEventListener("click", function(){stepLightbox(-1);});
-document.getElementById("lbNext").addEventListener("click", function(){stepLightbox(1);});
-lb.addEventListener("click", function(e){if(e.target === lb){lb.classList.remove("is-open"); lb.setAttribute("aria-hidden","true");}});
-	document.addEventListener("keydown", function(e){
-	  if(!lb.classList.contains("is-open")) return;
-	  if(e.key === "Escape") lb.classList.remove("is-open");
-	  if(e.key === "ArrowLeft") stepLightbox(-1);
-	  if(e.key === "ArrowRight") stepLightbox(1);
-	});
-	
-	(function(){
-	  var rail = document.querySelector(".style-rail");
-	  var prev = document.querySelector(".style-prev");
-	  var next = document.querySelector(".style-next");
-	  var thumb = document.querySelector(".style-thumb");
-	  if(!rail || !thumb) return;
-	  function update(){
-	    var max = Math.max(1, rail.scrollWidth - rail.clientWidth);
-	    var pct = rail.scrollLeft / max;
-	    var width = Math.max(18, rail.clientWidth / rail.scrollWidth * 100);
-	    thumb.style.width = width + "%";
-	    thumb.style.transform = "translateX(" + pct * (100 - width) + "%)";
-	    if(prev) prev.style.opacity = rail.scrollLeft <= 1 ? ".35" : "1";
-	    if(next) next.style.opacity = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 1 ? ".35" : "1";
-	  }
-	  function move(dir){rail.scrollBy({left:dir * rail.clientWidth * .82, behavior:"smooth"});}
-	  if(prev) prev.addEventListener("click", function(){move(-1);});
-	  if(next) next.addEventListener("click", function(){move(1);});
-	  rail.addEventListener("scroll", function(){requestAnimationFrame(update);}, {passive:true});
-	  window.addEventListener("resize", update);
-	  update();
-	})();
-	
-	(function(){
-	  var rail = document.querySelector(".award-rail");
-	  var prev = document.querySelector(".award-prev");
-	  var next = document.querySelector(".award-next");
-	  var thumb = document.querySelector(".rail-thumb");
-	  if(!rail || !thumb) return;
-	  function update(){
-	    var max = Math.max(1, rail.scrollWidth - rail.clientWidth);
-	    var pct = rail.scrollLeft / max;
-	    var width = Math.max(20, rail.clientWidth / rail.scrollWidth * 100);
-	    thumb.style.width = width + "%";
-	    thumb.style.transform = "translateX(" + pct * (100 - width) + "%)";
-	    if(prev) prev.style.opacity = rail.scrollLeft <= 1 ? ".35" : "1";
-	    if(next) next.style.opacity = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 1 ? ".35" : "1";
-	  }
-	  function move(dir){rail.scrollBy({left:dir * rail.clientWidth * .82, behavior:"smooth"});}
-	  if(prev) prev.addEventListener("click", function(){move(-1);});
-	  if(next) next.addEventListener("click", function(){move(1);});
-	  rail.addEventListener("scroll", function(){requestAnimationFrame(update);}, {passive:true});
-	  window.addEventListener("resize", update);
-	  update();
-	})();
+/* Engine đèn xem ảnh cục bộ ĐÃ XOÁ (11/08) — dùng bản chung trong
+   hi-components.js: có bộ đếm "n / tổng", nút vô hiệu ở đầu/cuối, vuốt ngang. */
+	/* 4 engine rail cục bộ (styles · awards · reviews · other-artists) ĐÃ XOÁ
+	   (11/08): cả 4 chỉ là một logic ‹ › + thanh tiến độ, nay do engine dùng chung
+	   `.msl-foot` trong hi-components.js lo. Awards chuyển sang .awrail (tự chạy),
+	   reviews chuyển sang .rv-slider-wrap.is-auto (chấm). */
 	
 	(function(){
 	  function wireExclusive(selector){
@@ -845,40 +842,6 @@ lb.addEventListener("click", function(e){if(e.target === lb){lb.classList.remove
 	    });
 	  }
 	  wireExclusive(".info-note");
-	})();
-
-	/* Rail cho 2 section mới (reviews · other artists).
-	   Viết dạng hàm nhận selector thay vì copy thêm 2 IIFE nữa — trang đã có 2 bản
-	   gần y hệt cho styles/awards, thêm 2 bản nữa là 4 bản cùng logic.
-	   ⚠️ Vì sao thumb phải có class RIÊNG (.review-thumb/.other-thumb) chứ không
-	   dùng chung .rail-thumb: 2 IIFE cũ gọi document.querySelector(".rail-thumb")
-	   không giới hạn phạm vi, nên nếu rail mới cũng chỉ mang .rail-thumb thì
-	   selector đó vẫn trỏ về thumb của Awards và thanh tiến độ sẽ chạy nhầm chỗ. */
-	(function(){
-	  function wireRail(railSel, prevSel, nextSel, thumbSel){
-	    var rail = document.querySelector(railSel);
-	    var prev = document.querySelector(prevSel);
-	    var next = document.querySelector(nextSel);
-	    var thumb = document.querySelector(thumbSel);
-	    if(!rail || !thumb) return;
-	    function update(){
-	      var max = Math.max(1, rail.scrollWidth - rail.clientWidth);
-	      var pct = rail.scrollLeft / max;
-	      var width = Math.max(20, rail.clientWidth / rail.scrollWidth * 100);
-	      thumb.style.width = width + "%";
-	      thumb.style.transform = "translateX(" + pct * (100 - width) + "%)";
-	      if(prev) prev.style.opacity = rail.scrollLeft <= 1 ? ".35" : "1";
-	      if(next) next.style.opacity = rail.scrollLeft + rail.clientWidth >= rail.scrollWidth - 1 ? ".35" : "1";
-	    }
-	    function move(dir){rail.scrollBy({left:dir * rail.clientWidth * .82, behavior:"smooth"});}
-	    if(prev) prev.addEventListener("click", function(){move(-1);});
-	    if(next) next.addEventListener("click", function(){move(1);});
-	    rail.addEventListener("scroll", function(){requestAnimationFrame(update);}, {passive:true});
-	    window.addEventListener("resize", update);
-	    update();
-	  }
-	  wireRail(".review-rail", ".review-prev", ".review-next", ".review-thumb");
-	  wireRail(".other-rail",  ".other-prev",  ".other-next",  ".other-thumb");
 	})();
 	
 (function(){
