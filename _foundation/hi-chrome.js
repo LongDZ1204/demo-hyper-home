@@ -110,3 +110,26 @@
   window.addEventListener('scroll', toggle, {passive:true});
   toggle();
 })();
+
+/* Mobile quick CTA — approved Opt 1: Call · Book Now · Instagram.
+   Injected from shared chrome so every synchronized page gets one identical dock
+   without duplicating markup across page files. booking-form.js runs after this
+   file and binds the center link through data-open-booking. */
+(function(){
+  if(document.querySelector('.m-quick-cta')) return;
+  var dock=document.createElement('nav');
+  dock.className='m-quick-cta';
+  dock.setAttribute('aria-label','Quick contact');
+  dock.innerHTML=''
+    +'<a class="m-quick-cta__icon" href="tel:+12109979737" aria-label="Call Hyper Inkers">'
+    +  '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.62 10.79a15.5 15.5 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z"/></svg>'
+    +'</a>'
+    +'<a class="m-quick-cta__book" href="#book" data-open-booking>'
+    +  '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2v3M17 2v3M3.5 9h17M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2Z"/><path d="M8 13h2v2H8zM14 13h2v2h-2zM8 17h2v2H8zM14 17h2v2h-2z" class="m-quick-cta__calendar-dates"/></svg>'
+    +  '<span><strong>Book Now</strong><small>Free consultation</small></span>'
+    +'</a>'
+    +'<a class="m-quick-cta__icon" href="https://www.instagram.com/hyperinkers/" target="_blank" rel="noopener" aria-label="Hyper Inkers on Instagram">'
+    +  '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M7.5 2h9A5.5 5.5 0 0 1 22 7.5v9a5.5 5.5 0 0 1-5.5 5.5h-9A5.5 5.5 0 0 1 2 16.5v-9A5.5 5.5 0 0 1 7.5 2Zm0 2A3.5 3.5 0 0 0 4 7.5v9A3.5 3.5 0 0 0 7.5 20h9a3.5 3.5 0 0 0 3.5-3.5v-9A3.5 3.5 0 0 0 16.5 4h-9ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 2a3 3 0 1 0 0 6 3 3 0 0 0 0-6Zm5.25-3.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5Z" clip-rule="evenodd"/></svg>'
+    +'</a>';
+  document.body.appendChild(dock);
+})();
