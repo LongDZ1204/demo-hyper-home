@@ -30,8 +30,16 @@
    portfolio và tattoo-gallery hôm nay.
    Khe thở lấy đúng bộ số của .port-hero / .faq-hero / .contact-hero để 5 hero
    vào bằng cùng một nhịp; tắt thanh khuyến mãi thì cả 5 tự thu 36px. */
+/* Khoảng trống siết lại (B.Long 11/08 lượt 3). Đo bản trước: hero cao 447px cho
+   238px chữ — 209px là khoảng trống, 47%. Cắt ba chỗ, không đụng bố cục:
+     khe dưới header  49 -> 32   (4 hero kia là 49, nhưng chúng CĂN GIỮA và có
+                                  min-height; hero này căn trái, cao tự do)
+     lead -> hàng chip 34 -> 24
+     đáy               48 -> 36
+   Còn 410px, khoảng trống về 172px. Vẫn giữ calc(--chrome-h) nên tắt thanh
+   khuyến mãi là tự thu 36px. */
 .blog-hero{position:relative;isolation:isolate;overflow:clip;background:var(--black);
-  padding:calc(var(--chrome-h) + clamp(26px,3.4vw,52px)) 0 clamp(34px,3.8vw,48px)}
+  padding:calc(var(--chrome-h) + clamp(20px,2.2vw,32px)) 0 clamp(26px,2.8vw,36px)}
 .hero-smoke{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;
   opacity:.5;filter:contrast(1.22) brightness(1.06) saturate(1.16);
   -webkit-mask-image:radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
@@ -57,24 +65,26 @@
 .blog-lead{max-width:680px;margin:16px 0 0;font-size:16.5px;line-height:1.62;color:#D5D5D5;
   text-shadow:0 2px 12px rgba(0,0,0,.8)}
 
-/* hàng chip CĂN TRÁI thẳng cột với H1 + lead. Nền tối nên chip là viền mảnh
-   trong suốt — cùng kiểu chip lọc ở /piercing. */
-.blog-tabs{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:10px;margin-top:clamp(26px,3vw,34px)}
+/* Hàng chip CĂN TRÁI thẳng cột với H1 + lead. Nền tối nên chip là viền mảnh
+   trong suốt — cùng kiểu chip lọc ở /piercing.
+   Mỗi chip là một <h2> bọc <a> (chốt B.Long 11/08 lượt 3): ba sub-hub là ba mục
+   cấp hai của trang hub. Kiểu pill đặt trên thẻ <a> chứ không trên <h2>, để cả
+   viên pill là vùng bấm; <h2> chỉ còn làm ô của flex.
+   KHÔNG có trạng thái bật — chưa bấm thì chưa vào sub-hub nào. */
+.blog-tab-h{margin:0;font-size:12.5px;line-height:normal}
+.blog-tabs{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:10px;margin-top:clamp(18px,2vw,24px)}
 .blog-tab{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;
   padding:10px 22px;border:1px solid var(--card-brd);border-radius:999px;background:transparent;
   color:var(--cream);font-family:var(--sub);font-size:12.5px;font-weight:600;letter-spacing:.05em;
   text-transform:uppercase;white-space:nowrap;text-decoration:none;cursor:pointer;
   transition:background .2s var(--ease),border-color .2s var(--ease),color .2s var(--ease)}
 .blog-tab:hover{border-color:var(--orange);color:#fff;transform:none;box-shadow:none}
-/* Trạng thái bật đọc từ aria-pressed chứ không từ class .is-active: một nguồn sự
-   thật cho cả mắt nhìn lẫn trình đọc màn hình, không thể lệch nhau. */
-.blog-tab[aria-pressed="true"]{background:var(--orange);border-color:var(--orange);color:#fff}
 .blog-tab:focus-visible,.post-card:focus-visible,.pagination a:focus-visible,
 .pagination .current:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
 
 /* === THÂN TRANG NỀN GIẤY ==================================================== */
 .section-blog{background:var(--paper-page);color:var(--paper-ink)}
-.section-blog h2,.section-blog h3{color:var(--paper-ink);text-shadow:none}
+.section-blog h3,.section-blog .strow-h{color:var(--paper-ink);text-shadow:none}
 .section-blog p{color:var(--paper-muted)}
 .section-blog.alt{background:var(--paper-soft)}
 /* Hai class nên (0,2,0) — thắng .section{padding-block} của hi-ds. Hero đã có
@@ -84,6 +94,20 @@
 /* === BĂNG BÀI NỔI BẬT — lớp sáng cho họ .gd-* ================================
    Base .gd-* nằm ở hi-components.css, viết cho nền đen của trang chủ. Ở đây chỉ
    đảo màu chữ, nền chỗ ảnh chưa tải, và thanh kéo. Không đụng tới bố cục. */
+/* HAI CỘT CAO BẰNG NHAU (B.Long 11/08 lượt 3: "tối ưu lại layout cho đều nhau").
+   Đo bản trước: thẻ lớn 638px, cột danh sách bên phải 496px -> hụt 142px, và
+   thanh kéo dọc không bao giờ hiện vì 3 mục không tràn.
+   Không bịa thêm bài để lấp. Hạ chiều cao thẻ lớn xuống cho khớp:
+     ảnh 4/3 -> 16/9   (394 -> 307px)
+   Phần hụt còn lại giao cho CỘT PHẢI giãn ra, không cắt thêm gì của thẻ lớn —
+   xem luật .gd-scroller ở hi-ds.
+   KHÔNG nén tiêu đề thẻ lớn. Thử nén 2 dòng thì "…A 2026 Global Study" mất chữ
+   cuối, mà đây là tiêu đề của bài NỔI BẬT nhất trang — chỗ ít được phép cắt
+   nhất. Mô tả nén 3 dòng: thẻ lớn phải nói được nhiều hơn thẻ nhỏ (2 dòng), đó
+   là lý do nó lớn. */
+.gd-feat-media{aspect-ratio:16/9}
+.gd-feat p{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;
+  line-clamp:3;overflow:hidden}
 .gd-feat-media,.gd-item-media{background:#E7E1D6;position:relative}
 .gd-date{color:var(--paper-muted)}
 .gd-feat .gd-feat-h,.gd-item .gd-item-h{color:var(--paper-ink)}
@@ -93,10 +117,7 @@
 .gd-vbar-th{background:rgba(17,17,15,.34)}
 .gd-vbar:hover .gd-vbar-th,.gd-vbar-th:active{background:rgba(17,17,15,.52)}
 .gd-feat:focus-visible,.gd-item:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
-.badge-hot{position:absolute;top:14px;left:14px;z-index:2;display:inline-flex;align-items:center;
-  min-height:32px;padding:7px 13px;border-radius:4px;background:var(--orange);color:#fff;
-  font-family:var(--sub);font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
-  box-shadow:0 14px 32px rgba(0,0,0,.38)}
+/* .badge-hot đã gỡ 11/08 (B.Long): nhãn biên tập tự phong, không đo được. */
 
 /* === LATEST POSTS — thẻ TRẦN ================================================
    Chốt B.Long 2026-08-10: đúng giải phẫu thẻ ở trang chủ (ảnh bo góc + ngày +

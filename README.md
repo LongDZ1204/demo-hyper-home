@@ -129,6 +129,28 @@ Ba cái bẫy của theme này, ai đụng vào sau nhớ:
    phải dài gấp sáu lần bài viết. Không số đo nào báo ngoài chiều cao — chỉ lộ khi NHÌN ảnh chụp.
    Mọi ảnh có `width`/`height` phải tự khai `height:auto`.
 
+**Dàn ý heading của hai page blog — bản chốt B.Long 11/08.** Không suy từ cỡ chữ, mà từ
+"cái gì là một mục người đọc đi tìm":
+
+| | `blog.html` | `blog-detail.html` |
+|---|---|---|
+| H1 | Blog Hub | tên bài |
+| H2 | 3 sub-hub: Tattoo · Piercing · Tattoo Removal | mục thân bài + Related Posts |
+| H3 | mọi tiêu đề bài trong Featured + Latest | mục con thân bài (2.1, 2.2) |
+| KHÔNG heading | "Featured Articles" · "Latest Posts" · CTA | tiêu đề 5 thẻ Related · thẻ khuyến mãi · CTA |
+
+Hệ quả phải biết trước: ở hub, **H2 nhỏ hơn H3** — chip sub-hub 12,5px trong khi tiêu đề bài
+25px. Máy soát báo `C2 ✗` đúng, đây là carve-out có chủ đích chứ không phải lỗi sót. Muốn cỡ chữ
+đi cùng chiều với dàn ý thì phải hạ tiêu đề bài xuống không-heading, như đã làm với thẻ Related
+bên detail.
+
+**Thang cấp bậc thân bài `blog-detail`** (chốt cùng lượt): H1 60px cam → H2 44px đen → H3 26px đen
+→ thân bài 18px. H1 là cấp **duy nhất** tô cam: cam ở nhiều cấp thì hết là dấu hiệu. H3 nâng từ
+20px lên 26px vì 20px chỉ hơn thân bài 2px, đọc lướt không nhận ra là heading. Anchor thân bài
+gạch chân LUÔN hiện (màu không được là dấu hiệu duy nhất) và rê chuột thì dày gạch lên chứ không
+đổi màu. Bullet một kiểu duy nhất: chấm tròn cam 7px, dùng chung cho `.key-facts` và `<ul>` thường;
+`<ol>` giữ số, chỉ tô cam phần số.
+
 **`piercing-gallery.html` và `removal-gallery.html` đã gỡ khỏi demo ngày 11/08** (B.Long chốt).
 Layout của chúng không khác `tattoo-gallery.html` một điểm nào, nên khi cần dựng lại thì **chép từ
 trang tattoo rồi thay ảnh + nhãn pill**, không thiết kế lại. Trong lúc chưa có, mọi link trỏ tới

@@ -483,9 +483,13 @@ body.paper-page{background:var(--paper-page);color:var(--paper-ink)}
    đề này còn dùng trong section KHÔNG mang class .section (.related-section của
    trang bài viết), ở đó h2 rơi về cỡ mặc định của trình duyệt — đo được 26px
    trong khi H2 thân bài ngay trên nó là 44px. */
-.section-title-row h2{max-width:none;margin:0;white-space:nowrap;font-size:var(--fs-h2);
-  color:var(--paper-ink);text-shadow:none}
-.section-title-row h2 .o{color:var(--orange)}
+/* Nhận cả h2 lẫn .strow-h: hub để "Featured Articles" / "Latest Posts" là <p>
+   (chốt B.Long 11/08 — H2 của hub dành cho ba sub-hub), detail để "Related
+   Posts" là <h2> thật. Cùng một kiểu nhìn, khác vai trò trong dàn ý. */
+.section-title-row h2,.section-title-row .strow-h{max-width:none;margin:0;white-space:nowrap;
+  font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:1;letter-spacing:0;
+  font-size:var(--fs-h2);color:var(--paper-ink);text-shadow:none}
+.section-title-row .o{color:var(--orange)}
 .section-title-row::after{content:"";height:1px;flex:1;
   background:linear-gradient(90deg,var(--orange),rgba(204,102,0,0))}
 @media(max-width:760px){.section-title-row{gap:14px}.section-title-row h2{white-space:normal}}
@@ -504,3 +508,22 @@ body.paper-page{background:var(--paper-page);color:var(--paper-ink)}
   box-shadow:0 12px 30px rgba(22,18,12,.12)}
 .paper-page .msl-track{background:rgba(17,17,15,.12)}
 .paper-page .msl-track.dragging{background:rgba(17,17,15,.2)}
+
+/* Chấm chuyển màn của băng tự chạy (.rv-slider-wrap.is-auto) trên nền giấy.
+   Bộ gốc dùng trắng mờ 24% cho nền đen — trên nền kem thì không thấy chấm nào. */
+.paper-page .rv-dot{background:rgba(17,17,15,.2)}
+.paper-page .rv-dot:hover{background:rgba(17,17,15,.4)}
+.paper-page .rv-dot.is-on{background:var(--orange)}
+
+/* Băng bài nổi bật của blog: cột danh sách bên phải GIÃN cho cao bằng thẻ lớn.
+   hi-components.js đã đặt max-height của .gd-scroller = chiều cao thẻ lớn, còn
+   nội dung thì tuỳ số bài — 3 bài chỉ cao 496px trong khi thẻ lớn 538px, hụt
+   42px thành một lỗ trống ở góc phải. space-between đẩy khe giữa các bài ra cho
+   vừa khít, và tự tắt tác dụng khi danh sách dài hơn khung (lúc đó nó cuộn).
+   Cách này không phải cắt chữ của thẻ lớn, cũng không phải bịa thêm bài.
+   Cần CẢ HAI dòng: bản chung để .gd-carousel{align-items:start} nên cột phải
+   chỉ cao bằng nội dung của nó, mà max-height thì chỉ CHẶN TRÊN chứ không kéo
+   dài ra — đo được scroller max-height 539px nhưng cao thật vẫn 496px, và
+   space-between không có gì để chia. Phải stretch cột trước. */
+.paper-page .gd-carousel{align-items:stretch}
+.paper-page .gd-scroller{justify-content:space-between}

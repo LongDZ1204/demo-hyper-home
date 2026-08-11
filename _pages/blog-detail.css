@@ -71,28 +71,67 @@
 /* Link trong thân bài dùng --paper-orange (#A85300) chứ không --orange (#CC6600):
    trên nền giấy #F8F5EC cam brand chỉ đạt 3,52:1, dưới ngưỡng AA 4,5:1 cho chữ
    thường. #A85300 đạt 4,94:1. Heading to vẫn giữ cam brand vì chữ ≥24px chỉ cần 3:1. */
+/* === ANCHOR TEXT THÂN BÀI — bản chốt =========================================
+   Gạch chân LUÔN hiện, không chỉ khi rê chuột: trên nền giấy màu là dấu hiệu
+   duy nhất còn lại, mà 1/12 nam giới không phân biệt được đỏ-lục.
+   Màu --paper-orange #A85300 (4,94:1) chứ không cam brand #CC6600 (3,52:1) —
+   dưới ngưỡng AA 4,5:1 cho chữ thường.
+   Rê chuột thì DÀY gạch lên 2px thay vì đổi màu: đổi màu nữa là có hai sắc cam
+   trong một đoạn văn. */
 .article-content a{color:var(--paper-orange);font-weight:600;text-decoration:underline;
   text-underline-offset:3px;text-decoration-thickness:1px}
-/* scroll-margin = chiều cao chrome, KHÔNG số cứng 112px như mockup: nhảy tới
+.article-content a:hover{text-decoration-thickness:2px}
+/* === THANG CẤP BẬC THÂN BÀI — bản chốt (B.Long 11/08 lượt 3) ================
+   Bốn cấp, mỗi cấp cách cấp dưới đủ xa để nhìn một cái là biết ai bao ai:
+
+     cấp          cỡ @1440   phông          màu              cách trên
+     H1 tên bài   60px       head, HOA      --orange         (hero riêng)
+     H2 mục       44px       head, HOA      --paper-ink      50px
+     H3 mục con   26px       sub,  HOA      --paper-ink      32px
+     thân bài     18px       body, thường   --paper-body     0 0 20px
+
+   Hai chỗ sửa so với mockup:
+     H3 20px -> 26px. 20px chỉ hơn thân bài 2px, đọc lướt không thấy đâu là
+       heading; 26px cách thân bài 8px và cách H2 18px, ba cấp giãn đều.
+     H1 là cấp DUY NHẤT tô cam. H2 và H3 cùng --paper-ink. Cam ở nhiều cấp thì
+       hết là dấu hiệu, thành trang trí — và cam #CC6600 trên nền giấy chỉ đạt
+       3,52:1, chữ H3 26px vẫn cần 3:1 nên vừa đủ, không có biên an toàn.
+
+   scroll-margin = chiều cao chrome, KHÔNG số cứng 112px như mockup: nhảy tới
    #section-2 từ mục lục mà để số cứng thì tắt thanh khuyến mãi là dư 36px. */
 .article-content h2,.article-content h3{color:var(--paper-ink);text-shadow:none;
   scroll-margin-top:calc(var(--chrome-h) + 12px)}
 .article-content h2{margin:50px 0 16px;font-family:var(--head);font-weight:700;
   text-transform:uppercase;letter-spacing:-.004em;line-height:1;font-size:clamp(30px,3.6vw,44px)}
 .article-content h2:first-child{margin-top:0}
-.article-content h3{margin:32px 0 12px;font-family:var(--sub);font-size:20px;font-weight:600;
-  letter-spacing:.03em;text-transform:uppercase;line-height:1.25}
+.article-content h3{margin:32px 0 12px;font-family:var(--sub);font-weight:600;
+  letter-spacing:.03em;text-transform:uppercase;line-height:1.25;font-size:clamp(20px,2.1vw,26px)}
 
 /* Đoạn tóm tắt đầu bài — nền cam rất nhạt + vạch cam bên trái, để người quét
    trang thấy ngay đâu là phần chốt kết quả. */
 .intro-paragraph{position:relative;padding:24px 28px 24px 32px;background:#FFF4E6;
   border:1px solid rgba(204,102,0,.18);border-radius:12px;box-shadow:inset 4px 0 0 var(--orange)}
 .intro-paragraph strong{font-family:var(--sub);letter-spacing:.02em}
-.key-facts{display:grid;gap:10px;margin:28px 0;padding:24px 26px;background:var(--paper-soft);
-  border:1px solid rgba(17,17,15,.08);border-radius:12px;list-style:none}
-.key-facts li{position:relative;padding-left:22px;color:var(--paper-body);font-size:16px;line-height:1.6}
-.key-facts li::before{content:"";position:absolute;left:0;top:.68em;width:7px;height:7px;
-  border-radius:50%;background:var(--orange)}
+/* === BULLET — MỘT kiểu cho cả thân bài ======================================
+   Chấm tròn cam 7px, thụt 22px, canh theo .68em nên nó nằm giữa dòng chữ đầu
+   chứ không dính đỉnh. Dùng chung cho:
+     .key-facts    hộp tóm tắt (có nền + viền)
+     ul thường     danh sách trong thân bài (không nền)
+   Khai một bộ luật cho cả hai, khác nhau đúng phần vỏ hộp. Bản mockup chỉ có
+   .key-facts, nên <ul> nào viết sau này sẽ rơi về chấm mặc định của trình duyệt
+   — lệch hẳn khỏi trang. */
+.key-facts,.article-content ul{display:grid;gap:10px;margin:28px 0;list-style:none;padding-left:0}
+.key-facts{padding:24px 26px;background:var(--paper-soft);
+  border:1px solid rgba(17,17,15,.08);border-radius:12px}
+.key-facts li,.article-content ul li{position:relative;padding-left:22px;color:var(--paper-body);
+  font-size:16px;line-height:1.6}
+.key-facts li::before,.article-content ul li::before{content:"";position:absolute;left:0;top:.68em;
+  width:7px;height:7px;border-radius:50%;background:var(--orange)}
+/* Danh sách ĐÁNH SỐ giữ số của trình duyệt, chỉ chỉnh màu + khoảng cách — số thứ
+   tự là thông tin, thay bằng chấm là mất nghĩa. */
+.article-content ol{display:grid;gap:10px;margin:28px 0;padding-left:22px}
+.article-content ol li{color:var(--paper-body);font-size:16px;line-height:1.6}
+.article-content ol li::marker{color:var(--orange);font-weight:700}
 .related-inline{margin:28px 0;padding:18px 20px;background:#FBF8EF;border:1px solid var(--paper-line);
   border-radius:10px;color:var(--paper-muted);font-size:15px;line-height:1.65}
 .related-inline strong{display:block;margin-bottom:4px;font-family:var(--sub);font-size:12px;
@@ -179,7 +218,10 @@
 .promo-body{padding:18px 18px 20px}
 .promo-label{display:inline-flex;margin-bottom:10px;color:var(--paper-orange);font-family:var(--sub);
   font-size:11px;font-weight:600;letter-spacing:.11em;text-transform:uppercase}
-.promo-card h2{margin:0;color:var(--paper-ink);font-family:var(--head);font-weight:700;
+/* Phải viết .promo-body .promo-h (0,2,0): .promo-card p ngay dưới là (0,1,1) và
+   khai font-size:14px — một class thua nó, đo ra 14px thay vì 38px. Thẻ này đổi
+   từ <h2> sang <p> hôm 11/08 nên mới rơi vào tầm ngắm của luật .promo-card p. */
+.promo-body .promo-h{margin:0;color:var(--paper-ink);font-family:var(--head);font-weight:700;
   text-transform:uppercase;line-height:1;font-size:clamp(28px,3vw,38px);letter-spacing:-.004em;text-shadow:none}
 .promo-card p{margin:10px 0 16px;color:var(--paper-muted);font-size:14px;line-height:1.55}
 .promo-actions{display:grid;gap:10px}
@@ -193,22 +235,23 @@
 .related-section{background:var(--paper-soft);border-top:1px solid var(--paper-line);
   padding:clamp(54px,6vw,84px) 0}
 .related-slider{min-width:0}
-.related-row{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 36px)/3);gap:18px;
-  overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;
-  -webkit-overflow-scrolling:touch;padding:2px 0 4px}
+/* Hàng thẻ mang luôn class .rv-slider của tầng chung — bộ đó đã là flex + cuộn
+   ngang + scroll-snap + giấu thanh cuộn, đúng những gì mockup tự dựng lại bằng
+   grid. Ở đây chỉ còn BỀ RỘNG THẺ, thứ riêng của trang này. */
 .related-row:focus-visible{outline:2px solid var(--orange);outline-offset:6px;border-radius:8px}
-.related-row::-webkit-scrollbar{display:none}
-.related-card{display:flex;flex-direction:column;overflow:hidden;border-radius:12px;
+.related-card{flex:0 0 calc((100% - 36px)/3);scroll-snap-align:start;
+  display:flex;flex-direction:column;overflow:hidden;border-radius:12px;
   background:var(--paper-card);border:1px solid var(--paper-line);box-shadow:var(--paper-shadow);
   transition:border-color .2s var(--ease),transform .2s var(--ease),box-shadow .2s var(--ease)}
-.related-row .related-card{scroll-snap-align:start}
 .related-card:hover{border-color:rgba(204,102,0,.62);transform:translateY(-3px);box-shadow:var(--paper-shadow-lg)}
 .related-card img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;background:#E7E1D6;
   border-bottom:1px solid rgba(0,0,0,.08)}
 .related-card-body{display:flex;flex-direction:column;flex:1;padding:18px 20px 20px}
-.related-card-meta{margin-bottom:12px;color:#777;font-family:var(--sub);font-size:11px;
-  font-weight:600;letter-spacing:.03em}
-.related-card-title{margin:0;color:#111;font-family:var(--sub);font-size:17px;font-weight:600;
+/* Ngày cập nhật dùng .gd-date của tầng chung (icon đồng hồ + cỡ + màu), y như
+   thẻ bài ở hub — B.Long 11/08 lượt 3 yêu cầu đồng bộ. Ở đây chỉ thêm khe dưới,
+   thứ .gd-date không khai vì ở hub nó nằm trong flex đã có gap. */
+.related-card-meta{margin-bottom:12px}
+.related-card-title{margin:0;color:var(--paper-ink);font-family:var(--sub);font-size:17px;font-weight:600;
   letter-spacing:0;line-height:1.28;text-transform:none;
   display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;line-clamp:2;overflow:hidden}
 .related-card-excerpt{margin:10px 0 0;color:#666;font-size:13.5px;line-height:1.55;
@@ -218,13 +261,13 @@
   letter-spacing:.07em;text-transform:uppercase;text-decoration:none}
 .blog-link svg{width:15px;height:15px;transition:transform .2s var(--ease)}
 .related-card:hover .blog-link svg{transform:translateX(3px)}
-/* Chân băng dùng bộ .msl-* của tầng chung — nút ‹ ›, thanh kéo tua được, tự ẩn
-   khi hàng không tràn, đo lại sau khi ảnh tải xong. Bản mockup tự dựng
-   .related-foot/.related-nav/.related-progress: họ slider thứ sáu của site mà
-   thiếu cả ba thứ trên. Máy gác port-check bắt bằng luật [E1].
-   Lớp da nền giấy cho bộ .msl-* nằm ở hi-ds.css, KHÔNG ở đây: [E1] cấm _pages/
-   khai đè lên component của tầng chung, và đây là chuyện của THEME chứ không
-   của riêng trang này — page giấy nào sau này có băng cuộn cũng cần. */
+/* Băng TỰ CHẠY bằng engine chung .rv-slider-wrap.is-auto (B.Long 11/08 lượt 3):
+   5 giây một màn, dùng chấm thay nút ‹ ›, tự dừng khi rê chuột · focus bàn phím
+   · người dùng chạm kéo · tab trình duyệt bị ẩn · máy bật prefers-reduced-motion.
+   Không một dòng JS nào trong page.
+   Lớp da nền giấy cho chấm nằm ở hi-ds.css chứ không ở đây: luật [E1] của máy
+   gác cấm _pages/ khai đè lên component tầng chung, và đây là chuyện của THEME
+   — page giấy nào sau này có băng cuộn cũng cần. */
 
 @media(max-width:1040px){
   .article-shell{grid-template-columns:1fr}
