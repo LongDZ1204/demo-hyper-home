@@ -176,6 +176,46 @@ Hai chỗ đổi khác mockup, ghi lại vì là **luật chung chứ không ph�
 Bỏ luôn `.phone-fab` (nút gọi nổi góc phải) của mockup: footer dùng chung đã có nút lên đầu trang
 neo đúng góc đó, hai nút nổi chồng nhau. Không page nào đã port có `.phone-fab`.
 
+**Vá 11/08 sau khi B.Long soi mobile — 3 bẫy, cả 3 đều là "port đúng ống nhưng sai khổ màn".**
+Cả 3 đều lọt hai máy soát vì máy chỉ đo 1440/820/430 ở trạng thái tĩnh, không hỏi "luật này có
+biến thể theo khổ màn không".
+
+1. **Ghi đè selector nặng hơn thì phải ghi đè cả biến thể theo khổ màn của nó.**
+   `.tm-hero .hero-grid{grid-template-columns:…}` viết trần, độ ưu tiên (0,2,0). Bản chung xếp 1 cột
+   bằng `@media(max-width:820px){.hero-grid{grid-template-columns:1fr}}` — (0,1,0). **Media query
+   KHÔNG cộng độ ưu tiên, nó chỉ bật/tắt.** Nên câu của tôi thắng cả bên trong media query đó: đo ở
+   430px ra `20px 320px`, cột chữ còn 20px, H1 nát thành sợi dọc, khối chip đè lên.
+   Cách chữa: tự khoá mình vào đúng khổ cần sửa — `@media(min-width:821px){…}`.
+   Cách soát: mỗi lần `_pages/*.css` ghi đè một luật của `_foundation`, grep xem luật gốc đó có
+   xuất hiện trong media query nào không; có thì phải xử lý luôn.
+
+2. **Đừng hotlink ảnh CDN ngoài.** Hero trỏ thẳng `lh3.googleusercontent.com/gps-cs-s/…` bê từ
+   mockup. URL `gps-cs-s` của Google Maps **có chữ ký và hết hạn theo phiên/IP** — máy tôi fetch ra
+   200, máy B.Long ra hero đen thui. Đây là page DUY NHẤT trong 21 page còn trỏ CDN ngoài; đã tải về
+   `_hero-assets/testimonials-hero-studio.jpg`.
+   Cách soát: `grep -c 'src="https://lh3.googleusercontent' *.html` — phải ra rỗng.
+
+3. **`.lead` của `hi-foundation` NÉN SẴN 4 dòng.** Bộ nén đó đi kèm cặp
+   `<input class="more-cb">` + `<label class="more-btn">` để bung ra; 7 page kia đều có vì đoạn dẫn
+   của họ dài ~1.200 ký tự. Page này port `<p class="lead">` từ mockup (mockup dùng bản `.lead`
+   không nén) nên **thiếu nút** — ở 430px câu cuối cắt cụt thành `…on Google o…` và không có cách
+   nào đọc tiếp. Máy soát không bắt được vì DOM đủ chữ, chỉ có `overflow:hidden` nuốt.
+   Chữa bằng gỡ nén (`.tm-hero .lead{display:block;line-clamp:none}`) chứ không gắn nút, vì đoạn
+   này chỉ 244 ký tự. **Nén là để trị đoạn dẫn dài, không phải mặc định.**
+   Cách soát: `el.scrollHeight > el.clientHeight` trên mọi `.lead`/`.lead-txt` ở 430 và 360.
+
+**Nút `.rv-leave` gãy 2 dòng — chữa trong `.s-plat`, chưa nâng lên tầng chung.** Ở ≤820 bản chung
+đổi `.rv-bar` sang cột + stretch nên nút giãn hết bề ngang thẻ; "Read our Facebook reviews" dài hơn
+"Read our Google reviews" đúng 2 ký tự và vượt hộp chữ → 64px cạnh 44px. Cách chữa **không dùng**
+`white-space:nowrap`: nowrap ép hộp phình theo chữ, đo ở 360px tràn 46px ra ngoài thẻ, tức đổi một
+lỗi nhìn thấy lấy một lỗi nặng hơn (tràn ngang kéo cả trang trượt). Thay vào đó bóp cho chữ VỪA
+hộp — nhả padding nút/thanh, gap, khe chữ, rồi cho cỡ chữ trôi theo `clamp(10.5px,2.85vw,12.5px)`.
+Nếu có khổ máy nào chưa lường thì nó tự xuống dòng như cũ, không bao giờ tràn.
+**Còn 5 page nữa gãy y hệt** — `index` · `about` · `piercing` · `tattoo` ·
+`tattoo-cover-up-san-antonio` (đo bằng `grep -l "Read our Facebook reviews" *.html`).
+Luật gốc `.rv-leave` nằm ở `hi-components`;
+chưa nâng lên đó vì mấy page kia đang có người khác làm dở.
+
 **`piercing-gallery.html` và `removal-gallery.html` đã gỡ khỏi demo ngày 11/08** (B.Long chốt).
 Layout của chúng không khác `tattoo-gallery.html` một điểm nào, nên khi cần dựng lại thì **chép từ
 trang tattoo rồi thay ảnh + nhãn pill**, không thiết kế lại. Trong lúc chưa có, mọi link trỏ tới
