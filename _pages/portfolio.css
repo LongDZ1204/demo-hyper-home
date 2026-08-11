@@ -168,8 +168,11 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 /* Nút dưới mỗi tab: hiện đúng nút của tab đang mở. Đọc .is-active mà engine
    chung đã gắn sẵn lên pill, nên KHÔNG phải thêm JS riêng cho page.
    :has() đã dùng sẵn trong hi-components.css (.faqacc-item:has(...)) nên không
-   phải kỹ thuật mới ở codebase này. */
-.section-gallery:has(.galf-pill[data-filter="all"].is-active) .gal-golink--tattoo,
+   phải kỹ thuật mới ở codebase này.
+
+   TAB "ALL" CỐ Ý KHÔNG CÓ NÚT (B.Long xác nhận lại 11/08). All trộn cả 3 nhánh
+   nên không có một đích duy nhất để trỏ tới; ở tab đó chỉ có nút Load more.
+   Bản trước tôi cho All mượn nút tattoo — sai, đã bỏ. */
 .section-gallery:has(.galf-pill[data-filter="tattoo"].is-active) .gal-golink--tattoo,
 .section-gallery:has(.galf-pill[data-filter="piercing"].is-active) .gal-golink--piercing,
 .section-gallery:has(.galf-pill[data-filter="removal"].is-active) .gal-golink--removal{display:inline-flex}
@@ -212,3 +215,14 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
   transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease)}
 .gal-loadmore:hover,.gal-loadmore:focus-visible{border-color:var(--orange);color:#fff;
   background:rgba(204,102,0,.12);outline:none}
+/* --- Nhịp trong section Visit --------------------------------------------
+   Đo được: h2 -> đoạn dẫn 46px (quá rộng) · đoạn dẫn -> khối NAP 0px (dính sát,
+   bản đồ đè lên dòng thứ hai của đoạn dẫn).
+   Nguyên nhân: .section-title-row mang margin-bottom 46px — con số đó dành cho
+   trường hợp head đi thẳng xuống nội dung, không có đoạn dẫn xen giữa. Còn
+   .vs-intro thì không khai margin dưới nên rơi về 0.
+   Trả về đúng cặp token chung: head -> lead 16px, lead -> nội dung 34px, giống
+   10/10 section của trang chủ. Luật chung ở hi-ds khoá theo .section-head nên
+   không với tới được head đặt tên riêng của page này. */
+.s-visit .section-title-row{margin-bottom:var(--gap-head-lead)}
+.s-visit .vs-intro{margin-bottom:var(--gap-head-body)}
