@@ -527,3 +527,26 @@ body.paper-page{background:var(--paper-page);color:var(--paper-ink)}
    space-between không có gì để chia. Phải stretch cột trước. */
 .paper-page .gd-carousel{align-items:stretch}
 .paper-page .gd-scroller{justify-content:space-between}
+
+/* ============================================================================
+   HEADER TRÊN TRANG CÓ HERO NỀN SÁNG  (.light-hero)
+
+   Header chuẩn cố tình TRONG SUỐT lúc ở đỉnh trang, chỉ có dải mờ ::before
+   `rgba(0,0,0,.62) -> transparent` để chữ nổi trên ẢNH HERO TỐI. 18/21 page là
+   hero tối nên nó đúng.
+
+   blog-detail có hero nền TRẮNG. Dải mờ đó đổ lên nền trắng thành một vệt xám
+   chạy ngang, còn nửa dưới header thì trong suốt hẳn — logo cam và chữ menu màu
+   --cream (#DCDBBE) rơi thẳng lên nền #FFF. Đo: cream trên trắng = 1,6:1, dưới
+   xa ngưỡng AA 4,5:1. B.Long bắt 11/08: "thiếu tương phản làm chìm logo và text".
+
+   Cách chữa: cho header nền ĐẶC ngay từ đầu, đúng bộ số mà html.scrolled đang
+   dùng — nghĩa là trang hero sáng bắt đầu ở trạng thái mà trang hero tối chỉ
+   vào sau khi cuộn. Không phải luật mới, chỉ là bật sớm.
+
+   Khoá theo class .light-hero trên <body>, KHÔNG theo tên page: page nào sau
+   này có hero nền sáng thì thêm class, không phải nhớ sửa danh sách ở đây. */
+.light-hero .hdr{background:rgba(10,10,10,.94);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--hair)}
+.light-hero .hdr::before{opacity:0}
