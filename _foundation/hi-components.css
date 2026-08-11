@@ -310,6 +310,11 @@
 .svc-icb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
 .svc-intro{position:relative;max-width:640px;margin:14px auto 0;text-align:center;font-size:16px;line-height:1.6;color:#C9C9C9}
 .svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:clamp(28px,3.4vw,42px)}
+/* Số cột đi theo SỐ THẺ, nên nó là biến thể chứ không phải hằng số: trang chủ có
+   4 dịch vụ (1 hàng), /piercing có 6 (3 cột × 2 hàng). Để mặc định repeat(4) thì
+   6 thẻ rơi thành 4 + 2, hàng dưới hụt mất 2 ô (B.Long bắt 11/08).
+   Mobile không cần biến thể — mọi trang đều 2 cột, thẻ thứ 5-6 xuống hàng 3. */
+.svc-grid--3{grid-template-columns:repeat(3,1fr)}
 .svc-card{position:relative;aspect-ratio:3/4;border-radius:14px;overflow:hidden;border:1px solid var(--border);
   background:var(--surface);isolation:isolate;transition:border-color .25s var(--ease),transform .25s var(--ease)}
 .svc-card:hover,.svc-card.is-active{border-color:rgba(204,102,0,.45);transform:translateY(-4px)}
@@ -1061,6 +1066,18 @@ body.galp-lock{overflow:hidden}
   background:
     linear-gradient(90deg, rgba(13,13,13,0.97) 0%, rgba(13,13,13,0.9) 34%, rgba(13,13,13,0.58) 56%, rgba(13,13,13,0.4) 100%),
     linear-gradient(0deg, rgba(13,13,13,0.75) 0%, rgba(13,13,13,0) 42%);}
+/* ---- Huy hiệu Google trong hero: KHÔNG viên thuốc ----
+   hi-foundation.css (file KHOÁ) vẽ .badge thành viên thuốc có viền + nền + đệm.
+   Trang chủ đã bỏ khung đó từ lâu nhưng luật bỏ khung nằm trong _pages/home.css,
+   nên mọi page khác rơi về bản viên thuốc cũ — /piercing hiện ra một cái hộp đen
+   quanh "5.0 ★★★★★" mà trang chủ không có (B.Long bắt 11/08).
+   Chuyển lên đây: 6 page có hero badge cùng đọc một bản.
+   Reset theo TỪNG THUỘC TÍNH, không dùng `all:unset` — chỉ cần rò một cái là
+   viền/nền quay lại mà không ai thấy. */
+.badge{display:inline-flex;align-items:center;gap:11px;color:var(--cream);margin-bottom:24px;
+  border:0;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding:0;border-radius:0}
+.badge .gg{width:clamp(26px,6vw,30px);height:clamp(26px,6vw,30px);flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
+.badge .stars{color:#F5B301;letter-spacing:2px;font-size:clamp(13px,3.1vw,15px);line-height:1}
 .badge-col{display:flex;flex-direction:column;gap:2px}
 .badge-r1{display:flex;align-items:center;gap:9px}
 .badge-num{font-family:var(--head);font-weight:700;font-size:clamp(20px,4.4vw,25px);line-height:1;color:#fff;letter-spacing:.01em}
@@ -1091,6 +1108,52 @@ body.galp-lock{overflow:hidden}
   .trustbar{gap:9px}
   .soa-shield{height:40px}}
 
+/* 821-1099px · hero vẫn 2 cột nên cột chữ HẸP NHẤT cả dải (~374px ở 821) — hẹp hơn
+   mọi điện thoại thật. Hàng trust phải co ở đây, không phải ở breakpoint mobile. */
+@media(min-width:821px) and (max-width:1099px){
+  .trustbar{gap:13px}
+  .tb-div{min-height:32px}
+  .soa-shield{height:50px}}
+
+/* ---- Dải số dưới hero (.statband) — bản chuẩn của trang chủ ----
+   Cùng lý do với .badge ở trên: hi-foundation (KHOÁ) vẽ dải này có VIỀN, có gạch
+   cam ở mép trên, và có vạch ngăn dọc giữa các ô. Trang chủ bỏ cả ba từ lâu nhưng
+   luật bỏ nằm ở _pages/home.css, nên /piercing hiện ra một cái khung có viền
+   (B.Long bắt 11/08). 5 page có dải số giờ cùng đọc bản này.
+   `overflow:visible` là bắt buộc: tooltip ⓘ mở LÊN TRÊN, để `hidden` là bị cắt. */
+.statband{align-self:center;margin:36px auto 0;overflow:visible;border:none}
+.statband::before{display:none}
+.stat{border-right:0}
+@media(max-width:640px){
+  .statband{width:calc(100% - 24px);margin-top:26px}}
+
+/* ---- Chấm ⓘ trong dải số — cũng là bản chuẩn của trang chủ ----
+   Nó nằm trong dải số nên đi cùng chuyến. hi-foundation vẽ ⓘ 16px có chữ "i" thật;
+   trang chủ đã đổi sang 15px + dấu "i" vẽ bằng SVG (chữ thật bị lệch tâm và mảnh),
+   riêng trong dải số hạ còn 13px cho khỏi to hơn nhãn nó chú thích.
+   Trên /piercing chấm này đang là bản 16px của foundation. */
+.info{width:15px;height:15px;border-color:rgba(255,255,255,.42);background:rgba(255,255,255,.07);
+  color:rgba(255,255,255,.8)}
+.info>svg{width:62%;height:62%;display:block}
+/* WCAG 2.2: nới VÙNG BẤM mà không nới hình — chấm 13px thì ngón tay không trúng */
+.info::after{content:"";position:absolute;inset:-6px}
+.lead-more::before{content:"";position:absolute;inset:-3px}
+.stat-lbl .info{width:13px;height:13px}
+.info .tip{font-style:normal;text-transform:none}
+.info--award{position:absolute;top:12px;right:12px;z-index:6;width:20px;height:20px;
+  background:rgba(0,0,0,.5);backdrop-filter:blur(3px);border-color:rgba(255,255,255,.5);color:rgba(255,255,255,.9)}
+.info--award .tip{bottom:auto;top:calc(100% + 9px);left:auto;right:0;transform:translateY(4px);width:min(240px,60vw)}
+.info--award:hover .tip,.info--award:focus-visible .tip{transform:translateY(0)}
+/* Tooltip dải số mở LÊN TRÊN ở MỌI khổ màn. Trước đây desktop mở xuống, mobile mở
+   lên -> cùng một icon mà hai hành vi. Dưới dải số là section kế tiếp, mở xuống
+   là đâm sang nó. */
+.stat-lbl .info .tip{top:auto;bottom:calc(100% + 9px);transform:translateX(-50%) translateY(4px)}
+.stat-lbl .info:hover .tip,.stat-lbl .info:focus-visible .tip{transform:translateX(-50%) translateY(0)}
+/* Phải khai LẠI ở đây, sau luật 13px bên trên. hi-foundation cũng có luật 14px này
+   nhưng nó nằm ở file NẠP TRƯỚC, nên luật 13px sẽ đè cả ở mobile — đúng cái bẫy
+   vừa làm chấm ⓘ trang chủ tụt 14px xuống 13px ở 430px mà máy gác không thấy. */
+@media(max-width:640px){
+  .stat-lbl .info{width:14px;height:14px;font-size:9.5px}}
 
 @media(prefers-reduced-motion:reduce){
 
@@ -1299,6 +1362,37 @@ body.galp-lock{overflow:hidden}
 .faqacc--plus .faqacc-cb:checked ~ .faqacc-head .faqacc-icon::after{transform:translate(-50%,-50%) scaleY(0)}
 .faqacc--plus .faqacc-head:hover .faqacc-icon::before,
 .faqacc--plus .faqacc-head:hover .faqacc-icon::after{background:var(--orange-hi)}
+
+/* ---- Biến thể .faqacc--tab: mặc bộ đồ của tab Why-Choose (B.Long chốt 11/08) ----
+   Cùng ngôn ngữ với .adv-item và .vs-city: THANH DỌC bên trái (xám → cam khi mở)
+   thay cho gạch ngang mép trên, tiêu đề chữ phụ IN HOA cỡ h6. Bản gốc .faqacc là
+   giọng "câu hỏi thường gặp" (chữ body, hoa-thường); khối tab chèn giữa section
+   không phải câu hỏi nên nó phải đọc như một tab.
+   Ghép được với .faqacc--plus để có dấu + / − bên phải.
+   Anchor đặt TRONG thân tab: đích của link là phần chữ vừa đọc, để ngoài thì nó
+   trôi lơ lửng dưới một cái tab đóng, không biết nó dẫn đi đâu. */
+.faqacc--tab .faqacc-item::before{content:"";position:absolute;left:0;right:auto;top:18px;bottom:18px;
+  width:2px;height:auto;z-index:1;background:rgba(255,255,255,.12);
+  transition:background .22s var(--ease),box-shadow .22s var(--ease)}
+/* Phải khai LẠI cả hình dạng ở trạng thái mở, không chỉ màu: luật gốc
+   `.faqacc-item:has(.faqacc-cb:checked)::before` là GẠCH NGANG mép trên và nó
+   specific hơn `.faqacc--tab .faqacc-item::before`, nên mở tab ra là thanh dọc
+   biến mất, thay bằng gạch ngang — đúng cái phải bỏ. */
+.faqacc--tab .faqacc-item:has(.faqacc-cb:checked)::before{
+  left:0;right:auto;top:18px;bottom:18px;width:2px;height:auto;
+  background:var(--orange);box-shadow:0 0 16px rgba(204,102,0,.42)}
+/* họ tab không đổi nền khi rê chuột — .adv-head cũng để trong suốt, chỉ đổi màu chữ */
+.faqacc--tab .faqacc-head:hover{background:transparent}
+.faqacc--tab .faqacc-item:has(.faqacc-cb:checked){border-top-color:rgba(255,255,255,.07)}
+.faqacc--tab .faqacc-head{padding:18px 24px 12px 30px}
+.faqacc--tab .faqacc-item .faqacc-q{font-family:var(--sub);font-weight:600;text-transform:uppercase;
+  font-size:var(--fs-h6);letter-spacing:.02em;line-height:1.25;color:#BEBEBE;transition:color .2s var(--ease)}
+.faqacc--tab .faqacc-head:hover .faqacc-q{color:#EDEDED}
+/* bản gốc tô tiêu đề màu cam khi mở; họ tab tô TRẮNG, màu cam để dành cho thanh dọc */
+.faqacc--tab .faqacc-cb:checked ~ .faqacc-head .faqacc-q{color:#fff}
+.faqacc--tab .faqacc-inner p{padding:0 24px 22px 30px;font-size:15px;line-height:1.64;color:#C9C9C9}
+.faqacc--tab .faqacc-inner p:has(+ .sec-link){padding-bottom:14px}
+.faqacc--tab .faqacc-inner .sec-link{margin:0 24px 22px 30px}
 
 /* ---- Thanh dọc 5 bước (.pc-*) — nâng từ _pages/piercing.css 2026-08-11.
    /piercing · /tattoo · /black-and-grey cùng dùng khối này (10 · 10 · 4 mốc).

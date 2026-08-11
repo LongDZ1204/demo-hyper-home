@@ -17,7 +17,6 @@
 <!-- hi-ds.css NẠP CUỐI: lớp design-system cố tình thắng cascade so với CSS lẻ của page -->
 <link rel="stylesheet" href="_foundation/hi-ds.css">
 </head>
-</head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
 <!-- ==== /piercing HUB 2026-07-05 · shared foundation + ported sections ==== -->
@@ -654,7 +653,7 @@
       <noscript><style>.lead-txt{-webkit-line-clamp:unset;line-clamp:unset}.lead-more{display:none}</style></noscript>
     </div>
 
-    <div class="svc-grid msl-row">
+    <div class="svc-grid svc-grid--3 msl-row">
 
       <article class="svc-card">
         <img src="https://hyperinkers.com/wp-content/uploads/2024/10/1-1-1-819x1024.jpg" alt="Ear piercing placed by a piercer at Hyper Inkers in San Antonio." loading="lazy">
@@ -1110,21 +1109,23 @@
          3 trục nó nêu (metal · fit · durability) để đọc lướt thấy ngay trục nào là trục nào. -->
     <!-- MỘT tab duy nhất, nội dung theo bản B.Long gửi 11/08. Bản trước tách 3 hàng
          (metal · fit · durability) — nay gộp lại vì cả ba nằm trong cùng một đoạn.
-         Dùng biến thể .faqacc--plus: dấu + / − bên phải thay mũi tên.
-         Mở SẴN vì đây là toàn bộ phần chữ của mục con, đóng lại thì mục chỉ còn
-         mỗi cái tiêu đề. -->
+         .faqacc--tab: mặc style tab Why-Choose · .faqacc--plus: dấu + / − bên phải.
+         Mặc định ĐÓNG (chốt B.Long 11/08) — tab đóng thì mục con đọc như một dòng
+         mời bấm, không chiếm chỗ của khối chữ chính bên trên.
+         Anchor nằm TRONG thân tab, mở tab mới thấy. -->
     <div class="jw-choose">
-      <div class="faqacc faqacc--plus jw-acc">
-        <div class="faqacc-item faqacc-item--sat">
-          <input type="checkbox" id="jw1" class="faqacc-cb" checked>
+      <div class="faqacc faqacc--tab faqacc--plus jw-acc">
+        <div class="faqacc-item">
+          <input type="checkbox" id="jw1" class="faqacc-cb">
           <label for="jw1" class="faqacc-head"><h3 class="faqacc-q">How to Choose Your Piercing Jewelry</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
-          <div class="faqacc-body"><div class="faqacc-inner"><p>Choosing piercing jewelry comes down to the metal, the fit, and how the piece holds up in daily wear. The metal decides how the piercing heals, and titanium is the safe call for fresh or sensitive skin. Fit matters more than looks at first, so a new piercing starts with a roomier piece and gets sized down once the swelling settles. Durability decides what you wear long term, since a piece that snags or tarnishes will bother a spot you touch every day. At Hyper Inkers you never sort this out alone. Tell your piercer the look you are after, and she walks the case with you and flags anything that will not work for your placement.</p></div></div>
+          <div class="faqacc-body"><div class="faqacc-inner">
+            <p>Choosing piercing jewelry comes down to the metal, the fit, and how the piece holds up in daily wear. The metal decides how the piercing heals, and titanium is the safe call for fresh or sensitive skin. Fit matters more than looks at first, so a new piercing starts with a roomier piece and gets sized down once the swelling settles. Durability decides what you wear long term, since a piece that snags or tarnishes will bother a spot you touch every day. At Hyper Inkers you never sort this out alone. Tell your piercer the look you are after, and she walks the case with you and flags anything that will not work for your placement.</p>
+            <a class="sec-link sec-link--inline" href="/blog/how-to-choose-piercing-jewelry">Guide to choosing piercing jewelry
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+          </div></div>
         </div>
       </div>
-
-      <a class="sec-link sec-link--inline" href="/blog/how-to-choose-piercing-jewelry">Guide to choosing piercing jewelry
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </a>
     </div>
 
   </div>
@@ -1282,7 +1283,10 @@
       <div class="ac-text">
         <h2><span class="o">Piercing Aftercare</span> in San Antonio</h2>
         <p class="ac-lead"><b>Piercing aftercare at Hyper Inkers is simple: keep the area clean, leave the jewelry in, and follow the steps your piercer gives you.</b> Here are the basics for a clean heal, and how long it usually takes.</p>
-        <ul class="ac-list">
+        <!-- .split-list = kiểu danh sách chấm tròn dùng chung với Age/ID và Jewelry.
+             Trước đây khối này có tick tròn riêng (.ac-list) — một trang hai kiểu
+             danh sách, B.Long bắt 11/08. -->
+        <ul class="split-list ac-list">
           <li>Clean the piercing with sterile saline once or twice a day.</li>
           <li>Leave the jewelry in and avoid twisting, rotating, or touching it while it heals.</li>
           <li>Keep it dry and protected, and stay out of pools and hot tubs while it settles.</li>
@@ -1290,7 +1294,7 @@
           <li>Some swelling and tenderness is normal at first. If you have concerns, ask your piercer or a medical professional.</li>
           <li>Follow your piercer's instructions, and read the full guide for your placement.</li>
         </ul>
-        <a href="/blog/piercing-aftercare" class="ac-link">Read the full piercing aftercare guide<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="/blog/piercing-aftercare" class="sec-link sec-link--inline ac-link">Read the full piercing aftercare guide<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
       </div>
       <figure class="ac-media">
         <img src="https://hyperinkers.com/wp-content/uploads/2024/05/body-1-2.jpg.webp" alt="A clean, healed navel piercing cared for with proper aftercare at Hyper Inkers in San Antonio." loading="lazy">

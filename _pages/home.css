@@ -11,22 +11,9 @@
 
 
 /* text column */
-/* hero Google-review badge — bare (no pill), colored G on dark, gold stars, G medallion style.
-   Reset the foundation .badge pill explicitly (per-property) so no border/bg/pad leaks through. */
-.badge{display:inline-flex;align-items:center;gap:11px;color:var(--cream);margin-bottom:24px;
-  border:0;background:none;backdrop-filter:none;-webkit-backdrop-filter:none;padding:0;border-radius:0}
-.badge .gg{width:clamp(26px,6vw,30px);height:clamp(26px,6vw,30px);flex-shrink:0;filter:drop-shadow(0 2px 6px rgba(0,0,0,.5))}
-.badge .stars{color:#F5B301;letter-spacing:2px;font-size:clamp(13px,3.1vw,15px);line-height:1}
-/* 821-1099px · hero grid is still 2-col, so the text column is at its narrowest
-   of the whole range (~374px at 821) — narrower than on any real phone. */
-@media(min-width:821px) and (max-width:1099px){
-
-  .trustbar{gap:13px}
-  .tb-div{min-height:32px}
-  .soa-shield{height:50px}}
-
-
-
+/* .badge (huy hiệu Google bỏ khung viên thuốc) + hàng trust ở 821-1099px đã chuyển
+   sang _foundation/hi-components.css ngày 2026-08-11 — 6 page có hero badge dùng
+   chung một bản, không còn mỗi trang một kiểu. */
 
 h1{font-family:var(--head);font-weight:700;text-transform:uppercase;line-height:0.94;letter-spacing:-0.005em;
   font-size:clamp(34px,4.6vw,60px);color:#fff;text-shadow:0 2px 34px rgba(0,0,0,.55)}
@@ -65,73 +52,20 @@ h1 .o{color:var(--orange);display:block}
 .btn-ghost:hover{border-color:var(--cream)}
 .btn svg{width:17px;height:17px;flex-shrink:0}
 
-/* ---------- SHARED INFO TOOLTIP (ⓘ) ---------- */
-.info{position:relative;display:inline-flex;align-items:center;justify-content:center;
-  width:15px;height:15px;border-radius:50%;border:1px solid rgba(255,255,255,.42);background:rgba(255,255,255,.07);
-  color:rgba(255,255,255,.8);flex-shrink:0;cursor:help;
-  transition:border-color .2s var(--ease),color .2s var(--ease),background .2s var(--ease)}
-/* crisp SVG "i" mark (dot + rounded stem) — replaces the literal text "i" that rendered off-centre/thin */
-.info>svg{width:62%;height:62%;display:block}
-/* C6 · expand pointer target of small ⓘ + read-more toggles to WCAG 2.2 min (visual size unchanged) */
-.info::after{content:"";position:absolute;inset:-6px}
-.lead-more::before{content:"";position:absolute;inset:-3px}
-.stat-lbl .info{width:13px;height:13px}
-.info:hover,.info:focus-visible{border-color:var(--orange);color:#fff;outline:none}
-.info .tip{position:absolute;z-index:30;bottom:calc(100% + 9px);left:50%;transform:translateX(-50%) translateY(4px);
-  width:max-content;max-width:230px;background:var(--black);border:1px solid var(--orange);border-radius:4px;
-  padding:9px 12px;font-family:var(--body);font-size:12px;line-height:1.5;font-style:normal;color:#fff;letter-spacing:0;text-transform:none;text-align:left;white-space:normal;
-  opacity:0;visibility:hidden;transition:opacity .15s var(--ease),transform .15s var(--ease),visibility 0s .2s;pointer-events:none}
-.info:hover .tip,.info:focus-visible .tip{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);transition-delay:.05s}
-.info--award{position:absolute;top:12px;right:12px;z-index:6;width:20px;height:20px;
-  background:rgba(0,0,0,.5);backdrop-filter:blur(3px);border-color:rgba(255,255,255,.5);color:rgba(255,255,255,.9)}
-.info--award .tip{bottom:auto;top:calc(100% + 9px);left:auto;right:0;transform:translateY(4px);width:min(240px,60vw)}
-.info--award:hover .tip,.info--award:focus-visible .tip{transform:translateY(0)}
-/* Tooltip stat-band mở LÊN TRÊN ở MỌI khổ màn. Trước đây desktop mở xuống,
-   mobile mở lên -> cùng một icon mà 2 hành vi. Mở lên là hướng an toàn hơn:
-   dưới dải stat là section kế tiếp, mở xuống sẽ đâm sang section đó. */
-.stat-lbl .info .tip{top:auto;bottom:calc(100% + 9px);transform:translateX(-50%) translateY(4px)}
-.stat-lbl .info:hover .tip,.stat-lbl .info:focus-visible .tip{transform:translateX(-50%) translateY(0)}
-@media(min-width:641px){
+/* Họ ⓘ (.info, .info--award, hướng tooltip trong dải số) đã chuyển sang
+   _foundation/hi-components.css ngày 2026-08-11 — nó là bộ phận của dải số nên
+   đi cùng chuyến. Trước đó /piercing dùng bản 16px của hi-foundation, trang chủ
+   dùng bản 15px/13px của riêng nó.
 
-.statband{overflow:visible}}
-
-
-
-/* ---------- STAT BAND (Option A: charcoal card, orange top accent, horizontal stat rows) ---------- */
-.statband{position:relative;z-index:6;align-self:center;width:calc(100% - 48px);max-width:var(--wrap);margin:36px auto 0;
-  border-radius:14px;overflow:visible;border:none;
-  background:rgba(10,10,10,.62);backdrop-filter:blur(9px);-webkit-backdrop-filter:blur(9px);
-  box-shadow:0 26px 70px rgba(0,0,0,.5)}
-/* orange top accent removed per B.Long — override ::before của hi-foundation.css (file KHÓA vẫn vẽ gạch cam); statband dùng viền glass hairline; overflow:visible để tooltip (i) không bị cắt */
-.statband::before{display:none}
-.stat-row{display:grid;grid-template-columns:repeat(4,1fr);list-style:none}
-.stat{display:flex;align-items:center;justify-content:center;gap:13px;padding:24px 16px;border-right:0}
-.stat-ic{width:34px;height:34px;flex-shrink:0;color:var(--orange)}
-.stat-ic svg{width:100%;height:100%;display:block;fill:currentColor}
-.stat-text{display:flex;flex-direction:column;gap:3px;text-align:left}
-.stat-num{font-family:var(--head);font-size:clamp(23px,2vw,30px);font-weight:700;color:#fff;line-height:1;letter-spacing:.01em}
-.stat-lbl{display:inline-flex;align-items:center;gap:6px;font-family:var(--sub);font-size:11.5px;letter-spacing:.07em;text-transform:uppercase;color:#ECECEC}
-/* mobile swipe progress line */
-.stat-track{display:none}
+   Dải số .statband + họ .stat-* đã chuyển sang _foundation/hi-components.css
+   ngày 2026-08-11 (bỏ viền · bỏ gạch cam mép trên · bỏ vạch ngăn dọc · overflow
+   visible cho tooltip · khổ và lề mobile). 5 page có dải số dùng chung một bản.
+   Phần thân (nền, bóng, bo góc, lưới 4 ô, cỡ chữ) vốn đã đúng ở hi-foundation. */
 
 @media(max-width:640px){
-
-
   /* CTA — full-width both, even, 1 line */
   .cta{flex-direction:column;gap:12px;margin-top:22px}
-  .cta .btn{width:100%;font-size:12.5px;padding:15px 16px;letter-spacing:.04em}
-  /* stat band — 2 per view + horizontal slide + progress line */
-  .statband{width:calc(100% - 24px);margin-top:26px}
-  .stat-row{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
-  .stat-row::-webkit-scrollbar{display:none}
-  .stat{flex:0 0 50%;scroll-snap-align:start;gap:11px;padding:22px 8px}
-  .stat-ic{width:30px;height:30px}
-  .stat-num{font-size:clamp(21px,5.6vw,27px)}
-  .stat-lbl{font-size:10.5px;gap:5px}
-  .stat-lbl .info{width:14px;height:14px;font-size:9.5px}
-  /* hướng tooltip đã khai ở luật gốc (mở lên) — mobile không cần lật lại */
-  .stat-track{display:block;position:relative;height:3px;margin:2px 16px 15px;background:rgba(255,255,255,.13);border-radius:2px}
-  .stat-thumb{position:absolute;top:0;left:0;height:100%;width:50%;background:var(--orange);border-radius:2px}}
+  .cta .btn{width:100%;font-size:12.5px;padding:15px 16px;letter-spacing:.04em}}
 
 @media(max-width:560px){
 

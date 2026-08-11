@@ -75,11 +75,10 @@
 .s-jewelry .wrap{position:relative;z-index:2}
 /* Mục con "How to Choose Your Piercing Jewelry" — nằm DƯỚI khối chia đôi, khổ 840px
    căn giữa, cùng khổ với .wrap > .faqacc để hàng tab không rộng hơn khối chữ nó thuộc về. */
-.s-jewelry .jw-choose{max-width:840px;margin:var(--gap-subsec) auto 0;text-align:center}
+.s-jewelry .jw-choose{max-width:840px;margin:var(--gap-subsec) auto 0}
 /* Tiêu đề mục con giờ là nhãn của chính hàng tab (.faqacc-q), không còn H3 rời,
-   nên khối này chỉ cần khổ và khoảng cách. */
-.s-jewelry .jw-acc{text-align:left}
-.s-jewelry .jw-choose .sec-link--inline{margin-inline:auto;justify-self:center}
+   nên khối này chỉ cần khổ và khoảng cách. Anchor đã nằm TRONG thân tab từ 11/08
+   nên không còn luật căn giữa cho nó ở đây. */
 
 /* ========== SECTION 12 · Prices ========== */
 /* bảng giá — desktop 3 cột cạnh nhau, mobile trượt ngang 1 cột/màn + chân .msl chung */
@@ -174,20 +173,13 @@
    thang nhịp chung không với tới: đo được h2 → đoạn dẫn 0px và đoạn dẫn → danh sách
    0px, chữ dính liền thành một mảng. Trả về đúng cặp token của khối head. */
 .ac-lead{margin-top:var(--gap-head-lead);font-size:var(--fs-lead);line-height:1.65;color:#C9C9C9}
+/* Danh sách dùng chấm tròn .split-list như Age/ID và Jewelry — tick tròn riêng của
+   khối này đã bỏ 11/08 (một trang chỉ một kiểu danh sách). Ở đây chỉ còn nhịp trên
+   dưới, vì .split-list là khối trong lưới chia đôi nên không tự biết khe của head. */
 .ac-text .ac-list{margin-top:var(--gap-head-body)}
-/* danh sách tick tròn — dùng ở Aftercare, và biến thể chấm ở Jewelry */
-.ac-list{list-style:none;margin:0;padding:0;display:grid;gap:14px}
-.ac-list li{position:relative;padding-left:34px;font-size:15.5px;line-height:1.62;color:#D3D3D3}
-.ac-list li::before{content:"";position:absolute;left:0;top:1px;width:21px;height:21px;border-radius:50%;
-  background:rgba(204,102,0,.13);border:1px solid rgba(204,102,0,.42)}
-.ac-list li::after{content:"";position:absolute;left:6.5px;top:7px;width:8px;height:5px;
-  border-left:2px solid var(--orange);border-bottom:2px solid var(--orange);transform:rotate(-45deg)}
-.ac-list li b{color:#fff;font-weight:600}
-.ac-link{display:inline-flex;align-items:center;gap:8px;margin-top:clamp(20px,2.4vw,28px);color:var(--orange);font-weight:600;
-  font-family:var(--sub);font-size:14.5px;border-bottom:1px solid rgba(204,102,0,.4);
-  transition:color .2s var(--ease),border-color .2s var(--ease)}
-.ac-link:hover{color:var(--orange-hi);border-color:var(--orange-hi)}
-.ac-link svg{width:15px;height:15px}
+/* Link chữ dùng .sec-link--inline như 3 link còn lại của trang. Bản cam-14.5px
+   riêng của khối này đã bỏ 11/08. Chỉ giữ khe trên, .sec-link không mang margin. */
+.ac-text .ac-link{margin-top:clamp(20px,2.4vw,28px)}
 .ac-media{position:relative;margin:0;border-radius:14px;overflow:hidden;aspect-ratio:4/5;border:1px solid var(--border);box-shadow:0 24px 60px rgba(0,0,0,.45)}
 .ac-media img{width:100%;height:100%;object-fit:cover;object-position:50% 45%;display:block}
 @media(max-width:820px){
