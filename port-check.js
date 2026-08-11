@@ -73,9 +73,23 @@ async function scan(path, W){
        vẫn FAIL. Tràn THẬT đã có H1 lo, ở đây chỉ cần biết chữ nằm lệch hay không. */
     const bb = el.getBoundingClientRect();
     const kep = (v) => Math.min(Math.max(v, bb.left), bb.right);
-    return { n: new Set(rs.map(z => Math.round(z.top))).size,
+    /* TÂM đo bằng TRUNG VỊ tâm TỪNG DÒNG, không bằng cặp (mép trái nhỏ nhất, mép
+       phải lớn nhất). Kẹp mép vào hộp đã bớt nhiễu nhưng chưa hết: dòng dài nhất
+       vẫn kéo theo một dấu cách cuối dòng, mắt không thấy mà mép phải nhích ~4px,
+       nên riêng dòng đó lệch tâm 2px và kéo cả phép đo theo.
+       Án lệ /ear-piercing 11/08: 17 dòng căn giữa, D3 báo lệch 3px trong khi đo
+       tay hộp ra 13px/13px hai bên — đúng nghĩa cân. Trung vị bỏ qua vài dòng cá
+       biệt nên chỉ nổ khi CẢ KHỐI thật sự lệch. */
+    const hang = {};
+    rs.forEach(z => { const k = Math.round(z.top);
+      const h = hang[k] || (hang[k] = { l: Infinity, r: -Infinity });
+      h.l = Math.min(h.l, kep(z.left)); h.r = Math.max(h.r, kep(z.right)); });
+    const tam = Object.values(hang).map(h => (h.l + h.r) / 2).sort((a, b) => a - b);
+    const mid = tam.length ? tam[tam.length >> 1] : (bb.left + bb.right) / 2;
+    return { n: Object.keys(hang).length,
              L: Math.round(Math.min(...rs.map(z => kep(z.left)))),
-             R: Math.round(Math.max(...rs.map(z => kep(z.right)))) };
+             R: Math.round(Math.max(...rs.map(z => kep(z.right)))),
+             tam: Math.round(mid) };
   };
 
   const heads = [...d.querySelectorAll('.section-head,.section-head--editorial')].filter(vis);
@@ -91,7 +105,8 @@ async function scan(path, W){
     const hd   = h.querySelector(':scope > h1,:scope > h2,:scope > h3');
     const p    = [...h.children].find(e => e.tagName === 'P');
     const nx   = h.nextElementSibling;
-    const lech = (b) => (b && cot) ? Math.round(((b.L - cot.L) - (cot.R - b.R)) / 2) : null;
+    /* Lệch tâm = tâm CHỮ (trung vị theo dòng) so với tâm CỘT. */
+    const lech = (b) => (b && cot) ? Math.round(b.tam - (cot.L + cot.R) / 2) : null;
 
     out.head.push({
       sec: id,

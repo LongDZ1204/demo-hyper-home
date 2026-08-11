@@ -523,11 +523,15 @@
      hero là lướt tiếp cả bộ ảnh của mục Gallery.
      Không tìm được ô tương ứng thì để nguyên hành vi link (mở ảnh gốc). */
   document.addEventListener('click',function(e){
-    var t=e.target.closest('.galp-tile[data-lb]'); if(!t||grid.contains(t)) return;
+    /* Khoá theo THUỘC TÍNH data-lb, KHÔNG bắt phải mang class .galp-tile: class đó
+       kéo theo cả bộ khung ô ảnh (tỉ lệ khung, chiều cao) — nút "View full size"
+       trong hero /ear-piercing dính vào là phình thành khối 187x234px. */
+    var t=e.target.closest('[data-lb]'); if(!t||grid.contains(t)) return;
     var href=t.getAttribute('href'); if(!href) return;
+    /* Có ô cùng href trong lưới thì mở ô ĐÓ (được lướt tiếp cả bộ bằng ‹ ›).
+       Không có thì mở chính nó — open() đã lo trường hợp ảnh lẻ: list=[tile]. */
     var twin=tiles().filter(function(g){ return g.getAttribute('href')===href; })[0];
-    if(!twin) return;
-    e.preventDefault(); open(twin);
+    e.preventDefault(); open(twin||t);
   });
   prev.addEventListener('click',function(e){ e.stopPropagation(); step(-1); });
   next.addEventListener('click',function(e){ e.stopPropagation(); step(1); });

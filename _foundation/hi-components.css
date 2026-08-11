@@ -1040,8 +1040,14 @@ body.galp-lock{overflow:hidden}
    Chuyển từ _pages/home.css sang lớp component 11/08/2026: B.Long chốt "toàn web 1 kiểu
    tab", nên khối này phải nằm ở chỗ mọi page với tới được, không nằm riêng trong CSS của
    trang chủ. Đang dùng: trang chủ (Why Choose) · trang chi tiết artist (More About).
-   Cơ chế: radio-hack, ảnh bên trái đổi theo tab đang mở. Id cố định adv-t1..adv-t4 nên
+   Cơ chế: radio-hack, ảnh bên trái đổi theo tab đang mở. Id cố định adv-t1..adv-t8 nên
    MỖI PAGE CHỈ ĐẶT ĐƯỢC 1 khối — đủ dùng, và giữ selector ngắn.
+   VÌ SAO LIỆT KÊ TỚI 8: CSS không có phép "lấy chỉ số của radio đang chọn", nên cặp
+   radio-thứ-N ↔ mục-thứ-N buộc phải viết tay từng nhánh. Bản cũ dừng ở 4 và /ear-piercing
+   có 6 mục — hai mục cuối bấm vào là KHÔNG có gì xảy ra, mà không máy gác nào thấy vì
+   DOM vẫn đủ. Nới sẵn tới 8; page nào cần hơn phải nới tiếp Ở ĐÂY, đừng vá trong CSS
+   riêng của trang. Đây là dạng "khoá theo danh sách" bất khả kháng — mọi dạng khác thì
+   khoá theo ĐIỀU KIỆN, xem [[feedback_css_carveout_by_condition_not_namelist]].
    Biến thể .adv-tabs--media-fixed: ảnh trái ĐỨNG YÊN (chân dung artist là danh tính của
    trang, không phải minh hoạ cho từng mục nên không đổi theo tab). */
 .adv-tabs{margin-top:clamp(30px,4vw,46px)}
@@ -1073,19 +1079,35 @@ body.galp-lock{overflow:hidden}
 #adv-t1:checked ~ .adv-grid .adv-shot[data-i="1"],
 #adv-t2:checked ~ .adv-grid .adv-shot[data-i="2"],
 #adv-t3:checked ~ .adv-grid .adv-shot[data-i="3"],
-#adv-t4:checked ~ .adv-grid .adv-shot[data-i="4"]{opacity:1}
+#adv-t4:checked ~ .adv-grid .adv-shot[data-i="4"],
+#adv-t5:checked ~ .adv-grid .adv-shot[data-i="5"],
+#adv-t6:checked ~ .adv-grid .adv-shot[data-i="6"],
+#adv-t7:checked ~ .adv-grid .adv-shot[data-i="7"],
+#adv-t8:checked ~ .adv-grid .adv-shot[data-i="8"]{opacity:1}
 #adv-t1:checked ~ .adv-grid .adv-item:nth-child(1)::before,
 #adv-t2:checked ~ .adv-grid .adv-item:nth-child(2)::before,
 #adv-t3:checked ~ .adv-grid .adv-item:nth-child(3)::before,
-#adv-t4:checked ~ .adv-grid .adv-item:nth-child(4)::before{background:var(--orange);box-shadow:0 0 16px rgba(204,102,0,.42)}
+#adv-t4:checked ~ .adv-grid .adv-item:nth-child(4)::before,
+#adv-t5:checked ~ .adv-grid .adv-item:nth-child(5)::before,
+#adv-t6:checked ~ .adv-grid .adv-item:nth-child(6)::before,
+#adv-t7:checked ~ .adv-grid .adv-item:nth-child(7)::before,
+#adv-t8:checked ~ .adv-grid .adv-item:nth-child(8)::before{background:var(--orange);box-shadow:0 0 16px rgba(204,102,0,.42)}
 #adv-t1:checked ~ .adv-grid .adv-item:nth-child(1) .adv-head h3,
 #adv-t2:checked ~ .adv-grid .adv-item:nth-child(2) .adv-head h3,
 #adv-t3:checked ~ .adv-grid .adv-item:nth-child(3) .adv-head h3,
-#adv-t4:checked ~ .adv-grid .adv-item:nth-child(4) .adv-head h3{color:#fff}
+#adv-t4:checked ~ .adv-grid .adv-item:nth-child(4) .adv-head h3,
+#adv-t5:checked ~ .adv-grid .adv-item:nth-child(5) .adv-head h3,
+#adv-t6:checked ~ .adv-grid .adv-item:nth-child(6) .adv-head h3,
+#adv-t7:checked ~ .adv-grid .adv-item:nth-child(7) .adv-head h3,
+#adv-t8:checked ~ .adv-grid .adv-item:nth-child(8) .adv-head h3{color:#fff}
 #adv-t1:checked ~ .adv-grid .adv-item:nth-child(1) .adv-panel,
 #adv-t2:checked ~ .adv-grid .adv-item:nth-child(2) .adv-panel,
 #adv-t3:checked ~ .adv-grid .adv-item:nth-child(3) .adv-panel,
-#adv-t4:checked ~ .adv-grid .adv-item:nth-child(4) .adv-panel{max-height:340px}
+#adv-t4:checked ~ .adv-grid .adv-item:nth-child(4) .adv-panel,
+#adv-t5:checked ~ .adv-grid .adv-item:nth-child(5) .adv-panel,
+#adv-t6:checked ~ .adv-grid .adv-item:nth-child(6) .adv-panel,
+#adv-t7:checked ~ .adv-grid .adv-item:nth-child(7) .adv-panel,
+#adv-t8:checked ~ .adv-grid .adv-item:nth-child(8) .adv-panel{max-height:340px}
 .adv-radio:focus-visible ~ .adv-grid .adv-item .adv-head{outline:2px solid var(--orange);outline-offset:2px}
 
 @media(max-width:820px){
