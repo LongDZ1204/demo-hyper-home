@@ -68,6 +68,9 @@ main{overflow:clip}
 .section-gallery h2 .o{color:var(--orange)}
 .gal-lead{max-width:var(--lead-mw);margin:var(--gap-head-lead) auto 0;text-align:center;
   font-size:var(--fs-lead);line-height:1.62;color:#C9C9C9}/* đúng kích thước file gốc, không phải 8/5 làm tròn */
+/* Khối này căn giữa nhưng không nằm trong `.section-head.center`, nên luật mobile
+   chung từng chừa 34px bên phải như lead căn trái và làm trạng thái nén lệch trục. */
+@media(max-width:600px){.section-gallery .gal-lead.has-clamp{padding-right:0}}
 
 /* lọc theo nhánh — vẫn thuần CSS, không cần JS */
 #gf-tattoo:checked   ~ .gal-grid .gal-item:not(.is-tattoo){display:none}#gf-removal:checked  ~ .gal-grid .gal-item:not(.is-removal){display:none}
