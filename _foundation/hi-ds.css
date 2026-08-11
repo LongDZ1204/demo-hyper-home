@@ -440,6 +440,16 @@
   font-family:var(--sub);font-size:var(--fs-xs);letter-spacing:.06em;text-transform:uppercase;color:var(--cream);
   text-shadow:0 1px 8px rgba(0,0,0,.7)}   /* crumb nằm đè lên ảnh hero */
 .crumb li{display:flex;align-items:center;gap:8px}
+/* Breadcrumb LUÔN nằm một hàng ở điện thoại (B.Long 11/08). Trang 3 cấp
+   (Home » Custom Tattoo » Black and Grey) cần 387px mà cột chỉ có 366px ở 430,
+   nên nó xuống hàng — đọc rất kỳ vì cấp cuối tụt xuống một mình.
+   Bóp cỡ chữ + khe cho vừa hộp, KHÔNG chỉ đặt nowrap: nowrap trần thì chữ tràn
+   ra ngoài mép màn (bài học nút .rv-leave). Số chọn theo đo thật ở 430/390/375/360. */
+@media(max-width:600px){
+  .crumb ol{flex-wrap:nowrap;white-space:nowrap;gap:6px;
+    font-size:clamp(9px,2.62vw,12.5px);letter-spacing:.03em}
+  .crumb li{gap:6px}
+}
 .crumb li+li::before{content:"\00BB";color:var(--orange);opacity:.95}
 .crumb a{opacity:.85;transition:opacity .2s var(--ease)}
 .crumb a:hover{opacity:1;color:#fff}

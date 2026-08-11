@@ -38,6 +38,15 @@
   background:
     radial-gradient(62% 82% at 50% 50%, rgba(13,13,13,.72) 0%, rgba(13,13,13,.5) 46%, rgba(13,13,13,.22) 72%, rgba(13,13,13,0) 100%),
     linear-gradient(180deg, rgba(13,13,13,.8) 0%, rgba(13,13,13,.18) 26%, rgba(13,13,13,.2) 66%, rgba(13,13,13,.86) 100%)}
+/* Hero trang này CAO HƠN khung 900px (có thêm dải chip + băng ảnh) nên nội dung
+   không còn được canh giữa theo chiều dọc mà bám đúng padding-top. Bản chung để
+   96px, trong khi thanh chrome cố định cao 36+76=112px -> breadcrumb chui xuống
+   dưới thanh nav, đo được che 16px ở MỌI khổ >=821 (B.Long bắt 11/08).
+   Chừa đúng chiều cao thật + 18px thở, lấy từ token chứ không ghi số cứng —
+   giống hệt nhánh mobile mà bản chung đã có. */
+@media(min-width:821px){
+  .hero{padding-top:calc(var(--promo-h) + var(--hh) + 18px)}
+}
 .bgh-center{max-width:1080px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center}
 .bgh-center .crumb ol{justify-content:center}
 .bgh-center .trustbar{justify-content:center}
@@ -67,8 +76,11 @@
 /* Băng ảnh tự trôi dưới hero. Mỗi ảnh bấm được: mở đúng khung xem ảnh dùng chung
    với trang chủ (.galp-tile + [data-gallery-lightbox]) — B.Long 11/08. */
 .bgh-strip{position:relative;z-index:5;width:100%;overflow:hidden;flex:0 0 auto;margin-top:40px;padding-bottom:26px;
-  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%);
-  mask-image:linear-gradient(90deg,transparent 0,#000 5%,#000 95%,transparent 100%)}
+  /* Mờ dần HAI MÉP (B.Long 11/08). Bản site cũ hạ xuống 5%/95% nên ảnh ở hai đầu
+     bị cắt ngang phanh, nhìn ra "lỗi cắt" chứ không ra "băng còn chạy tiếp".
+     Trả về đúng 15%/85% của mockup. */
+  -webkit-mask-image:linear-gradient(90deg,transparent 0,#000 15%,#000 85%,transparent 100%);
+  mask-image:linear-gradient(90deg,transparent 0,#000 15%,#000 85%,transparent 100%)}
 .bgh-belt{display:flex;width:max-content;animation:bgh-marq 52s linear infinite;will-change:transform}
 .bgh-strip:hover .bgh-belt{animation-play-state:paused}
 @keyframes bgh-marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
