@@ -393,7 +393,14 @@
    Đặt trong hero, ngay trên H1. Dấu phân cách » là ::before của li thứ 2 trở đi,
    không viết vào HTML — để screen reader không đọc ra "dấu ngoặc kép Pháp".
    ============================================================================ */
-.crumb ol{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;padding:0;
+/* Khoảng cách DƯỚI breadcrumb phải do chính nó khai, không đi nhờ margin-top của
+   khối đứng sau. Đo 13 trang có crumb ngày 11/08: gap ra 0 · 12 · 14 · 16 · 76px
+   tuỳ khối kế tiếp là H1 hay dải trust — /tattoo, /cover-up, /artist-detail,
+   /testimonials dính 0px, crumb chạm sát khối dưới (B.Long bắt).
+   Margin lề dọc GỘP với margin-top của khối sau (đều là block, hero-col
+   display:block) nên khai ở đây KHÔNG cộng dồn: trang đang 16px vẫn giữ 16px,
+   trang đang 0px được nâng lên 14px. */
+.crumb ol{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0 0 14px;padding:0;
   font-family:var(--sub);font-size:var(--fs-xs);letter-spacing:.06em;text-transform:uppercase;color:var(--cream);
   text-shadow:0 1px 8px rgba(0,0,0,.7)}   /* crumb nằm đè lên ảnh hero */
 .crumb li{display:flex;align-items:center;gap:8px}
