@@ -1585,3 +1585,14 @@ body.galp-lock{overflow:hidden}
   .hstrip{margin-top:30px;padding-bottom:22px}
   .hstrip-slide{width:128px;height:172px;margin-right:9px}
 }
+
+
+/* ---- Huy hiệu trong hero bấm được (.tb-jump) ----
+   <a> chỉ là LỚP BỌC, không được thành mắt xích layout mới: .badge và .soa-shield
+   khai flex:0 0 auto cho vị trí con trực tiếp của .trustbar, bọc thêm một tầng là
+   mất tác dụng, hàng huy hiệu co lại méo. Nên trả đúng thuộc tính đó cho lớp bọc. */
+.tb-jump{display:inline-flex;align-items:center;flex:0 0 auto;min-height:0;padding:0;
+  color:inherit;text-decoration:none;background:none;border:0;border-radius:8px;
+  transition:opacity .2s var(--ease)}
+.tb-jump:hover{opacity:.85}
+.tb-jump:focus-visible{outline:2px solid var(--orange);outline-offset:3px}

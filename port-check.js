@@ -224,20 +224,27 @@ function cham(page, ref){
   const add = (ma, msg) => F.push(`[${ma}] ${W}px · ${msg}`);
 
   /* A · khung dựng — so DANH SÁCH file với trang tham chiếu */
-  /* So theo VAI TRÒ: 7 file dùng chung phải đúng thứ tự, khe số 7 là CSS riêng
-     của page (tên khác nhau là đương nhiên — bản đầu so nguyên tên nên page nào
-     cũng FAIL vì artist-detail.css ≠ home.css). */
-  const KHUNG = ['hyperinkers-fonts.css','hi-foundation.css','hi-base.css','hi-chrome.css',
-                 'booking-section.css','hi-components.css', null, 'hi-ds.css'];
-  KHUNG.forEach((f, i) => {
-    if (f === null){
-      if (!page.css[i] || !/^[a-z-]+\.css$/.test(page.css[i]))
-        add('A1', `khe CSS số ${i+1} phải là file riêng của page, đang là "${page.css[i]}"`);
-    } else if (page.css[i] !== f){
-      add('A1', `CSS số ${i+1} phải là ${f}, đang là "${page.css[i] || '(thiếu)'}"`);
-    }
+  /* So theo VAI TRÒ, không so nguyên tên (bản đầu so tên nên page nào cũng FAIL
+     vì artist-detail.css ≠ home.css). Ba phần:
+       ĐẦU  7 file dùng chung, đúng thứ tự
+       GIỮA 1-2 file CSS riêng của page. Cho phép 2 vì /tattoo-cover-up cố ý nạp
+            tattoo.css rồi cover-up.css — nó dùng lại nguyên bộ luật của /tattoo.
+            Bản cũ chốt cứng đúng 1 khe nên trang đó FAIL suốt, mà FAIL sai thì
+            người đọc quen mắt rồi bỏ qua luôn cả FAIL thật.
+       CUỐI hi-ds.css — lớp design-system phải nạp sau cùng mới thắng cascade. */
+  const DAU = ['hyperinkers-fonts.css','hi-foundation.css','hi-base.css','hi-chrome.css',
+               'booking-section.css','booking-form.css','hi-components.css'];
+  DAU.forEach((f, i) => {
+    if (page.css[i] !== f) add('A1', `CSS số ${i+1} phải là ${f}, đang là "${page.css[i] || '(thiếu)'}"`);
   });
-  if (page.css.length !== KHUNG.length) add('A1', `nạp ${page.css.length} CSS, chuẩn là ${KHUNG.length}`);
+  const cuoi = page.css[page.css.length - 1];
+  if (cuoi !== 'hi-ds.css') add('A1', `CSS cuối cùng phải là hi-ds.css, đang là "${cuoi || '(thiếu)'}"`);
+  const giua = page.css.slice(DAU.length, -1);
+  if (giua.length < 1 || giua.length > 2)
+    add('A1', `phải có 1-2 CSS riêng của page giữa hi-components.css và hi-ds.css, đang có ${giua.length}`);
+  giua.forEach((f, i) => {
+    if (!/^[a-z0-9-]+\.css$/.test(f)) add('A1', `CSS riêng của page số ${i+1} tên lạ: "${f}"`);
+  });
   if (page.js.some(s => !s.defer)) add('A2', 'có script src không defer');
   if (page.styleInline) add('A3', `còn ${page.styleInline} khối <style> viết tay`);
 

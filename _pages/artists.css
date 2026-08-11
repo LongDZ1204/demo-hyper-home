@@ -2,11 +2,9 @@
    Tách từ khối <style> của mockup 2026-05-28 khi port vào khung dựng (11/08/2026).
    Chỉ giữ luật RIÊNG của trang; component dùng chung sống ở _foundation/. */
 body.artists-page{background:var(--bg);color:#fff}
-html{scroll-padding-top:88px}
 
 /* Header: trong suốt, position:absolute — đúng .hdr của about-us. Header trôi theo hero
    nên ảnh team đọc full-bleed và không có thanh nav đè lên H2 khi cuộn xuống lưới artist. */
-#artists,#book{scroll-margin-top:0}
 
 /* ---------- HERO · port nguyên component .hero--ganga của trang About Us (2026-08-06):
    ảnh full-bleed + scrim dọc nặng + grain, cụm chữ CĂN GIỮA neo đáy hero.
@@ -114,10 +112,6 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 
 @media(max-width:980px){
   .hub-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
-}
-@media(max-width:900px){
-  html{scroll-padding-top:78px}
-  #artists,#book{scroll-margin-top:0}
 }
 @media(max-width:860px){
   .vs-nap{grid-template-columns:1fr;gap:26px}

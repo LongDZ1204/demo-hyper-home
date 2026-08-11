@@ -99,11 +99,14 @@
         <span class="t">—</span><span class="sep">·</span><span>SA</span><span class="sep">·</span>
         <span class="dot"></span><span class="st">—</span>
       </div>
-      <a class="m-book" href="#book">Book Now</a>
+      <!-- data-open-booking: mở popup đặt lịch (_partials/booking-modal.html).
+           GIỮ href="#book" làm đường lui khi JS chưa chạy — booking-form.js gọi
+           preventDefault nên bình thường link không nhảy. -->
+      <a class="m-book" href="#book" data-open-booking>Book Now</a>
     </nav>
 
     <div class="hdr-right">
-      <a class="book" href="#book">Book Now</a>
+      <a class="book" href="#book" data-open-booking>Book Now</a>
     </div>
 
     <label for="navtog" class="nav-burger" aria-label="Open menu">

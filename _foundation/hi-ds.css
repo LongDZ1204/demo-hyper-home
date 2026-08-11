@@ -603,3 +603,11 @@ body.paper-page{background:var(--paper-page);color:var(--paper-ink)}
   backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   border-bottom:1px solid var(--hair)}
 .light-hero .hdr::before{opacity:0}
+
+/* ---- Khe chừa cho thanh chrome khi nhảy tới #anchor ----
+   Promo bar + header đều position:fixed ở MỌI page, nên link #anchor nào cũng
+   phải chừa đúng chiều cao đó, nếu không heading đích chui xuống dưới thanh nav.
+   Khai một chỗ theo TOKEN --chrome-h: promo bar tắt đi là số này tự co theo,
+   khỏi phải nhớ sửa. Bản cũ mỗi trang tự đặt số cứng (artists.css: 88px) và
+   đo ra thiếu 24px so với chrome thật 112px. */
+html{scroll-padding-top:calc(var(--chrome-h) + 14px)}
