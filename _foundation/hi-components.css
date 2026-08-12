@@ -378,14 +378,19 @@
 .arti-intro{position:relative;max-width:660px;margin:14px auto 0;text-align:center;font-size:16px;line-height:1.6;color:#C9C9C9}
 /* grid */
 .art-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.5vw,20px);margin-top:clamp(30px,4vw,46px)}
-/* Biến thể ĐÚNG 5 thẻ: giữ nguyên bề ngang thẻ của lưới 4 cột, chỉ CĂN GIỮA
-   hàng cuối để thẻ lẻ không dạt về mép trái trông như lỗi.
-   Đã thử dàn 5 cột cho gọn một hàng rồi bỏ: thẻ tụt còn 219px, nhãn kiểu xăm
-   xuống 2-3 dòng không đều nhau, kéo tên nghệ sĩ lệch nhau tới 42px trong cùng
-   một hàng (đo 12/08). Thà một thẻ ở giữa còn hơn năm cái tên so le. */
+/* Biến thể ĐÚNG 5 thẻ: rail cuộn ngang ngay trên desktop — 4 thẻ trong khung,
+   thẻ thứ 5 kéo tới, chân ‹ › + thanh tiến độ tự hiện (JS bật theo overflow-x).
+   Bề ngang thẻ vẫn đúng bằng lưới 4 cột nên không lệch nhịp với trang khác.
+   Hai bản đã bỏ:
+   - dàn 5 cột: thẻ tụt còn 219px, nhãn kiểu xăm xuống 2-3 dòng không đều, kéo
+     tên nghệ sĩ lệch nhau tới 42px trong cùng một hàng (đo 12/08).
+   - xuống hàng + căn giữa: thẻ thứ 5 nằm một mình giữa khoảng trắng, hàng cuối
+     trông như thiếu 3 thẻ (B.Long bắt 12/08). */
 @media(min-width:601px){
-  .art-grid--5{display:flex;flex-wrap:wrap;justify-content:center}
-  .art-grid--5 .art-card{flex:0 0 calc((100% - 3*clamp(14px,1.5vw,20px))/4)}
+  .art-grid--5{display:flex;grid-template-columns:none;overflow-x:auto;
+    scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+  .art-grid--5::-webkit-scrollbar{display:none}
+  .art-grid--5 .art-card{flex:0 0 calc((100% - 3*clamp(14px,1.5vw,20px))/4);scroll-snap-align:start}
 }
 .art-card{position:relative}
 .art-photo{position:relative;aspect-ratio:3/4;border-radius:14px;overflow:hidden;background:linear-gradient(160deg,#1e1e1e,#0b0b0b);border:1px solid rgba(255,255,255,.07);transition:border-color .3s var(--ease),transform .3s var(--ease)}
