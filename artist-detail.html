@@ -400,124 +400,83 @@
 
   <section class="section artist-reviews" id="reviews" aria-label="Client reviews for Minh">
     <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
-      <symbol id="ic-cal" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+      <symbol id="ic-google" viewBox="0 0 48 48"><path fill="#FFC107" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"/><path fill="#FF3D00" d="M6.306 14.691l6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"/><path fill="#4CAF50" d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"/><path fill="#1976D2" d="M43.611 20.083H42V20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"/></symbol>
     </svg>
     <div class="wrap">
       <div class="section-head center">
         <h2><span class="o">Client Reviews</span> for Minh</h2>
       </div>
 
-      <!-- ⚠️ 2 điểm phải xử lý TRƯỚC KHI LÊN SITE THẬT
-           1. ẢNH: cả 5 khách đều CÓ ảnh thật đính kèm review Google (Devon 2 ·
-              Gia 2 · Casandra 2 · Anibal 3 · Andrew 1 — xem
-              projects/hyper-inkers/data/google-reviews/2026-07-02_google-reviews-raw.md).
-              Ảnh đang dùng dưới đây là ảnh GALLERY của shop, chưa phải ảnh khách.
-              Gắn ảnh gallery vào card mang tên một khách cụ thể là ngầm khẳng định
-              "đây là hình xăm của người này" — phải tải ảnh thật từ GBP và thay vào.
-           2. NGÀY: Google chỉ trả mốc tương đối ("a year ago", "2 years ago") tại
-              thời điểm pull 2026-07-02, nên ở đây chỉ ghi NĂM, không bịa tháng.
-              Muốn hiện "Jul 2025" thì phải mở permalink từng review lấy ngày thật.
-           Text review là VERBATIM từ file raw, không sửa chữ. -->
-
-      <!-- Slider dùng chung .rv-slider-wrap.is-auto — engine ở hi-components.js
-           tự bắt, tự sinh chấm, tự chạy. 4 thẻ/màn desktop, 2 thẻ ≤600px. -->
-      <div class="rv-slider-wrap is-auto">
-      <ul class="rv-slider" aria-label="Client reviews for Minh">
-
-        <li class="rv-scard rv-scard--photo">
-          <figure class="rv-sc-media">
-            <img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-3-scaled.jpg" alt="Black and grey tattoo by Minh at Hyper Inkers in San Antonio." loading="lazy">
-            <div class="rv-sc-top rv-sc-top--on">
-              <span class="rv-sc-stars" aria-label="5 out of 5">★★★★★</span>
-              <span class="rv-sc-date"><svg aria-hidden="true"><use href="#ic-cal"></use></svg>2025</span>
-            </div>
-          </figure>
-          <div class="rv-sc-main">
-            <p class="rv-sc-h">His attention to detail is unmatched</p>
-            <div class="rv-sc-body"><p>Genuinely couldn't have asked for a more incredible experience for my first tattoo. Minh is absolutely phenomenal - his attention to detail is unmatched and he helped ensure my vision came out exactly how I wanted. I get compliments everywhere I go and people immediately ask where/who did the work. Highly recommend Minh and HyperInkers!</p></div>
-            <div class="rv-sc-foot">
-              <span class="rv-sc-name">Devon Brent</span>
-              <em class="rv-sc-role">First Tattoo | Google Review</em>
-            </div>
-          </div>
-        </li>
-
-        <li class="rv-scard">
-          <div class="rv-sc-main">
-            <div class="rv-sc-top">
-              <span class="rv-sc-stars" aria-label="5 out of 5">★★★★★</span>
-              <span class="rv-sc-date"><svg aria-hidden="true"><use href="#ic-cal"></use></svg>2024</span>
-            </div>
-            <p class="rv-sc-h">The lining, shading, and attention to detail is superb</p>
-            <div class="rv-sc-body"><p>Got my Medusa tattoo by Minh! 8+ hours of amazing work! The lining, shading, and attention to detail is superb! You won't regret booking with him :) The shop is extremely clean and they also offer piercings. I would come back here for future tattoos &amp; piercings!</p></div>
-            <div class="rv-sc-foot">
-              <span class="rv-sc-name">Gia</span>
-              <em class="rv-sc-role">Medusa Piece, 8+ Hours | Google Review</em>
-            </div>
-          </div>
-        </li>
-
-        <li class="rv-scard rv-scard--photo">
-          <figure class="rv-sc-media">
-            <img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-7-scaled.jpg" alt="Black and grey multi-session tattoo by Minh at Hyper Inkers in San Antonio." loading="lazy">
-            <div class="rv-sc-top rv-sc-top--on">
-              <span class="rv-sc-stars" aria-label="5 out of 5">★★★★★</span>
-              <span class="rv-sc-date"><svg aria-hidden="true"><use href="#ic-cal"></use></svg>2025</span>
-            </div>
-          </figure>
-          <div class="rv-sc-main">
-            <p class="rv-sc-h">His artistry is truly next-level</p>
-            <div class="rv-sc-body"><p>Update after a pleasant piercing experience I got my first tattoo with Minh. I can't recommend Minh enough! His artistry is truly next-level... He meticulously planned multiple sessions to complete my piece and was always communicative... Piercing: The deals are amazing and Nicole is patient and knowledable.</p></div>
-            <div class="rv-sc-foot">
-              <span class="rv-sc-name">Casandra Murphy</span>
-              <em class="rv-sc-role">Multi-Session Piece | Google Review</em>
-            </div>
-          </div>
-        </li>
-
-        <li class="rv-scard">
-          <div class="rv-sc-main">
-            <div class="rv-sc-top">
-              <span class="rv-sc-stars" aria-label="5 out of 5">★★★★★</span>
-              <span class="rv-sc-date"><svg aria-hidden="true"><use href="#ic-cal"></use></svg>2024</span>
-            </div>
-            <p class="rv-sc-h">No problem bro, we can do a portrait</p>
-            <div class="rv-sc-body"><p>We lost three dogs within a twelve month span... I already had an appointment with Minh for a different idea I had. When tragedy struck Minh said No Problem Bro, we can do a portrait... I also had Nicole re-pierce my eyebrows. She did a great job... Thank you Minh, Nicole, Eriq (previous tattoo Amazing) and Hyper Inkers, this is truly a work of art. My Bo stays with me still.</p></div>
-            <div class="rv-sc-foot">
-              <span class="rv-sc-name">Anibal Guevara</span>
-              <em class="rv-sc-role">Pet Memorial Portrait | Google Review</em>
-            </div>
-          </div>
-        </li>
-
-        <li class="rv-scard rv-scard--photo">
-          <figure class="rv-sc-media">
-            <img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-10-scaled.jpg" alt="Black and grey arm tattoo by Minh at Hyper Inkers in San Antonio." loading="lazy">
-            <div class="rv-sc-top rv-sc-top--on">
-              <span class="rv-sc-stars" aria-label="5 out of 5">★★★★★</span>
-              <span class="rv-sc-date"><svg aria-hidden="true"><use href="#ic-cal"></use></svg>2026</span>
-            </div>
-          </figure>
-          <div class="rv-sc-main">
-            <p class="rv-sc-h">The photo I attached speaks for itself</p>
-            <div class="rv-sc-body"><p>I can't express enough how happy and satisfied I am with my whole experience at Hyper Inkers. Minh and the whole staff were incredibly professional and helped me execute my vision perfectly. The photo I attached speaks for itself. It's truly a work of art on my arm</p></div>
-            <div class="rv-sc-foot">
-              <span class="rv-sc-name">Andrew Gutierrez</span>
-              <em class="rv-sc-role">Custom Arm Piece | Google Review</em>
-            </div>
-          </div>
-        </li>
-
-      </ul>
-
-        <div class="rv-foot">
-          <div class="rv-nav">
-            <button class="rv-navbtn prev" type="button" aria-label="Previous review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
-            <button class="rv-navbtn next" type="button" aria-label="Next review"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
-          </div>
-          <div class="rv-track" aria-hidden="true"><span class="rv-prog-thumb"></span></div>
+      <!-- Một carousel Platform Review thống nhất, không tách Google/Facebook.
+           Text review là verbatim từ data pull 2026-07-02; link nguồn giữ ở từng card.
+           Ảnh hiện vẫn là ảnh gallery của shop và cần thay bằng ảnh review thật trước production. -->
+      <div class="rv-bar">
+        <div class="rv-rate">
+          <span class="rv-stars" aria-label="5.0 out of 5">★★★★★</span><b>5.0</b>
+          <span>Platform reviews mentioning Minh</span>
         </div>
-        <div class="rv-dots" role="tablist" aria-label="Review slides"></div>
+        <a class="rv-leave" href="https://maps.google.com/?cid=11149913610046039477" target="_blank" rel="noopener"><span class="rv-leave-ic"><svg aria-hidden="true"><use href="#ic-google"></use></svg></span>Read platform reviews</a>
+      </div>
+
+      <div class="rv-slider-wrap is-auto">
+        <ul class="rv-slider" aria-label="Platform reviews for Minh">
+
+          <li class="rv-card rv-card--photo">
+            <div class="rv-pc-text">
+              <div class="rv-top">
+                <span class="rv-av" style="background:#6E5A43">DB</span>
+                <span class="rv-who"><span class="rv-name">Devon Brent</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">2025</span></span></span>
+                <a class="rv-srclink" href="https://maps.app.goo.gl/wnFHuiEN1CDJA1BUA" target="_blank" rel="noopener" aria-label="View Devon Brent's review on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+              </div>
+              <div class="rv-body-scroll"><p class="rv-body">Genuinely couldn't have asked for a more incredible experience for my first tattoo. Minh is absolutely phenomenal - his attention to detail is unmatched and he helped ensure my vision came out exactly how I wanted. I get compliments everywhere I go and people immediately ask where/who did the work. Highly recommend Minh and HyperInkers!</p></div>
+            </div>
+            <figure class="rv-pc-media"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-3-scaled.jpg" alt="Black and grey tattoo by Minh at Hyper Inkers in San Antonio." loading="lazy"></figure>
+          </li>
+
+          <li class="rv-card">
+            <div class="rv-top">
+              <span class="rv-av" style="background:#4A4F66">G</span>
+              <span class="rv-who"><span class="rv-name">Gia</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">2024</span></span></span>
+              <a class="rv-srclink" href="https://maps.app.goo.gl/faeDrCGpzpnBo3g8A" target="_blank" rel="noopener" aria-label="View Gia's review on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+            </div>
+            <div class="rv-body-scroll"><p class="rv-body">Got my Medusa tattoo by Minh! 8+ hours of amazing work! The lining, shading, and attention to detail is superb! You won't regret booking with him :) The shop is extremely clean and they also offer piercings. I would come back here for future tattoos &amp; piercings!</p></div>
+          </li>
+
+          <li class="rv-card rv-card--photo">
+            <div class="rv-pc-text">
+              <div class="rv-top">
+                <span class="rv-av" style="background:#5E4552">CM</span>
+                <span class="rv-who"><span class="rv-name">Casandra Murphy</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">2025</span></span></span>
+                <a class="rv-srclink" href="https://maps.app.goo.gl/moWkrXoTNyyRC2i59" target="_blank" rel="noopener" aria-label="View Casandra Murphy's review on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+              </div>
+              <div class="rv-body-scroll"><p class="rv-body">Update after a pleasant piercing experience I got my first tattoo with Minh. I can't recommend Minh enough! His artistry is truly next-level... He meticulously planned multiple sessions to complete my piece and was always communicative... Piercing: The deals are amazing and Nicole is patient and knowledable.</p></div>
+            </div>
+            <figure class="rv-pc-media"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-7-scaled.jpg" alt="Black and grey multi-session tattoo by Minh at Hyper Inkers in San Antonio." loading="lazy"></figure>
+          </li>
+
+          <li class="rv-card">
+            <div class="rv-top">
+              <span class="rv-av" style="background:#3E5A57">AG</span>
+              <span class="rv-who"><span class="rv-name">Anibal Guevara</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">2024</span></span></span>
+              <a class="rv-srclink" href="https://maps.app.goo.gl/tpCYu4bu6SMnkB9W8" target="_blank" rel="noopener" aria-label="View Anibal Guevara's review on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+            </div>
+            <div class="rv-body-scroll"><p class="rv-body">We lost three dogs within a twelve month span... I already had an appointment with Minh for a different idea I had. When tragedy struck Minh said No Problem Bro, we can do a portrait... I also had Nicole re-pierce my eyebrows. She did a great job... Thank you Minh, Nicole, Eriq (previous tattoo Amazing) and Hyper Inkers, this is truly a work of art. My Bo stays with me still.</p></div>
+          </li>
+
+          <li class="rv-card rv-card--photo">
+            <div class="rv-pc-text">
+              <div class="rv-top">
+                <span class="rv-av" style="background:#455A60">AG</span>
+                <span class="rv-who"><span class="rv-name">Andrew Gutierrez</span><span class="rv-meta"><span class="rv-stars" aria-label="5 out of 5">★★★★★</span><span class="rv-date">2026</span></span></span>
+                <a class="rv-srclink" href="https://maps.app.goo.gl/NGZ3WSg5rv9XTxYQ8" target="_blank" rel="noopener" aria-label="View Andrew Gutierrez's review on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
+              </div>
+              <div class="rv-body-scroll"><p class="rv-body">I can't express enough how happy and satisfied I am with my whole experience at Hyper Inkers. Minh and the whole staff were incredibly professional and helped me execute my vision perfectly. The photo I attached speaks for itself. It's truly a work of art on my arm</p></div>
+            </div>
+            <figure class="rv-pc-media"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-10-scaled.jpg" alt="Black and grey arm tattoo by Minh at Hyper Inkers in San Antonio." loading="lazy"></figure>
+          </li>
+
+        </ul>
+        <div class="rv-dots" role="tablist" aria-label="Platform review slides"></div>
       </div>
     </div>
   </section>
@@ -582,12 +541,12 @@
             <img src="https://hyperinkers.com/wp-content/uploads/2026/02/navie-best-tattoo-artists-in-san-antonio-texas-768x1075.jpg" alt="Navei, female fine-line and semi-realism tattoo artist at Hyper Inkers in San Antonio." loading="lazy">
             <span class="art-scrim" aria-hidden="true"></span>
             <div class="art-panel">
-              <p class="art-bio">Navei is a female fine-line and semi-realism tattoo artist at Hyper Inkers. Navei Tran trained through specialized study in Vietnam and brings a light, careful hand to personal pieces that need clean lines and restraint.</p>
+              <p class="art-bio">Navei is a female fine-line, semi-realism, and black and grey tattoo artist at Hyper Inkers. Navei Tran trained through specialized study in Vietnam and brings a light, careful hand to personal pieces that need clean lines and restraint.</p>
               <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
             </div>
           </div>
           <div class="art-cap">
-            <span class="art-style">Fine Line, Semi-Realism</span>
+            <span class="art-style">Fine Line, Semi-Realism <span class="art-badge">+1<span class="art-tip"><span>Black &amp; Grey</span></span></span></span>
             <h3 class="art-name">Navei</h3>
           </div>
           <a class="art-link" href="/tattoo-artist/navei" aria-label="View Navei's profile"></a>

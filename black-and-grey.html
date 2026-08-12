@@ -252,15 +252,13 @@
     <!-- @include comp-reviews -->
     <div class="rv-tabs">
       <input type="radio" name="rvtab" id="rvtab-video" checked>
-      <input type="radio" name="rvtab" id="rvtab-cust">
       <input type="radio" name="rvtab" id="rvtab-plat">
-      <!-- 3 icon dạng ĐẶC (fill), port từ morethanpanel.com — khác hẳn bộ icon nét mảnh
+      <!-- 2 icon dạng ĐẶC (fill), port từ morethanpanel.com — khác hẳn bộ icon nét mảnh
            mặc định trước đó: khung phim có tam giác play khoét vào, bong bóng thoại có
            ngôi sao khoét vào, ngôi sao kèm huy hiệu tick. Đổ màu theo currentColor nên
            tự đổi cream -> trắng khi tab active. -->
       <div class="rv-tabnav" aria-label="Review type">
         <label for="rvtab-video"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M19 15V5c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h13c1.1 0 2-.9 2-2zM8 14V6l6 4z"/></svg>Video Reviews</label>
-        <label for="rvtab-cust"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 20.077V4.615q0-.69.463-1.152Q3.925 3 4.615 3h14.77q.69 0 1.152.463q.463.462.463 1.152v10.77q0 .69-.462 1.153q-.463.462-1.153.462H6.077L3 20.077Zm6.517-6.404L12 12.167l2.483 1.506l-.66-2.825l2.196-1.885l-2.886-.255L12 6.058l-1.133 2.65l-2.886.255l2.196 1.885l-.66 2.825Z"/></svg>Customer Reviews</label>
         <label for="rvtab-plat"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10.898 2.9a1 1 0 0 0-1.794 0l-1.93 3.91l-4.317.628a1 1 0 0 0-.554 1.706l3.124 3.044l-.738 4.3a1 1 0 0 0 1.451 1.054l3.05-1.604a5.5 5.5 0 0 1 7.96-6.259l.549-.535a1 1 0 0 0-.554-1.706l-4.317-.627l-1.93-3.912ZM19 14.5a4.5 4.5 0 1 1-9 0a4.5 4.5 0 0 1 9 0Zm-2.146-1.854a.5.5 0 0 0-.708 0L13.5 15.293l-.646-.647a.5.5 0 0 0-.708.708l1 1a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0 0-.708Z"/></svg>Platform Reviews</label>
       </div>
 
@@ -323,97 +321,7 @@
       </div>
 
       <!-- ================================================================
-           TAB 2 · CUSTOMER REVIEWS — 4 card tuyển chọn.
-           Nội dung THẬT 100%: tên, câu chữ, ngày, permalink lấy từ
-           projects/hyper-inkers/data/google-reviews/ (pull 2026-07-02).
-           Heading mỗi card là trích NGUYÊN VĂN một mệnh đề trong chính
-           review đó — không viết mới.
-           Luật dedup: 4 review này KHÔNG xuất hiện lại ở tab Platform.
-           ================================================================ -->
-      <div class="rv-panel rv-panel-cust">
-        <div class="rv-slider-wrap is-auto">
-          <ul class="rv-slider rv-sslider">
-
-            <!-- ⚠️ ẢNH TRÊN 2 CARD DƯỚI LÀ ẢNH GALLERY CỦA SHOP, CHƯA PHẢI ẢNH KHÁCH ĐÍNH KÈM.
-                 Cả 4 khách ở tab này đều CÓ ảnh thật trong review Google (Devon Brent 2 ·
-                 Lyndsay F 1 · brian may 1 · Maria I. Wallace 3 — xem file categorized 02/07).
-                 Phải tải ảnh thật từ GBP quyền chủ tài khoản và THAY VÀO trước khi lên site:
-                 gắn ảnh gallery vào card mang tên một khách cụ thể là ngầm khẳng định
-                 "đây là hình xăm của người này". -->
-
-            <li class="rv-scard rv-scard--photo">
-              <figure class="rv-sc-media">
-                <img src="https://hyperinkers.com/wp-content/uploads/2025/05/black-and-grey-tattoo-sleeve-designs-3.png" alt="Black and grey lion and compass sleeve tattoo by a Hyper Inkers artist in San Antonio." loading="lazy">
-                <div class="rv-sc-top rv-sc-top--on">
-                  <span class="rv-sc-stars" aria-label="5 out of 5">★★★★★</span>
-                  <span class="rv-sc-date"><svg aria-hidden="true"><use href="#ic-cal"></use></svg>Jul 2025</span>
-                </div>
-              </figure>
-              <div class="rv-sc-main">
-                <p class="rv-sc-h">His attention to detail is unmatched</p>
-                <div class="rv-sc-body"><p>Genuinely couldn't have asked for a more incredible experience for my first tattoo. Minh is absolutely phenomenal - his attention to detail is unmatched and he helped ensure my vision came out exactly how I wanted. I get compliments everywhere I go and people immediately ask where/who did the work. Highly recommend Minh and HyperInkers!</p></div>
-                <div class="rv-sc-foot">
-                  <span class="rv-sc-name">Devon Brent</span>
-                  <em class="rv-sc-role">First Tattoo | Minh</em>
-                </div>
-              </div>
-            </li>
-
-            <li class="rv-scard">
-              <div class="rv-sc-main">
-                <div class="rv-sc-top">
-                  <span class="rv-sc-stars" aria-label="5 out of 5">★★★★★</span>
-                  <span class="rv-sc-date"><svg aria-hidden="true"><use href="#ic-cal"></use></svg>Jan 2026</span>
-                </div>
-                <p class="rv-sc-h">She cleaned everything thoroughly</p>
-                <div class="rv-sc-body"><p>Nicole was an absolutely amazing piercer! She was so calm and gentle, explained everything, and did the piercing so smoothly! She cleaned everything thoroughly, and took her time with set-up to make sure she had everything and that everything was prepared before she began! She did my daith, and it's just so pretty, I'm actually in love! She has such a wide variety of jewelry too, so you don't have to just get a boring starter piece! 10/10 recommend!!!</p></div>
-                <div class="rv-sc-foot">
-                  <span class="rv-sc-name">Lyndsay F</span>
-                  <em class="rv-sc-role">Daith Piercing | Nicole</em>
-                </div>
-              </div>
-            </li>
-
-            <li class="rv-scard rv-scard--photo">
-              <figure class="rv-sc-media">
-                <img src="https://hyperinkers.com/wp-content/uploads/2025/05/black-and-grey-tattoo-design-4.png" alt="Black and grey tattoo by a Hyper Inkers artist in San Antonio." loading="lazy">
-                <div class="rv-sc-top rv-sc-top--on">
-                  <span class="rv-sc-stars" aria-label="5 out of 5">★★★★★</span>
-                  <span class="rv-sc-date"><svg aria-hidden="true"><use href="#ic-cal"></use></svg>Jun 2026</span>
-                </div>
-              </figure>
-              <div class="rv-sc-main">
-                <p class="rv-sc-h">The outcome was above and beyond</p>
-                <div class="rv-sc-body"><p>I booked an appointment for a tattoo design I wanted. It was my first time getting a tattoo and was scheduled with Christian "Z" as my artist. WOW! Not only was he extremely professional, but he took his time and the Outcome was above and beyond. I Highly recommend "Z" and this establishment if you are looking for a Tattoo 👍</p></div>
-                <div class="rv-sc-foot">
-                  <span class="rv-sc-name">brian may</span>
-                  <em class="rv-sc-role">First Tattoo | Christian &ldquo;Z&rdquo;</em>
-                </div>
-              </div>
-            </li>
-
-            <li class="rv-scard">
-              <div class="rv-sc-main">
-                <div class="rv-sc-top">
-                  <span class="rv-sc-stars" aria-label="5 out of 5">★★★★★</span>
-                  <span class="rv-sc-date"><svg aria-hidden="true"><use href="#ic-cal"></use></svg>Jul 2025</span>
-                </div>
-                <p class="rv-sc-h">Quick and practically painless</p>
-                <div class="rv-sc-body"><p>I had an amazing experience with Nicole at Hyper Inkers! She recently pierced my nose, and I couldn't be happier with the entire process. From the moment I walked in, she made me feel completely comfortable and at ease. Nicole is not only professional but also incredibly friendly, taking the time to explain everything and answer any questions I had. The piercing itself was quick and practically painless... The aftercare instructions were clear and helpful, and the healing process has been smooth... I'll definitely be returning for future tattoos and piercings!</p></div>
-                <div class="rv-sc-foot">
-                  <span class="rv-sc-name">Maria Isabella Wallace</span>
-                  <em class="rv-sc-role">Nose Piercing | Nicole</em>
-                </div>
-              </div>
-            </li>
-
-          </ul>
-          <div class="rv-dots" role="tablist" aria-label="Customer review slides"></div>
-        </div>
-      </div>
-
-      <!-- ================================================================
-           TAB 3 · PLATFORM REVIEWS — sub-tab Google / Facebook.
+           TAB 2 · PLATFORM REVIEWS — sub-tab Google / Facebook.
            Số liệu: pull live 2026-07-02 (Google 4.9★/3,470 · Facebook
            100% recommend/1,008). CẦN KÉO LẠI SỐ trước khi lên site thật.
            ⚠️ SCHEMA: Facebook chỉ có "Recommends" nhị phân, KHÔNG có thang
@@ -638,7 +546,10 @@
           </div>
         </div>
         <div class="art-cap">
-          <span class="art-style">Realism <span class="art-badge">+2<span class="art-tip"><span>Color</span><span>Black &amp; Grey</span></span></span></span>
+          <!-- Nhãn hiện ra phải dẫn bằng CHÍNH kiểu xăm của trang này, phần còn lại
+               mới dồn vào "+N". Bản cũ để "Realism +2" và giấu Black & Grey trong
+               tooltip — ngay dưới tiêu đề "Best Black and Grey Tattoo Artist". -->
+          <span class="art-style">Black &amp; Grey, Realism <span class="art-badge">+1<span class="art-tip"><span>Color</span></span></span></span>
           <span class="art-name">Minh</span>
         </div>
         <a class="art-link" href="/tattoo-artist/minh" aria-label="View Minh's profile"></a>
@@ -681,36 +592,24 @@
       <!-- 4 · Navei -->
       <article class="art-card">
         <div class="art-photo">
-          <img src="https://hyperinkers.com/wp-content/uploads/2026/02/navie-best-tattoo-artists-in-san-antonio-texas-768x1075.jpg" alt="Navei, female fine-line and semi-realism tattoo artist at Hyper Inkers in San Antonio." loading="lazy">
+          <img src="https://hyperinkers.com/wp-content/uploads/2026/02/navie-best-tattoo-artists-in-san-antonio-texas-768x1075.jpg" alt="Navei, female black and grey and fine-line tattoo artist at Hyper Inkers in San Antonio." loading="lazy">
           <span class="art-scrim" aria-hidden="true"></span>
           <div class="art-panel">
-            <p class="art-bio">Navei is a female fine-line and semi-realism tattoo artist at Hyper Inkers. Navei Tran trained through specialized study in Vietnam and brings a light, careful hand to personal pieces that need clean lines and restraint.</p>
+            <p class="art-bio">Navei is a female black and grey, fine-line, and semi-realism tattoo artist at Hyper Inkers. Navei Tran trained through specialized study in Vietnam and brings a light, careful hand to personal pieces that need clean lines and restraint.</p>
             <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
           </div>
         </div>
         <div class="art-cap">
-          <span class="art-style">Fine Line <span class="art-badge">+1<span class="art-tip"><span>Semi-Realism</span></span></span></span>
+          <span class="art-style">Black &amp; Grey, Fine Line <span class="art-badge">+1<span class="art-tip"><span>Semi-Realism</span></span></span></span>
           <span class="art-name">Navei</span>
         </div>
         <a class="art-link" href="/tattoo-artist/navei" aria-label="View Navei's profile"></a>
       </article>
 
-      <!-- 5 · Nicole -->
-      <article class="art-card">
-        <div class="art-photo">
-          <img src="https://hyperinkers.com/wp-content/uploads/2026/02/nicole-best-tattoo-artist-in-san-antonio-768x1075.jpg" alt="Nicole, tattoo artist and professional piercer at Hyper Inkers in San Antonio." loading="lazy">
-          <span class="art-scrim" aria-hidden="true"></span>
-          <div class="art-panel">
-            <p class="art-bio">Nicole is a tattoo artist and professional piercer at Hyper Inkers with three years across both crafts. She works in fine line and blackwork, and clients know her for gentle, precise piercings and tattoos alike.</p>
-            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
-          </div>
-        </div>
-        <div class="art-cap">
-          <span class="art-style">Fine Line <span class="art-badge">+2<span class="art-tip"><span>Blackwork</span><span>Piercing</span></span></span></span>
-          <span class="art-name">Nicole</span>
-        </div>
-        <a class="art-link" href="/tattoo-artist/nicole" aria-label="View Nicole's profile"></a>
-      </article>
+      <!-- Nicole đã gỡ khỏi trang này (11/08): kiểu của bạn là fine line, blackwork,
+           piercing — không có black and grey, mà lại đứng dưới tiêu đề "Best Black
+           and Grey Tattoo Artist". Còn 4 thẻ, vừa đúng lưới 4 cột, hết thẻ mồ côi
+           một mình hàng dưới. Bạn vẫn ở trang chủ · /about · /tattoo · /piercing. -->
     </div>
     <div class="msl-foot">
       <div class="msl-nav">
