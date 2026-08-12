@@ -8,15 +8,22 @@
 .cover-gallery .wrap{position:relative;z-index:2}
 .cover-gallery .galp-grid{margin-top:0}
 
-/* Giữ page tự đủ style khi publish riêng, không phụ thuộc các chỉnh sửa global
-   đang được làm song song trong hi-components.css. */
-@media(min-width:821px){
-  .cover-up-page .award-card--portrait{aspect-ratio:2/3;height:490px;max-height:none;width:auto;margin-left:auto}
-}
-@media(max-width:820px){
-  .cover-up-page .award-card--portrait{aspect-ratio:3/4;max-width:366px}
-}
+/* Thẻ ảnh hero: BỎ hai luật riêng (desktop 2/3 cao 490 width:auto · mobile 3/4
+   max 366) để dùng thẳng .award-card--portrait chung. Hai luật đó ép thẻ còn
+   327px trong cột 535px, tức hụt 208px so với /tattoo và /piercing cùng khổ —
+   nhìn ra ảnh cover-up bé hơn hẳn mọi trang khác (B.Long bắt 12/08).
+   Chỉ giữ điểm nhìn của ảnh, vì ảnh này là hình dọc nên cắt 1/1 phải kéo tâm
+   xuống mới còn thấy hoa văn. */
 .cover-up-page .award-card--portrait>img{object-position:50% 42%}
+
+/* H1 "Tattoo Cover-Ups" cần 666px trên một dòng, mà cột chữ chỉ 595px, nên nó
+   ngắt ngay dấu gạch nối thành "TATTOO COVER-" / "UPS" — đọc ra hai nghĩa rời.
+   Nới cột chữ thì phải bóp cột ảnh, mà ảnh vừa chốt là phải bằng các trang khác;
+   nên hạ cỡ chữ của riêng H1 này: 666 × 53/60 = 588px, lọt 595px còn dư 7px.
+   Các trang khác giữ nguyên 60px vì tiêu đề của họ vốn đã vừa một dòng. */
+@media(min-width:821px){
+  .cover-up-page .hero h1{font-size:clamp(34px,4.06vw,53px)}
+}
 .cover-up-page .split-list{list-style:none;margin:clamp(16px,1.9vw,22px) 0 0;padding:0}
 .cover-up-page .split-list li{position:relative;padding-left:24px;font-size:15px;line-height:1.58;color:#D2D2D2;margin-top:12px}
 .cover-up-page .split-list li:first-child{margin-top:0}
