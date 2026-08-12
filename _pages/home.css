@@ -250,19 +250,8 @@ h1 .o{color:var(--orange);display:block}
   .services .services-smoke{top:3%;left:-36%;right:auto;width:122%;opacity:.24;transform:none}}
 
 
-/* Gallery (pill filter · lưới · lightbox) đã chuyển sang _foundation/hi-components.css */
-/* Homepage prototype: when the gallery filter is actually stuck, use the same
-   full-width, square-edged shell as the Awards filter bar. Pill styling stays
-   unchanged so this tests only the sticky shell before a site-wide rollout. */
-#gallery .galf--awards-sticky.is-stuck{
-  width:100vw;max-width:none;margin-left:calc((100% - 100vw)/2);
-  padding:14px max(32px,calc((100vw - var(--wrap))/2 + 32px));
-  justify-content:center;border:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
-  border-radius:0;background:#0B0B0B;box-shadow:none;
-  backdrop-filter:none;-webkit-backdrop-filter:none
-}
-@media(max-width:900px){#gallery .galf--awards-sticky.is-stuck{justify-content:flex-start}}
-@media(max-width:560px){#gallery .galf--awards-sticky.is-stuck{padding-inline:20px}}
+/* Gallery (pill filter · lưới · lightbox + sticky shell) đã chuyển sang
+   _foundation/hi-components.css để home và các trang piercing dùng cùng một bản. */
 /* popup */
 .gal-modal{position:fixed;inset:0;z-index:130;background:rgba(6,6,6,.93);backdrop-filter:blur(5px);-webkit-backdrop-filter:blur(5px);display:none;padding:clamp(20px,5vh,60px) clamp(16px,4vw,60px);overflow-y:auto}
 .gal-modal.open{display:block}
