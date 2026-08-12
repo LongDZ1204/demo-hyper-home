@@ -25,7 +25,7 @@
    section payment vốn đã là #0F0F0F, nên phải hoán về #000 — đúng câu ghi
    trong nhịp tone bên trên: tone là VỊ TRÍ trong chuỗi, không phải thuộc tính
    của component. Hai class (.contact-page .s-cta1) để thắng hi-components. */
-.contact-page .s-cta1 { background: var(--black) }
+.contact-page .s-cta1 { --cta-edge: var(--black); background: var(--black) }
 
 /* === TÁCH HERO VỚI SECTION NGAY DƯỚI (B.Long 11/08) =======================
    Nhịp tone đã cho hero #000 và NAP #0F0F0F, nhưng lệch 15/255 trên nền tối
@@ -65,8 +65,8 @@
 .hero-smoke {
       position: absolute; top: 0; left: 0; width: 100%; height: 100%;
       object-fit: cover; object-position: center;
-      opacity: .5;
-      filter: contrast(1.22) brightness(1.06) saturate(1.16);
+      opacity: .34;
+      filter: contrast(1.18) brightness(1.03) saturate(1.08);
       -webkit-mask-image: radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
               mask-image: radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
       pointer-events: none; user-select: none; z-index: 0;
@@ -319,7 +319,7 @@ a:focus-visible,
       /* Chỉ hạ đáy + chiều cao tối thiểu. KHÔNG viết lại `padding` shorthand:
          shorthand đặt lại cả 4 cạnh nên nó xoá luôn calc(--chrome-h) ở trên. */
       .contact-hero { padding-bottom: 26px; min-height: clamp(170px,42vw,230px); }
-      .hero-smoke { opacity: .4; }
+      .hero-smoke { opacity: .24; }
       .social-footer { justify-content: center; text-align: center; }
       .social-footer__label { flex-basis: 100%; }
       .accept-section__heading { font-size: 14px; line-height: 1.35; }
@@ -339,10 +339,6 @@ a:focus-visible,
       }
     }
 @media (max-width: 560px) {
-      /* section mobile cao và hẹp: object-fit:contain sẽ ép dải khói ngang thành
-         một vệt mỏng giữa khung, nên đổi sang cover cho đầy hộp — mask tan rìa vẫn
-         giữ mép mềm. Bê nguyên cách xử lý của file mẫu CTA khói. */
-      .cta-smoke { top: 1.5%; left: 0; width: 100%; height: 97%; object-fit: cover; opacity: .48; }
       .s-cta .cta-h { max-width: 94vw; }
     }
 @media (max-width: 420px) {

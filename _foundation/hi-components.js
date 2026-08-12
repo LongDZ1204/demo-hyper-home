@@ -92,6 +92,51 @@
   });
 })();
 
+/* ---------- SERVICE TABS · nút thật cho vùng tap mobile ----------
+   Radio vẫn giữ nhiệm vụ điều khiển CSS; button chỉ cập nhật radio tương ứng và
+   aria-expanded. Scope bằng [data-service-tabs] nên không đổi tab cũ của page khác. */
+(function(){
+  [].slice.call(document.querySelectorAll('[data-service-tabs]')).forEach(function(root){
+    var buttons=[].slice.call(root.querySelectorAll('[data-svt-target]'));
+    function activate(button){
+      var radio=document.getElementById(button.getAttribute('data-svt-target'));
+      if(!radio || !root.contains(radio)) return;
+      radio.checked=true;
+      buttons.forEach(function(item){
+        item.setAttribute('aria-expanded',item===button?'true':'false');
+      });
+    }
+    buttons.forEach(function(button){
+      button.addEventListener('click',function(){ activate(button); });
+    });
+  });
+})();
+
+/* ---------- FAQ accordion · ĐÓNG được mục đang mở ----------
+   Bộ tab .faqacc chạy bằng radio, nên mở mục khác thì mục cũ tự đóng — phần đó
+   đã đúng sẵn. Cái thiếu là bấm lại chính mục đang mở: radio đã checked, bấm nữa
+   không đổi gì, người dùng không có cách nào thu nó lại (B.Long bắt 12/08 ở
+   /black-and-grey). Radio không tự bỏ chọn được nên phải nhớ trạng thái TRƯỚC khi
+   nhấn: pointerdown ghi lại, click chặn hành vi mặc định rồi bỏ chọn.
+   Khoá theo ĐIỀU KIỆN "đầu mục trỏ tới một radio .faqacc-cb" nên mọi trang dùng
+   bộ tab này đều được, kể cả trang dựng sau. Nhánh checkbox không đụng tới vì
+   checkbox vốn đã tự đóng mở được. */
+(function(){
+  var wasOpen=false;
+  function cbOf(e){
+    var head=e.target.closest&&e.target.closest('.faqacc-head');
+    if(!head) return null;
+    var id=head.getAttribute('for'); if(!id) return null;
+    var cb=document.getElementById(id);
+    return (cb&&cb.type==='radio'&&cb.classList.contains('faqacc-cb'))?cb:null;
+  }
+  document.addEventListener('pointerdown',function(e){ var cb=cbOf(e); wasOpen=!!(cb&&cb.checked); });
+  document.addEventListener('click',function(e){
+    var cb=cbOf(e); if(!cb) return;
+    if(wasOpen){ e.preventDefault(); cb.checked=false; wasOpen=false; }
+  });
+})();
+
 /* ---------- YouTube facade (poster -> nhúng thật) ---------- */
 
 /* Section 05 · Near-Me — YouTube facade: click poster -> load real embed (nocookie) */
@@ -306,8 +351,15 @@
       /* Chân slider hiện/ẩn theo ĐIỀU KIỆN "hàng có tràn không", không theo danh
          sách tên section trong CSS. Bản cũ chỉ bật cho .art-foot nên bảng giá
          tràn 1098/366 ở mobile mà vẫn không có thanh kéo (B.Long bắt 11/08) —
-         lần thứ 6 một bộ lọc theo tên để lọt khối mới. */
-      foot.classList.toggle('is-scrollable', isFinite(vis) && vis < 0.999);
+         lần thứ 6 một bộ lọc theo tên để lọt khối mới.
+
+         Cổng THỨ HAI: hàng phải THẬT SỰ cuộn được. scrollWidth đếm cả trang trí
+         nằm đè ra ngoài — tooltip "+N" của thẻ cột phải thò 29px làm lưới artists
+         desktop (overflow-x:visible, không cuộn nổi) bị chấm là tràn, thanh tiến
+         độ hiện ra ở 1440px dù hai hàng thẻ nằm gọn (B.Long bắt 12/08). Hỏi
+         overflow-x thay vì trừ hao vài px: trừ hao thì che luôn tràn thật cỡ nhỏ. */
+      var ox=getComputedStyle(row).overflowX, canScroll=(ox==='auto'||ox==='scroll');
+      foot.classList.toggle('is-scrollable', canScroll && isFinite(vis) && vis < 0.999);
       if(th){
         if(!isFinite(vis)||vis>=1){th.style.width='100%';}
         else{var max=row.scrollWidth-row.clientWidth,p=max>0?row.scrollLeft/max:0;

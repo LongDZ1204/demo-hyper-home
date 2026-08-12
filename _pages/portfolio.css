@@ -20,7 +20,7 @@ main{overflow:clip}
   align-items:center;justify-content:center;text-align:center;
   padding:calc(var(--chrome-h) + clamp(26px,3.4vw,52px)) 0 clamp(30px,3.4vw,44px)}
 .hero-smoke{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;
-  opacity:.5;filter:contrast(1.22) brightness(1.06) saturate(1.16);
+  opacity:.34;filter:contrast(1.18) brightness(1.03) saturate(1.08);
   -webkit-mask-image:radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
           mask-image:radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
   pointer-events:none;user-select:none;z-index:0}
@@ -59,7 +59,7 @@ main{overflow:clip}
    lưới 4 cột + ô 4/5. Đổi ở đó thì đổi luôn ở đây.
    Lọc + nút "xem gallery đầy đủ" chạy bằng radio + chuỗi `~`, không cần JS.
    ============================================================================ */
-.section-gallery{position:relative;background:var(--black);border-top:1px solid var(--hair)}
+.section-gallery{position:relative;background:var(--bg);border-top:1px solid var(--hair)}
 .section-gallery .grain{opacity:.035}
 .section-gallery .wrap{position:relative;z-index:1}
 /* Head "Explore Our Work" không có link điều hướng riêng -> căn giữa (luật C1),
@@ -101,13 +101,12 @@ main{overflow:clip}
   transition:background .2s var(--ease)}
 .gal-golink:hover{background:var(--orange-hi)}
 .gal-golink svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-#gf-tattoo:checked   ~ .galwork-more .gal-golink--tattoo{display:inline-flex}#gf-removal:checked  ~ .galwork-more .gal-golink--removal{display:inline-flex}.cta-smoke{position:absolute;top:5%;left:3.5%;width:93%;height:90%;
-  object-fit:contain;object-position:center;max-width:none;
-  transform:scaleX(-1);opacity:.62;filter:contrast(1.32) brightness(1.12) saturate(1.02);
-  -webkit-mask-image:radial-gradient(126% 114% at 50% 50%,#000 62%,transparent 94%);
-          mask-image:radial-gradient(126% 114% at 50% 50%,#000 62%,transparent 94%);
-  pointer-events:none;user-select:none;z-index:0}/* === NAP cuối trang — chép từ .s-visit của site/_pages/home.css (phần NAP + map) === */
-.s-visit{position:relative;background:var(--black);border-top:1px solid var(--hair)}
+#gf-tattoo:checked ~ .galwork-more .gal-golink--tattoo{display:inline-flex}
+#gf-removal:checked ~ .galwork-more .gal-golink--removal{display:inline-flex}
+/* === NAP cuối trang — chép từ .s-visit của site/_pages/home.css (phần NAP + map) === */
+.s-visit{position:relative;background:var(--bg);border-top:1px solid var(--hair)}
+
+#book{--cta-edge:var(--black);background:var(--black)}
 .s-visit .wrap{position:relative;z-index:2}
 .s-visit .section-title-row{justify-content:center}
 .vs-intro{max-width:var(--lead-mw);margin:var(--gap-head-lead) auto 0;text-align:center;
@@ -138,7 +137,7 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
   .port-hero{padding-bottom:38px;min-height:clamp(170px,42vw,230px)}
   /* cover phóng ảnh to mà hero lại thấp → vệt khói chạm mép chữ. Nhạt thêm +
      vignette phủ rộng gần kín, chỉ chừa rìa cho khói. */
-  .hero-smoke{opacity:.4}
+  .hero-smoke{opacity:.24}
   .port-hero::after{background:
     linear-gradient(to bottom,var(--black) 0%,rgba(0,0,0,0) 20%,rgba(0,0,0,0) 80%,var(--black) 100%),
     radial-gradient(88% 70% at 50% 50%,rgba(0,0,0,.9),rgba(0,0,0,.3) 88%)}
@@ -149,8 +148,6 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 }
 @media(max-width:430px){
   .wrap{padding-inline:18px}
-  .port-hero h1{font-size:clamp(34px,12vw,48px)}
-  .cta-smoke{top:1.5%;left:0;width:100%;height:97%;object-fit:cover;opacity:.54}
 }
 @media(max-width:374px){
   .wrap{padding-inline:14px}

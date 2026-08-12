@@ -21,7 +21,7 @@ html{scroll-padding-top:88px}
   align-items:center;justify-content:center;text-align:center;
   padding:calc(var(--chrome-h) + clamp(26px,3.4vw,52px)) 0 clamp(22px,2.4vw,32px)}
 .hero-smoke{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;
-  opacity:.5;filter:contrast(1.22) brightness(1.06) saturate(1.16);
+  opacity:.34;filter:contrast(1.18) brightness(1.03) saturate(1.08);
   -webkit-mask-image:radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
           mask-image:radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
   pointer-events:none;user-select:none;z-index:0}
@@ -66,12 +66,7 @@ html{scroll-padding-top:88px}
   text-decoration:none;transition:background .2s var(--ease)}
 .style-golink:hover,.style-golink:focus-visible{background:var(--orange-hi);outline:none}
 .style-golink svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
-.style-more{margin-top:clamp(26px,3.2vw,38px);text-align:center}.cta-smoke{position:absolute;top:5%;left:3.5%;width:93%;height:90%;
-  object-fit:contain;object-position:center;max-width:none;
-  transform:scaleX(-1);opacity:.62;filter:contrast(1.32) brightness(1.12) saturate(1.02);
-  -webkit-mask-image:radial-gradient(126% 114% at 50% 50%,#000 62%,transparent 94%);
-          mask-image:radial-gradient(126% 114% at 50% 50%,#000 62%,transparent 94%);
-  pointer-events:none;user-select:none;z-index:0}
+.style-more{margin-top:clamp(26px,3.2vw,38px);text-align:center}
 /* === NAP cuối trang — cùng bộ số .s-visit đang dùng ở portfolio hub ===
    Section mang luôn class .section để ăn `.section h2` của hi-foundation (font
    --head + IN HOA + --fs-h2). Bản đầu em tự khai font-size 44px ở đây: số thì trùng
@@ -79,7 +74,8 @@ html{scroll-padding-top:88px}
    thường — lệch hẳn khỏi mọi H2 khác của site. Lấy nguyên luật chung vẫn hơn. */
 .section-title-row{display:flex;align-items:center;justify-content:center;gap:20px;text-align:center}
 .section-title-row h2{margin:0}
-.s-visit{position:relative;background:var(--black);border-top:1px solid var(--hair)}
+.s-visit{position:relative;background:var(--bg);border-top:1px solid var(--hair)}
+.portfolio-page .s-cta1{--cta-edge:var(--black);background:var(--black)}
 .s-visit .wrap{position:relative;z-index:2}
 .vs-intro{max-width:var(--lead-mw);margin:var(--gap-head-lead) auto 0;text-align:center;
   font-size:var(--fs-lead);line-height:1.62;color:#C9C9C9}
@@ -108,7 +104,7 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
   .port-hero{padding-bottom:24px;min-height:clamp(170px,42vw,230px)}
   /* cover phóng ảnh to mà hero lại thấp → vệt khói chạm mép chữ. Nhạt thêm +
      vignette phủ rộng gần kín, chỉ chừa rìa cho khói. */
-  .hero-smoke{opacity:.4}
+  .hero-smoke{opacity:.24}
   .port-hero::after{background:
     linear-gradient(to bottom,var(--black) 0%,rgba(0,0,0,0) 20%,rgba(0,0,0,0) 80%,var(--black) 100%),
     radial-gradient(88% 70% at 50% 50%,rgba(0,0,0,.9),rgba(0,0,0,.3) 88%)}
@@ -118,11 +114,6 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 }
 @media(max-width:640px){
   .portfolio-main{padding:0 0 64px}}
-@media(max-width:430px){
-  .port-hero h1{font-size:clamp(30px,10vw,44px)}
-  .cta-smoke{top:1.5%;left:0;width:100%;height:97%;object-fit:cover;opacity:.54}
-}
-
 /* Khe đoạn dẫn -> khối NAP trong section Visit. .section-title-row mang
    margin-bottom lớn (dành cho head đi thẳng xuống nội dung), còn .vs-intro
    không khai margin dưới nên rơi về 0 — bản đồ leo lên đè dòng thứ hai của

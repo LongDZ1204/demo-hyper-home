@@ -81,7 +81,7 @@
 .s-visit{background:var(--bg)}
 /* Dải CTA khói KHÔNG tự có màu nền riêng nên nó lấy màu của .section — đứng giữa
    Visit và FAQ cùng xám thì ba mục liền nhau thành một mảng. Đổ đen cho nó. */
-.s-cta2{background:var(--black)}
+.s-cta2{--cta-edge:var(--black);background:var(--black)}
 .s-faq{background:var(--bg)}
 .s-guides{background:var(--black)}
 

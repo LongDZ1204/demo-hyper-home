@@ -274,7 +274,7 @@ from{transform:translateX(0)}to{transform:translateX(-50%)}
    at z:0 → under the .04 grain + the z:2 wrap, so the white heading stays legible).
    Rare on purpose: one instance, statement section only. Desktop only. */
 .aw-smoke{position:absolute;top:-10%;left:-6%;width:clamp(640px,54vw,1060px);height:auto;z-index:0;
-  opacity:.6;pointer-events:none;user-select:none;
+  opacity:.34;pointer-events:none;user-select:none;
   -webkit-mask-image:radial-gradient(ellipse 84% 80% at 44% 42%,#000 56%,transparent 94%);mask-image:radial-gradient(ellipse 84% 80% at 44% 42%,#000 56%,transparent 94%)}   /* gentle fade: keeps the visible core B.Long approved, only the clipped edge dissolves; nudged up-left + smaller so it sits behind the heading, not crowding the trophy row */
 @media(max-width:900px){
 .aw-smoke{display:none}
@@ -477,7 +477,7 @@ from{transform:translateX(0)}to{transform:translateX(-50%)}
    (1) breadcrumb  (2) Ganga-style hero (full image + heading anchored bottom)
    (3) visible 2-tone section-band alternation so no two neighbours share a nền
    ============================================================================ */
-:root{--band-a:var(--black);--band-b:var(--bg)}   /* 2026-08-10: #1A1B20 là tone thứ ba (ngả xanh), lệch với mọi page khác */
+:root{--band-a:var(--bg);--band-b:var(--black)}   /* hero là #000; section đầu bắt đầu ở #0F0F0F rồi so le */
 
 /* breadcrumb: style dùng chung, đã chuyển sang _foundation/hi-ds.css */
 

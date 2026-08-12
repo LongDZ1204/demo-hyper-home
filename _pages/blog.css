@@ -41,7 +41,7 @@
 .blog-hero{position:relative;isolation:isolate;overflow:clip;background:var(--black);
   padding:calc(var(--chrome-h) + clamp(20px,2.2vw,32px)) 0 clamp(26px,2.8vw,36px)}
 .hero-smoke{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;
-  opacity:.5;filter:contrast(1.22) brightness(1.06) saturate(1.16);
+  opacity:.34;filter:contrast(1.18) brightness(1.03) saturate(1.08);
   -webkit-mask-image:radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
           mask-image:radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
   pointer-events:none;user-select:none;z-index:0}

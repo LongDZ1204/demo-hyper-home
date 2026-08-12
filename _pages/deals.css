@@ -15,10 +15,10 @@
    .s-visit nhưng ở portfolio hub nó là #000, ở đây phải là #0F0F0F vì hàng xóm khác.
    Đổi thứ tự section thì phải soát lại cả chuỗi.
    ========================================================================== */
-.s-deals{background:var(--bg)}
-.s-happy{background:var(--black)}
-.s-visit{background:var(--bg)}
-.s-book{background:var(--bg)}
+.s-deals{background:var(--black)}
+.s-happy{background:var(--bg)}
+.s-visit{background:var(--black)}
+.s-book{background:var(--black)}
 
 /* Vạch tóc tách hero với section ngay dưới (B.Long 11/08). Lệch nền #000 →
    #0F0F0F đã có sẵn trong nhịp trên, nhưng 15/255 trên nền tối thì mắt không
@@ -50,7 +50,7 @@
    đứng ngang vai H1. */
 .dl-crumb{flex:0 0 100%;margin-bottom:clamp(14px,1.6vw,20px)}
 .hero-smoke{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;
-  opacity:.5;filter:contrast(1.22) brightness(1.06) saturate(1.16);
+  opacity:.34;filter:contrast(1.18) brightness(1.03) saturate(1.08);
   -webkit-mask-image:radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
           mask-image:radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
   pointer-events:none;user-select:none;z-index:0}
@@ -110,4 +110,4 @@
        "text link, không khung": hai nút cùng khung thì không còn nút nào là chính.
      thêm lớp hạt nhiễu .grain, mẫu có, bản chép tay bỏ sót.
    Chỉ còn lại đúng một dòng: tone nền. */
-.deals-page .s-cta1{background:var(--black)}
+.deals-page .s-cta1{--cta-edge:var(--bg);background:var(--bg)}

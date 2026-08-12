@@ -236,7 +236,7 @@
 
 @media(max-width:560px){
 .awh .wrap{padding-block:88px 40px}
-  .awh h1{font-size:clamp(34px,9vw,52px);overflow-wrap:break-word}
+  .awh h1{overflow-wrap:break-word}
   .awh-tag{letter-spacing:.1em}
   .awh-in{max-width:100%}
   .awh-intro{max-width:100%;font-size:15.5px;line-height:1.55;margin-top:16px}

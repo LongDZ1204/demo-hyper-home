@@ -49,7 +49,9 @@ body.artists-page{background:var(--bg);color:#fff}
 /* Giữ band-a (#000) như thiết kế gốc. Hero ngay trên tuy cũng khai #000 nhưng bị ẢNH
    full-bleed phủ kín, nên mắt không thấy hai dải cùng màu — phép đo "2 section liền nhau
    cùng background-color" báo nhầm ở đây. Đổi sang band-b thì lại trùng với CTA ngay dưới. */
-.artists-hub-list{position:relative;background:var(--band-a);overflow:hidden}
+.artists-hub-list{position:relative;background:var(--bg);overflow:hidden}
+.artists-page #book{--cta-edge:var(--black);background:var(--black)}
+.artists-page #visit{background:var(--bg)}
 .artists-hub-list .wrap{position:relative;z-index:2}
 .hub-smoke--grid-a{top:2%;right:-18%;width:min(74vw,1040px);opacity:.34;transform:scaleX(-1) rotate(4deg)}
 .hub-smoke--grid-b{top:44%;left:-24%;width:min(76vw,1060px);opacity:.24;transform:rotate(-5deg)}

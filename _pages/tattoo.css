@@ -30,13 +30,30 @@
 @media(max-width:560px){ .lead{-webkit-line-clamp:2;line-clamp:2} }
 
 /* ========== Nhịp nền so-le — của riêng từng trang, KHÔNG lên tầng chung ========== */
-.s-styles{background:var(--bg)}
+.s-styles{background:var(--black)}
 .s-styles .wrap{position:relative;z-index:2}
+.s-styles>.styles-smoke{top:1%;right:-8%;bottom:auto;left:auto;width:52%;opacity:.3;transform:scaleX(-1) rotate(3deg)}
+@media(max-width:760px){.s-styles>.styles-smoke{top:2%;right:-12%;bottom:auto;width:100%;opacity:.24}}
 .s-process{background:var(--bg)}
-.s-aftercare{background:var(--bg)}
+.s-aftercare{background:var(--black)}
 .s-aftercare .wrap{position:relative;z-index:2}
 .s-faq{background:var(--bg)}
 .s-book{background:var(--black)}
+
+/* Chuỗi nền riêng /tattoo: khóa theo ID để thêm section không làm đảo màu. */
+body:not(.cover-up-page) #main{background:var(--black)}
+body:not(.cover-up-page) #reviews{background:var(--bg)}
+body:not(.cover-up-page) #styles{background:var(--black)}
+body:not(.cover-up-page) #artists{background:var(--bg)}
+body:not(.cover-up-page) #cta1{--cta-edge:var(--black);background:var(--black)}
+body:not(.cover-up-page) #process{background:var(--bg)}
+body:not(.cover-up-page) #advantages{background:var(--black)}
+body:not(.cover-up-page) #cta2{--cta-edge:var(--bg);background:var(--bg)}
+body:not(.cover-up-page) #aftercare{background:var(--black)}
+body:not(.cover-up-page) #visit{background:var(--bg)}
+body:not(.cover-up-page) #book{background:var(--black)}
+body:not(.cover-up-page) #faq{background:var(--bg)}
+body:not(.cover-up-page) #guides{background:var(--black)}
 
 /* ============================================================================
    SECTION · CUSTOM TATTOO STYLES (.st-*) — chỉ /tattoo có

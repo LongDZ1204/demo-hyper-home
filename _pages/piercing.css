@@ -46,7 +46,72 @@
 /* Khối .pc-* (thanh dọc 5 bước) đã chuyển sang _foundation/hi-components.css
    ngày 2026-08-11 — /tattoo và /black-and-grey cũng dùng, 3 trang chung một bản.
    Riêng NỀN section giữ lại đây vì nhịp so-le đen/xám là của từng trang. */
-.s-process{background:var(--bg)}
+.s-process{background:var(--black)}
+
+/* ========== SECTION 3 · Services — đồng bộ pattern với Ear Piercing ========== */
+.svt-tabs{margin-top:clamp(30px,4vw,46px)}
+.svt-radio{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
+.svt-grid{display:grid;grid-template-columns:minmax(350px,.88fr) minmax(0,1.12fr);gap:clamp(26px,3.6vw,52px);align-items:start;max-width:min(1220px,100%);margin:0 auto}
+.svt-media{position:relative;order:1;aspect-ratio:1/1;border-radius:12px;overflow:hidden;
+  border:1px solid var(--card-brd);box-shadow:0 26px 60px rgba(0,0,0,.45)}
+.svt-shot{position:absolute;inset:0;opacity:0;transition:opacity .4s var(--ease)}
+.svt-shot img{width:100%;height:100%;object-fit:cover;object-position:50% 42%}
+.svt-list{list-style:none;order:2;display:flex;flex-direction:column;gap:0;padding:8px 0;border-radius:12px;margin:0}
+.svt-item{position:relative;transition:background .22s var(--ease)}
+.svt-item::before{content:"";position:absolute;left:0;top:18px;bottom:18px;width:2px;background:rgba(255,255,255,.12);transition:background .22s var(--ease),box-shadow .22s var(--ease)}
+.svt-item + .svt-item{border-top:1px solid rgba(255,255,255,.07)}
+.svt-head{display:flex;width:100%;align-items:center;gap:14px;cursor:pointer;padding:18px 24px 12px 30px;
+  border:0;border-radius:0;background:transparent;color:inherit;text-align:left;appearance:none;-webkit-appearance:none;
+  touch-action:manipulation;-webkit-tap-highlight-color:transparent;transition:background .22s var(--ease)}
+.svt-head:hover{background:transparent}
+.svt-head:focus-visible{outline:2px solid var(--orange);outline-offset:-2px}
+.svt-item>h3{margin:0}
+.svt-head{font-family:var(--sub);font-weight:600;font-size:15px;letter-spacing:.02em;
+  line-height:1.3;text-transform:uppercase;color:#BEBEBE;transition:color .2s var(--ease)}
+.svt-panel{display:grid;grid-template-rows:0fr;min-height:0;transition:grid-template-rows .35s var(--ease)}
+.svt-panel>div{overflow:hidden;min-height:0}
+.svt-body{padding:0 24px 22px 30px}
+.svt-body p{font-size:15px;line-height:1.64;color:#C9C9C9;margin:0}
+.svt-body p b{color:#fff;font-weight:600}
+.svt-link{display:inline-flex;align-items:center;gap:7px;margin-top:12px;font-family:var(--sub);font-weight:600;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--orange)}
+.svt-link:hover{color:var(--orange-hi)}
+.svt-link svg{width:15px;height:15px;transition:transform .2s var(--ease)}
+.svt-link:hover svg{transform:translateX(3px)}
+#svt-t1:checked ~ .svt-grid .svt-shot[data-i="1"],
+#svt-t2:checked ~ .svt-grid .svt-shot[data-i="2"],
+#svt-t3:checked ~ .svt-grid .svt-shot[data-i="3"],
+#svt-t4:checked ~ .svt-grid .svt-shot[data-i="4"],
+#svt-t5:checked ~ .svt-grid .svt-shot[data-i="5"],
+#svt-t6:checked ~ .svt-grid .svt-shot[data-i="6"]{opacity:1}
+#svt-t1:checked ~ .svt-grid .svt-item:nth-child(1)::before,
+#svt-t2:checked ~ .svt-grid .svt-item:nth-child(2)::before,
+#svt-t3:checked ~ .svt-grid .svt-item:nth-child(3)::before,
+#svt-t4:checked ~ .svt-grid .svt-item:nth-child(4)::before,
+#svt-t5:checked ~ .svt-grid .svt-item:nth-child(5)::before,
+#svt-t6:checked ~ .svt-grid .svt-item:nth-child(6)::before{background:var(--orange);box-shadow:0 0 16px rgba(204,102,0,.42)}
+#svt-t1:checked ~ .svt-grid .svt-item:nth-child(1) .svt-head,
+#svt-t2:checked ~ .svt-grid .svt-item:nth-child(2) .svt-head,
+#svt-t3:checked ~ .svt-grid .svt-item:nth-child(3) .svt-head,
+#svt-t4:checked ~ .svt-grid .svt-item:nth-child(4) .svt-head,
+#svt-t5:checked ~ .svt-grid .svt-item:nth-child(5) .svt-head,
+#svt-t6:checked ~ .svt-grid .svt-item:nth-child(6) .svt-head{color:#fff}
+#svt-t1:checked ~ .svt-grid .svt-item:nth-child(1) .svt-panel,
+#svt-t2:checked ~ .svt-grid .svt-item:nth-child(2) .svt-panel,
+#svt-t3:checked ~ .svt-grid .svt-item:nth-child(3) .svt-panel,
+#svt-t4:checked ~ .svt-grid .svt-item:nth-child(4) .svt-panel,
+#svt-t5:checked ~ .svt-grid .svt-item:nth-child(5) .svt-panel,
+#svt-t6:checked ~ .svt-grid .svt-item:nth-child(6) .svt-panel{grid-template-rows:1fr}
+#svt-t1:focus-visible ~ .svt-grid .svt-item:nth-child(1) .svt-head,
+#svt-t2:focus-visible ~ .svt-grid .svt-item:nth-child(2) .svt-head,
+#svt-t3:focus-visible ~ .svt-grid .svt-item:nth-child(3) .svt-head,
+#svt-t4:focus-visible ~ .svt-grid .svt-item:nth-child(4) .svt-head,
+#svt-t5:focus-visible ~ .svt-grid .svt-item:nth-child(5) .svt-head,
+#svt-t6:focus-visible ~ .svt-grid .svt-item:nth-child(6) .svt-head{outline:2px solid var(--orange);outline-offset:2px}
+@media(max-width:820px){
+  .svt-grid{grid-template-columns:1fr;gap:18px;padding:0}
+  .svt-media{width:100%;max-width:520px;margin-inline:auto;order:1}
+  .svt-list{order:2}
+}
 
 /* ========== Khối chia đôi (ảnh TRÁI · chữ PHẢI) — Age/ID + Jewelry dùng chung ========== */
 .s-split .wrap{position:relative;z-index:2}
@@ -91,9 +156,20 @@
 @media(min-width:821px){
   .s-jewelry .split-media img{aspect-ratio:1/1;object-fit:cover;object-position:50% 42%}
 }
-/* Hàng tab rộng bằng ĐÚNG khối chia đôi ngay trên nó (1080px), không phải 840px
-   của khổ đọc — nó là mục con của khối đó nên mép trái/phải phải trùng. */
-.s-jewelry .jw-choose{max-width:1080px;margin:var(--gap-subsec) auto 0}
+/* Khổ 840px — ĐÚNG khổ của `.wrap > .faqacc`, tức mọi bộ tab khác trên site.
+   Bản cũ để 1080px cho trùng mép khối chia đôi ngay trên: mép thì trùng thật,
+   nhưng một hàng tab đơn kéo hết 1080 chỉ có nhãn ngắn nằm bên trái, còn lại là
+   dải trống — nhìn ra một thanh lạc chứ không ra một khối nội dung (B.Long bắt
+   12/08). Đồng bộ với các tab khác thắng trùng mép với khối bên trên. */
+.s-jewelry .jw-choose{max-width:840px;margin:var(--gap-subsec) auto 0}
+/* Đường kẻ trên: bộ tab chuẩn lấy vạch phân cách từ `.faqacc-item + .faqacc-item`,
+   mà khối này chỉ có MỘT hàng nên không hàng nào đứng trước để sinh vạch — thành ra
+   nhãn trôi giữa nền, không ra một hàng bấm được. Mở ra thì luật chung tự thay vạch
+   này bằng gạch cam 2px, nên trạng thái mở vẫn giống hệt tab FAQ. */
+.s-jewelry .jw-acc .faqacc-item{border-top:1px solid rgba(255,255,255,.09)}
+/* Phải khai lại nhánh MỞ: luật này (3 lớp) đè luật gốc `.faqacc-item:has(:checked)`
+   (1 lớp), nên nếu thiếu dòng dưới thì vạch xám nằm chồng ngay dưới gạch cam. */
+.s-jewelry .jw-acc .faqacc-item:has(.faqacc-cb:checked){border-top-color:transparent}
 /* Tiêu đề mục con giờ là nhãn của chính hàng tab (.faqacc-q), không còn H3 rời,
    nên khối này chỉ cần khổ và khoảng cách. Anchor đã nằm TRONG thân tab từ 11/08
    nên không còn luật căn giữa cho nó ở đây. */
@@ -143,7 +219,7 @@
 }
 
 /* ========== SECTION 13 · Placement Guide — tab Ear | Face | Body (radio-hack) ========== */
-.s-placement{background:var(--bg)}
+.s-placement{background:var(--black)}
 .s-placement .wrap{position:relative;z-index:2}
 .pl-radio{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none}
 /* CHIP VIỀN RỜI, khác khung kính của .rv-tabnav/.faqtab-nav — hai kiểu này khác
@@ -195,12 +271,31 @@
    Dùng CHUNG khuôn .s-cta1 (đã có trong class của section) nên ở đây chỉ khai
    phần khác: nền đen và khói dịu hơn hai CTA bán hàng phía trên, để lời mời cuối
    trang không cạnh tranh hình ảnh với chúng. */
-.s-close{background:var(--black);text-align:center;position:relative;overflow:hidden}
-.close-smoke{opacity:.55;filter:contrast(1.18) brightness(1.02) saturate(1.08);
+.s-close{--cta-edge:var(--bg);background:var(--bg);text-align:center;position:relative;overflow:hidden}
+.s-close>.close-smoke{left:-7%;right:auto;object-position:left center;transform:scaleX(-1);opacity:.48;
   -webkit-mask-image:radial-gradient(120% 108% at 50% 50%,#000 56%,rgba(0,0,0,.3) 80%,transparent 95%);
           mask-image:radial-gradient(120% 108% at 50% 50%,#000 56%,rgba(0,0,0,.3) 80%,transparent 95%)}
 .s-close::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
   background:
-    linear-gradient(to bottom, var(--black) 0%, rgba(0,0,0,0) 26%, rgba(0,0,0,0) 74%, var(--black) 100%),
+    linear-gradient(to bottom, var(--cta-edge) 0%, rgba(15,15,15,0) 26%, rgba(15,15,15,0) 74%, var(--cta-edge) 100%),
     radial-gradient(60% 68% at 50% 50%, rgba(0,0,0,.7), rgba(0,0,0,0) 82%)}
 .s-close .wrap{position:relative;z-index:2}
+@media(max-width:560px){.s-close>.close-smoke{left:-82%;right:auto;opacity:.34}}
+
+/* Chuỗi nền riêng /piercing: #000 ↔ #0F0F0F, khóa theo nội dung. */
+#services{background:var(--black)}
+#artists{background:var(--bg)}
+#gallery{background:var(--black)}
+#cta1{--cta-edge:var(--bg);background:var(--bg)}
+#process{background:var(--black)}
+#age-id{background:var(--bg)}
+#advantages{background:var(--black)}
+#cta2{--cta-edge:var(--bg);background:var(--bg)}
+#jewelry{background:var(--black)}
+#prices{background:var(--bg)}
+#placement{background:var(--black)}
+#aftercare{background:var(--bg)}
+#visit{background:var(--black)}
+#cta-close{--cta-edge:var(--bg);background:var(--bg)}
+#faq{background:var(--black)}
+#guides{background:var(--bg)}

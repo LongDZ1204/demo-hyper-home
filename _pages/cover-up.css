@@ -4,7 +4,7 @@
    nguyên hệ /tattoo + hi-components + hi-ds để không tạo một style fork mới.
    ============================================================================ */
 
-.cover-gallery{background:var(--black)}
+.cover-gallery{background:var(--bg)}
 .cover-gallery .wrap{position:relative;z-index:2}
 .cover-gallery .galp-grid{margin-top:0}
 
@@ -22,6 +22,20 @@
 .cover-up-page .split-list li:first-child{margin-top:0}
 .cover-up-page .split-list li::before{content:"";position:absolute;left:2px;top:8px;width:7px;height:7px;border-radius:50%;background:var(--orange)}
 .cover-up-page .split-list li b{color:#fff;font-weight:600}
+
+/* Chuỗi nền riêng cover-up; thắng các default dùng chung từ tattoo.css. */
+.cover-up-page #main{background:var(--black)}
+.cover-up-page #reviews{background:var(--bg)}
+.cover-up-page #artists{background:var(--black)}
+.cover-up-page #gallery{background:var(--bg)}
+.cover-up-page #cta1{--cta-edge:var(--black);background:var(--black)}
+.cover-up-page #process{background:var(--bg)}
+.cover-up-page #advantages{background:var(--black)}
+.cover-up-page #aftercare{background:var(--bg)}
+.cover-up-page #cta2{--cta-edge:var(--black);background:var(--black)}
+.cover-up-page #visit{background:var(--bg)}
+.cover-up-page #book{background:var(--black)}
+.cover-up-page #faq{background:var(--bg)}
 
 @media(min-width:861px){
   .artists .art-grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:920px;margin-inline:auto}

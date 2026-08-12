@@ -262,11 +262,11 @@ h1 .o{color:var(--orange);display:block}
    Low-opacity aerosol wash that ties dark bands together (like Ganga's wisps between cards).
    Place as first child of a .section (content .wrap sits above with z-index:1). Vary placement
    per section (do NOT repeat the same spot). Keep OFF reading-heavy sections (FAQ/Reviews/Visit). */
-.smoke{position:absolute;z-index:0;pointer-events:none;opacity:.56;mix-blend-mode:screen;filter:saturate(.92);max-width:none;user-select:none;
+.smoke{position:absolute;z-index:0;pointer-events:none;opacity:.34;mix-blend-mode:screen;filter:saturate(.92);max-width:none;user-select:none;
   -webkit-mask-image:radial-gradient(ellipse 74% 68% at 50% 50%,#000 46%,transparent 86%);mask-image:radial-gradient(ellipse 74% 68% at 50% 50%,#000 46%,transparent 86%)}   /* opacity+core matched to Awards .aw-smoke density; mask still dissolves edges so section overflow:clip never cuts a hard line */
 .smoke--tr{top:4%;right:-10%;width:64%;transform:scaleX(-1) rotate(5deg)}
 .smoke--bl{bottom:-6%;left:-10%;width:58%;transform:rotate(6deg)}
-.smoke--mid{top:36%;left:4%;width:74%;opacity:.5;transform:rotate(-3deg)}   /* weaves through a card grid (shows in the gutters); a hair softer than base so it never washes the grid */
+.smoke--mid{top:36%;left:4%;width:74%;opacity:.28;transform:rotate(-3deg)}   /* weaves through a card grid (shows in the gutters); a hair softer than base so it never washes the grid */
 @media(prefers-reduced-motion:no-preference){.smoke--drift{animation:smokeDrift 60s var(--ease) infinite alternate}}
 @keyframes smokeDrift{from{transform:translate3d(0,0,0) scaleX(-1)}to{transform:translate3d(-3%,2%,0) scaleX(-1)}}
 

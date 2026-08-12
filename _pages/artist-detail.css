@@ -76,9 +76,16 @@ body{background:var(--bg);overflow-x:clip}
 	   (.smoke--tr) đúng cách home dùng, bỏ smoke--drift. */
 	.artist-summary{min-height:54svh;display:flex;align-items:center;overflow:hidden;background:var(--black)}
 	.artist-summary::before{content:none}
-	/* Section này chỉ cao 54svh nên khói cỡ mặc định (64% bề ngang) vắt ngang giữa
-	   đoạn chữ. Thu lại và đẩy sang phải để nó nằm trọn ngoài cột chữ 920px. */
-	.artist-summary .smoke--tr{width:clamp(320px,32vw,500px);top:-14%;right:-5%}
+	/* Khói phủ ngang tạo nhận diện cho section; giữ nhẹ để heading vẫn là điểm nhìn chính. */
+	.artist-summary .smoke--tr{
+		width:clamp(1200px,112vw,1700px);
+		top:-20%;
+		right:50%;
+		opacity:.24;
+		transform:translateX(50%) scaleX(-1);
+		filter:blur(1px) contrast(.94) brightness(.9) saturate(.96)
+	}
+	.artist-summary>.wrap{position:relative;z-index:1}
 	.artist-summary__text{max-width:920px;margin-inline:auto;text-align:center}
 	.artist-summary h2{font-size:clamp(28px,3.4vw,44px);line-height:1.05;margin-bottom:20px}
 	.artist-summary p{font-size:clamp(16px,1.25vw,18px);line-height:1.68;color:#e0e0e0}
@@ -262,6 +269,14 @@ body{background:var(--bg);overflow-x:clip}
   .crumb ol{justify-content:flex-start}
 	  .hero-book{margin-left:0;margin-right:0;width:100%;max-width:330px}
 	  .artist-summary{min-height:auto}
+	  .artist-summary .smoke--tr{
+		  width:clamp(820px,225vw,980px);
+		  top:-8%;
+		  right:50%;
+		  opacity:.17;
+		  transform:translateX(50%) scaleX(-1);
+		  filter:blur(1px) contrast(.9) brightness(.92) saturate(.92)
+	  }
 	  /* (đã bỏ .section-head.center{text-align:left} — luật này lật mọi head căn
 	     giữa thành căn trái ở mobile, trong khi desktop vẫn căn giữa. Hai hệ quả:
 	     head đổi trục giữa hai bề ngang, và heading chạy hết cột 390px trong khi
