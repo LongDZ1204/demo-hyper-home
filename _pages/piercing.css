@@ -156,12 +156,11 @@
 @media(min-width:821px){
   .s-jewelry .split-media img{aspect-ratio:1/1;object-fit:cover;object-position:50% 42%}
 }
-/* Khổ 840px — ĐÚNG khổ của `.wrap > .faqacc`, tức mọi bộ tab khác trên site.
-   Bản cũ để 1080px cho trùng mép khối chia đôi ngay trên: mép thì trùng thật,
-   nhưng một hàng tab đơn kéo hết 1080 chỉ có nhãn ngắn nằm bên trái, còn lại là
-   dải trống — nhìn ra một thanh lạc chứ không ra một khối nội dung (B.Long bắt
-   12/08). Đồng bộ với các tab khác thắng trùng mép với khối bên trên. */
-.s-jewelry .jw-choose{max-width:840px;margin:var(--gap-subsec) auto 0}
+/* Khổ do .faqacc--wide ở tầng chung quyết (ăn trọn bề ngang .wrap, đúng như
+   /tattoo-removal — B.Long chốt 12/08), nên khối bọc không đặt trần riêng nữa.
+   Hai trần đã thử rồi bỏ: 1080px cho trùng mép khối chia đôi bên trên, và 840px
+   theo khổ đọc của FAQ. */
+.s-jewelry .jw-choose{margin:var(--gap-subsec) auto 0}
 /* Đường kẻ trên: bộ tab chuẩn lấy vạch phân cách từ `.faqacc-item + .faqacc-item`,
    mà khối này chỉ có MỘT hàng nên không hàng nào đứng trước để sinh vạch — thành ra
    nhãn trôi giữa nền, không ra một hàng bấm được. Mở ra thì luật chung tự thay vạch

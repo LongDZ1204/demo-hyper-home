@@ -983,6 +983,15 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
    chỉ nhánh .faqacc--tab có lề cho nó, nên tab nào bỏ nhánh đó là link tụt sát mép
    trái, lệch hẳn khỏi cột chữ. Lề đặt ở gốc để tab dựng sau khỏi mắc lại. */
 .faqacc-inner > .sec-link{margin:0 clamp(18px,2.1vw,24px) clamp(16px,1.9vw,20px)}
+/* ---- Biến thể KHỔ RỘNG (.faqacc--wide) ----
+   Bộ tab nằm THẲNG trong section, ăn trọn bề ngang .wrap (1176px ở 1440), khác
+   với danh sách FAQ trong .faqtab-panel vốn giữ khổ đọc 840px. /tattoo-removal
+   làm đúng kiểu này từ trước nhưng bằng luật riêng viết trong <style> của trang;
+   B.Long chốt 12/08 lấy nó làm chuẩn cho /piercing và /black-and-grey, nên khổ
+   này lên tầng chung thành MỘT luật thay vì ba chỗ tự khai.
+   Phải là `.faqacc.faqacc--wide` (0,2,0) mới thắng `.wrap > .faqacc` (0,2,0) —
+   hoà độ ưu tiên thì luật đứng sau thắng, và luật này nằm sau. */
+.faqacc.faqacc--wide{max-width:none;margin-inline:0}
 @media(max-width:640px){.faqtab-nav{gap:8px;padding:8px;border-radius:16px;justify-content:flex-start}.faqtab{padding:10px 18px;font-size:12px}}
 
 /* ============================================================================
@@ -1012,6 +1021,17 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 .galf.is-stuck{padding:6px 8px;border-radius:14px;background:rgba(10,10,10,.94);
   border:1px solid var(--hair);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
   box-shadow:0 8px 22px rgba(0,0,0,.32)}
+/* Biến thể sticky chuẩn của homepage: khi bám đỉnh, thanh lọc trở thành một dải
+   phẳng toàn viewport. Dùng chung cho home và các gallery piercing. */
+.galf--awards-sticky.is-stuck{
+  width:100vw;max-width:none;margin-left:calc((100% - 100vw)/2);
+  padding:14px max(32px,calc((100vw - var(--wrap))/2 + 32px));
+  justify-content:center;border:0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+  border-radius:0;background:#0B0B0B;box-shadow:none;
+  backdrop-filter:none;-webkit-backdrop-filter:none
+}
+@media(max-width:900px){.galf--awards-sticky.is-stuck{justify-content:flex-start}}
+@media(max-width:560px){.galf--awards-sticky.is-stuck{padding-inline:20px}}
 .galp-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(13px,1.5vw,18px);margin-top:clamp(22px,3vw,30px)}
 .galp-tile{position:relative;display:block;min-width:0;aspect-ratio:4/5;overflow:hidden;border-radius:14px;background:#151515;border:1px solid rgba(255,255,255,.07);cursor:zoom-in;transition:transform .3s var(--ease),border-color .3s var(--ease)}
 .galp-tile:hover{transform:translateY(-4px);border-color:rgba(204,102,0,.55)}

@@ -695,8 +695,8 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
 #specialists .art-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 
 /* Supporting content tabs use the same left/right edges as their section wrap. */
-#why-effective .faqacc--tab,
-#is-safe .faqacc--tab{width:100%;max-width:none;margin-inline:0}
+/* Khổ rộng chuyển sang .faqacc--wide ở hi-components.css (12/08) — cùng một
+   luật cho cả /piercing và /black-and-grey, không còn khai riêng theo id. */
 #why-effective .rme-tab-sync{margin-top:clamp(56px,6vw,82px)}
 
 /* Remove the boxed active-state left behind by the legacy July tab rules. */
@@ -1419,7 +1419,7 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
       </figure>
     </div>
 
-    <div class="faqacc faqacc--plus faqacc--tab rme-tab-sync">
+    <div class="faqacc faqacc--plus faqacc--tab faqacc--wide rme-tab-sync">
       <div class="faqacc-item faqacc-item--pillar">
         <input type="checkbox" id="rmeTab1" class="faqacc-cb">
         <label for="rmeTab1" class="faqacc-head">
@@ -1549,7 +1549,7 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
 <section class="section s-is-safe" id="is-safe" aria-label="Is laser tattoo removal safe">
   <span class="grain" aria-hidden="true"></span>
   <div class="wrap">
-    <div class="faqacc faqacc--plus faqacc--tab">
+    <div class="faqacc faqacc--plus faqacc--tab faqacc--wide">
       <!-- Tab 1 = H2 pillar (closed by default per B.Long — all 4 start collapsed) -->
       <div class="faqacc-item faqacc-item--pillar">
         <input type="radio" name="rmis-group" id="rmis-0" class="faqacc-cb">
