@@ -105,19 +105,9 @@
 .s-related{background:var(--bg)}
 .s-related .wrap{position:relative;z-index:2}
 
-/* ========== Thẻ trong băng "Tattoo Styles Related" ==========
-   Băng dùng lại engine .awrail (tự chạy 4 giây, dừng khi rê chuột, vòng vô tận)
-   — xem biến thể .awrail--4 ở hi-components.css. Đây chỉ là RUỘT của thẻ. */
-.rel-link{display:block;text-decoration:none}
-.rel-shot{position:relative;display:block;aspect-ratio:3/4;overflow:hidden;background:#0c0c0c;
-  border-radius:14px;border:1px solid var(--card-brd);box-shadow:0 24px 58px rgba(0,0,0,.42)}
-.rel-shot img{width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease);filter:grayscale(.12)}
-.rel-card:hover .rel-shot img{transform:scale(1.06)}
-/* Mockup để thẻ CHỈ có ảnh, không chữ — người xem không biết đó là kiểu xăm gì và
-   Google cũng không đọc được gì ngoài alt. Thêm tên kiểu xăm hiện rõ. */
-.rel-name{display:block;margin-top:12px;font-family:var(--sub);font-weight:600;font-size:14px;
-  letter-spacing:.03em;text-transform:uppercase;color:#E9E9E9;transition:color .2s var(--ease)}
-.rel-card:hover .rel-name{color:var(--orange-hi)}
+/* Ruột thẻ .rel-* đã lên _foundation/hi-components.css (12/08) — từ lúc
+   artist-detail dùng chung băng này thì nó là component hai trang, không còn là
+   đồ riêng của trang black-and-grey. */
 
 /* Thẻ nghệ sĩ: tên dưới ảnh — mockup dựng riêng, tầng chung chưa có. */
 .art-name{font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:clamp(19px,1.9vw,25px);

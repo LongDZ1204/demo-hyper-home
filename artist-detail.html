@@ -199,23 +199,66 @@
         <p class="section-intro has-clamp"><span class="lead-txt">Minh works across realism-driven black and grey, vivid color realism, and Japanese-inspired tattoos, with deep portfolios in portraits, sleeves, geometric, and cover-up pieces.</span><label for="st-intro" class="lead-more" aria-label="Expand or collapse the tattoo styles introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
         <noscript><style>.lead-txt{-webkit-line-clamp:unset;line-clamp:unset}.lead-more{display:none}</style></noscript>
 	      </div>
-	      <div class="style-rail-wrap">
-	        <div class="style-rail msl-row" aria-label="Tattoo styles by Minh">
-	          <a class="style-card" href="black-and-grey.html"><img src="https://hyperinkers.com/wp-content/uploads/2025/08/black-and-white-tattoo-artist-in-san-antonio-scaled.jpg" alt="Black and grey realism tattoo by Minh" loading="eager"><span class="style-card__name"><span class="style-card__line"></span>Black &amp; Grey</span></a>
-	          <a class="style-card" href="soon.html"><img src="https://hyperinkers.com/wp-content/uploads/2025/06/where-to-get-a-portrait-tattoo-in-san-antonio.jpg" alt="Portrait tattoo by Minh" loading="eager"><span class="style-card__name"><span class="style-card__line"></span>Portrait</span></a>
-	          <a class="style-card" href="soon.html"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/realism-tattoo-inspiration-1.png" alt="Realism tattoo by Minh" loading="eager"><span class="style-card__name"><span class="style-card__line"></span>Realism</span></a>
-	          <a class="style-card" href="soon.html"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/vibrant-color-tattoo-ideas-3.png" alt="Color realism tattoo by Minh" loading="eager"><span class="style-card__name"><span class="style-card__line"></span>Color Realism</span></a>
-	          <a class="style-card" href="soon.html"><img src="https://hyperinkers.com/wp-content/uploads/2025/06/irezumi-artist-san-antonio.jpg" alt="Japanese tattoo by Minh" loading="eager"><span class="style-card__name"><span class="style-card__line"></span>Japanese</span></a>
-	          <a class="style-card" href="soon.html"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/realism-tattoo-art-3.png" alt="Sleeve tattoo by Minh" loading="eager"><span class="style-card__name"><span class="style-card__line"></span>Sleeves</span></a>
-	          <a class="style-card" href="soon.html"><img src="https://hyperinkers.com/wp-content/uploads/2025/07/tattoo-cover-up-san-antonio-scaled.jpg" alt="Cover-up tattoo by Minh" loading="eager"><span class="style-card__name"><span class="style-card__line"></span>Cover-up</span></a>
+	      <!-- Băng kiểu xăm dùng ĐÚNG bộ .awrail--4 của /black-and-grey (B.Long chốt
+	           12/08): 4 cột đều, nhãn nằm DƯỚI ảnh, chấm tròn thay mũi tên, tự chạy.
+	           Bộ .style-card cũ (nhãn đè lên ảnh, 5 thẻ hở, chân ‹ › + thanh tiến độ)
+	           là bộ riêng của mỗi trang này nên đã gỡ cùng CSS của nó. -->
+	      <div class="awrail-wrap">
+	        <ul class="awrail awrail--4" data-align="start" aria-label="Tattoo styles by Minh">
+	          <li class="awrail-card rel-card">
+	            <a class="rel-link" href="black-and-grey.html">
+	              <span class="rel-shot"><img src="https://hyperinkers.com/wp-content/uploads/2025/08/black-and-white-tattoo-artist-in-san-antonio-scaled.jpg" alt="Black and grey realism tattoo by Minh" loading="lazy" decoding="async"></span>
+	              <span class="rel-name">Black &amp; Grey</span>
+	            </a>
+	          </li>
+	          <li class="awrail-card rel-card">
+	            <a class="rel-link" href="soon.html">
+	              <span class="rel-shot"><img src="https://hyperinkers.com/wp-content/uploads/2025/06/where-to-get-a-portrait-tattoo-in-san-antonio.jpg" alt="Portrait tattoo by Minh" loading="lazy" decoding="async"></span>
+	              <span class="rel-name">Portrait</span>
+	            </a>
+	          </li>
+	          <li class="awrail-card rel-card">
+	            <a class="rel-link" href="soon.html">
+	              <span class="rel-shot"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/realism-tattoo-inspiration-1.png" alt="Realism tattoo by Minh" loading="lazy" decoding="async"></span>
+	              <span class="rel-name">Realism</span>
+	            </a>
+	          </li>
+	          <li class="awrail-card rel-card">
+	            <a class="rel-link" href="soon.html">
+	              <span class="rel-shot"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/vibrant-color-tattoo-ideas-3.png" alt="Color realism tattoo by Minh" loading="lazy" decoding="async"></span>
+	              <span class="rel-name">Color Realism</span>
+	            </a>
+	          </li>
+	          <li class="awrail-card rel-card">
+	            <a class="rel-link" href="soon.html">
+	              <span class="rel-shot"><img src="https://hyperinkers.com/wp-content/uploads/2025/06/irezumi-artist-san-antonio.jpg" alt="Japanese tattoo by Minh" loading="lazy" decoding="async"></span>
+	              <span class="rel-name">Japanese</span>
+	            </a>
+	          </li>
+	          <li class="awrail-card rel-card">
+	            <a class="rel-link" href="soon.html">
+	              <span class="rel-shot"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/realism-tattoo-art-3.png" alt="Sleeve tattoo by Minh" loading="lazy" decoding="async"></span>
+	              <span class="rel-name">Sleeves</span>
+	            </a>
+	          </li>
+	          <li class="awrail-card rel-card">
+	            <a class="rel-link" href="soon.html">
+	              <span class="rel-shot"><img src="https://hyperinkers.com/wp-content/uploads/2025/07/tattoo-cover-up-san-antonio-scaled.jpg" alt="Cover-up tattoo by Minh" loading="lazy" decoding="async"></span>
+	              <span class="rel-name">Cover-up</span>
+	            </a>
+	          </li>
+	        </ul>
+	        <div class="awrail-foot">
+	          <div class="awrail-dots" role="tablist" aria-label="Tattoo styles by Minh">
+	            <button type="button" class="awrail-dot is-active" aria-label="Go to Black and Grey"></button>
+	            <button type="button" class="awrail-dot" aria-label="Go to Portrait"></button>
+	            <button type="button" class="awrail-dot" aria-label="Go to Realism"></button>
+	            <button type="button" class="awrail-dot" aria-label="Go to Color Realism"></button>
+	            <button type="button" class="awrail-dot" aria-label="Go to Japanese"></button>
+	            <button type="button" class="awrail-dot" aria-label="Go to Sleeves"></button>
+	            <button type="button" class="awrail-dot" aria-label="Go to Cover-up"></button>
+	          </div>
 	        </div>
-	        <div class="msl-foot msl-foot--always">
-          <div class="msl-nav">
-            <button class="msl-navbtn prev" type="button" aria-label="Previous style"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
-            <button class="msl-navbtn next" type="button" aria-label="Next style"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
-          </div>
-          <div class="msl-track"><span class="msl-thumb"></span></div>
-        </div>
 	      </div>
 	    </div>
 	  </section>

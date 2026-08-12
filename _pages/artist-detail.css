@@ -92,22 +92,10 @@ body{background:var(--bg);overflow-x:clip}
 
 	/* Styles */
 	.artist-styles{background:#101313}
-	.style-rail-wrap{margin-top:clamp(28px,3.4vw,42px)}
-	.style-rail{display:flex;gap:clamp(14px,1.5vw,20px);overflow-x:auto;scroll-snap-type:x mandatory;padding:2px 2px 8px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
-	.style-rail::-webkit-scrollbar{display:none}
-	/* 5 card lấp trọn bề ngang .wrap (không clamp theo vw nữa) — công thức trừ đúng
-	   4 khoảng gap để card thứ 5 chạm mép phải, không hở nửa card. Radius 14px cho
-	   khớp .award-card/.art-photo (trước đây 4px, lệch hẳn với mọi card khác trong trang). */
-	.style-card{position:relative;flex:0 0 calc((100% - 4*clamp(14px,1.5vw,20px))/5);aspect-ratio:3/4;overflow:hidden;scroll-snap-align:start;background:#050505;border:1px solid var(--card-brd);border-radius:14px;transition:transform .28s var(--ease),border-color .22s var(--ease)}
-	.style-card img{width:100%;height:100%;object-fit:cover;filter:saturate(.92) contrast(1.04);transition:transform .5s var(--ease),filter .35s var(--ease)}
-	.style-card::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.02),rgba(0,0,0,.76));pointer-events:none}
-	.style-card:hover{transform:translateY(-3px);border-color:var(--orange)}
-	.style-card:hover img{transform:scale(1.045);filter:saturate(1) contrast(1.08)}
-	.style-card__name{position:absolute;left:18px;right:18px;bottom:18px;z-index:4;font-family:var(--head);font-size:clamp(20px,2vw,28px);letter-spacing:0;line-height:1;text-transform:uppercase;color:#fff}
-	/* Chân slider (.style-foot/.style-nav/.style-btn/.style-track/.style-thumb) và
-	   họ .rail-* ĐÃ XOÁ (11/08): trùng nguyên hệ .msl-* ở hi-components.css.
-	   Đèn xem ảnh .lb-* cũng xoá — dùng .galp-lb chung. */
-	.style-card__line{display:none}
+	/* Băng kiểu xăm chuyển sang .awrail--4 dùng chung (B.Long 12/08) nên toàn bộ
+	   họ .style-rail/.style-card ĐÃ XOÁ — bề ngang thẻ, nhãn đè ảnh, chân ‹ › đều
+	   do tầng chung lo. Trước đó chân slider .style-foot/.rail-* và đèn .lb-* cũng
+	   đã xoá cùng lý do (11/08). Khoảng cách head→băng do .awrail--4 padding-block. */
 
 	/* Projects */
 	.projects{background:#090909}
@@ -231,8 +219,6 @@ body{background:var(--bg);overflow-x:clip}
   .hero-meta{grid-template-columns:1fr 1fr;gap:24px 36px}
   .hero-meta__item:first-child{grid-column:1/-1}
   .project-grid{grid-template-columns:repeat(2,1fr)}
-  /* dưới 980px 5 style card mỗi cái chỉ còn ~170px, chữ tên tràn — hạ về 3 */
-  .style-card{flex-basis:calc((100% - 2*clamp(14px,1.5vw,20px))/3)}
   .info-grid{grid-template-columns:1fr}
   /* PHẢI gỡ chỉ định ô lưới, không thì grid-column:2 tự đẻ ra cột thứ hai và
      grid-row:1 cho hai khối chồng lên nhau. Gỡ xong thì trật tự chạy theo DOM:
@@ -248,7 +234,6 @@ body{background:var(--bg);overflow-x:clip}
      (.rv-card và .art-card đều flex-basis:48% ở ≤600px). */
   .art-card{flex-basis:48%}
   .art-panel{padding:16px 14px;gap:8px}
-  .style-card{flex-basis:calc((100% - clamp(14px,1.5vw,20px))/2)}
   /* Card 48% thì nhãn style dài ("Black & Grey, Blackwork" + badge +1) chiếm 3 dòng
      còn nhãn ngắn ("Black & Grey") 1 dòng → tên artist 2 card cạnh nhau lệch hẳn
      2 dòng. 54px = chiều cao đo được của nhãn dài nhất ở 430px, chừa sẵn cho mọi

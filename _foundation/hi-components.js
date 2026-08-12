@@ -5,14 +5,19 @@
    Nạp cuối <body>, sau hi-chrome.js.
    ============================================================================ */
 
-/* ---------- AWARDS · rail cúp vô cực (3 bản clone) + dots tự chạy ---------- */
-  (function(){
-    var rail=document.querySelector('.awrail');
+/* ---------- AWARDS · rail cúp vô cực (3 bản clone) + dots tự chạy ----------
+   Chạy cho MỌI .awrail-wrap trên trang, mỗi cái một bộ biến riêng. Bản cũ lấy
+   `document.querySelector('.awrail')` + `querySelectorAll('.awrail-dot')` toàn
+   trang, nên trang có hai rail (artist-detail: cúp + kiểu xăm) thì rail thứ hai
+   chết hẳn còn dots của nó bị rail thứ nhất điều khiển (B.Long yêu cầu port băng
+   kiểu xăm sang bộ này 12/08). Khoá theo ĐIỀU KIỆN "có bao nhiêu wrap thì chạy
+   bấy nhiêu", không phải đếm rail rồi chép thêm một bản script. */
+  [].slice.call(document.querySelectorAll('.awrail-wrap')).forEach(function(host){
+    var rail=host.querySelector('.awrail');
     if(!rail) return;
     var orig=[].slice.call(rail.querySelectorAll('.awrail-card')),
         N=orig.length,
-        dots=[].slice.call(document.querySelectorAll('.awrail-dot')),
-        host=document.querySelector('.awrail-wrap')||rail,
+        dots=[].slice.call(host.querySelectorAll('.awrail-dot')),
         rm=window.matchMedia('(prefers-reduced-motion:reduce)').matches,
         all=orig.slice(), abs=N, timer=null, st=null, INT=4000, visible=false, touched=false;
     /* Vô cực bằng 3 bản: DOM = [gốc][clone1][clone2]. Tâm chạy trong bản GIỮA (abs ∈ [N,2N-1]);
@@ -72,7 +77,7 @@
     if('IntersectionObserver' in window){
       new IntersectionObserver(function(es){ es.forEach(function(e){ visible=e.isIntersecting; if(visible){ touched=true; play(); } else stop(); }); }, {threshold:.25}).observe(host);
     } else { visible=true; touched=true; play(); }
-  })();
+  });
 
 
 
