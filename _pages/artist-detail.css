@@ -141,11 +141,9 @@ body{background:var(--bg);overflow-x:clip}
 @media(max-width:600px){.info-content > .section-intro.has-clamp{max-width:none}}
 
 /* ---------- CLIENT REVIEWS ------------------------------------------------
-   Card port NGUYÊN hệ .rv-scard từ tab 2 "Customer Reviews" của homepage, để
-   2 trang đọc ra cùng một component (không vẽ lại card review kiểu khác).
-   Khác homepage đúng 1 chỗ — CƠ CHẾ TRƯỢT: homepage auto-play + dots, ở đây
-   dùng lại engine rail ‹ › + thanh tiến độ của section Awards ngay phía trên,
-   nên 3 slider trong trang (styles · awards · reviews) trượt giống hệt nhau.
+   Card dùng NGUYÊN hệ .rv-card "Platform Reviews" của homepage để hai trang
+   đọc ra cùng một component. Artist detail chỉ có một carousel trộn nguồn,
+   không thêm sub-tab Google/Facebook.
    -------------------------------------------------------------------------- */
 .artist-reviews{background:#0d1112}
 .review-rail{list-style:none;display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;padding:2px 2px 8px;margin-top:clamp(28px,3.4vw,42px)}
@@ -239,9 +237,8 @@ body{background:var(--bg);overflow-x:clip}
 }
 @media(max-width:700px){
   .projects,.awards,.artist-info,.artist-reviews,.booking,.other-artists{padding-top:96px}
-  /* Khớp đúng homepage: mobile 2 card/màn cho cả review lẫn artist (homepage
-     .rv-scard và .art-card đều flex-basis:48% ở ≤600px). */
-  .rv-sc-date{white-space:nowrap}
+  /* Khớp đúng homepage: mobile 2 card/màn cho cả review lẫn artist
+     (.rv-card và .art-card đều flex-basis:48% ở ≤600px). */
   .art-card{flex-basis:48%}
   .art-panel{padding:16px 14px;gap:8px}
   .style-card{flex-basis:calc((100% - clamp(14px,1.5vw,20px))/2)}

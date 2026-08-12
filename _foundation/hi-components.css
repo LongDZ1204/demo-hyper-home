@@ -36,14 +36,11 @@
 .rv-tabnav label svg{width:18px;height:18px;flex-shrink:0}
 .rv-tabnav label:hover{color:#fff}
 #rvtab-video:checked ~ .rv-tabnav label[for="rvtab-video"],
-#rvtab-cust:checked ~ .rv-tabnav label[for="rvtab-cust"],
 #rvtab-plat:checked ~ .rv-tabnav label[for="rvtab-plat"]{background:var(--orange);color:#fff}
 #rvtab-video:focus-visible ~ .rv-tabnav label[for="rvtab-video"],
-#rvtab-cust:focus-visible ~ .rv-tabnav label[for="rvtab-cust"],
 #rvtab-plat:focus-visible ~ .rv-tabnav label[for="rvtab-plat"]{outline:2px solid var(--orange);outline-offset:2px}
 .rv-panel{display:none;text-align:left}
 #rvtab-video:checked ~ .rv-panel-video,
-#rvtab-cust:checked ~ .rv-panel-cust,
 #rvtab-plat:checked ~ .rv-panel-plat{display:block}
 
 /* platform sub-tabs (Google / Facebook) — underline nav, radio-hack lồng trong panel */
