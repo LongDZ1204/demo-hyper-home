@@ -102,7 +102,8 @@
    Thang sau khi sửa, giảm dần đều: h1 60 -> h2 section 44 -> h2 trong card form
    34 -> h3 câu hỏi 30.
    Khoá theo .faq-page để 7 page kia giữ nguyên cỡ nhỏ của khối phụ. */
-.faq-page .faqacc-item .faqacc-q{font-size:var(--fs-h3)}
+/* Thêm body + .section để thắng thang FAQ dùng chung trong hi-ds.css nạp cuối. */
+body.faq-page .section .faqacc-item .faqacc-q{font-size:var(--fs-h3)}
 /* Câu hỏi to lên thì hàng cũng phải cao lên, không thì chữ dính sát mũi tên và
    sát vạch ngăn giữa hai câu. */
 .faq-page .faqacc-head{padding:clamp(16px,1.9vw,20px) clamp(18px,2.1vw,24px)}

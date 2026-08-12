@@ -26,8 +26,10 @@
   --fs-h2:clamp(28px,3.4vw,44px);
   --fs-h3:clamp(22px,2.6vw,30px);          /* heading khối lớn: panel award, tab title */
   --fs-h4:clamp(19px,1.9vw,25px);          /* tên card lớn: artist, service */
-  --fs-h5:clamp(16px,1.6vw,19px);          /* card nhỏ, câu hỏi FAQ trụ */
-  --fs-h6:clamp(13.5px,1.35vw,15px);       /* micro-heading: why-choose, FAQ vệ tinh */
+  --fs-h5:clamp(16px,1.6vw,19px);          /* card nhỏ */
+  --fs-h6:clamp(13.5px,1.35vw,15px);       /* micro-heading: why-choose */
+  --fs-faq-pillar:clamp(17px,1.7vw,20px);  /* câu hỏi FAQ trụ: đủ nổi trên body 14.5px */
+  --fs-faq-sat:clamp(15px,1.45vw,17px);    /* câu hỏi FAQ vệ tinh: không tụt về cỡ caption */
   --fs-lead:16.5px;                        /* lead dưới H2 */
   --fs-lead-sm:15px;                       /* lead phụ trong tiểu-section */
   --fs-body:14.5px;                        /* body chính trong card */
@@ -333,7 +335,7 @@
 .s-book .bks-title{margin:0 calc(-1 * var(--bks-pad)) 22px;max-width:none;
   padding:clamp(24px,2.8vw,30px) var(--bks-pad) 20px;border-bottom:1px solid var(--border);
   font-family:var(--head);font-weight:700;text-transform:uppercase;
-  font-size:clamp(26px,4.5vw,34px);letter-spacing:.5px;line-height:.98;
+  font-size:clamp(26px,4.5vw,34px);letter-spacing:.5px;line-height:1.04;
   color:var(--orange);text-align:left}
 .s-book .bks-title .o{color:inherit}
 .s-book .bks-intro{text-align:left;max-width:52ch;margin:0 0 22px}
@@ -416,13 +418,21 @@
    khai ngược lại. */
 .section h3 .o,.section h4 .o,.section h5 .o,.section h6 .o{color:inherit}
 .section .faqacc-item--pillar .faqacc-q,
-.section .gd-item-h{font-size:var(--fs-h5)}                                    /* H5 · card nhỏ / FAQ trụ */
+.section .gd-item-h{font-size:var(--fs-h5)}                                    /* card nhỏ / accordion trụ */
 .section .faqacc-item--sat .faqacc-q,
-.section .adv-head h3{font-size:var(--fs-h6)}                                  /* H6 · micro-heading */
-/* nối H1/H2/display vào token để thang chỉ còn MỘT nguồn số */
+.section .adv-head h3{font-size:var(--fs-h6)}                                  /* micro-heading / accordion vệ tinh */
+/* Chỉ FAQ cuối trang nhận cỡ đọc lớn hơn. Các accordion dùng chung engine ở
+   Jewelry / What-is vẫn giữ thang compact phía trên. */
+.s-faq .faqacc-item--pillar .faqacc-q{font-size:var(--fs-faq-pillar)}
+.s-faq .faqacc-item--sat .faqacc-q{font-size:var(--fs-faq-sat)}
+/* nối H1/H2/display vào token để thang chỉ còn MỘT nguồn số.
+   :root nâng vừa đủ độ ưu tiên để thắng các line-height cũ trong CSS riêng của
+   page; loại trừ heading accordion / CTA / form vì chúng có nhịp riêng. */
+:root h1{line-height:1.02}
 .hero h1{font-size:var(--fs-h1)}
 .section h2{font-size:var(--fs-h2)}
-.s-cta1 .cta1-h,.s-cta2 .cta2-h{font-size:var(--fs-display)}
+:root .section h2:not(.faqacc-q):not(.bks-title):not(.cta1-h):not(.cta2-h){line-height:1.06}
+.s-cta1 .cta1-h,.s-cta2 .cta2-h{font-size:var(--fs-display);line-height:1.04}
 
 /* ============================================================================
    BREADCRUMB — chuẩn dùng chung (tách khỏi about.css 2026-08-10)
