@@ -966,6 +966,10 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 .faqacc-inner ul{padding-left:clamp(34px,3vw,42px);list-style:disc}
 .faqacc-inner li{margin-bottom:8px}
 .faqacc-inner p b,.faqacc-inner li b{color:#fff;font-weight:600}
+/* Link nằm TRONG thân tab: thụt bằng đúng lề chữ của đoạn ngay trên. Trước 12/08
+   chỉ nhánh .faqacc--tab có lề cho nó, nên tab nào bỏ nhánh đó là link tụt sát mép
+   trái, lệch hẳn khỏi cột chữ. Lề đặt ở gốc để tab dựng sau khỏi mắc lại. */
+.faqacc-inner > .sec-link{margin:0 clamp(18px,2.1vw,24px) clamp(16px,1.9vw,20px)}
 @media(max-width:640px){.faqtab-nav{gap:8px;padding:8px;border-radius:16px;justify-content:flex-start}.faqtab{padding:10px 18px;font-size:12px}}
 
 /* ============================================================================
