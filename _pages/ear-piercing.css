@@ -170,7 +170,14 @@
   .co-row--head{display:none}
   .co-row{grid-template-columns:1fr;gap:5px;padding:16px 0}
   .co-price{text-align:left}
-  .co-price::before{content:"Starts at  ";font-weight:400;color:var(--muted);font-size:13px}
+  /* Nhãn CHỌN-VÀO: chỉ ô có data-from mới được gắn "Starts at".
+     Bản cũ gắn cho MỌI ô giá, nên hàng "Curated ear" (giá trị là ghi chú, không
+     phải số tiền) đọc ra "Starts at By placement" (B.Long bắt 12/08). Trên desktop
+     không lộ vì chữ "Starts At" nằm ở tiêu đề cột; mobile giấu hàng tiêu đề nên
+     nhãn phải bám vào từng ô, và lúc đó nó mới va vào ô không phải giá.
+     Thiếu data-from thì mất nhãn — lỗi nhìn thấy ngay; ngược lại, gắn nhầm nhãn
+     vào ô ghi chú là câu sai ngữ pháp mà mắt dễ lướt qua. */
+  .co-price[data-from]::before{content:"Starts at  ";font-weight:400;color:var(--muted);font-size:13px}
 }
 
 /* Thẻ nghệ sĩ: tên dưới ảnh — tầng chung chưa có. */
