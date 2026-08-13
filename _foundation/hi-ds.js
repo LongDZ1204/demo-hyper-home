@@ -39,7 +39,8 @@
       var N=lines(),
           open=cb.checked,clamped=(!open&&rects.length>N),
           line=rects[open?rects.length-1:Math.min(N-1,rects.length-1)],br=box.getBoundingClientRect(),
-          inset=more.querySelector('path').getBoundingClientRect().left-more.getBoundingClientRect().left,
+          glyph=more.querySelector('path, use, svg'),
+          inset=(glyph?glyph.getBoundingClientRect().left:more.getBoundingClientRect().left)-more.getBoundingClientRect().left,
           tail=clamped?Math.min(line.right+ellipsisW(),txt.getBoundingClientRect().right):line.right,
           x=Math.min(tail-br.left+GAP-inset,window.innerWidth-br.left-30),y=line.top-br.top+line.height/2;
       more.style.left=x+'px';more.style.top=y+'px';more.style.opacity=(rects.length>N||open)?'1':'0';}
