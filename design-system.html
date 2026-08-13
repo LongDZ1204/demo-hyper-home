@@ -13,6 +13,37 @@
   <link rel="stylesheet" href="_pages/design-system.css">
 </head>
 <body class="ds-page">
+  <!-- Inline preview sprite keeps the design board visible when opened via file://
+       or imported by tools that block external SVG <use> references. The canonical
+       developer asset remains _foundation/hi-icons.svg. -->
+  <svg class="hi-icon-sprite" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+    <symbol id="hi-icon-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+    <symbol id="hi-icon-close" viewBox="0 0 24 24"><path d="m6 6 12 12M18 6 6 18"/></symbol>
+    <symbol id="hi-icon-chevron-down" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
+    <symbol id="hi-icon-arrow-right" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6"/></symbol>
+    <symbol id="hi-icon-external-link" viewBox="0 0 24 24"><path d="M14 5h5v5M19 5l-9 9"/><path d="M18 13v5a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></symbol>
+    <symbol id="hi-icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></symbol>
+    <symbol id="hi-icon-filter" viewBox="0 0 24 24"><path d="M4 6h16M7 12h10M10 18h4"/></symbol>
+    <symbol id="hi-icon-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="hi-icon-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+    <symbol id="hi-icon-play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z"/></symbol>
+    <symbol id="hi-icon-expand" viewBox="0 0 24 24"><path d="M9 4H4v5M15 4h5v5M20 15v5h-5M4 15v5h5"/></symbol>
+    <symbol id="hi-icon-calendar" viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="15" rx="2"/><path d="M8 3v4M16 3v4M4 10h16M8 14h.01M12 14h.01M16 14h.01M8 17h.01M12 17h.01"/></symbol>
+    <symbol id="hi-icon-phone" viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .7-.2 1Z"/></symbol>
+    <symbol id="hi-icon-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+    <symbol id="hi-icon-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 6-8 11-8 11S4 16 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></symbol>
+    <symbol id="hi-icon-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="hi-icon-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+    <symbol id="hi-icon-info" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/></symbol>
+    <symbol id="hi-icon-alert" viewBox="0 0 24 24"><path d="M12 4 3 20h18Z"/><path d="M12 9v5M12 17h.01"/></symbol>
+    <symbol id="hi-icon-upload" viewBox="0 0 24 24"><path d="M12 16V4M7 9l5-5 5 5M5 20h14"/></symbol>
+    <symbol id="hi-icon-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="hi-icon-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
+    <symbol id="hi-icon-facebook" viewBox="0 0 24 24"><path d="M14 8h3V4h-3c-3 0-5 2-5 5v3H6v4h3v5h4v-5h3l1-4h-4V9c0-.7.3-1 1-1Z"/></symbol>
+    <symbol id="hi-icon-copy" viewBox="0 0 24 24"><rect x="8" y="8" width="11" height="11" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/></symbol>
+    <symbol id="hi-icon-loader" viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 1-9 9"/></symbol>
+  </svg>
+
   <a class="ds-skip" href="#main">Skip to design system</a>
 
   <header class="ds-topbar" aria-label="Design system header">
@@ -214,36 +245,36 @@
       <div class="ds-wrap">
         <header class="ds-section-head"><p class="ds-section-number">06 / Components</p><h2 id="icons-title">Icon <span>System</span></h2><p>A curated local SVG sprite replaces repeated or inconsistent icon markup. Functional icons share a 24px grid and 2px stroke.</p></header>
         <div class="ds-icon-spec">
-          <div><svg aria-hidden="true" class="hi-icon hi-icon--32"><use href="_foundation/hi-icons.svg#hi-icon-calendar"></use></svg><b>24×24 grid</b><span>2px round stroke</span></div>
-          <div class="ds-icon-sizes"><svg aria-hidden="true" class="hi-icon hi-icon--16"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><svg aria-hidden="true" class="hi-icon hi-icon--20"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><svg aria-hidden="true" class="hi-icon hi-icon--32"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><b>16 / 20 / 24 / 32</b><span>44px minimum target</span></div>
+          <div><svg aria-hidden="true" class="hi-icon hi-icon--32"><use href="#hi-icon-calendar"></use></svg><b>24×24 grid</b><span>2px round stroke</span></div>
+          <div class="ds-icon-sizes"><svg aria-hidden="true" class="hi-icon hi-icon--16"><use href="#hi-icon-check"></use></svg><svg aria-hidden="true" class="hi-icon hi-icon--20"><use href="#hi-icon-check"></use></svg><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-check"></use></svg><svg aria-hidden="true" class="hi-icon hi-icon--32"><use href="#hi-icon-check"></use></svg><b>16 / 20 / 24 / 32</b><span>44px minimum target</span></div>
         </div>
         <div class="ds-icon-grid">
-          <div data-icon="menu"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-menu"></use></svg><span>menu</span></div>
-          <div data-icon="close"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-close"></use></svg><span>close</span></div>
-          <div data-icon="chevron-down"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-chevron-down"></use></svg><span>chevron</span></div>
-          <div data-icon="arrow-right"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg><span>arrow</span></div>
-          <div data-icon="external-link"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-external-link"></use></svg><span>external</span></div>
-          <div data-icon="search"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-search"></use></svg><span>search</span></div>
-          <div data-icon="filter"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-filter"></use></svg><span>filter</span></div>
-          <div data-icon="plus"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-plus"></use></svg><span>plus</span></div>
-          <div data-icon="minus"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-minus"></use></svg><span>minus</span></div>
-          <div data-icon="play"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-play"></use></svg><span>play</span></div>
-          <div data-icon="expand"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-expand"></use></svg><span>expand</span></div>
-          <div data-icon="calendar"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-calendar"></use></svg><span>calendar</span></div>
-          <div data-icon="phone"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-phone"></use></svg><span>phone</span></div>
-          <div data-icon="mail"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-mail"></use></svg><span>mail</span></div>
-          <div data-icon="map-pin"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-map-pin"></use></svg><span>location</span></div>
-          <div data-icon="clock"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-clock"></use></svg><span>clock</span></div>
-          <div data-icon="check"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><span>check</span></div>
-          <div data-icon="info"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-info"></use></svg><span>info</span></div>
-          <div data-icon="alert"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-alert"></use></svg><span>alert</span></div>
-          <div data-icon="upload"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-upload"></use></svg><span>upload</span></div>
-          <div data-icon="user"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-user"></use></svg><span>user</span></div>
-          <div data-icon="instagram"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-instagram"></use></svg><span>instagram</span></div>
-          <div data-icon="facebook"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-facebook"></use></svg><span>facebook</span></div>
-          <div data-icon="loader"><svg aria-hidden="true" class="hi-icon hi-icon--24 hi-icon--spin"><use href="_foundation/hi-icons.svg#hi-icon-loader"></use></svg><span>loader</span></div>
+          <div data-icon="menu"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-menu"></use></svg><span>menu</span></div>
+          <div data-icon="close"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-close"></use></svg><span>close</span></div>
+          <div data-icon="chevron-down"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-chevron-down"></use></svg><span>chevron</span></div>
+          <div data-icon="arrow-right"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-arrow-right"></use></svg><span>arrow</span></div>
+          <div data-icon="external-link"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-external-link"></use></svg><span>external</span></div>
+          <div data-icon="search"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-search"></use></svg><span>search</span></div>
+          <div data-icon="filter"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-filter"></use></svg><span>filter</span></div>
+          <div data-icon="plus"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-plus"></use></svg><span>plus</span></div>
+          <div data-icon="minus"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-minus"></use></svg><span>minus</span></div>
+          <div data-icon="play"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-play"></use></svg><span>play</span></div>
+          <div data-icon="expand"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-expand"></use></svg><span>expand</span></div>
+          <div data-icon="calendar"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-calendar"></use></svg><span>calendar</span></div>
+          <div data-icon="phone"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-phone"></use></svg><span>phone</span></div>
+          <div data-icon="mail"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-mail"></use></svg><span>mail</span></div>
+          <div data-icon="map-pin"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-map-pin"></use></svg><span>location</span></div>
+          <div data-icon="clock"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-clock"></use></svg><span>clock</span></div>
+          <div data-icon="check"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-check"></use></svg><span>check</span></div>
+          <div data-icon="info"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-info"></use></svg><span>info</span></div>
+          <div data-icon="alert"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-alert"></use></svg><span>alert</span></div>
+          <div data-icon="upload"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-upload"></use></svg><span>upload</span></div>
+          <div data-icon="user"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-user"></use></svg><span>user</span></div>
+          <div data-icon="instagram"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-instagram"></use></svg><span>instagram</span></div>
+          <div data-icon="facebook"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="#hi-icon-facebook"></use></svg><span>facebook</span></div>
+          <div data-icon="loader"><svg aria-hidden="true" class="hi-icon hi-icon--24 hi-icon--spin"><use href="#hi-icon-loader"></use></svg><span>loader</span></div>
         </div>
-        <div class="ds-code-block"><code>&lt;svg class="hi-icon hi-icon--20" aria-hidden="true"&gt;&lt;use href="_foundation/hi-icons.svg#hi-icon-calendar"&gt;&lt;/use&gt;&lt;/svg&gt;</code><button type="button" data-copy="&lt;svg class=&quot;hi-icon hi-icon--20&quot; aria-hidden=&quot;true&quot;&gt;&lt;use href=&quot;_foundation/hi-icons.svg#hi-icon-calendar&quot;&gt;&lt;/use&gt;&lt;/svg&gt;" aria-label="Copy icon code"><svg class="hi-icon hi-icon--16" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-copy"></use></svg><span>Copy</span></button></div>
+        <div class="ds-code-block"><code>&lt;svg class="hi-icon hi-icon--20" aria-hidden="true"&gt;&lt;use href="_foundation/hi-icons.svg#hi-icon-calendar"&gt;&lt;/use&gt;&lt;/svg&gt;</code><button type="button" data-copy="&lt;svg class=&quot;hi-icon hi-icon--20&quot; aria-hidden=&quot;true&quot;&gt;&lt;use href=&quot;_foundation/hi-icons.svg#hi-icon-calendar&quot;&gt;&lt;/use&gt;&lt;/svg&gt;" aria-label="Copy icon code"><svg class="hi-icon hi-icon--16" aria-hidden="true"><use href="#hi-icon-copy"></use></svg><span>Copy</span></button></div>
       </div>
     </section>
 
@@ -271,7 +302,7 @@
           <div class="ds-state-row"><b>Navigation</b><button class="ds-btn ds-btn--ghost">View artists</button><button class="ds-btn ds-btn--ghost is-hover">View artists</button><button class="ds-btn ds-btn--ghost is-focus">View artists</button><button class="ds-btn ds-btn--ghost" disabled>View artists</button></div>
         </div>
         <aside class="ds-rule"><b>Contrast correction</b><p>Use black text on `--orange` for small button labels. The existing production `.btn-primary` still uses white; migrate that shared component in a separate reviewed change.</p></aside>
-        <div class="ds-inline-examples"><a class="ds-text-link" href="#buttons">Explore all tattoo styles <svg class="hi-icon hi-icon--16" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></a><button class="hi-icon-button" type="button" aria-label="Open menu"><svg class="hi-icon hi-icon--24" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-menu"></use></svg></button><button class="hi-icon-button" type="button" disabled aria-label="Unavailable action"><svg class="hi-icon hi-icon--24" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-plus"></use></svg></button></div>
+        <div class="ds-inline-examples"><a class="ds-text-link" href="#buttons">Explore all tattoo styles <svg class="hi-icon hi-icon--16" aria-hidden="true"><use href="#hi-icon-arrow-right"></use></svg></a><button class="hi-icon-button" type="button" aria-label="Open menu"><svg class="hi-icon hi-icon--24" aria-hidden="true"><use href="#hi-icon-menu"></use></svg></button><button class="hi-icon-button" type="button" disabled aria-label="Unavailable action"><svg class="hi-icon hi-icon--24" aria-hidden="true"><use href="#hi-icon-plus"></use></svg></button></div>
       </div>
     </section>
 
@@ -282,7 +313,7 @@
           <label class="ds-field"><span>Full name <b>*</b></span><input type="text" placeholder="Your name"></label>
           <label class="ds-field"><span>Service</span><select><option>Choose a service</option><option>Custom tattoo</option><option>Piercing</option><option>Tattoo removal</option></select></label>
           <label class="ds-field ds-field--focus"><span>Email <b>*</b></span><input type="email" value="hello@example.com"></label>
-          <label class="ds-field ds-field--error"><span>Phone number <b>*</b></span><input type="tel" value="210"><small><svg class="hi-icon hi-icon--16" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-alert"></use></svg>Enter a complete phone number.</small></label>
+          <label class="ds-field ds-field--error"><span>Phone number <b>*</b></span><input type="tel" value="210"><small><svg class="hi-icon hi-icon--16" aria-hidden="true"><use href="#hi-icon-alert"></use></svg>Enter a complete phone number.</small></label>
           <label class="ds-field ds-field--wide"><span>Tell us about your idea</span><textarea placeholder="Placement, size, style and reference notes"></textarea></label>
           <fieldset class="ds-checks"><legend>Options</legend><label><input type="checkbox" checked> Email confirmation</label><label><input type="checkbox"> SMS reminder</label><label><input type="radio" name="contact" checked> Call me</label><label><input type="radio" name="contact"> Email me</label></fieldset>
         </form>
@@ -293,7 +324,7 @@
       <div class="ds-wrap">
         <header class="ds-section-head"><p class="ds-section-number">10 / Components</p><h2 id="navigation-title">Navigation <span>Patterns</span></h2><p>Core destinations use real links. Filters and tabs control content state without pretending to be page navigation.</p></header>
         <div class="ds-nav-stack">
-          <nav class="ds-demo-nav" aria-label="Navigation specimen"><a href="#navigation" class="is-active">Tattoo</a><a href="#navigation">Piercing</a><a href="#navigation">Removal</a><button class="hi-icon-button" type="button" aria-label="Search"><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-search"></use></svg></button></nav>
+          <nav class="ds-demo-nav" aria-label="Navigation specimen"><a href="#navigation" class="is-active">Tattoo</a><a href="#navigation">Piercing</a><a href="#navigation">Removal</a><button class="hi-icon-button" type="button" aria-label="Search"><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="#hi-icon-search"></use></svg></button></nav>
           <div class="ds-tabs" role="tablist" aria-label="Service categories"><button role="tab" aria-selected="true">Choosing a shop</button><button role="tab" aria-selected="false">Your tattoo</button><button role="tab" aria-selected="false">Aftercare</button></div>
           <nav class="ds-pagination" aria-label="Pagination"><a href="#navigation" aria-label="Previous page">‹</a><a href="#navigation" aria-current="page">1</a><a href="#navigation">2</a><a href="#navigation">3</a><span>…</span><a href="#navigation">6</a><a href="#navigation" aria-label="Next page">›</a></nav>
         </div>
@@ -304,13 +335,13 @@
       <div class="ds-wrap">
         <header class="ds-section-head"><p class="ds-section-number">11 / Components</p><h2 id="content-title">Content <span>Components</span></h2><p>Cards, status labels and accordions support content hierarchy without turning every section into a uniform card grid.</p></header>
         <div class="ds-content-grid">
-          <article class="ds-card"><span class="ds-chip">Award winning</span><h3>Black &amp; Grey</h3><p>High-contrast realism, smooth transitions and custom composition for each placement.</p><a class="ds-text-link" href="#content-components">View the style <svg class="hi-icon hi-icon--16" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></a></article>
+          <article class="ds-card"><span class="ds-chip">Award winning</span><h3>Black &amp; Grey</h3><p>High-contrast realism, smooth transitions and custom composition for each placement.</p><a class="ds-text-link" href="#content-components">View the style <svg class="hi-icon hi-icon--16" aria-hidden="true"><use href="#hi-icon-arrow-right"></use></svg></a></article>
           <article class="ds-card ds-card--editorial"><small>Artist profile</small><h3>Minh Pham</h3><dl><div><dt>Focus</dt><dd>Black &amp; grey realism</dd></div><div><dt>Signal</dt><dd>25+ convention awards</dd></div></dl></article>
-          <div class="ds-tooltip-demo"><button type="button" aria-describedby="demoTip"><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-info"></use></svg>Trust signal</button><p role="tooltip" id="demoTip">Use a complete sentence that explains the fact behind the label.</p></div>
+          <div class="ds-tooltip-demo"><button type="button" aria-describedby="demoTip"><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="#hi-icon-info"></use></svg>Trust signal</button><p role="tooltip" id="demoTip">Use a complete sentence that explains the fact behind the label.</p></div>
         </div>
         <div class="ds-accordion">
-          <details open><summary>How do you choose the right tattoo artist?<svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-chevron-down"></use></svg></summary><p>Match the artist’s consistent portfolio and specialist style to the work you want, then use a consultation to confirm placement and scope.</p></details>
-          <details><summary>What should a component include?<svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-chevron-down"></use></svg></summary><p>Semantic markup, all interaction states, accessible names and responsive behavior.</p></details>
+          <details open><summary>How do you choose the right tattoo artist?<svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="#hi-icon-chevron-down"></use></svg></summary><p>Match the artist’s consistent portfolio and specialist style to the work you want, then use a consultation to confirm placement and scope.</p></details>
+          <details><summary>What should a component include?<svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="#hi-icon-chevron-down"></use></svg></summary><p>Semantic markup, all interaction states, accessible names and responsive behavior.</p></details>
         </div>
       </div>
     </section>
@@ -319,21 +350,21 @@
       <img src="_hero-assets/color-blur.webp" alt="" aria-hidden="true">
       <div class="ds-wrap ds-conversion__inner">
         <div><p class="ds-section-number">12 / Conversion</p><h2 id="conversion-title">Ready for your<br><span>next piece?</span></h2><p>Use one primary conversion action per section, with the phone link as a lower-emphasis alternative.</p></div>
-        <div class="ds-conversion__actions"><a class="ds-btn ds-btn--primary" href="#conversion"><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-calendar"></use></svg>Book now</a><a class="ds-call-link" href="tel:+12109979737"><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-phone"></use></svg>Call (210) 997-9737</a></div>
+        <div class="ds-conversion__actions"><a class="ds-btn ds-btn--primary" href="#conversion"><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="#hi-icon-calendar"></use></svg>Book now</a><a class="ds-call-link" href="tel:+12109979737"><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="#hi-icon-phone"></use></svg>Call (210) 997-9737</a></div>
       </div>
-      <div class="ds-mobile-bar"><a href="tel:+12109979737" aria-label="Call Hyper Inkers"><svg class="hi-icon hi-icon--24" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-phone"></use></svg></a><a href="#conversion"><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-calendar"></use></svg><span><b>Book now</b><small>Free consultation</small></span></a><a href="#conversion" aria-label="Open Instagram"><svg class="hi-icon hi-icon--24" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-instagram"></use></svg></a></div>
+      <div class="ds-mobile-bar"><a href="tel:+12109979737" aria-label="Call Hyper Inkers"><svg class="hi-icon hi-icon--24" aria-hidden="true"><use href="#hi-icon-phone"></use></svg></a><a href="#conversion"><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="#hi-icon-calendar"></use></svg><span><b>Book now</b><small>Free consultation</small></span></a><a href="#conversion" aria-label="Open Instagram"><svg class="hi-icon hi-icon--24" aria-hidden="true"><use href="#hi-icon-instagram"></use></svg></a></div>
     </section>
 
     <section class="ds-doc-section" id="accessibility" aria-labelledby="accessibility-title">
       <div class="ds-wrap">
         <header class="ds-section-head"><p class="ds-section-number">13 / Quality</p><h2 id="accessibility-title">Accessibility <span>Baseline</span></h2><p>Accessibility is part of the component contract, not a final polish pass.</p></header>
         <ul class="ds-checklist">
-          <li><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><div><b>Keyboard first</b><span>Every action is reachable and has a visible focus indicator.</span></div></li>
-          <li><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><div><b>Accessible names</b><span>Icon-only buttons use aria-label; decorative SVGs are hidden.</span></div></li>
-          <li><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><div><b>Readable contrast</b><span>Body copy uses approved white/muted pairs; orange text is restricted.</span></div></li>
-          <li><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><div><b>44px targets</b><span>Touch controls remain usable even when the visible icon is 16–24px.</span></div></li>
-          <li><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><div><b>Reduced motion</b><span>Non-essential animations stop when the user requests less motion.</span></div></li>
-          <li><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><div><b>Meaning beyond color</b><span>Error and success states include icons or text, not color alone.</span></div></li>
+          <li><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="#hi-icon-check"></use></svg><div><b>Keyboard first</b><span>Every action is reachable and has a visible focus indicator.</span></div></li>
+          <li><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="#hi-icon-check"></use></svg><div><b>Accessible names</b><span>Icon-only buttons use aria-label; decorative SVGs are hidden.</span></div></li>
+          <li><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="#hi-icon-check"></use></svg><div><b>Readable contrast</b><span>Body copy uses approved white/muted pairs; orange text is restricted.</span></div></li>
+          <li><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="#hi-icon-check"></use></svg><div><b>44px targets</b><span>Touch controls remain usable even when the visible icon is 16–24px.</span></div></li>
+          <li><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="#hi-icon-check"></use></svg><div><b>Reduced motion</b><span>Non-essential animations stop when the user requests less motion.</span></div></li>
+          <li><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="#hi-icon-check"></use></svg><div><b>Meaning beyond color</b><span>Error and success states include icons or text, not color alone.</span></div></li>
         </ul>
       </div>
     </section>
@@ -346,7 +377,7 @@
           <article><span>02</span><h3>Compose by role</h3><p>Choose color and component variants from intent: conversion, navigation, content or state.</p></article>
           <article><span>03</span><h3>Verify all widths</h3><p>Check 1440, 430 and 360px, keyboard focus, assets, console errors and horizontal overflow.</p></article>
         </div>
-        <div class="ds-code-block ds-code-block--stack"><code>&lt;link rel="stylesheet" href="_foundation/hi-base.css"&gt;<br>&lt;link rel="stylesheet" href="_foundation/hi-icon.css"&gt;<br>&lt;link rel="stylesheet" href="_foundation/hi-components.css"&gt;<br>&lt;link rel="stylesheet" href="_foundation/hi-ds.css"&gt;</code><button type="button" data-copy="&lt;link rel=&quot;stylesheet&quot; href=&quot;_foundation/hi-base.css&quot;&gt;&#10;&lt;link rel=&quot;stylesheet&quot; href=&quot;_foundation/hi-icon.css&quot;&gt;&#10;&lt;link rel=&quot;stylesheet&quot; href=&quot;_foundation/hi-components.css&quot;&gt;&#10;&lt;link rel=&quot;stylesheet&quot; href=&quot;_foundation/hi-ds.css&quot;&gt;" aria-label="Copy stylesheet order"><svg class="hi-icon hi-icon--16" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-copy"></use></svg><span>Copy</span></button></div>
+        <div class="ds-code-block ds-code-block--stack"><code>&lt;link rel="stylesheet" href="_foundation/hi-base.css"&gt;<br>&lt;link rel="stylesheet" href="_foundation/hi-icon.css"&gt;<br>&lt;link rel="stylesheet" href="_foundation/hi-components.css"&gt;<br>&lt;link rel="stylesheet" href="_foundation/hi-ds.css"&gt;</code><button type="button" data-copy="&lt;link rel=&quot;stylesheet&quot; href=&quot;_foundation/hi-base.css&quot;&gt;&#10;&lt;link rel=&quot;stylesheet&quot; href=&quot;_foundation/hi-icon.css&quot;&gt;&#10;&lt;link rel=&quot;stylesheet&quot; href=&quot;_foundation/hi-components.css&quot;&gt;&#10;&lt;link rel=&quot;stylesheet&quot; href=&quot;_foundation/hi-ds.css&quot;&gt;" aria-label="Copy stylesheet order"><svg class="hi-icon hi-icon--16" aria-hidden="true"><use href="#hi-icon-copy"></use></svg><span>Copy</span></button></div>
         <div class="ds-file-map"><a href="_foundation/hi-base.css"><b>hi-base.css</b><span>Brand and base tokens</span></a><a href="_foundation/hi-ds.css"><b>hi-ds.css</b><span>Type, spacing and CTA scale</span></a><a href="_foundation/hi-icons.svg"><b>hi-icons.svg</b><span>Curated local icon sprite</span></a><a href="_design-assets/icons/README.md"><b>Icon README</b><span>Usage and accessibility</span></a></div>
       </div>
     </section>

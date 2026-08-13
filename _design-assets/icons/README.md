@@ -2,6 +2,8 @@
 
 Functional icons live in `/_foundation/hi-icons.svg`. Their shared geometry and interaction rules live in `/_foundation/hi-icon.css`.
 
+The design-system board also includes the same symbols inline. This keeps its previews visible when the HTML file is opened directly or imported into a design tool, where external SVG fragment references may be blocked. Production pages served over HTTP should use the canonical external sprite shown below.
+
 ## Usage
 
 ```html
