@@ -36,7 +36,17 @@ For an icon-only button, the button needs an accessible name:
 
 ### Functional
 
-`menu`, `close`, `chevron-down`, `arrow-right`, `external-link`, `search`, `filter`, `plus`, `minus`, `play`, `expand`, `calendar`, `phone`, `mail`, `map-pin`, `clock`, `check`, `info`, `alert`, `upload`, `user`, `instagram`, `facebook`, `copy`, `loader`.
+`menu`, `close`, `chevron-left`, `chevron-right`, `chevron-up`, `chevron-down`, `arrow-left`, `arrow-right`, `arrow-up`, `arrow-down`, `external-link`, `search`, `filter`, `plus`, `minus`, `play`, `expand`, `calendar`, `phone`, `mail`, `map-pin`, `clock`, `check`, `info`, `alert`, `upload`, `user`, `instagram`, `facebook`, `copy`, `loader`.
+
+### Arrow roles
+
+| Family | Use for |
+|---|---|
+| `arrow-*` | CTA, text link, directional action and back-to-top |
+| `chevron-*` | Menu disclosure, accordion state, carousel and lightbox navigation |
+| `external-link` | A card or control that opens a larger detail/evidence view |
+
+Do not substitute Unicode arrows or page-specific path geometry for these roles.
 
 ### Hub proof and stats
 

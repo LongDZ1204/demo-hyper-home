@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="fonts-hyperinkers-2026-07-04/hyperinkers-fonts.css">
 <link rel="stylesheet" href="_foundation/hi-foundation.css">
 <link rel="stylesheet" href="_foundation/hi-base.css">
+<link rel="stylesheet" href="_foundation/hi-icon.css">
 <link rel="stylesheet" href="_foundation/hi-chrome.css">
 <link rel="stylesheet" href="_foundation/components/booking-section.css">
 <link rel="stylesheet" href="_foundation/components/booking-form.css">
@@ -28,7 +29,7 @@
 <!-- ======================= PROMO BAR ======================= -->
 <div class="promobar" id="promobar">
   <div class="wrap">
-    <a class="promo-msg" href="deals.html">See Hyper Inkers deals for you <span class="arw">→</span></a>
+    <a class="promo-msg" href="deals.html">See Hyper Inkers deals for you <svg class="arw hi-icon" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></a>
     <button class="promo-x" id="promoX" aria-label="Dismiss promotion">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
     </button>
@@ -48,13 +49,13 @@
       <ul>
         <li class="has-drop">
           <a class="navlink" href="soon.html" aria-haspopup="true">Services
-            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            <svg class="caret hi-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-chevron-down"></use></svg>
           </a>
           <div class="drop menu" role="menu">
             <ul class="lvl1">
               <li class="has-sub">
                 <a href="tattoo.html">Custom Tattoo
-                  <svg class="caret-r" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                  <svg class="caret-r hi-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-chevron-right"></use></svg>
                 </a>
                 <div class="fly" role="menu">
                   <a href="black-and-grey.html">Black &amp; Grey</a>
@@ -67,7 +68,7 @@
               <li><a href="tattoo-cover-up-san-antonio.html">Cover-Up Tattoo</a></li>
               <li class="has-sub">
                 <a href="piercing.html">Piercing
-                  <svg class="caret-r" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+                  <svg class="caret-r hi-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-chevron-right"></use></svg>
                 </a>
                 <div class="fly" role="menu">
                   <a href="ear-piercing-san-antonio.html">Ear Piercing</a>
@@ -83,7 +84,7 @@
 
         <li class="has-drop">
           <a class="navlink" href="portfolio.html" aria-haspopup="true">Gallery
-            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            <svg class="caret hi-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-chevron-down"></use></svg>
           </a>
           <div class="drop menu simple" role="menu">
             <ul class="lvl1">
@@ -98,7 +99,7 @@
 
         <li class="has-drop">
           <a class="navlink" href="about.html" aria-haspopup="true">About Us
-            <svg class="caret" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            <svg class="caret hi-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-chevron-down"></use></svg>
           </a>
           <div class="drop menu simple" role="menu">
             <ul class="lvl1">
@@ -215,7 +216,7 @@
     <div class="section-head center">
       <h2>The <span class="o">Hyper Inkers Story</span> Since 2023</h2>
       <input type="checkbox" id="storyIntro" class="lead-cb" aria-label="Expand the story introduction">
-      <p class="section-intro has-clamp"><span class="lead-txt">Hyper Inkers opened in San Antonio in July 2023, started by working artists who wanted a shop of their own, with a simple idea: treat every tattoo like a masterpiece, and every client like family.</span><label for="storyIntro" class="lead-more" aria-label="Expand or collapse the story introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
+      <p class="section-intro has-clamp"><span class="lead-txt">Hyper Inkers opened in San Antonio in July 2023, started by working artists who wanted a shop of their own, with a simple idea: treat every tattoo like a masterpiece, and every client like family.</span><label for="storyIntro" class="lead-more" aria-label="Expand or collapse the story introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-chevron-down"></use></svg></label></p>
       <noscript><style>.lead-txt{-webkit-line-clamp:unset;line-clamp:unset}.lead-more{display:none}</style></noscript>
     </div>
 
@@ -249,8 +250,8 @@
 
     <div class="msl-foot tl-foot">
       <div class="msl-nav">
-        <button type="button" class="msl-navbtn prev" aria-label="Previous milestones"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <button type="button" class="msl-navbtn next" aria-label="More milestones"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+        <button type="button" class="msl-navbtn prev" aria-label="Previous milestones"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-chevron-left"></use></svg></button>
+        <button type="button" class="msl-navbtn next" aria-label="More milestones"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-chevron-right"></use></svg></button>
       </div>
       <div class="msl-track" aria-hidden="true"><span class="msl-thumb"></span></div>
     </div>
@@ -271,7 +272,7 @@
         <img src="https://hyperinkers.com/wp-content/uploads/2026/02/minh-pham-san-antonio-tattoo-artist-768x1075.jpg" alt="Minh Pham, founder of Hyper Inkers">
       </figure>
       <!-- quote is the LAST child: mobile stacks text→image→quote; desktop pins it under the text (left col) -->
-      <a class="sec-link sec-link--inline" href="artist-detail.html">More about Minh <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+      <a class="sec-link sec-link--inline" href="artist-detail.html">More about Minh <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></a>
       <p class="au-quote">If it's visually striking, it captivates me.</p>
     </div>
   </div>
@@ -283,8 +284,8 @@
     <div class="section-head section-head--editorial section-head--editorial-centered">
       <h2>The <span class="o">Tattoo Artists</span> Behind Hyper Inkers</h2>
       <input type="checkbox" id="artiIntro" class="lead-cb" aria-label="Expand the artists introduction">
-      <p class="arti-intro has-clamp"><span class="lead-txt">Our artists exemplify professionalism from start to finish. They prioritize punctuality, transparent pricing, and a positive, respectful experience for every client. Explore our artists' portfolios to see the range of their skills and styles. Each artist has a diverse body of work, showing versatility and a commitment to excellence.</span><label for="artiIntro" class="lead-more" aria-label="Expand or collapse the artists introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
-      <a class="sec-link sec-link--head" href="artists.html">Meet full Hyper Inkers team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+      <p class="arti-intro has-clamp"><span class="lead-txt">Our artists exemplify professionalism from start to finish. They prioritize punctuality, transparent pricing, and a positive, respectful experience for every client. Explore our artists' portfolios to see the range of their skills and styles. Each artist has a diverse body of work, showing versatility and a commitment to excellence.</span><label for="artiIntro" class="lead-more" aria-label="Expand or collapse the artists introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-chevron-down"></use></svg></label></p>
+      <a class="sec-link sec-link--head" href="artists.html">Meet full Hyper Inkers team <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></a>
       <noscript><style>.lead-txt{-webkit-line-clamp:unset;line-clamp:unset}.lead-more{display:none}</style></noscript>
     </div>
 
@@ -298,7 +299,7 @@
           <span class="art-scrim" aria-hidden="true"></span>
           <div class="art-panel">
             <p class="art-bio">Minh Pham founded Hyper Inkers and leads its black and grey realism work. 25+ convention awards across 8 countries, including 10 Best of Show titles. Best of the Best, Sinners Tattoo Expo Dallas 2025.</p>
-            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></span>
           </div>
         </div>
         <div class="art-cap">
@@ -315,7 +316,7 @@
           <span class="art-scrim" aria-hidden="true"></span>
           <div class="art-panel">
             <p class="art-bio">Tai Hoa tattoos black and grey at Hyper Inkers. 1st Place Medium Black and Grey, San Antonio Tattoo Arts Festival 2025. Studied Art at Ly Tu Trong High School in Saigon.</p>
-            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></span>
           </div>
         </div>
         <div class="art-cap">
@@ -332,7 +333,7 @@
           <span class="art-scrim" aria-hidden="true"></span>
           <div class="art-panel">
             <p class="art-bio">Mancha tattoos black and grey and blackwork at Hyper Inkers. 1st Place Black and Grey, Managua Tattoo Convention 2023. Best of Day, Edge of Texas Tattoo Expo 2021.</p>
-            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></span>
           </div>
         </div>
         <div class="art-cap">
@@ -349,7 +350,7 @@
           <span class="art-scrim" aria-hidden="true"></span>
           <div class="art-panel">
             <p class="art-bio">Navei Tran tattoos semi-realism and fine line at Hyper Inkers. 3rd Place Small Black and Grey, Houston Tattoo Arts Festival 2025. Specialized tattoo training in Vietnam.</p>
-            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></span>
           </div>
         </div>
         <div class="art-cap">
@@ -366,7 +367,7 @@
           <span class="art-scrim" aria-hidden="true"></span>
           <div class="art-panel">
             <p class="art-bio">Z tattoos black and grey anime and dark gothic at Hyper Inkers. The only artist on the team working cybersigilism.</p>
-            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></span>
           </div>
         </div>
         <div class="art-cap">
@@ -383,7 +384,7 @@
           <span class="art-scrim" aria-hidden="true"></span>
           <div class="art-panel">
             <p class="art-bio">Genesis Bisani tattoos fine line at Hyper Inkers. Art and Education, Texas Woman's University. Bloodborne Pathogens certified.</p>
-            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></span>
           </div>
         </div>
         <div class="art-cap">
@@ -400,7 +401,7 @@
           <span class="art-scrim" aria-hidden="true"></span>
           <div class="art-panel">
             <p class="art-bio">Nicole leads the piercing team at Hyper Inkers and tattoos fine line and blackwork. Trains the studio's piercers. Works fine line in red pigment as well as black.</p>
-            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></span>
           </div>
         </div>
         <div class="art-cap">
@@ -417,7 +418,7 @@
           <span class="art-scrim" aria-hidden="true"></span>
           <div class="art-panel">
             <p class="art-bio">Zoe Meints pierces full-time at Hyper Inkers and marks from each client's anatomy rather than a standard placement. CPR and Bloodborne Pathogens certified.</p>
-            <span class="art-view">See piercing <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="art-view">See piercing <svg viewBox="0 0 24 24" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></span>
           </div>
         </div>
         <div class="art-cap">
@@ -430,8 +431,8 @@
     </div>
     <div class="msl-foot">
       <div class="msl-nav">
-        <button type="button" class="msl-navbtn prev" aria-label="Previous artists"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <button type="button" class="msl-navbtn next" aria-label="More artists"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+        <button type="button" class="msl-navbtn prev" aria-label="Previous artists"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-chevron-left"></use></svg></button>
+        <button type="button" class="msl-navbtn next" aria-label="More artists"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-chevron-right"></use></svg></button>
       </div>
       <div class="msl-track" aria-hidden="true"><span class="msl-thumb"></span></div>
     </div>
@@ -446,7 +447,7 @@
     <div class="section-head center">
       <h2><span class="o">Hyper Inkers Services</span> at San Antonio Studio</h2>
       <input type="checkbox" id="svcIntro" class="lead-cb" aria-label="Expand the services introduction">
-      <p class="svc-intro has-clamp"><span class="lead-txt">We offer a full spectrum of tattoo, piercing, and tattoo removal services, from custom designs and portraits to cover-ups and laser tattoo removal. Our internationally acclaimed artists blend traditional and modern styles to craft masterful designs, and every tattoo is treated as a one-of-a-kind piece born from passion and dedication.</span><label for="svcIntro" class="lead-more" aria-label="Expand or collapse the services introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
+      <p class="svc-intro has-clamp"><span class="lead-txt">We offer a full spectrum of tattoo, piercing, and tattoo removal services, from custom designs and portraits to cover-ups and laser tattoo removal. Our internationally acclaimed artists blend traditional and modern styles to craft masterful designs, and every tattoo is treated as a one-of-a-kind piece born from passion and dedication.</span><label for="svcIntro" class="lead-more" aria-label="Expand or collapse the services introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-chevron-down"></use></svg></label></p>
       <noscript><style>.lead-txt{-webkit-line-clamp:unset;line-clamp:unset}.lead-more{display:none}</style></noscript>
     </div>
 
@@ -461,7 +462,7 @@
           <p class="svc-def">Custom tattoos at Hyper Inkers turn your idea into an original design, drawn from scratch for your body and placement.</p>
           <div class="svc-more">
             <p class="svc-more-txt">Award-winning artists work in realism, black and grey, color, fine line, Japanese, anime, and portrait styles.</p>
-            <span class="svc-explore">Custom Tattoos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="svc-explore">Custom Tattoos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></span>
           </div>
         </div>
         <a class="svc-link" href="/tattoo" aria-label="Explore custom tattoos in San Antonio"></a>
@@ -475,7 +476,7 @@
           <p class="svc-def">Cover-up tattoos at Hyper Inkers turn old or unwanted ink into new artwork you can feel good wearing.</p>
           <div class="svc-more">
             <p class="svc-more-txt">Your artist starts with a free design consult and can work over many existing tattoos, in black and grey or full color.</p>
-            <span class="svc-explore">Cover-Up Tattoos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="svc-explore">Cover-Up Tattoos <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></span>
           </div>
         </div>
         <a class="svc-link" href="/tattoo-cover-up-san-antonio" aria-label="Explore tattoo cover-ups in San Antonio"></a>
@@ -489,7 +490,7 @@
           <p class="svc-def">Piercings at Hyper Inkers give you a clean, precise placement from a trained piercer, with a fresh needle and never a gun.</p>
           <div class="svc-more">
             <p class="svc-more-txt">Piercings run walk-in only, covering ear, nose, navel, and more, with jewelry options and aftercare guidance.</p>
-            <span class="svc-explore">Piercing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="svc-explore">Piercing <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></span>
           </div>
         </div>
         <a class="svc-link" href="/piercing" aria-label="Explore body piercing in San Antonio"></a>
@@ -503,7 +504,7 @@
           <p class="svc-def">Tattoo removal at Hyper Inkers fades unwanted ink over a series of treatments.</p>
           <div class="svc-more">
             <p class="svc-more-txt">Certified laser specialists start with a free assessment and space sessions for steady fading across many ink colors.</p>
-            <span class="svc-explore">Tattoo Removal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+            <span class="svc-explore">Tattoo Removal <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></span>
           </div>
         </div>
         <a class="svc-link" href="/tattoo-removal" aria-label="Explore tattoo removal in San Antonio"></a>
@@ -512,8 +513,8 @@
     </div>
     <div class="msl-foot">
       <div class="msl-nav">
-        <button type="button" class="msl-navbtn prev" aria-label="Previous services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <button type="button" class="msl-navbtn next" aria-label="More services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+        <button type="button" class="msl-navbtn prev" aria-label="Previous services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-chevron-left"></use></svg></button>
+        <button type="button" class="msl-navbtn next" aria-label="More services"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-chevron-right"></use></svg></button>
       </div>
       <div class="msl-track" aria-hidden="true"><span class="msl-thumb"></span></div>
     </div>
@@ -549,8 +550,8 @@
     <header class="section-head section-head--editorial section-head--editorial-centered">
       <h2><span class="o">Awards &amp; Recognition</span></h2>
       <input type="checkbox" id="aw-intro" class="lead-cb" aria-label="Expand the awards introduction">
-      <p class="aw-intro has-clamp"><span class="lead-txt">Our artists have competed in 20+ world conventions across 10+ countries and brought home over 40 trophies. Recent highlights include Best of Show at the New York Empire State Tattoo Expo and the San Antonio Tattoo Arts Festival, plus a Best of the Best title at the Sinners Tattoo Expo in Dallas. Those wins are a solid assurance of the skill and technique behind every piece we create.</span><label for="aw-intro" class="lead-more" aria-label="Expand or collapse the awards introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
-      <a class="sec-link sec-link--head" href="awards.html">See all 40+ awards <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+      <p class="aw-intro has-clamp"><span class="lead-txt">Our artists have competed in 20+ world conventions across 10+ countries and brought home over 40 trophies. Recent highlights include Best of Show at the New York Empire State Tattoo Expo and the San Antonio Tattoo Arts Festival, plus a Best of the Best title at the Sinners Tattoo Expo in Dallas. Those wins are a solid assurance of the skill and technique behind every piece we create.</span><label for="aw-intro" class="lead-more" aria-label="Expand or collapse the awards introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-chevron-down"></use></svg></label></p>
+      <a class="sec-link sec-link--head" href="awards.html">See all 40+ awards <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></a>
       <noscript><style>.lead-txt{-webkit-line-clamp:unset;line-clamp:unset}.lead-more{display:none}</style></noscript>
     </header>
 
@@ -573,7 +574,7 @@
           <label for="awm-1" class="aw-cardlink" aria-label="Open Best of Show, San Antonio Tattoo Arts Festival 2025"></label>
           <figure class="media-card aw-vitrine" style="--ar:4/3">
             <img loading="lazy" src="_hero-assets/award-sanantonio-flagship-cut.png" alt="Best of Show trophy, San Antonio Tattoo Arts Festival 2025, won by Minh.">
-            <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+            <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-external-link"></use></svg></span>
           </figure>
           <div class="aw-body">
             <p class="aw-place">Best of Show</p>
@@ -586,7 +587,7 @@
           <label for="awm-2" class="aw-cardlink" aria-label="Open Best of the Best, Sinners Tattoo Expo 2025"></label>
           <figure class="media-card aw-vitrine" style="--ar:4/3">
             <img loading="lazy" src="_hero-assets/award-sinners-bestofbest-2025-cut.png" alt="Best of the Best trophy, Sinners Tattoo Expo 2025, won by Minh.">
-            <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+            <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-external-link"></use></svg></span>
           </figure>
           <div class="aw-body">
             <p class="aw-place">Best of the Best</p>
@@ -599,7 +600,7 @@
           <label for="awm-3" class="aw-cardlink" aria-label="Open Best of Show, Golden State Tattoo Expo 2025"></label>
           <figure class="media-card aw-vitrine" style="--ar:4/3">
             <img loading="lazy" src="_hero-assets/award-goldenstate-trophy-2025-cut.png" alt="Best of Show trophy, Golden State Tattoo Expo 2025, won by Minh.">
-            <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+            <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-external-link"></use></svg></span>
           </figure>
           <div class="aw-body">
             <p class="aw-place">Best of Show</p>
@@ -612,7 +613,7 @@
           <label for="awm-4" class="aw-cardlink" aria-label="Open Best of Show, New York Empire State Tattoo Expo 2026"></label>
           <figure class="media-card aw-vitrine" style="--ar:4/3">
             <img loading="lazy" src="_hero-assets/award-saigon-bos-2024-cut.png" alt="Best of Show trophy, New York Empire State Tattoo Expo 2026, won by Minh.">
-            <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+            <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-external-link"></use></svg></span>
           </figure>
           <div class="aw-body">
             <p class="aw-place">Best of Show</p>
@@ -625,7 +626,7 @@
           <label for="awm-5" class="aw-cardlink" aria-label="Open Best of Show, Caserta Tattoo Convention 2025"></label>
           <figure class="media-card aw-vitrine" style="--ar:4/3">
             <img loading="lazy" src="_hero-assets/award-rouen-2ndbos-2025-cut.png" alt="Best of Show trophy, Caserta Tattoo Convention 2025, won by Minh.">
-            <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+            <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-external-link"></use></svg></span>
           </figure>
           <div class="aw-body">
             <p class="aw-place">Best of Show</p>
@@ -638,7 +639,7 @@
           <label for="awm-6" class="aw-cardlink" aria-label="Open 1st Place Medium Black and Grey, San Antonio 2025"></label>
           <figure class="media-card aw-vitrine" style="--ar:4/3">
             <img loading="lazy" src="_hero-assets/award-sanantonio-bg-tai-2025-cut.png" alt="1st place Medium Black and Grey trophy, San Antonio 2025, won by Tai Hoa.">
-            <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+            <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-external-link"></use></svg></span>
           </figure>
           <div class="aw-body">
             <p class="aw-place">1st Place | Medium Black and Grey</p>
@@ -651,7 +652,7 @@
           <label for="awm-7" class="aw-cardlink" aria-label="Open 3rd Place Small Black and Grey, Houston Tattoo Arts Festival 2025"></label>
           <figure class="media-card aw-vitrine" style="--ar:4/3">
             <img loading="lazy" src="_hero-assets/award-houston-nhi-2025-cut.png" alt="3rd place Small Black and Grey trophy, Houston 2025, won by Navei.">
-            <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
+            <span class="aw-open" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-external-link"></use></svg></span>
           </figure>
           <div class="aw-body">
             <p class="aw-place">3rd Place | Small Black and Grey</p>
@@ -832,7 +833,7 @@
            alt="San Antonio Current Best of San Antonio 2026 award for Hyper Inkers, Best Piercing Studio and Tattoo Shop">
       <p class="soa-p-txt">Readers of the San Antonio Current voted Hyper Inkers Best Piercing Studio/Tattoo Shop in the 2026 Best of San Antonio awards, published July 22, 2026. Best of San Antonio is a citywide readers&rsquo; poll now in its 36th year, run across more than 150 categories, with nominations opening in February and voting closing in June. Hyper Inkers won the category in its third year open on Callaghan Road.</p>
       <a class="soa-p-link" href="https://community.sacurrent.com/best-of/2026/around-town/best-piercing-studio-tattoo-shop-39288255" target="_blank" rel="noopener">See the San Antonio Current results
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg>
       </a>
 <!-- /include comp-readers-award -->
     </div>
@@ -851,8 +852,8 @@
     <div class="section-head section-head--editorial section-head--editorial-centered">
       <h2><span class="o">Hyper Inkers Reviews</span> From Real Clients</h2>
       <input type="checkbox" id="rvIntro" class="lead-cb" aria-label="Expand the reviews introduction">
-      <p class="rvi-intro has-clamp"><span class="lead-txt">Hyper Inkers is one of the top-rated tattoo shops in San Antonio, and the same reasons repeat across 3,000+ reviews. Clients point to custom pieces that match the idea they walked in with, walk-ins that move quickly even on busy nights, and piercers who keep first-timers and kids calm. We aim to make every visit feel easy and unhurried, whether it is a first piercing or a full sleeve, so you leave with work you are proud to wear. The written reviews are below, and many clients tell their story on video.</span><label for="rvIntro" class="lead-more" aria-label="Expand or collapse the reviews introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></label></p>
-      <a class="sec-link sec-link--head" href="testimonials.html">Read all client reviews <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h15M13 6l6 6-6 6"/></svg></a>
+      <p class="rvi-intro has-clamp"><span class="lead-txt">Hyper Inkers is one of the top-rated tattoo shops in San Antonio, and the same reasons repeat across 3,000+ reviews. Clients point to custom pieces that match the idea they walked in with, walk-ins that move quickly even on busy nights, and piercers who keep first-timers and kids calm. We aim to make every visit feel easy and unhurried, whether it is a first piercing or a full sleeve, so you leave with work you are proud to wear. The written reviews are below, and many clients tell their story on video.</span><label for="rvIntro" class="lead-more" aria-label="Expand or collapse the reviews introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-chevron-down"></use></svg></label></p>
+      <a class="sec-link sec-link--head" href="testimonials.html">Read all client reviews <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></a>
       <noscript><style>.lead-txt{-webkit-line-clamp:unset;line-clamp:unset}.lead-more{display:none}</style></noscript>
     </div>
 
@@ -1337,7 +1338,7 @@ document.addEventListener('keydown',function(e){
   </svg>
 </a>
 <button type="button" class="to-top" aria-label="Back to top">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m7 14 5-5 5 5"/></svg>
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-up"></use></svg>
 </button>
 <!-- /include footer -->
 <script src="_foundation/components/booking-section.js" defer></script>
