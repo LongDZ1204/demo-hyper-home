@@ -1,64 +1,171 @@
 /* HYPER INKERS — DESIGN SYSTEM JS.
-   Hiện chỉ có 1 việc: đặt mũi tên nén ở cuối dòng 2 của mọi lead khai .lead-cb.
-   Mọi section mới chỉ cần đúng bộ class, không phải chép thêm JS. */
-/* Clamp lead DÙNG CHUNG — 1 vòng lặp cho mọi section khai .lead-cb/.lead-txt,
-   thay vì copy thêm một IIFE cho mỗi section mới. */
+   Lead previews use a real inline suffix: "..." + the shared arrow-right icon.
+   This keeps the arrow gap identical in every section instead of estimating an
+   absolute x-position from the browser's line-clamp ellipsis. */
 (function(){
-  var GAP=9;   /* khoảng cách CỐ ĐỊNH từ dấu "…" tới mũi tên — desktop và mobile dùng chung 1 số */
-  [].slice.call(document.querySelectorAll('.lead-cb')).forEach(function(cb){
-    var box=cb.nextElementSibling; if(!box||!box.classList.contains('has-clamp')) return;
-    var txt=box.querySelector('.lead-txt'), more=box.querySelector('.lead-more');
-    if(!txt||!more) return;
-    function ellipsisW(){var cs=getComputedStyle(txt),p=document.createElement('span');
-      p.textContent='…';p.style.cssText='position:absolute;visibility:hidden;white-space:pre';
-      p.style.fontFamily=cs.fontFamily;p.style.fontSize=cs.fontSize;p.style.fontWeight=cs.fontWeight;
-      box.appendChild(p);var w=p.getBoundingClientRect().width;box.removeChild(p);return w;}
-    /* Range KHÔNG nhìn thấy dấu "…" của line-clamp: rects lúc thu gọn giống hệt lúc mở.
-       Blink đặt "…" ở cuối dòng bị cắt — còn chỗ thì nối ngay sau chữ, hết chỗ thì ăn bớt chữ
-       rồi dừng đúng mép hộp. Vì vậy mép phải THẬT của "…" = min(cuối dòng + bề rộng "…", mép hộp).
-       Thiếu vế min() thì gap thật chạy 2px→18px tuỳ dòng dài ngắn (đo 10 lead, 08/2026). */
-    /* Số dòng nén đọc từ biến CSS --lead-lines, KHÔNG ghi cứng: desktop 2 · mobile 4.
-       Đọc lại mỗi lần đặt lại vị trí nên xoay ngang màn hình cũng đúng. */
-    function lines(){return parseInt(getComputedStyle(document.documentElement).getPropertyValue('--lead-lines'),10)||2;}
-    /* MỘT DÒNG = một mức `top`, không phải một ô rects.
-       Range trả một ô cho mỗi đoạn text/thẻ con, nên một dòng có <b> cắt ngang là ra
-       2-3 ô, và mép đoạn còn sinh ô rộng 0. Bản cũ đếm thẳng rects.length nên đoạn dẫn
-       vừa khít mức nén vẫn bị tính là tràn → mũi tên hiện trên đoạn không có gì để mở.
-       Đo được ở /piercing mục Guides: 4 dòng thật, rects trả 5. */
-    function docDong(){
-      var rng=document.createRange();rng.selectNodeContents(txt);
-      var rs=[].slice.call(rng.getClientRects()).filter(function(z){return z.width>1;});
-      var hang=[],chiSo={};
-      rs.forEach(function(z){var k=Math.round(z.top);
-        if(chiSo[k]===undefined){chiSo[k]=hang.length;hang.push({top:z.top,right:z.right,height:z.height});}
-        else{var h=hang[chiSo[k]];h.right=Math.max(h.right,z.right);h.height=Math.max(h.height,z.height);}});
-      return hang;
+  'use strict';
+
+  var ROOT=document.documentElement;
+
+  function leadLines(){
+    return parseInt(getComputedStyle(ROOT).getPropertyValue('--lead-lines'),10)||2;
+  }
+
+  function stripIds(node){
+    if(node.removeAttribute) node.removeAttribute('id');
+    [].slice.call(node.querySelectorAll('[id]')).forEach(function(el){el.removeAttribute('id');});
+  }
+
+  function setupLead(cb){
+    var box=cb.nextElementSibling;
+    if(!box||!box.classList.contains('has-clamp')) return;
+
+    var full=box.querySelector('.lead-txt');
+    var more=box.querySelector('.lead-more');
+    if(!full||!more) return;
+
+    var preview=document.createElement('span');
+    preview.className='lead-preview';
+    preview.setAttribute('aria-live','polite');
+
+    var suffix=document.createElement('span');
+    suffix.className='lead-suffix';
+
+    var ellipsis=document.createElement('span');
+    ellipsis.className='lead-ellipsis';
+    ellipsis.setAttribute('aria-hidden','true');
+    ellipsis.textContent='...';
+
+    suffix.appendChild(ellipsis);
+    suffix.appendChild(more);
+    box.insertBefore(preview,full);
+    box.insertBefore(suffix,full.nextSibling);
+
+    var template=full.innerHTML;
+    var rawText=full.textContent||'';
+    var lastWidth=-1;
+    var scheduled=false;
+
+    stripIds(preview);
+    more.setAttribute('aria-expanded',cb.checked?'true':'false');
+    box.classList.add('lead-ready');
+
+    function paint(count){
+      preview.innerHTML=template;
+      stripIds(preview);
+
+      var walker=document.createTreeWalker(preview,NodeFilter.SHOW_TEXT);
+      var nodes=[];
+      while(walker.nextNode()) nodes.push(walker.currentNode);
+
+      var left=count;
+      nodes.forEach(function(node){
+        var value=node.nodeValue||'';
+        if(left<=0){node.nodeValue='';return;}
+        if(value.length>left){node.nodeValue=value.slice(0,left);left=0;return;}
+        left-=value.length;
+      });
+
+      for(var i=nodes.length-1;i>=0;i--){
+        if(nodes[i].nodeValue){nodes[i].nodeValue=nodes[i].nodeValue.replace(/\s+$/,'');break;}
+      }
     }
-    function place(){var rects=docDong();
-      if(!rects.length){more.style.opacity='0';return;}
-      var N=lines(),
-          open=cb.checked,clamped=(!open&&rects.length>N),
-          line=rects[open?rects.length-1:Math.min(N-1,rects.length-1)],br=box.getBoundingClientRect(),
-          /* Đo khung SVG thay vì <use>: external sprite có thể chưa resolve xong
-             ở lần đo đầu và Chrome trả null cho box của <use>, làm toàn bộ lead
-             dừng trước khi opacity/left được cập nhật. Khung <svg> luôn tồn tại. */
-          glyph=more.querySelector('svg'),
-          inset=(glyph?glyph.getBoundingClientRect().left:more.getBoundingClientRect().left)-more.getBoundingClientRect().left,
-          tail=clamped?Math.min(line.right+ellipsisW(),txt.getBoundingClientRect().right):line.right,
-          x=Math.min(tail-br.left+GAP-inset,window.innerWidth-br.left-30),y=line.top-br.top+line.height/2;
-      more.style.left=x+'px';more.style.top=y+'px';more.style.opacity=(rects.length>N||open)?'1':'0';}
-    var raf=function(){requestAnimationFrame(place);};
-    cb.addEventListener('change',raf);
-    /* Bám THAY ĐỔI KÍCH THƯỚC CỦA CHÍNH HỘP CHỮ, không bám sự kiện resize cửa sổ.
-       Bản cũ hoãn 120ms sau resize: đổi bề ngang xong mà đo sớm hơn ngần ấy thì
-       mũi tên còn giữ trạng thái của bề ngang cũ. Đo được ở /piercing: đoạn dẫn
-       mục Guides vừa đúng 4 dòng ở 430px (= mức nén, lẽ ra phải ẩn mũi tên) mà
-       mũi tên vẫn hiện, vì lần đặt cuối là hồi còn 1440px. ResizeObserver bắn
-       ngay khi hộp đổi cỡ nên không còn khe hở đó. */
-    if(window.ResizeObserver){ new ResizeObserver(raf).observe(txt); }
-    else window.addEventListener('resize',function(){clearTimeout(place._t);place._t=setTimeout(place,120);});
-    window.addEventListener('load',raf);
-    if(document.fonts){document.fonts.ready.then(raf);}
-    [90,260,650,1400].forEach(function(ms){setTimeout(place,ms);});place();
-  });
+
+    function rectLines(){
+      var rects=[].slice.call(preview.getClientRects()).filter(function(rect){
+        return rect.width>.5&&rect.height>.5;
+      });
+      if(!suffix.hidden){
+        var suffixRect=suffix.getBoundingClientRect();
+        if(suffixRect.width>.5&&suffixRect.height>.5) rects.push(suffixRect);
+      }
+      rects.sort(function(a,b){return a.top-b.top||a.left-b.left;});
+
+      var rows=[];
+      rects.forEach(function(rect){
+        var center=rect.top+(rect.height/2);
+        var row=rows.find(function(item){
+          return Math.abs(item.center-center)<=Math.max(3,Math.min(item.height,rect.height)*.45);
+        });
+        if(row){
+          row.center=(row.center+center)/2;
+          row.height=Math.max(row.height,rect.height);
+        }else{
+          rows.push({center:center,height:rect.height});
+        }
+      });
+      return rows.length;
+    }
+
+    function wordBoundary(count){
+      if(count>=rawText.length) return rawText.length;
+      if(count>0&&/\S/.test(rawText.charAt(count-1))&&/\S/.test(rawText.charAt(count))){
+        var space=Math.max(rawText.lastIndexOf(' ',count-1),rawText.lastIndexOf('\n',count-1),rawText.lastIndexOf('\t',count-1));
+        if(space>0) count=space;
+      }
+      while(count>0&&/\s/.test(rawText.charAt(count-1))) count--;
+      return count;
+    }
+
+    function previousWord(count){
+      while(count>0&&/\s/.test(rawText.charAt(count-1))) count--;
+      while(count>0&&!/\s/.test(rawText.charAt(count-1))) count--;
+      while(count>0&&/\s/.test(rawText.charAt(count-1))) count--;
+      return count;
+    }
+
+    function rebuild(force){
+      scheduled=false;
+      var width=Math.round(box.getBoundingClientRect().width*10)/10;
+      if(!force&&width===lastWidth) return;
+      lastWidth=width;
+
+      box.classList.remove('lead-no-overflow');
+      suffix.hidden=true;
+      paint(rawText.length);
+
+      var maxLines=leadLines();
+      if(rectLines()<=maxLines){
+        box.classList.add('lead-no-overflow');
+        return;
+      }
+
+      suffix.hidden=false;
+      var low=0,high=rawText.length;
+      while(low<high){
+        var mid=Math.ceil((low+high)/2);
+        paint(mid);
+        if(rectLines()<=maxLines) low=mid;
+        else high=mid-1;
+      }
+
+      var cut=wordBoundary(low);
+      paint(cut);
+      while(cut>0&&rectLines()>maxLines){
+        cut=previousWord(cut);
+        paint(cut);
+      }
+    }
+
+    function schedule(force){
+      if(scheduled&&!force) return;
+      scheduled=true;
+      requestAnimationFrame(function(){rebuild(!!force);});
+    }
+
+    cb.addEventListener('change',function(){
+      more.setAttribute('aria-expanded',cb.checked?'true':'false');
+    });
+
+    if(window.ResizeObserver){
+      new ResizeObserver(function(){schedule(false);}).observe(box);
+    }else{
+      window.addEventListener('resize',function(){schedule(false);});
+    }
+    window.addEventListener('load',function(){schedule(true);});
+    if(document.fonts) document.fonts.ready.then(function(){schedule(true);});
+    schedule(true);
+  }
+
+  [].slice.call(document.querySelectorAll('.lead-cb')).forEach(setupLead);
 })();

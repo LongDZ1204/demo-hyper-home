@@ -55,20 +55,14 @@
 .s-cta1,.s-cta2{padding-block:var(--sp-section-cta)}
 .press{padding-block:var(--sp-band)}
 
-/* --- clamp lead DÙNG CHUNG (không bịa class riêng cho từng section nữa).
-       5 section cũ vẫn dùng class riêng của nó; khi port sang design-system
-       thì gộp hết về bộ .lead-cb / .lead-txt / .lead-more này. --- */
+/* --- Clamp lead DÙNG CHUNG -----------------------------------------------
+   Bản không-JS vẫn dùng line-clamp. Khi JS sẵn sàng, script dựng một preview
+   đúng số dòng rồi đặt literal "..." + icon arrow-right trong LUỒNG INLINE.
+   Nhờ vậy mọi section có cùng khoảng cách 4px, không còn đoán toạ độ tuyệt đối
+   theo dấu ellipsis ẩn của trình duyệt. */
 .lead-cb{position:absolute;width:1px;height:1px;opacity:0;pointer-events:none;margin:0}
 .has-clamp{position:relative}
-/* SỐ DÒNG NÉN — cố định theo bề ngang, giống nhau ở MỌI section (mẫu Koray /
-   MoreThanPanel, B.Long chốt 11/08): desktop 2 dòng · mobile 4 dòng.
-   Vì sao mobile gấp đôi: mục tiêu là LƯỢNG CHỮ thấy được như nhau, không phải
-   số dòng như nhau. Cột desktop 660px ở 16,5px chứa ~78 ký tự/dòng → 2 dòng
-   ≈ 156 ký tự. Cột mobile 390px chỉ ~40 ký tự/dòng → phải 4 dòng mới ≈ 160.
-   Giữ 2 dòng ở mobile thì đoạn dẫn chỉ còn một nửa nội dung so với desktop.
-   Khai qua biến để JS đặt mũi tên đọc được đúng số dòng ở mỗi bề ngang —
-   trước đây JS ghi cứng số 2 nên đổi clamp là mũi tên đứng sai dòng. */
-:root{--lead-lines:2}
+:root{--lead-lines:2;--lead-arrow-gap:4px}
 @media(max-width:600px){:root{--lead-lines:4}}
 .lead-txt{display:-webkit-box;-webkit-box-orient:vertical;
   -webkit-line-clamp:var(--lead-lines);line-clamp:var(--lead-lines);overflow:hidden}
@@ -79,38 +73,27 @@
 .lead-more svg{width:20px;height:20px;transition:transform .25s var(--ease)}
 .lead-cb:checked ~ .has-clamp .lead-more svg{transform:rotate(180deg)}
 .lead-cb:focus-visible ~ .has-clamp .lead-more{outline:2px solid var(--orange);outline-offset:4px;border-radius:4px}
-.lead-txt b{color:#E9E9E9;font-weight:600}
-/* KHÔNG căn đều hai biên (B.Long chốt 10/08). Đã thử và gỡ lại: căn đều chỉ đứng
-   được nếu áp cho MỌI khối chữ, mà trang chủ có 62 khối thì 22 khối là chữ trong
-   thẻ, cột chỉ 150-203px, mỗi dòng 3-4 khe chữ — ép căn đều thì mỗi khe phình
-   9-14px (khe thường ~4px), thành vệt trắng chạy dọc. Căn đều riêng đoạn dẫn thì
-   ra hai kiểu chữ trên cùng một màn.
-   Mép phải chạy hết cột là việc KHÁC, do luật padding bên dưới lo — bỏ căn đều
-   không đụng tới nó. */
-/* head căn trái ở mobile chạy hết bề ngang wrap, chừa 34px để "…" + mũi tên không đội ra ngoài
-   (nếu không, hàm place() phải bấm phanh mép màn hình và gap co lại còn 2px) */
-/* Đoạn dẫn căn trái ở mobile chạy hết bề ngang cột, chừa 34px để "…" + mũi tên
-   không đội ra ngoài (nếu không, hàm place() phải bấm phanh mép màn hình và gap
-   co lại còn 2px). Từ khi căn đều hai biên thì chỗ chừa này thành BẮT BUỘC: dòng
-   nén được kéo giãn tới sát mép hộp nên mũi tên luôn bị đẩy xa nhất có thể —
-   .sap-yintro của awards đo được 422/430, chỉ còn 8px. Đoạn căn giữa không cần
-   (padding lệch một bên sẽ đẩy chữ ra khỏi trục giữa). */
-@media(max-width:600px){
-  .has-clamp{padding-right:34px}
-  .section-head.center .has-clamp{padding-right:0}
-  /* MỞ ra thì trả lại đủ bề ngang: lúc đó mũi tên bám đuôi dòng CUỐI — dòng cuối
-     bao giờ cũng ngắn nên tự có chỗ, không cần chừa. Chỉ lúc NÉN mới phải chừa,
-     vì dấu "…" luôn lấp đầy dòng bị cắt.
-     Đã thử 4 cách để dòng nén cũng chạy đủ (float ::before chặn riêng dòng 2 ·
-     shape-outside · line-clamp trên display:block) — đều không được: trong
-     `display:-webkit-box` (bắt buộc để có line-clamp) float bỏ qua margin-top nên
-     luôn khoét từ dòng 1, còn `line-clamp` chuẩn thì Chrome ở đây chưa hiểu
-     (CSS.supports trả false) nên chữ bung hết 13 dòng. */
-  .lead-cb:checked ~ .has-clamp{padding-right:0}
-}
-/* Lead có clamp mà KHÔNG bị cap bề ngang thì chạy sát mép cột, không còn chỗ cho
-   "…" + mũi tên (~31px) → hàm đặt mũi tên phải bấm phanh mép màn và gap âm.
-   Lead căn giữa đã có --lead-mw chừa sẵn 25px mỗi bên; lead nào chưa có thì cấp. */
+.lead-txt b,.lead-preview b{color:#E9E9E9;font-weight:600}
+
+/* JS-ready state: preview and suffix remain inline, so centered and left-aligned
+   leads behave naturally at every width. Full text stays in the DOM and replaces
+   the preview when the checkbox is opened. */
+.lead-ready{padding-right:0}
+.lead-ready .lead-preview{display:inline}
+.lead-ready .lead-txt{display:none}
+.lead-ready .lead-suffix{display:inline-flex;align-items:baseline;gap:var(--lead-arrow-gap);
+  white-space:nowrap;vertical-align:baseline}
+.lead-ready .lead-suffix[hidden]{display:none!important}
+.lead-ready .lead-ellipsis{line-height:inherit}
+.lead-ready .lead-more{position:relative;left:auto;top:auto;width:20px;height:20px;
+  display:inline-grid;place-items:center;align-self:center;opacity:1;transform:none}
+.lead-ready .lead-more svg{width:20px;height:20px}
+.lead-cb:checked ~ .lead-ready .lead-more svg{transform:rotate(180deg)!important}
+.lead-cb:checked ~ .lead-ready .lead-preview{display:none}
+.lead-cb:checked ~ .lead-ready .lead-txt{display:inline;overflow:visible}
+.lead-cb:checked ~ .lead-ready .lead-ellipsis{display:none}
+.lead-cb:checked ~ .lead-ready .lead-suffix{margin-left:var(--lead-arrow-gap);gap:0}
+
 .section-intro.has-clamp{max-width:var(--lead-mw)}
 
 /* --- Head căn giữa thì HỘP đoạn dẫn cũng căn giữa -----------------------------
