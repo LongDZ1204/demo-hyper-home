@@ -34,4 +34,23 @@ For an icon-only button, the button needs an accessible name:
 
 ## Available IDs
 
+### Functional
+
 `menu`, `close`, `chevron-down`, `arrow-right`, `external-link`, `search`, `filter`, `plus`, `minus`, `play`, `expand`, `calendar`, `phone`, `mail`, `map-pin`, `clock`, `check`, `info`, `alert`, `upload`, `user`, `instagram`, `facebook`, `copy`, `loader`.
+
+### Hub proof and stats
+
+| ID | Use for |
+|---|---|
+| `trophy` | Awards and trophies |
+| `rating-star` | Customer rating only |
+| `users` | Clients, piercers or specialists |
+| `experience` | Combined years of experience |
+| `tattoo-work` | Completed tattoo work |
+| `globe` | International reach or world conventions |
+| `service-grid` | Number of service or piercing types |
+| `price-tag` | Starting price |
+| `clipboard-check` | Free assessment or consultation |
+| `shield-check` | Certification, clearance or verified equipment |
+
+Do not reuse an icon just because its geometry is available. The proof label and icon meaning must match.

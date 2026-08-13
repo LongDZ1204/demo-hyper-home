@@ -406,6 +406,10 @@
 .ds-icon-grid{display:grid;grid-template-columns:repeat(8,1fr);border-top:1px solid rgba(255,255,255,.12);border-left:1px solid rgba(255,255,255,.12)}
 .ds-icon-grid > div{min-height:104px;display:grid;place-items:center;align-content:center;gap:11px;border-right:1px solid rgba(255,255,255,.12);border-bottom:1px solid rgba(255,255,255,.12);color:var(--cream)}
 .ds-icon-grid span{color:#858585;font-size:10px;letter-spacing:.05em}
+.ds-icon-group-head{display:flex;align-items:end;justify-content:space-between;gap:30px;margin:36px 0 16px}
+.ds-icon-group-head h3{margin:0;font-family:var(--sub);font-size:15px;letter-spacing:.05em;text-transform:uppercase}
+.ds-icon-group-head p{max-width:58ch;margin:0;color:var(--muted);font-size:13px;text-align:right}
+.ds-icon-grid--proof{grid-template-columns:repeat(5,1fr)}
 .ds-code-block{display:flex;align-items:center;justify-content:space-between;gap:24px;margin-top:26px;padding:18px 20px;border:1px solid rgba(255,255,255,.12);background:#090909}
 .ds-code-block code{overflow:auto;color:#c8c8c8;white-space:nowrap}
 .ds-code-block button{display:inline-flex;align-items:center;gap:8px;min-height:38px;padding:8px 12px;border:1px solid var(--border);border-radius:4px;background:var(--surface);color:var(--cream);font-family:var(--sub);font-size:10px;text-transform:uppercase;cursor:pointer}
@@ -522,6 +526,7 @@
   .ds-rule{grid-template-columns:1fr;gap:10px;padding:20px}
   .ds-spacing-scale > div{grid-template-columns:110px 44px 1fr;gap:12px}.ds-layout-cards,.ds-shape-grid{grid-template-columns:1fr}.ds-layout-cards p{min-height:0}.ds-shape-grid article{min-height:230px}
   .ds-icon-spec{grid-template-columns:1fr}.ds-icon-spec > div{border-right:0;border-bottom:1px solid rgba(255,255,255,.12)}.ds-icon-spec > div:last-child{border-bottom:0}.ds-icon-grid{grid-template-columns:repeat(4,1fr)}.ds-icon-grid > div{min-height:90px}.ds-code-block{align-items:flex-start;flex-direction:column}.ds-code-block code{width:100%}
+  .ds-icon-group-head{align-items:flex-start;flex-direction:column;gap:8px}.ds-icon-group-head p{text-align:left}
   .ds-bg-grid{grid-template-columns:1fr}.ds-bg:nth-child(5){grid-column:auto}.ds-bg{min-height:220px}
   .ds-state-labels,.ds-state-row{min-width:760px;grid-template-columns:120px repeat(4,140px)}
   .ds-form-demo{grid-template-columns:1fr}.ds-field--wide{grid-column:auto}.ds-checks{grid-column:auto;display:grid;grid-template-columns:1fr 1fr}
