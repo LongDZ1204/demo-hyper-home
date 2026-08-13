@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Internal design system and implementation reference for the Hyper Inkers website.">
+  <title>Design System | Hyper Inkers</title>
+  <link rel="stylesheet" href="fonts-hyperinkers-2026-07-04/hyperinkers-fonts.css">
+  <link rel="stylesheet" href="_foundation/hi-base.css">
+  <link rel="stylesheet" href="_foundation/hi-icon.css">
+  <link rel="stylesheet" href="_foundation/hi-ds.css">
+  <link rel="stylesheet" href="_pages/design-system.css">
+</head>
+<body class="ds-page">
+  <a class="ds-skip" href="#main">Skip to design system</a>
+
+  <header class="ds-topbar" aria-label="Design system header">
+    <div class="ds-wrap ds-topbar__inner">
+      <a class="ds-brand" href="index.html" aria-label="Hyper Inkers website home">
+        <img src="_design-assets/hi-logo.webp" alt="Hyper Inkers" width="1024" height="192">
+      </a>
+      <p class="ds-edition"><span>Design system</span><b>V1.0</b></p>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="ds-overview" id="overview" aria-labelledby="overview-title">
+      <img class="ds-overview__ambient" src="_hero-assets/color-blur.webp" alt="" aria-hidden="true">
+      <div class="ds-wrap ds-overview__grid">
+        <div class="ds-overview__intro">
+          <p class="ds-kicker">Foundation / Developer reference</p>
+          <h1 id="overview-title">Hyper Inkers<br><span>Design System</span></h1>
+          <p class="ds-summary">A shared visual language for building consistent, recognizable and accessible Hyper Inkers experiences across every page.</p>
+        </div>
+
+        <dl class="ds-meta" aria-label="Design system information">
+          <div>
+            <dt>Status</dt>
+            <dd><span class="ds-status-dot" aria-hidden="true"></span>In development</dd>
+          </div>
+          <div>
+            <dt>Source</dt>
+            <dd>HI Foundation</dd>
+          </div>
+          <div>
+            <dt>Updated</dt>
+            <dd>August 2026</dd>
+          </div>
+          <div>
+            <dt>Owner</dt>
+            <dd>Hyper Inkers Web</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="ds-wrap">
+        <ol class="ds-principles" aria-label="Design system principles">
+          <li>
+            <span class="ds-principles__number">01</span>
+            <div><b>Consistent UI</b><span>One token and component source.</span></div>
+          </li>
+          <li>
+            <span class="ds-principles__number">02</span>
+            <div><b>Local Assets</b><span>No fragile icon dependencies.</span></div>
+          </li>
+          <li>
+            <span class="ds-principles__number">03</span>
+            <div><b>Accessible Default</b><span>Keyboard, focus and contrast built in.</span></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <nav class="ds-section-nav" aria-label="Design system sections">
+      <div class="ds-wrap ds-section-nav__inner">
+        <a class="is-active" href="#overview" aria-current="page"><span>01</span>Overview</a>
+        <a href="#colors"><span>02</span>Colors</a>
+        <a href="#typography"><span>03</span>Typography</a>
+        <a href="#icons"><span>06</span>Icons</a>
+        <a href="#backgrounds"><span>07</span>Backgrounds</a>
+        <a href="#buttons"><span>08</span>Components</a>
+        <a href="#accessibility"><span>13</span>Accessibility</a>
+        <a href="#handoff"><span>14</span>Handoff</a>
+      </div>
+    </nav>
+
+    <div class="ds-mobile-jump">
+      <label for="dsJump">Jump to section</label>
+      <select id="dsJump">
+        <option value="overview">01 Overview</option>
+        <option value="colors">02 Colors</option>
+        <option value="typography">03 Typography</option>
+        <option value="spacing">04 Spacing &amp; Layout</option>
+        <option value="shape-motion">05 Shape &amp; Motion</option>
+        <option value="icons">06 Icons</option>
+        <option value="backgrounds">07 Backgrounds</option>
+        <option value="buttons">08 Buttons &amp; Links</option>
+        <option value="forms">09 Form Controls</option>
+        <option value="navigation">10 Navigation</option>
+        <option value="content-components">11 Content Components</option>
+        <option value="conversion">12 Conversion</option>
+        <option value="accessibility">13 Accessibility</option>
+        <option value="handoff">14 Dev Handoff</option>
+      </select>
+    </div>
+
+    <section class="ds-doc-section" id="colors" aria-labelledby="colors-title">
+      <div class="ds-wrap">
+        <header class="ds-section-head">
+          <p class="ds-section-number">02 / Foundation</p>
+          <h2 id="colors-title">Color <span>System</span></h2>
+          <p>Use semantic tokens instead of raw values. Color communicates hierarchy and state; it is not decoration.</p>
+        </header>
+
+        <div class="ds-subsection">
+          <h3>Core &amp; brand</h3>
+          <div class="ds-color-grid">
+            <article class="ds-swatch" style="--swatch:#000000"><div class="ds-swatch__color"></div><div><b>Black</b><code>--black · #000000</code><span>Cinematic bands</span></div></article>
+            <article class="ds-swatch" style="--swatch:#0F0F0F"><div class="ds-swatch__color"></div><div><b>Background</b><code>--bg · #0F0F0F</code><span>Default page</span></div></article>
+            <article class="ds-swatch" style="--swatch:#161616"><div class="ds-swatch__color"></div><div><b>Surface</b><code>--surface · #161616</code><span>Cards and panels</span></div></article>
+            <article class="ds-swatch" style="--swatch:#2A2A2A"><div class="ds-swatch__color"></div><div><b>Border</b><code>--border · #2A2A2A</code><span>Solid dividers</span></div></article>
+            <article class="ds-swatch" style="--swatch:#CC6600"><div class="ds-swatch__color"></div><div><b>Orange</b><code>--orange · #CC6600</code><span>CTA and active</span></div></article>
+            <article class="ds-swatch" style="--swatch:#E67500"><div class="ds-swatch__color"></div><div><b>Orange High</b><code>--orange-hi · #E67500</code><span>Hover and emphasis</span></div></article>
+            <article class="ds-swatch" style="--swatch:#DCDBBE"><div class="ds-swatch__color ds-swatch__color--light"></div><div><b>Cream</b><code>--cream · #DCDBBE</code><span>Secondary accent</span></div></article>
+            <article class="ds-swatch" style="--swatch:#FFFFFF"><div class="ds-swatch__color ds-swatch__color--light"></div><div><b>Text</b><code>--text · #FFFFFF</code><span>Primary content</span></div></article>
+            <article class="ds-swatch" style="--swatch:#B0B0B0"><div class="ds-swatch__color ds-swatch__color--light"></div><div><b>Muted</b><code>--muted · #B0B0B0</code><span>Secondary content</span></div></article>
+            <article class="ds-swatch" style="--swatch:#37D67A"><div class="ds-swatch__color"></div><div><b>Open</b><code>--open · #37D67A</code><span>Live/open state only</span></div></article>
+          </div>
+        </div>
+
+        <div class="ds-split ds-subsection">
+          <div>
+            <h3>Glass surfaces</h3>
+            <div class="ds-glass-demo">
+              <span>Navigation</span><code>rgba(0,0,0,.3)</code>
+              <span>Panel</span><code>rgba(20,20,20,.5)</code>
+              <span>Border</span><code>rgba(255,255,255,.2)</code>
+            </div>
+          </div>
+          <div>
+            <h3>Approved text pairs</h3>
+            <div class="ds-contrast-list">
+              <p><span class="ds-pass">Pass</span><b>White on Background</b><code>#FFF / #0F0F0F</code></p>
+              <p><span class="ds-pass">Pass</span><b>Muted on Background</b><code>#B0B0B0 / #0F0F0F</code></p>
+              <p><span class="ds-pass">Pass</span><b>Orange on Background</b><code>4.99:1</code></p>
+              <p><span class="ds-pass">Pass</span><b>Black on Orange</b><code>5.47:1</code></p>
+              <p><span class="ds-fail">Fail</span><b>White on Orange</b><code>3.84:1</code></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-doc-section ds-doc-section--surface" id="typography" aria-labelledby="typography-title">
+      <div class="ds-wrap">
+        <header class="ds-section-head">
+          <p class="ds-section-number">03 / Foundation</p>
+          <h2 id="typography-title">Type <span>Scale</span></h2>
+          <p>Three roles: tribal display for H1/H2, technical condensed labels for UI, and Gilroy for readable body copy.</p>
+        </header>
+        <div class="ds-font-families">
+          <article><span>Aa</span><div><small>Display / H1–H2</small><b class="ds-font-head">fonttitle</b><code>--head</code></div></article>
+          <article><span>Aa</span><div><small>UI / H3–labels</small><b class="ds-font-sub">TT Runs DemiBold</b><code>--sub</code></div></article>
+          <article><span>Aa</span><div><small>Body copy</small><b>SVN Gilroy</b><code>--body</code></div></article>
+        </div>
+        <div class="ds-type-table" role="table" aria-label="Typography scale">
+          <div class="ds-type-row ds-type-row--display" role="row"><span>Display</span><p>Make Your Mark</p><code>38–74 / 1.04 / 700</code></div>
+          <div class="ds-type-row ds-type-row--h1" role="row"><span>H1</span><p>Custom Tattoo<br><em>San Antonio</em></p><code>34–60 / 1.02 / 700</code></div>
+          <div class="ds-type-row ds-type-row--h2" role="row"><span>H2</span><p>Award-Winning<br><em>Artists</em></p><code>26–44 / 1.06 / 700</code></div>
+          <div class="ds-type-row ds-type-row--h3" role="row"><span>H3</span><p>Choose Your Artist</p><code>22–30 / 1.15 / 600</code></div>
+          <div class="ds-type-row ds-type-row--lead" role="row"><span>Lead</span><p>Clear introductory copy explains what the section contains and why it matters.</p><code>15.5–16.5 / 1.62 / 400</code></div>
+          <div class="ds-type-row ds-type-row--body" role="row"><span>Body</span><p>Use regular Gilroy for paragraphs. Reserve bold for facts, actions and scannable labels.</p><code>14.5 / 1.62 / 400</code></div>
+          <div class="ds-type-row ds-type-row--micro" role="row"><span>Micro</span><p>SECTION LABEL / METADATA</p><code>11 / 1.4 / 600</code></div>
+        </div>
+        <aside class="ds-rule"><b>Multiline rule</b><p>Never tighten display headings below the locked line-height. Test every two-line title at 1440, 430 and 360px.</p></aside>
+      </div>
+    </section>
+
+    <section class="ds-doc-section" id="spacing" aria-labelledby="spacing-title">
+      <div class="ds-wrap">
+        <header class="ds-section-head"><p class="ds-section-number">04 / Foundation</p><h2 id="spacing-title">Spacing &amp; <span>Layout</span></h2><p>Use shared rhythm tokens so new sections align with the current site instead of introducing isolated values.</p></header>
+        <div class="ds-spacing-scale">
+          <div><span style="--space:4px"></span><b>4</b><code>micro</code></div>
+          <div><span style="--space:8px"></span><b>8</b><code>xs</code></div>
+          <div><span style="--space:12px"></span><b>12</b><code>sm</code></div>
+          <div><span style="--space:16px"></span><b>16</b><code>md</code></div>
+          <div><span style="--space:24px"></span><b>24</b><code>lg</code></div>
+          <div><span style="--space:32px"></span><b>32</b><code>xl</code></div>
+          <div><span style="--space:48px"></span><b>48</b><code>2xl</code></div>
+          <div><span style="--space:72px"></span><b>72</b><code>3xl</code></div>
+          <div><span style="--space:100px"></span><b>100</b><code>section max</code></div>
+        </div>
+        <div class="ds-layout-cards">
+          <article><div class="ds-layout-preview"><span></span></div><h3>Content wrap</h3><p>Maximum 1240px. Side padding is 32px desktop and 20px mobile.</p><code>--wrap:1240px</code></article>
+          <article><div class="ds-layout-preview ds-layout-preview--grid"><span></span><span></span></div><h3>Editorial split</h3><p>Use asymmetric content/image columns when the narrative benefits from it.</p><code>minmax(0, 1.2fr) .8fr</code></article>
+          <article><div class="ds-layout-preview ds-layout-preview--stack"><span></span><span></span><span></span></div><h3>Mobile stack</h3><p>Collapse to one meaningful DOM order; do not preserve desktop columns at 430px.</p><code>@media max-width:760px</code></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-doc-section ds-doc-section--surface" id="shape-motion" aria-labelledby="shape-title">
+      <div class="ds-wrap">
+        <header class="ds-section-head"><p class="ds-section-number">05 / Foundation</p><h2 id="shape-title">Shape &amp; <span>Motion</span></h2><p>Hard-edged, restrained geometry keeps the brand industrial. Motion confirms interaction; it does not decorate idle screens.</p></header>
+        <div class="ds-shape-grid">
+          <article><div class="ds-radius-demo"><i></i><i></i><i></i><i></i></div><h3>Radius</h3><p>0 / 4 / 8 / 999px. Pill is reserved for filters, badges and status.</p></article>
+          <article><div class="ds-border-demo"><i></i><i></i><i></i></div><h3>Border</h3><p>Solid, glass and orange focus. Default thickness is 1px.</p></article>
+          <article><div class="ds-motion-demo"><span></span></div><h3>Motion</h3><p>160ms for micro feedback; 240ms for panel transitions; shared expressive ease.</p><code>cubic-bezier(.16,1,.3,1)</code></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-doc-section" id="icons" aria-labelledby="icons-title">
+      <div class="ds-wrap">
+        <header class="ds-section-head"><p class="ds-section-number">06 / Components</p><h2 id="icons-title">Icon <span>System</span></h2><p>A curated local SVG sprite replaces repeated or inconsistent icon markup. Functional icons share a 24px grid and 2px stroke.</p></header>
+        <div class="ds-icon-spec">
+          <div><svg aria-hidden="true" class="hi-icon hi-icon--32"><use href="_foundation/hi-icons.svg#hi-icon-calendar"></use></svg><b>24×24 grid</b><span>2px round stroke</span></div>
+          <div class="ds-icon-sizes"><svg aria-hidden="true" class="hi-icon hi-icon--16"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><svg aria-hidden="true" class="hi-icon hi-icon--20"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><svg aria-hidden="true" class="hi-icon hi-icon--32"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><b>16 / 20 / 24 / 32</b><span>44px minimum target</span></div>
+        </div>
+        <div class="ds-icon-grid">
+          <div data-icon="menu"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-menu"></use></svg><span>menu</span></div>
+          <div data-icon="close"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-close"></use></svg><span>close</span></div>
+          <div data-icon="chevron-down"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-chevron-down"></use></svg><span>chevron</span></div>
+          <div data-icon="arrow-right"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg><span>arrow</span></div>
+          <div data-icon="external-link"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-external-link"></use></svg><span>external</span></div>
+          <div data-icon="search"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-search"></use></svg><span>search</span></div>
+          <div data-icon="filter"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-filter"></use></svg><span>filter</span></div>
+          <div data-icon="plus"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-plus"></use></svg><span>plus</span></div>
+          <div data-icon="minus"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-minus"></use></svg><span>minus</span></div>
+          <div data-icon="play"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-play"></use></svg><span>play</span></div>
+          <div data-icon="expand"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-expand"></use></svg><span>expand</span></div>
+          <div data-icon="calendar"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-calendar"></use></svg><span>calendar</span></div>
+          <div data-icon="phone"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-phone"></use></svg><span>phone</span></div>
+          <div data-icon="mail"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-mail"></use></svg><span>mail</span></div>
+          <div data-icon="map-pin"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-map-pin"></use></svg><span>location</span></div>
+          <div data-icon="clock"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-clock"></use></svg><span>clock</span></div>
+          <div data-icon="check"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><span>check</span></div>
+          <div data-icon="info"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-info"></use></svg><span>info</span></div>
+          <div data-icon="alert"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-alert"></use></svg><span>alert</span></div>
+          <div data-icon="upload"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-upload"></use></svg><span>upload</span></div>
+          <div data-icon="user"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-user"></use></svg><span>user</span></div>
+          <div data-icon="instagram"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-instagram"></use></svg><span>instagram</span></div>
+          <div data-icon="facebook"><svg aria-hidden="true" class="hi-icon hi-icon--24"><use href="_foundation/hi-icons.svg#hi-icon-facebook"></use></svg><span>facebook</span></div>
+          <div data-icon="loader"><svg aria-hidden="true" class="hi-icon hi-icon--24 hi-icon--spin"><use href="_foundation/hi-icons.svg#hi-icon-loader"></use></svg><span>loader</span></div>
+        </div>
+        <div class="ds-code-block"><code>&lt;svg class="hi-icon hi-icon--20" aria-hidden="true"&gt;&lt;use href="_foundation/hi-icons.svg#hi-icon-calendar"&gt;&lt;/use&gt;&lt;/svg&gt;</code><button type="button" data-copy="&lt;svg class=&quot;hi-icon hi-icon--20&quot; aria-hidden=&quot;true&quot;&gt;&lt;use href=&quot;_foundation/hi-icons.svg#hi-icon-calendar&quot;&gt;&lt;/use&gt;&lt;/svg&gt;" aria-label="Copy icon code"><svg class="hi-icon hi-icon--16" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-copy"></use></svg><span>Copy</span></button></div>
+      </div>
+    </section>
+
+    <section class="ds-doc-section ds-doc-section--surface" id="backgrounds" aria-labelledby="backgrounds-title">
+      <div class="ds-wrap">
+        <header class="ds-section-head"><p class="ds-section-number">07 / Foundation</p><h2 id="backgrounds-title">Backgrounds &amp; <span>Effects</span></h2><p>Only assets already used by Hyper Inkers are approved here. Do not introduce a separate smoke or texture family.</p></header>
+        <div class="ds-bg-grid">
+          <article class="ds-bg ds-bg--solid"><div><b>Solid background</b><code>--bg / --black / --surface</code></div></article>
+          <article class="ds-bg ds-bg--grain"><div><b>Foundation grain</b><code>CSS noise · low opacity</code></div></article>
+          <article class="ds-bg ds-bg--blur"><div><b>Color blur</b><code>_hero-assets/color-blur.webp</code></div></article>
+          <article class="ds-bg ds-bg--splatter"><div><b>Orange splatter</b><code>_hero-assets/cta-splatter-orange.png</code></div></article>
+          <article class="ds-bg ds-bg--overlay"><div><b>Image overlay</b><code>black gradient · text protection</code></div></article>
+        </div>
+        <aside class="ds-rule"><b>Usage rule</b><p>Blur and splatter belong at section edges or behind short display copy. Never place a high-detail effect directly behind paragraphs, form labels or FAQ answers.</p></aside>
+      </div>
+    </section>
+
+    <section class="ds-doc-section" id="buttons" aria-labelledby="buttons-title">
+      <div class="ds-wrap">
+        <header class="ds-section-head"><p class="ds-section-number">08 / Components</p><h2 id="buttons-title">Buttons &amp; <span>Links</span></h2><p>Color communicates intent: solid orange sells, orange outline supports conversion, white outline navigates, and underlined text continues reading.</p></header>
+        <div class="ds-state-board">
+          <div class="ds-state-labels"><span>Default</span><span>Hover</span><span>Focus</span><span>Disabled</span></div>
+          <div class="ds-state-row"><b>Primary</b><button class="ds-btn ds-btn--primary">Book now</button><button class="ds-btn ds-btn--primary is-hover">Book now</button><button class="ds-btn ds-btn--primary is-focus">Book now</button><button class="ds-btn ds-btn--primary" disabled>Book now</button></div>
+          <div class="ds-state-row"><b>Sell secondary</b><button class="ds-btn ds-btn--sell">Call us now</button><button class="ds-btn ds-btn--sell is-hover">Call us now</button><button class="ds-btn ds-btn--sell is-focus">Call us now</button><button class="ds-btn ds-btn--sell" disabled>Call us now</button></div>
+          <div class="ds-state-row"><b>Navigation</b><button class="ds-btn ds-btn--ghost">View artists</button><button class="ds-btn ds-btn--ghost is-hover">View artists</button><button class="ds-btn ds-btn--ghost is-focus">View artists</button><button class="ds-btn ds-btn--ghost" disabled>View artists</button></div>
+        </div>
+        <aside class="ds-rule"><b>Contrast correction</b><p>Use black text on `--orange` for small button labels. The existing production `.btn-primary` still uses white; migrate that shared component in a separate reviewed change.</p></aside>
+        <div class="ds-inline-examples"><a class="ds-text-link" href="#buttons">Explore all tattoo styles <svg class="hi-icon hi-icon--16" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></a><button class="hi-icon-button" type="button" aria-label="Open menu"><svg class="hi-icon hi-icon--24" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-menu"></use></svg></button><button class="hi-icon-button" type="button" disabled aria-label="Unavailable action"><svg class="hi-icon hi-icon--24" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-plus"></use></svg></button></div>
+      </div>
+    </section>
+
+    <section class="ds-doc-section ds-doc-section--surface" id="forms" aria-labelledby="forms-title">
+      <div class="ds-wrap">
+        <header class="ds-section-head"><p class="ds-section-number">09 / Components</p><h2 id="forms-title">Form <span>Controls</span></h2><p>Labels remain visible, required state is explicit, focus is orange and error messages explain how to recover.</p></header>
+        <form class="ds-form-demo" action="#forms" novalidate>
+          <label class="ds-field"><span>Full name <b>*</b></span><input type="text" placeholder="Your name"></label>
+          <label class="ds-field"><span>Service</span><select><option>Choose a service</option><option>Custom tattoo</option><option>Piercing</option><option>Tattoo removal</option></select></label>
+          <label class="ds-field ds-field--focus"><span>Email <b>*</b></span><input type="email" value="hello@example.com"></label>
+          <label class="ds-field ds-field--error"><span>Phone number <b>*</b></span><input type="tel" value="210"><small><svg class="hi-icon hi-icon--16" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-alert"></use></svg>Enter a complete phone number.</small></label>
+          <label class="ds-field ds-field--wide"><span>Tell us about your idea</span><textarea placeholder="Placement, size, style and reference notes"></textarea></label>
+          <fieldset class="ds-checks"><legend>Options</legend><label><input type="checkbox" checked> Email confirmation</label><label><input type="checkbox"> SMS reminder</label><label><input type="radio" name="contact" checked> Call me</label><label><input type="radio" name="contact"> Email me</label></fieldset>
+        </form>
+      </div>
+    </section>
+
+    <section class="ds-doc-section" id="navigation" aria-labelledby="navigation-title">
+      <div class="ds-wrap">
+        <header class="ds-section-head"><p class="ds-section-number">10 / Components</p><h2 id="navigation-title">Navigation <span>Patterns</span></h2><p>Core destinations use real links. Filters and tabs control content state without pretending to be page navigation.</p></header>
+        <div class="ds-nav-stack">
+          <nav class="ds-demo-nav" aria-label="Navigation specimen"><a href="#navigation" class="is-active">Tattoo</a><a href="#navigation">Piercing</a><a href="#navigation">Removal</a><button class="hi-icon-button" type="button" aria-label="Search"><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-search"></use></svg></button></nav>
+          <div class="ds-tabs" role="tablist" aria-label="Service categories"><button role="tab" aria-selected="true">Choosing a shop</button><button role="tab" aria-selected="false">Your tattoo</button><button role="tab" aria-selected="false">Aftercare</button></div>
+          <nav class="ds-pagination" aria-label="Pagination"><a href="#navigation" aria-label="Previous page">‹</a><a href="#navigation" aria-current="page">1</a><a href="#navigation">2</a><a href="#navigation">3</a><span>…</span><a href="#navigation">6</a><a href="#navigation" aria-label="Next page">›</a></nav>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-doc-section ds-doc-section--surface" id="content-components" aria-labelledby="content-title">
+      <div class="ds-wrap">
+        <header class="ds-section-head"><p class="ds-section-number">11 / Components</p><h2 id="content-title">Content <span>Components</span></h2><p>Cards, status labels and accordions support content hierarchy without turning every section into a uniform card grid.</p></header>
+        <div class="ds-content-grid">
+          <article class="ds-card"><span class="ds-chip">Award winning</span><h3>Black &amp; Grey</h3><p>High-contrast realism, smooth transitions and custom composition for each placement.</p><a class="ds-text-link" href="#content-components">View the style <svg class="hi-icon hi-icon--16" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></a></article>
+          <article class="ds-card ds-card--editorial"><small>Artist profile</small><h3>Minh Pham</h3><dl><div><dt>Focus</dt><dd>Black &amp; grey realism</dd></div><div><dt>Signal</dt><dd>25+ convention awards</dd></div></dl></article>
+          <div class="ds-tooltip-demo"><button type="button" aria-describedby="demoTip"><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-info"></use></svg>Trust signal</button><p role="tooltip" id="demoTip">Use a complete sentence that explains the fact behind the label.</p></div>
+        </div>
+        <div class="ds-accordion">
+          <details open><summary>How do you choose the right tattoo artist?<svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-chevron-down"></use></svg></summary><p>Match the artist’s consistent portfolio and specialist style to the work you want, then use a consultation to confirm placement and scope.</p></details>
+          <details><summary>What should a component include?<svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-chevron-down"></use></svg></summary><p>Semantic markup, all interaction states, accessible names and responsive behavior.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="ds-doc-section ds-conversion" id="conversion" aria-labelledby="conversion-title">
+      <img src="_hero-assets/color-blur.webp" alt="" aria-hidden="true">
+      <div class="ds-wrap ds-conversion__inner">
+        <div><p class="ds-section-number">12 / Conversion</p><h2 id="conversion-title">Ready for your<br><span>next piece?</span></h2><p>Use one primary conversion action per section, with the phone link as a lower-emphasis alternative.</p></div>
+        <div class="ds-conversion__actions"><a class="ds-btn ds-btn--primary" href="#conversion"><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-calendar"></use></svg>Book now</a><a class="ds-call-link" href="tel:+12109979737"><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-phone"></use></svg>Call (210) 997-9737</a></div>
+      </div>
+      <div class="ds-mobile-bar"><a href="tel:+12109979737" aria-label="Call Hyper Inkers"><svg class="hi-icon hi-icon--24" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-phone"></use></svg></a><a href="#conversion"><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-calendar"></use></svg><span><b>Book now</b><small>Free consultation</small></span></a><a href="#conversion" aria-label="Open Instagram"><svg class="hi-icon hi-icon--24" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-instagram"></use></svg></a></div>
+    </section>
+
+    <section class="ds-doc-section" id="accessibility" aria-labelledby="accessibility-title">
+      <div class="ds-wrap">
+        <header class="ds-section-head"><p class="ds-section-number">13 / Quality</p><h2 id="accessibility-title">Accessibility <span>Baseline</span></h2><p>Accessibility is part of the component contract, not a final polish pass.</p></header>
+        <ul class="ds-checklist">
+          <li><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><div><b>Keyboard first</b><span>Every action is reachable and has a visible focus indicator.</span></div></li>
+          <li><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><div><b>Accessible names</b><span>Icon-only buttons use aria-label; decorative SVGs are hidden.</span></div></li>
+          <li><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><div><b>Readable contrast</b><span>Body copy uses approved white/muted pairs; orange text is restricted.</span></div></li>
+          <li><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><div><b>44px targets</b><span>Touch controls remain usable even when the visible icon is 16–24px.</span></div></li>
+          <li><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><div><b>Reduced motion</b><span>Non-essential animations stop when the user requests less motion.</span></div></li>
+          <li><svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-check"></use></svg><div><b>Meaning beyond color</b><span>Error and success states include icons or text, not color alone.</span></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="ds-doc-section ds-doc-section--surface" id="handoff" aria-labelledby="handoff-title">
+      <div class="ds-wrap">
+        <header class="ds-section-head"><p class="ds-section-number">14 / Developer handoff</p><h2 id="handoff-title">Use the <span>System</span></h2><p>Start from the shared foundation files. Page CSS may compose components but must not redefine brand tokens.</p></header>
+        <div class="ds-handoff-grid">
+          <article><span>01</span><h3>Load foundations</h3><p>Fonts, base tokens, icon contract, components, page CSS, then `hi-ds.css` last where existing pages require its overrides.</p></article>
+          <article><span>02</span><h3>Compose by role</h3><p>Choose color and component variants from intent: conversion, navigation, content or state.</p></article>
+          <article><span>03</span><h3>Verify all widths</h3><p>Check 1440, 430 and 360px, keyboard focus, assets, console errors and horizontal overflow.</p></article>
+        </div>
+        <div class="ds-code-block ds-code-block--stack"><code>&lt;link rel="stylesheet" href="_foundation/hi-base.css"&gt;<br>&lt;link rel="stylesheet" href="_foundation/hi-icon.css"&gt;<br>&lt;link rel="stylesheet" href="_foundation/hi-components.css"&gt;<br>&lt;link rel="stylesheet" href="_foundation/hi-ds.css"&gt;</code><button type="button" data-copy="&lt;link rel=&quot;stylesheet&quot; href=&quot;_foundation/hi-base.css&quot;&gt;&#10;&lt;link rel=&quot;stylesheet&quot; href=&quot;_foundation/hi-icon.css&quot;&gt;&#10;&lt;link rel=&quot;stylesheet&quot; href=&quot;_foundation/hi-components.css&quot;&gt;&#10;&lt;link rel=&quot;stylesheet&quot; href=&quot;_foundation/hi-ds.css&quot;&gt;" aria-label="Copy stylesheet order"><svg class="hi-icon hi-icon--16" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-copy"></use></svg><span>Copy</span></button></div>
+        <div class="ds-file-map"><a href="_foundation/hi-base.css"><b>hi-base.css</b><span>Brand and base tokens</span></a><a href="_foundation/hi-ds.css"><b>hi-ds.css</b><span>Type, spacing and CTA scale</span></a><a href="_foundation/hi-icons.svg"><b>hi-icons.svg</b><span>Curated local icon sprite</span></a><a href="_design-assets/icons/README.md"><b>Icon README</b><span>Usage and accessibility</span></a></div>
+      </div>
+    </section>
+  </main>
+  <script src="_pages/design-system.js"></script>
+</body>
+</html>

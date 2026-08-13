@@ -3,6 +3,10 @@
 Demo tĩnh để khách và dev xem toàn bộ hiệu ứng, nhịp trang và hệ thống thiết kế trước khi lên WordPress.
 Xuất bản qua GitHub Pages: <https://longdz1204.github.io/demo-hyper-home/>
 
+**Bảng design system cho dev:** [`design-system.html`](design-system.html) — màu, typography,
+spacing, icon, background hiện có, component states, accessibility và code handoff. Trang này
+`noindex` và không nằm trong menu public.
+
 ## Sửa ở đâu
 
 | Muốn đổi | Sửa file |
@@ -13,6 +17,9 @@ Xuất bản qua GitHub Pages: <https://longdz1204.github.io/demo-hyper-home/>
 | Header, footer, promo bar, nút lên đầu trang — **kiểu dáng** | `_foundation/hi-chrome.css` |
 | Header, footer — **nội dung / link** | `_partials/header.html`, `_partials/footer.html` → chạy `python3 build.py` |
 | Biến gốc (`--orange`, `--wrap`…), reset | `_foundation/hi-base.css` |
+| Icon chức năng dùng chung | `_foundation/hi-icons.svg` + `_foundation/hi-icon.css` |
+| Quy tắc và danh sách icon | `_design-assets/icons/README.md` |
+| Background/effect đã duyệt | `_hero-assets/color-blur.webp` · `cta-splatter-orange.png` · noise CSS hiện có |
 | Riêng một page | `_pages/<page>.css` |
 | Form đặt lịch | `_foundation/components/booking-section.css` (nhúng) · `booking-form.css` (popup) |
 
@@ -58,6 +65,7 @@ page chưa có, nên 4 trang gallery không phải sửa HTML rồi lệch nhau.
 
 ```html
 fonts → hi-foundation.css → hi-base.css → hi-chrome.css
+      → hi-icon.css (khi page dùng icon sprite)
       → components/booking-section.css → hi-components.css
       → _pages/<page>.css → hi-ds.css
 ```
