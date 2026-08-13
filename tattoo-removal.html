@@ -352,7 +352,7 @@ body.rmba-lock{overflow:hidden}
 .rms-num{display:block;font-family:var(--head);font-weight:700;font-size:clamp(42px,4.6vw,58px);
   line-height:.9;letter-spacing:-.01em;color:rgba(204,102,0,.28);margin-bottom:10px}
 .rms-card .rms-ey{display:block;font-family:var(--sub);font-weight:600;text-transform:uppercase;letter-spacing:.06em;font-size:11.5px;color:var(--orange);margin-bottom:7px}
-.rms-card h3{margin:0 0 9px;font-family:var(--sub);font-weight:600;text-transform:none;letter-spacing:.01em;font-size:clamp(16px,1.6vw,18px);color:#fff;line-height:1.3}
+.rms-card .rms-card-h{margin:0 0 9px;font-family:var(--sub);font-weight:600;text-transform:none;letter-spacing:.01em;font-size:clamp(16px,1.6vw,18px);color:#fff;line-height:1.3}
 .rms-card p{margin:0;font-size:14px;line-height:1.6;color:var(--muted)}
 /* foot — nav (‹ ›) + progress bar (đồng bộ reviews/services slider chuẩn HI) */
 .rms-foot{display:flex;align-items:center;gap:16px;margin-top:clamp(20px,2.2vw,26px)}
@@ -1283,7 +1283,7 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
         </div>
         <div class="art-cap">
           <span class="art-style">Founder &amp; Laser Removal Specialist</span>
-          <span class="art-name">Minh</span>
+          <h3 class="art-name">Minh</h3>
         </div>
         <a class="art-link" href="/artists/minh-pham" aria-label="View Minh's profile"></a>
       </article>
@@ -1299,7 +1299,7 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
         </div>
         <div class="art-cap">
           <span class="art-style">Laser Removal Specialist</span>
-          <span class="art-name">Zoe</span>
+          <h3 class="art-name">Zoe</h3>
         </div>
         <a class="art-link" href="/artists/zoe" aria-label="View Zoe's profile"></a>
       </article>
@@ -1315,7 +1315,7 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
         </div>
         <div class="art-cap">
           <span class="art-style">Laser Removal Specialist</span>
-          <span class="art-name">Cindy</span>
+          <h3 class="art-name">Cindy</h3>
         </div>
         <a class="art-link" href="/artists/cindy" aria-label="View Cindy's profile"></a>
       </article>
@@ -1410,9 +1410,9 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
         <p class="rme-lead"><b>Laser tattoo removal is the most effective and lowest-risk way to remove a tattoo, because it clears the ink deep in your skin where creams, saline, and surgery fall short.</b> Other methods either sit on the surface or cut the skin open, while the laser breaks the pigment apart for your body to flush out naturally.</p>
         <p class="rme-cue">The benefits of modern laser removal stand out:</p>
         <ul class="rme-benefits">
-          <li class="rme-benefit"><span class="rme-benefit-rule" aria-hidden="true"></span><h3 class="rme-benefit-h">Fewer, shorter sessions</h3><p class="rme-benefit-p">Most tattoos fade over five to ten quick sessions instead of an endless routine.</p></li>
-          <li class="rme-benefit"><span class="rme-benefit-rule" aria-hidden="true"></span><h3 class="rme-benefit-h">Reaches ink creams and saline can't</h3><p class="rme-benefit-p">The laser targets pigment deep in the dermis, the second layer of skin where the ink actually sits, not just the surface layer.</p></li>
-          <li class="rme-benefit"><span class="rme-benefit-rule" aria-hidden="true"></span><h3 class="rme-benefit-h">Non-surgical, lower risk to your skin</h3><p class="rme-benefit-p">There's no cutting or excision, so no surgical scar and less stress on the skin around your tattoo.</p></li>
+          <li class="rme-benefit"><span class="rme-benefit-rule" aria-hidden="true"></span><p class="rme-benefit-h">Fewer, shorter sessions</p><p class="rme-benefit-p">Most tattoos fade over five to ten quick sessions instead of an endless routine.</p></li>
+          <li class="rme-benefit"><span class="rme-benefit-rule" aria-hidden="true"></span><p class="rme-benefit-h">Reaches ink creams and saline can't</p><p class="rme-benefit-p">The laser targets pigment deep in the dermis, the second layer of skin where the ink actually sits, not just the surface layer.</p></li>
+          <li class="rme-benefit"><span class="rme-benefit-rule" aria-hidden="true"></span><p class="rme-benefit-h">Non-surgical, lower risk to your skin</p><p class="rme-benefit-p">There's no cutting or excision, so no surgical scar and less stress on the skin around your tattoo.</p></li>
         </ul>
       </div>
       <figure class="rme-media">
@@ -1424,7 +1424,7 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
       <div class="faqacc-item faqacc-item--pillar">
         <input type="checkbox" id="rmeTab1" class="faqacc-cb">
         <label for="rmeTab1" class="faqacc-head">
-          <span class="faqacc-q">How does laser tattoo removal actually work?</span>
+          <h3 class="faqacc-q">How does laser tattoo removal actually work?</h3>
           <span class="faqacc-icon" aria-hidden="true"></span>
         </label>
         <div class="faqacc-body"><div class="faqacc-inner">
@@ -1511,25 +1511,25 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
         <li class="rms-card">
           <span class="rms-num" aria-hidden="true">01</span>
           <span class="rms-ey">Session 1</span>
-          <h3>First Signs of Fading</h3>
+          <p class="rms-card-h">First Signs of Fading</p>
           <p>The tattoo lightens roughly 10 to 20 percent, most visible by the six-week mark. Redness and swelling for a day or two are normal.</p>
         </li>
         <li class="rms-card">
           <span class="rms-num" aria-hidden="true">02</span>
           <span class="rms-ey">Sessions 2–4</span>
-          <h3>Visible Lightening</h3>
+          <p class="rms-card-h">Visible Lightening</p>
           <p>Fading picks up speed, and black or dark ink responds the fastest.</p>
         </li>
         <li class="rms-card">
           <span class="rms-num" aria-hidden="true">03</span>
           <span class="rms-ey">Sessions 5–8</span>
-          <h3>Deep Clearance</h3>
+          <p class="rms-card-h">Deep Clearance</p>
           <p>The laser targets the stubborn colors left behind, like yellow, green, and light blue. Multicolored tattoos move slower here.</p>
         </li>
         <li class="rms-card">
           <span class="rms-num" aria-hidden="true">04</span>
           <span class="rms-ey">Sessions 9–12 (if needed)</span>
-          <h3>Final Sessions</h3>
+          <p class="rms-card-h">Final Sessions</p>
           <p>Large, dense, or stubborn tattoos may need a few more passes, and we reassess at every visit.</p>
         </li>
       </ul>
@@ -1694,7 +1694,7 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
   <img class="cta-smoke cta2-smoke" src="_hero-assets/color-blur.webp" alt="" aria-hidden="true">
   <span class="grain" aria-hidden="true"></span>
   <div class="wrap">
-    <h2 class="cta2-h">Get Your Exact Price at a Free Consultation</h2>
+    <p class="cta2-h">Get Your Exact Price at a Free Consultation</p>
     <p class="cta2-sub">A no-obligation consultation gives you a clear session plan and price before treatment starts.</p>
     <div class="cta2-act">
       <a class="btn btn-sell cta2-btn" href="#book">Get a Free Quote</a>
