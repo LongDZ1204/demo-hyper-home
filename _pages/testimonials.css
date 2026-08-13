@@ -127,7 +127,9 @@
    ở đó review chỉ là một section phụ.
    Thẻ .rv-card là của tầng chung; trong lưới thì thuộc tính flex của nó bị bỏ
    qua (grid item không đọc flex), nên không cần gỡ gì. */
+/* Ngoại lệ riêng của trang review: 6 card/lô, 3 cột × 2 hàng trên desktop. */
 .rv-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch}
+.rv-grid > .rv-card[hidden]{display:none!important}
 .rv-grid > .is-more{display:none}
 .rv-grid.is-open > .is-more{display:flex}
 

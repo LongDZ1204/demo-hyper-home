@@ -52,7 +52,7 @@
 <link rel="stylesheet" href="_foundation/components/booking-section.css">
 <link rel="stylesheet" href="_foundation/components/booking-form.css">
 <link rel="stylesheet" href="_foundation/hi-components.css">
-<link rel="stylesheet" href="_pages/testimonials.css">
+<link rel="stylesheet" href="_pages/testimonials.css?v=20260813-review-layout-6">
 <!-- hi-ds.css NẠP CUỐI: lớp design-system cố tình thắng cascade so với CSS lẻ của page -->
 <link rel="stylesheet" href="_foundation/hi-ds.css">
 </head>
@@ -331,7 +331,7 @@
             <a class="rv-leave" href="https://maps.google.com/?cid=11149913610046039477" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ic-google"></use></svg>Read our Google reviews</a>
           </div>
 
-          <div class="rv-grid rv-grid--plat" id="googleGrid" data-show-desktop="6" data-show-mobile="6">
+          <div class="rv-grid rv-grid--plat" id="googleGrid" data-card-page="6" data-card-item=".rv-card">
 
             <article class="rv-card">
               <div class="rv-top">
@@ -444,9 +444,9 @@
           </div>
 
           <div class="rv-morewrap">
-            <button class="rv-morebtn loadmore-btn" type="button" data-more-for="googleGrid" aria-controls="googleGrid" aria-label="Load more Google reviews" aria-expanded="false">
-              <span data-more-label>Load more</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-chevron-down"></use></svg>
+            <button class="rv-morebtn loadmore-btn" type="button" data-card-more aria-controls="googleGrid" aria-label="Load more Google reviews" aria-expanded="false">
+              <span data-load-label>Load more</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hi-icon"><path d="m6 9 6 6 6-6"></path></svg>
             </button>
           </div>
         </div>
@@ -464,7 +464,7 @@
             <a class="rv-leave" href="https://www.facebook.com/hyperinkers/reviews" target="_blank" rel="noopener"><svg aria-hidden="true"><use href="#ic-fb"></use></svg>Read our Facebook reviews</a>
           </div>
 
-          <div class="rv-grid rv-grid--plat" id="fbGrid" data-show-desktop="6" data-show-mobile="6">
+          <div class="rv-grid rv-grid--plat" id="fbGrid" data-card-page="6" data-card-item=".rv-card">
 
             <article class="rv-card">
               <div class="rv-top">
@@ -582,9 +582,9 @@
           </div>
 
           <div class="rv-morewrap">
-            <button class="rv-morebtn loadmore-btn" type="button" data-more-for="fbGrid" aria-controls="fbGrid" aria-label="Load more Facebook reviews" aria-expanded="false">
-              <span data-more-label>Load more</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-chevron-down"></use></svg>
+            <button class="rv-morebtn loadmore-btn" type="button" data-card-more aria-controls="fbGrid" aria-label="Load more Facebook reviews" aria-expanded="false">
+              <span data-load-label>Load more</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hi-icon"><path d="m6 9 6 6 6-6"></path></svg>
             </button>
           </div>
         </div>
@@ -702,49 +702,6 @@
 <script src="_foundation/hi-chrome.js" defer></script>
 <script src="_foundation/hi-components.js" defer></script>
 <script src="_foundation/hi-ds.js?v=20260813-inline-gap" defer></script>
-<script>
-/* "Show more" cho hai lưới review theo nền tảng. Giữ lưới + nút, KHÔNG đổi sang
-   slider (B.Long chốt 11/08: trang này chuyên về review, lưới cho đọc nhiều
-   cùng lúc; slider hợp với trang chủ nơi review chỉ là một section phụ).
-   Đã cắt khỏi bản mockup: nhánh storyGrid (section đã bỏ), syncClip của
-   .rv-sc-body (cùng section), và toàn bộ phần nút gọi nổi. */
-(function () {
-  var MOBILE_Q = window.matchMedia('(max-width: 600px)');
-  function applyInitial(grid) {
-    var cards = Array.prototype.slice.call(grid.children);
-    var dShow = parseInt(grid.dataset.showDesktop || '6', 10);
-    var mShow = parseInt(grid.dataset.showMobile || '3', 10);
-    var visible = MOBILE_Q.matches ? mShow : dShow;
-    cards.forEach(function (c, i) { c.classList.toggle('is-more', i >= visible); });
-    return cards.length - visible;
-  }
-
-  document.querySelectorAll('[data-more-for]').forEach(function (btn) {
-    var grid = document.getElementById(btn.dataset.moreFor);
-    if (!grid) return;
-    var label = btn.querySelector('[data-more-label]');
-    function sync() {
-      if (btn.getAttribute('aria-expanded') === 'true') return;
-      var hidden = applyInitial(grid);
-      btn.closest('.rv-morewrap').style.display = hidden > 0 ? 'flex' : 'none';
-      if (label) label.textContent = 'Load more';
-    }
-
-    btn.addEventListener('click', function () {
-      var open = grid.classList.toggle('is-open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-      if (!label) return;
-      if (open) { label.textContent = 'Show less'; return; }
-      applyInitial(grid);
-      label.textContent = 'Load more';
-      grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    });
-
-    sync();
-    MOBILE_Q.addEventListener('change', sync);
-  });
-})();
-</script>
 
 <!-- @include booking-modal -->
 <!-- HYPER INKERS — POPUP ĐẶT LỊCH, dùng chung. NGUỒN DUY NHẤT.

@@ -97,6 +97,39 @@
   });
 })();
 
+/* ---------- TAB / TOGGLE BẰNG LABEL · đổi trạng thái KHÔNG focus control ẩn ----------
+   Hành vi mặc định của label[for] sẽ focus radio/checkbox ẩn. Trên mobile, focus đó
+   làm viewport cuộn tới control thay vì đứng ở nút vừa chạm. Các control vẫn là HTML
+   thật cho keyboard/screen reader; nhánh này chỉ thay hành vi click/tap trên label. */
+(function(){
+  var selector=[
+    '.lead-cb','.rvi-cb','.more-cb','.gali-icb','.svc-icb','.arti-icb','.aw-cb',
+    '.sapf-cb','.aw-load-cb','.vs-radio','.faqtab-radio','.faqacc-cb','.adv-radio','.svt-radio',
+    '.pl-radio','input[name="rvtab"]','input[name="rvplat"]'
+  ].join(',');
+  function controlOf(e){
+    var label=e.target.closest&&e.target.closest('label[for]');
+    if(!label) return null;
+    var id=label.getAttribute('for'), control=id&&document.getElementById(id);
+    return control&&control.matches(selector)?control:null;
+  }
+  /* Focus mặc định xảy ra ngay từ pointerdown, trước click. Chặn ở đây mới giữ
+     được scrollY; click bên dưới vẫn đổi trạng thái và phát input/change. */
+  document.addEventListener('pointerdown',function(e){
+    if(controlOf(e)) e.preventDefault();
+  },true);
+  document.addEventListener('click',function(e){
+    var control=controlOf(e);
+    if(!control || control.classList.contains('faqacc-cb')) return;
+    e.preventDefault();
+    var next=control.type==='radio'?true:!control.checked;
+    if(control.checked===next) return;
+    control.checked=next;
+    control.dispatchEvent(new Event('input',{bubbles:true}));
+    control.dispatchEvent(new Event('change',{bubbles:true}));
+  });
+})();
+
 /* ---------- SERVICE TABS · nút thật cho vùng tap mobile ----------
    Radio vẫn giữ nhiệm vụ điều khiển CSS; button chỉ cập nhật radio tương ứng và
    aria-expanded. Scope bằng [data-service-tabs] nên không đổi tab cũ của page khác. */
@@ -127,7 +160,7 @@
    bộ tab này đều được, kể cả trang dựng sau. Nhánh checkbox không đụng tới vì
    checkbox vốn đã tự đóng mở được. */
 (function(){
-  var wasOpen=false;
+  var wasOpen=false, pressed=null;
   function cbOf(e){
     var head=e.target.closest&&e.target.closest('.faqacc-head');
     if(!head) return null;
@@ -135,10 +168,16 @@
     var cb=document.getElementById(id);
     return (cb&&cb.type==='radio'&&cb.classList.contains('faqacc-cb'))?cb:null;
   }
-  document.addEventListener('pointerdown',function(e){ var cb=cbOf(e); wasOpen=!!(cb&&cb.checked); });
+  document.addEventListener('pointerdown',function(e){ var cb=cbOf(e); pressed=cb; wasOpen=!!(cb&&cb.checked); });
   document.addEventListener('click',function(e){
     var cb=cbOf(e); if(!cb) return;
-    if(wasOpen){ e.preventDefault(); cb.checked=false; wasOpen=false; }
+    /* Chặn default ở cả hai chiều để browser không focus/scroll tới input ẩn. */
+    e.preventDefault();
+    var next=cb===pressed?!wasOpen:!cb.checked;
+    cb.checked=next;
+    cb.dispatchEvent(new Event('input',{bubbles:true}));
+    cb.dispatchEvent(new Event('change',{bubbles:true}));
+    wasOpen=false; pressed=null;
   });
 })();
 
@@ -432,7 +471,10 @@
        hidden       tab nhánh: cắt cứng -> đèn bỏ qua, báo "1 / 8" đúng số ô đang
                     có trên trang, không báo "1 / 12" rồi tắc ở ô thứ 8. */
   var STEP=parseInt(grid.getAttribute('data-gallery-page'),10)||0;
-  var moreBtn=STEP?document.querySelector('.gal-loadmore'):null;
+  var gallerySection=grid.closest('section')||document;
+  var moreBtn=STEP?gallerySection.querySelector('.gal-loadmore'):null;
+  var moreLabel=moreBtn&&moreBtn.querySelector('span');
+  var moreAria=moreBtn&&moreBtn.getAttribute('aria-label');
   var shownAll=STEP;
   function curFilter(){
     var p=root&&root.querySelector('.galf-pill.is-active');
@@ -452,9 +494,13 @@
     if(!STEP||!moreBtn) return;
     var isAll=(f==='all'), n=isAll?shownAll:STEP;
     list.slice(n).forEach(function(t){ if(isAll) t.classList.add('is-clamped'); else t.hidden=true; });
-    /* Nhãn nút cố định "Load more", KHÔNG kèm số còn lại (B.Long chốt 11/08) —
-       chữ nằm trong HTML, JS chỉ bật/tắt nút. */
-    moreBtn.hidden=!isAll||list.length-n<=0;
+    var hasMore=isAll&&n<list.length;
+    var canCollapse=isAll&&list.length>STEP&&!hasMore;
+    moreBtn.hidden=!isAll||list.length<=STEP;
+    moreBtn.setAttribute('aria-expanded',shownAll>STEP?'true':'false');
+    moreBtn.setAttribute('data-load-state',canCollapse?'less':'more');
+    if(moreLabel) moreLabel.textContent=canCollapse?'Show less':'Load more';
+    if(moreAria) moreBtn.setAttribute('aria-label',canCollapse?'Show less gallery work':moreAria);
     /* đưa focus tới ô vừa mở để người dùng bàn phím không rơi về đầu trang;
        preventScroll để chuột không bị giật màn hình */
     if(focusFrom!=null&&list[focusFrom]) list[focusFrom].focus({preventScroll:true});
@@ -474,7 +520,17 @@
   }
   if(moreBtn){
     moreBtn.addEventListener('click',function(){
-      var from=shownAll; shownAll+=STEP; applyFilter(curFilter(),from);
+      var f=curFilter(), list=tiles().filter(function(t){
+        if(f==='all') return true;
+        return (t.getAttribute('data-tags')||'').split(/\s+/).indexOf(f)!==-1;
+      });
+      if(shownAll>=list.length){
+        shownAll=STEP;
+        applyFilter(f);
+        grid.scrollIntoView({behavior:'smooth',block:'start'});
+        return;
+      }
+      var from=shownAll; shownAll+=STEP; applyFilter(f,from);
     });
   }
 
@@ -661,6 +717,56 @@
     sc.scrollTop=((e.clientY-r.top)/r.height)*(sc.scrollHeight-sc.clientHeight);});
   window.addEventListener('load',function(){ measure(); setTimeout(measure,300); });
   measure();
+})();
+
+/* ============================================================================
+   PHÂN TRANG CARD DÙNG CHUNG — mặc định 8 thẻ, mở tiếp từng lô 8 và giữ
+   nút Show less khi đã mở hết. Dùng cho grid không phải gallery/lightbox.
+   ============================================================================ */
+(function(){
+  [].slice.call(document.querySelectorAll('[data-card-page]')).forEach(function(grid){
+    var step=parseInt(grid.getAttribute('data-card-page'),10)||8;
+    var selector=grid.getAttribute('data-card-item')||':scope > *';
+    var items=[].slice.call(grid.querySelectorAll(selector));
+    var id=grid.id;
+    var btn=id&&document.querySelector('[data-card-more][aria-controls="'+id+'"]');
+    var label=btn&&btn.querySelector('[data-load-label]');
+    var originalAria=btn&&btn.getAttribute('aria-label');
+    var shown=step;
+    if(!items.length) return;
+
+    /* Gỡ state cũ của Reviews để chỉ còn một nguồn điều khiển. */
+    grid.classList.remove('is-open');
+    items.forEach(function(item){item.classList.remove('is-more');});
+
+    function render(){
+      items.forEach(function(item,i){item.hidden=i>=shown;});
+      if(!btn) return;
+      var hasMore=shown<items.length;
+      var canCollapse=items.length>step&&!hasMore;
+      btn.hidden=items.length<=step;
+      btn.setAttribute('aria-expanded',shown>step?'true':'false');
+      btn.setAttribute('data-load-state',canCollapse?'less':'more');
+      if(label) label.textContent=canCollapse?'Show less':'Load more';
+      if(originalAria) btn.setAttribute('aria-label',canCollapse?'Show less cards':originalAria);
+    }
+
+    if(btn){
+      btn.addEventListener('click',function(){
+        if(shown>=items.length){
+          shown=step;
+          render();
+          grid.scrollIntoView({behavior:'smooth',block:'start'});
+          return;
+        }
+        var from=shown;
+        shown=Math.min(shown+step,items.length);
+        render();
+        if(items[from]&&items[from].focus) items[from].focus({preventScroll:true});
+      });
+    }
+    render();
+  });
 })();
 
 /* ============================================================================

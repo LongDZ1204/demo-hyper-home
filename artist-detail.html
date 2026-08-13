@@ -13,7 +13,7 @@
 <link rel="stylesheet" href="_foundation/components/booking-section.css">
 <link rel="stylesheet" href="_foundation/components/booking-form.css">
 <link rel="stylesheet" href="_foundation/hi-components.css">
-<link rel="stylesheet" href="_pages/artist-detail.css">
+<link rel="stylesheet" href="_pages/artist-detail.css?v=20260813-gallery-layout">
 <!-- hi-ds.css NẠP CUỐI: lớp design-system cố tình thắng cascade so với CSS lẻ của page -->
 <link rel="stylesheet" href="_foundation/hi-ds.css">
 <!--
@@ -272,11 +272,13 @@
         <p class="section-intro has-clamp"><span class="lead-txt">A rotating selection of Minh's tattoos completed between 2024 and 2026, spanning black and grey realism, color realism, and large-scale custom pieces.</span><label for="pj-intro" class="lead-more" aria-label="Expand or collapse the featured projects introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></label></p>
         <noscript><style>.lead-txt{-webkit-line-clamp:unset;line-clamp:unset}.lead-more{display:none}</style></noscript>
 	      </div>
-      <div class="project-grid" id="projectGrid" data-gallery-grid data-gallery-dynamic></div>
-      <button class="load-more loadmore-btn" id="projectMore" type="button" aria-controls="projectGrid" aria-label="Load more artist projects">
-        <span>Load more</span>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-chevron-down"></use></svg>
-      </button>
+      <div class="project-grid" id="projectGrid" data-gallery-grid data-gallery-dynamic data-card-page="8" data-card-item=".project-item"></div>
+      <div class="gal-more-row">
+        <button class="loadmore-btn" id="projectMore" type="button" data-card-more aria-controls="projectGrid" aria-label="Load more artist projects" aria-expanded="false">
+          <span data-load-label>Load more</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hi-icon"><path d="m6 9 6 6 6-6"></path></svg>
+        </button>
+      </div>
     </div>
   </section>
 
@@ -811,10 +813,7 @@ var PORT = {
 };
 var STYLE_LABEL = {bg:"Black and grey",color:"Color realism",blackwork:"Blackwork"};
 var projectGrid = document.getElementById("projectGrid");
-var projectMore = document.getElementById("projectMore");
 var pool = [];
-var shown = 0;
-var PAGE = 9;
 
 function buildPool(){
   var keys = Object.keys(PORT);
@@ -826,23 +825,20 @@ function buildPool(){
     });
   }
 }
-function renderProjects(reset){
-  if(reset){projectGrid.innerHTML = ""; shown = 0;}
-  pool.slice(shown, shown + PAGE).forEach(function(it){
+function renderProjects(){
+  projectGrid.innerHTML = "";
+  pool.forEach(function(it){
     /* Ô là thẻ <a href="ảnh gốc"> mang class .galp-tile — đúng hợp đồng của đèn
        xem ảnh dùng chung: nó lấy href làm ảnh to và alt của <img> làm mô tả. */
     var item = document.createElement("a");
     item.className = "project-item galp-tile";
     item.href = it.src;
-    item.innerHTML = '<img loading="eager" src="' + it.src + '" alt="' + STYLE_LABEL[it.style] + ' tattoo by Minh at Hyper Inkers">';
+    item.innerHTML = '<img loading="lazy" src="' + it.src + '" alt="' + STYLE_LABEL[it.style] + ' tattoo by Minh at Hyper Inkers">';
     projectGrid.appendChild(item);
   });
-  shown += PAGE;
-  projectMore.hidden = shown >= pool.length;
 }
 	buildPool();
-	renderProjects(true);
-	projectMore.addEventListener("click", function(){renderProjects(false);});
+	renderProjects();
 
 /* Engine đèn xem ảnh cục bộ ĐÃ XOÁ (11/08) — dùng bản chung trong
    hi-components.js: có bộ đếm "n / tổng", nút vô hiệu ở đầu/cuối, vuốt ngang. */

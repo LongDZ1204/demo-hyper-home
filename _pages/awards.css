@@ -244,9 +244,6 @@
   .sap-yintro{font-size:14.5px;line-height:1.55;margin-top:10px}
   .sap-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
   .sap-grid--flag{grid-template-columns:1fr}
-  /* mobile: show 6 cards (2 cols x 3 rows) before Load more, instead of 8 */
-  #awf-all:checked ~ #awload-2025:not(:checked) ~ #y2025 .sap-grid > .awc:nth-child(n+7),
-  #awf-all:checked ~ #awload-2024:not(:checked) ~ #y2024 .sap-grid > .awc:nth-child(n+7){display:none}
   .awc .aw-body{padding:11px 11px 13px}
   .awc-place{font-size:clamp(15px,4.35vw,18px);line-height:1.06}
   .awc-conv{margin-top:7px;font-size:12.5px;line-height:1.32}

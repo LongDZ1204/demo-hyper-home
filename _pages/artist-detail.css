@@ -105,8 +105,10 @@ body{background:var(--bg);overflow-x:clip}
 	.projects .section-head h2{font-size:clamp(28px,3.4vw,44px);color:#fff;max-width:620px}
 	/* Bỏ masonry (column-count + 4 mức aspect-ratio so le). Masonry xếp ảnh theo CỘT
 	   nên thứ tự đọc nhảy dọc, và mỗi cột kết thúc ở một độ cao khác nhau → đáy lưới
-	   răng cưa, hàng cuối hụt. Đổi sang grid 3 cột đều, mọi ô cùng tỉ lệ 3/4. */
-	.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+	   răng cưa, hàng cuối hụt. Đổi sang grid đều, mọi ô cùng tỉ lệ 3/4. */
+	/* 8 ảnh đầu = 2 hàng đầy đủ trên desktop; tránh hàng cuối chỉ có 2 ô và
+	   khoảng trống lớn như lưới 3 cột trước đây. */
+	.project-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
 	.project-item{display:block;width:100%;margin:0;padding:0;aspect-ratio:3/4;position:relative;overflow:hidden;background:#050505;border:1px solid #202020;border-radius:14px;cursor:pointer;appearance:none;-webkit-appearance:none}
 .project-item img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s var(--ease),filter .35s var(--ease)}
 .project-item:hover img{transform:scale(1.045);filter:contrast(1.08)}

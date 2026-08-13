@@ -9,6 +9,25 @@
    Nạp SAU hi-chrome.css, TRƯỚC _pages/<page>.css.
    ============================================================================ */
 
+/* ==================== CONTROL ẨN · KHÔNG LÀM NHẢY TRANG MOBILE ====================
+   Các tab/accordion CSS-only dùng label[for] để đổi radio hoặc checkbox. Khi control
+   ẩn bằng position:absolute, Safari/Chrome mobile vẫn cố cuộn tới vị trí của control
+   lúc label được chạm; kết quả là Reviews, Why Choose, FAQ... nhảy khỏi vùng đang xem.
+
+   Giữ control trong accessibility tree và giữ nguyên selector :checked, nhưng neo nó
+   vào viewport rồi clip hoàn toàn. Control đã luôn ở trong màn hình nên trình duyệt
+   không còn đổi scrollY khi focus; keyboard + screen reader vẫn dùng được. */
+:is(
+  .lead-cb,.rvi-cb,.more-cb,.gali-icb,.svc-icb,.arti-icb,.aw-cb,.sapf-cb,
+  .aw-load-cb,.vs-radio,.faqtab-radio,.faqacc-cb,.adv-radio,.svt-radio,.pl-radio,
+  .rv-tabs > input[name="rvtab"],.rv-panel-plat > input[name="rvplat"]
+){
+  position:fixed!important;top:0!important;left:0!important;width:1px!important;height:1px!important;
+  margin:0!important;padding:0!important;overflow:hidden!important;clip:rect(0 0 0 0)!important;
+  clip-path:inset(50%)!important;white-space:nowrap!important;opacity:0!important;
+  border:0!important;pointer-events:none!important
+}
+
 
 /* ==================== REVIEWS · thẻ review, tab, slider ==================== */
 /* ============ SECTION 03 · REVIEWS (2-tab · slider · split · leave-a-review) ============ */
