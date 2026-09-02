@@ -397,6 +397,11 @@
 .arti-intro{position:relative;max-width:660px;margin:14px auto 0;text-align:center;font-size:16px;line-height:1.6;color:#C9C9C9}
 /* grid */
 .art-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.5vw,20px);margin-top:clamp(30px,4vw,46px)}
+@media(min-width:601px){
+  .art-grid[data-artist-context="home"]>.art-card:nth-child(9):last-child{
+    grid-column:2/span 2;justify-self:center;width:calc(50% - clamp(7px,.75vw,10px))
+  }
+}
 /* Biến thể ĐÚNG 5 thẻ: rail cuộn ngang ngay trên desktop — 4 thẻ trong khung,
    thẻ thứ 5 kéo tới, chân ‹ › + thanh tiến độ tự hiện (JS bật theo overflow-x).
    Bề ngang thẻ vẫn đúng bằng lưới 4 cột nên không lệch nhịp với trang khác.
