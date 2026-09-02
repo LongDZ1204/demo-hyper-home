@@ -398,7 +398,7 @@
 /* grid */
 .art-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(14px,1.5vw,20px);margin-top:clamp(30px,4vw,46px)}
 @media(min-width:601px){
-  .art-grid[data-artist-context="home"]>.art-card:nth-child(9):last-child{
+  .art-grid[data-artist-context="about"]>.art-card:nth-child(9):last-child{
     grid-column:2/span 2;justify-self:center;width:calc(50% - clamp(7px,.75vw,10px))
   }
 }
