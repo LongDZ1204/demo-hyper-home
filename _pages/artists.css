@@ -59,6 +59,11 @@ body.artists-page{background:var(--bg);color:#fff}
    quyết, luật A6. Không có lý do nào ghi lại cho con số 46px này.) */
 .artists-hub-list .section-intro{max-width:760px}
 .hub-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(18px,2vw,24px) clamp(14px,1.5vw,20px)}
+@media(min-width:981px){
+  .hub-grid>.hub-artist-card:nth-child(9):last-child{
+    grid-column:2/span 2;justify-self:center;width:calc(50% - clamp(7px,.75vw,10px))
+  }
+}
 .hub-artist-card{position:relative;min-width:0}
 .hub-artist-media{position:relative;aspect-ratio:3/4;overflow:hidden;border-radius:14px;background:linear-gradient(160deg,#1e1e1e,#0b0b0b);border:1px solid rgba(255,255,255,.07);transition:border-color .3s var(--ease),transform .3s var(--ease)}
 .hub-artist-card:hover .hub-artist-media,.hub-artist-card:focus-within .hub-artist-media,.hub-artist-card.is-bio-open .hub-artist-media{border-color:rgba(204,102,0,.5);transform:translateY(-4px)}
@@ -127,6 +132,7 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
   .hero-stack{padding-block:88px 40px}
   .hero h1{overflow-wrap:break-word}   /* cỡ chữ do token --fs-h1 lo */
   .hub-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px 13px}
+  .hub-grid>.hub-artist-card:nth-child(9):last-child{grid-column:1/-1;justify-self:center;width:calc(50% - 6.5px)}
   .hub-artist-card{padding-bottom:0;border-bottom:0}
   .hub-artist-media{border-radius:12px;transform:none}
   .hub-artist-card:hover .hub-artist-media,.hub-artist-card:focus-within .hub-artist-media,.hub-artist-card.is-bio-open .hub-artist-media{transform:none}
