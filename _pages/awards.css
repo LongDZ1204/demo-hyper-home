@@ -239,13 +239,15 @@
    chữ nghiêng) — đó là câu nói của THỢ trong hồ sơ cá nhân, không phải lời
    khách; site đã có sẵn một kiểu cho lời khách thì không mở kiểu thứ hai.
 
-   Dấu ngoặc kép treo ở lề trái bằng position:absolute nên nó KHÔNG đẩy dòng
-   đầu thụt vào — chữ của trích dẫn vẫn thẳng cột với đoạn văn trên dưới.
-   Chữ trong <p> bỏ luôn cặp ngoặc kép của bản content: dấu treo đã gánh đúng
-   vai đó, để cả hai là hai dấu nháy dính nhau. */
-.rec-quote{position:relative;margin:20px 0 0;padding-left:clamp(42px,3.6vw,60px);max-width:68ch}
-.rec-quote-mark{position:absolute;left:0;top:-.12em;color:var(--orange);
-  font-family:Georgia,"Times New Roman",serif;font-size:clamp(46px,4.4vw,62px);line-height:1}
+   Dấu hiệu là VẠCH CAM DỌC bên trái, không phải vạch ngang trên đầu
+   (B.Long 03/09): vạch ngang chỉ đánh dấu điểm bắt đầu, vạch dọc đánh dấu cả
+   khối — đó mới là việc của blockquote. Mục này lại đã có một vạch tóc ngang
+   ngăn với khối bằng khen ngay trên, nên vạch ngang thứ hai đọc ra là một
+   đường chia mục nữa chứ không phải trích dẫn.
+   Chữ trong <p> bỏ cặp ngoặc kép của bản content: khối đã tự nói nó là trích
+   dẫn bằng vạch + cỡ chữ, thêm dấu nháy là nói hai lần. */
+.rec-quote{margin:20px 0 0;padding-left:clamp(18px,1.8vw,26px);max-width:68ch;
+  border-left:3px solid var(--orange)}
 .rec-quote p{margin:0;font-family:var(--sub);font-size:clamp(18px,1.7vw,24px);font-weight:500;
   line-height:1.48;color:#fff}
 /* .soa-p-link là inline-flex nên margin-top của thẻ <p> liền trước không gộp
