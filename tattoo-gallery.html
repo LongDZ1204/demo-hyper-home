@@ -164,8 +164,8 @@
           <li><span aria-current="page">Tattoo Gallery</span></li>
         </ol>
       </nav>
-      <h1 id="gallery-title">Explore Our <span class="o">Tattoo Gallery</span></h1>
-      <p class="hero-lead">Filter by style, then click any image to view the tattoo work full size.</p>
+      <h1 id="gallery-title">Tattoo Gallery <span class="o">in San Antonio</span></h1>
+      <p class="hero-lead">These tattoos are real client work by Hyper Inkers artists in San Antonio, across realism, black and grey, color, Japanese, traditional, portrait, fine line, geometric, and cover-up work. The linework, shading, and composition shown here reflect the finished work our artists deliver.</p>
     </div>
   </section>
 
@@ -214,7 +214,7 @@
       <p class="cta1-h">Found a style you want to build from?</p>
       <p class="cta1-sub">Call the studio and tell us what style, size, and placement you are considering. We will help route the idea to the right artist before you book.</p>
       <div class="cta1-act">
-        <a class="btn btn-primary cta1-btn" href="contact.html#booking">Book a Consultation</a>
+        <a class="btn btn-primary cta1-btn" href="#book">Book a Consultation</a>
         <a class="cta1-call" href="tel:+12109979737"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .7-.2 1l-2.3 2.2z"/></svg>Call (210) 997-9737</a>
       </div>
     </div>
@@ -224,7 +224,7 @@
   <section class="section s-visit" id="visit" aria-labelledby="visit-title">
     <div class="wrap">
       <div class="section-title-row">
-        <h2 id="visit-title">Visit <span class="o">Hyper Inkers Tattoo Parlor</span></h2>
+        <h2 id="visit-title">Visit <span class="o">Hyper Inkers Tattoo Parlor in San Antonio</span></h2>
       </div>
       <p class="vs-intro">The studio sits at 8045 Callaghan Road in northwest San Antonio. Walk in whenever an artist is free, or book ahead for a larger piece so your artist has the time reserved.</p>
 
@@ -237,6 +237,71 @@
         </ul>
         <div class="vs-map">
           <iframe src="https://maps.google.com/maps?q=8045%20Callaghan%20Rd,%20San%20Antonio,%20TX%2078230&z=14&output=embed" loading="lazy" title="Map to Hyper Inkers, 8045 Callaghan Rd, San Antonio, TX"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section s-book" id="book" aria-labelledby="gallery-book-title">
+    <div class="wrap">
+      <div class="bks-card">
+        <div data-bks-body>
+          <h2 class="bks-title" id="gallery-book-title">Book Your <span class="o">Appointment</span></h2>
+          <p class="bks-intro">Share the style, size, and placement you are considering. Our team will help match your idea with the right Hyper Inkers artist and reply within 24 hours.</p>
+
+          <form data-bks-form aria-label="Book a tattoo appointment at Hyper Inkers">
+            <div class="bks-row">
+              <div class="bks-group">
+                <label class="bks-label" for="tgbks-name">Your Name<span class="req">*</span></label>
+                <input class="bks-input" id="tgbks-name" type="text" name="your-name" placeholder="Your Name" required>
+              </div>
+              <div class="bks-group">
+                <label class="bks-label" for="tgbks-phone">Phone Number<span class="req">*</span></label>
+                <input class="bks-input" id="tgbks-phone" type="tel" name="your-phone" placeholder="Phone Number" inputmode="tel" required>
+              </div>
+            </div>
+
+            <div class="bks-row">
+              <div class="bks-group">
+                <label class="bks-label" for="tgbks-email">Email Address<span class="req">*</span></label>
+                <input class="bks-input" id="tgbks-email" type="email" name="your-email" placeholder="Email Address" required>
+              </div>
+              <div class="bks-group">
+                <label class="bks-label" for="tgbks-date">Preferred Date<span class="opt">Optional</span></label>
+                <input class="bks-input" id="tgbks-date" type="date" name="appointment-date">
+              </div>
+            </div>
+
+            <div class="bks-group">
+              <label class="bks-label" for="tgbks-service">Service<span class="req">*</span></label>
+              <select class="bks-select" id="tgbks-service" name="your-service" required>
+                <option value="Custom Tattoo" selected>Custom Tattoo</option>
+              </select>
+            </div>
+
+            <div class="bks-group">
+              <label class="bks-label" for="tgbks-artist">Artist Preference<span class="opt">Optional</span></label>
+              <select class="bks-select" id="tgbks-artist" name="your-artist">
+                <option value="Open to recommendation" selected>Open to recommendation</option>
+              </select>
+            </div>
+
+            <div class="bks-group">
+              <label class="bks-label" for="tgbks-msg">Description<span class="opt">Optional</span></label>
+              <textarea class="bks-textarea" id="tgbks-msg" name="your-message" placeholder="e.g. Black and grey portrait on upper arm, about 6 inches"></textarea>
+            </div>
+
+            <div class="bks-foot">
+              <p class="bks-status" data-bks-status>3 required fields remaining</p>
+              <button type="submit" class="bks-submit" data-bks-submit disabled>Book a Free Consultation</button>
+            </div>
+          </form>
+        </div>
+
+        <div class="bks-success" data-bks-success>
+          <div class="bks-success__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <p class="bks-success-h">Request sent!</p>
+          <p>We'll reply within <strong>24 hours</strong> with available dates, your artist match, and a rough quote.</p>
         </div>
       </div>
     </div>
@@ -473,6 +538,7 @@ document.addEventListener('DOMContentLoaded',function(){
   </div>
 </div>
 <!-- /include booking-modal -->
+<script src="_foundation/components/booking-section.js" defer></script>
 <script src="_foundation/components/booking-form.js" defer></script>
 </body>
 </html>

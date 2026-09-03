@@ -120,7 +120,11 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
    đoạn dẫn. Cùng lỗi đã gặp ở portfolio.html, cùng cách chữa: trả về cặp token
    chung 16 / 34. Luật chung ở hi-ds khoá theo .section-head nên không với tới
    head đặt tên riêng của page. */
-.s-visit .section-title-row{margin-bottom:var(--gap-head-lead)}
+.s-visit .section-title-row{
+  justify-content:center;text-align:center;margin-bottom:var(--gap-head-lead)
+}
+.s-visit .section-title-row h2{white-space:normal;text-wrap:balance}
+.s-visit .section-title-row::after{display:none}
 .s-visit .vs-intro{margin-bottom:var(--gap-head-body)}
 
 /* padding-TRÊN = 0 (quyết định B.Long 10/08 ghi trong mockup): thanh lọc phải
