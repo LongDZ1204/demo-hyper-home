@@ -450,6 +450,12 @@
      tên nghệ sĩ lệch nhau tới 42px trong cùng một hàng (đo 12/08).
    - xuống hàng + căn giữa: thẻ thứ 5 nằm một mình giữa khoảng trắng, hàng cuối
      trông như thiếu 3 thẻ (B.Long bắt 12/08). */
+/* Biến thể ĐÚNG 3 thẻ: giữ nguyên bề ngang một ô của lưới 4 cột rồi căn giữa cả
+   cụm, thay vì dàn 3 cột cho thẻ phình to (lệch nhịp với trang 4 thẻ) hay để dính
+   mép trái chừa một ô trống bên phải. */
+@media(min-width:601px){
+  .art-grid--3{grid-template-columns:repeat(3,calc((100% - 3*clamp(14px,1.5vw,20px))/4));justify-content:center}
+}
 @media(min-width:601px){
   .art-grid--5{display:flex;grid-template-columns:none;overflow-x:auto;
     scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
@@ -948,6 +954,12 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 /* .cta1-h là <p> nên KHÔNG dính luật `.section h2 .o` ở hi-foundation — phải khai riêng,
    nếu không mấy chữ tô cam trong tiêu đề CTA (trang awards) sẽ về màu kem */
 .s-cta1 .cta1-h .o,.s-cta2 .cta2-h .o{color:var(--orange)}
+/* Nhãn nhỏ trên tiêu đề băng CTA. Content viết CTA theo ba nhịp "Eyebrow / câu /
+   nút", nên nhãn phải là nhãn chứ không phải tiêu đề. Khai một class dùng chung
+   cho cả hai băng; trang nào không viết markup thì không hiện gì. */
+.s-cta1 .cta-eyebrow,.s-cta2 .cta-eyebrow{margin:0 auto clamp(12px,1.4vw,18px);font-family:var(--sub);
+  font-weight:700;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);
+  text-shadow:0 1px 10px rgba(0,0,0,.8)}
 .s-cta1 .cta1-sub{margin:clamp(16px,2vw,22px) auto 0;max-width:46ch;font-family:var(--sub);
   font-size:clamp(14px,1.4vw,17px);letter-spacing:.02em;color:#D4D4D4;text-shadow:0 1px 10px rgba(0,0,0,.8);line-height:1.55}
 .cta1-act{margin-top:clamp(24px,3vw,36px);display:flex;flex-direction:column;align-items:center;gap:15px}
