@@ -71,18 +71,22 @@
    và khai .section{padding-block:...}, một class ở file page là thua cascade. */
 .section.s-faq{padding-top:0;background:var(--bg)}
 
-/* === THANH CHỌN CHỦ ĐỀ — 3 pill CHIA ĐỀU bề ngang (B.Long 11/08, lượt 2) ====
+/* === THANH CHỌN CHỦ ĐỀ — pill CHIA ĐỀU bề ngang (B.Long 11/08, lượt 2) ======
+   03/09: content chốt 5 nhóm nên thanh này từ 3 lên 5 pill. Luật chia đều giữ
+   nguyên, chỉ đổi mẫu số. Nhãn pill để 1 từ (BOOKING · TATTOO · COVER-UP ·
+   PIERCING · REMOVAL) chứ không bê nguyên tên nhóm: "LASER TATTOO REMOVAL" +
+   "BOOKING & STUDIO" cộng lại đã ~835px, đúng bằng trần 840px của thanh, tức là
+   tràn thành cuộn ngang ngay ở desktop. Tên nhóm đầy đủ nằm ở H2 trong panel.
    Mặc định tầng chung để .faqtab{flex:0 0 auto}: pill chỉ rộng bằng chữ của nó,
    rồi .pillrow dàn đều khoảng cách (space-between). Cách đó hợp với trang chủ
    và các trang dịch vụ — 4 đến 8 pill thì tổng bề rộng chữ đã gần lấp kín thanh.
-   FAQ chỉ có 3 pill nên chữ chiếm chưa tới nửa thanh 840px, phần còn lại thành
-   3 khoảng trống to; đọc ra là 3 nút nhỏ trôi nổi chứ không phải một bộ chọn.
-   Bản mockup xử lý đúng chỗ này: `.tab-list > li{flex:1 1 0}` cho mỗi pill đúng
-   một phần ba. Bê lại ý đó, đặt thẳng lên .faqtab vì bản port không còn thẻ <li>.
+   FAQ chữ trên pill chiếm chưa tới nửa thanh 840px, phần còn lại thành những
+   khoảng trống to; đọc ra là mấy nút nhỏ trôi nổi chứ không phải một bộ chọn.
+   Bản mockup xử lý đúng chỗ này: `.tab-list > li{flex:1 1 0}` cho mỗi pill một
+   phần bằng nhau. Bê lại ý đó, đặt thẳng lên .faqtab vì bản port không còn <li>.
 
    Dưới 768px trả về co-theo-chữ + cuộn ngang — cũng là quyết định ghi trong
-   mockup: chia đều ở khổ hẹp thì ô thứ ba chỉ còn ~100px, "TATTOO REMOVAL" phải
-   xuống 2 dòng.
+   mockup: chia đều ở khổ hẹp thì mỗi ô chỉ còn ~100px, chữ dài phải xuống 2 dòng.
 
    Kèm justify-content:center. Tầng chung không khai vì pill vốn chỉ rộng bằng
    chữ, căn kiểu gì cũng như nhau; vừa cho nó nở ra 266px là chữ dính mép trái
@@ -97,6 +101,19 @@
 body.faq-page .section .faqacc-item .faqacc-q{font-size:var(--fs-faq-pillar)}
 .faq-page .faqacc-head{padding:clamp(16px,1.9vw,20px) clamp(18px,2.1vw,24px)}
 .faq-page .faqacc-icon{flex:0 0 20px;width:20px;height:20px}
+
+/* Link trong câu trả lời — tầng chung KHÔNG khai kiểu cho <a> nằm trong
+   .faqacc-inner, nên link thừa hưởng đúng màu chữ #B0B0B0 của đoạn văn và
+   không gạch chân: nhìn ra là chữ thường, không ai bấm. Content /faq chốt 6
+   link nội bộ trong câu trả lời nên chỗ này phải thấy được.
+   Dùng lại đúng công thức link chữ xuôi đã chốt ở .ac-inline (cover-up) và
+   .accept-link (contact): cam + vạch chân mờ, hover sáng lên.
+   Khoá trong .faq-page vì đây là sửa cho trang B.Long giao; 4 trang khác
+   (awards · black-and-grey · ear-piercing · tattoo-removal) cũng đang có link
+   chìm y hệt — muốn dứt điểm thì nâng luật này lên hi-components.css. */
+.faq-page .faqacc-inner a{color:var(--orange);border-bottom:1px solid rgba(204,102,0,.45);
+  padding-bottom:1px;transition:color .2s var(--ease),border-color .2s var(--ease)}
+.faq-page .faqacc-inner a:hover{color:var(--orange-hi);border-bottom-color:var(--orange-hi)}
 
 /* Nén đoạn dẫn của section Visit về 2 dòng. Bộ .lead-* là của tầng chung, ở đây
    chỉ chọn SỐ DÒNG — mỗi trang một con số tuỳ độ dài đoạn dẫn. */

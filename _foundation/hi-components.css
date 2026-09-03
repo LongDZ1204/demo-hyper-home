@@ -997,7 +997,10 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
    Page ít câu hỏi thì bỏ .faqtab-nav, dùng thẳng .faqacc — style vẫn khớp.
    ============================================================================ */
 .faq-lead{margin:14px auto 0;max-width:60ch;text-align:center;font-family:var(--body);font-weight:400;font-size:var(--fs-lead);line-height:1.62;color:#C9C9C9}
-/* 4-tab nav — CHUNG format review pill (khung bo tròn + cuộn ngang mobile) */
+/* Tab nav (tối đa 5 tab a-e) — CHUNG format review pill (khung bo tròn + cuộn
+   ngang mobile). Nhánh -e thêm 2026-09-03 cho /faq: content chốt 5 nhóm câu hỏi
+   (Booking · Tattoo · Cover-Up · Piercing · Removal). Thêm selector là CỘNG THÊM
+   sức chứa, không đụng page nào đang dùng 2-4 tab. */
 .faqtab-radio{position:absolute;opacity:0;width:0;height:0;pointer-events:none}
 .faqtab-nav{display:flex;flex-wrap:nowrap;gap:10px;width:100%;max-width:840px;margin:clamp(28px,3.6vw,42px) auto 0;padding:10px;border-radius:20px;background:var(--glass-nav);border:1px solid var(--glass-brd);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);overflow-x:auto}
 .faqtab{flex:0 0 auto;display:inline-flex;align-items:center;border-radius:15px;padding:10px 22px;cursor:pointer;font-family:var(--sub);font-weight:600;font-size:12.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--cream);white-space:nowrap;transition:background .2s var(--ease),color .2s var(--ease);user-select:none}
@@ -1005,13 +1008,15 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 #faqtab-a:checked ~ .faqtab-nav label[for="faqtab-a"],
 #faqtab-b:checked ~ .faqtab-nav label[for="faqtab-b"],
 #faqtab-c:checked ~ .faqtab-nav label[for="faqtab-c"],
-#faqtab-d:checked ~ .faqtab-nav label[for="faqtab-d"]{background:var(--orange);color:#fff}
+#faqtab-d:checked ~ .faqtab-nav label[for="faqtab-d"],
+#faqtab-e:checked ~ .faqtab-nav label[for="faqtab-e"]{background:var(--orange);color:#fff}
 .faqtab-radio:focus-visible ~ .faqtab-nav label{outline:none}
 .faqtab-panel{display:none;max-width:840px;margin:clamp(26px,3.2vw,38px) auto 0}
 #faqtab-a:checked ~ .faqtab-panels .faqtab-panel--a,
 #faqtab-b:checked ~ .faqtab-panels .faqtab-panel--b,
 #faqtab-c:checked ~ .faqtab-panels .faqtab-panel--c,
-#faqtab-d:checked ~ .faqtab-panels .faqtab-panel--d{display:block}
+#faqtab-d:checked ~ .faqtab-panels .faqtab-panel--d,
+#faqtab-e:checked ~ .faqtab-panels .faqtab-panel--e{display:block}
 /* accordion pillar/satellite trong mỗi tab (port .rmis- pattern trang removal) */
 .faqacc{display:flex;flex-direction:column;gap:0}
 /* Page ít câu hỏi thì bỏ thanh tab, .faqacc nằm thẳng trong .wrap. Lúc đó nó mất khổ 840px

@@ -17,19 +17,13 @@
     {"@type":"ListItem","position":2,"name":"FAQ","item":"https://hyperinkers.com/faq"}
   ]}
   </script>
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[
-  {"@type":"ListItem","position":1,"name":"Home","item":"https://hyperinkers.com"},
-  {"@type":"ListItem","position":2,"name":"FAQ","item":"https://hyperinkers.com/faq"}
-]}
-</script>
 
 <link rel="stylesheet" href="_foundation/hi-base.css">
 <link rel="stylesheet" href="_foundation/hi-icon.css">
 <link rel="stylesheet" href="_foundation/hi-chrome.css">
 <link rel="stylesheet" href="_foundation/components/booking-section.css">
 <link rel="stylesheet" href="_foundation/components/booking-form.css">
-<link rel="stylesheet" href="_foundation/hi-components.css">
+<link rel="stylesheet" href="_foundation/hi-components.css?v=20260903-faqtab5">
 <link rel="stylesheet" href="_pages/faq.css?v=20260813-faq-scale">
 <!-- hi-ds.css NẠP CUỐI: lớp design-system cố tình thắng cascade so với CSS lẻ của page -->
 <link rel="stylesheet" href="_foundation/hi-ds.css">
@@ -172,182 +166,263 @@
       <h1>
         Frequently Asked Questions
       </h1>
-      <p class="faq-hero__lead">Everything you need to know before walking in — pricing, pain, prep, and aftercare. Honest answers from our studio in San Antonio, TX.</p>
+      <p class="faq-hero__lead">Common questions about tattoos, cover-ups, piercings, and laser tattoo removal at Hyper Inkers Tattoo Studio in San Antonio.</p>
     </div>
   </section>
 
-    <!-- ===== FAQ (tab + accordion, kiểu section FAQ của home) ===== -->
+    <!-- ===== FAQ (tab + accordion, kiểu section FAQ của home) — 5 nhóm / 36 câu
+         theo content chốt 31/08: Booking & Studio · Tattoo · Cover-Up · Piercing · Removal. ===== -->
     <section class="section s-faq" aria-label="Frequently asked questions">
       <div class="wrap">
 
         <!-- ============ TAB BAR ============ -->
-                <input type="radio" name="faqtab" id="faqtab-a" class="faqtab-radio" checked aria-label="Tattoo">
-        <input type="radio" name="faqtab" id="faqtab-b" class="faqtab-radio" aria-label="Piercing">
-        <input type="radio" name="faqtab" id="faqtab-c" class="faqtab-radio" aria-label="Tattoo Removal">
+        <input type="radio" name="faqtab" id="faqtab-a" class="faqtab-radio" checked aria-label="Booking and studio">
+        <input type="radio" name="faqtab" id="faqtab-b" class="faqtab-radio" aria-label="Tattoo">
+        <input type="radio" name="faqtab" id="faqtab-c" class="faqtab-radio" aria-label="Cover-up tattoo">
+        <input type="radio" name="faqtab" id="faqtab-d" class="faqtab-radio" aria-label="Piercing">
+        <input type="radio" name="faqtab" id="faqtab-e" class="faqtab-radio" aria-label="Laser tattoo removal">
 
         <div class="faqtab-nav" role="tablist" aria-label="Question topics">
-          <label for="faqtab-a" class="faqtab">Tattoo</label>
-          <label for="faqtab-b" class="faqtab">Piercing</label>
-          <label for="faqtab-c" class="faqtab">Tattoo Removal</label>
+          <label for="faqtab-a" class="faqtab">Booking</label>
+          <label for="faqtab-b" class="faqtab">Tattoo</label>
+          <label for="faqtab-c" class="faqtab">Cover-Up</label>
+          <label for="faqtab-d" class="faqtab">Piercing</label>
+          <label for="faqtab-e" class="faqtab">Removal</label>
         </div>
 
         <div class="faqtab-panels">
 
-      <!-- ===== TATTOO PANEL ===== -->
-      <div class="faqtab-panel faqtab-panel--a" id="tattoo">
+      <!-- ===== BOOKING & STUDIO PANEL ===== -->
+      <div class="faqtab-panel faqtab-panel--a" id="booking">
         <header class="section-head center">
-          <h2>Tattoo Questions</h2>
-          <input type="checkbox" id="ld-faq-a" class="lead-cb" aria-label="Expand the introduction">
-          <p class="section-intro has-clamp"><span class="lead-txt">Common questions about custom tattoos, pricing, pain levels, and aftercare at our San Antonio studio.</span><label for="ld-faq-a" class="lead-more" aria-label="Expand or collapse the introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></label></p>
-          <noscript><style>.lead-txt{-webkit-line-clamp:unset;line-clamp:unset}.lead-more{display:none}</style></noscript>
+          <h2>Booking &amp; Studio</h2>
         </header>
 
         <div class="faqacc">
-            <div class="faqacc-item faqacc-item--pillar">
-              <input type="radio" name="faqg-a" id="fq-a1" class="faqacc-cb">
-              <label for="fq-a1" class="faqacc-head"><h3 class="faqacc-q">How old do you have to be to get a tattoo?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
-              <div class="faqacc-body"><div class="faqacc-inner"><input type="checkbox" id="ld-faq-c" class="lead-cb" aria-label="Expand the introduction">
-<p class="section-intro has-clamp"><span class="lead-txt">You have to be more than <strong>18 years old</strong> to get tattooed in the state of Texas.</p>
-                <p>Age is just the start. For all the other essential tips, read our complete guide on the <a href="soon.html">things you should know before getting your first tattoo</a>.</p></div></div>
-            </div>
-            <div class="faqacc-item faqacc-item--pillar">
-              <input type="radio" name="faqg-a" id="fq-a2" class="faqacc-cb">
-              <label for="fq-a2" class="faqacc-head"><h3 class="faqacc-q">How do I schedule an appointment for a tattoo?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
-              <div class="faqacc-body"><div class="faqacc-inner"><p>You can contact directly through one of the studio's information channels. Call <strong>(210) 997-9737</strong>, email <a href="mailto:hyperinkers1@gmail.com">hyperinkers1@gmail.com</a>, or message us on Instagram for fastest reply.</p></div></div>
-            </div>
-            <div class="faqacc-item faqacc-item--pillar">
-              <input type="radio" name="faqg-a" id="fq-a3" class="faqacc-cb">
-              <label for="fq-a3" class="faqacc-head"><h3 class="faqacc-q">What forms of payments are accepted?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
-              <div class="faqacc-body"><div class="faqacc-inner"><p>We accept <strong>cash, Zelle, and Cash App</strong>.</p></div></div>
-            </div>
-            <div class="faqacc-item faqacc-item--pillar">
-              <input type="radio" name="faqg-a" id="fq-a4" class="faqacc-cb">
-              <label for="fq-a4" class="faqacc-head"><h3 class="faqacc-q">How should I prepare for a tattoo?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
-              <div class="faqacc-body"><div class="faqacc-inner"><p>Make sure you eat and are well hydrated. Also make sure you are dressed accordingly to the placement you are getting your tattoo.</p></div></div>
-            </div>
-            <div class="faqacc-item faqacc-item--pillar">
-              <input type="radio" name="faqg-a" id="fq-a5" class="faqacc-cb">
-              <label for="fq-a5" class="faqacc-head"><h3 class="faqacc-q">How painful are tattoos?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
-              <div class="faqacc-body"><div class="faqacc-inner"><p>Each person's pain tolerance is different. There are differences in pain levels at each location on the body.</p>
-                <p>It is difficult to describe the exact pain. But it's definitely not easy. But in the end, it will be worth it after completing the work.</p>
-                <p>Since pain varies by location, consult our visual <a href="soon.html">tattoo pain chart</a> to see exactly which spots hurt the most and least.</p></div></div>
-            </div>
-            <div class="faqacc-item faqacc-item--pillar">
-              <input type="radio" name="faqg-a" id="fq-a6" class="faqacc-cb">
-              <label for="fq-a6" class="faqacc-head"><h3 class="faqacc-q">How much do tattoos cost?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
-              <div class="faqacc-body"><div class="faqacc-inner"><p>Since tattoo artists provide a service, typical quoting factors such as size and details vary from person to person.</p>
-                <p>It is always best to consult with the artist in person to discuss details and get an accurate quote based on the customized tattoo you are wanting.</p>
-                <p>To help you budget before your consultation, see a detailed breakdown of local pricing in our complete guide on <a href="soon.html">how much tattoos cost in San Antonio</a>.</p></div></div>
-            </div>
-            <div class="faqacc-item faqacc-item--pillar">
-              <input type="radio" name="faqg-a" id="fq-a7" class="faqacc-cb">
-              <label for="fq-a7" class="faqacc-head"><h3 class="faqacc-q">What should I avoid while my tattoo is healing?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
-              <div class="faqacc-body"><div class="faqacc-inner"><p>Proper aftercare is necessary to avoid infections or scarring.</p>
-                <p>Avoid touching, picking or scratching the tattoo, placing your tattoo into bodies of water (lakes, rivers, bath tubs carry bacteria), and exposing your tattoo to sunlight as much as possible — a sunburn can definitely interfere with the healing process.</p>
-                <p>Read our comprehensive guide on <a href="soon.html">what to avoid after getting a tattoo</a> for a complete aftercare checklist.</p></div></div>
-            </div>
-            <div class="faqacc-item faqacc-item--pillar">
-              <input type="radio" name="faqg-a" id="fq-a8" class="faqacc-cb">
-              <label for="fq-a8" class="faqacc-head"><h3 class="faqacc-q">What is the aftercare for a tattoo?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
-              <div class="faqacc-body"><div class="faqacc-inner"><p>Remove covering and wash with warm water and antibacterial soap. Don't scrub, but be sure to remove any blood or dry ink. Pat dry, then apply a small amount of antibiotic cream or lotion and rub in until completely dissolved.</p>
-                <p>Do this <strong>3-5 times per day for the first week</strong>. DO NOT scratch or peel off the scab. Do not soak in water, avoid exposure to the sun. Use sterile bandages if needed.</p>
-                <p>Continue to apply lotion until skin is completely healed and smooth (4-6 weeks). Any touchups can be done once tattoo is completely healed.</p></div></div>
-            </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-a" id="fq-a1" class="faqacc-cb">
+            <label for="fq-a1" class="faqacc-head"><h3 class="faqacc-q">How do I book, and do I need an appointment?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>Tattoos are <strong>by appointment</strong>; piercings are <strong>walk-ins only</strong>. For a tattoo, message us with your idea, size, and placement so we can match you with the right artist and quote you. For a piercing, walk in during open hours or call <strong>(210) 997-9737</strong>.</p></div></div>
           </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-a" id="fq-a2" class="faqacc-cb">
+            <label for="fq-a2" class="faqacc-head"><h3 class="faqacc-q">What forms of payment are accepted?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>We accept <strong>cash, Zelle, and Cash App</strong>.</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== TATTOO PANEL ===== -->
+      <div class="faqtab-panel faqtab-panel--b" id="tattoo">
+        <header class="section-head center">
+          <h2>Tattoo</h2>
+        </header>
+
+        <div class="faqacc">
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-b" id="fq-b1" class="faqacc-cb">
+            <label for="fq-b1" class="faqacc-head"><h3 class="faqacc-q">How much does a tattoo cost?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>Tattoos are priced by the hour based on size, detail, style, and placement. At Hyper Inkers, rates start around <strong>$80/hr</strong> (minimum), average about <strong>$150/hr</strong>, and go up to <strong>$200/hr</strong> for our top artists. The best way to get an exact quote is an in-person consultation. You can also see our guide on <a href="soon.html">tattoo prices in San Antonio</a>.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-b" id="fq-b2" class="faqacc-cb">
+            <label for="fq-b2" class="faqacc-head"><h3 class="faqacc-q">How long does a tattoo take to heal?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>The surface heals in about <strong>2 to 3 weeks</strong>, but full healing of the deeper skin takes <strong>4 to 6 weeks</strong>. Keep it clean and moisturized, and avoid sun and soaking during that time.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-b" id="fq-b3" class="faqacc-cb">
+            <label for="fq-b3" class="faqacc-head"><h3 class="faqacc-q">How old do you have to be to get a tattoo?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>You must be <strong>18 or older</strong> to get tattooed at Hyper Inkers. Texas law restricts tattooing anyone under 18, so if you are a minor, please contact us with a parent or legal guardian to discuss your options before booking. If it is your first tattoo, read our guide on <a href="soon.html">things to know before your first tattoo</a>.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-b" id="fq-b4" class="faqacc-cb">
+            <label for="fq-b4" class="faqacc-head"><h3 class="faqacc-q">Can you get a tattoo while pregnant or breastfeeding?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>It is generally not recommended to get tattooed while pregnant or breastfeeding because of the small risk of infection. Most artists, including ours, advise waiting until after. When in doubt, check with your doctor first.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-b" id="fq-b5" class="faqacc-cb">
+            <label for="fq-b5" class="faqacc-head"><h3 class="faqacc-q">How painful are tattoos?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>Pain tolerance differs from person to person and varies by location on the body. Most people describe it as manageable scratching or burning. See our <a href="soon.html">tattoo pain chart</a> for which spots hurt most and least.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-b" id="fq-b6" class="faqacc-cb">
+            <label for="fq-b6" class="faqacc-head"><h3 class="faqacc-q">How much should I tip a tattoo artist?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>Tipping is not required but is appreciated. A common range is <strong>15 to 20%</strong> of the total, and more for complex or custom work. Cash is always welcome.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-b" id="fq-b7" class="faqacc-cb">
+            <label for="fq-b7" class="faqacc-head"><h3 class="faqacc-q">How should I prepare for a tattoo?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>Eat beforehand, stay hydrated, and dress so the artist can easily reach the placement area.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-b" id="fq-b8" class="faqacc-cb">
+            <label for="fq-b8" class="faqacc-head"><h3 class="faqacc-q">What is the aftercare for a tattoo?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>Wash with warm water and antibacterial soap, pat dry, and apply a thin layer of antibiotic cream or lotion <strong>3 to 5 times a day</strong> for the first week. Do not scratch or peel scabs, do not soak in water, and avoid the sun. Keep moisturizing until fully healed (about 4 to 6 weeks). Touch-ups can be done once healed.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-b" id="fq-b9" class="faqacc-cb">
+            <label for="fq-b9" class="faqacc-head"><h3 class="faqacc-q">What should I avoid while my tattoo is healing?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>Avoid touching, picking, or scratching it; submerging it in water (no swimming, baths, or lakes); direct sunlight; and heavy drinking right after, since it thins the blood. These all slow healing or risk infection. See our full checklist on <a href="soon.html">what to avoid after getting a tattoo</a>.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-b" id="fq-b10" class="faqacc-cb">
+            <label for="fq-b10" class="faqacc-head"><h3 class="faqacc-q">What does an infected tattoo look like?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>Some redness and swelling is normal for a few days. Warning signs of infection are <strong>spreading redness, warmth, pus or oozing, and worsening pain after day 3</strong>. If you see those, contact us and see a doctor.</p></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== COVER-UP TATTOO PANEL ===== -->
+      <div class="faqtab-panel faqtab-panel--c" id="cover-up">
+        <header class="section-head center">
+          <h2>Cover-Up Tattoo</h2>
+        </header>
+
+        <div class="faqacc">
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-c" id="fq-c1" class="faqacc-cb">
+            <label for="fq-c1" class="faqacc-head"><h3 class="faqacc-q">What is a cover-up tattoo, and how does it work?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>A cover-up tattoo is a new design built to conceal or transform an existing tattoo you no longer want, using placement, shading, and darker tones so it looks intentional. Browse our <a href="tattoo-gallery.html">custom work</a> to see the styles we cover up in.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-c" id="fq-c2" class="faqacc-cb">
+            <label for="fq-c2" class="faqacc-head"><h3 class="faqacc-q">Can any tattoo be covered up?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>Most can, depending on the size, age, darkness, and placement of the original. Very dark or solid tattoos usually need a larger or darker design, and sometimes a few fading sessions first.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-c" id="fq-c3" class="faqacc-cb">
+            <label for="fq-c3" class="faqacc-head"><h3 class="faqacc-q">Do I need laser removal before a cover-up?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>Not always. Lighter or older tattoos can often be covered directly; very dark pieces cover better after a few fading sessions. Your artist assesses this at the consultation.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-c" id="fq-c4" class="faqacc-cb">
+            <label for="fq-c4" class="faqacc-head"><h3 class="faqacc-q">How much does a cover-up tattoo cost?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>Cover-ups use the same hourly rate as custom tattoos but often take more time because of the extra design work. You will get an accurate quote after a consultation.</p></div></div>
+          </div>
+        </div>
       </div>
 
       <!-- ===== PIERCING PANEL ===== -->
-      <div class="faqtab-panel faqtab-panel--b" id="piercing">
+      <div class="faqtab-panel faqtab-panel--d" id="piercing">
         <header class="section-head center">
-          <h2>Piercing Questions</h2>
-          <input type="checkbox" id="ld-faq-b" class="lead-cb" aria-label="Expand the introduction">
-          <p class="section-intro has-clamp"><span class="lead-txt">What to expect for ear, nose, cartilage, and body piercings — pain levels, healing time, and aftercare basics.</span><label for="ld-faq-b" class="lead-more" aria-label="Expand or collapse the introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></label></p>
-          <noscript><style>.lead-txt{-webkit-line-clamp:unset;line-clamp:unset}.lead-more{display:none}</style></noscript>
+          <h2>Piercing</h2>
         </header>
 
         <div class="faqacc">
-            <div class="faqacc-item faqacc-item--pillar">
-              <input type="radio" name="faqg-b" id="fq-b1" class="faqacc-cb">
-              <label for="fq-b1" class="faqacc-head"><h3 class="faqacc-q">How much will my piercing hurt?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
-              <div class="faqacc-body"><div class="faqacc-inner"><p>The pain level of a piercing varies based on individual tolerance, location, piercer skill, aftercare, and mindset. Typically, it involves brief discomfort during the procedure, which subsides quickly for most people.</p></div></div>
-            </div>
-            <div class="faqacc-item faqacc-item--pillar">
-              <input type="radio" name="faqg-b" id="fq-b2" class="faqacc-cb">
-              <label for="fq-b2" class="faqacc-head"><h3 class="faqacc-q">Should I clean my piercing the day I get it?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
-              <div class="faqacc-body"><div class="faqacc-inner"><p>You should start cleaning your piercing <strong>24 hours after</strong> getting it pierced.</p></div></div>
-            </div>
-            <div class="faqacc-item faqacc-item--pillar">
-              <input type="radio" name="faqg-b" id="fq-b3" class="faqacc-cb">
-              <label for="fq-b3" class="faqacc-head"><h3 class="faqacc-q">Is it safe to get pierced while nursing?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
-              <div class="faqacc-body"><div class="faqacc-inner"><p>It's <strong>not safe</strong> to get pierced while nursing due to the risk of infection, milk duct damage, and potential impact on breastfeeding. It's advisable to wait until after nursing to consider getting pierced.</p></div></div>
-            </div>
-            <div class="faqacc-item faqacc-item--pillar">
-              <input type="radio" name="faqg-b" id="fq-b4" class="faqacc-cb">
-              <label for="fq-b4" class="faqacc-head"><h3 class="faqacc-q">How long does it take for a piercing to heal?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
-              <div class="faqacc-body"><div class="faqacc-inner"><p>The healing time for a piercing varies depending on the type and individual factors. Generally, earlobe piercings take <strong>6-8 weeks</strong>, while cartilage piercings may take <strong>6 months to 1 year</strong>. Proper aftercare is essential to promote healing and prevent complications.</p></div></div>
-            </div>
-            <div class="faqacc-item faqacc-item--pillar">
-              <input type="radio" name="faqg-b" id="fq-b5" class="faqacc-cb">
-              <label for="fq-b5" class="faqacc-head"><h3 class="faqacc-q">Can I go swimming after I get a piercing?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
-              <div class="faqacc-body"><div class="faqacc-inner"><p>It's not advisable to go swimming after getting a piercing as it can introduce bacteria and irritants, increasing the risk of infection and delaying healing. It's best to wait until the piercing has fully healed before swimming.</p></div></div>
-            </div>
-            <div class="faqacc-item faqacc-item--pillar">
-              <input type="radio" name="faqg-b" id="fq-b6" class="faqacc-cb">
-              <label for="fq-b6" class="faqacc-head"><h3 class="faqacc-q">What should I NOT do after getting a new piercing?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
-              <div class="faqacc-body"><div class="faqacc-inner"><p>After getting a new piercing, avoid touching it with dirty hands, twisting the jewelry, using harsh cleaning products, submerging it in water, applying ointments, changing jewelry prematurely, sleeping on it, or exposing it to excessive movement or friction. Following these guidelines promotes proper healing and reduces the risk of infection.</p></div></div>
-            </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-d" id="fq-d1" class="faqacc-cb">
+            <label for="fq-d1" class="faqacc-head"><h3 class="faqacc-q">How much does a piercing cost?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>Piercing prices at Hyper Inkers <strong>start at $30</strong> and depend on the placement, and basic jewelry is included. As a guide: earlobes are $30; nose and most cartilage piercings like helix and conch are $35; eyebrow, navel, and nipple are $40; septum, tragus, and labret are $50; industrial and dermal are $60; and surface piercings up to $70. Call <strong>(210) 997-9737</strong> for current pricing. Ask about Happy Hour pricing, which runs lower on select hours, on our <a href="deals.html">current deals</a>.</p></div></div>
           </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-d" id="fq-d2" class="faqacc-cb">
+            <label for="fq-d2" class="faqacc-head"><h3 class="faqacc-q">How long does a piercing take to heal?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>It depends on the type. Earlobes generally heal in <strong>6 to 8 weeks</strong>, while cartilage piercings can take <strong>6 months to a year</strong>. Aftercare is essential to heal properly and avoid complications.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-d" id="fq-d3" class="faqacc-cb">
+            <label for="fq-d3" class="faqacc-head"><h3 class="faqacc-q">How do I clean a new piercing?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>Wait <strong>24 hours</strong> after getting pierced, then clean it twice a day with a sterile saline spray. Do not use alcohol, peroxide, or harsh soaps, and do not twist the jewelry. Always wash your hands first.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-d" id="fq-d4" class="faqacc-cb">
+            <label for="fq-d4" class="faqacc-head"><h3 class="faqacc-q">How do I get rid of a piercing bump?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>A small bump is a common irritation, not always an infection. Keep up your saline cleanings, avoid touching or changing the jewelry, and make sure it is not too tight. If it grows, leaks, or hurts, come see us or a piercer before trying home remedies.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-d" id="fq-d5" class="faqacc-cb">
+            <label for="fq-d5" class="faqacc-head"><h3 class="faqacc-q">When can I change my jewelry?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>Wait until the piercing is fully healed before changing jewelry, about <strong>6 to 8 weeks</strong> for lobes and several months for cartilage. Changing too early can irritate the piercing or reopen the wound. If unsure, stop by and we will check it.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-d" id="fq-d6" class="faqacc-cb">
+            <label for="fq-d6" class="faqacc-head"><h3 class="faqacc-q">What should I do if my piercing gets infected?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>Signs of infection include spreading redness, swelling, warmth, and yellow or green discharge. Keep cleaning with saline, do not remove the jewelry yourself (that can trap the infection), and see us or a doctor if it worsens.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-d" id="fq-d7" class="faqacc-cb">
+            <label for="fq-d7" class="faqacc-head"><h3 class="faqacc-q">How much will my piercing hurt?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>It depends on your tolerance and the placement. For most people it is a brief, sharp pinch that fades quickly.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-d" id="fq-d8" class="faqacc-cb">
+            <label for="fq-d8" class="faqacc-head"><h3 class="faqacc-q">Can I go swimming after I get a piercing?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>No. Wait until it is fully healed. Pools, lakes, and hot tubs carry bacteria that raise infection risk and slow healing.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-d" id="fq-d9" class="faqacc-cb">
+            <label for="fq-d9" class="faqacc-head"><h3 class="faqacc-q">Is it safe to get pierced while nursing?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>It is not recommended while nursing, due to infection risk and the medications that may be needed if a complication occurs. It is best to wait until after.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-d" id="fq-d10" class="faqacc-cb">
+            <label for="fq-d10" class="faqacc-head"><h3 class="faqacc-q">What should I not do after getting a new piercing?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>Do not touch it with dirty hands, twist the jewelry, use harsh products, submerge it in water, apply ointments, change jewelry too early, sleep on it, or expose it to friction.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-d" id="fq-d11" class="faqacc-cb">
+            <label for="fq-d11" class="faqacc-head"><h3 class="faqacc-q">Do I need an appointment for a piercing?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>No. Piercings are <strong>walk-ins only</strong>. Come by during open hours or call <strong>(210) 997-9737</strong> with questions.</p></div></div>
+          </div>
+        </div>
       </div>
 
-      <!-- ===== REMOVAL PANEL (placeholder content) ===== -->
-      <div class="faqtab-panel faqtab-panel--c" id="removal">
+      <!-- ===== LASER TATTOO REMOVAL PANEL ===== -->
+      <div class="faqtab-panel faqtab-panel--e" id="removal">
         <header class="section-head center">
-          <h2>Tattoo Removal Questions</h2>
-          <p>Laser tattoo removal at Hyper Inkers — how it works, how many sessions, cost, and what to expect.</span><label for="ld-faq-c" class="lead-more" aria-label="Expand or collapse the introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></label></p>
-<noscript><style>.lead-txt{-webkit-line-clamp:unset;line-clamp:unset}.lead-more{display:none}</style></noscript>
+          <h2>Laser Tattoo Removal</h2>
         </header>
 
         <div class="faqacc">
-            <div class="faqacc-item faqacc-item--pillar">
-              <input type="radio" name="faqg-c" id="fq-c1" class="faqacc-cb">
-              <label for="fq-c1" class="faqacc-head"><h3 class="faqacc-q">How does laser tattoo removal work?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
-              <div class="faqacc-body"><div class="faqacc-inner"><p><em>[Placeholder — anh fill answer chính thức sau]</em></p>
-                <p>Laser tattoo removal uses concentrated light pulses to break down ink particles in the skin. Your body's immune system then flushes out the fragmented ink over the following weeks.</p></div></div>
-            </div>
-            <div class="faqacc-item faqacc-item--pillar">
-              <input type="radio" name="faqg-c" id="fq-c2" class="faqacc-cb">
-              <label for="fq-c2" class="faqacc-head"><h3 class="faqacc-q">How many sessions will I need?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
-              <div class="faqacc-body"><div class="faqacc-inner"><p><em>[Placeholder]</em></p>
-                <p>Most tattoos require <strong>6-12 sessions</strong> spaced 6-8 weeks apart. Factors include ink color, age of tattoo, skin tone, and tattoo location.</p></div></div>
-            </div>
-            <div class="faqacc-item faqacc-item--pillar">
-              <input type="radio" name="faqg-c" id="fq-c3" class="faqacc-cb">
-              <label for="fq-c3" class="faqacc-head"><h3 class="faqacc-q">How much does tattoo removal cost?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
-              <div class="faqacc-body"><div class="faqacc-inner"><p><em>[Placeholder]</em></p>
-                <p>Pricing depends on tattoo size, complexity, and total sessions needed. Book a free consultation for an accurate quote.</p></div></div>
-            </div>
-            <div class="faqacc-item faqacc-item--pillar">
-              <input type="radio" name="faqg-c" id="fq-c4" class="faqacc-cb">
-              <label for="fq-c4" class="faqacc-head"><h3 class="faqacc-q">Does laser removal hurt?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
-              <div class="faqacc-body"><div class="faqacc-inner"><p><em>[Placeholder]</em></p>
-                <p>Many clients describe the sensation as a rubber band snap. We offer numbing cream and cooling to minimize discomfort.</p></div></div>
-            </div>
-            <div class="faqacc-item faqacc-item--pillar">
-              <input type="radio" name="faqg-c" id="fq-c5" class="faqacc-cb">
-              <label for="fq-c5" class="faqacc-head"><h3 class="faqacc-q">Can all tattoo colors be removed?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
-              <div class="faqacc-body"><div class="faqacc-inner"><p><em>[Placeholder]</em></p>
-                <p>Black and dark inks respond best. Greens, blues, and reds also respond well. Yellow and pastel colors are the most challenging and may require additional sessions.</p></div></div>
-            </div>
-            <div class="faqacc-item faqacc-item--pillar">
-              <input type="radio" name="faqg-c" id="fq-c6" class="faqacc-cb">
-              <label for="fq-c6" class="faqacc-head"><h3 class="faqacc-q">What is the aftercare for laser tattoo removal?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
-              <div class="faqacc-body"><div class="faqacc-inner"><p><em>[Placeholder]</em></p>
-                <p>Keep the area clean and dry. Avoid sun exposure, swimming, and harsh skincare for at least 2 weeks. Apply healing ointment as directed.</p></div></div>
-            </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-e" id="fq-e1" class="faqacc-cb">
+            <label for="fq-e1" class="faqacc-head"><h3 class="faqacc-q">How much does laser tattoo removal cost?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>Laser tattoo removal at Hyper Inkers is priced per session by the size of the tattoo, from about <strong>$100 to $150</strong> for a stamp-size piece up to <strong>$600+</strong> for a full sleeve or back. Because most tattoos need several sessions, complete removal commonly runs <strong>$1,000 to $4,000</strong> total. Multi-session packages are available at a lower per-session rate, and you get a personalized estimate at a free consultation. (Removal is cosmetic, so it is not covered by insurance, though HSA and FSA funds may apply.)</p></div></div>
           </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-e" id="fq-e2" class="faqacc-cb">
+            <label for="fq-e2" class="faqacc-head"><h3 class="faqacc-q">How does laser tattoo removal work?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>A laser breaks the tattoo ink into tiny particles that your body's immune system clears away over the following weeks. At Hyper Inkers we use a <strong>PicoStar</strong> picosecond laser protocol.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-e" id="fq-e3" class="faqacc-cb">
+            <label for="fq-e3" class="faqacc-head"><h3 class="faqacc-q">Does tattoo removal actually work?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>Yes. Laser removal can fully clear most tattoos over a series of sessions. Black ink fades fastest; some colors and older or amateur tattoos take longer.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-e" id="fq-e4" class="faqacc-cb">
+            <label for="fq-e4" class="faqacc-head"><h3 class="faqacc-q">Does laser tattoo removal hurt?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>There is some discomfort, often described like a rubber band snapping against the skin, but each session is quick and numbing options are available.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-e" id="fq-e5" class="faqacc-cb">
+            <label for="fq-e5" class="faqacc-head"><h3 class="faqacc-q">How long does removal take, and how many sessions will I need?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>Each session is short, usually a few minutes, but you will need several, spaced a few weeks apart so the skin can recover and the ink fades between visits. Smaller tattoos average <strong>4 to 7 sessions</strong>, while larger or densely-inked pieces take <strong>8 to 15</strong>. The exact number depends on size, age, colors, and ink depth, and your tech estimates it at your consultation.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-e" id="fq-e6" class="faqacc-cb">
+            <label for="fq-e6" class="faqacc-head"><h3 class="faqacc-q">Will laser removal leave a scar? Is it safe?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>When the laser is set correctly and you follow aftercare, scarring is uncommon. Temporary lightening or darkening of the skin can happen but usually evens out as it heals.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-e" id="fq-e7" class="faqacc-cb">
+            <label for="fq-e7" class="faqacc-head"><h3 class="faqacc-q">Can I get laser removal while pregnant?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>It is not recommended during pregnancy. It is best to wait until after, and to mention any medications or conditions at your consultation.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-e" id="fq-e8" class="faqacc-cb">
+            <label for="fq-e8" class="faqacc-head"><h3 class="faqacc-q">How do I care for my skin after a removal session?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>Keep the area clean and dry, apply a thin layer of healing ointment, protect it from the sun, and avoid swimming, soaking, and heavy sweating until healed.</p></div></div>
+          </div>
+          <div class="faqacc-item faqacc-item--pillar">
+            <input type="radio" name="faqg-e" id="fq-e9" class="faqacc-cb">
+            <label for="fq-e9" class="faqacc-head"><h3 class="faqacc-q">Can I get a cover-up tattoo after laser removal?</h3><span class="faqacc-icon" aria-hidden="true"></span></label>
+            <div class="faqacc-body"><div class="faqacc-inner"><p>Yes, once the skin has fully healed and the tone has settled. Many clients fade a dark tattoo over a few sessions so the cover-up looks cleaner and brighter.</p></div></div>
+          </div>
+        </div>
       </div>
 
-      </div>
+        </div>
       </div>
     </section>
 
@@ -358,7 +433,7 @@
       <div class="wrap">
 
         <header class="section-head center">
-          <h2>Visit <span class="o">Hyper Inkers Tattoo Parlor</span></h2>
+          <h2>Visit <span class="o">Hyper Inkers Tattoo Parlor</span> in San Antonio</h2>
           <input type="checkbox" id="vs-intro" class="lead-cb" aria-label="Expand the visit introduction">
           <p class="vs-intro has-clamp"><span class="lead-txt">Hyper Inkers tattoo parlor in San Antonio sits at 8045 Callaghan Road in the northwest of the city. Walk-ins are welcome whenever an artist is free, and larger pieces can be booked ahead so your artist has time reserved for you. Hours run until midnight or 1am, far later than most tattoo places in San Antonio, making Hyper Inkers one of the few walk-in tattoo shops in the city open past midnight. If you get off work late, the visit still fits your evening.</span><label for="vs-intro" class="lead-more" aria-label="Expand or collapse the visit introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></label></p>
           <noscript><style>.lead-txt{-webkit-line-clamp:unset;line-clamp:unset}.lead-more{display:none}</style></noscript>
@@ -388,7 +463,7 @@
         <div class="bks-card">
           <div data-bks-body>
             <h2 class="bks-title"><span class="o">Book Your Tattoo</span> in San Antonio</h2>
-            <p class="bks-intro">Tell us your idea. We'll match you with the right artist and reply within 24 hours.</p>
+            <p class="bks-intro">Tell us your idea. We'll match you with the right artist and reply within 24 hours. Piercings are walk-ins only. Call (210) 997-9737 for questions.</p>
 
             <form data-bks-form aria-label="Book a free tattoo consultation">
               <div class="bks-row">
