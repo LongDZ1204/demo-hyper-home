@@ -29,6 +29,46 @@
 }
 
 
+/* ==================== PRESS LOGO MARQUEE · Home + About ==================== */
+.press{position:relative;padding:clamp(40px,4.4vw,56px) 0;border-top:1px solid rgba(255,255,255,.08);background:var(--black)}
+.press-in{max-width:var(--wrap);margin-inline:auto;padding-inline:32px}
+.press-lbl{display:block;text-align:center;font-family:var(--sub);font-weight:600;font-size:12.5px;line-height:1.3;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--cream);opacity:.9;margin:0 0 26px}
+.press-marquee{position:relative;overflow-x:clip;overflow-y:visible}
+.press-marquee::before,.press-marquee::after{content:"";position:absolute;top:0;bottom:0;width:72px;z-index:4;pointer-events:none}
+.press-marquee::before{left:0;background:linear-gradient(90deg,var(--black) 12%,transparent)}
+.press-marquee::after{right:0;background:linear-gradient(270deg,var(--black) 12%,transparent)}
+.press-track{list-style:none;display:flex;align-items:center;width:max-content;animation:pressmarq 36s linear infinite}
+.press-marquee:hover .press-track{animation-play-state:paused}
+@keyframes pressmarq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.plogo{position:relative;flex:0 0 auto;margin-right:66px;display:flex;align-items:center;justify-content:center}
+.plogo img{height:30px;width:auto;filter:brightness(0) invert(1);opacity:.55;transition:opacity .25s var(--ease)}
+.plogo:hover img{opacity:1}
+.plogo.l-az img{height:29px}
+.plogo.l-tbr img{height:44px}
+.plogo.l-skope img{height:30px}
+.plogo.l-gig img{height:26px}
+.plogo.l-web img{height:34px}
+.plogo .tip{position:absolute;z-index:30;bottom:calc(100% + 12px);left:50%;transform:translateX(-50%) translateY(4px);
+  width:max-content;max-width:260px;background:var(--black);border:1px solid var(--orange);border-radius:4px;
+  padding:9px 12px;font-family:var(--body);font-size:12px;line-height:1.5;color:#fff;text-align:center;white-space:normal;
+  opacity:0;visibility:hidden;transition:opacity .15s var(--ease),transform .15s var(--ease),visibility 0s .2s;pointer-events:none}
+.plogo:hover .tip{opacity:1;visibility:visible;transform:translateX(-50%) translateY(0);transition-delay:.05s}
+@media(max-width:640px){
+  .press{padding:34px 0}
+  .press-in{padding-inline:20px}
+  .press-lbl{margin-bottom:20px}
+  .press-marquee::before,.press-marquee::after{width:40px}
+  .press-track{animation-duration:26s}
+  .plogo{margin-right:44px}
+  .plogo img{height:26px}
+  .plogo.l-az img{height:25px}
+  .plogo.l-tbr img{height:38px}
+  .plogo.l-gig img{height:23px}
+  .plogo.l-web img{height:30px}
+}
+@media(prefers-reduced-motion:reduce){.press-track{animation:none}}
+
 /* ==================== REVIEWS · thẻ review, tab, slider ==================== */
 /* ============ SECTION 03 · REVIEWS (2-tab · slider · split · leave-a-review) ============ */
 .reviews{background:var(--bg)}

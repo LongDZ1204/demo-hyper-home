@@ -500,12 +500,14 @@ from{transform:translateX(0)}to{transform:translateX(-50%)}
 .hero-tag .o{color:var(--orange)}
 .hero-lead{margin:18px auto 0;max-width:600px;font-size:clamp(15px,1.25vw,17px);line-height:1.62;
   color:#E7E7E7;text-shadow:0 1px 10px rgba(0,0,0,.6)}
+.about-proof{margin-top:22px}
+.about-proof .badge{margin-bottom:0;text-align:left}
 @media(max-width:820px){
 .hero--ganga .hero-stack{padding-block:92px 44px}
 }
 
 @media(max-width:560px){
-.hero--ganga .hero-stack{padding-block:88px 40px}
+.hero--ganga .hero-stack{padding-block:88px 92px}
   .hero--ganga h1{font-size:clamp(34px,9vw,52px);overflow-wrap:break-word}
   .hero-tag{letter-spacing:.1em}
 }
