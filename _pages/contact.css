@@ -266,12 +266,39 @@
        ======================================================================== */
     
 .accept-section { text-align: center; }
+/* Dòng thanh toán: mockup ghi "We Accept All Major Credit Cards" — sai lớp. Thẻ
+   chỉ dùng cho tiền cọc; tại tiệm là cash/Zelle/Cash App (F-E10). Nhãn ngắn giữ
+   nguyên kiểu chữ cũ; câu đính chính tách làm hai vế kẹp lấy hàng logo (B.Long
+   chốt 03/09): vế TẠI TIỆM đứng trên vì hàng logo đang minh hoạ cho nó, vế TIỀN
+   CỌC + trả góp xuống dưới vì nó nói về một lần trả khác, không phải cái hàng
+   logo vừa liệt kê. */
+.accept-note {
+      max-width: 68ch;
+      margin: 0 auto 22px;
+      font-size: 15px;
+      line-height: 1.62;
+      color: #C9C9C9;
+    }
+.accept-note--after { margin: 22px auto 0 }
+.accept-link {
+      color: var(--orange);
+      border-bottom: 1px solid rgba(204,102,0,.45);
+      padding-bottom: 1px;
+      transition: color .2s var(--ease), border-color .2s var(--ease);
+    }
+.accept-link:hover { color: var(--orange-hi); border-bottom-color: var(--orange-hi) }
+@media (max-width: 640px) {
+      .accept-note { font-size: 14.5px; margin-bottom: 18px }
+      .accept-note--after { margin-top: 18px }
+    }
 .accept-section__heading {
       margin-bottom: 20px;
       font-family: var(--sub);
       font-size: 15px;
       font-weight: 600;
-      letter-spacing: .06em;
+      /* Bỏ letter-spacing (.06em) theo B.Long 03/09. Nhãn chỉ có một từ nên
+         giãn chữ không giúp đọc, chỉ làm nó trông như một nhãn hệ thống. */
+      letter-spacing: normal;
       text-transform: uppercase;
       color: var(--orange);
     }
