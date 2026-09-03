@@ -1,0 +1,9 @@
+/* TATTOO BLOG SUB-HUB — chỉ chứa delta so với _pages/blog.css. */
+
+/* Active pill: trạng thái trang hiện tại phải rõ nhưng giữ đúng hình pill cũ. */
+.blog-subhub-page .blog-tab.is-active,
+.blog-subhub-page .blog-tab.is-active:hover{
+  border-color:var(--orange);
+  background:var(--orange);
+  color:#fff;
+}
