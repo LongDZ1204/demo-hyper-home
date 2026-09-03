@@ -38,17 +38,15 @@
    màn) rơi thẳng về 112 = khe 0, H1 dính đáy header. Viết theo --chrome-h thì
    con số tự đúng, và tắt promo bar là hero tự thu 36px.
    Khe nhỏ hơn 3 hero kia (36 thay vì 52) vì hero này là dải slim, không có
-   min-height, chữ đã nằm sát mép dưới. */
+   min-height, chữ đã nằm sát mép dưới.
    Phải viết .section.dl-hero (0,2,0) chứ không .dl-hero (0,1,0): hi-ds.css nạp
    CUỐI và khai .section{padding-block:...}, nên một class ở file page là thua —
    đo ra khe -12px @1440 và -52px @430 trong khi file page ghi đủ chỗ. Đây là
    lần thứ TƯ cùng một bẫy trên bộ page này. */
 .dl-hero{position:relative;isolation:isolate;background:var(--black)}
 .section.dl-hero{padding-top:calc(var(--chrome-h) + clamp(22px,2.4vw,36px))}
-/* Breadcrumb chiếm trọn một dòng để H1 và đoạn tóm tắt vẫn chia trái-phải ở
-   hàng dưới. Không có flex-basis:100% thì nó thành cột thứ BA trong hàng ngang,
-   đứng ngang vai H1. */
-.dl-crumb{flex:0 0 100%;margin-bottom:clamp(14px,1.6vw,20px)}
+/* Breadcrumb chiếm trọn hàng đầu; H1 và đoạn tóm tắt chia hai cột ở hàng dưới. */
+.dl-crumb{grid-column:1/-1;margin-bottom:clamp(14px,1.6vw,20px)}
 .hero-smoke{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;object-position:center;
   opacity:.34;filter:contrast(1.18) brightness(1.03) saturate(1.08);
   -webkit-mask-image:radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
@@ -60,14 +58,26 @@
   background:
     linear-gradient(to bottom,var(--black) 0%,rgba(0,0,0,0) 30%,rgba(0,0,0,0) 76%,var(--black) 100%),
     radial-gradient(92% 64% at 50% 54%,rgba(0,0,0,.88),rgba(0,0,0,0) 90%)}
-.dl-hero .wrap{position:relative;z-index:2;display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(24px,4vw,56px);flex-wrap:wrap}
-.dl-hero h1{text-shadow:0 2px 34px rgba(0,0,0,.55)}
+.dl-hero .wrap{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,340px);align-items:end;column-gap:clamp(36px,5vw,76px)}
+.dl-hero h1{max-width:none;text-shadow:0 2px 34px rgba(0,0,0,.55)}
 .dl-hero h1 .o{color:var(--orange);display:block}
 .dl-hero__brief{font-family:var(--body);font-size:15.5px;line-height:1.6;color:#C9C9C9;max-width:340px}
 .dl-hero__brief b{color:#fff;font-weight:600}
+@media(min-width:1180px){
+  .dl-hero h1{font-size:clamp(42px,3.6vw,46px);white-space:nowrap}
+}
+@media(max-width:1179px){
+  .dl-hero .wrap{grid-template-columns:1fr;row-gap:24px}
+  .dl-crumb{grid-column:1;margin-bottom:0}
+  .dl-hero__brief{max-width:100%}
+}
 /* ---- PORTFOLIO · editorial asymmetric feature ---- */
 .feat{display:grid;grid-template-columns:0.82fr 1.18fr;gap:clamp(28px,4vw,60px);align-items:center}
-@media(max-width:860px){.feat{grid-template-columns:1fr;gap:24px}}
+@media(max-width:860px){
+  .feat{grid-template-columns:1fr;gap:24px}
+  .feat__body{order:1}
+  .feat__media{order:2}
+}
 .feat__media{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--card-brd);aspect-ratio:4/5;background:#111}
 .feat__media img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
 .feat:hover .feat__media img{transform:scale(1.03)}
@@ -92,8 +102,16 @@
   background:var(--surface);border:1px solid var(--card-brd);border-radius:14px}
 .hh-figure img{width:100%;height:auto;display:block;border-radius:6px}
 .pm-hint{font-family:var(--body);font-size:13.5px;color:var(--muted);text-align:center;max-width:640px;margin:22px auto 0}
+.pm-hint p{margin:0}
 .pm-hint b{color:var(--cream);font-weight:600}
 .pm-hint a{color:var(--cream)}
+.pm-actions{display:flex;align-items:center;justify-content:center;gap:12px;margin:18px auto;flex-wrap:wrap}
+.pm-actions .btn{width:auto;min-width:0}
+.pm-price-link{font-size:13px}
+.pm-price-link a{text-decoration:underline;text-decoration-thickness:1px;text-decoration-color:rgba(220,219,190,.44);text-underline-offset:3px;
+  transition:color .2s var(--ease),text-decoration-color .2s var(--ease)}
+.pm-price-link a:hover,.pm-price-link a:focus-visible{color:var(--orange);text-decoration-color:var(--orange)}
+@media(max-width:430px){.pm-actions{gap:10px}}
 .vs-intro b{color:#E9E9E9;font-weight:600}
 @media(max-width:900px){.vs-nap{grid-template-columns:1fr;gap:26px}}
 @media(max-width:900px){.vs-map{min-height:300px}}

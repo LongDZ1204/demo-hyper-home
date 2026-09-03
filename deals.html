@@ -43,7 +43,7 @@
       "itemListElement": [
         { "@type": "Offer", "name": "Portfolio Project Discount", "description": "30-50% off when you give the artist full creative freedom on a larger piece (typically 8 inches or bigger).", "category": "Tattoo", "availability": "https://schema.org/LimitedAvailability" },
         { "@type": "Offer", "name": "US Military & Veteran Discount", "description": "10% off all tattoo services for active-duty military and veterans with valid ID.", "category": "Tattoo" },
-        { "@type": "Offer", "name": "Happy Hour Piercing", "description": "Discounted piercing prices from $15 during select Happy Hour windows each week.", "category": "Piercing", "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "USD", "minPrice": "15" } }
+        { "@type": "Offer", "name": "Happy Hour Piercing", "description": "Discounted piercing prices from $15 during Happy Hour windows announced based on piercer availability.", "category": "Piercing", "priceSpecification": { "@type": "PriceSpecification", "priceCurrency": "USD", "minPrice": "15" } }
       ]
     }
   ]
@@ -62,7 +62,7 @@
 <link rel="stylesheet" href="_foundation/components/booking-section.css">
 <link rel="stylesheet" href="_foundation/components/booking-form.css">
 <link rel="stylesheet" href="_foundation/hi-components.css">
-<link rel="stylesheet" href="_pages/deals.css">
+<link rel="stylesheet" href="_pages/deals.css?v=20260903-layout-4">
 <!-- hi-ds.css NẠP CUỐI: lớp design-system cố tình thắng cascade so với CSS lẻ của page -->
 <link rel="stylesheet" href="_foundation/hi-ds.css">
 </head>
@@ -201,8 +201,8 @@
         <li><span aria-current="page">Deals</span></li>
       </ol>
     </nav>
-    <h1>Pick a deal.<span class="o">Keep the standards.</span></h1>
-    <p class="dl-hero__brief">Ongoing tattoo and piercing offers at <b>Hyper Inkers, San Antonio</b>. Same artists, same standards, better price.</p>
+    <h1>Tattoo and Piercing Deals <span class="o">in San Antonio</span></h1>
+    <p class="dl-hero__brief"><b>Same artists, same standards, better price.</b> These are the ongoing offers at Hyper Inkers in San Antonio, from discounts on larger tattoo projects to Happy Hour piercing prices.</p>
   </div>
 </section>
 
@@ -256,7 +256,14 @@
       <img src="_hero-assets/happy-hour-pricing.jpg" width="2000" height="2500" alt="Hyper Inkers Happy Hour piercing prices: lobe, helix, conch, flat and hidden helix $15 (flat back stud included); nose, tragus, forward helix, rook, daith, eyebrow, medusa, labret, ashley, smiley, tongue, bridge, septum, belly and nipples $20 (basic jewelry included); snake eyes, snakebites, angel fangs and dahlia $25; industrial and dimple $30; dermal piercing $45; anti eyebrow and surface tragus staple bar $55." loading="lazy">
     </figure>
 
-    <p class="pm-hint"><b>Piercings are walk-in only.</b> Happy Hour times shift with piercer availability, so call <a href="tel:+12109979737">(210) 997-9737</a> to confirm today's window before you head in.</p>
+    <div class="pm-hint">
+      <p><b>Piercings are walk-in only, no appointment needed.</b> Happy Hour times shift with piercer availability, so confirm today's window before you head in.</p>
+      <div class="pm-actions" aria-label="Confirm today's Happy Hour window">
+        <a class="btn btn-sell btn--sm" href="tel:+12109979737" aria-label="Call to confirm today's Happy Hour window"><svg viewBox="0 0 24 24" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-phone"></use></svg>Call</a>
+        <a class="btn btn-ghost btn--sm" href="https://www.instagram.com/hyperinkers/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-instagram"></use></svg>Instagram</a>
+      </div>
+      <p class="pm-price-link">See the full regular piercing price list on our <a href="piercing.html">piercing page</a>.</p>
+    </div>
   </div>
 </section>
 
@@ -264,7 +271,7 @@
 <section class="section s-visit" id="visit">
   <div class="wrap">
     <header class="section-head center">
-      <h2>Visit Our <span class="o">San Antonio Studio</span></h2>
+      <h2>Visit <span class="o">Hyper Inkers Tattoo Parlor in San Antonio</span></h2>
       <input type="checkbox" id="ld-visit" class="lead-cb" aria-label="Expand the introduction">
       <p class="vs-intro has-clamp"><span class="lead-txt"><b>Hyper Inkers is at 8045 Callaghan Road, open late seven days a week.</b> Piercings are walk-in only, so stop in during a Happy Hour window. For tattoo deals, call ahead to book your artist.</span><label for="ld-visit" class="lead-more" aria-label="Expand or collapse the introduction"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></label></p>
       <noscript><style>.lead-txt{-webkit-line-clamp:unset;line-clamp:unset}.lead-more{display:none}</style></noscript>
@@ -302,8 +309,8 @@
      Nạp qua _foundation/components/booking-section.css + .js — KHÔNG chép CSS vào
      trang. Chọn biến thể "full" vì trang này chào cả tattoo lẫn removal; bản thân
      component đã sẵn dòng "Piercings are walk-ins only", khớp đúng với luật walk-in
-     mà mục Happy Hour phía trên đang nói. Roster 5 artist trong component cũng đúng
-     danh sách live (Minh · Tai Hoa · Mancha · Navei · Nicole).
+     mà mục Happy Hour phía trên đang nói. Artist preference để mở nhằm tránh nhúng
+     một roster có thể thay đổi vào form của trang ưu đãi.
      ====================================================================== -->
 <section class="section s-book" id="book" aria-labelledby="book-title">
   <div class="wrap">
@@ -344,17 +351,12 @@
               <option value="Laser Removal">Laser Removal</option>
             </select>
             <p class="bks-note" role="note">Piercings are walk-ins only. Call <a href="tel:+12109979737">(210) 997-9737</a> for questions.</p>
-          </header>
+          </div>
 
           <div class="bks-group">
             <label class="bks-label" for="bks-artist">Choose Your Artist<span class="opt">Optional</span></label>
             <select class="bks-select" id="bks-artist" name="your-artist">
-              <option value="Open to rec." selected>Open to recommendation</option>
-              <option value="Minh Pham">Minh Pham</option>
-              <option value="Tai Hoa">Tai Hoa</option>
-              <option value="Mancha">Mancha</option>
-              <option value="Navei">Navei</option>
-              <option value="Nicole">Nicole</option>
+              <option value="Open to recommendation" selected>Open to recommendation</option>
             </select>
           </div>
 
