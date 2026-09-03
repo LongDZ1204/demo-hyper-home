@@ -224,16 +224,22 @@
    khối này là lời khách — cùng một mục nhưng khác loại bằng chứng.
 
    Khổ đọc 68ch bám theo .soa-p-txt ngay trên để hai khối cùng mép chữ. */
-/* Cột CĂN GIỮA, chữ bên trong vẫn căn trái (B.Long 03/09: "thấy lệch quá").
-   Lý do lệch: cột chữ của khối bằng khen ngay trên bắt đầu ở mép phải của huy
-   hiệu (x=346 ở khổ 1400), còn khối này bắt đầu ở mép wrap (x=112) — mắt đọc
-   một cột chữ rồi nhảy hẳn sang trái. Thêm nữa khổ đọc chặn 68ch nên bên phải
-   hở một mảng trống to, cả khối dồn về một bên.
-   Căn giữa cột thì hai đầu cân nhau và ăn nhịp với H2 + câu cầu của section
-   vốn đã căn giữa. KHÔNG căn giữa CHỮ: vạch cam của trích dẫn nằm ở mép trái
-   nên chữ phải bám mép trái mới thẳng hàng với vạch. */
-.rec-clients{max-width:840px;margin:clamp(34px,4vw,54px) auto 0;
+/* Khối này phải nằm ĐÚNG CỘT CHỮ của khối bằng khen ngay trên, không phải một
+   cột riêng (B.Long 03/09, hai lượt).
+   Lượt 1 nó bắt đầu ở mép khung trong khi chữ của bằng khen bắt đầu sau huy
+   hiệu -> mắt đọc một cột rồi nhảy sang trái. Lượt 2 em căn giữa -> thành cột
+   THỨ BA, không ăn với cột nào, section có 3 mép trái khác nhau.
+   Cách đúng: thụt vào đúng bề ngang rãnh huy hiệu. Đo .soa-plaque ở 7 khổ
+   880-1600: track huy hiệu luôn đúng 220px, khe cột là clamp(26px,3vw,44px) -
+   chính hai số của grid ấy. Cộng lại là offset, không phải số ước lượng.
+   Kết quả: huy hiệu đứng một mình trong rãnh trái, còn TOÀN BỘ chữ của mục
+   (cả hai khối con) dùng chung một cột, chung cả mép trái lẫn mép phải.
+   Dưới 880px .soa-plaque xếp dọc nên không còn rãnh -> bỏ luôn offset. */
+.rec-clients{margin-top:clamp(34px,4vw,54px);
   padding-top:clamp(28px,3.4vw,40px);border-top:1px solid var(--border)}
+@media(min-width:880px){
+  .rec-clients{margin-left:calc(220px + clamp(26px,3vw,44px))}
+}
 /* Khe h3 -> đoạn văn: luật chung `.section h3:not([class]) + p:not([class])`
    không với tới vì <p> ở đây có class, nên khai lại đúng token đó. */
 .rec-clients h3{margin:0}
