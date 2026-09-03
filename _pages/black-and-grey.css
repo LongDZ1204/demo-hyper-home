@@ -87,13 +87,26 @@
    nơi mà không ai đo cả dãy: .s-adv lấy nền xám từ hi-components, .s-visit không
    khai gì nên rơi về nền đen mặc định của .section — hai mục cạnh nhau cùng đen
    trong khi em tưởng đã tách (B.Long bắt 11/08).
-   Dãy chốt:  reviews xám · artists đen · gallery xám · adv ĐEN · whatis xám ·
-              faq ĐEN · visit XÁM · book đen · related xám. */
+   Dãy chốt:  reviews xám · artists đen · gallery xám · quality xám · process ĐEN ·
+              adv ĐEN · faq ĐEN · visit XÁM · book đen · related xám.
+   03/09: gỡ section whatis (xám) nên adv và faq nay liền nhau, cùng ĐEN —
+   hai khối đọc thành một dải đen dài. Chưa đảo lại nhịp vì đảo faq sang xám
+   thì nó lại dính với visit (xám); muốn giữ so le phải lật cả 4 khối cuối. */
 .s-gallery{background:var(--bg)}
 .s-gallery .wrap{position:relative;z-index:2}
 .s-adv{background:var(--black)}
-.s-whatis{background:var(--bg);padding-top:clamp(22px,2.6vw,34px);padding-bottom:clamp(40px,4.8vw,64px)}
-.s-whatis .wrap{position:relative;z-index:2}
+.s-quality{background:var(--bg)}
+.s-quality .wrap{position:relative;z-index:2}
+.s-process{background:var(--black)}
+.s-process .wrap{position:relative;z-index:2}
+
+/* ---- §Process · dòng Tip ----
+   .pc-body p của tầng chung là (0,1,1); .pc-tip trần (0,1,0) thua nên phải neo
+   qua .pc-body. Lùi vào + vạch trái cho tách khỏi đoạn mô tả bước, không dùng
+   màu cam cho cả dòng vì nó ngang hàng chú thích chứ không phải nhấn mạnh. */
+.pc-body p.pc-tip{margin-top:9px;padding-left:12px;border-left:2px solid rgba(204,102,0,.45);
+  font-size:14px;line-height:1.55;color:#B0B0B0}
+.pc-body p.pc-tip b{color:var(--orange);font-weight:600}
 .s-faq{background:var(--black)}
 .s-visit{background:var(--bg)}
 .s-book{background:var(--black)}
@@ -103,6 +116,14 @@
 .s-visit .vs-nap{margin-bottom:0}
 .s-visit .vs-map{min-height:330px}
 .s-related{background:var(--bg)}
+
+/* Hai băng CTA khói. Mỗi băng đứng NGAY DƯỚI khối nó chốt lại (cta1 sau
+   §Artists, cta2 sau §Why Choose) và cả hai khối đó nền ĐEN, nên băng cũng để
+   đen: mép trên băng liền mạch với khối phía trên, còn ranh giới thật rơi
+   xuống mép dưới, chỗ §Gallery và §Visit đổi sang xám. Phải khai --cta-edge
+   kèm background, không thì dải gradient mép vẫn fade về màu --bg cũ và hở
+   một vệt sáng ở đúng chỗ giáp — cùng lý do _pages/cover-up.css:37 đã ghi. */
+.s-cta1,.s-cta2{--cta-edge:var(--black);background:var(--black)}
 .s-related .wrap{position:relative;z-index:2}
 
 /* Ruột thẻ .rel-* đã lên _foundation/hi-components.css (12/08) — từ lúc
