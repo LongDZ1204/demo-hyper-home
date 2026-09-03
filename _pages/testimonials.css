@@ -78,8 +78,17 @@
    Đoạn này 244 ký tự, dài nhất 5 dòng ở 360px — gỡ nén rẻ hơn là gắn nút
    "Read more" cho 6 chữ. Nén là để trị đoạn dẫn dài, không phải mặc định. */
 .tm-hero .lead{display:block;-webkit-line-clamp:none;line-clamp:none;overflow:visible}
-.hero-story-title{margin:8px 0 0;font-family:var(--head);font-size:clamp(38px,4.2vw,64px);
-  line-height:1;text-transform:uppercase;color:var(--orange);letter-spacing:-.015em}
+
+/* Review proof belongs to the hero's reading order: breadcrumb -> proof -> H1. */
+.hero-review-proof{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0;margin:24px 0 22px;padding:0;border:1px solid rgba(255,255,255,.18);background:rgba(8,8,8,.72)}
+.hero-review-proof li{display:flex;align-items:center;gap:12px;min-width:0;padding:14px 16px}
+.hero-review-proof li + li{border-left:1px solid rgba(255,255,255,.16)}
+.hero-review-proof .hi-icon{width:24px;height:24px;flex:0 0 auto;color:var(--orange)}
+.hero-review-proof li > span{display:flex;flex-direction:column;min-width:0;gap:2px}
+.hero-review-proof strong{font-family:var(--head);font-size:clamp(25px,2.6vw,38px);line-height:.88;color:#fff}
+.hero-review-proof small{font-family:var(--sub);font-size:9.5px;font-weight:700;line-height:1.3;
+  letter-spacing:.07em;text-transform:uppercase;color:var(--cream)}
 
 .hero-proof{position:relative;border:1px solid var(--border);border-radius:8px;
   background:rgba(12,12,12,.64);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
@@ -96,27 +105,16 @@
 .mention-list span::before{content:"";width:11px;height:11px;flex:0 0 11px;background:var(--orange);
   clip-path:polygon(14% 52%,31% 38%,44% 55%,78% 18%,94% 33%,45% 84%)}
 
-/* ==== PROOF BAND ============================================================
-   Hai số canonical của trang review. Giữ thành một dải thấp, không biến thành
-   hai card marketing bo tròn. */
-.tm-proofband{background:#0B0B0B;border-block:1px solid var(--hair)}
-.tm-proofrow{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:0;padding:0}
-.tm-proofrow li{display:flex;align-items:center;justify-content:center;gap:18px;min-height:126px;padding:24px}
-.tm-proofrow li + li{border-left:1px solid var(--hair)}
-.tm-proofrow .hi-icon{width:34px;height:34px;color:var(--orange);flex:0 0 auto}
-.tm-proofrow li > span{display:flex;flex-direction:column;gap:3px}
-.tm-proofrow strong{font-family:var(--head);font-size:clamp(36px,4vw,56px);line-height:.9;color:#fff}
-.tm-proofrow small{font-family:var(--sub);font-size:12px;font-weight:700;letter-spacing:.08em;
-  line-height:1.35;text-transform:uppercase;color:var(--cream)}
-
 /* ==== FEATURED REVIEW ======================================================= */
 .s-featured-review{background:var(--black)}
 .s-featured-review .section-head{margin-bottom:var(--gap-head-body)}
-.featured-review-card{display:grid;grid-template-columns:minmax(0,1.75fr) minmax(250px,.55fr);
+.featured-review-card{display:grid;grid-template-columns:minmax(220px,.72fr) minmax(0,1.35fr) minmax(230px,.58fr);
   border:1px solid var(--border);border-top:3px solid var(--orange);background:var(--surface)}
+.featured-review-media{position:relative;min-height:400px;margin:0;overflow:hidden;border-right:1px solid var(--border)}
+.featured-review-media img{width:100%;height:100%;display:block;object-fit:cover;object-position:center}
 .featured-review-card blockquote{margin:0;padding:clamp(28px,4vw,58px)}
-.featured-review-card blockquote p{margin:0;font-family:var(--sub);font-size:clamp(24px,3vw,42px);
-  font-weight:600;line-height:1.28;color:#fff}
+.featured-review-card blockquote p{margin:0;font-family:var(--sub);font-size:clamp(20px,2vw,29px);
+  font-weight:600;line-height:1.4;color:#fff}
 .featured-review-meta{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;
   gap:10px;padding:clamp(26px,3vw,42px);border-left:1px solid var(--border);background:#111}
 .featured-review-meta .rv-stars{font-size:18px;letter-spacing:2px}
@@ -128,17 +126,24 @@
 .featured-review-meta a:hover{color:#fff}
 .featured-review-meta a .hi-icon{width:15px;height:15px;color:var(--orange)}
 
-/* ==== VIDEO PENDING STATE =================================================== */
-.video-pending-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;margin-top:var(--gap-head-body)}
-.video-pending-card{position:relative;isolation:isolate;display:flex;align-items:flex-end;justify-content:space-between;
-  gap:18px;min-height:260px;padding:22px;border:1px solid var(--border);background:#111;overflow:hidden}
-.video-pending-card::before{content:"";position:absolute;right:-34px;bottom:-58px;z-index:-1;
-  width:150px;height:150px;border:1px solid rgba(204,102,0,.35);transform:rotate(18deg)}
-.video-pending-no{align-self:flex-start;font-family:var(--head);font-size:clamp(54px,6vw,82px);line-height:.8;
-  color:rgba(255,255,255,.08)}
-.video-pending-card > span:last-child{display:flex;flex-direction:column;align-items:flex-end;text-align:right}
-.video-pending-card strong{font-family:var(--sub);font-size:14px;text-transform:uppercase;letter-spacing:.06em;color:#fff}
-.video-pending-card small{margin-top:5px;font-size:12px;color:var(--orange);text-transform:uppercase;letter-spacing:.08em}
+/* ==== VIDEO REVIEW MOCKUP SLIDER ===========================================
+   Four-up desktop; at mobile each card is half a viewport so two cards remain
+   visible and the existing review-slider engine provides swipe + page dots. */
+.tm-video-slider{margin-top:var(--gap-head-body)}
+.tm-video-track{gap:16px;padding:2px}
+.tm-video-card{position:relative;isolation:isolate;flex:0 0 calc((100% - 48px)/4);min-width:0;
+  aspect-ratio:4/5;overflow:hidden;border:1px solid var(--border);background:#111;scroll-snap-align:start}
+.tm-video-card > img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .45s var(--ease)}
+.tm-video-card:hover > img{transform:scale(1.035)}
+.tm-video-scrim{position:absolute;inset:0;background:rgba(0,0,0,.16);
+  box-shadow:inset 0 -130px 80px -48px rgba(0,0,0,.94)}
+.tm-video-play{position:absolute;top:18px;right:18px;display:grid;place-items:center;width:46px;height:46px;
+  border:1px solid rgba(255,255,255,.64);border-radius:50%;background:rgba(0,0,0,.46);color:#fff}
+.tm-video-play svg{width:21px;height:21px;fill:currentColor}
+.tm-video-copy{position:absolute;left:18px;right:18px;bottom:18px;display:flex;flex-direction:column;gap:5px}
+.tm-video-copy strong{font-family:var(--sub);font-size:14px;letter-spacing:.055em;text-transform:uppercase;color:#fff}
+.tm-video-copy small{font-size:11px;letter-spacing:.075em;text-transform:uppercase;color:var(--orange)}
+.tm-video-slider > .rv-dots{display:none}
 
 /* ==== NHỊP TONE NỀN =========================================================
    Bỏ Customer Stories (nền #0a0a0a) xong thì hai section còn lại cùng một nền,
@@ -179,6 +184,17 @@
 .rv-grid > .rv-card[hidden]{display:none!important}
 .rv-grid > .is-more{display:none}
 .rv-grid.is-open > .is-more{display:flex}
+.rv-grid.is-open > .is-more.has-media{display:grid}
+
+/* Image-bearing review variant. Portfolio media is temporary mockup content;
+   source review copy and outbound source link remain unchanged. */
+.rv-card.has-media{display:grid;grid-template-columns:minmax(0,1fr) minmax(112px,42%);
+  grid-template-rows:auto minmax(0,1fr);gap:0;padding:0;overflow:hidden}
+.rv-card.has-media .rv-top{grid-column:1;grid-row:1;margin:0;padding:16px 13px 10px;gap:8px}
+.rv-card.has-media .rv-av{width:32px;height:32px;font-size:12px}
+.rv-card.has-media .rv-body-scroll{grid-column:1;grid-row:2;padding:0 13px 16px}
+.rv-card-media{grid-column:2;grid-row:1/3;min-width:0;margin:0;overflow:hidden;border-left:1px solid var(--card-brd)}
+.rv-card-media img{width:100%;height:100%;display:block;object-fit:cover}
 
 .rv-morewrap{display:flex;justify-content:center;margin-top:26px}
 .rv-morebtn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:13px 26px;
@@ -244,25 +260,32 @@ h3.platform-h svg{width:26px;height:26px;background:#fff;border-radius:50%;paddi
 
 @media(max-width:1100px){
   .rv-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .video-pending-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
 }
 @media(max-width:900px){
   .hero-proof{max-width:620px}
 }
 @media(max-width:600px){
-  .hero-story-title{font-size:clamp(34px,11vw,48px)}
-  .tm-proofrow{grid-template-columns:1fr}
-  .tm-proofrow li{justify-content:flex-start;min-height:104px;padding-inline:20px}
-  .tm-proofrow li + li{border-left:0;border-top:1px solid var(--hair)}
+  .hero-review-proof{margin:20px 0 18px}
+  .hero-review-proof li{padding:12px 10px;gap:8px}
+  .hero-review-proof .hi-icon{width:19px;height:19px}
+  .hero-review-proof strong{font-size:25px}
+  .hero-review-proof small{font-size:8px;letter-spacing:.045em}
   .featured-review-card{grid-template-columns:1fr}
+  .featured-review-media{min-height:260px;border-right:0;border-bottom:1px solid var(--border)}
   .featured-review-card blockquote{padding:24px 20px}
-  .featured-review-card blockquote p{font-size:23px}
+  .featured-review-card blockquote p{font-size:20px;line-height:1.42}
   .featured-review-meta{padding:22px 20px;border-left:0;border-top:1px solid var(--border)}
-  .video-pending-grid{gap:12px}
-  .video-pending-card{min-height:190px;padding:16px}
-  .video-pending-no{font-size:50px}
+  .tm-video-track{gap:12px}
+  .tm-video-card{flex-basis:calc(50% - 10px);aspect-ratio:3/4}
+  .tm-video-play{top:11px;right:11px;width:36px;height:36px}
+  .tm-video-play svg{width:18px;height:18px}
+  .tm-video-copy{left:11px;right:11px;bottom:12px}
+  .tm-video-copy strong{font-size:11px}
+  .tm-video-copy small{font-size:9px}
+  .tm-video-slider > .rv-dots{display:flex}
   .rv-grid{grid-template-columns:1fr;gap:12px}
   .rv-grid--plat .rv-card{height:296px;padding:14px}
+  .rv-grid--plat .rv-card.has-media{padding:0}
   .rv-grid--plat .rv-av{width:32px;height:32px;font-size:12.5px}
   .rv-grid--plat .rv-meta{flex-direction:column;align-items:flex-start;gap:3px}
   .rv-grid--plat .rv-date{white-space:nowrap}
