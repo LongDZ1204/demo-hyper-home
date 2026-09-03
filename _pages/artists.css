@@ -50,7 +50,11 @@ body.artists-page{background:var(--bg);color:#fff}
    full-bleed phủ kín, nên mắt không thấy hai dải cùng màu — phép đo "2 section liền nhau
    cùng background-color" báo nhầm ở đây. Đổi sang band-b thì lại trùng với CTA ngay dưới. */
 .artists-hub-list{position:relative;background:var(--bg);overflow:hidden}
-.artists-page #book{--cta-edge:var(--black);background:var(--black)}
+/* Khoá theo CLASS chứ không theo #book (03/09): luật này viết cho DẢI CTA, mà
+   dải CTA vừa nhường id="book" cho section form đặt lịch ở cuối trang — để
+   nguyên selector cũ là nền đen rơi sang cái form, thẻ form (hi-ds đặt #000)
+   chìm hẳn vào nền, chỉ còn trơ cái viền 1px. */
+.artists-page .s-cta1{--cta-edge:var(--black);background:var(--black)}
 .artists-page #visit{background:var(--bg)}
 .artists-hub-list .wrap{position:relative;z-index:2}
 .hub-smoke--grid-a{top:2%;right:-18%;width:min(74vw,1040px);opacity:.34;transform:scaleX(-1) rotate(4deg)}
@@ -154,3 +158,24 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 @media(min-width:641px) and (max-width:980px){
   .footer-mini__grid{grid-template-columns:1fr 1fr}
 }
+
+/* === Dòng chữ phụ của band CTA =============================================
+   Content trang này viết CTA ba tầng: eyebrow "Found Your Artist?" -> câu
+   "Book a free consultation and ask for the artist whose work fits your idea."
+   -> nút + số gọi. Component .cta1 dùng chung toàn site chỉ có HAI tầng
+   (tiêu đề + nút), không có chỗ cho câu giữa.
+   Thêm một luật khoá trong trang thay vì nống component: sáu trang khác đang
+   dùng .cta1 hai tầng, sửa ở tầng chung là đổi cả sáu để phục vụ một trang.
+   Câu này mang thông tin thật (hỏi đích danh người thợ hợp ý mình) nên đáng
+   giữ, không phải câu đệm.
+   Khe 14px và khổ đọc 62ch bám theo cặp số của .cta1-h ngay trên. */
+.artists-page .cta1-sub{max-width:62ch;margin:14px auto 0;text-align:center;
+  font-size:var(--fs-lead);line-height:1.62;color:#C9C9C9}
+
+/* Nền section form đặt lịch = band-a (#000), giữ nhịp so-le của trang:
+   hub #0F0F0F -> CTA #000 -> visit #0F0F0F -> book #000.
+   Thẻ form cũng #000 (hi-ds đặt) nên nó đọc bằng viền 1px chứ không bằng lệch
+   nền — đúng cách 4 trang about / tattoo / deals / black-and-grey đang chạy.
+   Không dùng #0F0F0F kiểu home / faq / testimonials: ở đây section ngay trên
+   đã là #0F0F0F, lấy tiếp #0F0F0F là hai dải cùng màu dính nhau. */
+.artists-page .s-book{background:var(--black)}
