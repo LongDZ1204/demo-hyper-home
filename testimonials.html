@@ -45,7 +45,7 @@
 <link rel="stylesheet" href="_foundation/components/booking-section.css">
 <link rel="stylesheet" href="_foundation/components/booking-form.css">
 <link rel="stylesheet" href="_foundation/hi-components.css">
-<link rel="stylesheet" href="_pages/testimonials.css?v=20260903-home-card-sync">
+<link rel="stylesheet" href="_pages/testimonials.css?v=20260903-component-sync">
 <!-- hi-ds.css NẠP CUỐI: lớp design-system cố tình thắng cascade so với CSS lẻ của page -->
 <link rel="stylesheet" href="_foundation/hi-ds.css">
 </head>
@@ -197,16 +197,13 @@
                   <li><span aria-current="page">Testimonials</span></li>
                 </ol>
               </nav>
-              <ul class="hero-review-proof" aria-label="Hyper Inkers review proof">
-                <li>
-                  <svg class="hi-icon" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-rating-star"></use></svg>
-                  <span><strong>5.0</strong><small>Google rating</small></span>
-                </li>
-                <li>
-                  <svg class="hi-icon" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-users"></use></svg>
-                  <span><strong>3,000+</strong><small>Reviews across Google and Facebook</small></span>
-                </li>
-              </ul>
+              <div class="hero-review-proof" aria-label="5.0 rating from more than 3,000 Google reviews">
+                <svg class="hero-review-proof__google" aria-hidden="true"><use href="#ic-google"></use></svg>
+                <span>
+                  <span class="hero-review-proof__score"><strong>5.0</strong><span class="rv-stars" aria-hidden="true">★★★★★</span></span>
+                  <small>3,000+ Google Reviews</small>
+                </span>
+              </div>
               <h1>Hyper Inkers Reviews</h1>
               <p class="lead">See what clients say about custom tattoos, cover-ups, piercings, and first-timer visits at Hyper Inkers in San Antonio. Every review on this page links back to the original post on Google or Facebook.</p>
             </div>
@@ -228,15 +225,17 @@
     <!-- ============ FEATURED REVIEW ============ -->
     <section class="section s-featured-review" aria-labelledby="featured-review-title">
       <div class="wrap">
-        <header class="section-head">
+        <header class="section-head center">
           <h2 id="featured-review-title">Featured <span class="o">Review</span></h2>
         </header>
         <div class="featured-review-frame">
           <article class="featured-review-card">
             <figure class="featured-review-media">
               <!-- Temporary portfolio image for layout preview; replace with Andrew's actual tattoo photo when supplied. -->
-              <img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-3-scaled.jpg"
-                   alt="Black and grey tattoo portfolio image used as a temporary review layout mockup" loading="lazy">
+              <a href="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-3-scaled.jpg" data-lb aria-label="View full-size featured review tattoo image">
+                <img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-3-scaled.jpg"
+                     alt="Black and grey tattoo portfolio image used as a temporary review layout mockup" loading="lazy">
+              </a>
             </figure>
             <div class="featured-review-content">
               <div class="featured-review-meta">
@@ -268,33 +267,37 @@
         </header>
 
         <div class="rv-slider-wrap tm-video-slider is-auto" aria-label="Four client video review mockups">
-          <ul class="rv-slider tm-video-track">
-            <li class="tm-video-card">
-              <img src="https://hyperinkers.com/wp-content/uploads/2025/05/realism-tattoo-art-3.png" alt="Tattoo portfolio image used as a temporary video review thumbnail" loading="lazy">
-              <span class="tm-video-scrim" aria-hidden="true"></span>
-              <span class="tm-video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7l8 5-8 5z"/></svg></span>
-              <span class="tm-video-copy"><strong>Video Review 01</strong><small>Video coming soon</small></span>
+          <ul class="rv-slider rv-vslider">
+            <li class="rv-vcard">
+              <div class="rv-vlink" aria-label="Video review 01 placeholder">
+                <img src="https://hyperinkers.com/wp-content/uploads/2025/05/realism-tattoo-art-3.png" alt="Tattoo portfolio image used as a temporary video review thumbnail" loading="lazy">
+                <span class="rv-vplay" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+                <span class="rv-vmeta"><b>Video Review 01</b><span>Video coming soon</span></span>
+              </div>
             </li>
-            <li class="tm-video-card">
-              <img src="https://hyperinkers.com/wp-content/uploads/2025/05/black-grey-tattoo-designs-2.png" alt="Black and grey tattoo portfolio image used as a temporary video review thumbnail" loading="lazy">
-              <span class="tm-video-scrim" aria-hidden="true"></span>
-              <span class="tm-video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7l8 5-8 5z"/></svg></span>
-              <span class="tm-video-copy"><strong>Video Review 02</strong><small>Video coming soon</small></span>
+            <li class="rv-vcard">
+              <div class="rv-vlink" aria-label="Video review 02 placeholder">
+                <img src="https://hyperinkers.com/wp-content/uploads/2025/05/black-grey-tattoo-designs-2.png" alt="Black and grey tattoo portfolio image used as a temporary video review thumbnail" loading="lazy">
+                <span class="rv-vplay" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+                <span class="rv-vmeta"><b>Video Review 02</b><span>Video coming soon</span></span>
+              </div>
             </li>
-            <li class="tm-video-card">
-              <img src="https://hyperinkers.com/wp-content/uploads/2024/05/ears-5-2.png.webp" alt="Ear piercing portfolio image used as a temporary video review thumbnail" loading="lazy">
-              <span class="tm-video-scrim" aria-hidden="true"></span>
-              <span class="tm-video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7l8 5-8 5z"/></svg></span>
-              <span class="tm-video-copy"><strong>Video Review 03</strong><small>Video coming soon</small></span>
+            <li class="rv-vcard">
+              <div class="rv-vlink" aria-label="Video review 03 placeholder">
+                <img src="https://hyperinkers.com/wp-content/uploads/2024/05/ears-5-2.png.webp" alt="Ear piercing portfolio image used as a temporary video review thumbnail" loading="lazy">
+                <span class="rv-vplay" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+                <span class="rv-vmeta"><b>Video Review 03</b><span>Video coming soon</span></span>
+              </div>
             </li>
-            <li class="tm-video-card">
-              <img src="https://hyperinkers.com/wp-content/uploads/2025/05/best-color-tattoo-artist-3.png" alt="Color tattoo portfolio image used as a temporary video review thumbnail" loading="lazy">
-              <span class="tm-video-scrim" aria-hidden="true"></span>
-              <span class="tm-video-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 7l8 5-8 5z"/></svg></span>
-              <span class="tm-video-copy"><strong>Video Review 04</strong><small>Video coming soon</small></span>
+            <li class="rv-vcard">
+              <div class="rv-vlink" aria-label="Video review 04 placeholder">
+                <img src="https://hyperinkers.com/wp-content/uploads/2025/05/best-color-tattoo-artist-3.png" alt="Color tattoo portfolio image used as a temporary video review thumbnail" loading="lazy">
+                <span class="rv-vplay" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></span>
+                <span class="rv-vmeta"><b>Video Review 04</b><span>Video coming soon</span></span>
+              </div>
             </li>
           </ul>
-          <div class="rv-dots" aria-label="Video review slides"></div>
+          <div class="rv-dots" role="tablist" aria-label="Video review slides"></div>
         </div>
       </div>
     </section>
@@ -302,7 +305,7 @@
     <!-- ============ REVIEWS BY PLATFORM ============
          Google and Facebook remain two visible sections. No platform filter. -->
     <section class="section s-plat" id="platform-reviews" aria-labelledby="platform-title">
-      <div class="wrap">
+      <div class="wrap" data-gallery-grid>
         <header class="section-head center">
           <h2 id="platform-title">Client <span class="o">Reviews by Platform</span></h2>
           <input type="checkbox" id="ld-plat" class="lead-cb" aria-label="Expand the introduction">
@@ -333,7 +336,7 @@
     </div>
     <div class="rv-body-scroll"><p class="rv-body">Tai&#x27;s hand wasn&#x27;t heavy, super clean and did exactly as we asked as i went with my sister. I am definitely returning.</p></div>
     </div>
-    <figure class="rv-pc-media"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/black-grey-tattoo-designs-2.png" alt="Tattoo portfolio image used as a temporary review card mockup" loading="lazy"></figure>
+    <figure class="rv-pc-media"><a class="galp-tile" href="https://hyperinkers.com/wp-content/uploads/2025/05/black-grey-tattoo-designs-2.png" aria-label="View full-size tattoo review image"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/black-grey-tattoo-designs-2.png" alt="Tattoo portfolio image used as a temporary review card mockup" loading="lazy"></a></figure>
   </article>
   <article class="rv-card">
     <div class="rv-top">
@@ -376,7 +379,7 @@
     </div>
     <div class="rv-body-scroll"><p class="rv-body">Tai worked a miracle with my tattoo coverup! I am so happy to have this new beautiful art, he designed it with every element I asked for, was willing to take time reworking his original drawing not once but twice to ensure it was going to cover the entire old tattoo, and he was kind and attentive to my comfort during the tattoo for over 7 hours.</p></div>
     </div>
-    <figure class="rv-pc-media"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/realism-tattoo-art-3.png" alt="Tattoo portfolio image used as a temporary review card mockup" loading="lazy"></figure>
+    <figure class="rv-pc-media"><a class="galp-tile" href="https://hyperinkers.com/wp-content/uploads/2025/05/realism-tattoo-art-3.png" aria-label="View full-size cover-up review image"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/realism-tattoo-art-3.png" alt="Tattoo portfolio image used as a temporary review card mockup" loading="lazy"></a></figure>
   </article>
   <article class="rv-card is-more">
     <div class="rv-top">
@@ -395,7 +398,7 @@
     </div>
     <div class="rv-body-scroll"><p class="rv-body">I came back for a second piercing within one month here because Nicole did an amazing job and with very fair pricing (their Wednesday piercing deals is such a steal!). And since i was already there, I also had a walk-in visit to get tatted as well. My artist was friendly, knowledgeable, gentle, and talented. Thank you for the hospitality. I will be coming back and bringing more people :)</p></div>
     </div>
-    <figure class="rv-pc-media"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/ears-2-2.png.webp" alt="Piercing portfolio image used as a temporary review card mockup" loading="lazy"></figure>
+    <figure class="rv-pc-media"><a class="galp-tile" href="https://hyperinkers.com/wp-content/uploads/2024/05/ears-2-2.png.webp" aria-label="View full-size piercing review image"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/ears-2-2.png.webp" alt="Piercing portfolio image used as a temporary review card mockup" loading="lazy"></a></figure>
   </article>
   <article class="rv-card rv-card--photo is-more">
     <div class="rv-pc-text">
@@ -406,7 +409,7 @@
     </div>
     <div class="rv-body-scroll"><p class="rv-body">Tai did an amazing job on my tattoo! Super talented, professional, and easy to work with. Clean lines, great detail, and overall a great experience. I&#x27;ll definitely be coming back.</p></div>
     </div>
-    <figure class="rv-pc-media"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/best-color-tattoo-artist-3.png" alt="Tattoo portfolio image used as a temporary review card mockup" loading="lazy"></figure>
+    <figure class="rv-pc-media"><a class="galp-tile" href="https://hyperinkers.com/wp-content/uploads/2025/05/best-color-tattoo-artist-3.png" aria-label="View full-size color tattoo review image"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/best-color-tattoo-artist-3.png" alt="Tattoo portfolio image used as a temporary review card mockup" loading="lazy"></a></figure>
   </article>
   <article class="rv-card is-more">
     <div class="rv-top">
@@ -546,7 +549,7 @@
     </div>
     <div class="rv-body-scroll"><p class="rv-body">Comfortable piercing experience 10/10!</p></div>
     </div>
-    <figure class="rv-pc-media"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/ears-5-2.png.webp" alt="Piercing portfolio image used as a temporary review card mockup" loading="lazy"></figure>
+    <figure class="rv-pc-media"><a class="galp-tile" href="https://hyperinkers.com/wp-content/uploads/2024/05/ears-5-2.png.webp" aria-label="View full-size piercing review image"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/ears-5-2.png.webp" alt="Piercing portfolio image used as a temporary review card mockup" loading="lazy"></a></figure>
   </article>
   <article class="rv-card rv-card--photo">
     <div class="rv-pc-text">
@@ -557,7 +560,7 @@
     </div>
     <div class="rv-body-scroll"><p class="rv-body">Zoe was so patient with my 10 year old daughter getting her ears pierced after a bad experience previously!! She helped her feel confident and calm throughout. I really appreciated her time.</p></div>
     </div>
-    <figure class="rv-pc-media"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/ears-1-2.png.webp" alt="Ear piercing portfolio image used as a temporary review card mockup" loading="lazy"></figure>
+    <figure class="rv-pc-media"><a class="galp-tile" href="https://hyperinkers.com/wp-content/uploads/2024/05/ears-1-2.png.webp" aria-label="View full-size ear piercing review image"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/ears-1-2.png.webp" alt="Ear piercing portfolio image used as a temporary review card mockup" loading="lazy"></a></figure>
   </article>
   <article class="rv-card">
     <div class="rv-top">
@@ -640,7 +643,7 @@
     </div>
     <div class="rv-body-scroll"><p class="rv-body">Great work! Tai is very patient and walked us through everything! Definitely coming back!</p></div>
     </div>
-    <figure class="rv-pc-media"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-7-scaled.jpg" alt="Tattoo portfolio image used as a temporary review card mockup" loading="lazy"></figure>
+    <figure class="rv-pc-media"><a class="galp-tile" href="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-7-scaled.jpg" aria-label="View full-size tattoo review image"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-7-scaled.jpg" alt="Tattoo portfolio image used as a temporary review card mockup" loading="lazy"></a></figure>
   </article>
   <article class="rv-card is-more">
     <div class="rv-top">
@@ -676,6 +679,10 @@
             </button>
           </div>
         </div>
+      </div>
+      <div class="galp-lb" data-gallery-lightbox role="dialog" aria-modal="true" aria-label="Full-size review image">
+        <button class="galp-lb__close" type="button" data-lightbox-close aria-label="Close">&times;</button>
+        <img alt="" data-lightbox-image>
       </div>
     </section>
 

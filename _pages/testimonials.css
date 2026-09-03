@@ -79,15 +79,15 @@
    "Read more" cho 6 chữ. Nén là để trị đoạn dẫn dài, không phải mặc định. */
 .tm-hero .lead{display:block;-webkit-line-clamp:none;line-clamp:none;overflow:visible}
 
-/* Compact review proof: breadcrumb -> proof -> H1. No card shell. */
-.hero-review-proof{list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:24px;margin:18px 0 20px;padding:0;max-width:500px}
-.hero-review-proof li{display:flex;align-items:center;gap:9px;min-width:0;padding:0}
-.hero-review-proof .hi-icon{width:19px;height:19px;flex:0 0 auto;color:var(--orange)}
-.hero-review-proof li > span{display:flex;flex-direction:column;min-width:0;gap:2px}
-.hero-review-proof strong{font-family:var(--head);font-size:clamp(22px,2vw,30px);line-height:.88;color:#fff}
-.hero-review-proof small{font-family:var(--sub);font-size:8.5px;font-weight:700;line-height:1.3;
-  letter-spacing:.055em;text-transform:uppercase;color:var(--cream)}
+/* Single Google proof badge: breadcrumb -> proof -> H1. No card shell. */
+.hero-review-proof{display:flex;align-items:center;gap:13px;width:max-content;max-width:100%;margin:18px 0 20px}
+.hero-review-proof__google{width:38px;height:38px;flex:0 0 auto}
+.hero-review-proof > span{display:flex;flex-direction:column;gap:4px;min-width:0}
+.hero-review-proof__score{display:flex;align-items:center;gap:10px;line-height:1}
+.hero-review-proof strong{font-family:var(--head);font-size:clamp(26px,2.35vw,36px);line-height:.86;color:#fff}
+.hero-review-proof .rv-stars{font-size:clamp(16px,1.6vw,22px);letter-spacing:2px}
+.hero-review-proof small{font-family:var(--sub);font-size:clamp(12px,1.2vw,16px);font-weight:600;line-height:1.2;
+  letter-spacing:.035em;color:#fff}
 
 .hero-proof{position:relative;border:1px solid var(--border);border-radius:8px;
   background:rgba(12,12,12,.64);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
@@ -111,10 +111,11 @@
 .featured-review-frame::before{content:"";position:absolute;inset:0;border:2px solid var(--cream);border-radius:28px;opacity:.9}
 .featured-review-frame::after{content:"";position:absolute;inset:8px;border:1px solid var(--orange);border-radius:22px;opacity:.9}
 .featured-review-card{position:relative;z-index:1;display:grid;grid-template-columns:minmax(230px,.72fr) minmax(0,1.45fr);
-  min-height:340px;overflow:hidden;border:1px solid var(--border);border-radius:16px;background:var(--surface)}
+  min-height:340px;overflow:hidden;border:1px solid var(--border);border-radius:16px;background:transparent}
 .featured-review-media{position:relative;min-height:340px;margin:0;overflow:hidden;border-right:2px solid var(--orange)}
+.featured-review-media > a{display:block;width:100%;height:100%;cursor:zoom-in}
 .featured-review-media img{width:100%;height:100%;display:block;object-fit:cover;object-position:center}
-.featured-review-content{display:flex;flex-direction:column;justify-content:center;min-width:0;padding:clamp(28px,4vw,52px)}
+.featured-review-content{display:flex;flex-direction:column;justify-content:center;min-width:0;padding:clamp(28px,4vw,52px);background:transparent}
 .featured-review-meta{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;
   padding-bottom:17px;border-bottom:1px solid var(--border)}
 .featured-review-meta > span:first-child{display:flex;flex-direction:column;gap:5px;min-width:0}
@@ -135,23 +136,8 @@
 .featured-quote--close{right:-2px;top:28px}
 
 /* ==== VIDEO REVIEW MOCKUP SLIDER ===========================================
-   Four-up desktop; at mobile each card is half a viewport so two cards remain
-   visible and the existing review-slider engine provides swipe + page dots. */
+   Cards use the exact Home component: .rv-vcard / .rv-vlink / .rv-vplay. */
 .tm-video-slider{margin-top:var(--gap-head-body)}
-.tm-video-track{gap:16px;padding:2px}
-.tm-video-card{position:relative;isolation:isolate;flex:0 0 calc((100% - 48px)/4);min-width:0;
-  aspect-ratio:4/5;overflow:hidden;border:1px solid var(--border);background:#111;scroll-snap-align:start}
-.tm-video-card > img{width:100%;height:100%;display:block;object-fit:cover;transition:transform .45s var(--ease)}
-.tm-video-card:hover > img{transform:scale(1.035)}
-.tm-video-scrim{position:absolute;inset:0;background:rgba(0,0,0,.16);
-  box-shadow:inset 0 -130px 80px -48px rgba(0,0,0,.94)}
-.tm-video-play{position:absolute;top:18px;right:18px;display:grid;place-items:center;width:46px;height:46px;
-  border:1px solid rgba(255,255,255,.64);border-radius:50%;background:rgba(0,0,0,.46);color:#fff}
-.tm-video-play svg{width:21px;height:21px;fill:currentColor}
-.tm-video-copy{position:absolute;left:18px;right:18px;bottom:18px;display:flex;flex-direction:column;gap:5px}
-.tm-video-copy strong{font-family:var(--sub);font-size:14px;letter-spacing:.055em;text-transform:uppercase;color:#fff}
-.tm-video-copy small{font-size:11px;letter-spacing:.075em;text-transform:uppercase;color:var(--orange)}
-.tm-video-slider > .rv-dots{display:none}
 
 /* ==== NHỊP TONE NỀN =========================================================
    Bỏ Customer Stories (nền #0a0a0a) xong thì hai section còn lại cùng một nền,
@@ -192,6 +178,11 @@
 .rv-grid > .rv-card[hidden]{display:none!important}
 .rv-grid > .is-more{display:none}
 .rv-grid.is-open > .is-more{display:flex}
+
+/* Keep Home review-card geometry while its media link participates in the
+   shared gallery lightbox. */
+.rv-pc-media > .galp-tile{width:100%;height:100%;aspect-ratio:auto;border:0;border-radius:0;transform:none}
+.rv-pc-media > .galp-tile:hover{transform:none;border-color:transparent}
 
 .rv-morewrap{display:flex;justify-content:center;margin-top:26px}
 .rv-morebtn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:13px 26px;
@@ -262,11 +253,12 @@ h3.platform-h svg{width:26px;height:26px;background:#fff;border-radius:50%;paddi
   .hero-proof{max-width:620px}
 }
 @media(max-width:600px){
-  .hero-review-proof{margin:20px 0 18px}
-  .hero-review-proof li{gap:7px}
-  .hero-review-proof .hi-icon{width:17px;height:17px}
-  .hero-review-proof strong{font-size:22px}
-  .hero-review-proof small{font-size:7.5px;letter-spacing:.04em}
+  .hero-review-proof{gap:10px;margin:20px 0 18px}
+  .hero-review-proof__google{width:31px;height:31px}
+  .hero-review-proof__score{gap:8px}
+  .hero-review-proof strong{font-size:27px}
+  .hero-review-proof .rv-stars{font-size:15px;letter-spacing:1.5px}
+  .hero-review-proof small{font-size:11px;letter-spacing:.02em}
   .featured-review-frame{padding:12px}
   .featured-review-frame::after{inset:6px}
   .featured-review-card{grid-template-columns:1fr}
@@ -280,14 +272,6 @@ h3.platform-h svg{width:26px;height:26px;background:#fff;border-radius:50%;paddi
   .featured-quote{width:36px;height:36px;font-size:40px}
   .featured-quote--open{left:-2px;bottom:22px}
   .featured-quote--close{right:-2px;top:22px}
-  .tm-video-track{gap:12px}
-  .tm-video-card{flex-basis:calc(50% - 10px);aspect-ratio:3/4}
-  .tm-video-play{top:11px;right:11px;width:36px;height:36px}
-  .tm-video-play svg{width:18px;height:18px}
-  .tm-video-copy{left:11px;right:11px;bottom:12px}
-  .tm-video-copy strong{font-size:11px}
-  .tm-video-copy small{font-size:9px}
-  .tm-video-slider > .rv-dots{display:flex}
   .rv-grid{grid-template-columns:1fr;gap:12px}
   .rv-grid--plat .rv-card{height:296px;padding:14px}
   .rv-grid--plat .rv-card--photo{padding:0}
