@@ -45,7 +45,7 @@
 <link rel="stylesheet" href="_foundation/components/booking-section.css">
 <link rel="stylesheet" href="_foundation/components/booking-form.css">
 <link rel="stylesheet" href="_foundation/hi-components.css">
-<link rel="stylesheet" href="_pages/testimonials.css?v=20260903-media-sync">
+<link rel="stylesheet" href="_pages/testimonials.css?v=20260903-home-card-sync">
 <!-- hi-ds.css NẠP CUỐI: lớp design-system cố tình thắng cascade so với CSS lẻ của page -->
 <link rel="stylesheet" href="_foundation/hi-ds.css">
 </head>
@@ -231,22 +231,27 @@
         <header class="section-head">
           <h2 id="featured-review-title">Featured <span class="o">Review</span></h2>
         </header>
-        <article class="featured-review-card">
-          <figure class="featured-review-media">
-            <!-- Temporary portfolio image for layout preview; replace with Andrew's actual tattoo photo when supplied. -->
-            <img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-3-scaled.jpg"
-                 alt="Black and grey tattoo portfolio image used as a temporary review layout mockup" loading="lazy">
-          </figure>
-          <blockquote>
-            <p>"I can't express enough how happy and satisfied I am with my whole experience at Hyper Inkers. Minh and the whole staff were incredibly professional and helped me execute my vision perfectly... It's truly a work of art on my arm."</p>
-          </blockquote>
-          <div class="featured-review-meta">
-            <span class="rv-stars" aria-label="5 out of 5">★★★★★</span>
-            <strong>Andrew Gutierrez</strong>
-            <span>Custom tattoo with Minh</span>
-            <a href="https://maps.app.goo.gl/FmzMKB3uCtWo2ens6" target="_blank" rel="noopener">Read on Google <svg class="hi-icon" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-external-link"></use></svg></a>
-          </div>
-        </article>
+        <div class="featured-review-frame">
+          <article class="featured-review-card">
+            <figure class="featured-review-media">
+              <!-- Temporary portfolio image for layout preview; replace with Andrew's actual tattoo photo when supplied. -->
+              <img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-3-scaled.jpg"
+                   alt="Black and grey tattoo portfolio image used as a temporary review layout mockup" loading="lazy">
+            </figure>
+            <div class="featured-review-content">
+              <div class="featured-review-meta">
+                <span><strong>Andrew Gutierrez</strong><small>Custom tattoo with Minh</small></span>
+                <span class="rv-stars" aria-label="5 out of 5">★★★★★</span>
+              </div>
+              <blockquote>
+                <p>"I can't express enough how happy and satisfied I am with my whole experience at Hyper Inkers. Minh and the whole staff were incredibly professional and helped me execute my vision perfectly... It's truly a work of art on my arm."</p>
+              </blockquote>
+              <a class="featured-review-source" href="https://maps.app.goo.gl/FmzMKB3uCtWo2ens6" target="_blank" rel="noopener">Read on Google <svg class="hi-icon" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-external-link"></use></svg></a>
+            </div>
+          </article>
+          <span class="featured-quote featured-quote--open" aria-hidden="true">“</span>
+          <span class="featured-quote featured-quote--close" aria-hidden="true">”</span>
+        </div>
       </div>
     </section>
 
@@ -319,14 +324,16 @@
 
 <!-- @include comp-testimonials-google -->
 <div class="rv-grid rv-grid--plat" id="googleGrid" data-card-page="6" data-card-item=".rv-card">
-  <article class="rv-card has-media">
+  <article class="rv-card rv-card--photo">
+    <div class="rv-pc-text">
     <div class="rv-top">
       <span class="rv-av" style="background:#5E4552">DM</span>
       <span class="rv-who"><span class="rv-name">Dee Mtz</span><span class="rv-meta"><span class="rv-date">Tattoo with Tai</span></span></span>
       <a class="rv-srclink" href="https://maps.app.goo.gl/AaQJZBDan6UisFN8A" target="_blank" rel="noopener" aria-label="View Dee Mtz review on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
     </div>
     <div class="rv-body-scroll"><p class="rv-body">Tai&#x27;s hand wasn&#x27;t heavy, super clean and did exactly as we asked as i went with my sister. I am definitely returning.</p></div>
-    <figure class="rv-card-media"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/black-grey-tattoo-designs-2.png" alt="Tattoo portfolio image used as a temporary review card mockup" loading="lazy"></figure>
+    </div>
+    <figure class="rv-pc-media"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/black-grey-tattoo-designs-2.png" alt="Tattoo portfolio image used as a temporary review card mockup" loading="lazy"></figure>
   </article>
   <article class="rv-card">
     <div class="rv-top">
@@ -360,14 +367,16 @@
     </div>
     <div class="rv-body-scroll"><p class="rv-body">The instructor is dedicated and humorous.</p></div>
   </article>
-  <article class="rv-card has-media">
+  <article class="rv-card rv-card--photo">
+    <div class="rv-pc-text">
     <div class="rv-top">
       <span class="rv-av" style="background:#455A60">KP</span>
       <span class="rv-who"><span class="rv-name">Kelli Provencio</span><span class="rv-meta"><span class="rv-date">Cover-up with Tai</span></span></span>
       <a class="rv-srclink" href="https://maps.app.goo.gl/o9LP46UtzFvjpLrA8" target="_blank" rel="noopener" aria-label="View Kelli Provencio review on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
     </div>
     <div class="rv-body-scroll"><p class="rv-body">Tai worked a miracle with my tattoo coverup! I am so happy to have this new beautiful art, he designed it with every element I asked for, was willing to take time reworking his original drawing not once but twice to ensure it was going to cover the entire old tattoo, and he was kind and attentive to my comfort during the tattoo for over 7 hours.</p></div>
-    <figure class="rv-card-media"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/realism-tattoo-art-3.png" alt="Tattoo portfolio image used as a temporary review card mockup" loading="lazy"></figure>
+    </div>
+    <figure class="rv-pc-media"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/realism-tattoo-art-3.png" alt="Tattoo portfolio image used as a temporary review card mockup" loading="lazy"></figure>
   </article>
   <article class="rv-card is-more">
     <div class="rv-top">
@@ -377,23 +386,27 @@
     </div>
     <div class="rv-body-scroll"><p class="rv-body">Genuinely couldn&#x27;t have asked for a more incredible experience for my first tattoo. Minh is absolutely phenomenal, his attention to detail is unmatched and he helped ensure my vision came out exactly how I wanted. I get compliments everywhere I go and people immediately ask where/who did the work. Highly recommend Minh and Hyper Inkers!</p></div>
   </article>
-  <article class="rv-card is-more has-media">
+  <article class="rv-card rv-card--photo is-more">
+    <div class="rv-pc-text">
     <div class="rv-top">
       <span class="rv-av" style="background:#5E4552">VD</span>
       <span class="rv-who"><span class="rv-name">Van Dinh</span><span class="rv-meta"><span class="rv-date">Piercing and tattoo</span></span></span>
       <a class="rv-srclink" href="https://maps.app.goo.gl/pjB1N1bkTUFRRx987" target="_blank" rel="noopener" aria-label="View Van Dinh review on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
     </div>
     <div class="rv-body-scroll"><p class="rv-body">I came back for a second piercing within one month here because Nicole did an amazing job and with very fair pricing (their Wednesday piercing deals is such a steal!). And since i was already there, I also had a walk-in visit to get tatted as well. My artist was friendly, knowledgeable, gentle, and talented. Thank you for the hospitality. I will be coming back and bringing more people :)</p></div>
-    <figure class="rv-card-media"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/ears-2-2.png.webp" alt="Piercing portfolio image used as a temporary review card mockup" loading="lazy"></figure>
+    </div>
+    <figure class="rv-pc-media"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/ears-2-2.png.webp" alt="Piercing portfolio image used as a temporary review card mockup" loading="lazy"></figure>
   </article>
-  <article class="rv-card is-more has-media">
+  <article class="rv-card rv-card--photo is-more">
+    <div class="rv-pc-text">
     <div class="rv-top">
       <span class="rv-av" style="background:#6E4A4A">IH</span>
       <span class="rv-who"><span class="rv-name">Inessa Hall</span><span class="rv-meta"><span class="rv-date">Tattoo with Tai</span></span></span>
       <a class="rv-srclink" href="https://maps.app.goo.gl/EZNbbrryGNMz2HjSA" target="_blank" rel="noopener" aria-label="View Inessa Hall review on Google"><svg aria-hidden="true"><use href="#ic-google"></use></svg></a>
     </div>
     <div class="rv-body-scroll"><p class="rv-body">Tai did an amazing job on my tattoo! Super talented, professional, and easy to work with. Clean lines, great detail, and overall a great experience. I&#x27;ll definitely be coming back.</p></div>
-    <figure class="rv-card-media"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/best-color-tattoo-artist-3.png" alt="Tattoo portfolio image used as a temporary review card mockup" loading="lazy"></figure>
+    </div>
+    <figure class="rv-pc-media"><img src="https://hyperinkers.com/wp-content/uploads/2025/05/best-color-tattoo-artist-3.png" alt="Tattoo portfolio image used as a temporary review card mockup" loading="lazy"></figure>
   </article>
   <article class="rv-card is-more">
     <div class="rv-top">
@@ -524,23 +537,27 @@
 
 <!-- @include comp-testimonials-facebook -->
 <div class="rv-grid rv-grid--plat" id="fbGrid" data-card-page="6" data-card-item=".rv-card">
-  <article class="rv-card has-media">
+  <article class="rv-card rv-card--photo">
+    <div class="rv-pc-text">
     <div class="rv-top">
       <span class="rv-av" style="background:#5E4552">KR</span>
       <span class="rv-who"><span class="rv-name">Kiersten Rodriguez</span><span class="rv-meta"><span class="rv-date">San Antonio, TX · Piercing</span></span></span>
       <a class="rv-srclink" href="https://www.facebook.com/share/p/18DfoV9LvH/" target="_blank" rel="noopener" aria-label="View Kiersten Rodriguez review on Facebook"><svg aria-hidden="true"><use href="#ic-fb"></use></svg></a>
     </div>
     <div class="rv-body-scroll"><p class="rv-body">Comfortable piercing experience 10/10!</p></div>
-    <figure class="rv-card-media"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/ears-5-2.png.webp" alt="Piercing portfolio image used as a temporary review card mockup" loading="lazy"></figure>
+    </div>
+    <figure class="rv-pc-media"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/ears-5-2.png.webp" alt="Piercing portfolio image used as a temporary review card mockup" loading="lazy"></figure>
   </article>
-  <article class="rv-card has-media">
+  <article class="rv-card rv-card--photo">
+    <div class="rv-pc-text">
     <div class="rv-top">
       <span class="rv-av" style="background:#6E4A4A">KJ</span>
       <span class="rv-who"><span class="rv-name">Kelso Jordan</span><span class="rv-meta"><span class="rv-date">Mesquite, TX · Ear piercing with Zoe</span></span></span>
       <a class="rv-srclink" href="https://www.facebook.com/share/p/1Gps5X1QEV/" target="_blank" rel="noopener" aria-label="View Kelso Jordan review on Facebook"><svg aria-hidden="true"><use href="#ic-fb"></use></svg></a>
     </div>
     <div class="rv-body-scroll"><p class="rv-body">Zoe was so patient with my 10 year old daughter getting her ears pierced after a bad experience previously!! She helped her feel confident and calm throughout. I really appreciated her time.</p></div>
-    <figure class="rv-card-media"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/ears-1-2.png.webp" alt="Ear piercing portfolio image used as a temporary review card mockup" loading="lazy"></figure>
+    </div>
+    <figure class="rv-pc-media"><img src="https://hyperinkers.com/wp-content/uploads/2024/05/ears-1-2.png.webp" alt="Ear piercing portfolio image used as a temporary review card mockup" loading="lazy"></figure>
   </article>
   <article class="rv-card">
     <div class="rv-top">
@@ -614,14 +631,16 @@
     </div>
     <div class="rv-body-scroll"><p class="rv-body">Love my piercings! She did a great job!</p></div>
   </article>
-  <article class="rv-card is-more has-media">
+  <article class="rv-card rv-card--photo is-more">
+    <div class="rv-pc-text">
     <div class="rv-top">
       <span class="rv-av" style="background:#6E5A43">LS</span>
       <span class="rv-who"><span class="rv-name">Lupe Sylvan</span><span class="rv-meta"><span class="rv-date">Austin, TX · Tattoo with Tai</span></span></span>
       <a class="rv-srclink" href="https://www.facebook.com/share/p/1BarJrJd1v/" target="_blank" rel="noopener" aria-label="View Lupe Sylvan review on Facebook"><svg aria-hidden="true"><use href="#ic-fb"></use></svg></a>
     </div>
     <div class="rv-body-scroll"><p class="rv-body">Great work! Tai is very patient and walked us through everything! Definitely coming back!</p></div>
-    <figure class="rv-card-media"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-7-scaled.jpg" alt="Tattoo portfolio image used as a temporary review card mockup" loading="lazy"></figure>
+    </div>
+    <figure class="rv-pc-media"><img src="https://hyperinkers.com/wp-content/uploads/2026/01/black-and-grey-tattoo-style-by-hyper-inkers-7-scaled.jpg" alt="Tattoo portfolio image used as a temporary review card mockup" loading="lazy"></figure>
   </article>
   <article class="rv-card is-more">
     <div class="rv-top">
