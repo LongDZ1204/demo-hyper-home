@@ -61,16 +61,13 @@
 .paper-page .blog-hero .crumb [aria-current]{color:#fff}
 /* H1 tô CAM TRỌN (chốt B.Long 2026-08-10) — không tách hai màu. Luật "chừa ≥1 từ
    trắng" của DS dựng cho H2 nhiều từ; H1 đây hai từ, chừa một từ trông như lỗi. */
-.blog-hero h1{max-width:900px;margin:14px 0 0;color:var(--orange);text-shadow:0 2px 34px rgba(0,0,0,.55)}
+.blog-hero h1{max-width:980px;margin:14px 0 0;color:var(--orange);font-size:clamp(44px,5.6vw,76px);
+  line-height:.98;text-shadow:0 2px 34px rgba(0,0,0,.55)}
 .blog-lead{max-width:680px;margin:16px 0 0;font-size:16.5px;line-height:1.62;color:#D5D5D5;
   text-shadow:0 2px 12px rgba(0,0,0,.8)}
 
-/* Hàng chip CĂN TRÁI thẳng cột với H1 + lead. Nền tối nên chip là viền mảnh
-   trong suốt — cùng kiểu chip lọc ở /piercing.
-   Mỗi chip là một <h2> bọc <a> (chốt B.Long 11/08 lượt 3): ba sub-hub là ba mục
-   cấp hai của trang hub. Kiểu pill đặt trên thẻ <a> chứ không trên <h2>, để cả
-   viên pill là vùng bấm; <h2> chỉ còn làm ô của flex.
-   KHÔNG có trạng thái bật — chưa bấm thì chưa vào sub-hub nào. */
+/* Ba sub-hub dùng lại pill gọn của bản Blog Hub cũ. Mỗi pill là H2 điều hướng,
+   không kèm mô tả để hero giữ nhịp ngắn. */
 .blog-tab-h{margin:0;font-size:12.5px;line-height:normal}
 .blog-tabs{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:10px;margin-top:clamp(18px,2vw,24px)}
 .blog-tab{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;
@@ -169,7 +166,7 @@
   .pagination{margin-top:28px}
 }
 @media(max-width:430px){
-  .blog-hero h1{font-size:clamp(34px,12vw,48px)}
+  .blog-hero h1{font-size:clamp(32px,10.8vw,44px)}
   .blog-tab{padding:9px 12px;font-size:10.5px;gap:5px}
   .post-card h3{font-size:12.5px}
   .post-card p{font-size:11.5px}
