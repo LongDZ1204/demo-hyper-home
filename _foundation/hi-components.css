@@ -802,8 +802,17 @@ body:has(.aw-open-cb:checked){overflow:hidden}
      trong khi height vẫn cố định, thành ra ảnh bị bóp méo. */
   .soa-plaque{display:flex;flex-direction:column;align-items:flex-start}
   /* 12vw ở khổ 430 chỉ ra 52px nên luôn rơi về sàn 96px — huy hiệu bé hơn cả
-     dòng heading. Đổi hệ số theo khổ hẹp để nó cân với chữ. */
-  .soa-p-seal{height:clamp(112px,26vw,150px)}
+     dòng heading. Đổi hệ số theo khổ hẹp để nó cân với chữ.
+
+     align-self + width PHẢI khai lại ở đây (đo 2026-09-03, dải 821-879px):
+     nhánh @media(min-width:821px) cho .soa-p-seal bộ `align-self:stretch;
+     height:100%;width:100%` — đúng cho lưới 2 cột, nhưng ba thuộc tính đó KHÔNG
+     phải thuộc tính riêng của grid nên chúng vẫn sống khi khối đã chuyển sang
+     flex-column ở dải 821-879. Hậu quả: align-self của CHÍNH ảnh thắng
+     align-items:flex-start của cha, huy hiệu giãn rộng hết cột (~796px ở khổ
+     860) trong khi height vẫn cố định — thành một ô trong suốt to đùng, chỉ
+     thấy khi NHÌN, số đo bề cao vẫn đẹp. Áp cho cả /about, /index, /awards. */
+  .soa-p-seal{height:clamp(112px,26vw,150px);align-self:flex-start;width:auto}
   .soa-p-h{order:0}
   .soa-p-seal{order:1}
   .soa-p-txt{order:2}

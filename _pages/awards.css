@@ -213,6 +213,31 @@
 /* ============================================================================
    FAQ  (homepage accordion pattern · content remains in DOM)
    ============================================================================ */
+/* === §Recognition at Home — khối "ý nghĩa với khách" dưới bằng khen =========
+   Bằng khen SA Current dùng nguyên .soa-plaque của tầng chung nên không có luật
+   nào ở đây. Chỉ khối thứ hai cần: nó là chữ xuôi + một trích dẫn, mà site chưa
+   có component trích dẫn dùng chung — .quote hiện đang khoá trong
+   _pages/artist-detail.css. Bê lại đúng công thức đó (vạch cam trên đầu, chữ
+   nghiêng to hơn thân bài) thay vì mở một kiểu trích dẫn thứ hai cho brand.
+
+   Vạch tóc ở trên tách hai khối con của cùng một section: bằng khen là hiện vật,
+   khối này là lời khách — cùng một mục nhưng khác loại bằng chứng.
+
+   Khổ đọc 68ch bám theo .soa-p-txt ngay trên để hai khối cùng mép chữ. */
+.rec-clients{margin-top:clamp(34px,4vw,54px);padding-top:clamp(28px,3.4vw,40px);
+  border-top:1px solid var(--border)}
+/* Khe h3 -> đoạn văn: luật chung `.section h3:not([class]) + p:not([class])`
+   không với tới vì <p> ở đây có class, nên khai lại đúng token đó. */
+.rec-clients h3{margin:0}
+.rec-clients h3 + .rec-txt{margin-top:var(--gap-head-text)}
+.rec-txt{max-width:68ch;font-size:clamp(15px,1.15vw,16.5px);line-height:1.66;color:#C9C9C9}
+.rec-quote + .rec-txt{margin-top:18px}
+.rec-quote{margin:18px 0 0;padding:18px 0 0;max-width:68ch;border-top:2px solid var(--orange);
+  font-size:clamp(18px,1.6vw,23px);line-height:1.45;color:#fff;font-style:italic}
+/* .soa-p-link là inline-flex nên margin-top của thẻ <p> liền trước không gộp
+   được vào nó; phải tự khai khe, nếu không link dính sát câu chốt. */
+.rec-clients .soa-p-link{margin-top:14px}
+
 .s-faq{background:var(--bg)}
 .s-faq h2 .o{color:var(--orange)}
 /* tab + accordion FAQ dùng chung ở _foundation/hi-components.css — page chỉ giữ nền */
