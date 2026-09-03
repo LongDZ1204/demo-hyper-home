@@ -4,7 +4,6 @@
    nguyên hệ /tattoo + hi-components + hi-ds để không tạo một style fork mới.
    ============================================================================ */
 
-.cover-gallery{background:var(--bg)}
 .cover-gallery .wrap{position:relative;z-index:2}
 .cover-gallery .galp-grid{margin-top:0}
 
@@ -16,34 +15,162 @@
    xuống mới còn thấy hoa văn. */
 .cover-up-page .award-card--portrait>img{object-position:50% 42%}
 
-/* H1 "Tattoo Cover-Ups" cần 666px trên một dòng, mà cột chữ chỉ 595px, nên nó
-   ngắt ngay dấu gạch nối thành "TATTOO COVER-" / "UPS" — đọc ra hai nghĩa rời.
-   Nới cột chữ thì phải bóp cột ảnh, mà ảnh vừa chốt là phải bằng các trang khác;
-   nên hạ cỡ chữ của riêng H1 này: 666 × 53/60 = 588px, lọt 595px còn dư 7px.
-   Các trang khác giữ nguyên 60px vì tiêu đề của họ vốn đã vừa một dòng. */
-@media(min-width:821px){
-  .cover-up-page .hero h1{font-size:clamp(34px,4.06vw,53px)}
-}
+/* H1 theo content final là "Expert Tattoo Cover-Ups in San Antonio" — dài hơn
+   bản mockup nên chắc chắn xuống hai dòng ở mọi khổ; luật hạ cỡ chữ cũ (ép vừa
+   một dòng 595px) không còn tác dụng và làm H1 trang này bé hơn mọi trang khác,
+   nên gỡ. Vấn đề THẬT cần chặn là nó ngắt ngay dấu gạch nối thành
+   "COVER-" / "UPS" — hai mảnh vô nghĩa; .nb khoá cụm đó lại để dòng chỉ được
+   ngắt ở khoảng trắng. Cụm rộng ~331px ở 53px, vẫn lọt cột hẹp nhất (374px ở
+   821px, xem bẫy 821-1099px của hero). */
+.cover-up-page .hero h1 .nb{white-space:nowrap}
+.cover-up-page .lead--cont{margin-top:14px}
 .cover-up-page .split-list{list-style:none;margin:clamp(16px,1.9vw,22px) 0 0;padding:0}
 .cover-up-page .split-list li{position:relative;padding-left:24px;font-size:15px;line-height:1.58;color:#D2D2D2;margin-top:12px}
 .cover-up-page .split-list li:first-child{margin-top:0}
 .cover-up-page .split-list li::before{content:"";position:absolute;left:2px;top:8px;width:7px;height:7px;border-radius:50%;background:var(--orange)}
 .cover-up-page .split-list li b{color:#fff;font-weight:600}
 
-/* Chuỗi nền riêng cover-up; thắng các default dùng chung từ tattoo.css. */
+/* Chuỗi nền riêng cover-up; thắng các default dùng chung từ tattoo.css.
+   Tính lại 03/09 khi chèn 6 khối của content final (studio · cancover · styles ·
+   how · pricing · related): số section lẻ/chẵn đổi hết nên phải rải lại từ đầu,
+   không vá được từng chỗ. Hai băng CTA nay nhận cả hai màu (xem .deals-page,
+   --cta-edge phải đi kèm background thì mép băng mới liền với section trước). */
 .cover-up-page #main{background:var(--black)}
 .cover-up-page #reviews{background:var(--bg)}
-.cover-up-page #artists{background:var(--black)}
-.cover-up-page #gallery{background:var(--bg)}
-.cover-up-page #cta1{--cta-edge:var(--black);background:var(--black)}
+.cover-up-page #studio{background:var(--black)}
+.cover-up-page #artists{background:var(--bg)}
+.cover-up-page #gallery{background:var(--black)}
+.cover-up-page #cta1{--cta-edge:var(--bg);background:var(--bg)}
+.cover-up-page #cancover{background:var(--black)}
+.cover-up-page #styles{background:var(--bg)}
+.cover-up-page #how{background:var(--black)}
 .cover-up-page #process{background:var(--bg)}
 .cover-up-page #advantages{background:var(--black)}
-.cover-up-page #aftercare{background:var(--bg)}
-.cover-up-page #cta2{--cta-edge:var(--black);background:var(--black)}
-.cover-up-page #visit{background:var(--bg)}
-.cover-up-page #book{background:var(--black)}
-.cover-up-page #faq{background:var(--bg)}
+.cover-up-page #pricing{background:var(--bg)}
+.cover-up-page #aftercare{background:var(--black)}
+.cover-up-page #cta2{--cta-edge:var(--bg);background:var(--bg)}
+.cover-up-page #visit{background:var(--black)}
+.cover-up-page #book{background:var(--bg)}
+.cover-up-page #faq{background:var(--black)}
 
 @media(min-width:861px){
   .artists .art-grid{grid-template-columns:repeat(3,minmax(0,1fr));max-width:920px;margin-inline:auto}
 }
+
+
+/* ============================================================================
+   KHỐI THÊM 03/09 — port content final 2026-09-02_cover-up-humanized.md
+   Sáu section mới của content không có trong mockup 05/07. Chỉ khai báo cái
+   thật sự thiếu; mọi thứ dùng lại được (.st-rail của tattoo.css · .pr-tiers của
+   components/pricing-tiers.css · .adv-* đã đỡ tới 8 tab · .split-list ở trên)
+   đều KHÔNG khai báo lại ở đây.
+   ============================================================================ */
+
+/* .section-intro là của hi-foundation (khoá): có max-width 640px nhưng KHÔNG có
+   margin-inline, nên trong .section-head.center nó dính lề trái. Các page cũ mỗi
+   nơi vá bằng một tên riêng (.pr-intro, .adv-intro…); ở đây vá đúng một lần cho
+   cả sáu khối mới. */
+.cover-up-page .section-head.center>.section-intro{margin-inline:auto}
+
+/* §Hyper Inkers, an Expert Cover-Up Studio — chia đôi chữ/ảnh theo đúng lưới
+   .ac-split của khối aftercare (1.05fr 0.95fr, dồn về giữa, gãy 1 cột ở 820px).
+   Bản đầu để chữ căn giữa một mình: H2 xuống 3 dòng và băng cao 513px gần như
+   trống, đọc ra một section chưa dựng xong. Ảnh là studio thật trên Callaghan,
+   đúng thứ đoạn văn đang nói tới. */
+.cover-up-page .stu-split{display:grid;grid-template-columns:1.05fr 0.95fr;
+  gap:clamp(28px,4.2vw,58px);align-items:center}
+.cover-up-page .stu-text h2{text-align:left;margin:0}
+.cover-up-page .stu-text h2 .o{color:var(--orange)}
+.cover-up-page .stu-lead{margin-top:var(--gap-head-lead);font-size:var(--fs-lead);line-height:1.65;color:#C9C9C9}
+.cover-up-page .stu-bridge{margin-top:var(--gap-lead-bridge)}
+.cover-up-page .stu-media{position:relative;margin:0;border-radius:14px;overflow:hidden;aspect-ratio:4/3;
+  border:1px solid var(--border);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.cover-up-page .stu-media img{width:100%;height:100%;object-fit:cover;object-position:50% 45%;display:block}
+@media(max-width:820px){
+  .cover-up-page .stu-split{grid-template-columns:1fr;gap:24px}
+  .cover-up-page .stu-media{aspect-ratio:16/10;max-height:340px}
+}
+
+/* §What a Cover-Up Can and Cannot Cover — cùng lưới chữ/ảnh với khối Studio.
+   Ảnh cột phải KHÔNG lấy lại ảnh nào trong lưới before/after phía trên (một
+   trang không nên gặp cùng một tấm hai lần); đây là một tấm black and grey dày
+   bóng, đúng thứ đoạn văn đang nói: sắc độ quyết định giấu được bao nhiêu. */
+.cover-up-page .cc-split{display:grid;grid-template-columns:1.05fr 0.95fr;
+  gap:clamp(28px,4.2vw,58px);align-items:center}
+.cover-up-page .cc-text h2{text-align:left;margin:0}
+.cover-up-page .cc-text h2 .o{color:var(--orange)}
+.cover-up-page .cc-lead{margin-top:var(--gap-head-lead);font-size:var(--fs-lead);line-height:1.65;color:#C9C9C9}
+.cover-up-page .cc-list{margin-top:var(--gap-head-body)}
+.cover-up-page .cc-close{margin-top:clamp(18px,2vw,24px);font-size:15.5px;line-height:1.66;color:#C9C9C9}
+/* Tab "Can You Cover a Scar" nằm NGOÀI lưới hai cột, chạy hết bề ngang wrap ở
+   dưới cả chữ lẫn ảnh (B.Long chốt 03/09). Để trong cột chữ thì nó bị bóp còn
+   nửa trang và tiêu đề xuống hai dòng, trong khi đây là một câu hỏi phụ đứng
+   riêng chứ không thuộc mạch bốn gạch đầu dòng phía trên. */
+.cover-up-page .cc-acc{margin-top:clamp(30px,3.4vw,44px)}
+.cover-up-page .cc-media{position:relative;margin:0;border-radius:14px;overflow:hidden;aspect-ratio:4/5;
+  border:1px solid var(--border);box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.cover-up-page .cc-media img{width:100%;height:100%;object-fit:cover;object-position:50% 45%;display:block}
+@media(max-width:820px){
+  .cover-up-page .cc-split{grid-template-columns:1fr;gap:24px}
+  .cover-up-page .cc-media{aspect-ratio:16/10;max-height:340px}
+}
+
+/* §Best Tattoo Styles for a Cover-Up — .st-rail của /tattoo là LƯỚI + nút load
+   more, hợp với 14 style; ở đây content chốt đúng 6 style nên đổi sang HÀNG
+   CUỘN: 4 thẻ một khung ở desktop, 2 ở mobile. Chân điều khiển ‹ › + thanh kéo
+   là component msl dùng chung — nó chỉ cần một .msl-row có overflow-x cuộn được
+   và một .msl-foot cùng cha, JS tự nối và tự ẩn chân khi hàng không tràn. */
+.cover-up-page #styles .st-rail{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;
+  gap:var(--cv-st-gap);padding-bottom:2px;scrollbar-width:none;-ms-overflow-style:none}
+.cover-up-page #styles .st-rail::-webkit-scrollbar{display:none}
+.cover-up-page #styles .st-card{scroll-snap-align:start}
+@media(min-width:861px){
+  .cover-up-page #styles .st-rail{--cv-st-gap:20px}
+  .cover-up-page #styles .st-card{flex:0 0 calc((100% - 60px)/4)}
+}
+@media(max-width:860px){
+  .cover-up-page #styles .st-rail{--cv-st-gap:14px}
+  .cover-up-page #styles .st-card{flex:0 0 calc((100% - 14px)/2)}
+}
+
+/* §How Cover-Up Tattoos Work — ba đường direct / rework / laser, ba thẻ ngang.
+   Dùng cùng bộ token thẻ kính với .pr-tier để trang không đẻ thêm một kiểu thẻ
+   thứ hai, nhưng không mượn class .pr-* vì đây không phải thẻ giá. */
+.cover-up-page .hw-grid{display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(16px,1.8vw,22px);align-items:stretch}
+.cover-up-page .hw-card{background:var(--glass-surf);border:1px solid var(--glass-brd);border-radius:16px;
+  padding:clamp(22px,2.3vw,28px) clamp(20px,2.1vw,26px);
+  backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+  box-shadow:0 24px 60px rgba(0,0,0,.4)}
+.cover-up-page .hw-card h3{margin:0 0 12px}
+.cover-up-page .hw-card p{margin:0;font-size:15px;line-height:1.64;color:#C9C9C9}
+@media(max-width:820px){
+  .cover-up-page .hw-grid{grid-template-columns:1fr;gap:16px}
+}
+
+/* §Aftercare — content bỏ danh sách 6 gạch đầu dòng chung chung (trùng nguyên
+   trang /tattoo-aftercare) và thay bằng bốn câu văn xuôi, câu cuối tự mang link
+   nên .ac-link đứng riêng bị gỡ để không có hai lối đi cùng một đích. */
+.cover-up-page .ac-body{margin-top:clamp(16px,1.8vw,22px);font-size:15.5px;line-height:1.66;color:#C9C9C9}
+.cover-up-page .ac-inline{color:var(--orange);border-bottom:1px solid rgba(204,102,0,.45);
+  padding-bottom:1px;transition:color .2s var(--ease),border-color .2s var(--ease)}
+.cover-up-page .ac-inline:hover{color:var(--orange-hi);border-bottom-color:var(--orange-hi)}
+.cover-up-page .ac-text{align-self:center}
+/* Ảnh aftercare gốc là khung 4/5 cao 640px cạnh một cột chữ ~330px — lệch hẳn
+   một đầu. Bỏ nén xong cột chữ dài thêm, nhưng vẫn cần hạ khung ảnh xuống 4/3
+   cho hai đầu bằng nhau, giống khung của khối Studio. */
+.cover-up-page .ac-media{aspect-ratio:4/3}
+
+/* §FAQ — thanh tab của trang chủ đặt max-width 840px cho ĐỦ BỐN tab; trang này
+   chỉ có hai, nên hai viên dồn trái và thừa ~305px rỗng bên phải (B.Long bắt
+   03/09). Giữ nguyên khung 840px để thanh tab thẳng hàng với danh sách câu hỏi
+   bên dưới (cùng .faqtab-panel 840px), và cho mỗi viên GIÃN ra chia đôi khung.
+   `flex:1 1 auto` chứ không phải `1 1 0`: cơ sở auto nên ở khổ hẹp viên không bị
+   ép nhỏ hơn chữ của nó — chữ đã nowrap, ép nhỏ là tràn. Luật viết theo ĐIỀU
+   KIỆN ít tab, không theo tên trang. */
+.cover-up-page #faq .faqtab{flex:1 1 auto;justify-content:center}
+
+/* §FAQ — dựng theo đúng khối FAQ trang chủ: hai tab .faqtab + .faqtab-panels,
+   mỗi tab một .faqacc. Không cần CSS riêng, hi-components.css đã có sẵn cả
+   .faqtab-nav lẫn cặp #faqtab-a/#faqtab-b:checked. Nhãn nhóm .faqacc-grp của
+   bản trước bỏ đi vì tab đã gánh việc chia nhóm. */
