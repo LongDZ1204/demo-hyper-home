@@ -11,6 +11,24 @@
    REMOVAL variant (without them) unmodified.
    ============================================================================ */
 (function () {
+  /* Chọn sẵn theo ngữ cảnh trang. Đánh dấu ở <body>:
+         <body data-book-service="Laser Removal" data-book-artist="Minh Pham">
+     Popup là partial DÙNG CHUNG bơm vào mọi trang nên không hardcode selected
+     riêng từng trang được — phải set bằng JS như thế này.
+     Giá trị phải khớp tuyệt đối value của <option>; lệch một ký tự là hỏng
+     im lặng, nên báo ra console để người thêm trang mới biết ngay. */
+  function preselect(scope, selector, value) {
+    if (!value) return;
+    var sel = scope.querySelector(selector);
+    if (!sel) return;
+    var ok = Array.prototype.some.call(sel.options, function (o) { return o.value === value; });
+    if (!ok) {
+      console.warn('[booking] khong co option "' + value + '" cho ' + selector);
+      return;
+    }
+    sel.value = value;
+  }
+
   document.querySelectorAll('[data-bks-form]').forEach(function (form) {
     var card    = form.closest('.bks-card');
     if (!card) return;
@@ -46,6 +64,9 @@
       if (body)    body.style.display = 'none';
       if (success) success.classList.add('active');
     });
+
+    preselect(form, '[name="your-service"]', document.body.dataset.bookService);
+    preselect(form, '[name="your-artist"]',  document.body.dataset.bookArtist);
 
     refresh();
   });
