@@ -1,36 +1,33 @@
-<!-- ============================================================================
-     HYPER INKERS — BOOKING SECTION markup, FULL variant  (v1 · 2026-07-08)
-     For pages that offer both Service and Artist choice (homepage, /tattoo,
-     /piercing, /black-and-grey, /about-us). Drop this inside the page's own
-     <section class="section s-book" id="book"> — the surrounding <header>
-     with the section H2 stays in the page; this file is only the card.
-     Requires: booking-section.css (linked in <head>) + booking-section.js
-     (before </body>). Roster/copy below is per-page content — verify against
-     the live page's own artist list before reusing on a different page.
-     ============================================================================ -->
+<!-- HYPER INKERS · KHỐI ĐẶT LỊCH INLINE (bản FULL) — NGUỒN DUY NHẤT.
+     Sinh lại từ index.html ngày 2026-09-04; trước đó file này đã lạc hậu
+     (intro cũ, roster 5 tên, value "Open to rec.", nút "Book a Free Consultation").
+     Nạp kèm: components/booking-section.css + components/booking-section.js
+     Chọn sẵn dịch vụ/thợ: đặt data-book-service / data-book-artist trên <body>.
+     Đổi ở đây rồi chạy `python3 build.py` để trang thợ cập nhật theo. -->
 <div class="bks-card">
   <div data-bks-body>
-    <p class="bks-intro">Book a free consultation with a Hyper Inkers artist in San Antonio. Share a few details below and we will help you plan your visit. There is no pressure to decide before you are ready.</p>
+    <h2 class="bks-title">Book Your <span class="o">Appointment</span></h2>
+    <p class="bks-intro">Tell us your idea, including style, size, placement, and a rough budget. We'll match you with the right artist and reply within 24 hours.</p>
 
     <form data-bks-form aria-label="Book a free tattoo consultation">
       <div class="bks-row">
         <div class="bks-group">
-          <label class="bks-label" for="bks-name">Your Name<span class="req">*</span></label>
-          <input class="bks-input" id="bks-name" type="text" name="your-name" placeholder="Your Name" required>
+          <label class="bks-label" for="bks-name">Your name<span class="req">*</span></label>
+          <input class="bks-input" id="bks-name" type="text" name="your-name" placeholder="e.g. Maria Lopez" required>
         </div>
         <div class="bks-group">
-          <label class="bks-label" for="bks-phone">Phone Number<span class="req">*</span></label>
-          <input class="bks-input" id="bks-phone" type="tel" name="your-phone" placeholder="Phone Number" required>
+          <label class="bks-label" for="bks-phone">Phone<span class="req">*</span></label>
+          <input class="bks-input" id="bks-phone" type="tel" name="your-phone" placeholder="(210) 555-0000" inputmode="tel" required>
         </div>
       </div>
 
       <div class="bks-row">
         <div class="bks-group">
-          <label class="bks-label" for="bks-email">Email Address<span class="req">*</span></label>
-          <input class="bks-input" id="bks-email" type="email" name="your-email" placeholder="Email Address" required>
+          <label class="bks-label" for="bks-email">Email<span class="req">*</span></label>
+          <input class="bks-input" id="bks-email" type="email" name="your-email" placeholder="you@email.com" required>
         </div>
         <div class="bks-group">
-          <label class="bks-label" for="bks-date">Appointment Date<span class="opt">Optional</span></label>
+          <label class="bks-label" for="bks-date">Preferred date<span class="opt">Optional</span></label>
           <input class="bks-input" id="bks-date" type="date" name="appointment-date">
         </div>
       </div>
@@ -47,32 +44,34 @@
       </div>
 
       <div class="bks-group">
-        <label class="bks-label" for="bks-artist">Choose Your Artist<span class="opt">Optional</span></label>
+        <label class="bks-label" for="bks-artist">Choose your artist<span class="opt">Optional</span></label>
         <select class="bks-select" id="bks-artist" name="your-artist">
-          <option value="Open to rec." selected>Open to recommendation</option>
+          <option value="Open to recommendation" selected>Open to recommendation</option>
           <option value="Minh Pham">Minh Pham</option>
           <option value="Tai Hoa">Tai Hoa</option>
           <option value="Mancha">Mancha</option>
           <option value="Navei">Navei</option>
           <option value="Nicole">Nicole</option>
+          <option value="Genesis">Genesis</option>
+          <option value="Z">Z</option>
         </select>
       </div>
 
       <div class="bks-group">
-        <label class="bks-label" for="bks-msg">Description<span class="opt">Optional</span></label>
+        <label class="bks-label" for="bks-msg">Tell us your idea<span class="opt">Optional</span></label>
         <textarea class="bks-textarea" id="bks-msg" name="your-message" placeholder="e.g. Small fine-line rose on forearm, ~3 inches"></textarea>
       </div>
 
       <div class="bks-foot">
         <p class="bks-status" data-bks-status>4 required fields remaining</p>
-        <button type="submit" class="bks-submit" data-bks-submit disabled>Book a Free Consultation</button>
+        <button type="submit" class="bks-submit" data-bks-submit disabled>Book My Appointment</button>
       </div>
     </form>
   </div>
 
   <div class="bks-success" data-bks-success>
     <div class="bks-success__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-    <h3>Request sent!</h3>
+    <p class="bks-success-h">Request sent!</p>
     <p>We'll reply within <strong>24 hours</strong> with available dates, your artist match, and a rough quote.</p>
   </div>
 </div>
