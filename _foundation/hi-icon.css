@@ -24,7 +24,10 @@
 .hi-icon--24{width:24px;height:24px}
 .hi-icon--32{width:32px;height:32px}
 .hi-icon use[href$="hi-icon-play"],
-.hi-icon use[href$="hi-icon-facebook"]{fill:currentColor;stroke:none}
+.hi-icon use[href$="hi-icon-facebook"],
+.hi-icon use[href$="hi-icon-x"],
+.hi-icon use[href$="hi-icon-pinterest"],
+.hi-icon use[href$="hi-icon-linkedin"]{fill:currentColor;stroke:none}
 .hi-icon-button{
   width:44px;
   height:44px;

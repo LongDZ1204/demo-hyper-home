@@ -26,34 +26,44 @@
    đổi tông giấy thì sửa một chỗ.
    ========================================================================== */
 
-/* === HERO BÀI VIẾT — dải giấy sáng, có hắt cam ở góc trái trên ================
+/* === HERO BÀI VIẾT — nền tối + khói, đồng bộ Blog Hub =========================
    padding-TRÊN = --chrome-h + khe thở. Mockup ghi clamp(42px,5vw,70px) — chạy
    được ở đó vì header mockup sticky nên tự chiếm chỗ; header thật fixed, cao
    112px và KHÔNG chiếm chỗ, nên bê nguyên là breadcrumb chui xuống dưới header.
    Khe thở lấy đúng bộ số của 5 hero đã port (port / gallery / faq / contact /
    blog hub) để cả site vào bằng một nhịp. */
-.detail-hero{position:relative;background:var(--paper-card);
-  border-bottom:1px solid var(--paper-line);
+.detail-hero{position:relative;isolation:isolate;overflow:clip;background:var(--black);
+  border-bottom:1px solid var(--hair);
   padding:calc(var(--chrome-h) + clamp(26px,3.4vw,52px)) 0 clamp(34px,4vw,54px)}
-.detail-hero::before{content:"";position:absolute;inset:0;z-index:0;
-  background:radial-gradient(78% 130% at 8% 0%,rgba(204,102,0,.12),rgba(204,102,0,0) 58%),
-             linear-gradient(180deg,#fff 0%,var(--paper-page) 100%)}
-/* Lớp hạt nhiễu chung ở hi-foundation trộn kiểu `screen` cho nền tối — trên nền
-   giấy thì hạt sáng trên nền sáng = không thấy gì. Đổi sang `multiply`. */
+.detail-hero-smoke{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;
+  opacity:.34;filter:contrast(1.18) brightness(1.03) saturate(1.08);
+  -webkit-mask-image:radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
+          mask-image:radial-gradient(124% 112% at 50% 50%,#000 60%,rgba(0,0,0,.35) 82%,transparent 96%);
+  pointer-events:none;user-select:none;z-index:0}
+.detail-hero::before{content:"";position:absolute;inset:0;z-index:1;
+  background:radial-gradient(52% 72% at 30% 60%,rgba(204,102,0,.16),rgba(204,102,0,0) 74%)}
+.detail-hero::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:
+    linear-gradient(to bottom,var(--black) 0%,rgba(0,0,0,0) 26%,rgba(0,0,0,0) 74%,var(--black) 100%),
+    radial-gradient(82% 70% at 34% 50%,rgba(0,0,0,.84),rgba(0,0,0,0) 90%)}
 .detail-hero .grain{position:absolute;inset:0;z-index:1;pointer-events:none;
-  opacity:.025;mix-blend-mode:multiply}
+  opacity:.045;mix-blend-mode:normal}
 .detail-hero .wrap{position:relative;z-index:2}
 .detail-hero .crumb{margin-bottom:clamp(22px,3vw,30px)}
+.paper-page .detail-hero .crumb ol{color:var(--cream);text-shadow:0 1px 8px rgba(0,0,0,.7)}
+.paper-page .detail-hero .crumb a{color:var(--cream)}
+.paper-page .detail-hero .crumb a:hover,
+.paper-page .detail-hero .crumb [aria-current]{color:#fff}
 /* H1 tô CAM TRỌN (chốt B.Long 2026-08-10) — không tách hai màu. */
-.article-title{max-width:980px;margin:0;color:var(--orange);text-shadow:none}
+.article-title{max-width:980px;margin:0;color:var(--orange);text-shadow:0 2px 34px rgba(0,0,0,.55)}
 /* Bỏ gạch ngang phía trên hàng byline (chốt B.Long 2026-08-10); gỡ luôn
    padding-top vì nó vốn chỉ để chừa chỗ cho đường kẻ đó. */
 .article-meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 14px;max-width:980px;
-  margin-top:22px;font-family:var(--sub);font-size:12px;letter-spacing:.035em;color:#777}
-.article-meta b,.article-meta a{color:var(--paper-ink);font-weight:600}
-.article-meta a:hover{color:var(--paper-orange)}
-.article-meta .updated{color:#8A8A8A}
-.article-meta .dot{width:4px;height:4px;border-radius:50%;background:#B9B2A7}
+  margin-top:22px;font-family:var(--sub);font-size:12px;letter-spacing:.035em;color:#B9B9B9}
+.article-meta b,.article-meta a{color:#fff;font-weight:600}
+.article-meta a:hover{color:var(--orange)}
+.article-meta .updated{color:#B9B9B9}
+.article-meta .meta-divider{flex:0 0 1px;width:1px;height:17px;background:rgba(255,255,255,.48)}
 
 /* === KHUNG 2 CỘT: bài + cột phải ============================================ */
 .article-shell{display:grid;grid-template-columns:minmax(0,780px) 340px;
@@ -65,7 +75,8 @@
    Khối nội dung KHÔNG nền/viền/bo/đổ bóng — chữ nằm thẳng trên nền trang, giống
    bài đang live (chốt B.Long 2026-08-10). Giữ padding-phải nhỏ để dòng chữ
    không dính mép cột khi có sidebar cạnh bên. */
-.article-content{padding:0 clamp(0px,1vw,12px) 0 0;background:none;border:0;border-radius:0;box-shadow:none}
+.article-content{padding:0 clamp(0px,1vw,12px) 0 0;background:none;border:0;border-radius:0;box-shadow:none;
+  overflow-anchor:none}
 .article-content p{margin:0 0 20px;color:var(--paper-body);font-size:18px;line-height:1.78}
 .article-content strong{color:#111;font-weight:700}
 /* Link trong thân bài dùng --paper-orange (#A85300) chứ không --orange (#CC6600):
@@ -79,33 +90,38 @@
    Rê chuột thì DÀY gạch lên 2px thay vì đổi màu: đổi màu nữa là có hai sắc cam
    trong một đoạn văn. */
 .article-content a{color:var(--paper-orange);font-weight:600;text-decoration:underline;
-  text-underline-offset:3px;text-decoration-thickness:1px}
+  text-underline-offset:3px;text-decoration-thickness:1px;text-decoration-skip-ink:auto}
 .article-content a:hover{text-decoration-thickness:2px}
-/* === THANG CẤP BẬC THÂN BÀI — bản chốt (B.Long 11/08 lượt 3) ================
-   Bốn cấp, mỗi cấp cách cấp dưới đủ xa để nhìn một cái là biết ai bao ai:
+.article-content a:focus-visible{outline:2px solid var(--orange);outline-offset:3px;border-radius:2px;
+  text-decoration-thickness:2px}
+/* === THANG CẤP BẬC THÂN BÀI — bản chốt ======================================
+   Năm cấp, mỗi cấp cách cấp dưới đủ xa để nhìn một cái là biết ai bao ai:
 
      cấp          cỡ @1440   phông          màu              cách trên
      H1 tên bài   60px       head, HOA      --orange         (hero riêng)
      H2 mục       44px       head, HOA      --paper-ink      50px
      H3 mục con   26px       sub,  HOA      --paper-ink      32px
+     H4 mục sâu   20px       sub,  thường   --paper-ink      24px
      thân bài     18px       body, thường   --paper-body     0 0 20px
 
    Hai chỗ sửa so với mockup:
-     H3 20px -> 26px. 20px chỉ hơn thân bài 2px, đọc lướt không thấy đâu là
-       heading; 26px cách thân bài 8px và cách H2 18px, ba cấp giãn đều.
+     H3 20px -> 26px desktop / 22px mobile. 17px mobile chỉ hơn thân bài 1px,
+       đọc lướt không thấy đâu là heading.
      H1 là cấp DUY NHẤT tô cam. H2 và H3 cùng --paper-ink. Cam ở nhiều cấp thì
        hết là dấu hiệu, thành trang trí — và cam #CC6600 trên nền giấy chỉ đạt
        3,52:1, chữ H3 26px vẫn cần 3:1 nên vừa đủ, không có biên an toàn.
 
    scroll-margin = chiều cao chrome, KHÔNG số cứng 112px như mockup: nhảy tới
    #section-2 từ mục lục mà để số cứng thì tắt thanh khuyến mãi là dư 36px. */
-.article-content h2,.article-content h3{color:var(--paper-ink);text-shadow:none;
+.article-content h2,.article-content h3,.article-content h4{color:var(--paper-ink);text-shadow:none;
   scroll-margin-top:calc(var(--chrome-h) + 12px)}
 .article-content h2{margin:50px 0 16px;font-family:var(--head);font-weight:700;
-  text-transform:uppercase;letter-spacing:-.004em;line-height:1;font-size:clamp(30px,3.6vw,44px)}
+  text-transform:uppercase;letter-spacing:-.004em;line-height:1.08;font-size:clamp(30px,3.6vw,44px)}
 .article-content h2:first-child{margin-top:0}
 .article-content h3{margin:32px 0 12px;font-family:var(--sub);font-weight:600;
   letter-spacing:.03em;text-transform:uppercase;line-height:1.25;font-size:clamp(20px,2.1vw,26px)}
+.article-content h4{margin:24px 0 8px;font-family:var(--sub);font-weight:600;
+  letter-spacing:.015em;line-height:1.35;font-size:20px}
 
 /* Đoạn tóm tắt đầu bài — nền cam rất nhạt + vạch cam bên trái, để người quét
    trang thấy ngay đâu là phần chốt kết quả. */
@@ -121,7 +137,7 @@
    .key-facts, nên <ul> nào viết sau này sẽ rơi về chấm mặc định của trình duyệt
    — lệch hẳn khỏi trang. */
 .key-facts,.article-content ul{display:grid;gap:10px;margin:28px 0;list-style:none;padding-left:0}
-.key-facts{padding:24px 26px;background:var(--paper-soft);
+.article-content .key-facts{padding:24px 26px;background:var(--paper-soft);
   border:1px solid rgba(17,17,15,.08);border-radius:12px}
 .key-facts li,.article-content ul li{position:relative;padding-left:22px;color:var(--paper-body);
   font-size:16px;line-height:1.6}
@@ -148,42 +164,78 @@
 .hero-caption{max-width:62ch;margin:12px auto 0;color:var(--paper-muted);font-size:13px;
   line-height:1.55;text-align:center}
 
-/* === MỤC LỤC — <details> mở/đóng, không cần JS ============================== */
-.toc{margin:34px 0;background:#FBF8EF;border:1px solid var(--paper-line);border-radius:12px;overflow:hidden}
-.toc summary{list-style:none;display:flex;align-items:center;gap:12px;min-height:58px;padding:17px 20px;
-  cursor:pointer;color:var(--paper-ink);font-family:var(--sub);font-size:13px;font-weight:600;
-  letter-spacing:.08em;text-transform:uppercase}
+/* === MỤC LỤC — pill đứng yên, panel riêng trượt xuống như reference ========= */
+.toc{width:100%;max-width:none;margin:34px auto;background:transparent;border:0;border-radius:0;
+  position:sticky;top:calc(var(--hh) + 8px);z-index:35;overflow:visible;box-shadow:none;
+  transition:top .25s var(--ease)}
+html.chrome-off .toc{top:8px}
+.toc summary{position:relative;list-style:none;display:flex;align-items:center;justify-content:center;gap:10px;
+  width:min(100%,440px);min-height:54px;margin:0 auto;padding:14px 52px 14px 20px;cursor:pointer;
+  border:1px solid rgba(17,17,15,.52);border-radius:999px;background:var(--paper-card);color:var(--paper-ink);
+  font-family:var(--sub);font-size:14px;font-weight:600;letter-spacing:.02em;text-transform:none}
 .toc summary::-webkit-details-marker{display:none}
 .toc summary::marker{content:""}
 .toc summary:hover{background:#F5EFE1}
-.toc-icon{display:grid;place-items:center;width:26px;height:26px;border-radius:50%;
-  background:var(--orange);color:#fff;font-size:13px;line-height:1}
-.toc-label{flex:1}
-.toc-caret{color:var(--orange);transition:transform .22s var(--ease)}
-.toc[open] .toc-caret{transform:rotate(90deg)}
-.toc-list{list-style:none;margin:0;padding:0 20px 20px;counter-reset:toc}
-.toc-list li{padding:7px 0;line-height:1.5;font-size:14px;counter-increment:toc}
-.toc-list > li > a{color:var(--paper-ink);font-weight:600}
-.toc-list ol{list-style:none;margin:6px 0 0 0;padding-left:16px;border-left:2px solid rgba(204,102,0,.28)}
-.toc-list ol li{font-size:13px}
-.toc-list ol a{color:var(--paper-muted)}
+.toc summary:focus-visible{outline:none;border-color:var(--paper-ink);background:#F5EFE1}
+.toc-list-icon{color:var(--paper-ink)}
+.toc-caret{position:absolute;right:20px;color:var(--orange);transition:transform .22s var(--ease)}
+.toc[open] .toc-caret{transform:rotate(180deg)}
+.toc-panel{position:absolute;top:64px;left:0;right:0;padding:24px 24px 18px;background:var(--paper-card);
+  border:1px solid var(--paper-line);border-radius:12px;box-shadow:var(--paper-shadow);
+  max-height:calc(100svh - var(--hh) - 92px);overflow:auto;overscroll-behavior:contain}
+html.chrome-off .toc-panel{max-height:calc(100svh - 92px)}
+.toc-panel-title{margin:0 0 12px!important;color:var(--paper-ink)!important;font-family:var(--sub);
+  font-size:13px!important;font-weight:700;letter-spacing:.04em;text-transform:uppercase}
+.article-content .toc-list{display:grid;gap:0;list-style:none;margin:0;padding:0}
+.article-content .toc-list > li{padding:0;border-bottom:0;line-height:1.5;font-size:15px}
+.toc-entry{display:grid;grid-template-columns:24px minmax(0,1fr);align-items:start;min-height:40px;padding:8px 0}
+.toc-entry-chevron{margin:3px 0 0 4px;color:var(--paper-muted)}
+.toc-section-toggle{display:grid;place-items:center;width:24px;height:24px;margin:4px 0 0;padding:0;border:0;
+  border-radius:4px;background:transparent;color:var(--paper-muted);cursor:pointer}
+.toc-section-toggle:hover{color:var(--paper-ink)}
+.toc-section-toggle:focus-visible{outline:2px solid var(--orange);outline-offset:1px}
+.toc-section-toggle .hi-icon{transition:transform .18s var(--ease)}
+.toc-section-toggle[aria-expanded="false"] .hi-icon{transform:rotate(-90deg)}
+.article-content .toc-list a{color:var(--paper-ink);font-size:inherit;font-weight:600;text-decoration:none}
+.article-content .toc-list a:hover{color:var(--paper-orange);text-decoration:underline;text-decoration-thickness:1px}
+.article-content .toc-list a:focus-visible{color:var(--paper-orange);text-decoration:underline}
+.article-content .toc-list ol{display:grid;gap:4px;list-style:none;margin:0 0 6px;padding:0 0 0 38px;
+  border-left:0}
+.article-content .toc-list ol[hidden]{display:none}
+.article-content .toc-list ol li{padding:3px 0;font-size:14px;line-height:1.5}
+.article-content .toc-list ol a{color:var(--paper-muted);font-weight:500}
+@media(prefers-reduced-motion:no-preference){
+  .toc[open] .toc-panel{animation:toc-panel-drop .24s var(--ease) both}
+  @keyframes toc-panel-drop{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:translateY(0)}}
+}
 .article-note{margin:30px 0 0;padding:18px 20px;background:var(--paper-soft);border-radius:10px;
   color:var(--paper-muted)!important;font-size:14px!important;text-align:center}
 
-/* === THANH CHIA SẺ ==========================================================
-   Số đo lấy từ bài đang live /blog/things-to-know-before-your-first-tattoo:
-   gạch 150x3 rgba(0,0,0,.1) căn giữa, nút tròn 33x33 viền 2px #C0C0C0, nền trong
-   suốt, không đổ bóng, icon 16px cùng màu viền, cách nhau 3px. */
-.share-bar{display:grid;justify-items:center;gap:13px;margin:34px 0 0;padding:0}
+/* === SHARE + GOOGLE PREFERRED SOURCE ========================================
+   Icon giữ hit target 44px nhưng không còn nền/viền/hover; badge dùng deeplink
+   chính thức của Google và được restyle theo hệ giấy + cam của Hyper Inkers. */
+.share-bar{display:grid;justify-items:center;gap:18px;margin:34px 0 0;padding:0}
 .share-bar::before{content:"";display:block;width:150px;height:3px;border-radius:0;background:rgba(0,0,0,.1)}
-.share-label{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
-  clip:rect(0,0,0,0);white-space:nowrap;border:0}
-.share-icons{display:flex;align-items:center;justify-content:center;gap:3px;flex-wrap:wrap}
-.share-link{display:grid;place-items:center;width:33px;height:33px;border-radius:999px;background:transparent;
-  border:2px solid #C0C0C0;color:#C0C0C0;box-shadow:none;
-  transition:color .2s var(--ease),border-color .2s var(--ease)}
-.share-link:hover{color:var(--orange);border-color:var(--orange);transform:none;box-shadow:none}
-.share-link svg{width:16px;height:16px;display:block;fill:currentColor}
+.share-row{display:flex;align-items:center;justify-content:center;gap:12px}
+.share-label{color:var(--paper-ink);font-family:var(--sub);font-size:12px;font-weight:600;
+  letter-spacing:.08em;text-transform:uppercase}
+.share-icons{display:flex;align-items:center;justify-content:center;gap:2px;flex-wrap:wrap}
+.share-link.hi-icon-button{width:44px;height:44px;border:0;border-radius:0;background:transparent;
+  color:var(--paper-muted);box-shadow:none;transition:none}
+.share-link.hi-icon-button:hover{color:var(--paper-muted);border-color:transparent;background:transparent;
+  transform:none;box-shadow:none}
+.share-link.hi-icon-button:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+.share-link .hi-icon{display:block;width:20px;height:20px}
+.preferred-source-badge{display:grid;grid-template-columns:38px minmax(0,1fr) 20px;align-items:center;gap:14px;
+  width:min(100%,380px);min-height:84px;padding:14px 16px;border:1px solid rgba(17,17,15,.22);
+  border-radius:10px;background:transparent;color:var(--paper-ink);
+  text-decoration:none;box-shadow:none;transition:border-color .2s var(--ease)}
+.preferred-source-badge:hover{border-color:rgba(17,17,15,.42);color:var(--paper-ink)}
+.preferred-source-badge:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+.preferred-source-google{display:block;width:38px;height:38px}
+.preferred-source-copy{font-family:var(--sub);font-size:15px;font-weight:500;line-height:1.25;text-align:left}
+.preferred-source-copy strong{font-weight:700}
+.preferred-source-arrow{color:var(--orange)}
 
 /* === HỘP TÁC GIẢ / NGƯỜI THẨM ĐỊNH ========================================== */
 .bio-box{position:relative;margin-top:30px;padding:28px 28px 28px 54px;background:var(--paper-soft);
@@ -293,19 +345,24 @@
   /* Chỉ hạ đáy. KHÔNG viết lại `padding` shorthand — nó đặt lại cả 4 cạnh nên
      xoá luôn calc(--chrome-h) ở trên. */
   .detail-hero{padding-bottom:30px}
-  .article-meta{font-size:11px}
-  .article-meta .dot{display:none}
+  .article-meta{gap:8px 10px;font-size:10.5px}
   .article-shell{padding:28px 20px 54px}
   .article-content{padding:0}
   .article-content p{font-size:16px;line-height:1.72}
   .article-content h2{margin-top:40px}
-  .article-content h3{font-size:17px}
+  .article-content h3{margin-top:28px;font-size:22px}
+  .article-content h4{margin-top:20px;font-size:18px}
   .intro-paragraph{padding:18px 18px 18px 22px}
-  .key-facts{padding:18px 18px}
+  .article-content .key-facts{padding:18px 20px}
+  .toc{margin:26px 0}
   .sidebar-stack{grid-template-columns:1fr}
   .promo-card{max-width:none}
   .promo-image{aspect-ratio:16/10}
   .share-bar{margin-top:28px}
+  .preferred-source-badge{width:min(100%,360px);grid-template-columns:34px minmax(0,1fr) 18px;
+    gap:12px;min-height:78px;padding:13px 14px}
+  .preferred-source-google{width:34px;height:34px}
+  .preferred-source-copy{font-size:14px}
   .bio-box{margin-top:24px;padding:22px 18px 22px 32px;box-shadow:0 12px 32px rgba(22,18,12,.08)}
   .bio-box::before{left:16px;top:22px;bottom:22px;width:2px}
   .bio-box-label{font-size:11px;letter-spacing:.08em}
@@ -328,12 +385,34 @@
   .related-card-excerpt{font-size:12px;line-height:1.45}
   .related-card-meta{font-size:9.5px;margin-bottom:8px}
 }
+@media(min-width:400px) and (max-width:760px){
+  .article-meta{flex-wrap:nowrap}
+}
+
+/* === BLOG DETAIL CHROME DEMO — active menu + compact sticky header =========
+   Ở đầu trang giữ nguyên promo + header. Khi người đọc đã rời hero, promo bar
+   tiếp tục ẩn; cuộn lên chỉ trả lại header đặc ở top:0 để không chiếm 112px.
+   Drawer đang mở là ngoại lệ: trả promo/header về vị trí đầy đủ để menu không lệch. */
+body.paper-page.blog-detail-page .navlink[href="blog.html"]{color:#fff;opacity:1}
+body.paper-page.blog-detail-page .navlink[href="blog.html"]::after{width:100%}
+body.paper-page.blog-detail-page .hdr{
+  transition:top .25s var(--ease),transform .34s var(--ease),background-color .25s var(--ease)
+}
+html.scrolled body.paper-page.blog-detail-page .promobar{transform:translateY(-100%)}
+html.scrolled body.paper-page.blog-detail-page .hdr{top:0}
+html.scrolled:has(#navtog:checked) body.paper-page.blog-detail-page .promobar{transform:none}
+html.scrolled:has(#navtog:checked) body.paper-page.blog-detail-page .hdr{top:var(--promo-h)}
+
+@media(max-width:940px){
+  body.paper-page.blog-detail-page .navlink[href="blog.html"]{color:var(--orange)}
+}
 @media(max-width:430px){
   .article-title{font-size:clamp(35px,12vw,50px)}
   .article-shell{padding-inline:18px}
   .hero-image{aspect-ratio:4/3}
-  .toc summary{padding:15px 16px;font-size:12px}
-  .toc-list{padding-inline:16px}
+  .toc summary{padding:15px 46px 15px 16px;font-size:12px}
+  .toc-panel{padding:20px 18px 16px}
+  .article-content .toc-list > li{padding-left:20px;font-size:14px}
   .related-card{border-radius:10px}
   .related-card-title{font-size:12.5px}
   .related-card-excerpt{font-size:11.5px}

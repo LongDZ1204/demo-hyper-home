@@ -20,6 +20,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent
 PARTIALS = ROOT / "_partials"
+ARTIST_SYNC = ROOT.parent / "scripts" / "sync_artist_demo.py"
 # thư mục bắt đầu bằng _ là hạ tầng, không phải page
 SKIP_DIRS = {"_partials", "_foundation", "_pages", "_hero-assets", "_artist-photos"}
 
@@ -56,6 +57,14 @@ def main():
     if "--publish" in sys.argv:
         publish = Path(sys.argv[sys.argv.index("--publish") + 1]).resolve()
 
+    # Roster artist đọc từ Markdown canonical rồi mới đi qua cơ chế partial.
+    # --check giữ nguyên tính read-only: script chỉ báo stale, không ghi file.
+    if ARTIST_SYNC.exists():
+        cmd = [sys.executable, str(ARTIST_SYNC), "--render-only"]
+        if check:
+            cmd.append("--check")
+        subprocess.run(cmd, check=True)
+
     # tự nhận mọi mảnh trong _partials/ — thêm file mới là dùng được ngay,
     # không phải sửa script. Page nào không đặt mốc thì mảnh đó bỏ qua.
     parts = {p.stem: block(p.stem) for p in sorted(PARTIALS.glob("*.html"))}
@@ -77,6 +86,14 @@ def main():
                     sys.exit(f"{page.name}: có mốc mở '@include {name}' nhưng thiếu mốc đóng")
         if html != orig and not check:
             page.write_text(html, encoding="utf-8")
+
+    # Detail routes are generated after root pages receive the latest shared
+    # chrome, so nested pages never lag behind a header/footer rebuild.
+    if ARTIST_SYNC.exists():
+        cmd = [sys.executable, str(ARTIST_SYNC), "--render-details-only"]
+        if check:
+            cmd.append("--check")
+        subprocess.run(cmd, check=True)
 
     print(f"page quét: {len(pages())} · cập nhật: {len(changed)} · chưa đặt mốc: {len(missing)}")
     for c in changed:

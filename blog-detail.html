@@ -21,7 +21,7 @@
 
 
 <link rel="stylesheet" href="_foundation/hi-base.css">
-<link rel="stylesheet" href="_foundation/hi-icon.css">
+<link rel="stylesheet" href="_foundation/hi-icon.css?v=20260904-social">
 <link rel="stylesheet" href="_foundation/hi-chrome.css">
 <!-- Hai page blog KHÔNG có khối đặt lịch, vẫn nạp booking-section.css: cả 10 page
      đã port đều nạp đủ 8 file theo đúng thứ tự này (awards / tattoo-gallery /
@@ -30,11 +30,11 @@
 <link rel="stylesheet" href="_foundation/components/booking-section.css">
 <link rel="stylesheet" href="_foundation/components/booking-form.css">
 <link rel="stylesheet" href="_foundation/hi-components.css">
-<link rel="stylesheet" href="_pages/blog-detail.css">
+<link rel="stylesheet" href="_pages/blog-detail.css?v=20260904-sticky-toc-groups">
 <!-- hi-ds.css NẠP CUỐI: lớp design-system cố tình thắng cascade so với CSS lẻ của page -->
 <link rel="stylesheet" href="_foundation/hi-ds.css">
 </head>
-<body class="paper-page light-hero">
+<body class="paper-page blog-detail-page">
 <a class="skip" href="#main">Skip to content</a>
 
 <!-- ==== HEADER (shared foundation .hdr + CSS-only drawer) ==== -->
@@ -159,6 +159,7 @@
 
 <main id="main">
   <section class="detail-hero" aria-labelledby="article-title">
+    <img class="detail-hero-smoke" src="_hero-assets/color-blur.webp" alt="" aria-hidden="true" decoding="async">
     <span class="grain" aria-hidden="true"></span>
     <div class="wrap">
       <nav class="crumb" aria-label="Breadcrumb">
@@ -171,7 +172,7 @@
       <h1 id="article-title" class="article-title">Where Tattoos Are Most Popular?</h1>
       <div class="article-meta" aria-label="Article details">
         <span>Written by <b>Hyper Inkers Team</b></span>
-        <span class="dot" aria-hidden="true"></span>
+        <span class="meta-divider" aria-hidden="true"></span>
         <span class="updated">Updated <b>May 20, 2026</b></span>
       </div>
     </div>
@@ -184,6 +185,72 @@
         <p class="intro-paragraph">
           <strong>Report highlights.</strong> According to the most comprehensive global survey data from 2018-2024, Italy ranks as the most tattooed country in the world at 48% prevalence, followed closely by Sweden (47%) and the United States (46%). Europe and the Americas dominate global rankings, while Asia-Pacific represents the fastest-growing market at 11.6-12.6% annual growth.
         </p>
+
+        <figure class="hero-image-inline">
+          <img class="hero-image" src="https://hyperinkers.com/wp-content/uploads/2025/12/where-tattoos-are-most-popular.jpg" alt="Bar chart showing where tattoos are most popular: Italy leads at 48%, followed by Sweden 47% and USA 46%" width="900" height="506" loading="eager" fetchpriority="high">
+          <figcaption class="hero-caption">Italy leads global tattoo prevalence with nearly half of surveyed adults reporting at least one tattoo.</figcaption>
+        </figure>
+
+        <details class="toc">
+          <summary>
+            <svg class="hi-icon hi-icon--20 toc-list-icon" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-menu"></use></svg>
+            <span class="toc-label">Table of contents</span>
+            <svg class="hi-icon hi-icon--16 toc-caret" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-chevron-down"></use></svg>
+          </summary>
+          <div class="toc-panel">
+            <p class="toc-panel-title">Table of contents</p>
+            <ol class="toc-list">
+              <li class="toc-list-item">
+                <a class="toc-entry" href="#section-1">
+                  <svg class="hi-icon hi-icon--16 toc-entry-chevron" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-chevron-right"></use></svg>
+                  <span>Which Countries Have the Highest Tattoo Prevalence?</span>
+                </a>
+              </li>
+              <li class="toc-list-item toc-list-item--group">
+                <div class="toc-entry">
+                  <button class="toc-section-toggle" type="button" aria-expanded="true" aria-controls="toc-section-2-children" data-toc-label="How Does Tattoo Prevalence Vary by Region?" aria-label="Collapse subsections under How Does Tattoo Prevalence Vary by Region?">
+                    <svg class="hi-icon hi-icon--16" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-chevron-down"></use></svg>
+                  </button>
+                  <a href="#section-2">How Does Tattoo Prevalence Vary by Region?</a>
+                </div>
+                <ol id="toc-section-2-children" class="toc-sublist">
+                  <li><a href="#section-2-1">Europe Leads Globally</a></li>
+                  <li><a href="#section-2-2">North America and Oceania Follow Closely</a></li>
+                </ol>
+              </li>
+              <li class="toc-list-item">
+                <a class="toc-entry" href="#section-3">
+                  <svg class="hi-icon hi-icon--16 toc-entry-chevron" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-chevron-right"></use></svg>
+                  <span>Why Italy, Sweden, and the US Lead in Tattoo Adoption?</span>
+                </a>
+              </li>
+              <li class="toc-list-item">
+                <a class="toc-entry" href="#section-4">
+                  <svg class="hi-icon hi-icon--16 toc-entry-chevron" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-chevron-right"></use></svg>
+                  <span>What Is the Global Tattoo Industry Market Size?</span>
+                </a>
+              </li>
+              <li class="toc-list-item">
+                <a class="toc-entry" href="#section-5">
+                  <svg class="hi-icon hi-icon--16 toc-entry-chevron" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-chevron-right"></use></svg>
+                  <span>Which Traditional Tattoo Cultures Are Experiencing a Revival?</span>
+                </a>
+              </li>
+              <li class="toc-list-item">
+                <a class="toc-entry" href="#section-6">
+                  <svg class="hi-icon hi-icon--16 toc-entry-chevron" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-chevron-right"></use></svg>
+                  <span>Key Takeaways</span>
+                </a>
+              </li>
+              <li class="toc-list-item">
+                <a class="toc-entry" href="#section-7">
+                  <svg class="hi-icon hi-icon--16 toc-entry-chevron" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-chevron-right"></use></svg>
+                  <span>Sources</span>
+                </a>
+              </li>
+            </ol>
+          </div>
+        </details>
 
         <ul class="key-facts" aria-label="Key tattoo prevalence facts">
           <li>Italy has the highest tattoo prevalence globally at 48%.</li>
@@ -202,34 +269,6 @@
           &middot;
           <a href="blog-detail.html">Tattoo regret statistics</a>
         </div>
-
-        <figure class="hero-image-inline">
-          <img class="hero-image" src="https://hyperinkers.com/wp-content/uploads/2025/12/where-tattoos-are-most-popular.jpg" alt="Bar chart showing where tattoos are most popular: Italy leads at 48%, followed by Sweden 47% and USA 46%" width="900" height="506" loading="eager" fetchpriority="high">
-          <figcaption class="hero-caption">Italy leads global tattoo prevalence with nearly half of surveyed adults reporting at least one tattoo.</figcaption>
-        </figure>
-
-        <details class="toc">
-          <summary>
-            <span class="toc-icon" aria-hidden="true">I</span>
-            <span class="toc-label">Table of Contents</span>
-            <span class="toc-caret" aria-hidden="true">&gt;</span>
-          </summary>
-          <ol class="toc-list">
-            <li><a href="#section-1">Which Countries Have the Highest Tattoo Prevalence?</a></li>
-            <li>
-              <a href="#section-2">How Does Tattoo Prevalence Vary by Region?</a>
-              <ol>
-                <li><a href="#section-2-1">Europe Leads Globally</a></li>
-                <li><a href="#section-2-2">North America and Oceania Follow Closely</a></li>
-              </ol>
-            </li>
-            <li><a href="#section-3">Why Italy, Sweden, and the US Lead in Tattoo Adoption?</a></li>
-            <li><a href="#section-4">What Is the Global Tattoo Industry Market Size?</a></li>
-            <li><a href="#section-5">Which Traditional Tattoo Cultures Are Experiencing a Revival?</a></li>
-            <li><a href="#section-6">Key Takeaways</a></li>
-            <li><a href="#section-7">Sources</a></li>
-          </ol>
-        </details>
 
         <h2 id="section-1">1. Which Countries Have the Highest Tattoo Prevalence?</h2>
         <p>
@@ -263,24 +302,36 @@
         </p>
       </div>
       <footer class="share-bar" aria-label="Share this article">
-        <span class="share-label">Share this article</span>
-        <div class="share-icons">
-          <a class="share-link" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhyperinkers.com%2Fblog%2Fwhere-tattoos-are-most-popular%2F" target="_blank" rel="noopener" aria-label="Share on Facebook">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13.5 21.5v-8.7h2.93l.44-3.4H13.5V7.22c0-.98.27-1.65 1.68-1.65h1.8V2.53c-.31-.04-1.38-.14-2.63-.14-2.6 0-4.38 1.59-4.38 4.5v2.51H7v3.4h2.97v8.7h3.53Z"/></svg>
-          </a>
-          <a class="share-link" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fhyperinkers.com%2Fblog%2Fwhere-tattoos-are-most-popular%2F&amp;text=Where%20Tattoos%20Are%20Most%20Popular%3F" target="_blank" rel="noopener" aria-label="Share on Twitter">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 5.92c-.74.33-1.53.55-2.36.65a4.12 4.12 0 0 0 1.8-2.27c-.79.47-1.67.81-2.6 1a4.1 4.1 0 0 0-7 3.74A11.65 11.65 0 0 1 3.4 4.72a4.1 4.1 0 0 0 1.27 5.48c-.66-.02-1.29-.2-1.84-.5v.05a4.1 4.1 0 0 0 3.29 4.02 4.1 4.1 0 0 1-1.85.07 4.11 4.11 0 0 0 3.83 2.85A8.23 8.23 0 0 1 2 18.4a11.62 11.62 0 0 0 6.29 1.84c7.55 0 11.68-6.25 11.68-11.67l-.01-.53A8.3 8.3 0 0 0 22 5.92Z"/></svg>
-          </a>
-          <a class="share-link" href="mailto:?subject=Where%20Tattoos%20Are%20Most%20Popular%3F&amp;body=https%3A%2F%2Fhyperinkers.com%2Fblog%2Fwhere-tattoos-are-most-popular%2F" aria-label="Share by email">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5.5h18c.55 0 1 .45 1 1v.28l-10 5.94L2 6.78V6.5c0-.55.45-1 1-1Zm-1 3.42V17.5c0 .55.45 1 1 1h18c.55 0 1-.45 1-1V8.92l-9.49 5.63a1 1 0 0 1-1.02 0L2 8.92Z"/></svg>
-          </a>
-          <a class="share-link" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fhyperinkers.com%2Fblog%2Fwhere-tattoos-are-most-popular%2F&amp;media=https%3A%2F%2Fhyperinkers.com%2Fwp-content%2Fuploads%2F2025%2F12%2Fwhere-tattoos-are-most-popular.jpg&amp;description=Where%20Tattoos%20Are%20Most%20Popular%3F" target="_blank" rel="noopener" aria-label="Share on Pinterest">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.5C6.9 2.5 4 5.77 4 9.15c0 1.57.86 3.53 2.24 4.15.21.1.32.05.37-.15l.3-1.2c.03-.11.02-.2-.07-.31a3.9 3.9 0 0 1-.75-2.24c0-2.9 2.2-5.7 5.94-5.7 3.23 0 5.5 2.16 5.5 5.24 0 3.48-1.78 5.89-4.09 5.89-1.28 0-2.23-1.04-1.93-2.32.37-1.53 1.08-3.18 1.08-4.29 0-.99-.54-1.81-1.65-1.81-1.31 0-2.36 1.34-2.36 3.14 0 1.14.39 1.92.39 1.92l-1.57 6.6c-.32 1.35-.05 3 .02 3.17.04.1.17.13.24.05.1-.13 1.4-1.72 1.84-3.31.12-.45.71-2.75.71-2.75.35.66 1.38 1.24 2.47 1.24 3.25 0 5.46-2.94 5.46-6.88 0-2.98-2.55-5.76-6.4-5.76Z"/></svg>
-          </a>
-          <a class="share-link" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fhyperinkers.com%2Fblog%2Fwhere-tattoos-are-most-popular%2F&amp;title=Where%20Tattoos%20Are%20Most%20Popular%3F" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.94 21H3.56V9.14h3.38V21ZM5.25 7.67a1.96 1.96 0 1 1 0-3.92 1.96 1.96 0 0 1 0 3.92ZM21 21h-3.37v-5.77c0-1.38-.03-3.15-1.93-3.15-1.93 0-2.22 1.5-2.22 3.05V21H10.1V9.14h3.24v1.62h.05a3.55 3.55 0 0 1 3.2-1.75c3.42 0 4.05 2.24 4.05 5.16V21Z"/></svg>
-          </a>
+        <div class="share-row">
+          <span class="share-label">Share</span>
+          <div class="share-icons">
+            <a class="share-link hi-icon-button" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fhyperinkers.com%2Fblog%2Fwhere-tattoos-are-most-popular%2F" target="_blank" rel="noopener" aria-label="Share on Facebook">
+              <svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg?v=20260904-social#hi-icon-facebook"></use></svg>
+            </a>
+            <a class="share-link hi-icon-button" href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fhyperinkers.com%2Fblog%2Fwhere-tattoos-are-most-popular%2F&amp;text=Where%20Tattoos%20Are%20Most%20Popular%3F" target="_blank" rel="noopener" aria-label="Share on X">
+              <svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg?v=20260904-social#hi-icon-x"></use></svg>
+            </a>
+            <a class="share-link hi-icon-button" href="mailto:?subject=Where%20Tattoos%20Are%20Most%20Popular%3F&amp;body=https%3A%2F%2Fhyperinkers.com%2Fblog%2Fwhere-tattoos-are-most-popular%2F" aria-label="Share by email">
+              <svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg?v=20260904-social#hi-icon-mail"></use></svg>
+            </a>
+            <a class="share-link hi-icon-button" href="https://www.pinterest.com/pin/create/button/?url=https%3A%2F%2Fhyperinkers.com%2Fblog%2Fwhere-tattoos-are-most-popular%2F&amp;media=https%3A%2F%2Fhyperinkers.com%2Fwp-content%2Fuploads%2F2025%2F12%2Fwhere-tattoos-are-most-popular.jpg&amp;description=Where%20Tattoos%20Are%20Most%20Popular%3F" target="_blank" rel="noopener" aria-label="Share on Pinterest">
+              <svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg?v=20260904-social#hi-icon-pinterest"></use></svg>
+            </a>
+            <a class="share-link hi-icon-button" href="https://www.linkedin.com/shareArticle?mini=true&amp;url=https%3A%2F%2Fhyperinkers.com%2Fblog%2Fwhere-tattoos-are-most-popular%2F&amp;title=Where%20Tattoos%20Are%20Most%20Popular%3F" target="_blank" rel="noopener" aria-label="Share on LinkedIn">
+              <svg class="hi-icon hi-icon--20" aria-hidden="true"><use href="_foundation/hi-icons.svg?v=20260904-social#hi-icon-linkedin"></use></svg>
+            </a>
+          </div>
         </div>
+        <a class="preferred-source-badge" href="https://www.google.com/preferences/source?q=hyperinkers.com" target="_blank" rel="noopener" aria-label="Add Hyper Inkers as a preferred source on Google">
+          <svg class="preferred-source-google" viewBox="0 0 18 18" aria-hidden="true">
+            <path fill="#4285F4" d="M17.64 9.205c0-.639-.057-1.253-.164-1.841H9v3.482h4.844a4.14 4.14 0 0 1-1.797 2.716v2.258h2.91c1.702-1.567 2.683-3.874 2.683-6.615Z"/>
+            <path fill="#34A853" d="M9 18c2.43 0 4.467-.806 5.956-2.18l-2.909-2.258c-.806.54-1.835.86-3.047.86-2.344 0-4.329-1.586-5.037-3.718H.957v2.333A9 9 0 0 0 9 18Z"/>
+            <path fill="#FBBC05" d="M3.963 10.704A5.42 5.42 0 0 1 3.682 9c0-.592.102-1.168.281-1.704V4.963H.957A9 9 0 0 0 0 9c0 1.452.347 2.827.957 4.037l3.006-2.333Z"/>
+            <path fill="#EA4335" d="M9 3.58c1.322 0 2.508.455 3.442 1.346l2.58-2.58C13.463.892 11.427 0 9 0A9 9 0 0 0 .957 4.963l3.006 2.333C4.67 5.165 6.656 3.58 9 3.58Z"/>
+          </svg>
+          <span class="preferred-source-copy">Add <strong>Hyper Inkers</strong> as a preferred source on Google</span>
+          <svg class="hi-icon hi-icon--20 preferred-source-arrow" aria-hidden="true"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg>
+        </a>
       </footer>
     </article>
     <section class="bio-box" aria-labelledby="about-hyper-inkers">
@@ -483,6 +534,7 @@
 <script src="_foundation/hi-chrome.js" defer></script>
 <script src="_foundation/hi-components.js" defer></script>
 <script src="_foundation/hi-ds.js?v=20260813-inline-gap" defer></script>
+<script src="_pages/blog-detail.js?v=20260904-toc-groups" defer></script>
 
 <!-- @include booking-modal -->
 <!-- HYPER INKERS — POPUP ĐẶT LỊCH, dùng chung. NGUỒN DUY NHẤT.
@@ -503,7 +555,7 @@
 
     <!-- scroll body -->
     <div class="modal__scroll" data-booking-body>
-      <p class="modal__intro">Tell us your idea. We'll match you with the right artist and reply within 24 hours.</p>
+      <p class="modal__intro">Tell us your idea, including style, size, placement, and a rough budget. We'll match you with the right artist and reply within 24 hours.</p>
 
       <form id="hiBookingForm" data-booking-form>
         <div class="field-grid">
@@ -554,6 +606,8 @@
             <option value="Mancha">Mancha</option>
             <option value="Navei">Navei</option>
             <option value="Nicole">Nicole</option>
+            <option value="Genesis">Genesis</option>
+            <option value="Z">Z</option>
           </select>
         </div>
 
