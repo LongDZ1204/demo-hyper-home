@@ -89,16 +89,6 @@
 .s-visit{background:var(--black)}
 .s-faq{background:var(--bg)}
 
-/* Tiêu đề hai băng CTA ở trang này là MỘT CÂU trọn: md 04/09 đưa câu lên làm tiêu
-   đề, nhãn ngắn xuống làm eyebrow. Cỡ 74px của tầng chung hợp với cụm 2-3 chữ,
-   câu 70 ký tự viết hoa để nguyên cỡ đó thì tràn 3-4 dòng.
-   Phải neo bằng ID: hi-ds.css nạp SAU file này và đã khai
-   `.s-cta1 .cta1-h{font-size:var(--fs-display)}` cùng độ ưu tiên (0,2,0), nên
-   viết bằng class thì thua. Đo 04/09: để class thì cỡ chữ vẫn ra 71,68px. */
-#cta1 .cta1-h,#cta2 .cta2-h{font-size:clamp(24px,2.9vw,40px);line-height:1.12;max-width:min(24ch,94vw)}
-@media(max-width:560px){ #cta1 .cta1-h,#cta2 .cta2-h{font-size:clamp(21px,5.2vw,29px);max-width:94vw} }
-.s-guides{background:var(--black)}
-
 /* ========== Tab DỊCH VỤ (.svt-*) ==========
    Cùng cơ chế với tab Why-Choose nhưng PHẢI là một họ class riêng: các luật
    `#adv-tN:checked ~ …` ở tầng chung khoá cứng vào id adv-tN, nên một trang chỉ
@@ -216,7 +206,9 @@
 }
 
 /* Ghi chú dưới bảng giá (content §Cost). */
-.pr-note{margin:clamp(18px,2.2vw,26px) 0 0;max-width:820px;font-size:15px;line-height:1.62;color:var(--muted)}
+/* Trải hết bề ngang bảng giá, không bó 820px: dòng này là chú thích CỦA bảng,
+   bó hẹp lại thì nó lệch mép phải so với bảng ngay trên (B.Long 04/09). */
+.pr-note{margin:clamp(18px,2.2vw,26px) 0 0;font-size:15px;line-height:1.62;color:var(--muted)}
 
 /* Thẻ nghệ sĩ: tên dưới ảnh — tầng chung chưa có. */
 .art-name{font-family:var(--head);font-weight:700;text-transform:uppercase;font-size:clamp(19px,1.9vw,25px);

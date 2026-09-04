@@ -954,12 +954,6 @@ a.vs-ci-val:hover{color:var(--orange-hi)}
 /* .cta1-h là <p> nên KHÔNG dính luật `.section h2 .o` ở hi-foundation — phải khai riêng,
    nếu không mấy chữ tô cam trong tiêu đề CTA (trang awards) sẽ về màu kem */
 .s-cta1 .cta1-h .o,.s-cta2 .cta2-h .o{color:var(--orange)}
-/* Nhãn nhỏ trên tiêu đề băng CTA. Content viết CTA theo ba nhịp "Eyebrow / câu /
-   nút", nên nhãn phải là nhãn chứ không phải tiêu đề. Khai một class dùng chung
-   cho cả hai băng; trang nào không viết markup thì không hiện gì. */
-.s-cta1 .cta-eyebrow,.s-cta2 .cta-eyebrow{margin:0 auto clamp(12px,1.4vw,18px);font-family:var(--sub);
-  font-weight:700;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--orange);
-  text-shadow:0 1px 10px rgba(0,0,0,.8)}
 .s-cta1 .cta1-sub{margin:clamp(16px,2vw,22px) auto 0;max-width:46ch;font-family:var(--sub);
   font-size:clamp(14px,1.4vw,17px);letter-spacing:.02em;color:#D4D4D4;text-shadow:0 1px 10px rgba(0,0,0,.8);line-height:1.55}
 .cta1-act{margin-top:clamp(24px,3vw,36px);display:flex;flex-direction:column;align-items:center;gap:15px}
