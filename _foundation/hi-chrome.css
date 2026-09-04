@@ -229,6 +229,12 @@ html:not(.chrome-off) .stickybar.is-stuck{transform:translateY(-100%);opacity:0;
   .m-quick-cta__book strong{font-family:var(--sub);font-size:14px;line-height:1.05;letter-spacing:.08em;text-transform:uppercase;color:#fff;white-space:nowrap}
   .m-quick-cta__book small{margin-top:4px;font-family:var(--body);font-size:11px;line-height:1;color:rgba(255,255,255,.88);white-space:nowrap}
   .m-quick-cta a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+  /* Dock luân phiên với chrome, cùng luật như .stickybar: chỉ một thanh chiếm màn
+     hình tại một thời điểm. Đọc lại cờ .chrome-off mà header đã tính sẵn (bật khi
+     cuộn XUỐNG) thay vì gắn listener cuộn thứ hai — hai bộ đếm riêng sẽ có lúc lệch
+     nhau ở nhịp đảo chiều. Hệ quả: đỉnh trang dock ẩn, vì hero đã có nút đặt lịch
+     riêng rồi (B.Long 04/09). */
+  html:not(.chrome-off) .m-quick-cta,
   html:has(#navtog:checked) .m-quick-cta,body.modal-open .m-quick-cta{opacity:0;pointer-events:none;transform:translateY(110%)}
   .to-top{display:flex;width:46px;height:46px;right:14px;bottom:calc(84px + env(safe-area-inset-bottom));z-index:89}
   html:has(#navtog:checked) .to-top,body.modal-open .to-top{opacity:0;visibility:hidden;pointer-events:none;transform:translateY(12px)}
