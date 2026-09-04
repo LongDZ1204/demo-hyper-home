@@ -238,8 +238,8 @@
 }
 
 /* ============================================================================
-   SECTION 04 · SPECIALISTS — ported from homepage .artists (layout sync), 3 cards
-   (Minh/Zoe/Cindy), caption = role not tattoo-style. [.art-]
+   SECTION 04 · SPECIALISTS — ported from homepage .artists (layout sync), 2 cards
+   (Minh/Zoe), caption = role not tattoo-style. [.art-]
    ============================================================================ */
 .artists{background:var(--black)}
 .art-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,1.5vw,20px);margin-top:clamp(30px,4vw,46px)}
@@ -697,6 +697,7 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
 
 /* Removal page has exactly three specialists: fill three equal desktop columns. */
 #specialists .art-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+#specialists .art-grid[data-artist-context="removal"]{grid-template-columns:repeat(2,minmax(0,1fr));max-width:660px;margin-inline:auto}
 
 /* Supporting content tabs use the same left/right edges as their section wrap. */
 /* Khổ rộng chuyển sang .faqacc--wide ở hi-components.css (12/08) — cùng một
@@ -1273,11 +1274,11 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
       <noscript><style>.lead-txt{-webkit-line-clamp:unset;line-clamp:unset}.lead-more{display:none}</style></noscript>
     </header>
 
-    <div class="art-grid msl-row">
-
-      <article class="art-card">
+    <!-- @include comp-artists-removal -->
+    <div class="art-grid msl-row" data-artist-context="removal">
+      <article class="art-card" data-artist="minh">
         <div class="art-photo">
-          <img src="https://hyperinkers.com/wp-content/uploads/2026/02/minh-pham-san-antonio-tattoo-artist-768x1075.jpg" alt="Minh Pham, founder and Certified Laser Specialist at Hyper Inkers in San Antonio." loading="lazy">
+          <img src="https://hyperinkers.com/wp-content/uploads/2026/02/minh-pham-san-antonio-tattoo-artist-768x1075.jpg" alt="Minh Pham, founder and lead tattoo artist at Hyper Inkers in San Antonio." loading="lazy">
           <span class="art-scrim" aria-hidden="true"></span>
           <div class="art-panel">
             <p class="art-bio">Minh Pham runs tattoo removal at Hyper Inkers on the PicoStar. Certified Laser Specialist, New Look Laser College. Trained in tattoo removal at Texas Laser &amp; Aesthetics Training Academy. A working tattoo artist, so he reads how the ink was laid in.</p>
@@ -1285,15 +1286,15 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
           </div>
         </div>
         <div class="art-cap">
-          <span class="art-style">Founder &amp; Laser Removal Specialist</span>
+          <span class="art-style">Certified Laser Specialist</span>
           <h3 class="art-name">Minh</h3>
         </div>
-        <a class="art-link" href="/artists/minh-pham" aria-label="View Minh's profile"></a>
+        <a class="art-link" href="/tattoo-artist/minh" aria-label="View Minh's profile"></a>
       </article>
 
-      <article class="art-card">
+      <article class="art-card" data-artist="zoe">
         <div class="art-photo">
-          <img src="_artist-photos/zoe.jpg" alt="Zoe, Certified Laser Specialist at Hyper Inkers in San Antonio." loading="lazy">
+          <img src="_artist-photos/zoe.jpg" alt="Zoe Meints, body piercer at Hyper Inkers in San Antonio." loading="lazy">
           <span class="art-scrim" aria-hidden="true"></span>
           <div class="art-panel">
             <p class="art-bio">Zoe Meints runs removal sessions at Hyper Inkers as a Certified Laser Specialist. Walks every client through numbing, cooling, and aftercare. CPR and Bloodborne Pathogens certified.</p>
@@ -1301,29 +1302,13 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
           </div>
         </div>
         <div class="art-cap">
-          <span class="art-style">Laser Removal Specialist</span>
+          <span class="art-style">Certified Laser Specialist</span>
           <h3 class="art-name">Zoe</h3>
         </div>
-        <a class="art-link" href="/artists/zoe" aria-label="View Zoe's profile"></a>
+        <a class="art-link" href="/tattoo-artist/zoe" aria-label="View Zoe's profile"></a>
       </article>
-
-      <article class="art-card">
-        <div class="art-photo">
-          <img src="_artist-photos/cindy.jpg" alt="Cindy, Certified Laser Specialist at Hyper Inkers in San Antonio." loading="lazy">
-          <span class="art-scrim" aria-hidden="true"></span>
-          <div class="art-panel">
-            <p class="art-bio">Cindy Lam runs removal sessions at Hyper Inkers as a Certified Laser Specialist, from small fine-line pieces to large multicolor work. Sets conservative settings by skin type and reassesses the plan each visit.</p>
-            <span class="art-view">View profile <svg viewBox="0 0 24 24" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-arrow-right"></use></svg></span>
-          </div>
-        </div>
-        <div class="art-cap">
-          <span class="art-style">Laser Removal Specialist</span>
-          <h3 class="art-name">Cindy</h3>
-        </div>
-        <a class="art-link" href="/artists/cindy" aria-label="View Cindy's profile"></a>
-      </article>
-
     </div>
+<!-- /include comp-artists-removal -->
     <div class="msl-foot art-foot">
       <div class="msl-nav">
         <button type="button" class="msl-navbtn prev" aria-label="Previous specialists"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="hi-icon"><use href="_foundation/hi-icons.svg#hi-icon-chevron-left"></use></svg></button>
@@ -1735,53 +1720,76 @@ a.rmbk-ci-val:hover{color:var(--orange-hi)}
 <section class="section s-book" id="book">
   <span class="grain" aria-hidden="true"></span>
   <div class="wrap">
-    <!-- de-AI'd v1 2026-07-08: ported from _foundation/components/booking-section-removal.html -->
+    <!-- de-AI'd v1 2026-07-08: ported from _foundation/components/booking-section-full.html (04/09: doi tu ban removal sang ban full cho dong bo) -->
     <div class="bks-card">
       <div data-bks-body>
-        <h2 class="bks-title">Book Your Free Tattoo Removal Consultation</h2>
-        <p class="bks-intro">Bring a photo of your tattoo or just come in, and your specialist will assess the ink and map out a plan. No pressure, no commitment to decide before you're ready.</p>
+        <h2 class="bks-title">Book Your <span class="o">Appointment</span></h2>
+        <p class="bks-intro">Tell us your idea, including style, size, placement, and a rough budget. We'll match you with the right artist and reply within 24 hours.</p>
 
         <form data-bks-form aria-label="Book a free tattoo removal consultation">
           <div class="bks-row">
             <div class="bks-group">
-              <label class="bks-label" for="bksrm-name">Your Name<span class="req">*</span></label>
-              <input class="bks-input" id="bksrm-name" type="text" name="your-name" placeholder="Your Name" required>
+              <label class="bks-label" for="bksrm-name">Your name<span class="req">*</span></label>
+              <input class="bks-input" id="bksrm-name" type="text" name="your-name" placeholder="e.g. Maria Lopez" required>
             </div>
             <div class="bks-group">
-              <label class="bks-label" for="bksrm-phone">Phone Number<span class="req">*</span></label>
-              <input class="bks-input" id="bksrm-phone" type="tel" name="your-phone" placeholder="Phone Number" required>
+              <label class="bks-label" for="bksrm-phone">Phone<span class="req">*</span></label>
+              <input class="bks-input" id="bksrm-phone" type="tel" name="your-phone" placeholder="(210) 555-0000" inputmode="tel" required>
             </div>
           </div>
 
           <div class="bks-row">
             <div class="bks-group">
-              <label class="bks-label" for="bksrm-email">Email Address<span class="req">*</span></label>
-              <input class="bks-input" id="bksrm-email" type="email" name="your-email" placeholder="Email Address" required>
+              <label class="bks-label" for="bksrm-email">Email<span class="req">*</span></label>
+              <input class="bks-input" id="bksrm-email" type="email" name="your-email" placeholder="you@email.com" required>
             </div>
             <div class="bks-group">
-              <label class="bks-label" for="bksrm-date">Preferred Date<span class="opt">Optional</span></label>
+              <label class="bks-label" for="bksrm-date">Preferred date<span class="opt">Optional</span></label>
               <input class="bks-input" id="bksrm-date" type="date" name="appointment-date">
             </div>
           </div>
 
           <div class="bks-group">
-            <label class="bks-label" for="bksrm-msg">Describe Your Tattoo<span class="opt">Optional</span></label>
-            <textarea class="bks-textarea" id="bksrm-msg" name="your-message" placeholder="Size and colors"></textarea>
+            <label class="bks-label" for="bksrm-service">Service<span class="req">*</span></label>
+            <select class="bks-select is-empty" id="bksrm-service" name="your-service" required>
+              <option value="" disabled selected>Choose a service</option>
+              <option value="Custom Tattoo">Custom Tattoo</option>
+              <option value="Cover-up Tattoo">Cover-up Tattoo</option>
+              <option value="Laser Removal">Laser Removal</option>
+            </select>
+            <p class="bks-note" role="note">Piercings are walk-ins only. Call <a href="tel:+12109979737">(210) 997-9737</a> for questions.</p>
           </div>
 
-          <p class="bks-note" role="note">Prefer to call? <a href="tel:+12109979737">(210) 997-9737</a></p>
+          <div class="bks-group">
+            <label class="bks-label" for="bksrm-artist">Choose your artist<span class="opt">Optional</span></label>
+            <select class="bks-select" id="bksrm-artist" name="your-artist">
+              <option value="Open to rec." selected>Open to recommendation</option>
+              <option value="Minh Pham">Minh Pham</option>
+              <option value="Tai Hoa">Tai Hoa</option>
+              <option value="Mancha">Mancha</option>
+              <option value="Navei">Navei</option>
+              <option value="Nicole">Nicole</option>
+              <option value="Genesis">Genesis</option>
+              <option value="Z">Z</option>
+            </select>
+          </div>
+
+          <div class="bks-group">
+            <label class="bks-label" for="bksrm-msg">Tell us your idea<span class="opt">Optional</span></label>
+            <textarea class="bks-textarea" id="bksrm-msg" name="your-message" placeholder="e.g. Small fine-line rose on forearm, ~3 inches"></textarea>
+          </div>
 
           <div class="bks-foot">
-            <p class="bks-status" data-bks-status>3 required fields remaining</p>
-            <button type="submit" class="bks-submit" data-bks-submit disabled>Book a Free Consultation</button>
+            <p class="bks-status" data-bks-status>4 required fields remaining</p>
+            <button type="submit" class="bks-submit" data-bks-submit disabled>Book My Appointment</button>
           </div>
         </form>
       </div>
 
       <div class="bks-success" data-bks-success>
         <div class="bks-success__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-        <h3>Request sent!</h3>
-        <p>We'll reply within <strong>24 hours</strong> to confirm your specialist and session estimate.</p>
+        <p class="bks-success-h">Request sent!</p>
+        <p>We'll reply within <strong>24 hours</strong> with available dates, your artist match, and a rough quote.</p>
       </div>
     </div>
   </div>
@@ -2257,7 +2265,7 @@ function hiHugArrow(cbId, txtId, boxId, moreId){
 
     <!-- scroll body -->
     <div class="modal__scroll" data-booking-body>
-      <p class="modal__intro">Tell us your idea. We'll match you with the right artist and reply within 24 hours.</p>
+      <p class="modal__intro">Tell us your idea, including style, size, placement, and a rough budget. We'll match you with the right artist and reply within 24 hours.</p>
 
       <form id="hiBookingForm" data-booking-form>
         <div class="field-grid">
@@ -2308,6 +2316,8 @@ function hiHugArrow(cbId, txtId, boxId, moreId){
             <option value="Mancha">Mancha</option>
             <option value="Navei">Navei</option>
             <option value="Nicole">Nicole</option>
+            <option value="Genesis">Genesis</option>
+            <option value="Z">Z</option>
           </select>
         </div>
 

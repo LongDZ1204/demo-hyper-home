@@ -303,7 +303,7 @@
 
 /* --- Form Book: bám đúng component chuẩn toàn site `_foundation/components/
        booking-form.css` (bản v7 ở /form). 7 điểm lệch đã nắn: heading cam +
-       căn trái + có dải phân cách · intro căn trái 52ch · input radius 10px ·
+       căn trái + có dải phân cách · intro căn trái chạy full · input radius 10px ·
        focus bỏ vòng sáng · textarea 76px · mũi tên select 14px · note 13px.
        Khi port: chuyển cả khối này vào booking-section.css và gỡ H2 section
        ở MỌI page cùng lúc (nếu không page cũ sẽ có 2 heading). --- */
@@ -321,7 +321,10 @@
   font-size:clamp(26px,4.5vw,34px);letter-spacing:.5px;line-height:1.04;
   color:var(--orange);text-align:left}
 .s-book .bks-title .o{color:inherit}
-.s-book .bks-intro{text-align:left;max-width:52ch;margin:0 0 22px}
+/* gỡ cap 52ch: hàng field chạy hết 578px trong khi intro dừng ở 459px, hụt 119px ngay
+   trên hàng field nên mép phải lởm chởm. Chạy full còn ~66ch, vẫn trong khoảng dễ đọc
+   45–75ch. Cùng cách xử với .hero-body .lead ở trên. */
+.s-book .bks-intro{text-align:left;max-width:none;margin:0 0 22px}
 /* Tông: popup đặt card trên nền tối và field SÁNG HƠN card 1 bậc (#161616). Bản nhúng đảo
    ngược nên ô nhập gần như tàng hình → trả về đúng quan hệ của popup.
    Dùng background-color, KHÔNG dùng shorthand `background` — shorthand xoá luôn

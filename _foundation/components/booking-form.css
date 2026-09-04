@@ -75,7 +75,7 @@ body.modal-open{ overflow:hidden; }
 /* ===== SCROLL BODY ===== */
 .modal__scroll{ flex:1 1 auto; overflow-y:auto; padding:22px 28px 24px; }
 .modal__intro{
-  color:var(--hi-muted); font-size:14px; line-height:1.55; text-align:left; margin:0 0 22px; max-width:52ch;
+  color:var(--hi-muted); font-size:14px; line-height:1.55; text-align:left; margin:0 0 22px; max-width:none;   /* gỡ cap 52ch — hụt 123px so với .field-grid; full = ~66ch, vẫn 45–75ch */
 }
 
 /* ===== FIELDS ===== */
