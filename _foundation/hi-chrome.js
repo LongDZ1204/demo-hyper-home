@@ -114,20 +114,17 @@
 (function(){
   var btn=document.querySelector('.to-top'); if(!btn) return;
   var rm=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var lastY=window.scrollY, ticking=false;
+  var root=document.documentElement;
   function update(){
-    var y=window.scrollY, delta=y-lastY;
-    if(y<=600){btn.classList.remove('is-on');lastY=y;}
-    else if(delta>5){btn.classList.add('is-on');lastY=y;}
-    else if(delta< -5){btn.classList.remove('is-on');lastY=y;}
-    ticking=false;
+    btn.classList.toggle('is-on',window.scrollY>600&&root.classList.contains('chrome-off'));
   }
   btn.addEventListener('click', function(){
     btn.classList.remove('is-on');
     window.scrollTo({top:0, behavior:rm?'auto':'smooth'});
   });
-  window.addEventListener('scroll',function(){if(!ticking){requestAnimationFrame(update);ticking=true;}},{passive:true});
-  btn.classList.toggle('is-on',lastY>600);
+  new MutationObserver(update).observe(root,{attributes:true,attributeFilter:['class']});
+  window.addEventListener('scroll',function(){requestAnimationFrame(update);},{passive:true});
+  update();
 })();
 
 /* Mobile quick CTA — approved Opt 1: Call · Book Now · Instagram.

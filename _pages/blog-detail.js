@@ -57,7 +57,7 @@
 
   const syncActiveHeading = () => {
     ticking = false;
-    if (!tracked.length) return;
+    if (!toc.open || !tracked.length) return;
 
     const chromeHeight = parseFloat(
       getComputedStyle(document.documentElement).getPropertyValue('--chrome-h')
@@ -79,7 +79,6 @@
 
     const nextGroup = current.link.closest('.toc-list-item--group');
     if (nextGroup !== activeGroup) {
-      activeGroup?.classList.remove('is-user-collapsed');
       activeGroup = nextGroup;
     }
 

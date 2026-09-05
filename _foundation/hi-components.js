@@ -57,16 +57,23 @@
     }
     /* kéo tâm về bản GIỮA nếu đã trôi ra biên — jump tức thì giữa 2 bản y hệt → seamless */
     function normalize(){ if(abs<N || abs>=2*N){ abs=N+(((abs%N)+N)%N); center(abs,true); } }
-    function tick(){ normalize(); abs++; center(abs,false); }
-    function play(){ if(rm||!visible) return; stop(); timer=setInterval(tick, INT); }   // chỉ chạy khi section trong viewport
+    var killed=false, hovering=false, focused=false;
+    function allowed(){ return !rm&&!killed&&!hovering&&!focused&&!document.hidden&&visible&&!!host.offsetParent; }
+    function tick(){ if(!allowed()) return; normalize(); abs++; center(abs,false); }
+    function play(){ stop(); if(!allowed()) return; timer=setInterval(tick, INT); }
     function stop(){ if(timer){ clearInterval(timer); timer=null; } }
+    function kill(){ killed=true; touched=true; stop(); }
     rail.addEventListener('scroll', function(){ refresh(); clearTimeout(st); st=setTimeout(function(){ abs=nearest(); }, 120); }, {passive:true});
     window.addEventListener('resize', refresh);
     dots.forEach(function(d,i){ d.addEventListener('click', function(){ touched=true; abs=N+i; center(abs,false); play(); }); });
-    /* dừng khi hover/chạm, chạy lại khi rời */
-    host.addEventListener('mouseenter', stop);
-    host.addEventListener('mouseleave', play);
-    host.addEventListener('touchstart', stop, {passive:true});
+    /* Hover/focus chỉ tạm dừng; thao tác chạm/kéo dừng tới khi tải lại trang. */
+    host.addEventListener('mouseenter', function(){hovering=true;stop();});
+    host.addEventListener('mouseleave', function(){hovering=false;play();});
+    host.addEventListener('focusin', function(){focused=true;stop();});
+    host.addEventListener('focusout', function(e){focused=host.contains(e.relatedTarget);play();});
+    host.addEventListener('pointerdown', kill, {passive:true});
+    host.addEventListener('touchstart', kill, {passive:true});
+    rail.addEventListener('wheel', kill, {passive:true});
     document.addEventListener('visibilitychange', function(){ document.hidden?stop():play(); });
     /* mở màn ở dot 0. start() chỉ re-căn khi CHƯA tương tác/chưa hiện → load/font settle không giật tâm */
     function start(){ if(touched) return; abs=N; center(abs,true); refresh(); }
@@ -296,6 +303,9 @@
     function step(d){s.scrollBy({left:d*0.85*s.clientWidth,behavior:rm?'auto':'smooth'});}
     function tick(){
       if(hold||killed||document.hidden||!wrap.offsetParent||!s.clientWidth) return;
+      var rect=wrap.getBoundingClientRect();
+      if(rect.bottom<=0||rect.top>=window.innerHeight||rect.right<=0||rect.left>=window.innerWidth) return;
+      if(wrap.matches(':hover')||wrap.contains(document.activeElement)) return;
       if(pages()<2) return;
       var nx=cur()+1; goto(nx>=pages()?0:nx);
     }
