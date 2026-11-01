@@ -107,7 +107,10 @@ mất tín hiệu internal link, và trang bị giật khi tải.
 | `contact.html` · `deals.html` · `faq.html` | ✅ (11/08) |
 | `blog.html` · `blog-detail.html` | ✅ (11/08) — theme nền giấy, xem dưới |
 | `testimonials.html` | ✅ (11/08) — bỏ section Customer Stories, xem dưới |
+| `404.html` | ✅ (01/11) — trang lỗi cho GitHub Pages, dùng chrome chung; CSS riêng ở `_pages/404.css` |
 | các page còn lại | ⏳ vẫn dùng CSS + header riêng của từng file |
+
+`404.html` có `<base href="/demo-hyper-home/">` để ảnh, CSS và link nội bộ hoạt động khi GitHub Pages hiển thị trang lỗi ở một URL lồng nhiều cấp.
 
 **`faq.html` là trang MỚI (11/08)**, dựng từ `outputs/onpage-design/2026-05-26_faq-page-mockup-v2.html`.
 Mục FAQ ở menu header và cột Explore của footer trước đây trỏ `soon.html`, nay trỏ trang thật.
